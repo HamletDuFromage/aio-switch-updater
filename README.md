@@ -12,14 +12,12 @@ All-in-One Nintendo Switch Updater
 
 A Nintendo Switch homebrew app download and update CFWs, sigpatches, FWs and cheat codes. Support Atmosphere, ReiNX and SXOS.
 
-
 ## How to install
-
 Copy the `aio-switch-updater/` directory to `/switch/` in your sdcard
 
 ## Extras
+This app can also reboot to specific payload and change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`.
 
-This app can also reboot to specific payload and change software color scheme of Joy-Cons.
 
 ## Description of the features
 ### - Update CFW
@@ -36,7 +34,6 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 
 
 ## Screenshots
-
 ![ss](https://user-images.githubusercontent.com/61667930/93691403-30fb2e80-fad4-11ea-9701-7992a1de53e0.jpg)
 ![ss](https://user-images.githubusercontent.com/61667930/93691404-3193c500-fad4-11ea-9647-927c979960bc.jpg)
 ![ss](https://user-images.githubusercontent.com/61667930/93721670-42e6db00-fb81-11ea-9f94-1308898398f0.jpg)
@@ -46,5 +43,4 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 
 
 ## Disclaimer
-
 I do not own, host nor distribute any of the files that can be downloaded with this homebrew tool. At the owner's request, I will immediately remove the ability to download the problematic files.
