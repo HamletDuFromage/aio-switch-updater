@@ -4,7 +4,7 @@
 #define DOWNLOAD_PATH       "/config/aio-switch-updater/"
 #define CONFIG_PATH         "/config/aio-switch-updater/"
 
-#define APP_URL             "https://github.com/HamletDuFromage/sigpatches-updater/releases/latest/download/aio-switch-updater.zip"
+#define APP_URL             "https://github.com/HamletDuFromage/aio-switch-updater/releases/latest/download/aio-switch-updater.zip"
 #define APP_FILENAME         "/config/aio-switch-updater/app.zip"
 
 #define SIGPATCHES_URL      "https://hamletdufromage.github.io/sigpatches-updater/sigpatches.html"
