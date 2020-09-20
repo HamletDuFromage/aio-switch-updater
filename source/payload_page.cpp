@@ -7,7 +7,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "Select a payload to reboot to it.",
+        "Select a payload to reboot to.",
         true
     );
     list->addView(label);

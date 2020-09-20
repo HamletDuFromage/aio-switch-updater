@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
     socketInitializeDefault();
     nxlinkStdio();
 
-    std::cout << R_SUCCEEDED(splInitialize()) << std::endl;
+    splInitialize();
     createTree(CONFIG_PATH);
 
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);

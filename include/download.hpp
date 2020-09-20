@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef _DOWNLOAD_H_
-#define _DOWNLOAD_H_
-
 #define ON              1
 #define OFF             0
 
@@ -24,9 +21,6 @@
 #include "progress_event.hpp"
 
 void downloadFile(const char *url, const char *output, int api);
-
 std::tuple<std::vector<std::string>, std::vector<std::string>> fetchLinks(const char *url);
-
 std::string fetchTitle(const char *url);
-
-#endif
+std::string downloadPage(const char* url);

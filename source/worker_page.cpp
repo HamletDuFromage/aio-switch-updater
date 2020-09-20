@@ -11,13 +11,13 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
 
     this->button = new brls::Button(brls::ButtonStyle::BORDERLESS);  // avoid back button bug
     this->button->setParent(this);
-    appletSetMediaPlaybackState(true);
 }
 
 void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
 {
     if (!this->workStarted)
     {
+        appletSetMediaPlaybackState(true);
         this->workStarted = true;
         ProgressEvent::instance().reset();
         workerThread = new std::thread(&WorkerPage::doWork, this);

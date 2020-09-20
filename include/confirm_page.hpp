@@ -10,7 +10,7 @@
 
 class ConfirmPage : public brls::View
 {
-  private:
+    private:
         brls::Button* button = nullptr;
         brls::Label* label = nullptr;
         std::chrono::system_clock::time_point start = std::chrono::high_resolution_clock::now();

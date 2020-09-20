@@ -31,26 +31,29 @@ ToolsTab::ToolsTab() : brls::List()
     });
     this->addView(JCcolor);
 
-    updateApp = new brls::ListItem("Update the app");
-    std::string text("Downloading:\nAIO-switch-updater\n\nFrom:\n" + std::string(APP_URL));
-    updateApp->getClickEvent()->subscribe([&, text](brls::View* view) {
-        brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("Updating app");
-        stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, text)
-        );
-        stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Downloading...", [](){downloadArchive(APP_URL, app);})
-        );
-        stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Extracting....", [](){extractArchive(app);})
-        );
-        stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "All done!", true)
-        );
-        brls::Application::pushView(stagedFrame);
-    });
-    this->addView(updateApp);
+    std::string tag = getLatestTag(TAGS_INFO);
+    if(!tag.empty()){
+        updateApp = new brls::ListItem("Update the app (v" + tag +")");
+        std::string text("Downloading:\nAIO-switch-updater\n\nFrom:\n" + std::string(APP_URL));
+        updateApp->getClickEvent()->subscribe([&, text](brls::View* view) {
+            brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
+            stagedFrame->setTitle("Updating app");
+            stagedFrame->addStage(
+                new ConfirmPage(stagedFrame, text)
+            );
+            stagedFrame->addStage(
+                new WorkerPage(stagedFrame, "Downloading...", [](){downloadArchive(APP_URL, app);})
+            );
+            stagedFrame->addStage(
+                new WorkerPage(stagedFrame, "Extracting....", [](){extractArchive(app);})
+            );
+            stagedFrame->addStage(
+                new ConfirmPage(stagedFrame, "All done!", true)
+            );
+            brls::Application::pushView(stagedFrame);
+        });
+        this->addView(updateApp);
+    }
 
     rebootPayload = new brls::ListItem("Shut down / Inject payload");
     rebootPayload->getClickEvent()->subscribe([&](brls::View* view){

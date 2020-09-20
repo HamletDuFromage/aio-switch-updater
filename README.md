@@ -1,5 +1,9 @@
 # AIO-switch-updater
 ![releases](https://img.shields.io/github/downloads/HamletDuFromage/AIO-switch-updater/total)
+![tag](https://img.shields.io/github/v/release/HamletDuFromage/AIO-switch-updater)
+![GitHub](https://img.shields.io/github/license/HamletDuFromage/aio-switch-updater)
+[![ko-fi](https://img.shields.io/badge/ko--fi-buy%20me%20a%20coffee-ff69b4)](https://ko-fi.com/hamletdufromage)
+
 
 All-in-One Nintendo Switch Updater
 <p align="center">
@@ -15,21 +19,31 @@ Copy the `aio-switch-updater/` directory to `/switch/` in your sdcard
 
 ## Extras
 
-This app can also reboot to specific payload and change software color scheme of Joy-Cons
+This app can also reboot to specific payload and change software color scheme of Joy-Cons.
+
+## Description of the features
+### - Update CFW
+Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files.
+
+### - Update Sigpatches
+For Atmosphere. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available.
+
+### -Download firmares
+Download firmare files to `/firmware` that can then be installed using DayBreak or ChoiDuJour.
+
+### - Download cheats
+Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own.
+
 
 ## Screenshots
 
-<div class="flex-container" style="  display: flex; flex-direction: row;">
-  <div><img src = "https://user-images.githubusercontent.com/61667930/93691403-30fb2e80-fad4-11ea-9701-7992a1de53e0.jpg"\></div>
-</div> 
-<div class="flex-container" style="  display: flex; flex-direction: row;">
-  <div><img src = "https://user-images.githubusercontent.com/61667930/93691404-3193c500-fad4-11ea-9647-927c979960bc.jpg"\></div>
-  <div><img src = "https://user-images.githubusercontent.com/61667930/93691405-3193c500-fad4-11ea-960d-b68d413aedd4.jpg"\></div>
-</div> 
-<div class="flex-container" style="  display: flex; flex-direction: row;">
-  <div><img src = "https://user-images.githubusercontent.com/61667930/93691407-322c5b80-fad4-11ea-8879-78047724d9e7.jpg"\></div>
-  <div><img src = "https://user-images.githubusercontent.com/61667930/93691465-16758500-fad5-11ea-8a5c-c0f9694cfb0e.jpg"\></div>
-</div> 
+![ss](https://user-images.githubusercontent.com/61667930/93691403-30fb2e80-fad4-11ea-9701-7992a1de53e0.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/93691404-3193c500-fad4-11ea-9647-927c979960bc.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/93721670-42e6db00-fb81-11ea-9f94-1308898398f0.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/93721673-437f7180-fb81-11ea-9256-377575148a40.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/93691407-322c5b80-fad4-11ea-8879-78047724d9e7.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/93691465-16758500-fad5-11ea-8a5c-c0f9694cfb0e.jpg)
+
 
 ## Disclaimer
 

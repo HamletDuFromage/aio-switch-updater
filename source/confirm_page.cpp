@@ -26,7 +26,7 @@ void ConfirmPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned he
 {
     if(!this->done){
         auto end = std::chrono::high_resolution_clock::now();
-        auto missing = std::max(2l - std::chrono::duration_cast<std::chrono::seconds>(end - start).count(), 0l);
+        auto missing = std::max(1l - std::chrono::duration_cast<std::chrono::seconds>(end - start).count(), 0l);
         auto text =  std::string("Continue");
         if (missing > 0) {
             this->button->setLabel(text + " (" + std::to_string(missing) + ")");
@@ -36,6 +36,9 @@ void ConfirmPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned he
             this->button->setState(brls::ButtonState::ENABLED);
         }
         this->button->invalidate();
+    }
+    else{
+        this->button->setState(brls::ButtonState::ENABLED);
     }
     this->label->frame(ctx);
     this->button->frame(ctx);

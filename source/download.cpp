@@ -155,11 +155,11 @@ std::tuple<std::vector<std::string>, std::vector<std::string>> fetchLinks(const 
 }
 
 std::string fetchTitle(const char *url){
-  CURL *curl_handle; 
-  struct MemoryStruct chunk;
+    CURL *curl_handle; 
+    struct MemoryStruct chunk;
  
-  chunk.memory = static_cast<char *>(malloc(1));  /* will be grown as needed by the realloc above */ 
-  chunk.size = 0;    /* no data at this point */ 
+    chunk.memory = static_cast<char *>(malloc(1));  /* will be grown as needed by the realloc above */ 
+    chunk.size = 0;    /* no data at this point */ 
  
     curl_global_init(CURL_GLOBAL_ALL);
     curl_handle = curl_easy_init();
@@ -188,4 +188,29 @@ std::string fetchTitle(const char *url){
     curl_global_cleanup();
  
     return ver;
+}
+
+std::string downloadPage(const char* url){
+    std::string res;
+    CURL *curl_handle; 
+    struct MemoryStruct chunk;
+ 
+    chunk.memory = static_cast<char *>(malloc(1));  /* will be grown as needed by the realloc above */ 
+    chunk.size = 0;    /* no data at this point */ 
+ 
+    curl_global_init(CURL_GLOBAL_ALL);
+    curl_handle = curl_easy_init();
+    curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+    curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback2);
+    curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
+    curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, API_AGENT);
+
+    curl_easy_setopt(curl_handle, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_perform(curl_handle);
+    curl_easy_cleanup(curl_handle);
+    res = std::string(chunk.memory);
+    free(chunk.memory);
+ 
+    curl_global_cleanup();
+    return res;
 }

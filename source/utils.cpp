@@ -73,8 +73,24 @@ void downloadArchive(std::string url, archiveType type){
     }
 }
 
+int dialogResult = -1;
+
 void extractArchive(archiveType type){
+    int overwriteInis = -1;
     std::vector<Title> titles;
+    brls::Dialog* dialog = new brls::Dialog("Do you want to overwrite existing .ini files?");
+    brls::GenericEvent::Callback noCallback = [dialog](brls::View* view) {
+        dialogResult = 0;
+        dialog->close();
+    };
+    brls::GenericEvent::Callback yesCallback = [dialog](brls::View* view) {
+        dialogResult = 1;
+        dialog->close();
+    };
+    dialog->addButton("No", noCallback);
+    dialog->addButton("Yes", yesCallback);
+    dialog->setCancelable(false);
+
     switch(type){
         case sigpatches:
             if(isArchive(SIGPATCHES_FILENAME)) extract(SIGPATCHES_FILENAME);
@@ -85,6 +101,7 @@ void extractArchive(archiveType type){
             extractCheats(CHEATS_FILENAME, titles, getCFW());
             break;
         case fw:
+            if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
             createTree(FIRMWARE_PATH);
             extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
             break;
@@ -92,7 +109,13 @@ void extractArchive(archiveType type){
             extract(APP_FILENAME);
             break;
         case cfw:
-            extract(CFW_FILENAME);
+            dialog->open();
+            while(overwriteInis == -1){
+                usleep(1);
+                overwriteInis = dialogResult;
+            }
+            dialogResult = -1;
+            extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
             break;
     }
 }
@@ -131,7 +154,6 @@ std::set<std::string> readLineByLine(const char * path){
     if(in){
         while (std::getline(in, str))
         {
-            // Line contains string of length > 0 then save it in vector
             if(str.size() > 0)
                 titles.insert(str);
         }
@@ -164,4 +186,16 @@ void shut_down(bool reboot){
     if(reboot) bpcRebootSystem();
     else bpcShutdownSystem();
     bpcExit();
+}
+
+std::string getLatestTag(const char *url){
+    std::string page = downloadPage(url);
+    try{
+        nlohmann::json tags = nlohmann::json::parse(page);
+        nlohmann::json:: iterator latest = tags.begin();
+        return latest.value()["name"];
+    }
+    catch (...){
+        return "";
+    }
 }

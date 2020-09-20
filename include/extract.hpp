@@ -38,7 +38,7 @@ typedef struct Title {
     }
 } Title;
 
-void extract(const char* filename, const char* workingPath = ROOT_PATH);
+void extract(const char* filename, const char* workingPath = ROOT_PATH, int overwriteInis = 0);
 std::string formatApplicationId(u64 ApplicationId);
 std::vector<Title> getInstalledTitlesNs();
 std::vector<Title> excludeTitles(const char* path, std::vector<Title> listedTitles);

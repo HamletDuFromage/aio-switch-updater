@@ -1,13 +1,19 @@
 #include "extract.hpp"
 
-void extract(const char * filename, const char* workingPath){
+void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().reset();
     chdir(workingPath);
     zipper::Unzipper unzipper(filename);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
     ProgressEvent::instance().setTotalSteps(entries.size());
     for (int i = 0; i < (int) entries.size(); i++){
-        unzipper.extractEntry(entries[i].name);
+        if(overwriteInis == 0){
+            if(entries[i].name.substr(entries[i].name.length() - 4) != ".ini")
+                unzipper.extractEntry(entries[i].name);
+        }
+        else
+            unzipper.extractEntry(entries[i].name);
+        
         ProgressEvent::instance().setStep(i);
     }
     unzipper.close();
