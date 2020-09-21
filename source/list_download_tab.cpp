@@ -3,6 +3,7 @@
 ListDownloadTab::ListDownloadTab(archiveType type) :
     brls::List()
 {
+    std::tuple<std::vector<std::string>, std::vector<std::string>> links;
     std::string operation = "Getting ";
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
@@ -89,13 +90,13 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
     }
     else{
         notFound = new brls::Label(
-        brls::LabelStyle::DESCRIPTION,
-        "Could not find a download link, make sure the Switch has access to the internet.\n"\
-        "If this problem persists, please open an issue on Github",
-        true
-    );
-    notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
-    this->addView(notFound);
+            brls::LabelStyle::DESCRIPTION,
+            "Could not find a download link, make sure the Switch has access to the internet.\n"\
+            "If this problem persists, please open an issue on Github",
+            true
+        );
+        notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
+        this->addView(notFound);
     }
 
 }

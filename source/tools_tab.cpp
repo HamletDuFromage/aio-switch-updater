@@ -31,6 +31,18 @@ ToolsTab::ToolsTab() : brls::List()
     });
     this->addView(JCcolor);
 
+    downloadPaysload = new brls::ListItem("Dowload payloads to " + std::string(BOOTLOADER_PL_PATH));
+    downloadPaysload->getClickEvent()->subscribe([&](brls::View* view){
+        brls::Application::pushView(new DownloadPayloadPage());
+    });
+    this->addView(downloadPaysload);
+
+    rebootPayload = new brls::ListItem("Shut down / Inject payload");
+    rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
+        brls::Application::pushView(new PayloadPage());
+    });
+    this->addView(rebootPayload);
+    
     std::string tag = getLatestTag(TAGS_INFO);
     if(!tag.empty()){
         updateApp = new brls::ListItem("Update the app (v" + tag +")");
@@ -54,11 +66,4 @@ ToolsTab::ToolsTab() : brls::List()
         });
         this->addView(updateApp);
     }
-
-    rebootPayload = new brls::ListItem("Shut down / Inject payload");
-    rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
-        brls::Application::pushView(new PayloadPage());
-    });
-    this->addView(rebootPayload);
-
 }

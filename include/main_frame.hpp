@@ -2,7 +2,6 @@
 
 #include <borealis.hpp>
 
-#include "utils.hpp"
 #include "about_tab.hpp"
 #include "list_download_tab.hpp"
 #include "tools_tab.hpp"

@@ -1,5 +1,4 @@
 #include "confirm_page.hpp"
-#include <algorithm>
 
 ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool done): done(done)
 {

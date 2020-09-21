@@ -75,40 +75,41 @@ void downloadArchive(std::string url, archiveType type){
 
 int dialogResult = -1;
 
-void extractArchive(archiveType type){
-    int overwriteInis = -1;
-    std::vector<Title> titles;
-    brls::Dialog* dialog = new brls::Dialog("Do you want to overwrite existing .ini files?");
-    brls::GenericEvent::Callback noCallback = [dialog](brls::View* view) {
+int showDialogBox(std::string text, std::string opt1, std::string opt2){
+    int result = -1;
+    brls::Dialog* dialog = new brls::Dialog(text);
+    brls::GenericEvent::Callback callback1 = [dialog](brls::View* view) {
         dialogResult = 0;
         dialog->close();
     };
-    brls::GenericEvent::Callback yesCallback = [dialog](brls::View* view) {
+    brls::GenericEvent::Callback callback2 = [dialog](brls::View* view) {
         dialogResult = 1;
         dialog->close();
     };
-    dialog->addButton("No", noCallback);
-    dialog->addButton("Yes", yesCallback);
+    dialog->addButton(opt1, callback1);
+    dialog->addButton(opt2, callback2);
     dialog->setCancelable(false);
+    dialog->open();
+    while(result == -1){
+        usleep(1);
+        result = dialogResult;
+    }
+    dialogResult = -1;
+    return result;
+}
 
+void extractArchive(archiveType type){
+    int overwriteInis = 0;
+    std::vector<Title> titles;
     switch(type){
         case sigpatches:
             if(isArchive(SIGPATCHES_FILENAME)) {
                 std::string backup(HEKATE_IPL_PATH);
                 backup += ".old";
                 if(std::filesystem::exists(HEKATE_IPL_PATH)){
-                    dialog->open();
-                    while(overwriteInis == -1){
-                        usleep(1);
-                        overwriteInis = dialogResult;
-                    }
-                    dialogResult = -1;
+                    overwriteInis = showDialogBox("Do you want to overwrite existing " + std::string(HEKATE_IPL_PATH) +"?", "No", "Yes");
                     if(overwriteInis == 0){
-                        std::filesystem::remove(backup);
-                        std::filesystem::rename(HEKATE_IPL_PATH, backup);
-                        extract(SIGPATCHES_FILENAME);
-                        std::filesystem::remove(HEKATE_IPL_PATH);
-                        std::filesystem::rename(backup, HEKATE_IPL_PATH);
+                        extract(SIGPATCHES_FILENAME, ROOT_PATH, HEKATE_IPL_PATH);
                     }
                     else{
                         extract(SIGPATCHES_FILENAME);
@@ -133,12 +134,7 @@ void extractArchive(archiveType type){
             extract(APP_FILENAME);
             break;
         case cfw:
-            dialog->open();
-            while(overwriteInis == -1){
-                usleep(1);
-                overwriteInis = dialogResult;
-            }
-            dialogResult = -1;
+            overwriteInis = showDialogBox("Do you want to overwrite existing .ini config files?", "No", "Yes");
             extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
             break;
     }

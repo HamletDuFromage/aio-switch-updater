@@ -174,7 +174,6 @@ std::string fetchTitle(const char *url){
   /* check for errors */ 
     std::string ver = "-1";
     std::string s = std::string(chunk.memory);
-    //std::cout << "start html " << s.substr(0, 199) << std::endl;
     std::regex rgx("<title>.+</title>");
     std::smatch match;
     if (std::regex_search(s, match, rgx)){

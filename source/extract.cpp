@@ -9,8 +9,12 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().setTotalSteps(entries.size() + 1);
     for (int i = 0; i < (int) entries.size(); i++){
         if(overwriteInis == 0){
-            if(entries[i].name.substr(entries[i].name.length() - 4) != ".ini")
+            if(entries[i].name.substr(entries[i].name.length() - 4) == ".ini"){
+                if(!std::filesystem::exists("/" + entries[i].name)) unzipper.extractEntry(entries[i].name);
+            }
+            else{
                 unzipper.extractEntry(entries[i].name);
+            }
         }
         else
             unzipper.extractEntry(entries[i].name);
@@ -21,6 +25,28 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
+void extract(const char * filename, const char* workingPath, const char* toExclude){
+    ProgressEvent::instance().reset();
+    ProgressEvent::instance().setStep(1);
+    chdir(workingPath);
+    zipper::Unzipper unzipper(filename);
+    std::vector<zipper::ZipEntry> entries = unzipper.entries();
+    ProgressEvent::instance().setTotalSteps(entries.size() + 1);
+    for (int i = 0; i < (int) entries.size(); i++){
+        if("/" + entries[i].name == toExclude){
+            if(!std::filesystem::exists(toExclude)) {
+                unzipper.extractEntry(entries[i].name);
+            }
+        }
+        else {
+            unzipper.extractEntry(entries[i].name);
+        }
+        
+        ProgressEvent::instance().setStep(i);
+    }
+    unzipper.close();
+    ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
+}
 
 std::vector<Title> getInstalledTitlesNs(){
     // This function has been cobbled together from the "app_controldata" example in devkitpro.
@@ -76,7 +102,6 @@ std::vector<Title> getInstalledTitlesNs(){
 
             if (R_FAILED(rc)) {
                 totalFailed++;
-                std::cout << "nsGetApplicationControlData() failed: 0x" << std::hex << rc << " for Title ID: " << formatApplicationId(recs[i].application_id) << std::endl;
             }
 
             if (outsize < sizeof(buf->nacp)) {
@@ -165,17 +190,20 @@ void extractCheats(const char * zipPath, std::vector<Title> titles, CFW cfw, boo
     switch(cfw){
         case ams:
             offset = std::string(CONTENTS_PATH).length();
-            createTree(AMS_CONTENTS);
+            std::filesystem::create_directory(AMS_PATH);
+            std::filesystem::create_directory(AMS_CONTENTS);
             chdir(AMS_PATH);
             break;
         case rnx:
             offset = std::string(CONTENTS_PATH).length();
-            createTree(REINX_CONTENTS);
+            std::filesystem::create_directory(REINX_PATH);
+            std::filesystem::create_directory(REINX_CONTENTS);
             chdir(REINX_PATH);
             break;
         case sxos:
             offset = std::string(TITLES_PATH).length();
-            createTree(SXOS_TITLES);
+            std::filesystem::create_directory(SXOS_PATH);
+            std::filesystem::create_directory(SXOS_TITLES);
             chdir(SXOS_PATH);
             break;
     }
@@ -217,11 +245,6 @@ void extractCheats(const char * zipPath, std::vector<Title> titles, CFW cfw, boo
             k++;
         }
     }
-    brls::Logger::debug("Titles size:");
-    std::cout << titles.size() << std::endl;
-
-    brls::Logger::debug("Parents size:");
-    std::cout << parents.size() << std::endl;
 
     size_t lastL = 0;
     std::string name;

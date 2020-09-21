@@ -19,6 +19,8 @@
 #define CFW_URL             "https://hamletdufromage.github.io/switch-cfw/cfw.html"
 #define CFW_FILENAME        "/config/aio-switch-updater/cfw.zip"
 
+#define PAYLOAD_URL         "https://hamletdufromage.github.io/switch-payloads/payloads.html"
+
 #define CHEATS_RELEASE_URL  "https://github.com/HamletDuFromage/switch-cheats-db/releases/tag/v1.0"
 #define CHEATS_URL_TITLES   "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/titles.zip"
 #define CHEATS_URL_CONTENTS "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/contents.zip"

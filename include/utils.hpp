@@ -23,4 +23,5 @@ std::string formatApplicationId(u64 ApplicationId);
 std::set<std::string> readLineByLine(const char * path);
 std::vector<std::string> fetchPayloads();
 void shut_down(bool reboot = false);
+int showDialogBox(std::string text, std::string opt1, std::string opt2);
 std::string getLatestTag(const char *url);

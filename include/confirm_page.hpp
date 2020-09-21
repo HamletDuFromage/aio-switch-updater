@@ -2,10 +2,9 @@
 
 #include <borealis.hpp>
 #include <chrono>
+#include <algorithm>
 
 #include "utils.hpp"
-#include "download.hpp"
-#include "constants.hpp"
 #include "main_frame.hpp"
 
 class ConfirmPage : public brls::View

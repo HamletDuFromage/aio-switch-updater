@@ -1,8 +1,6 @@
 #pragma once
 
-#include "utils.hpp"
 #include "JC_color_swapper.hpp"
-#include "constants.hpp"
 #include "confirm_page.hpp"
 #include "worker_page.hpp"
 
