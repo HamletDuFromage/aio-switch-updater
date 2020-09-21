@@ -10,6 +10,7 @@
 
 #define SIGPATCHES_URL      "https://hamletdufromage.github.io/sigpatches-updater/sigpatches.html"
 #define SIGPATCHES_FILENAME "/config/aio-switch-updater/sigpatches.zip"
+#define HEKATE_IPL_PATH     "/bootloader/hekate_ipl.ini"
 
 #define FIRMWARE_URL        "https://hamletdufromage.github.io/switch-fw/firmwares.html"
 #define FIRMWARE_FILENAME   "/config/aio-switch-updater/firmware.zip"

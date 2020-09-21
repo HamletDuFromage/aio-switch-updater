@@ -45,7 +45,7 @@ DATA		:=	data
 INCLUDES	:=	include lib/minizip/include
 APP_TITLE	:=	AIO Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  1.0.1
+APP_VERSION :=  1.0.3
 
 #ROMFS				:=	$(BUILD)/romfs
 BOREALIS_PATH		:=	lib/borealis

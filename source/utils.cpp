@@ -93,7 +93,31 @@ void extractArchive(archiveType type){
 
     switch(type){
         case sigpatches:
-            if(isArchive(SIGPATCHES_FILENAME)) extract(SIGPATCHES_FILENAME);
+            if(isArchive(SIGPATCHES_FILENAME)) {
+                std::string backup(HEKATE_IPL_PATH);
+                backup += ".old";
+                if(std::filesystem::exists(HEKATE_IPL_PATH)){
+                    dialog->open();
+                    while(overwriteInis == -1){
+                        usleep(1);
+                        overwriteInis = dialogResult;
+                    }
+                    dialogResult = -1;
+                    if(overwriteInis == 0){
+                        std::filesystem::remove(backup);
+                        std::filesystem::rename(HEKATE_IPL_PATH, backup);
+                        extract(SIGPATCHES_FILENAME);
+                        std::filesystem::remove(HEKATE_IPL_PATH);
+                        std::filesystem::rename(backup, HEKATE_IPL_PATH);
+                    }
+                    else{
+                        extract(SIGPATCHES_FILENAME);
+                    }
+                }
+                else{
+                    extract(SIGPATCHES_FILENAME);
+                }
+            }
             break;
         case cheats: 
             titles = getInstalledTitlesNs();

@@ -2,10 +2,11 @@
 
 void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().reset();
+    ProgressEvent::instance().setStep(1);
     chdir(workingPath);
     zipper::Unzipper unzipper(filename);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
-    ProgressEvent::instance().setTotalSteps(entries.size());
+    ProgressEvent::instance().setTotalSteps(entries.size() + 1);
     for (int i = 0; i < (int) entries.size(); i++){
         if(overwriteInis == 0){
             if(entries[i].name.substr(entries[i].name.length() - 4) != ".ini")
@@ -17,7 +18,7 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
         ProgressEvent::instance().setStep(i);
     }
     unzipper.close();
-    ProgressEvent::instance().setStep(entries.size());
+    ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
 
