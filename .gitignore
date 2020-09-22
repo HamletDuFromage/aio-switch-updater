@@ -1,7 +1,5 @@
 .vscode/
 build/
-lib/borealis/*
-lib/minizip/*
 screenshots/
 switch/
 *.elf
