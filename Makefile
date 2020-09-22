@@ -39,10 +39,10 @@ include $(DEVKITPRO)/libnx/switch_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	source lib/minizip/source
+SOURCES		:=	source lib/zipper/source
 RESOURCES	:=	resources
 DATA		:=	data
-INCLUDES	:=	include lib/minizip/include
+INCLUDES	:=	include lib/zipper/include
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
 APP_VERSION :=  1.1.1

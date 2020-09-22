@@ -1,0 +1,6 @@
+[submodule "lib/zipper"]
+	path = lib/zipper
+	url = https://github.com/HamletDuFromage/zipper
+[submodule "lib/borealis"]
+	path = lib/borealis
+	url = https://github.com/natinusala/borealis
