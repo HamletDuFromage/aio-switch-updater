@@ -8,6 +8,7 @@
 #include "constants.hpp"
 #include "progress_event.hpp"
 #include "json.hpp"
+#include "main_frame.hpp"
 
 CFW getCFW();
 bool isServiceRunning(const char *serviceName);
@@ -23,5 +24,6 @@ std::string formatApplicationId(u64 ApplicationId);
 std::set<std::string> readLineByLine(const char * path);
 std::vector<std::string> fetchPayloads();
 void shut_down(bool reboot = false);
+int showDialogBox(std::string text, std::string opt);
 int showDialogBox(std::string text, std::string opt1, std::string opt2);
 std::string getLatestTag(const char *url);

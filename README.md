@@ -15,23 +15,24 @@ A Nintendo Switch homebrew app download and update CFWs, sigpatches, FWs and che
 ## How to install
 Copy the `aio-switch-updater/` directory to `/switch/` in your sdcard
 
-## Extras
-This app can also reboot to specific payload and change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`.
-
-
 ## Description of the features
-### - Update CFW
+### ⬦ Update CFW
 Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files.
 
-### - Update Sigpatches
-For Atmosphere. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available.
+### ⬦ Update Sigpatches
+For Atmosphere. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available. After downloading the sigpatches archive, the program will ask you whether you want to override your existing .ini files.
 
-### -Download firmares
+### ⬦ Download firmares
 Download firmare files to `/firmware` that can then be installed using DayBreak or ChoiDuJour.
 
-### - Download cheats
-Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own.
+### ⬦ Download cheats
+Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you may add the title IDs of the corresponding games, one ID per line, to `/config/cheats-updater/exclude.txt`. Use http://tinfoil.io/title to find the title ID of a game.
 
+## Extras (in the `Tools` tab)
+- Reboot to specific payload.
+- Download payloads to `/bootloader/payloads`.
+- Change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`.
+- View which of your games got cheat codes from the app.
 
 ## Screenshots
 ![ss](https://user-images.githubusercontent.com/61667930/93691403-30fb2e80-fad4-11ea-9701-7992a1de53e0.jpg)
@@ -44,3 +45,7 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 
 ## Disclaimer
 I do not own, host nor distribute any of the files that can be downloaded with this homebrew tool. At the owner's request, I will immediately remove the ability to download the problematic files.
+
+### Like the app?
+
+[![5cbed8a433a3f45a772abaf5_SupportMe_blue-p-500](https://user-images.githubusercontent.com/61667930/93899702-1a2b2680-fce4-11ea-9eaa-4e2b44eebe86.png)](https://ko-fi.com/hamletdufromage)

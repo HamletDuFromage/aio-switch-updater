@@ -43,9 +43,9 @@ SOURCES		:=	source lib/minizip/source
 RESOURCES	:=	resources
 DATA		:=	data
 INCLUDES	:=	include lib/minizip/include
-APP_TITLE	:=	AIO Switch Updater
+APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  1.1.0
+APP_VERSION :=  1.1.1
 
 #ROMFS				:=	$(BUILD)/romfs
 BOREALIS_PATH		:=	lib/borealis

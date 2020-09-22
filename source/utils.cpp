@@ -54,6 +54,7 @@ bool isArchive(const char * path){
 
 void downloadArchive(std::string url, archiveType type){
     createTree(DOWNLOAD_PATH);
+    AppletType at;
     switch(type){
         case sigpatches:
             downloadFile(url.c_str(), SIGPATCHES_FILENAME, OFF);
@@ -62,7 +63,15 @@ void downloadArchive(std::string url, archiveType type){
             downloadFile(url.c_str(), CHEATS_FILENAME, OFF);
             break;
         case fw:
-            downloadFile(url.c_str(), FIRMWARE_FILENAME, OFF);
+            at = appletGetAppletType();
+            if (at == AppletType_Application || at == AppletType_SystemApplication) {
+                downloadFile(url.c_str(), FIRMWARE_FILENAME, OFF);
+            }
+            else{
+                showDialogBox("Because of the size of the FW archive, downloading firmwares in Applet Mode is not supported. "\
+                "Please launch the app with full RAM access.", "Ok");
+                brls::Application::pushView(new MainFrame());
+            }
             break;
         case app:
             downloadFile(url.c_str(), APP_FILENAME, OFF);
@@ -74,6 +83,24 @@ void downloadArchive(std::string url, archiveType type){
 }
 
 int dialogResult = -1;
+
+int showDialogBox(std::string text, std::string opt){
+    int result = -1;
+    brls::Dialog* dialog = new brls::Dialog(text);
+    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+        dialogResult = 0;
+        dialog->close();
+    };
+    dialog->addButton(opt, callback);
+    dialog->setCancelable(false);
+    dialog->open();
+    while(result == -1){
+        usleep(1);
+        result = dialogResult;
+    }
+    dialogResult = -1;
+    return result;
+}
 
 int showDialogBox(std::string text, std::string opt1, std::string opt2){
     int result = -1;
@@ -119,23 +146,42 @@ void extractArchive(archiveType type){
                     extract(SIGPATCHES_FILENAME);
                 }
             }
+            else{
+                showDialogBox("The downloaded file is not a sigpatches archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, "\
+                "please open an issue on Github.", "Ok");
+                brls::Application::pushView(new MainFrame());
+            }
             break;
         case cheats: 
             titles = getInstalledTitlesNs();
-            titles = excludeTitles((std::string(DOWNLOAD_PATH) + "exclude.txt").c_str(), titles);
+            titles = excludeTitles(CHEATS_EXCLUDE, titles);
             extractCheats(CHEATS_FILENAME, titles, getCFW());
             break;
         case fw:
-            if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
-            createTree(FIRMWARE_PATH);
-            extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
+            if(std::filesystem::file_size(FIRMWARE_FILENAME) < 200000){
+                showDialogBox("The downloaded file is not a firmware archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, "\
+                "please open an issue on Github.", "Ok");
+                brls::Application::pushView(new MainFrame());
+            }
+            else{
+                if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
+                createTree(FIRMWARE_PATH);
+                extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
+            }
             break;
         case app:
             extract(APP_FILENAME);
             break;
         case cfw:
-            overwriteInis = showDialogBox("Do you want to overwrite existing .ini config files?", "No", "Yes");
-            extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
+            if(isArchive(CFW_FILENAME)){
+                overwriteInis = showDialogBox("Do you want to overwrite existing .ini config files?", "No", "Yes");
+                extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
+            }
+            else{
+                showDialogBox("The downloaded file is not a CFW archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, "\
+                "please open an issue on Github.", "Ok");
+                brls::Application::pushView(new MainFrame());
+            }
             break;
     }
 }

@@ -5,6 +5,13 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
 {
     std::tuple<std::vector<std::string>, std::vector<std::string>> links;
     std::string operation = "Getting ";
+    std::string firmwareText("\uE016  Here are firmware dumps from \"https://darthsternie.net/switch-firmwares/\". "\
+                "Once downloaded, it will be extracted in \"/firmware\". You can then install the update through Daybreak or ChoiDuJour.\n"\
+                "\uE016  Current FW: "
+    );
+    SetSysFirmwareVersion ver;
+    if (R_SUCCEEDED(setsysGetFirmwareVersion(&ver))) firmwareText += ver.display_version;
+    else firmwareText += "not found";
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
         case sigpatches:
@@ -18,10 +25,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
         case fw:
             links = fetchLinks(FIRMWARE_URL);
             operation += "firmware";
-            this->description->setText(
-                "\uE016  Here are firmware dumps from \"https://darthsternie.net/switch-firmwares/\". "\
-                "Once downloaded, it will be extracted in \"/firmware\". You can then install the update though Daybreak or ChoiDuJour."
-            );
+            this->description->setText(firmwareText);
             break;
         case app:
             std::get<0>(links).push_back("Latest version");
@@ -59,6 +63,8 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
             );
             break;
     }
+    std::get<0>(links).push_back("Test");
+    std::get<1>(links).push_back("https://github.com");
     this->addView(description);
 
     int nbLinks = std::get<0>(links).size();
