@@ -1,0 +1,21 @@
+name: Build AIO-switch-updater
+
+on: [push]
+jobs:
+  AIO-switch-updater:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkita64_devkitarm
+    steps:
+    - uses: actions/checkout@v1
+    - name: Update repo.
+      run: |
+        git submodule update --init --recursive
+        
+    - name: Building AIO-switch-updater
+      run: |
+        make -j$(nproc)
+        
+    - uses: actions/upload-artifact@master
+      with:
+        name: AIO-switch-updater
+        path: AIO-switch-updater.nro
