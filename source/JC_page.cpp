@@ -5,7 +5,7 @@ JCPage::JCPage() : AppletFrame(true, true)
     this->setTitle("Joy-Con color swapper");
     list = new brls::List();
     std::string labelText = "You can change the internal color of your Joy-Cons. Make sure they're docked.\n"\
-                            "Color profiles are stored in '" + std::string(COLOR_PROFILES_PATH) + "'. Go to http://bit.ly/JC-color "\
+                            "Color profiles are stored in '" + std::string(COLOR_PROFILES_PATH) + "'. Go to 'http://bit.ly/JC-color' "\
                             "to generate your own custom profiles.";
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
     list->addView(label);

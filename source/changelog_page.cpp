@@ -20,7 +20,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016  Fixed progress bar sometimes being stuck when extracting.");
 
     verTitles.push_back("v1.1.0");
-    changes.push_back("\uE016  Added an option to download payloads to /bootloader/payloads.\n"\
+    changes.push_back("\uE016  Added an option to download payloads to '/bootloader/payloads'.\n"\
     "\uE016  Cleaned up some stuff, made .ini overwriting cleaner.\n");
 
     verTitles.push_back("v1.1.1");

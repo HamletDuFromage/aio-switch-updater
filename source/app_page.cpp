@@ -7,7 +7,7 @@ AppPage::AppPage() : AppletFrame(true, true)
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "The following titles have had cheats downloaded for last time you used the app. Please note despite having been "\
+        "The following titles have recieved cheat code updates the last time you used the app. Please note that despite having been "\
         "downloaded for a game, cheats may not match its current update.",
         true
     );

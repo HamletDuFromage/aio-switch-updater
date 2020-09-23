@@ -14,7 +14,6 @@
 class ToolsTab : public brls::List
 {
     private:
-        brls::Label* label;
         brls::ListItem* deleteCheats;
         brls::ListItem* viewCheats;
         brls::ListItem* JCcolor;

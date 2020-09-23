@@ -27,7 +27,7 @@ AboutTab::AboutTab()
         brls::LabelStyle::SMALL,
         "\uE016  Aside from cheat codes that are mirrored from the main Gbatemp thread, "\
         "HamletDuFromage isn't hosting anything. All credits go to respective owners\n"\
-        "\uE016  Links are refreshed every three hours. If a link remains broken after 3 hours have passed, please open a Github issue\n",
+        "\uE016  Links are refreshed every three hours. If a link remains broken after 3 hours have passed, please open a Github issue.\n",
         true
     );
     this->addView(links);

@@ -5,8 +5,8 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
 {
     std::tuple<std::vector<std::string>, std::vector<std::string>> links;
     std::string operation = "Getting ";
-    std::string firmwareText("\uE016  Here are firmware dumps from \"https://darthsternie.net/switch-firmwares/\". "\
-                "Once downloaded, it will be extracted in \"/firmware\". You can then install the update through Daybreak or ChoiDuJour.\n"\
+    std::string firmwareText("\uE016  Firmware dumps from 'https://darthsternie.net/switch-firmwares/'. "\
+                "Once downloaded, it will be extracted in '/firmware'. You can then install the update through Daybreak or ChoiDuJour.\n"\
                 "\uE016  Current FW: "
     );
     SetSysFirmwareVersion ver;
@@ -36,7 +36,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
             links = fetchLinks(CFW_URL);
             operation += "CFW";
             this->description->setText(
-                "\uE016  Here is a list of the main Switch CFWs. If you want to use Atmosphere + Hekate, download Atmosphere and then Hekate."
+                "\uE016  Main Switch CFWs. If you want to use Atmosphere with Hekate, download Atmosphere, then Hekate."
             );
             break;
         case cheats:
@@ -57,7 +57,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
             }
             operation += "cheats";
             this->description->setText(
-                "\uE016  This will downloaded a daily updated archive of cheat code from gbatemp.net. "\
+                "\uE016  This will download a daily updated archive of cheat codes from 'gbatemp.net'. "\
                 "Cheat codes for games you don't have installed won't be extracted to your SD card. "\
                 "Title IDs listed in '" + std::string(CHEATS_EXCLUDE) + "' won't recieve cheat updates."
             );
@@ -98,7 +98,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
         notFound = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
             "Could not find a download link, make sure the Switch has access to the internet.\n"\
-            "If this problem persists, please open an issue on Github",
+            "If this problem persists, please open an issue on Github.",
             true
         );
         notFound->setHorizontalAlign(NVG_ALIGN_CENTER);

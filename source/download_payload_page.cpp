@@ -6,7 +6,7 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "Select a payload to download to " + std::string(BOOTLOADER_PL_PATH) + ".",
+        "Select a payload to download to '" + std::string(BOOTLOADER_PL_PATH) + "'.",
         true
     );
     list->addView(label);

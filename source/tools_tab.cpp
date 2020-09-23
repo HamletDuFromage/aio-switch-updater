@@ -2,9 +2,6 @@
 
 ToolsTab::ToolsTab() : brls::List()
 {
-    this->label = new brls::Label(brls::LabelStyle::DESCRIPTION, "\uE016  Miscellaneous tools", true);
-    this->addView(label);
-
     viewCheats = new brls::ListItem("View installed cheats");
     viewCheats->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new AppPage());
