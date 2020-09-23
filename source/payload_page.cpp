@@ -2,7 +2,7 @@
 
 PayloadPage::PayloadPage() : AppletFrame(true, true)
 {
-
+    CFW cfw = getCFW();
     this->setTitle("Reboot menu");
     list = new brls::List();
     label = new brls::Label(
@@ -21,7 +21,22 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
             reboot_to_payload(payload.c_str());
             brls::Application::popView();
         });
+        if(cfw == ams){
+            items[i]->registerAction("Set as reboot_payload.bin", brls::Key::X, [this, payload] { 
+                if(R_SUCCEEDED(CopyFile(payload.c_str(), REBOOT_PAYLOAD_PATH))){
+                    brls::Dialog* dialog = new brls::Dialog("Successfully copied '" + payload + "' to '" + std::string(REBOOT_PAYLOAD_PATH) + "'.");
+                    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+                        dialog->close();
+                    };
+                    dialog->addButton("Ok", callback);
+                    dialog->setCancelable(true);
+                    dialog->open();
+                }
+                return true;
+            });
+        }
         list->addView(items[i]);
+        
     }
     list->addView(new brls::ListItemGroupSpacing(true));
 
@@ -38,6 +53,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
         brls::Application::popView();
     });
     list->addView(reboot);
+
     this->setContentView(list);
 
 }

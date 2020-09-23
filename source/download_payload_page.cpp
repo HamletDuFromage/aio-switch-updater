@@ -46,6 +46,11 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
         );
         notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
         list->addView(notFound);
+        brls::ListItem* back = new brls::ListItem("Back");
+        back->getClickEvent()->subscribe([&](brls::View* view) {
+            brls::Application::popView();
+        });
+    list->addView(back);
     }
     this->setContentView(list);
 }

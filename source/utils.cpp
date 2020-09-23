@@ -265,3 +265,66 @@ std::string getLatestTag(const char *url){
         return "";
     }
 }
+
+Result CopyFile(const char src_path[FS_MAX_PATH], const char dest_path[FS_MAX_PATH]) {
+    FsFileSystem *fs;
+    Result ret = 0;
+    FsFile src_handle, dest_handle;
+    int PREVIOUS_BROWSE_STATE = 0;
+    FsFileSystem devices[4];
+    devices[0] = *fsdevGetDeviceFileSystem("sdmc");
+    fs = &devices[0];
+
+    ret = fsFsOpenFile(&devices[PREVIOUS_BROWSE_STATE], src_path, FsOpenMode_Read, &src_handle);
+    if (R_FAILED(ret)) {
+        return ret;
+    }
+    
+    s64 size = 0;
+    ret = fsFileGetSize(&src_handle, &size);
+    if (R_FAILED(ret)){
+        fsFileClose(&src_handle);
+        return ret;
+    }
+        
+    if (!std::filesystem::exists(dest_path))
+        fsFsCreateFile(fs, dest_path, size, 0);
+        
+    ret = fsFsOpenFile(fs, dest_path, FsOpenMode_Write, &dest_handle);
+    if (R_FAILED(ret)){
+        fsFileClose(&src_handle);
+        return ret;
+    }
+    
+    uint64_t bytes_read = 0;
+    const u64 buf_size = 0x10000;
+    s64 offset = 0;
+    unsigned char *buf = new unsigned char[buf_size];
+    std::string filename = std::filesystem::path(src_path).filename();
+    
+    do {
+        std::memset(buf, 0, buf_size);
+        
+        ret = fsFileRead(&src_handle, offset, buf, buf_size, FsReadOption_None, &bytes_read);
+        if (R_FAILED(ret)) {
+            delete[] buf;
+            fsFileClose(&src_handle);
+            fsFileClose(&dest_handle);
+            return ret;
+        }
+        ret = fsFileWrite(&dest_handle, offset, buf, bytes_read, FsWriteOption_Flush);
+        if (R_FAILED(ret)) {
+            delete[] buf;
+            fsFileClose(&src_handle);
+            fsFileClose(&dest_handle);
+            return ret;
+        }
+        
+        offset += bytes_read;
+    } while(offset < size);
+    
+    delete[] buf;
+    fsFileClose(&src_handle);
+    fsFileClose(&dest_handle);
+    return 0;
+}

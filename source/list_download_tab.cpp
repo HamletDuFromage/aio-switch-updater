@@ -63,8 +63,8 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
             );
             break;
     }
-    std::get<0>(links).push_back("Test");
-    std::get<1>(links).push_back("https://github.com");
+/*     std::get<0>(links).push_back("Test");
+    std::get<1>(links).push_back("https://github.com"); */
     this->addView(description);
 
     int nbLinks = std::get<0>(links).size();

@@ -27,3 +27,4 @@ void shut_down(bool reboot = false);
 int showDialogBox(std::string text, std::string opt);
 int showDialogBox(std::string text, std::string opt1, std::string opt2);
 std::string getLatestTag(const char *url);
+Result CopyFile(const char src_path[FS_MAX_PATH], const char dest_path[FS_MAX_PATH]);

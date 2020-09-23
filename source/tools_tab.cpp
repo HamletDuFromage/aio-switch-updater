@@ -37,7 +37,7 @@ ToolsTab::ToolsTab() : brls::List()
     });
     this->addView(downloadPaysload);
 
-    rebootPayload = new brls::ListItem("Shut down / Inject payload");
+    rebootPayload = new brls::ListItem("Inject payload");
     rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new PayloadPage());
     });
@@ -66,4 +66,10 @@ ToolsTab::ToolsTab() : brls::List()
         });
         this->addView(updateApp);
     }
+
+    changelog = new brls::ListItem("Changelog");
+    changelog->getClickEvent()->subscribe([&](brls::View* view){
+        brls::Application::pushView(new ChangelogPage());
+    });
+    this->addView(changelog);
 }

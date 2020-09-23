@@ -2,7 +2,8 @@
 ![releases](https://img.shields.io/github/downloads/HamletDuFromage/AIO-switch-updater/total)
 ![tag](https://img.shields.io/github/v/release/HamletDuFromage/AIO-switch-updater)
 ![GitHub](https://img.shields.io/github/license/HamletDuFromage/aio-switch-updater)
-[![ko-fi](https://img.shields.io/badge/paypal-donate-blue)](https://www.paypal.com/donate?token=El4U5IrRyplctLb9D0jcbitsx-B0oOoWcyetXtaG0hHfIDsruvhUMKqKKR4fz_TzYwvj3tugFhrux_3j)
+
+[//]: ([![ko-fi](https://img.shields.io/badge/ko--fi-buy%20me%20a%20coffee-ff69b4)](https://ko-fi.com/hamletdufromage))
 
 
 All-in-One Nintendo Switch Updater
@@ -46,13 +47,6 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 ## Disclaimer
 I do not own, host nor distribute any of the files that can be downloaded with this homebrew tool. At the owner's request, I will immediately remove the ability to download the problematic files.
 
-## Like the app?
+### Like the app?
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="L6LJAV6FVHNKA" />
-<input type="image" src="https://www.paypalobjects.com/en_US/FR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />
-</form>
-
-
+[//]: [![5cbed8a433a3f45a772abaf5_SupportMe_blue-p-500](https://user-images.githubusercontent.com/61667930/93899702-1a2b2680-fce4-11ea-9eaa-4e2b44eebe86.png)](https://ko-fi.com/hamletdufromage)
