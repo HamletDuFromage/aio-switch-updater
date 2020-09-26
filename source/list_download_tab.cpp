@@ -59,7 +59,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
             this->description->setText(
                 "\uE016  This will download a daily updated archive of cheat codes from 'gbatemp.net'. "\
                 "Cheat codes for games you don't have installed won't be extracted to your SD card. "\
-                "Title IDs listed in '" + std::string(CHEATS_EXCLUDE) + "' won't recieve cheat updates."
+                "You can turn off cheat updated in 'Tools->Cheat menu'."
             );
             break;
     }

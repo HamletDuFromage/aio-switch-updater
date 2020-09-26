@@ -3,7 +3,7 @@
 #include <borealis.hpp>
 #include "confirm_page.hpp"
 #include "worker_page.hpp"
-#include "app_page.hpp"
+#include "cheats_page.hpp"
 #include "payload_page.hpp"
 #include "download_payload_page.hpp"
 #include "changelog_page.hpp"
@@ -14,12 +14,11 @@
 class ToolsTab : public brls::List
 {
     private:
-        brls::ListItem* deleteCheats;
-        brls::ListItem* viewCheats;
+        brls::ListItem* cheats;
         brls::ListItem* JCcolor;
         brls::ListItem* updateApp;
         brls::ListItem* rebootPayload;
-        brls::ListItem* downloadPaysload;
+        brls::ListItem* downloadPayload;
         brls::ListItem* changelog;
         brls::StagedAppletFrame* stagedFrame;
 

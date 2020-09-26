@@ -268,14 +268,14 @@ void extractCheats(const char * zipPath, std::vector<Title> titles, CFW cfw, boo
         }
     }
     unzipper.close();
-    writeTitlesToFile(extractedTitles);
+    writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
-void writeTitlesToFile(std::set<std::string> titles){
+void writeTitlesToFile(std::set<std::string> titles, const char* path){
     std::ofstream updatedTitlesFile;
     std::set<std::string>::iterator it = titles.begin();
-    updatedTitlesFile.open(UPDATED_TITLES_PATH, std::ofstream::out | std::ofstream::trunc);
+    updatedTitlesFile.open(path, std::ofstream::out | std::ofstream::trunc);
     if(updatedTitlesFile.is_open()) {
         while (it != titles.end()){
             updatedTitlesFile << (*it) << std::endl;

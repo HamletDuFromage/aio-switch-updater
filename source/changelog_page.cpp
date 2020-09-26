@@ -28,6 +28,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     "\uE016  Added the possibility to copy a payload to '/atmosphere/reboot_payload.bin'\n"\
     "\uE016  Added changelog in 'Tools'\n");
 
+    verTitles.push_back("v1.1.2");
+    changes.push_back("\uE016  Added GUI to disable cheat updates for specific titles.");
+
     int nbVersions = verTitles.size();
     items.reserve(nbVersions);
     for(int i = nbVersions -1 ; i >= 0; i--){

@@ -3,12 +3,25 @@
 #include <regex>
 #include <iostream>
 #include <set>
+#include <switch.h>
 #include "download.hpp"
 #include "extract.hpp"
 #include "constants.hpp"
 #include "progress_event.hpp"
 #include "json.hpp"
 #include "main_frame.hpp"
+
+typedef char NsApplicationName[0x201];
+typedef uint8_t NsApplicationIcon[0x20000];
+
+struct app
+{
+    uint64_t tid;
+    NsApplicationName name;
+    NsApplicationIcon icon;
+
+    brls::ListItem* listItem;
+};
 
 CFW getCFW();
 bool isServiceRunning(const char *serviceName);

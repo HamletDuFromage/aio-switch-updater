@@ -8,23 +8,23 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-
-#include "worker_page.hpp"
-#include "confirm_page.hpp"
+#include <tuple>
+#include <vector>
+#include <string>
 
 typedef struct app App;
 
-
-class AppPage : public brls::AppletFrame
+class ExcludePage : public brls::AppletFrame
 {
     private:
         brls::List* list;
         brls::Label* label;
-        brls::ListItem* download;
+        brls::ListItem* save;
         std::vector<App*> apps;
         std::set<std::string> titles;
-        std::vector<brls::ListItem*> items;
+        //std::vector<brls::ToggleListItem*> items;
+        std::tuple<std::vector<brls::ToggleListItem*>, std::vector<std::string>> items;
 
     public:
-        AppPage();
+        ExcludePage();
 };

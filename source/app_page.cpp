@@ -95,5 +95,4 @@ AppPage::AppPage() : AppletFrame(true, true)
     });
     list->addView(download);
     this->setContentView(list);
-
 }

@@ -1,5 +1,6 @@
 # AIO-switch-updater
 ![releases](https://img.shields.io/github/downloads/HamletDuFromage/AIO-switch-updater/total)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/HamletDuFromage/AIO-switch-updater/Build%20AIO-switch-updater)
 ![tag](https://img.shields.io/github/v/release/HamletDuFromage/AIO-switch-updater)
 ![GitHub](https://img.shields.io/github/license/HamletDuFromage/aio-switch-updater)
 
@@ -27,7 +28,7 @@ For Atmosphere. Downloads sigpatches, which are patches required for launching u
 Download firmare files to `/firmware` that can then be installed using DayBreak or ChoiDuJour.
 
 ### ⬦ Download cheats
-Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you may add the title IDs of the corresponding games, one ID per line, to `/config/cheats-updater/exclude.txt`. Use http://tinfoil.io/title to find the title ID of a game.
+Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you can turn off cheat updates for specific titles in `Tools->Cheat Menu`.
 
 ## Extras (in the `Tools` tab)
 - Reboot to specific payload.

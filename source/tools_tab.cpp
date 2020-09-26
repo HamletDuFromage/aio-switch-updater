@@ -2,25 +2,11 @@
 
 ToolsTab::ToolsTab() : brls::List()
 {
-    viewCheats = new brls::ListItem("View installed cheats");
-    viewCheats->getClickEvent()->subscribe([&](brls::View* view){
-        brls::Application::pushView(new AppPage());
+    cheats = new brls::ListItem("Cheats menu");
+    cheats->getClickEvent()->subscribe([&](brls::View* view){
+        brls::Application::pushView(new CheatsPage());
     });
-    this->addView(viewCheats);
-
-    deleteCheats = new brls::ListItem("Delete all existing cheat codes");
-    deleteCheats->getClickEvent()->subscribe([&](brls::View* view){
-        stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("Delete all cheats");
-        stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Deleting", [](){removeCheats(getCFW());})
-        );
-        stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "All done!", true)
-        );
-        brls::Application::pushView(stagedFrame);
-    });
-    this->addView(deleteCheats);
+    this->addView(cheats);
 
     JCcolor = new brls::ListItem("Change the Joy-Cons color");
     JCcolor->getClickEvent()->subscribe([&](brls::View* view){
@@ -28,11 +14,11 @@ ToolsTab::ToolsTab() : brls::List()
     });
     this->addView(JCcolor);
 
-    downloadPaysload = new brls::ListItem("Dowload payloads to " + std::string(BOOTLOADER_PL_PATH));
-    downloadPaysload->getClickEvent()->subscribe([&](brls::View* view){
+    downloadPayload = new brls::ListItem("Dowload payloads to " + std::string(BOOTLOADER_PL_PATH));
+    downloadPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new DownloadPayloadPage());
     });
-    this->addView(downloadPaysload);
+    this->addView(downloadPayload);
 
     rebootPayload = new brls::ListItem("Inject payload");
     rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
