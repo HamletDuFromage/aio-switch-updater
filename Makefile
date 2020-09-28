@@ -45,7 +45,7 @@ DATA		:=	data
 INCLUDES	:=	include lib/zipper/include
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  1.1.2
+APP_VERSION :=  1.1.3
 
 #ROMFS				:=	$(BUILD)/romfs
 BOREALIS_PATH		:=	lib/borealis

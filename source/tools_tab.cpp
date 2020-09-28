@@ -27,7 +27,7 @@ ToolsTab::ToolsTab() : brls::List()
     this->addView(rebootPayload);
     
     std::string tag = getLatestTag(TAGS_INFO);
-    if(!tag.empty()){
+    if(!tag.empty() && tag != APP_VERSION){
         updateApp = new brls::ListItem("Update the app (v" + tag +")");
         std::string text("Downloading:\nAIO-switch-updater\n\nFrom:\n" + std::string(APP_URL));
         updateApp->getClickEvent()->subscribe([&, text](brls::View* view) {
