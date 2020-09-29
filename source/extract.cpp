@@ -316,5 +316,6 @@ void removeCheats(CFW cfw){
         }
     }
     std::filesystem::remove(UPDATED_TITLES_PATH);
+    std::filesystem::remove(CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }

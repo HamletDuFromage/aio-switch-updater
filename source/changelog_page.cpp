@@ -33,7 +33,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
 
     verTitles.push_back("v1.1.3");
     changes.push_back("\uE016  Now displays the latest installed cheat version.\n"\
-    "\uE016  Now warns if in the app title if a new update is available.");
+    "\uE016  Now warns in the app title if a new update is available.");
 
     int nbVersions = verTitles.size();
     items.reserve(nbVersions);
