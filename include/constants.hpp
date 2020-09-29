@@ -27,6 +27,7 @@
 #define CHEATS_FILENAME     "/config/aio-switch-updater/cheats.zip"
 #define CHEATS_EXCLUDE      "/config/aio-switch-updater/exclude.txt"
 #define UPDATED_TITLES_PATH "/config/aio-switch-updater/updated.dat"
+#define CHEATS_VERSION      "/config/aio-switch-updater/cheats_version.dat"
 #define AMS_CONTENTS        "/atmosphere/contents/"
 #define REINX_CONTENTS      "/ReiNX/contents/"
 #define SXOS_TITLES         "/sxos/titles/"

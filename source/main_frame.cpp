@@ -2,10 +2,11 @@
 
 MainFrame::MainFrame() : TabFrame()
 {
-
-    //this->setIcon(new Logo(LogoStyle::HEADER));
-    brls::Logger::debug("MainFrame");
-    setTitle(std::string(APP_TITLE) + " v" + std::string(APP_VERSION));
+    std::string tag = getLatestTag(TAGS_INFO);
+    if(!tag.empty() && tag != APP_VERSION)
+        setTitle(std::string(APP_TITLE) + " - New app update available");
+    else
+        setTitle(std::string(APP_TITLE) + " v" + std::string(APP_VERSION));
     this->addTab("About", new AboutTab());
 
     this->addSeparator();
@@ -18,5 +19,5 @@ MainFrame::MainFrame() : TabFrame()
 
     this->addSeparator();
 
-    this->addTab("Tools", new ToolsTab());
+    this->addTab("Tools", new ToolsTab(tag));
 }

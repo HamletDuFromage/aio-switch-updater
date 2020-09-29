@@ -9,9 +9,13 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
                 "Once downloaded, it will be extracted in '/firmware'. You can then install the update through Daybreak or ChoiDuJour.\n"\
                 "\uE016  Current FW: "
     );
-    SetSysFirmwareVersion ver;
-    if (R_SUCCEEDED(setsysGetFirmwareVersion(&ver))) firmwareText += ver.display_version;
-    else firmwareText += "not found";
+
+    std::string currentCheatsVer = 
+                "\uE016  This will download a daily updated archive of cheat codes from 'gbatemp.net'. "\
+                "Cheat codes for games you don't have installed won't be extracted to your SD card. "\
+                "You can turn off cheat updated in 'Tools->Cheat menu'.\n"\
+                "\uE016  Current cheats version: ";
+                
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
         case sigpatches:
@@ -25,6 +29,9 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
         case fw:
             links = fetchLinks(FIRMWARE_URL);
             operation += "firmware";
+            SetSysFirmwareVersion ver;
+            if (R_SUCCEEDED(setsysGetFirmwareVersion(&ver))) firmwareText += ver.display_version;
+            else firmwareText += "not found";
             this->description->setText(firmwareText);
             break;
         case app:
@@ -56,11 +63,8 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
                 }
             }
             operation += "cheats";
-            this->description->setText(
-                "\uE016  This will download a daily updated archive of cheat codes from 'gbatemp.net'. "\
-                "Cheat codes for games you don't have installed won't be extracted to your SD card. "\
-                "You can turn off cheat updated in 'Tools->Cheat menu'."
-            );
+            currentCheatsVer += readVersion(CHEATS_VERSION);
+            this->description->setText(currentCheatsVer);
             break;
     }
 /*     std::get<0>(links).push_back("Test");

@@ -328,3 +328,21 @@ Result CopyFile(const char src_path[FS_MAX_PATH], const char dest_path[FS_MAX_PA
     fsFileClose(&dest_handle);
     return 0;
 }
+
+void saveVersion(std::string version, const char* path){
+    std::fstream newVersion;
+    newVersion.open(path, std::fstream::out | std::fstream::trunc);
+    newVersion << version << std::endl;
+    newVersion.close();
+}
+
+std::string readVersion(const char* path){
+    std::fstream versionFile;
+    std::string version = "0";
+    if(std::filesystem::exists(path)){
+        versionFile.open(path, std::fstream::in);
+        versionFile >> version;
+        versionFile.close();
+    }
+    return version;
+}

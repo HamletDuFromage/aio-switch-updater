@@ -1,4 +1,6 @@
 #include "extract.hpp"
+#include "utils.hpp"
+#include "download.hpp"
 
 void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().reset();
@@ -269,6 +271,7 @@ void extractCheats(const char * zipPath, std::vector<Title> titles, CFW cfw, boo
     }
     unzipper.close();
     writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
+    saveVersion(fetchTitle(CHEATS_RELEASE_URL), CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 

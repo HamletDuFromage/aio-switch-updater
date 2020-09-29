@@ -1,6 +1,6 @@
 #include "tools_tab.hpp"
 
-ToolsTab::ToolsTab() : brls::List()
+ToolsTab::ToolsTab(std::string tag) : brls::List()
 {
     cheats = new brls::ListItem("Cheats menu");
     cheats->getClickEvent()->subscribe([&](brls::View* view){
@@ -26,7 +26,6 @@ ToolsTab::ToolsTab() : brls::List()
     });
     this->addView(rebootPayload);
     
-    std::string tag = getLatestTag(TAGS_INFO);
     if(!tag.empty() && tag != APP_VERSION){
         updateApp = new brls::ListItem("Update the app (v" + tag +")");
         std::string text("Downloading:\nAIO-switch-updater\n\nFrom:\n" + std::string(APP_URL));

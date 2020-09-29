@@ -23,6 +23,6 @@ class ToolsTab : public brls::List
         brls::StagedAppletFrame* stagedFrame;
 
     public:
-    ToolsTab();
+    ToolsTab(std::string tag);
 
 };
