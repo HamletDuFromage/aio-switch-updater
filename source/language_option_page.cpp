@@ -6,7 +6,7 @@ using namespace lang::literals;
 //this page is for language page 
 
 LanguageOptionPage::LanguageOptionPage() : AppletFrame(true, true)
-{
+{ 
     this->setTitle("Language_Option"_lang);
     list = new brls::List();
     
