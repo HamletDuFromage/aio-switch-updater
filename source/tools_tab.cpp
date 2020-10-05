@@ -7,12 +7,14 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     cheats->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new CheatsPage());
     });
+    cheats->setHeight(LISTITEM_HEIGHT);
     this->addView(cheats);
 
     JCcolor = new brls::ListItem("tool_change"_lang);
     JCcolor->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new JCPage());
     });
+    JCcolor->setHeight(LISTITEM_HEIGHT);
     this->addView(JCcolor);
 
     downloadPayload = new brls::ListItem("tool_download"_lang + std::string(BOOTLOADER_PL_PATH));
@@ -25,6 +27,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new PayloadPage());
     });
+    rebootPayload->setHeight(LISTITEM_HEIGHT);
     this->addView(rebootPayload);
     
     if(!tag.empty() && tag != APP_VERSION){
@@ -47,6 +50,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
             );
             brls::Application::pushView(stagedFrame);
         });
+        updateApp->setHeight(LISTITEM_HEIGHT);
         this->addView(updateApp);
     }
 
@@ -54,11 +58,13 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     changelog->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new ChangelogPage());
     });
+    changelog->setHeight(LISTITEM_HEIGHT);
     this->addView(changelog);
 
     language = new brls::ListItem("Language_Option"_lang);
     language->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new LanguageOptionPage());
     });
+    language->setHeight(LISTITEM_HEIGHT);
     this->addView(language);
 }

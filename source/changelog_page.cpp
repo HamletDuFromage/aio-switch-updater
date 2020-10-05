@@ -30,6 +30,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v1_1_3"_lang);
     changes.push_back("v1_1_3_text"_lang);
 
+    verTitles.push_back("v1_2_0"_lang);
+    changes.push_back("v1_2_0_text"_lang);
+
     int nbVersions = verTitles.size();
     items.reserve(nbVersions);
     for(int i = nbVersions -1 ; i >= 0; i--){

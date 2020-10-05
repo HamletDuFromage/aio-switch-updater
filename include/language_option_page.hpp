@@ -10,6 +10,7 @@ class LanguageOptionPage : public brls::AppletFrame
         brls::List* list;
         brls::ListItem* English;
         brls::ListItem* Chinese;
+        brls::ListItem* French;
 
         brls::StagedAppletFrame* stagedFrame;
 

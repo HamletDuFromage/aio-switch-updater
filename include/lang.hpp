@@ -8,7 +8,8 @@ namespace lang {
 enum class Language {
     English,
     Chinese,
-   /* French,
+    French,
+   /*
     Dutch,
     Italian,
     German,

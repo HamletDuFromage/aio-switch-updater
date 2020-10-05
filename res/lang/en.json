@@ -2,7 +2,7 @@
     "about_tab.cpp":"",
     "About_Title":           "All-in-One Nintendo Switch Updater",
     "copyright":           "AIO-switch-updater is licensed under GPL-3.0\n\u00A9 2020 HamletDuFromage",
-    "Disclaimers":            "\uE016  Aside from cheat codes that are mirrored from the main Gbatemp thread, HamletDuFromage isn't hosting anything. All credits go to respective owners\n\uE016  Links are refreshed every three hours. If a link remains broken after 3 hours have passed, please open a Github issue.\n",
+    "Disclaimers":            "\uE016  Aside from cheat codes that are mirrored from the main Gbatemp thread, HamletDuFromage isn't hosting anything. All credits go to respective owners.\n\uE016  Links are refreshed every three hours. If a link remains broken after 3 hours have passed, please open a Github issue.\n",
     
     "app_page.cpp":"",
     "app_title":            "Installed cheats",
@@ -30,6 +30,8 @@
     "v1_1_2_text":           "\uE016  Added GUI to disable cheat updates for specific titles.",
     "v1_1_3":            "v1.1.3",
     "v1_1_3_text":           "\uE016  Now displays the latest installed cheat version.\n\uE016  Now warns in the app title if a new update is available.",
+    "v1_2_0":            "v1.2.0",
+    "v1_2_0_text":           "\uE016  Now multilingual (thanks to 'github.com/tiansongyu').\n\uE016  Chinese and French are currently supported.",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -38,12 +40,12 @@
     "cheat_exclude":           "Exclude games from recieving cheat updates",
     "cheat_delete_all_ex":             "Delete all existing cheat codes",
     "cheat_delete_all_cheat":           "Delete all cheats",
-    "cheat_Deleting":            "Deleting",
+    "cheat_Deleting":            "Deleting...",
     "cheat_All_done":           "All done!",
 
     "choice_page.cpp":"",
-    "choice_yes":"yes",
-    "choice_no":"no",
+    "choice_yes":"Yes",
+    "choice_no":"No",
 
     "chnfirm_page.cpp":"",
     "Back":           "Back",
@@ -57,12 +59,12 @@
     "getting_paylaod":           "getting payload files",
     "down":            "Downloading...",
     "download_all_done":           "All done!",
-    "description":           "Could not find a download link, make sure the Switch has access to the internet.\nIf this problem persists, please open an issue on Github",
+    "description":           "Could not find a download link, make sure the Switch has access to the internet.\nIf this problem persists, please open an issue on Github.",
     "back":             "Back",
 
     "Language_option_page.cpp":"",
     "Language_Option":"Language Option",
-    "reset_machine":"language has changed .please reboot the app  to use the new language",
+    "reset_machine":"Language has changed. Please reboot the app for the change to take effect",
     
     "exclude_page.cpp":"",
     "exclude_titles":           "Exclude titles",
@@ -80,7 +82,7 @@
     "jc_all_done":           "All done!",
     "jc_con_color":           "Joy-Con color swapper",
     "jc_change":             "Changing color. Make sure the Joy-Con are docked. If the process hangs, try docking/undocking the JCs.",
-    "jc_all_":           "All done! You may need to dock/undock your Joy-Cons for the change to take effect",
+    "jc_all_":           "All done! You may need to dock/undock your Joy-Cons for the change to take effect.",
 
     "list_donwload.cpp":"",
     "Getting":           "Getting ",

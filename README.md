@@ -48,6 +48,8 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 ## Disclaimer
 I do not own, host nor distribute any of the files that can be downloaded with this homebrew tool. At the owner's request, I will immediately remove the ability to download the problematic files.
 
+## Special thanks
+- [tiansongyu](https://github.com/tiansongyu) for bringing support for multi-language and for his Chinese translation.
 ### Like the app?
 
 [//]: [![5cbed8a433a3f45a772abaf5_SupportMe_blue-p-500](https://user-images.githubusercontent.com/61667930/93899702-1a2b2680-fce4-11ea-9eaa-4e2b44eebe86.png)](https://ko-fi.com/hamletdufromage)

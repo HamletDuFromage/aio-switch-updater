@@ -1,8 +1,8 @@
 #include <switch.h>
-#include <json.hpp>
-
-#include  <fs.hpp>
-#include  <lang.hpp>
+#include "json.hpp"
+#include "lang.hpp"
+#include <filesystem>
+#include <fstream>
 
 using json = nlohmann::json;
 
@@ -32,9 +32,10 @@ Result set_language(Language lang) {
             break;
         //if you need add a new language 
         //use it !
-        /*case Language::French:
+        case Language::French:
             path = "romfs:/lang/fr.json";
             break;
+        /*
         case Language::Dutch:
             path = "romfs:/lang/nl.json";
             break;
@@ -54,22 +55,12 @@ Result set_language(Language lang) {
             break;
     }
 
-    auto *fp = fopen(path, "r");
-    if (!fp)
-        return 1;
-
-    fseek(fp, 0, SEEK_END);
-    std::size_t size = ftell(fp);
-    fseek(fp, 0, SEEK_SET);
-
-    std::string contents(size, 0);
-
-    if (auto read = fread(contents.data(), 1, size, fp); read != size)
-        return read;
-    fclose(fp);
-
-    lang_json = json::parse(contents);
-
+    std::fstream langFile;
+    if(std::filesystem::exists(path)){
+        langFile.open(path, std::fstream::in);
+        langFile >> lang_json;
+        langFile.close();
+    }
     return 0;
 }
 
@@ -100,8 +91,9 @@ Result initialize_to_system_language() {
             return set_language(Language::Chinese);
         //if you need add a new language 
         //use it !
-        /*case SetLanguage_FR:
+        case SetLanguage_FR:
             return set_language(Language::French);
+        /*
         case SetLanguage_NL:
             return set_language(Language::Dutch);
         case SetLanguage_IT:

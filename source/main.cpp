@@ -49,30 +49,10 @@ int main(int argc, char* argv[])
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
     brls::Logger::debug("Start");
 
-
-    //start code by tiansongyu please clean the code if you want
-    //checkout the /switch/AIO-switch-updater/config.ini
-    //save the language mode
-    //or you can use this
-    /*
-            if (auto rc = lang::initialize_to_system_language(); R_FAILED(rc))
-            brls::Logger::debug("Failed to init language: %#x, will fall back to key names\n", rc);
-    */
-   //this code will automatically choose the machine language that the user use
-   //there are two ways to set the language  . choose that you like way :D
-    const char* switch_dir= "/switch/";
-    if(opendir(switch_dir)==NULL)
-        {
-            mkdir(switch_dir,0755);
-        }
-    const char* aio_config_file = "/switch/AIO-switch-updater/";
-        if(opendir(aio_config_file)==NULL)
-        {
-            mkdir(aio_config_file,0755);
-        }
-    if(access("/switch/AIO-switch-updater/config.ini",F_OK) ==0)
+    //start code by tiansongyu
+    if(std::filesystem::exists(APP_LANG))
     {
-        std::ifstream i("/switch/AIO-switch-updater/config.ini");
+        std::ifstream i(APP_LANG);
         nlohmann::json lang_json;
         i>>lang_json;
         int tmp_number =lang_json["language"];
@@ -86,7 +66,7 @@ int main(int argc, char* argv[])
         int language_number = (int)lang::get_current_language();
         nlohmann::json json_file;
         json_file["language"]=language_number;
-        std::ofstream o("/switch/AIO-switch-updater/config.ini");
+        std::ofstream o(APP_LANG);
         o<<std::setw(4)<<json_file<<std::endl;
     }
     //end by tiansongyu 

@@ -73,6 +73,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
             std::string url = std::get<1>(links)[i];
             std::string text("list_down"_lang + std::get<0>(links)[i] + "list_from"_lang + url);
             linkItems[i] = new brls::ListItem(std::get<0>(links)[i]);
+            linkItems[i]->setHeight(LISTITEM_HEIGHT);
             linkItems[i]->getClickEvent()->subscribe([&, text, url, type, operation](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(operation);

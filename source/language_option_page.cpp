@@ -15,12 +15,12 @@ LanguageOptionPage::LanguageOptionPage() : AppletFrame(true, true)
 
         nlohmann::json json_file;
         json_file["language"]=(int)lang::Language::English;
-        std::ofstream o("/switch/AIO-switch-updater/config.ini");
+        std::ofstream o(APP_LANG);
         o<<std::setw(4)<<json_file<<std::endl;
 
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "reset_machine"_lang,false)
+                new ConfirmPage(stagedFrame, "reset_machine"_lang, true)
             );
         brls::Application::pushView(stagedFrame);
 
@@ -30,15 +30,30 @@ LanguageOptionPage::LanguageOptionPage() : AppletFrame(true, true)
     Chinese->getClickEvent()->subscribe([&](brls::View* view){
         nlohmann::json json_file;
         json_file["language"]=(int)lang::Language::Chinese;
-        std::ofstream o("/switch/AIO-switch-updater/config.ini");
+        std::ofstream o(APP_LANG);
         o<<std::setw(4)<<json_file<<std::endl;
 
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "reset_machine"_lang,false)
+                new ConfirmPage(stagedFrame, "reset_machine"_lang, true)
             );
         brls::Application::pushView(stagedFrame);
     });
     list->addView(Chinese);
+
+    French = new brls::ListItem("Français");
+    French->getClickEvent()->subscribe([&](brls::View* view){
+        nlohmann::json json_file;
+        json_file["language"]=(int)lang::Language::French;
+        std::ofstream o(APP_LANG);
+        o<<std::setw(4)<<json_file<<std::endl;
+
+        brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
+        stagedFrame->addStage(
+                new ConfirmPage(stagedFrame, "reset_machine"_lang, true)
+            );
+        brls::Application::pushView(stagedFrame);
+    });
+    list->addView(French);
     this->setContentView(list);
 }
