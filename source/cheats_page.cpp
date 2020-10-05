@@ -1,32 +1,33 @@
 #include "cheats_page.hpp"
-
+#include "lang.hpp"
+using namespace lang::literals;
 CheatsPage::CheatsPage() : AppletFrame(true, true)
 {
-    this->setTitle("Cheats menu");
+    this->setTitle("cheat_menu"_lang);
     list = new brls::List();
 
-    view = new brls::ListItem("View installed cheats");
+    view = new brls::ListItem("cheat_view"_lang);
     view->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new AppPage());
     });
     list->addView(view);
 
-    exclude = new brls::ListItem("Exclude games from recieving cheat updates");
+    exclude = new brls::ListItem("cheat_exclude"_lang);
     exclude->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new ExcludePage());
     });
     list->addView(exclude);
 
-
-    deleteCheats = new brls::ListItem("Delete all existing cheat codes");
+ 
+    deleteCheats = new brls::ListItem("cheat_delete_all_ex"_lang);
     deleteCheats->getClickEvent()->subscribe([&](brls::View* view){
         stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("Delete all cheats");
+        stagedFrame->setTitle("cheat_delete_all_cheat"_lang);
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Deleting", [](){removeCheats(getCFW());})
+            new WorkerPage(stagedFrame, "cheat_Deleting"_lang , [](){removeCheats(getCFW());})
         );
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "All done!", true)
+            new ConfirmPage(stagedFrame, "cheat_All_done"_lang, true)
         );
         brls::Application::pushView(stagedFrame);
     });

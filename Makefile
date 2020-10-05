@@ -47,7 +47,7 @@ APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
 APP_VERSION :=  1.1.3
 
-#ROMFS				:=	$(BUILD)/romfs
+ROMFS				=	res
 BOREALIS_PATH		:=	lib/borealis
 #BOREALIS_RESOURCES	:=	romfs:/borealis/
 #APP_RESOURCES		:=	romfs:/

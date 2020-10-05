@@ -1,14 +1,14 @@
 #include "app_page.hpp"
 //TODO: Serialize it in extract.cpp
-
+#include "lang.hpp"
+using namespace lang::literals;
 AppPage::AppPage() : AppletFrame(true, true)
 {
-    this->setTitle("Installed cheats");
+    this->setTitle("app_title"_lang);
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "The following titles have recieved cheat code updates the last time you used the app. Please note that despite having been "\
-        "downloaded for a game, cheats may not match its current update.",
+        "app_label"_lang,
         true
     );
     list->addView(label);
@@ -60,7 +60,7 @@ AppPage::AppPage() : AppletFrame(true, true)
             i++;
         }
     }
-    std::string text("Downloading:\nLatest cheat codes\n\nFrom:\n");
+    std::string text("text_download");
     std::string url = "";
     switch(getCFW()){
         case ams:
@@ -74,22 +74,22 @@ AppPage::AppPage() : AppletFrame(true, true)
             break;
     }
     text += url;
-    download = new brls::ListItem("Download latest cheat codes");
+    download = new brls::ListItem("text_download_list"_lang);
     archiveType type = cheats;
     download->getClickEvent()->subscribe([&, url, text, type](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("Getting cheat codes");
+        stagedFrame->setTitle("text_title"_lang);
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, text)
         );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Downloading...", [url, type](){downloadArchive(url, type);})
+            new WorkerPage(stagedFrame, "Downloading"_lang, [url, type](){downloadArchive(url, type);})
         );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Extracting...", [type](){extractArchive(type);})
+            new WorkerPage(stagedFrame, "Extracting"_lang, [type](){extractArchive(type);})
         );
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "All done!", true)
+            new ConfirmPage(stagedFrame, "All_done"_lang, true)
         );
         brls::Application::pushView(stagedFrame);
     });

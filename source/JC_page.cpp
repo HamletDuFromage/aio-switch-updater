@@ -1,26 +1,25 @@
 #include "JC_page.hpp"
-
+#include "lang.hpp"
+using namespace lang::literals;
 JCPage::JCPage() : AppletFrame(true, true)
 {
-    this->setTitle("Joy-Con color swapper");
+    this->setTitle("joy_con"_lang);
     list = new brls::List();
-    std::string labelText = "You can change the internal color of your Joy-Cons. Make sure they're docked.\n"\
-                            "Color profiles are stored in '" + std::string(COLOR_PROFILES_PATH) + "'. Go to 'http://bit.ly/JC-color' "\
-                            "to generate your own custom profiles.";
+    std::string labelText = "jc_you_can_1"_lang + std::string(COLOR_PROFILES_PATH) + "jc_you_can_goto"\
+                            "jc_you_can_2"_lang;
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
     list->addView(label);
 
-    backup = new brls::ListItem("Backup current color profile");
+    backup = new brls::ListItem("jc_backup"_lang);
     backup->getClickEvent()->subscribe([&](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("Joy-Con color swapper");
+        stagedFrame->setTitle("jc_color"_lang);
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Backing up the current color profile. Make sure the Joy-Con are docked. "\
-            "If the process hangs, try docking/undocking the JCs.", 
+            new WorkerPage(stagedFrame, "jc_backing"_lang, 
             [](){backupJCColor(COLOR_PROFILES_PATH);})
         );
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "All done!", true)
+            new ConfirmPage(stagedFrame, "jc_all_done"_lang, true)
         );
         brls::Application::pushView(stagedFrame);
     });
@@ -38,14 +37,13 @@ JCPage::JCPage() : AppletFrame(true, true)
         items[i] = new brls::ListItem(names[i]);
         items[i]->getClickEvent()->subscribe([&, value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-            stagedFrame->setTitle("Joy-Con color swapper");
+            stagedFrame->setTitle("jc_concolor"_lang);
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "Changing color. Make sure the Joy-Con are docked. "\
-                "If the process hangs, try docking/undocking the JCs.", 
+                new WorkerPage(stagedFrame, "jc_changing"_lang, 
                 [value](){changeJCColor(value);})
             );
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "All done! You may need to dock/undock your Joy-Cons for the change to take effect", true)
+                new ConfirmPage(stagedFrame, "jc_all_"_lang, true)
             );
             brls::Application::pushView(stagedFrame);
         });

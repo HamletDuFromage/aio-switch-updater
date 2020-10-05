@@ -3,4 +3,4 @@
 	url = https://github.com/HamletDuFromage/zipper
 [submodule "lib/borealis"]
 	path = lib/borealis
-	url = https://github.com/natinusala/borealis
+	url = https://github.com/tiansongyu/borealis

@@ -7,6 +7,7 @@
 #include "payload_page.hpp"
 #include "download_payload_page.hpp"
 #include "changelog_page.hpp"
+#include "language_option_page.hpp"
 #include "JC_page.hpp"
 #include "extract.hpp"
 #include "utils.hpp"
@@ -20,6 +21,8 @@ class ToolsTab : public brls::List
         brls::ListItem* rebootPayload;
         brls::ListItem* downloadPayload;
         brls::ListItem* changelog;
+        brls::ListItem* language;
+
         brls::StagedAppletFrame* stagedFrame;
 
     public:

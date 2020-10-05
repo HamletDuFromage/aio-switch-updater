@@ -2,8 +2,6 @@
 
 #include <borealis.hpp>
 
-#include <borealis.hpp>
-
 class AboutTab : public brls::List
 {
     public:

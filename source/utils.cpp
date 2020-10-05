@@ -1,5 +1,6 @@
 #include "utils.hpp"
-
+#include "lang.hpp"
+using namespace lang::literals;
 bool isServiceRunning(const char *serviceName) {
     Handle handle;
     SmServiceName service_name = smEncodeName(serviceName);
@@ -68,8 +69,7 @@ void downloadArchive(std::string url, archiveType type){
                 downloadFile(url.c_str(), FIRMWARE_FILENAME, OFF);
             }
             else{
-                showDialogBox("Because of the size of the FW archive, downloading firmwares in Applet Mode is not supported. "\
-                "Please launch the app with full RAM access.", "Ok");
+                showDialogBox("utils_because"_lang, "utils_ok"_lang);
                 brls::Application::pushView(new MainFrame());
             }
             break;
@@ -134,7 +134,7 @@ void extractArchive(archiveType type){
                 std::string backup(HEKATE_IPL_PATH);
                 backup += ".old";
                 if(std::filesystem::exists(HEKATE_IPL_PATH)){
-                    overwriteInis = showDialogBox("Do you want to overwrite existing " + std::string(HEKATE_IPL_PATH) +"?", "No", "Yes");
+                    overwriteInis = showDialogBox("utils_do"_lang + std::string(HEKATE_IPL_PATH) +"?", "utils_no"_lang, "utils_yes"_lang);
                     if(overwriteInis == 0){
                         extract(SIGPATCHES_FILENAME, ROOT_PATH, HEKATE_IPL_PATH);
                     }
@@ -147,8 +147,7 @@ void extractArchive(archiveType type){
                 }
             }
             else{
-                showDialogBox("The downloaded file is not a sigpatches archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, "\
-                "please open an issue on Github.", "Ok");
+                showDialogBox("utils_the"_lang, "utils_ok"_lang);
                 brls::Application::pushView(new MainFrame());
             }
             break;
@@ -159,8 +158,7 @@ void extractArchive(archiveType type){
             break;
         case fw:
             if(std::filesystem::file_size(FIRMWARE_FILENAME) < 200000){
-                showDialogBox("The downloaded file is not a firmware archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, "\
-                "please open an issue on Github.", "Ok");
+                showDialogBox("utils_the_downloaded"_lang, "utils_ok"_lang);
                 brls::Application::pushView(new MainFrame());
             }
             else{
@@ -174,12 +172,11 @@ void extractArchive(archiveType type){
             break;
         case cfw:
             if(isArchive(CFW_FILENAME)){
-                overwriteInis = showDialogBox("Do you want to overwrite existing .ini config files?", "No", "Yes");
+                overwriteInis = showDialogBox("ultils_overwrite"_lang, "utils_no"_lang, "utils_yes"_lang);
                 extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
             }
             else{
-                showDialogBox("The downloaded file is not a CFW archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, "\
-                "please open an issue on Github.", "Ok");
+                showDialogBox("ultis_file"_lang, "utils_ok"_lang);
                 brls::Application::pushView(new MainFrame());
             }
             break;

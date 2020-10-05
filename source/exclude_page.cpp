@@ -1,12 +1,13 @@
 #include "exclude_page.hpp"
-
+#include "lang.hpp"
+using namespace lang::literals;
 ExcludePage::ExcludePage() : AppletFrame(true, true)
 {
-    this->setTitle("Exclude titles");
+    this->setTitle("exclude_titles"_lang);
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "You can turn off cheat updates with this menu",
+        "you_can"_lang,
         true
     );
     list->addView(label);
@@ -65,7 +66,7 @@ ExcludePage::ExcludePage() : AppletFrame(true, true)
         i++;
     }
 
-    list->registerAction("Save choice and return", brls::Key::B, [this] { 
+    list->registerAction("save"_lang, brls::Key::B, [this] { 
         std::set<std::string> exclude{};
         for(int i = 0; i < (int) std::get<1>(items).size(); i++){
             if(!std::get<0>(items)[i]->getToggleState()){
