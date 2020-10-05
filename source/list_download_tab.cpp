@@ -96,7 +96,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
     else{
         notFound = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
-            "list_could_done",
+            "list_could_done"_lang,
             true
         );
         notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
