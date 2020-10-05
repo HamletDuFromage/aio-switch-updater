@@ -1,9 +1,10 @@
 #include "confirm_page.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool done): done(done)
 {
-    this->button = (new brls::Button(brls::ButtonStyle::BORDERLESS))->setLabel(done ? "Back"_lang: "Continue"_lang);
+    this->button = (new brls::Button(brls::ButtonStyle::BORDERLESS))->setLabel(done ? "menus/Back"_i18n : "menus/Continue"_i18n );
     this->button->setParent(this);
     this->button->getClickEvent()->subscribe([frame, this](View* view) {
         if (!frame->isLastStage()) frame->nextStage();
@@ -16,7 +17,7 @@ ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool 
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
 
-    this->registerAction("Back"_lang, brls::Key::B, [this] {
+    this->registerAction("menus/Back"_i18n , brls::Key::B, [this] {
         brls::Application::popView();
         return true;
     });
@@ -27,7 +28,7 @@ void ConfirmPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned he
     if(!this->done){
         auto end = std::chrono::high_resolution_clock::now();
         auto missing = std::max(1l - std::chrono::duration_cast<std::chrono::seconds>(end - start).count(), 0l);
-        auto text =  std::string("Continue"_lang);
+        auto text =  std::string("menus/Continue"_i18n );
         if (missing > 0) {
             this->button->setLabel(text + " (" + std::to_string(missing) + ")");
             this->button->setState(brls::ButtonState::DISABLED);

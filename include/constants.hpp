@@ -1,7 +1,5 @@
 #pragma once
 
-#define APP_LANG            "/config/aio-switch-updater/lang.json"
-
 #define ROOT_PATH           "/"
 #define DOWNLOAD_PATH       "/config/aio-switch-updater/"
 #define CONFIG_PATH         "/config/aio-switch-updater/"
@@ -43,6 +41,7 @@
 
 #define PAYLOAD_PATH        "/payloads/"
 #define BOOTLOADER_PL_PATH  "/bootloader/payloads/"
+#define UPDATE_BIN_PATH     "/bootloader/update.bin"
 #define REBOOT_PAYLOAD_PATH "/atmosphere/reboot_payload.bin"
 
 #define LISTITEM_HEIGHT     50

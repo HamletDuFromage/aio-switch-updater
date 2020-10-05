@@ -1,14 +1,15 @@
 #include "app_page.hpp"
 //TODO: Serialize it in extract.cpp
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 AppPage::AppPage() : AppletFrame(true, true)
 {
-    this->setTitle("app_title"_lang);
+    this->setTitle("menus/app_title"_i18n );
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "app_label"_lang,
+        "menus/app_label"_i18n ,
         true
     );
     list->addView(label);
@@ -74,22 +75,22 @@ AppPage::AppPage() : AppletFrame(true, true)
             break;
     }
     text += url;
-    download = new brls::ListItem("text_download_list"_lang);
+    download = new brls::ListItem("menus/text_download_list"_i18n );
     archiveType type = cheats;
     download->getClickEvent()->subscribe([&, url, text, type](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("text_title"_lang);
+        stagedFrame->setTitle("menus/text_title"_i18n );
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, text)
         );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Downloading"_lang, [url, type](){downloadArchive(url, type);})
+            new WorkerPage(stagedFrame, "menus/Downloading"_i18n , [url, type](){downloadArchive(url, type);})
         );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "Extracting"_lang, [type](){extractArchive(type);})
+            new WorkerPage(stagedFrame, "menus/Extracting"_i18n , [type](){extractArchive(type);})
         );
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "All_done"_lang, true)
+            new ConfirmPage(stagedFrame, "menus/All_done"_i18n , true)
         );
         brls::Application::pushView(stagedFrame);
     });

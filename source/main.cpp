@@ -8,7 +8,7 @@
 #include "main_frame.hpp"
 #include "constants.hpp"
 #include "utils.hpp"
-#include "lang.hpp"
+ 
 
 #include <string.h>
 #include <stdio.h>
@@ -20,6 +20,10 @@
 
 #include <sstream>
 #include<fstream>
+
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
+
 int main(int argc, char* argv[])
 {
     // Init the app
@@ -28,7 +32,8 @@ int main(int argc, char* argv[])
         brls::Logger::error("Unable to init Borealis application");
         return EXIT_FAILURE;
     }
-
+    i18n::loadTranslations();
+    
     // Setup verbose logging on PC
 #ifndef __SWITCH__
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
@@ -46,10 +51,12 @@ int main(int argc, char* argv[])
     splInitialize();
     createTree(CONFIG_PATH);
 
+
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
     brls::Logger::debug("Start");
 
-    //start code by tiansongyu
+
+/*     //start code by tiansongyu
     if(std::filesystem::exists(APP_LANG))
     {
         std::ifstream i(APP_LANG);
@@ -69,7 +76,7 @@ int main(int argc, char* argv[])
         std::ofstream o(APP_LANG);
         o<<std::setw(4)<<json_file<<std::endl;
     }
-    //end by tiansongyu 
+    //end by tiansongyu  */
     // Create root view
     MainFrame *mainFrame = new MainFrame();
 

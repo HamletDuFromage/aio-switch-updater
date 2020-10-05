@@ -1,37 +1,41 @@
 #include "changelog_page.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 ChangelogPage::ChangelogPage() : AppletFrame(true, true)
 {
-    this->setTitle("Changelog"_lang);
+    this->setTitle("menus/Changelog"_i18n );
     list = new brls::List();
     std::vector<std::string> verTitles;
     std::string change;
     std::vector<std::string> changes;
 
-    verTitles.push_back("v1_0_1"_lang);
-    changes.push_back("v1_0_1_text"_lang);
+    verTitles.push_back("menus/v1_0_1"_i18n );
+    changes.push_back("menus/v1_0_1_text"_i18n );
 
-    verTitles.push_back("v1_0_2"_lang);
-    changes.push_back("v1_0_2_text"_lang);
+    verTitles.push_back("menus/v1_0_2"_i18n );
+    changes.push_back("menus/v1_0_2_text"_i18n );
 
-    verTitles.push_back("v1_0_3"_lang);
-    changes.push_back("v1_0_3_text"_lang);
+    verTitles.push_back("menus/v1_0_3"_i18n );
+    changes.push_back("menus/v1_0_3_text"_i18n );
 
-    verTitles.push_back("v1_1_0"_lang);
-    changes.push_back("v1_1_0_text"_lang);
+    verTitles.push_back("menus/v1_1_0"_i18n );
+    changes.push_back("menus/v1_1_0_text"_i18n );
 
-    verTitles.push_back("v1_1_1"_lang);
-    changes.push_back("v1_1_1_text"_lang);
+    verTitles.push_back("menus/v1_1_1"_i18n );
+    changes.push_back("menus/v1_1_1_text"_i18n );
 
-    verTitles.push_back("v1_1_2"_lang);
-    changes.push_back("v1_1_2_text"_lang);
+    verTitles.push_back("menus/v1_1_2"_i18n );
+    changes.push_back("menus/v1_1_2_text"_i18n );
 
-    verTitles.push_back("v1_1_3"_lang);
-    changes.push_back("v1_1_3_text"_lang);
+    verTitles.push_back("menus/v1_1_3"_i18n );
+    changes.push_back("menus/v1_1_3_text"_i18n );
 
-    verTitles.push_back("v1_2_0"_lang);
-    changes.push_back("v1_2_0_text"_lang);
+    verTitles.push_back("menus/v1_2_0"_i18n );
+    changes.push_back("menus/v1_2_0_text"_i18n );
+
+    verTitles.push_back("menus/v1_2_1"_i18n );
+    changes.push_back("menus/v1_2_1_text"_i18n );
 
     int nbVersions = verTitles.size();
     items.reserve(nbVersions);
@@ -43,7 +47,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
             brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                 dialog->close();
             };
-            dialog->addButton("Ok_button"_lang, callback);
+            dialog->addButton("menus/Ok_button"_i18n , callback);
             dialog->setCancelable(true);
             dialog->open();
         });

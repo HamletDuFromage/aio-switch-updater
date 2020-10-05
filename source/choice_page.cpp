@@ -1,6 +1,7 @@
  #include "choice_page.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
  ChoicePage::ChoicePage(brls::StagedAppletFrame* frame, std::string text)
  {
     this->yes = (new brls::Button(brls::ButtonStyle::BORDERLESS))->setLabel("yes");

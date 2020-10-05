@@ -1,13 +1,14 @@
 #include "exclude_page.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 ExcludePage::ExcludePage() : AppletFrame(true, true)
 {
-    this->setTitle("exclude_titles"_lang);
+    this->setTitle("menus/exclude_titles"_i18n );
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "you_can"_lang,
+        "menus/you_can"_i18n ,
         true
     );
     list->addView(label);
@@ -66,7 +67,7 @@ ExcludePage::ExcludePage() : AppletFrame(true, true)
         i++;
     }
 
-    list->registerAction("save"_lang, brls::Key::B, [this] { 
+    list->registerAction("menus/save"_i18n , brls::Key::B, [this] { 
         std::set<std::string> exclude{};
         for(int i = 0; i < (int) std::get<1>(items).size(); i++){
             if(!std::get<0>(items)[i]->getToggleState()){

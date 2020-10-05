@@ -1,23 +1,26 @@
 #include "main_frame.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
+
 MainFrame::MainFrame() : TabFrame()
 {
     std::string tag = getLatestTag(TAGS_INFO);
     if(!tag.empty() && tag != APP_VERSION)
-        setTitle(std::string(APP_TITLE) + "main_app"_lang);
+        setTitle(std::string(APP_TITLE) + "menus/main_app"_i18n );
     else
-        setTitle(std::string(APP_TITLE) + "main_v"_lang + std::string(APP_VERSION));
-    this->addTab("main_about"_lang, new AboutTab());
+        setTitle(std::string(APP_TITLE) + "menus/main_v"_i18n  + std::string(APP_VERSION));
+    this->addTab("menus/main_about"_i18n , new AboutTab());
 
     this->addSeparator();
 
-    this->addTab("main_update_cfw"_lang, new ListDownloadTab(cfw));
-    this->addTab("main_update_si"_lang, new ListDownloadTab(sigpatches));
-    this->addTab("main_firmwares"_lang, new ListDownloadTab(fw));
-    this->addTab("main_cheats"_lang, new ListDownloadTab(cheats));
-
+    this->addTab("menus/main_update_cfw"_i18n , new ListDownloadTab(cfw));
+    this->addTab("menus/main_update_si"_i18n , new ListDownloadTab(sigpatches));
+    this->addTab("menus/main_firmwares"_i18n , new ListDownloadTab(fw));
+    this->addTab("menus/main_cheats"_i18n , new ListDownloadTab(cheats));
 
     this->addSeparator();
-    this->addTab("main_tools"_lang, new ToolsTab(tag));
+
+    this->addTab("menus/main_tools"_i18n , new ToolsTab(tag));
+
 }

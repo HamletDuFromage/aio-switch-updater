@@ -1,50 +1,52 @@
 #include "list_download_tab.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
+
 ListDownloadTab::ListDownloadTab(archiveType type) :
     brls::List()
 {
     std::tuple<std::vector<std::string>, std::vector<std::string>> links;
-    std::string operation = "Getting"_lang;
-    std::string firmwareText("firmware_text"_lang
+    std::string operation = "menus/Getting"_i18n ;
+    std::string firmwareText("menus/firmware_text"_i18n 
     );
 
     std::string currentCheatsVer = 
-                "currentCeatsver"_lang;
+                "menus/currentCeatsver"_i18n ;
                 
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
         case sigpatches:
             links = fetchLinks(SIGPATCHES_URL);
-            operation += "operation_1"_lang;
+            operation += "menus/operation_1"_i18n ;
             this->description->setText(
-                "list_sigpatches"_lang
+                "menus/list_sigpatches"_i18n 
             );
             break;
         case fw:
             links = fetchLinks(FIRMWARE_URL);
-            operation += "operation_2"_lang;
+            operation += "menus/operation_2"_i18n ;
             SetSysFirmwareVersion ver;
             if (R_SUCCEEDED(setsysGetFirmwareVersion(&ver))) firmwareText += ver.display_version;
-            else firmwareText += "list_not"_lang;
+            else firmwareText += "menus/list_not"_i18n ;
             this->description->setText(firmwareText);
             break;
         case app:
-            std::get<0>(links).push_back("list_latest"_lang);
+            std::get<0>(links).push_back("menus/list_latest"_i18n );
             std::get<1>(links).push_back(APP_URL);
-            operation += "list_app"_lang;
+            operation += "menus/list_app"_i18n ;
             break;
         case cfw:
             links = fetchLinks(CFW_URL);
-            operation += "list_cfw"_lang;
+            operation += "menus/list_cfw"_i18n ;
             this->description->setText(
-                "list_main"_lang
+                "menus/list_main"_i18n 
             );
             break;
         case cheats:
             std::string cheatsVer = fetchTitle(CHEATS_RELEASE_URL);
             if(cheatsVer != "-1"){
-                std::get<0>(links).push_back("list_latest_ver"_lang + cheatsVer + ")");
+                std::get<0>(links).push_back("menus/list_latest_ver"_i18n  + cheatsVer + ")");
                 switch(getCFW()){
                     case sxos:
                         std::get<1>(links).push_back(CHEATS_URL_TITLES);
@@ -57,7 +59,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
                         break;
                 }
             }
-            operation += "list_cheats"_lang;
+            operation += "menus/list_cheats"_i18n ;
             currentCheatsVer += readVersion(CHEATS_VERSION);
             this->description->setText(currentCheatsVer);
             break;
@@ -71,7 +73,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
         linkItems.reserve(nbLinks);
         for (int i = 0; i<nbLinks; i++){
             std::string url = std::get<1>(links)[i];
-            std::string text("list_down"_lang + std::get<0>(links)[i] + "list_from"_lang + url);
+            std::string text("menus/list_down"_i18n  + std::get<0>(links)[i] + "menus/list_from"_i18n  + url);
             linkItems[i] = new brls::ListItem(std::get<0>(links)[i]);
             linkItems[i]->setHeight(LISTITEM_HEIGHT);
             linkItems[i]->getClickEvent()->subscribe([&, text, url, type, operation](brls::View* view) {
@@ -81,13 +83,13 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
                     new ConfirmPage(stagedFrame, text)
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "list_downing"_lang, [url, type](){downloadArchive(url, type);})
+                    new WorkerPage(stagedFrame, "menus/list_downing"_i18n , [url, type](){downloadArchive(url, type);})
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "list_extracting"_lang, [type](){extractArchive(type);})
+                    new WorkerPage(stagedFrame, "menus/list_extracting"_i18n , [type](){extractArchive(type);})
                 );
                 stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, "list_All"_lang, true)
+                    new ConfirmPage(stagedFrame, "menus/list_All"_i18n , true)
                 );
                 brls::Application::pushView(stagedFrame);
             });
@@ -97,7 +99,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
     else{
         notFound = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
-            "list_could_done"_lang,
+            "menus/list_could_done"_i18n ,
             true
         );
         notFound->setHorizontalAlign(NVG_ALIGN_CENTER);

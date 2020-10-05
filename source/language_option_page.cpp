@@ -1,13 +1,14 @@
 #include "language_option_page.hpp"
-#include "lang.hpp"
+ 
 #include <cstdio>
-using namespace lang::literals;
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 
 //this page is for language page 
 
 LanguageOptionPage::LanguageOptionPage() : AppletFrame(true, true)
 { 
-    this->setTitle("Language_Option"_lang);
+    /* this->setTitle("menus/Language_Option"_i18n );
     list = new brls::List();
     
     English = new brls::ListItem("English");
@@ -20,7 +21,7 @@ LanguageOptionPage::LanguageOptionPage() : AppletFrame(true, true)
 
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "reset_machine"_lang, true)
+                new ConfirmPage(stagedFrame, "menus/reset_machine"_i18n , true)
             );
         brls::Application::pushView(stagedFrame);
 
@@ -35,7 +36,7 @@ LanguageOptionPage::LanguageOptionPage() : AppletFrame(true, true)
 
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "reset_machine"_lang, true)
+                new ConfirmPage(stagedFrame, "menus/reset_machine"_i18n , true)
             );
         brls::Application::pushView(stagedFrame);
     });
@@ -50,10 +51,10 @@ LanguageOptionPage::LanguageOptionPage() : AppletFrame(true, true)
 
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "reset_machine"_lang, true)
+                new ConfirmPage(stagedFrame, "menus/reset_machine"_i18n , true)
             );
         brls::Application::pushView(stagedFrame);
     });
     list->addView(French);
-    this->setContentView(list);
+    this->setContentView(list); */
 }

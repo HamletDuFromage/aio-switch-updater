@@ -1,8 +1,9 @@
 #include "extract.hpp"
 #include "utils.hpp"
 #include "download.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);

@@ -1,29 +1,30 @@
 #include "tools_tab.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 ToolsTab::ToolsTab(std::string tag) : brls::List()
 {
-    cheats = new brls::ListItem("tool_cheats"_lang);
+    cheats = new brls::ListItem("menus/tool_cheats"_i18n );
     cheats->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new CheatsPage());
     });
     cheats->setHeight(LISTITEM_HEIGHT);
     this->addView(cheats);
 
-    JCcolor = new brls::ListItem("tool_change"_lang);
+    JCcolor = new brls::ListItem("menus/tool_change"_i18n );
     JCcolor->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new JCPage());
     });
     JCcolor->setHeight(LISTITEM_HEIGHT);
     this->addView(JCcolor);
 
-    downloadPayload = new brls::ListItem("tool_download"_lang + std::string(BOOTLOADER_PL_PATH));
+    downloadPayload = new brls::ListItem("menus/tool_download"_i18n  + std::string(BOOTLOADER_PL_PATH));
     downloadPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new DownloadPayloadPage());
     });
     this->addView(downloadPayload);
 
-    rebootPayload = new brls::ListItem("tool_inject"_lang);
+    rebootPayload = new brls::ListItem("menus/tool_inject"_i18n );
     rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new PayloadPage());
     });
@@ -31,22 +32,22 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     this->addView(rebootPayload);
     
     if(!tag.empty() && tag != APP_VERSION){
-        updateApp = new brls::ListItem("tool_update"_lang + tag +")");
-        std::string text("tool_DownLoad"_lang + std::string(APP_URL));
+        updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");
+        std::string text("menus/tool_DownLoad"_i18n  + std::string(APP_URL));
         updateApp->getClickEvent()->subscribe([&, text](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-            stagedFrame->setTitle("tool_updating"_lang);
+            stagedFrame->setTitle("menus/tool_updating"_i18n );
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, text)
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "tool_downloading"_lang, [](){downloadArchive(APP_URL, app);})
+                new WorkerPage(stagedFrame, "menus/tool_downloading"_i18n , [](){downloadArchive(APP_URL, app);})
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "tool_extracting"_lang, [](){extractArchive(app);})
+                new WorkerPage(stagedFrame, "menus/tool_extracting"_i18n , [](){extractArchive(app);})
             );
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "tool_all_done"_lang, true)
+                new ConfirmPage(stagedFrame, "menus/tool_all_done"_i18n , true)
             );
             brls::Application::pushView(stagedFrame);
         });
@@ -54,17 +55,17 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
         this->addView(updateApp);
     }
 
-    changelog = new brls::ListItem("tool_changelog"_lang);
+    changelog = new brls::ListItem("menus/tool_changelog"_i18n );
     changelog->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new ChangelogPage());
     });
     changelog->setHeight(LISTITEM_HEIGHT);
     this->addView(changelog);
 
-    language = new brls::ListItem("Language_Option"_lang);
+/*     language = new brls::ListItem("menus/Language_Option"_i18n );
     language->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new LanguageOptionPage());
     });
     language->setHeight(LISTITEM_HEIGHT);
-    this->addView(language);
+    this->addView(language); */
 }

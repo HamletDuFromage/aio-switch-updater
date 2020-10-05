@@ -1,13 +1,15 @@
 #include "about_tab.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 
 AboutTab::AboutTab()
 {
     // Subtitle
     brls::Label *subTitle = new brls::Label(
         brls::LabelStyle::REGULAR,
-        "About_Title"_lang , 
+        "menus/About_Title"_i18n , 
         true
     );
     subTitle->setHorizontalAlign(NVG_ALIGN_CENTER);
@@ -16,7 +18,7 @@ AboutTab::AboutTab()
     // Copyright
     brls::Label *copyright = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "copyright"_lang,
+        "menus/copyright"_i18n,
         true
     );
     copyright->setHorizontalAlign(NVG_ALIGN_CENTER);
@@ -26,7 +28,7 @@ AboutTab::AboutTab()
     this->addView(new brls::Header("Disclaimers"));
     brls::Label *links = new brls::Label(
         brls::LabelStyle::SMALL,
-        "Disclaimers"_lang,
+        "menus/Disclaimers"_i18n,
         true
     );
     this->addView(links);

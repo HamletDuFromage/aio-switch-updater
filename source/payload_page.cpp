@@ -1,14 +1,15 @@
 #include "payload_page.hpp"
-#include "lang.hpp"
-using namespace lang::literals;
+ 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 PayloadPage::PayloadPage() : AppletFrame(true, true)
 {
     CFW cfw = getCFW();
-    this->setTitle("payload_reboot"_lang);
+    this->setTitle("menus/payload_reboot"_i18n );
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "payload_select"_lang,
+        "menus/payload_select"_i18n ,
         true
     );
     list->addView(label);
@@ -23,32 +24,43 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
             brls::Application::popView();
         });
         if(cfw == ams){
-            items[i]->registerAction("payload_set"_lang, brls::Key::X, [this, payload] { 
+            items[i]->registerAction("menus/payload_set"_i18n , brls::Key::X, [this, payload] { 
                 if(R_SUCCEEDED(CopyFile(payload.c_str(), REBOOT_PAYLOAD_PATH))){
-                    brls::Dialog* dialog = new brls::Dialog("payload_success"_lang + payload + "payload_to"_lang + std::string(REBOOT_PAYLOAD_PATH) + "'.");
+                    brls::Dialog* dialog = new brls::Dialog("menus/payload_success"_i18n  + payload + "menus/payload_to"_i18n  + std::string(REBOOT_PAYLOAD_PATH) + "'.");
                     brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                         dialog->close();
                     };
-                    dialog->addButton("payload_ok"_lang, callback);
+                    dialog->addButton("menus/payload_ok"_i18n , callback);
                     dialog->setCancelable(true);
                     dialog->open();
                 }
                 return true;
             });
         }
+        items[i]->registerAction("menus/payload_set_up"_i18n , brls::Key::Y, [this, payload] { 
+                if(R_SUCCEEDED(CopyFile(payload.c_str(), UPDATE_BIN_PATH))){
+                    brls::Dialog* dialog = new brls::Dialog("menus/payload_success"_i18n  + payload + "menus/payload_to"_i18n  + std::string(UPDATE_BIN_PATH) + "'.");
+                    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+                        dialog->close();
+                    };
+                    dialog->addButton("menus/payload_ok"_i18n , callback);
+                    dialog->setCancelable(true);
+                    dialog->open();
+                }
+                return true;
+            });
         list->addView(items[i]);
-        
     }
     list->addView(new brls::ListItemGroupSpacing(true));
 
-    shutDown = new brls::ListItem("payload_shut"_lang);
+    shutDown = new brls::ListItem("menus/payload_shut"_i18n );
     shutDown->getClickEvent()->subscribe([](brls::View* view) {
         shut_down(false);
         brls::Application::popView();
     });
     list->addView(shutDown);
 
-    reboot = new brls::ListItem("payload_reboot_2"_lang);
+    reboot = new brls::ListItem("menus/payload_reboot_2"_i18n );
     reboot->getClickEvent()->subscribe([](brls::View* view) {
         shut_down(true);
         brls::Application::popView();
