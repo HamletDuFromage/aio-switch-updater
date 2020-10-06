@@ -8,3 +8,7 @@ switch/
 *.zip
 resources/i18n/zh-Hans
 resources/i18n/en-GB
+resources/icon
+resources/material
+resources/inter
+resources/.gitignore

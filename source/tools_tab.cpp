@@ -22,6 +22,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     downloadPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new DownloadPayloadPage());
     });
+    downloadPayload->setHeight(LISTITEM_HEIGHT);
     this->addView(downloadPayload);
 
     rebootPayload = new brls::ListItem("menus/tool_inject"_i18n );

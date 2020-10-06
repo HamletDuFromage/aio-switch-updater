@@ -34,6 +34,7 @@
     "v1_2_0_text":           "\uE016  Now multilingual (thanks to 'github.com/tiansongyu').\n\uE016  Chinese and French are currently supported.",
     "v1_2_1":            "v1.2.1",
     "v1_2_1_text":           "\uE016  Added option to set a payload to /bootloader/update.bin",
+    "v1_2_2_text":           "\uE016  Added japanese localisation (thanks to github.com/yyoossk).",
     "Ok_button":    "決定",
 
     "cheats_page.cpp":"",
@@ -105,7 +106,7 @@
     "list_downing":           "ダウンロード中...",
     "list_extracting":            "展開中...",
     "list_All":           "処理完了!",
-    "list_could_done":             "ダウンロードリンクが見つかりませんでした。スイッチがインターネットにアクセスできることを確認してください。\ nこの問題が解決しない場合は、Githubで問題を開いてください。",
+    "list_could_done":             "ダウンロードリンクが見つかりませんでした。スイッチがインターネットにアクセスできることを確認してください。\nこの問題が解決しない場合は、Githubで問題を開いてください。",
 
     "main_frame.cpp":"",
     "main_app":           " - 新しいアプリのアップデートが利用可能",
