@@ -45,7 +45,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
                 new WorkerPage(stagedFrame, "menus/tool_downloading"_i18n , [](){downloadArchive(APP_URL, app);})
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/tool_extracting"_i18n , [](){extractArchive(app);})
+                new WorkerPage(stagedFrame, "menus/tool_extracting"_i18n , [tag](){extractArchive(app, tag);})
             );
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, "menus/tool_all_done"_i18n , true)
