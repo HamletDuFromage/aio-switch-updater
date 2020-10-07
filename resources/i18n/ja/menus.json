@@ -36,8 +36,8 @@
     "v1_2_1_text":           "\uE016  Added option to set a payload to /bootloader/update.bin",
     "v1_2_2":            "v1.2.2",
     "v1_2_2_text":           "\uE016  Added japanese localisation (thanks to github.com/yyoossk).",
-    "v1_2_3":            "v1.2.3",
-    "v1_2_3_text":           "\uE016  Fixed app self-update",
+    "v1_2_4":            "v1.2.4",
+    "v1_2_4_text":           "\uE016  Fixed app self-update",
     "Ok_button":    "決定",
 
     "cheats_page.cpp":"",

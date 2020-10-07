@@ -35,7 +35,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     if(!tag.empty() && tag != APP_VERSION){
         updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");
         std::string text("menus/tool_DownLoad"_i18n  + std::string(APP_URL));
-        updateApp->getClickEvent()->subscribe([&, text](brls::View* view) {
+        updateApp->getClickEvent()->subscribe([&, text, tag](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
             stagedFrame->setTitle("menus/tool_updating"_i18n );
             stagedFrame->addStage(
