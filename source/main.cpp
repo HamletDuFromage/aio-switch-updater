@@ -42,41 +42,42 @@ int main(int argc, char* argv[])
     // Initialize services with a PC shim
     setsysInitialize();
     plInitialize(PlServiceType_User);
-    romfsInit();
 
     nsInitialize();
     socketInitializeDefault();
     nxlinkStdio();
 
     splInitialize();
+
+    romfsInit();
     createTree(CONFIG_PATH);
 
+    
+
+    std::string appName = std::string(argv[0]).substr(5);
+    std::cout << appName << std::endl;
+    std::cout << "in folder" << std::endl;
+    bool star = false;
+    //if(1){
+    if(appName.find(APP_PATH) != std::string::npos){
+        for(auto& p : std::filesystem::directory_iterator(APP_PATH)){
+            if(p.path().extension().string() == ".nro" && p.path().string() != appName){
+                std::cout << p.path().string() << std::endl;
+                std::filesystem::remove(p.path());
+            }
+            if(p.path().extension().string() == ".star"){
+                std::filesystem::remove(p.path());
+                star = true;
+            }
+        }
+    }
+    if(star)  {
+        std::ofstream starFile(std::string(APP_PATH) + ".aio-switch-updater-v" + APP_VERSION + ".nro.star", std::ofstream::out);
+    }
 
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
     brls::Logger::debug("Start");
 
-
-/*     //start code by tiansongyu
-    if(std::filesystem::exists(APP_LANG))
-    {
-        std::ifstream i(APP_LANG);
-        nlohmann::json lang_json;
-        i>>lang_json;
-        int tmp_number =lang_json["language"];
-        lang::set_language((lang::Language)(tmp_number));
-    }
-    else 
-    {
-        //init system language automatically
-        if (auto rc = lang::initialize_to_system_language(); R_FAILED(rc))
-            brls::Logger::debug("Failed to init language: %#x, will fall back to key names\n", rc);
-        int language_number = (int)lang::get_current_language();
-        nlohmann::json json_file;
-        json_file["language"]=language_number;
-        std::ofstream o(APP_LANG);
-        o<<std::setw(4)<<json_file<<std::endl;
-    }
-    //end by tiansongyu  */
     // Create root view
     MainFrame *mainFrame = new MainFrame();
 
@@ -87,11 +88,11 @@ int main(int argc, char* argv[])
     while (brls::Application::mainLoop());
 
     // Exit
+    std::cout << "romfs sucess: " << R_SUCCEEDED(romfsExit()) << std::endl;
     splExit();
     socketExit();
     nsExit();
     setsysExit();
     plExit();
-    romfsExit();
     return EXIT_SUCCESS;
 }

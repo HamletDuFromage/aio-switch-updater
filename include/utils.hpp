@@ -30,7 +30,7 @@ void createTree(std::string path);
 void clearConsole();
 bool isArchive(const char * path);
 void downloadArchive(std::string url, archiveType type);
-void extractArchive(archiveType type);
+void extractArchive(archiveType type, std::string tag = "0");
 void progressTest(std::string url, archiveType type);
 std::string formatListItemTitle(const std::string str, size_t maxScore = 140);
 std::string formatApplicationId(u64 ApplicationId);

@@ -126,9 +126,11 @@ int showDialogBox(std::string text, std::string opt1, std::string opt2){
     return result;
 }
 
-void extractArchive(archiveType type){
+void extractArchive(archiveType type, std::string tag){
     int overwriteInis = 0;
     std::vector<Title> titles;
+    std::string nroPath ="sdmc:" + std::string(APP_PATH);
+    chdir(ROOT_PATH);
     switch(type){
         case sigpatches:
             if(isArchive(SIGPATCHES_FILENAME)) {
@@ -170,6 +172,11 @@ void extractArchive(archiveType type){
             break;
         case app:
             extract(APP_FILENAME);
+            nroPath += "aio-switch-updater-v" + tag + ".nro";
+            //nroPath += "aio-switch-updater-vTEST.nro";
+            envSetNextLoad(nroPath.c_str(), ("\"" + nroPath + "\"").c_str());
+            romfsExit();
+            brls::Application::quit();
             break;
         case cfw:
             if(isArchive(CFW_FILENAME)){

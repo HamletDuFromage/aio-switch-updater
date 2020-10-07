@@ -1,6 +1,8 @@
 #pragma once
 
 #define ROOT_PATH           "/"
+#define APP_PATH            "/switch/aio-switch-updater/"
+#define NRO_PATH            "/switch/aio-switch-updater/aio-switch-updater.nro"
 #define DOWNLOAD_PATH       "/config/aio-switch-updater/"
 #define CONFIG_PATH         "/config/aio-switch-updater/"
 

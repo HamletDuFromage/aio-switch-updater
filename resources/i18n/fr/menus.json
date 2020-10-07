@@ -34,7 +34,10 @@
     "v1_2_0_text":           "\uE016  Now multilingual (thanks to 'github.com/tiansongyu').\n\uE016  Chinese and French are currently supported.",
     "v1_2_1":            "v1.2.1",
     "v1_2_1_text":           "\uE016  Added option to set a payload to /bootloader/update.bin",
+    "v1_2_2":            "v1.2.2",
     "v1_2_2_text":           "\uE016  Added japanese localisation (thanks to github.com/yyoossk).",
+    "v1_2_3":            "v1.2.3",
+    "v1_2_3_text":           "\uE016  Fixed app self-update",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -109,7 +112,7 @@
     "list_could_done":             "Impossible de trouver un lien de téléchargement, assurez vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur Github.",
 
     "main_frame.cpp":"",
-    "main_app":           " - Nouvelle màj de l'app disponible",
+    "main_app":           " - Nouvelle MàJ de l'app disponible",
     "main_v":            " v",
     "main_about":           "A propos",
     "main_update_cfw":             "MàJ du CFW",
@@ -136,7 +139,7 @@
     "tool_inject":             "Injecter un payload",
     "tool_update":           "Mettre à jour l'app (v",
     "tool_DownLoad":            "Télécharger:\nAIO-switch-updater\n\nDe:\n",
-    "tool_updating":           "Mis à jour de l'app",
+    "tool_updating":           "Mise à jour de l'app",
     "tool_downloading":"Téléchargement...",
     "tool_extracting":           "Extraction....",
     "tool_all_done":            " Fini!",
