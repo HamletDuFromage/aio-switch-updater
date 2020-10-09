@@ -52,8 +52,6 @@ int main(int argc, char* argv[])
     romfsInit();
     createTree(CONFIG_PATH);
 
-    
-
     std::string appName = std::string(argv[0]).substr(5);
     std::cout << appName << std::endl;
     std::cout << "in folder" << std::endl;
@@ -88,7 +86,7 @@ int main(int argc, char* argv[])
     while (brls::Application::mainLoop());
 
     // Exit
-    std::cout << "romfs sucess: " << R_SUCCEEDED(romfsExit()) << std::endl;
+    romfsExit();
     splExit();
     socketExit();
     nsExit();

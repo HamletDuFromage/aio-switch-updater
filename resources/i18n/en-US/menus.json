@@ -38,6 +38,8 @@
     "v1_2_2_text":           "\uE016  Added japanese localisation (thanks to github.com/yyoossk).",
     "v1_2_4":            "v1.2.4",
     "v1_2_4_text":           "\uE016  Fixed app self-update",
+    "v1_2_5":            "v1.2.5",
+    "v1_2_5_text":           "\uE016  Improved japanese translation",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",

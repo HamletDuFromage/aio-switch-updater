@@ -45,7 +45,7 @@ DATA		:=	data
 INCLUDES	:=	include lib/zipper/include
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  1.2.4
+APP_VERSION :=  1.2.5
 TARGET		:=	$(notdir $(CURDIR))-v$(APP_VERSION)
 
 ROMFS				:=	resources
@@ -186,6 +186,7 @@ $(ROMFS):
 	@echo Merging ROMFS...
 	@cp -ruf $(CURDIR)/$(BOREALIS_PATH)/resources/. $(CURDIR)/$(ROMFS)/
 	@cp -ruf $(CURDIR)/$(ROMFS)/i18n/zh-CN/. $(CURDIR)/$(ROMFS)/i18n/zh-Hans/
+	@cp -ruf $(CURDIR)/$(ROMFS)/i18n/zh-CN/. $(CURDIR)/$(ROMFS)/i18n/zh-Hant/
 	@rm $(CURDIR)/$(ROMFS)/i18n/*/installer.json $(CURDIR)/$(ROMFS)/i18n/*/main.json $(CURDIR)/$(ROMFS)/i18n/*/popup.json 
 
 $(BUILD): $(ROMFS)
