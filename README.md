@@ -24,7 +24,7 @@ Download the most popular Switch CFWs. After downloading the CFW archive, the pr
 ### ⬦ Update Sigpatches
 For Atmosphere. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available. After downloading the sigpatches archive, the program will ask you whether you want to override your existing .ini files.
 
-### ⬦ Download firmares
+### ⬦ Download firmwares
 Download firmare files to `/firmware` that can then be installed using DayBreak or ChoiDuJour.
 
 ### ⬦ Download cheats
@@ -51,6 +51,7 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 ## Special thanks
 - [tiansongyu](https://github.com/tiansongyu) for bringing support for multi-language and for his Chinese translation.
 - [yyoossk](https://github.com/yyoossk) for the Japanese locale.
+- [sergiou87](https://github.com/sergiou87) for the Spanish locale.
 ### Like the app?
 
 [//]: [![5cbed8a433a3f45a772abaf5_SupportMe_blue-p-500](https://user-images.githubusercontent.com/61667930/93899702-1a2b2680-fce4-11ea-9eaa-4e2b44eebe86.png)](https://ko-fi.com/hamletdufromage)
