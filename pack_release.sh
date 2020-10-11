@@ -5,4 +5,4 @@ cd $DIR
 rm -r switch/aio-switch-updater/
 mkdir -p switch/aio-switch-updater/
 ls -1 *.nro | xargs -L1 -I{} cp {} switch/aio-switch-updater/{}
-zip -r aio-switch-updater.zip switch/
+zip -FSr aio-switch-updater.zip switch/
