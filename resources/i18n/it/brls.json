@@ -1,0 +1,11 @@
+{
+    "hints": {
+        "ok": "OK",
+        "back": "Indietro",
+        "exit": "Esci"
+    },
+
+    "crash_frame": {
+        "button": "OK"
+    }
+}
