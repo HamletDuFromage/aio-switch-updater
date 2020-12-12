@@ -42,6 +42,8 @@
     "v1_2_5_text":           "\uE016  Improved japanese translation",
     "v1_2_6":            "v1.2.6",
     "v1_2_6_text":           "\uE016  Added spanish translation (thanks to 'https://github.com/sergiou87'",
+    "v1_3_0":            "v1.3.0",
+    "v1_3_0_text":           "\uE016  Added back the ability to update CFWs",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -105,7 +107,8 @@
     "list_latest":           "Latest version",
     "list_app":           "app",
     "list_cfw":             "CFW",
-    "list_main":            "\uE016  Main Switch CFWs. If you want to use Atmosphere with Hekate, download Atmosphere, then Hekate.",
+    "list_ams":        "\uE016  Atmosphere CFW.",
+    "list_main":            "\uE016  Main Switch CFWs.",
     "list_latest_ver":           "Latest (ver ",
     "list_cheats":             "cheats",
     "list_down":           "Downloading:\n",
@@ -119,6 +122,7 @@
     "main_app":           " - New app update available",
     "main_v":            " v",
     "main_about":           "About",
+    "main_update_ams":             "Update Atmosphere",
     "main_update_cfw":             "Update CFW",
     "main_update_si":           "Update sigpatches",
     "main_firmwares":            "Download firmwares",
@@ -158,5 +162,12 @@
     "utils_the":           "The downloaded file is not a sigpatches archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, please open an issue on Github.",
     "utils_the_downloaded":             "The downloaded file is not a firmware archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, please open an issue on Github.",
     "ultils_overwrite":           "Do you want to overwrite existing .ini config files?",
-    "ultis_file":            "The downloaded file is not a CFW archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, please open an issue on Github."
+    "ultis_file":            "The downloaded file is not a CFW archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, please open an issue on Github.",
+
+    "reboot_rcm" :        "The Switch will now launch reboot to a special payload in order to finalise the install.",
+    "hekate_dialogue" :     "Do you want to also download Hekate?\nIf not, the Switch will now launch reboot to a special payload in order to finalise the install.",
+    "Yes" :                 "Yes",
+    "No" :                  "No"
+
+
 }

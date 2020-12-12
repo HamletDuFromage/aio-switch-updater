@@ -52,6 +52,7 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 - [tiansongyu](https://github.com/tiansongyu) for bringing support for multi-language and for his Chinese translation.
 - [yyoossk](https://github.com/yyoossk) for the Japanese locale.
 - [sergiou87](https://github.com/sergiou87) for the Spanish locale.
+- [Team Neptune](https://github.com/Team-Neptune) whose rcm code I used
 ### Like the app?
 
 [//]: [![5cbed8a433a3f45a772abaf5_SupportMe_blue-p-500](https://user-images.githubusercontent.com/61667930/93899702-1a2b2680-fce4-11ea-9eaa-4e2b44eebe86.png)](https://ko-fi.com/hamletdufromage)

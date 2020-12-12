@@ -45,7 +45,7 @@ DATA		:=	data
 INCLUDES	:=	include lib/zipper/include
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  1.2.6
+APP_VERSION :=  1.3.0
 TARGET		:=	$(notdir $(CURDIR))-v$(APP_VERSION)
 
 ROMFS				:=	resources
@@ -188,6 +188,8 @@ $(ROMFS):
 	@cp -ruf $(CURDIR)/$(ROMFS)/i18n/zh-CN/. $(CURDIR)/$(ROMFS)/i18n/zh-Hans/
 	@cp -ruf $(CURDIR)/$(ROMFS)/i18n/zh-CN/. $(CURDIR)/$(ROMFS)/i18n/zh-Hant/
 	@rm $(CURDIR)/$(ROMFS)/i18n/*/installer.json $(CURDIR)/$(ROMFS)/i18n/*/main.json $(CURDIR)/$(ROMFS)/i18n/*/popup.json 
+	@$(MAKE) -C $(CURDIR)/rcm -f $(CURDIR)/rcm/Makefile
+	@cp $(CURDIR)/rcm/output/aio_rcm.bin $(CURDIR)/$(ROMFS)/aio_rcm.bin
 
 $(BUILD): $(ROMFS)
 	@[ -d $@ ] || mkdir -p $@

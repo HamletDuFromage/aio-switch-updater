@@ -12,16 +12,22 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
     ProgressEvent::instance().setTotalSteps(entries.size() + 1);
     for (int i = 0; i < (int) entries.size(); i++){
-        if(overwriteInis == 0){
-            if(entries[i].name.substr(entries[i].name.length() - 4) == ".ini"){
-                if(!std::filesystem::exists("/" + entries[i].name)) unzipper.extractEntry(entries[i].name);
+        if(overwriteInis == 0 && entries[i].name.substr(entries[i].name.length() - 4) == ".ini"){
+            if(!std::filesystem::exists("/" + entries[i].name)) unzipper.extractEntry(entries[i].name);
+        }
+        else{
+            if(entries[i].name == "sept/payload.bin" || entries[i].name == "atmosphere/fusee-secondary.bin"){
+                //std::cout << entries[i].name << std::endl;
+                unzipper.extractEntry(entries[i].name, CONFIG_PATH_UNZIP);
+            }
+            else if(entries[i].name.substr(0, 13) == "hekate_ctcaer"){
+                unzipper.extractEntry(entries[i].name);
+                CopyFile(entries[i].name.c_str(), UPDATE_BIN_PATH);
             }
             else{
                 unzipper.extractEntry(entries[i].name);
             }
         }
-        else
-            unzipper.extractEntry(entries[i].name);
         
         ProgressEvent::instance().setStep(i);
     }

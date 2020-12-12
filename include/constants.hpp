@@ -5,6 +5,9 @@
 #define NRO_PATH            "/switch/aio-switch-updater/aio-switch-updater.nro"
 #define DOWNLOAD_PATH       "/config/aio-switch-updater/"
 #define CONFIG_PATH         "/config/aio-switch-updater/"
+#define CONFIG_PATH_UNZIP   "config\\aio-switch-updater"
+
+#define RCM_PAYLOAD_PATH    "romfs:/aio_rcm.bin"
 
 #define APP_URL             "https://github.com/HamletDuFromage/aio-switch-updater/releases/latest/download/aio-switch-updater.zip"
 #define TAGS_INFO           "https://api.github.com/repos/HamletDuFromage/aio-switch-updater/tags"
@@ -20,6 +23,11 @@
 
 #define CFW_URL             "https://hamletdufromage.github.io/switch-cfw/cfw.html"
 #define CFW_FILENAME        "/config/aio-switch-updater/cfw.zip"
+
+#define AMS_URL             "https://hamletdufromage.github.io/switch-cfw/ams.html"
+#define AMS_FILENAME        "/config/aio-switch-updater/ams.zip"
+
+#define HEKATE_URL          "https://hamletdufromage.github.io/switch-cfw/hekate.html"
 
 #define PAYLOAD_URL         "https://hamletdufromage.github.io/switch-payloads/payloads.html"
 
@@ -42,6 +50,7 @@
 #define COLOR_PROFILES_PATH "/config/aio-switch-updater/jc_profiles.json"
 
 #define PAYLOAD_PATH        "/payloads/"
+#define BOOTLOADER_PATH     "/bootloader"
 #define BOOTLOADER_PL_PATH  "/bootloader/payloads/"
 #define UPDATE_BIN_PATH     "/bootloader/update.bin"
 #define REBOOT_PAYLOAD_PATH "/atmosphere/reboot_payload.bin"
@@ -55,6 +64,7 @@ enum archiveType{
     fw,
     app,
     cfw,
+    ams_cfw,
 };
 
 enum CFW{

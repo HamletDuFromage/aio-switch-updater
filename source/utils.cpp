@@ -80,6 +80,8 @@ void downloadArchive(std::string url, archiveType type){
         case cfw:
             downloadFile(url.c_str(), CFW_FILENAME, OFF);
             break;
+        case ams_cfw:
+            downloadFile(url.c_str(), AMS_FILENAME, OFF);
     }
 }
 
@@ -188,6 +190,11 @@ void extractArchive(archiveType type, std::string tag){
                 brls::Application::pushView(new MainFrame());
             }
             break;
+        case ams_cfw:
+            if(isArchive(AMS_FILENAME)){
+                overwriteInis = showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n );
+                extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
+            }
     }
 }
 
@@ -239,6 +246,7 @@ std::vector<std::string> fetchPayloads(){
     if(std::filesystem::exists(PAYLOAD_PATH))       payloadPaths.push_back(PAYLOAD_PATH);
     if(std::filesystem::exists(AMS_PATH))           payloadPaths.push_back(AMS_PATH);
     if(std::filesystem::exists(REINX_PATH))         payloadPaths.push_back(REINX_PATH);
+    if(std::filesystem::exists(BOOTLOADER_PATH))    payloadPaths.push_back(BOOTLOADER_PATH);
     if(std::filesystem::exists(BOOTLOADER_PL_PATH)) payloadPaths.push_back(BOOTLOADER_PL_PATH);
     if(std::filesystem::exists(SXOS_PATH))          payloadPaths.push_back(SXOS_PATH);
     std::vector<std::string> res;

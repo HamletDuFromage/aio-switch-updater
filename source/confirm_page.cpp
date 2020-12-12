@@ -2,14 +2,20 @@
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool done): done(done)
+ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool done, bool reboot): done(done), reboot(reboot)
 {
     this->button = (new brls::Button(brls::ButtonStyle::BORDERLESS))->setLabel(done ? "menus/Back"_i18n : "menus/Continue"_i18n );
     this->button->setParent(this);
     this->button->getClickEvent()->subscribe([frame, this](View* view) {
-        if (!frame->isLastStage()) frame->nextStage();
+        if (!frame->isLastStage()) {
+            frame->nextStage();
+        }
         else if (this->done) {
             brls::Application::pushView(new MainFrame());
+        }
+        else if (this->reboot){
+            std::cout << "rebootin" << std::endl;
+            reboot_to_payload(RCM_PAYLOAD_PATH);
         }
     });
 

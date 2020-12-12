@@ -10,16 +10,18 @@ MainFrame::MainFrame() : TabFrame()
         setTitle(std::string(APP_TITLE) + "menus/main_app"_i18n );
     else
         setTitle(std::string(APP_TITLE) + "menus/main_v"_i18n  + std::string(APP_VERSION));
+
     this->addTab("menus/main_about"_i18n , new AboutTab());
 
     this->addSeparator();
 
+    this->addTab("menus/main_update_ams"_i18n , new AmsTab());
     this->addTab("menus/main_update_cfw"_i18n , new ListDownloadTab(cfw));
     this->addTab("menus/main_update_si"_i18n , new ListDownloadTab(sigpatches));
     this->addTab("menus/main_firmwares"_i18n , new ListDownloadTab(fw));
     this->addTab("menus/main_cheats"_i18n , new ListDownloadTab(cheats));
 
-    this->addSeparator();
+    //this->addSeparator();
 
     this->addTab("menus/main_tools"_i18n , new ToolsTab(tag));
 
