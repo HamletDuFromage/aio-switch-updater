@@ -11,11 +11,11 @@ jobs:
       run: |
         git submodule update --init --recursive
         
-    - name: Building AIO-switch-updater
+    - name: Building aio-switch-updater
       run: |
         make -j$(nproc)
         
     - uses: actions/upload-artifact@master
       with:
-        name: AIO-switch-updater
-        path: AIO-switch-updater.nro
+        name: aio-switch-updater
+        path: aio-switch-updater*.nro
