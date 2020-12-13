@@ -10,7 +10,6 @@ AmsTab::AmsTab() :
     std::string operation = "menus/Getting"_i18n ;
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     links = fetchLinks(AMS_URL);
-    auto hekate_link = fetchLinks(HEKATE_URL);
     operation += "menus/list_cfw"_i18n ;
     this->description->setText(
         "menus/list_ams"_i18n 
@@ -18,11 +17,14 @@ AmsTab::AmsTab() :
 
     this->addView(description);
 
-    std::string hekate_url = std::get<1>(hekate_link)[0];
-    std::string text_hekate = "menus/list_down"_i18n  + std::get<0>(hekate_link)[0];
+    
 
     int nbLinks = std::get<0>(links).size();
     if(nbLinks){
+        auto hekate_link = fetchLinks(HEKATE_URL);
+        std::string hekate_url = std::get<1>(hekate_link)[0];
+        std::string text_hekate = "menus/list_down"_i18n  + std::get<0>(hekate_link)[0];
+
         linkItems.reserve(nbLinks);
         for (int i = 0; i<nbLinks; i++){
             std::string url = std::get<1>(links)[i];

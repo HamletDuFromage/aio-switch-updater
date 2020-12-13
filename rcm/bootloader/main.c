@@ -416,8 +416,12 @@ void ipl_main()
 		}
 	}
 
-	launch_payload("bootloader/update.bin", false);
-	launch_payload("atmosphere/rebbot_payload.bin", false);
+	if (f_stat("bootloader/update.bin", NULL) == FR_OK)
+		launch_payload("bootloader/update.bin", false);
+
+	if (f_stat("atmosphere/reboot_payload.bin", NULL) == FR_OK)	
+		launch_payload("atmosphere/reboot_payload.bin", false);
+
 	EPRINTF("Failed to launch payload.");
 
 	// Halt BPMP if we managed to get out of execution.

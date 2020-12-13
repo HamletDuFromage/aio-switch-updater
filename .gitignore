@@ -13,3 +13,5 @@ resources/icon
 resources/material
 resources/inter
 resources/.gitignore
+rcm/output/
+rcm/build/
