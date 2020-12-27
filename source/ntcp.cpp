@@ -25,6 +25,8 @@ For more information, please refer to <http://unlicense.org>
 
 Additionally, the ntp_packet struct uses code licensed under the BSD 3-clause. See LICENSE-THIRD-PARTY for more information. */
 
+// This code comes from https://github.com/thedax/NX-ntpc, thank you for your work
+
 #include "ntcp.hpp"
 
 #include <cstring>
