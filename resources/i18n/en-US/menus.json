@@ -154,6 +154,7 @@
     "tool_extracting":           "Extracting....",
     "tool_all_done":            " All done!",
     "tool_changelog":           "Changelog",
+    "tool_cleanUp":        "Clean up downloaded files",
 
     "utils.cpp":"",
     "utils_because":           "Because of the size of the FW archive, downloading firmwares in Applet Mode is not supported. Please launch the app with full RAM access.",

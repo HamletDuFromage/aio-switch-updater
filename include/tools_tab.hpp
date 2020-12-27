@@ -11,6 +11,7 @@
 #include "JC_page.hpp"
 #include "extract.hpp"
 #include "utils.hpp"
+//#include "ntcp.hpp"
 
 class ToolsTab : public brls::List
 {
@@ -22,6 +23,8 @@ class ToolsTab : public brls::List
         brls::ListItem* downloadPayload;
         brls::ListItem* changelog;
         brls::ListItem* language;
+        brls::ListItem* cleanUp;
+        brls::ListItem* ntcp;
 
         brls::StagedAppletFrame* stagedFrame;
 

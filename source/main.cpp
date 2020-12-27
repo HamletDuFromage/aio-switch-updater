@@ -24,6 +24,8 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
+TimeServiceType __nx_time_service_type = TimeServiceType_System;
+
 int main(int argc, char* argv[])
 {
     // Init the app

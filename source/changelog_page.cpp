@@ -55,6 +55,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("menus/v1_3_1"_i18n );
     changes.push_back("menus/v1_3_1_text"_i18n );
 
+    /* verTitles.push_back("menus/v1_3_2"_i18n );
+    changes.push_back("menus/v1_3_2_text"_i18n ); */
+
     int nbVersions = verTitles.size();
     items.reserve(nbVersions);
     for(int i = nbVersions -1 ; i >= 0; i--){

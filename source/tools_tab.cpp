@@ -31,6 +31,46 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     });
     rebootPayload->setHeight(LISTITEM_HEIGHT);
     this->addView(rebootPayload);
+
+    /* ntcp = new brls::ListItem("menus/ntcp"_i18n );
+    ntcp->getClickEvent()->subscribe([&](brls::View* view){
+        std::string res = syncTime();
+        brls::Dialog* dialog = new brls::Dialog(res);
+        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+            dialog->close();
+        };
+        dialog->addButton("menus/Ok_button"_i18n , callback);
+        dialog->setCancelable(true);
+        dialog->open();
+
+    });
+    ntcp->setHeight(LISTITEM_HEIGHT);
+    this->addView(ntcp); */
+
+    cleanUp = new brls::ListItem("menus/tool_cleanUp"_i18n );
+    cleanUp->getClickEvent()->subscribe([&](brls::View* view){
+        std::filesystem::remove(AMS_ZIP_PATH);
+        std::filesystem::remove(APP_ZIP_PATH);
+        std::filesystem::remove(CFW_ZIP_PATH);
+        std::filesystem::remove(FW_ZIP_PATH);
+        std::filesystem::remove(CHEATS_ZIP_PATH);
+        std::filesystem::remove(SIGPATCHES_ZIP_PATH);
+        std::filesystem::remove_all(AMS_DIRECTORY_PATH);
+        rmdir(AMS_DIRECTORY_PATH);
+        std::filesystem::remove_all(SEPT_DIRECTORY_PATH);
+        rmdir(SEPT_DIRECTORY_PATH);
+        std::filesystem::remove_all(FW_DIRECTORY_PATH);
+        rmdir(FW_DIRECTORY_PATH);
+        brls::Dialog* dialog = new brls::Dialog("menus/All_done"_i18n);
+        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+            dialog->close();
+        };
+        dialog->addButton("menus/Ok_button"_i18n , callback);
+        dialog->setCancelable(true);
+        dialog->open();
+    });
+    cleanUp->setHeight(LISTITEM_HEIGHT);
+    this->addView(cleanUp);
     
     if(!tag.empty() && tag != APP_VERSION){
         updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");

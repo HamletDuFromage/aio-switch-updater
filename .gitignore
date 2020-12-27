@@ -6,6 +6,7 @@ switch/
 *.nacp
 *.nro
 *.zip
+*.bin
 resources/i18n/zh-Hans
 resources/i18n/zh-Hant
 resources/i18n/en-GB

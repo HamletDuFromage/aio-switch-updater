@@ -55,6 +55,16 @@
 #define UPDATE_BIN_PATH     "/bootloader/update.bin"
 #define REBOOT_PAYLOAD_PATH "/atmosphere/reboot_payload.bin"
 
+#define AMS_ZIP_PATH        "/config/aio-switch-updater/ams.zip"
+#define APP_ZIP_PATH        "/config/aio-switch-updater/app.zip"
+#define CFW_ZIP_PATH        "/config/aio-switch-updater/cfw.zip"
+#define FW_ZIP_PATH         "/config/aio-switch-updater/firmware.zip"
+#define CHEATS_ZIP_PATH     "/config/aio-switch-updater/cheats.zip"
+#define SIGPATCHES_ZIP_PATH "/config/aio-switch-updater/sigpatches.zip"
+#define AMS_DIRECTORY_PATH  "/config/aio-switch-updater/atmosphere/"
+#define SEPT_DIRECTORY_PATH "/config/aio-switch-updater/sept/"
+#define FW_DIRECTORY_PATH   "/firmware/"
+
 #define LISTITEM_HEIGHT     50
 
 
