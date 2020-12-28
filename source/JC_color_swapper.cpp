@@ -28,9 +28,9 @@ int setColor(std::vector<int> colors){
     Result pads, ljc, rjc;
     int res = 0;
     s32 nbEntries;
-    u64 UniquePadIds[2] = {};
+    HidsysUniquePadId UniquePadIds[2] = {};
 
-    pads = hidsysGetUniquePadsFromNpad(CONTROLLER_HANDHELD, UniquePadIds, 2,&nbEntries);
+    pads = hidsysGetUniquePadsFromNpad(HidNpadIdType_Handheld, UniquePadIds, 2,&nbEntries);
     if(R_SUCCEEDED(pads)){
         ljc = hiddbgUpdateControllerColor(colors[0], colors[1], UniquePadIds[0]);
         if (R_FAILED(ljc)) res +=1;
@@ -44,10 +44,11 @@ int setColor(std::vector<int> colors){
 }
 
 int backupToJSON(json &profiles, const char* path){
-    HidControllerColors colors;
-    hidGetControllerColors(CONTROLLER_P1_AUTO, &colors);
+    HidNpadControllerColor color_left;
+    HidNpadControllerColor color_right;
+    Result res = hidGetNpadControllerColorSplit(HidNpadIdType_Handheld, &color_left, &color_right);
     std::vector<int> oldBackups;
-    if (colors.splitSet) {
+    if (R_SUCCEEDED(res)) {
         int i = 0;
         for (const auto& x : profiles.items()){
             if(x.value()["name"] == "_backup") {
@@ -60,10 +61,10 @@ int backupToJSON(json &profiles, const char* path){
         }
         json newBackup = json::object({
             {"name", "_backup"},
-            {"L_JC", BGRToHex(colors.leftColorBody)},
-            {"L_BTN", BGRToHex(colors.leftColorButtons)},
-            {"R_JC", BGRToHex(colors.rightColorBody)},
-            {"R_BTN", BGRToHex(colors.rightColorButtons)}
+            {"L_JC", BGRToHex(color_left.main)},
+            {"L_BTN", BGRToHex(color_left.sub)},
+            {"R_JC", BGRToHex(color_right.main)},
+            {"R_BTN", BGRToHex(color_right.sub)}
         });
         profiles.push_back(newBackup);
         writeJSONToFile(profiles, path);
@@ -76,16 +77,16 @@ int backupToJSON(json &profiles, const char* path){
 
 json backupProfile(){
     json newBackup;
-    HidControllerColors colors;
-    hidGetControllerColors(CONTROLLER_P1_AUTO, &colors);
-    //if(0){
-    if (colors.splitSet) {
+    HidNpadControllerColor color_left;
+    HidNpadControllerColor color_right;
+    Result res = hidGetNpadControllerColorSplit(HidNpadIdType_Handheld, &color_left, &color_right);
+    if (R_SUCCEEDED(res)) {
         newBackup = json::object({
             {"name", "_backup"},
-            {"L_JC", BGRToHex(colors.leftColorBody)},
-            {"L_BTN", BGRToHex(colors.leftColorButtons)},
-            {"R_JC", BGRToHex(colors.rightColorBody)},
-            {"R_BTN", BGRToHex(colors.rightColorButtons)}
+            {"L_JC", BGRToHex(color_left.main)},
+            {"L_BTN", BGRToHex(color_left.sub)},
+            {"R_JC", BGRToHex(color_right.main)},
+            {"R_BTN", BGRToHex(color_right.sub)}
         });
     }
     return newBackup;
@@ -153,9 +154,9 @@ void changeJCColor(std::vector<int> values){
     hidsysInitialize();
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
-    int res = -1;
-    while(res !=0){
-        res = setColor(values);
+    int res = setColor(values);
+    if(res != 0){
+        showDialogBox("Could not change the Joy-Cons color. Make sure they're docked and try again.\nError :" + std::to_string(res), "Ok");
     }
     hiddbgExit();
     hidsysExit();
