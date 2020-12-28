@@ -18,6 +18,13 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     JCcolor->setHeight(LISTITEM_HEIGHT);
     this->addView(JCcolor);
 
+    PCcolor = new brls::ListItem("menus/tool_change_pcrocon"_i18n );
+    PCcolor->getClickEvent()->subscribe([&](brls::View* view){
+        brls::Application::pushView(new PCPage());
+    });
+    PCcolor->setHeight(LISTITEM_HEIGHT);
+    this->addView(PCcolor);
+
     downloadPayload = new brls::ListItem("menus/tool_download"_i18n  + std::string(BOOTLOADER_PL_PATH));
     downloadPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new DownloadPayloadPage());

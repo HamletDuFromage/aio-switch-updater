@@ -9,6 +9,7 @@
 #include "changelog_page.hpp"
 #include "language_option_page.hpp"
 #include "JC_page.hpp"
+#include "PC_page.hpp"
 #include "extract.hpp"
 #include "utils.hpp"
 //#include "ntcp.hpp"
@@ -18,6 +19,7 @@ class ToolsTab : public brls::List
     private:
         brls::ListItem* cheats;
         brls::ListItem* JCcolor;
+        brls::ListItem* PCcolor;
         brls::ListItem* updateApp;
         brls::ListItem* rebootPayload;
         brls::ListItem* downloadPayload;

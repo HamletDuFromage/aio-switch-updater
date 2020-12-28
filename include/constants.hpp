@@ -48,6 +48,7 @@
 #define TITLES_PATH         "titles/"
 
 #define COLOR_PROFILES_PATH "/config/aio-switch-updater/jc_profiles.json"
+#define PC_COLOR_PATH       "/config/aio-switch-updater/pc_profiles.json"
 
 #define PAYLOAD_PATH        "/payloads/"
 #define BOOTLOADER_PATH     "/bootloader"
