@@ -46,6 +46,8 @@
     "v1_3_0_text":           "\uE016  Added back the ability to update CFWs",
     "v1_3_1":            "v1.3.1",
     "v1_3_1_text":           "\uE016  Small fixes for bugs causing hangs.",
+    "v1_3_2":            "v1.3.2",
+    "v1_3_2_text":           "\uE016  Added ability to change the internet color of Pro controllers.\n\uE016 Added the ability to preserve specific files when updating.\n\uE016 Added the ability to clean up downloaded archives.",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -94,10 +96,14 @@
     "jc_color":           "Joy-Con color swapper",
     "jc_backing":            "Backing up the current color profile. Make sure the Joy-Con are docked. If the process hangs, try docking/undocking the JCs.",
     "jc_all_done":           "All done!",
-    "jc_con_color":           "Joy-Con color swapper",
     "jc_change":             "Changing color. Make sure the Joy-Con are docked. If the process hangs, try docking/undocking the JCs.",
     "jc_all_":           "All done! You may need to dock/undock your Joy-Cons for the change to take effect.",
 
+    "pc_you_can" :      "You can change the internal color of your Pro controller. Make sure it's set to Player 1.",
+    "pc_color":           "Pro controller color swapper",
+    "pc_backing":       "Backing up the color profile",
+    "pc_all_done":       "All done! You may need to turn your controller on and off for the change to take effect",
+    
     "list_donwload.cpp":"",
     "Getting":           "Getting ",
     "firmware_text":            "\uE016  Firmware dumps from 'https://darthsternie.net/switch-firmwares/'. Once downloaded, it will be extracted in '/firmware'. You can then install the update through Daybreak or ChoiDuJour.\n\uE016  Current FW: ",
@@ -145,6 +151,7 @@
     "tools_tab.cpp":"",
     "tool_cheats":           "Cheats menu",
     "tool_change":            "Change the Joy-Cons color",
+    "tool_change_procon":      "Change the Pro controller color",
     "tool_download":           "Dowload payloads to ",
     "tool_inject":             "Inject payload",
     "tool_update":           "Update the app (v",

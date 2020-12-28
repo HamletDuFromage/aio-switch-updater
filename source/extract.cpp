@@ -8,14 +8,35 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
     chdir(workingPath);
+    std::set<std::string> ignoreList = readLineByLine(FILES_IGNORE);
+    std::set<std::string>::iterator it;
     zipper::Unzipper unzipper(filename);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
+    int k = -1;
+    bool isIgnored;
     ProgressEvent::instance().setTotalSteps(entries.size() + 1);
     for (int i = 0; i < (int) entries.size(); i++){
+        isIgnored = false;
+        it = ignoreList.begin();
         if(overwriteInis == 0 && entries[i].name.substr(entries[i].name.length() - 4) == ".ini"){
-            if(!std::filesystem::exists("/" + entries[i].name)) unzipper.extractEntry(entries[i].name);
+            if(!std::filesystem::exists("/" + entries[i].name)){
+                unzipper.extractEntry(entries[i].name);
+            }
+            continue;
         }
-        else{
+        while (it != ignoreList.end() ){
+            k = ("/" + entries[i].name).find((*it));
+            //std::cout << k << " " << (*it) << " " << entries[i].name << std::endl;
+            if(k == 0 || k == 1){
+                isIgnored = true;
+                if(!std::filesystem::exists("/" + entries[i].name)){
+                    unzipper.extractEntry(entries[i].name);
+                }
+                break;
+            }
+            it++;
+        }
+        if(!isIgnored){
             if(entries[i].name == "sept/payload.bin" || entries[i].name == "atmosphere/fusee-secondary.bin"){
                 //std::cout << entries[i].name << std::endl;
                 unzipper.extractEntry(entries[i].name, CONFIG_PATH_UNZIP);
@@ -39,16 +60,29 @@ void extract(const char * filename, const char* workingPath, const char* toExclu
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
     chdir(workingPath);
+    std::set<std::string> ignoreList = readLineByLine(FILES_IGNORE);
+    ignoreList.insert(toExclude);
+    std::set<std::string>::iterator it;
     zipper::Unzipper unzipper(filename);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
+    int k = -1;
+    bool isIgnored;
     ProgressEvent::instance().setTotalSteps(entries.size() + 1);
     for (int i = 0; i < (int) entries.size(); i++){
-        if("/" + entries[i].name == toExclude){
-            if(!std::filesystem::exists(toExclude)) {
-                unzipper.extractEntry(entries[i].name);
+        isIgnored = false;
+        it = ignoreList.begin();
+        while (it != ignoreList.end()){
+            k = ("/" + entries[i].name).find((*it));
+            if(k == 0 || k == 1){
+                isIgnored = true;
+                if(!std::filesystem::exists("/" + entries[i].name)){
+                    unzipper.extractEntry(entries[i].name);
+                }
+                break;
             }
+            it++;
         }
-        else {
+        if(!isIgnored) {
             unzipper.extractEntry(entries[i].name);
         }
         

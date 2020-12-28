@@ -19,7 +19,7 @@ Copy the `aio-switch-updater/` directory to `/switch/` in your sdcard
 
 ## Description of the features
 ### ⬦ Update CFW
-Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files.
+Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files. If you would like to preserve additional files or directories, write their path (one line each) in `/config/aio-switch-updater/preserve.txt` and they won't be overwritten when updating.
 
 ### ⬦ Update Sigpatches
 For Atmosphere. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available. After downloading the sigpatches archive, the program will ask you whether you want to override your existing .ini files.
@@ -34,6 +34,7 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 - Reboot to specific payload.
 - Download payloads to `/bootloader/payloads`.
 - Change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`.
+- Change software color scheme of Pro controllers (has to be paired as Player 1). Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/pc_profiles.json`.
 - View which of your games got cheat codes from the app.
 
 ## Screenshots
@@ -53,6 +54,7 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 - [yyoossk](https://github.com/yyoossk) for the Japanese locale.
 - [sergiou87](https://github.com/sergiou87) for the Spanish locale.
 - [Team Neptune](https://github.com/Team-Neptune) whose rcm code I used
+- [fennectech](https://github.com/fennectech) for helping test the app and providing suggestions
 ### Like the app?
 
 [//]: [![5cbed8a433a3f45a772abaf5_SupportMe_blue-p-500](https://user-images.githubusercontent.com/61667930/93899702-1a2b2680-fce4-11ea-9eaa-4e2b44eebe86.png)](https://ko-fi.com/hamletdufromage)

@@ -36,6 +36,7 @@
 #define CHEATS_URL_CONTENTS "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/contents.zip"
 #define CHEATS_FILENAME     "/config/aio-switch-updater/cheats.zip"
 #define CHEATS_EXCLUDE      "/config/aio-switch-updater/exclude.txt"
+#define FILES_IGNORE        "/config/aio-switch-updater/preserve.txt"
 #define UPDATED_TITLES_PATH "/config/aio-switch-updater/updated.dat"
 #define CHEATS_VERSION      "/config/aio-switch-updater/cheats_version.dat"
 #define AMS_CONTENTS        "/atmosphere/contents/"

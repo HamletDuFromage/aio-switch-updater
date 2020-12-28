@@ -55,8 +55,6 @@ int main(int argc, char* argv[])
     createTree(CONFIG_PATH);
 
     std::string appName = std::string(argv[0]).substr(5);
-    std::cout << appName << std::endl;
-    std::cout << "in folder" << std::endl;
     bool star = false;
     //if(1){
     if(appName.find(APP_PATH) != std::string::npos){

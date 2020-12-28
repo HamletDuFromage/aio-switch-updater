@@ -18,7 +18,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     JCcolor->setHeight(LISTITEM_HEIGHT);
     this->addView(JCcolor);
 
-    PCcolor = new brls::ListItem("menus/tool_change_pcrocon"_i18n );
+    PCcolor = new brls::ListItem("menus/tool_change_procon"_i18n );
     PCcolor->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new PCPage());
     });

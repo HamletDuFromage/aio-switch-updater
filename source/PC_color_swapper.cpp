@@ -106,9 +106,9 @@ std::tuple<std::vector<std::string>, std::vector<std::vector<int>>> getProfiles(
     }
     if(profilesJson.empty()){
         profilesJson = {{
-            {"BTN", "0A1E0A"},
-            {"BODY", "82FF96"},
-            {"name", "Animal Crossing: New Horizons"}
+            {"BTN", "2d2d2d"},
+            {"BODY", "e6e6e6"},
+            {"name", "Default black"}
         }};
         writeJSONToFile(profilesJson, path);
     }

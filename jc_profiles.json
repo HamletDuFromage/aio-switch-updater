@@ -77,6 +77,13 @@
         "name": "Pro Black"
     },
     {
+        "L_BTN": "0a0a1e",
+        "L_JC": "0ab9e6",
+        "R_BTN": "0a0a1e",
+        "R_JC": "ff3c28",
+        "name": "Splatoon"
+    },
+    {
         "L_BTN": "281900",
         "L_JC": "C88C32",
         "R_BTN": "322800",

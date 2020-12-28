@@ -38,7 +38,7 @@ JCPage::JCPage() : AppletFrame(true, true)
         items[i] = new brls::ListItem(names[i]);
         items[i]->getClickEvent()->subscribe([&, value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-            stagedFrame->setTitle("menus/jc_concolor"_i18n );
+            stagedFrame->setTitle("menus/jc_con"_i18n );
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/jc_changing"_i18n , 
                 [value](){changeJCColor(value);})
