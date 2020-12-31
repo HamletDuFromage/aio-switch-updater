@@ -1,5 +1,7 @@
-{
-    "BODY": "2d2d2d",
-    "BTN": "e6e6e6",
-    "name": "Default black"
-}
+[
+    {
+        "BODY": "2d2d2d",
+        "BTN": "e6e6e6",
+        "name": "Default black"
+    }
+]
