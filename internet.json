@@ -1,0 +1,14 @@
+[
+    {
+        "ip_addr": "10.13.222.222",
+        "subnet_mask": "255.255.0.0",
+        "gateway": "10.13.37.1",
+        "mtu": 1500,
+        "name": "ACNH lan-play"
+    },
+    {
+        "dns1": "1.1.1.1",
+        "dns2": "1.0.0.1",
+        "name": "Cloudfare DNS"
+    }
+]

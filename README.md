@@ -36,6 +36,8 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 - Change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`.
 - Change software color scheme of Pro controllers (has to be paired as Player 1). Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/pc_profiles.json`.
 - View which of your games got cheat codes from the app.
+- Launch the Switch's web browser.
+- Edit internet settings (DNS, IP address, MTU, etc). Add you own configs to `config/aio-switch-updater/internet.json`. You can find a template in the root of the repo.
 
 ## Screenshots
 ![ss](https://user-images.githubusercontent.com/61667930/93691403-30fb2e80-fad4-11ea-9701-7992a1de53e0.jpg)

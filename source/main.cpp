@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdlib.h>
 #include <string>
 #include <switch.h>
 
@@ -10,8 +10,8 @@
 #include "utils.hpp"
  
 
-#include <string.h>
-#include <stdio.h>
+//#include <string.h>
+//#include <stdio.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <sys/errno.h>
@@ -19,12 +19,12 @@
 #include <dirent.h>
 
 #include <sstream>
-#include<fstream>
+#include <fstream>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-TimeServiceType __nx_time_service_type = TimeServiceType_System;
+//TimeServiceType __nx_time_service_type = TimeServiceType_System;
 
 int main(int argc, char* argv[])
 {

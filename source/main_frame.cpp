@@ -13,7 +13,7 @@ MainFrame::MainFrame() : TabFrame()
 
     this->addTab("menus/main_about"_i18n , new AboutTab());
 
-    this->addSeparator();
+    //this->addSeparator();
 
     this->addTab("menus/main_update_ams"_i18n , new AmsTab());
     this->addTab("menus/main_update_cfw"_i18n , new ListDownloadTab(cfw));

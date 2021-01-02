@@ -54,6 +54,50 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     ntcp->setHeight(LISTITEM_HEIGHT);
     this->addView(ntcp); */
 
+    netSettings = new brls::ListItem("menus/tool_net_settings"_i18n );
+    netSettings->getClickEvent()->subscribe([&](brls::View* view){
+        brls::Application::pushView(new NetPage());
+    });
+    netSettings->setHeight(LISTITEM_HEIGHT);
+    this->addView(netSettings);
+
+    browser = new brls::ListItem("menus/tool_browser"_i18n );
+    browser->getClickEvent()->subscribe([&](brls::View* view){
+        Result rc=0;
+        char url[0xc00] = {0};
+        strcpy(url, "https://duckduckgo.com");
+        int at = appletGetAppletType();
+        std::string error = "";
+        if(at == AppletType_Application) { // Running as a title
+            WebCommonConfig conf;
+            WebCommonReply out;
+            rc = webPageCreate(&conf, url);
+            if (R_FAILED(rc))
+                error += "Error starting Browser\nLookup error code for more info " + rc;
+            webConfigSetJsExtension(&conf, true);
+            webConfigSetPageCache(&conf, true);
+            webConfigSetBootLoadingIcon(&conf, true);
+            webConfigSetWhitelist(&conf, ".*");
+            rc = webConfigShow(&conf, &out);
+            if (R_FAILED(rc))
+                error += "Error starting Browser\nLookup error code for more info " + rc;
+        } else { // Running under applet
+            error += "Running in applet mode\nPlease launch hbmenu by holding R on an APP (e.g. a game) NOT an applet (e.g. Gallery)";
+        }
+        if(!error.empty()){
+            brls::Dialog* dialog = new brls::Dialog(error);
+            brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+                dialog->close();
+            };
+            dialog->addButton("menus/Ok_button"_i18n , callback);
+            dialog->setCancelable(true);
+            dialog->open();
+        }
+        
+    });
+    browser->setHeight(LISTITEM_HEIGHT);
+    this->addView(browser);
+
     cleanUp = new brls::ListItem("menus/tool_cleanUp"_i18n );
     cleanUp->getClickEvent()->subscribe([&](brls::View* view){
         std::filesystem::remove(AMS_ZIP_PATH);
@@ -117,3 +161,4 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     language->setHeight(LISTITEM_HEIGHT);
     this->addView(language); */
 }
+

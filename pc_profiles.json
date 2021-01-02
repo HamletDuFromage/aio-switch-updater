@@ -3,5 +3,15 @@
         "BODY": "2d2d2d",
         "BTN": "e6e6e6",
         "name": "Default black"
+    },
+    {
+        "BODY": "82FF96",
+        "BTN": "0A1E0A",
+        "name": "ACNH green"
+    },
+    {
+        "BODY": "96F5F5",
+        "BTN": "0A1E28",
+        "name": "ACNH blue"
     }
 ]

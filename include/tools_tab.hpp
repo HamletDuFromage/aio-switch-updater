@@ -10,6 +10,7 @@
 #include "language_option_page.hpp"
 #include "JC_page.hpp"
 #include "PC_page.hpp"
+#include "net_page.hpp"
 #include "extract.hpp"
 #include "utils.hpp"
 //#include "ntcp.hpp"
@@ -27,6 +28,8 @@ class ToolsTab : public brls::List
         brls::ListItem* language;
         brls::ListItem* cleanUp;
         brls::ListItem* ntcp;
+        brls::ListItem* netSettings;
+        brls::ListItem* browser;
 
         brls::StagedAppletFrame* stagedFrame;
 

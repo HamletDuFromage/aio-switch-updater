@@ -4,7 +4,7 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 PCPage::PCPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/joy_con"_i18n );
+    this->setTitle("menus/pro_con"_i18n );
     list = new brls::List();
     std::string labelText = "menus/pc_you_can"_i18n;
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
