@@ -47,7 +47,7 @@
     "v1_3_1":            "v1.3.1",
     "v1_3_1_text":           "\uE016  Small fixes for bugs causing hangs.",
     "v1_3_2":            "v1.3.2",
-    "v1_3_2_text":           "\uE016  Added ability to change the internet color of Pro controllers.\n\uE016 Added the ability to preserve specific files when updating.\n\uE016 Added the ability to clean up downloaded archives.",
+    "v1_3_2_text":           "\uE016  Added ability to change the internet color of Pro Controllers.\n\uE016 Added the ability to preserve specific files when updating.\n\uE016 Added the ability to clean up downloaded archives.",
     "v1_4_0":            "v1.4.0",
     "v1_4_0_text":           "\uE016  Added possibility to use pre-set network settings. Add your own in `config/aio-switch-updater/internet.json.\n\uE016 Added web browser.",
     "Ok_button":    "Ok",
@@ -102,7 +102,7 @@
     "jc_all_":           "All done! You may need to dock/undock your Joy-Cons for the change to take effect.",
 
     "pro_con":          "Pro-Con color swapper",
-    "pc_you_can" :      "You can change the internal color of your Pro controller. Make sure it's set to Player 1.",
+    "pc_you_can" :      "You can change the internal color of your Pro Controller. Make sure it's set to Player 1.",
     "pc_color":           "Pro controller color swapper",
     "pc_backing":       "Backing up the color profile",
     "pc_all_done":       "All done! You may need to turn your controller on and off for the change to take effect",
