@@ -184,6 +184,7 @@
     "Yes" :                 "Yes",
     "No" :                  "No",
 
+    "net_settings":     "Internet settings",
     "go_back" : "Go back",
     "Confirm_button" : "Confirm",
     "Cancel_button" : "Cancel"
