@@ -22,10 +22,15 @@ NetPage::NetPage() : AppletFrame(true, true)
 
     std::string labelText = "";
     if(uuid){
-        labelText = "IP Adress: "       + ipToString(profile.ip_setting_data.ip_address_setting.current_addr.addr)
-                    +"\nSubnet Mask: "  + ipToString(profile.ip_setting_data.ip_address_setting.subnet_mask.addr)
-                    +"\nGateway: "      + ipToString(profile.ip_setting_data.ip_address_setting.gateway.addr)
-                    +"\nMTU: "          + std::to_string(unsigned(profile.ip_setting_data.mtu));
+        if(profile.ip_setting_data.ip_address_setting.is_automatic){
+            labelText += "IP Adress: Automatic";
+        }
+        else{
+            labelText = "IP Adress: "       + ipToString(profile.ip_setting_data.ip_address_setting.current_addr.addr)
+                        +"\nSubnet Mask: "  + ipToString(profile.ip_setting_data.ip_address_setting.subnet_mask.addr)
+                        +"\nGateway: "      + ipToString(profile.ip_setting_data.ip_address_setting.gateway.addr);
+        }
+        labelText += "\nMTU: " + std::to_string(unsigned(profile.ip_setting_data.mtu));
 
         if(profile.ip_setting_data.dns_setting.is_automatic){
             labelText += "\nDNS: Automatic";

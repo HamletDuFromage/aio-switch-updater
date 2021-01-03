@@ -45,7 +45,7 @@ DATA		:=	data
 INCLUDES	:=	include lib/zipper/include
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  1.4.0
+APP_VERSION :=  1.4.1
 TARGET		:=	$(notdir $(CURDIR))-v$(APP_VERSION)
 
 ROMFS				:=	resources
@@ -78,7 +78,7 @@ CXXFLAGS	:= $(CFLAGS) -std=gnu++17 -fexceptions -Wno-reorder
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS	:= -lm -lcurl -lnx -lz -lmbedtls -lmbedx509 -lmbedcrypto -lstdc++fs `freetype-config --libs`
+LIBS	:= -lm -lcurl -lnx -lz -lmbedtls -lmbedx509 -lmbedcrypto -lstdc++fs
 #LIBS	:= -ltwili -lm -lcurl -lnx -lz -lmbedtls -lmbedx509 -lmbedcrypto -lstdc++fs `freetype-config --libs`
 
 #---------------------------------------------------------------------------------
