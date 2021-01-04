@@ -73,7 +73,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
             WebCommonReply out;
             rc = webPageCreate(&conf, url);
             if (R_FAILED(rc))
-                error += "Error starting Browser\nLookup error code for more info " + rc;
+                error += "\uE016 Error starting Browser\nLookup error code for more info " + rc;
             webConfigSetJsExtension(&conf, true);
             webConfigSetPageCache(&conf, true);
             webConfigSetBootLoadingIcon(&conf, true);
@@ -82,7 +82,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
             if (R_FAILED(rc))
                 error += "Error starting Browser\nLookup error code for more info " + rc;
         } else { // Running under applet
-            error += "Running in applet mode\nPlease launch hbmenu by holding R on an APP (e.g. a game) NOT an applet (e.g. Gallery)";
+            error += "\uE016 Running in applet mode.\nPlease launch hbmenu by holding R on an APP (e.g. a game) NOT an applet (e.g. Gallery)";
         }
         if(!error.empty()){
             brls::Dialog* dialog = new brls::Dialog(error);

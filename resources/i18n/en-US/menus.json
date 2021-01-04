@@ -168,7 +168,7 @@
     "tool_changelog":           "Changelog",
     "tool_cleanUp":        "Clean up downloaded files",
     "tool_net_settings":    "Edit internet settings",
-    "tool_browser":         "Web Brower",
+    "tool_browser":         "Web Browser",
 
     "utils.cpp":"",
     "utils_because":           "Because of the size of the FW archive, downloading firmwares in Applet Mode is not supported. Please launch the app with full RAM access.",
