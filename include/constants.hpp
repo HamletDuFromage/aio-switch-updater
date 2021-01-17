@@ -57,6 +57,8 @@
 #define BOOTLOADER_PL_PATH  "/bootloader/payloads/"
 #define UPDATE_BIN_PATH     "/bootloader/update.bin"
 #define REBOOT_PAYLOAD_PATH "/atmosphere/reboot_payload.bin"
+#define FUSEE_SECONDARY     "/atmosphere/fusee-secondary.bin"
+#define FUSEE_MTC           "/atmosphere/fusee-mtc.bin"
 
 #define AMS_ZIP_PATH        "/config/aio-switch-updater/ams.zip"
 #define APP_ZIP_PATH        "/config/aio-switch-updater/app.zip"

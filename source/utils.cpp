@@ -252,8 +252,11 @@ std::vector<std::string> fetchPayloads(){
     std::vector<std::string> res;
     for (auto& path : payloadPaths){
         for (const auto & entry : std::filesystem::directory_iterator(path)){
-            if(entry.path().extension().string() == ".bin")
-                res.push_back(entry.path().string().c_str());
+            if(entry.path().extension().string() == ".bin"){
+                std::cout << entry.path().string() << std::endl;
+                if(entry.path().string() != FUSEE_SECONDARY && entry.path().string() != FUSEE_MTC)
+                    res.push_back(entry.path().string().c_str());
+            }
         }
 
     }
