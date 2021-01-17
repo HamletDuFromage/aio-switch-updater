@@ -1,4 +1,5 @@
-.vscode/settings.json
+.vscode/
+!.vscode/c_cpp_properties.json
 build/
 screenshots/
 switch/

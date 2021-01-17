@@ -25,28 +25,39 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
         });
         if(cfw == ams){
             items[i]->registerAction("menus/payload_set"_i18n , brls::Key::X, [this, payload] { 
+                std::string res1;
                 if(R_SUCCEEDED(CopyFile(payload.c_str(), REBOOT_PAYLOAD_PATH))){
-                    brls::Dialog* dialog = new brls::Dialog("menus/payload_success"_i18n  + payload + "menus/payload_to"_i18n  + std::string(REBOOT_PAYLOAD_PATH) + "'.");
-                    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                        dialog->close();
-                    };
-                    dialog->addButton("menus/payload_ok"_i18n , callback);
-                    dialog->setCancelable(true);
-                    dialog->open();
+                    res1 += "menus/payload_success"_i18n  + payload + "menus/payload_to"_i18n  + std::string(REBOOT_PAYLOAD_PATH) + "'.";
+                    
                 }
+                else{
+                    res1 += "Failed.";
+                }
+                brls::Dialog* dialog = new brls::Dialog(res1);
+                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+                    dialog->close();
+                };
+                dialog->addButton("menus/payload_ok"_i18n , callback);
+                dialog->setCancelable(true);
+                dialog->open();
                 return true;
             });
         }
         items[i]->registerAction("menus/payload_set_up"_i18n , brls::Key::Y, [this, payload] { 
+                std::string res2;
                 if(R_SUCCEEDED(CopyFile(payload.c_str(), UPDATE_BIN_PATH))){
-                    brls::Dialog* dialog = new brls::Dialog("menus/payload_success"_i18n  + payload + "menus/payload_to"_i18n  + std::string(UPDATE_BIN_PATH) + "'.");
-                    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                        dialog->close();
-                    };
-                    dialog->addButton("menus/payload_ok"_i18n , callback);
-                    dialog->setCancelable(true);
-                    dialog->open();
+                    res2 += "menus/payload_success"_i18n  + payload + "menus/payload_to"_i18n  + std::string(UPDATE_BIN_PATH) + "'.";
                 }
+                else{
+                    res2 += "Failed.";
+                }
+                brls::Dialog* dialog = new brls::Dialog(res2);
+                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+                    dialog->close();
+                };
+                dialog->addButton("menus/payload_ok"_i18n , callback);
+                dialog->setCancelable(true);
+                dialog->open();
                 return true;
             });
         list->addView(items[i]);

@@ -10,6 +10,10 @@ jobs:
     - name: Update repo.
       run: |
         git submodule update --init --recursive
+
+    - name: Update libnx to 4.0.
+      run: |
+        pacman -S libnx>=4.0
         
     - name: Building aio-switch-updater
       run: |

@@ -52,6 +52,8 @@
     "v1_4_0_text":           "\uE016  Added possibility to use pre-set network settings. Add your own in `config/aio-switch-updater/internet.json.\n\uE016 Added web browser.",
     "v1_4_1":            "v1.4.1",
     "v1_4_1_text":           "\uE016  Fixed misleading display in internet settings page.",
+    "v1_4_2":            "v1.4.2",
+    "v1_4_2_text":           "\uE016  (hopefully) fixed unreliable copy of payloads",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -105,7 +107,7 @@
 
     "pro_con":          "Pro-Con color swapper",
     "pc_you_can" :      "You can change the internal color of your Pro Controller. Make sure it's set to Player 1.",
-    "pc_color":           "Pro controller color swapper",
+    "pc_color":           "Pro Controller color swapper",
     "pc_backing":       "Backing up the color profile",
     "pc_all_done":       "All done! You may need to turn your controller on and off for the change to take effect",
     
@@ -156,7 +158,7 @@
     "tools_tab.cpp":"",
     "tool_cheats":           "Cheats menu",
     "tool_change":            "Change the Joy-Cons color",
-    "tool_change_procon":      "Change the Pro controller color",
+    "tool_change_procon":      "Change the Pro Controller color",
     "tool_download":           "Dowload payloads to ",
     "tool_inject":             "Inject payload",
     "tool_update":           "Update the app (v",

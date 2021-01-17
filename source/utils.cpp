@@ -299,9 +299,9 @@ Result CopyFile(const char src_path[FS_MAX_PATH], const char dest_path[FS_MAX_PA
         fsFileClose(&src_handle);
         return ret;
     }
-        
-    if (!std::filesystem::exists(dest_path))
-        fsFsCreateFile(fs, dest_path, size, 0);
+    
+    std::filesystem::remove(dest_path);
+    fsFsCreateFile(fs, dest_path, size, 0);
         
     ret = fsFsOpenFile(fs, dest_path, FsOpenMode_Write, &dest_handle);
     if (R_FAILED(ret)){
