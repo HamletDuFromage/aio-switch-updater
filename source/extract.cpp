@@ -42,8 +42,12 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
                 unzipper.extractEntry(entries[i].name, CONFIG_PATH_UNZIP);
             }
             else if(entries[i].name.substr(0, 13) == "hekate_ctcaer"){
+                std::cout << "Found hekate payload : " << entries[i].name << std::endl;
                 unzipper.extractEntry(entries[i].name);
-                CopyFile(entries[i].name.c_str(), UPDATE_BIN_PATH);
+                int c = 0;
+                while(R_FAILED(CopyFile(("/" + entries[i].name).c_str(), UPDATE_BIN_PATH)) && c < 10){
+                    std::cout << c++ << std::endl;
+                }
             }
             else{
                 unzipper.extractEntry(entries[i].name);
