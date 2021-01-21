@@ -40,13 +40,41 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 - Edit internet settings (DNS, IP address, MTU, etc). Add you own configs to `config/aio-switch-updater/internet.json`. You can find a template in the root of the repo.
 
 ## Screenshots
-![ss](https://user-images.githubusercontent.com/61667930/93691403-30fb2e80-fad4-11ea-9701-7992a1de53e0.jpg)
-![ss](https://user-images.githubusercontent.com/61667930/93691404-3193c500-fad4-11ea-9647-927c979960bc.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/105403528-263eda80-5c29-11eb-842d-c3f8c4e19466.jpg)
 ![ss](https://user-images.githubusercontent.com/61667930/93721670-42e6db00-fb81-11ea-9f94-1308898398f0.jpg)
 ![ss](https://user-images.githubusercontent.com/61667930/93721673-437f7180-fb81-11ea-9256-377575148a40.jpg)
-![ss](https://user-images.githubusercontent.com/61667930/93691407-322c5b80-fad4-11ea-8879-78047724d9e7.jpg)
-![ss](https://user-images.githubusercontent.com/61667930/93691465-16758500-fad5-11ea-8a5c-c0f9694cfb0e.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/93691404-3193c500-fad4-11ea-9647-927c979960bc.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/105404737-98fc8580-5c2a-11eb-9efb-eb6e69d82b7b.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/105404840-b9c4db00-5c2a-11eb-8385-48454465063c.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/105403519-24751700-5c29-11eb-8c74-d8b6feb444d5.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/105403520-250dad80-5c29-11eb-95e6-d9ab3822d1d6.jpg)
 
+## Build
+You need to have installed devkitPro and devkitARM in order to compile this project.
+
+Install the required dependencies:
+```bash
+sudo (dkp-)pacman -Sy
+```
+```bash
+sudo (dkp-)pacman -S switch-glfw \
+switch-glm \
+switch-mbedtls \
+switch-zlib
+```
+
+Clone the repository
+```bash
+git clone --recursive https://github.com/HamletDuFromage/aio-switch-updater
+cd aio-switch-updater
+```
+
+Compile 
+```bash
+make
+OR
+make -j$(nproc)
+```
 
 ## Disclaimer
 I do not own, host nor distribute any of the files that can be downloaded with this homebrew tool. At the owner's request, I will immediately remove the ability to download the problematic files.
