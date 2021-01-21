@@ -6,7 +6,7 @@ JCPage::JCPage() : AppletFrame(true, true)
 {
     this->setTitle("menus/joy_con"_i18n );
     list = new brls::List();
-    std::string labelText = "menus/jc_you_can_1"_i18n  + std::string(COLOR_PROFILES_PATH) + "menus/jc_you_can_goto"\
+    std::string labelText = "menus/jc_you_can_1"_i18n  + std::string(COLOR_PROFILES_PATH) + "menus/jc_you_can_goto"_i18n +
                             "menus/jc_you_can_2"_i18n ;
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
     list->addView(label);

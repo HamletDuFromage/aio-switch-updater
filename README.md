@@ -33,7 +33,7 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 ## Extras (in the `Tools` tab)
 - Reboot to specific payload.
 - Download payloads to `/bootloader/payloads`.
-- Change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`.
+- Change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`. Use [this webpage](https://hamletdufromage.github.io/JC-color-picker/JCpicker.html) to generate your own profiles.
 - Change software color scheme of Pro Controllers (has to be paired as Player 1). Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/pc_profiles.json`.
 - View which of your games got cheat codes from the app.
 - Launch the Switch's web browser.
@@ -46,7 +46,7 @@ Downloads and extracts daily-updated cheat code. The program will only extract c
 ![ss](https://user-images.githubusercontent.com/61667930/93691404-3193c500-fad4-11ea-9647-927c979960bc.jpg)
 ![ss](https://user-images.githubusercontent.com/61667930/105404737-98fc8580-5c2a-11eb-9efb-eb6e69d82b7b.jpg)
 ![ss](https://user-images.githubusercontent.com/61667930/105404840-b9c4db00-5c2a-11eb-8385-48454465063c.jpg)
-![ss](https://user-images.githubusercontent.com/61667930/105403519-24751700-5c29-11eb-8c74-d8b6feb444d5.jpg)
+![ss](https://user-images.githubusercontent.com/61667930/105407043-80da3580-5c2d-11eb-8f35-27f77079ea53.jpg)
 ![ss](https://user-images.githubusercontent.com/61667930/105403520-250dad80-5c29-11eb-95e6-d9ab3822d1d6.jpg)
 
 ## Build
@@ -83,8 +83,10 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 - [tiansongyu](https://github.com/tiansongyu) for bringing support for multi-language and for his Chinese translation.
 - [yyoossk](https://github.com/yyoossk) for the Japanese locale.
 - [sergiou87](https://github.com/sergiou87) for the Spanish locale.
+- [pedruhb](https://github.com/pedruhb) for the Brazilian locale.
+- [AD2076](https://github.com/AD2076) for the Italian locale.
 - [Team Neptune](https://github.com/Team-Neptune) whose rcm code I used
 - [fennectech](https://github.com/fennectech) for helping test the app and providing suggestions
-### Like the app?
 
+### Like the app?
 [//]: [![5cbed8a433a3f45a772abaf5_SupportMe_blue-p-500](https://user-images.githubusercontent.com/61667930/93899702-1a2b2680-fce4-11ea-9eaa-4e2b44eebe86.png)](https://ko-fi.com/hamletdufromage)
