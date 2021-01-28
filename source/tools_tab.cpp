@@ -1,5 +1,5 @@
 #include "tools_tab.hpp"
- 
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 ToolsTab::ToolsTab(std::string tag) : brls::List()
@@ -123,6 +123,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     cleanUp->setHeight(LISTITEM_HEIGHT);
     this->addView(cleanUp);
     
+    //tag = "1.TEST";
     if(!tag.empty() && tag != APP_VERSION){
         updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");
         std::string text("menus/tool_DownLoad"_i18n  + std::string(APP_URL));

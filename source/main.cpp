@@ -54,25 +54,6 @@ int main(int argc, char* argv[])
     romfsInit();
     createTree(CONFIG_PATH);
 
-    std::string appName = std::string(argv[0]).substr(5);
-    bool star = false;
-    //if(1){
-    if(appName.find(APP_PATH) != std::string::npos){
-        for(auto& p : std::filesystem::directory_iterator(APP_PATH)){
-            if(p.path().extension().string() == ".nro" && p.path().string() != appName){
-                std::cout << p.path().string() << std::endl;
-                std::filesystem::remove(p.path());
-            }
-            if(p.path().extension().string() == ".star"){
-                std::filesystem::remove(p.path());
-                star = true;
-            }
-        }
-    }
-    if(star)  {
-        std::ofstream starFile(std::string(APP_PATH) + ".aio-switch-updater-v" + APP_VERSION + ".nro.star", std::ofstream::out);
-    }
-
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
     brls::Logger::debug("Start");
 

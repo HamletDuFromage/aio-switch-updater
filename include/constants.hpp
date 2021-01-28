@@ -70,6 +70,9 @@
 #define SEPT_DIRECTORY_PATH "/config/aio-switch-updater/sept/"
 #define FW_DIRECTORY_PATH   "/firmware/"
 
+#define ROMFS_FORWARDER     "romfs:/aiosu-forwarder.nro"
+#define FORWARDER_PATH      "/config/aio-switch-updater/aiosu-forwarder.nro"
+
 #define LISTITEM_HEIGHT     50
 
 

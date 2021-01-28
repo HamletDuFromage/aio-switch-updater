@@ -173,10 +173,9 @@ void extractArchive(archiveType type, std::string tag){
             }
             break;
         case app:
-            extract(APP_FILENAME);
-            nroPath += "aio-switch-updater-v" + tag + ".nro";
-            //nroPath += "aio-switch-updater-vTEST.nro";
-            envSetNextLoad(nroPath.c_str(), ("\"" + nroPath + "\"").c_str());
+            extract(APP_FILENAME, CONFIG_PATH);
+            cp(ROMFS_FORWARDER, FORWARDER_PATH);
+            envSetNextLoad(FORWARDER_PATH, ("\"" + std::string(FORWARDER_PATH) + "\"").c_str());
             romfsExit();
             brls::Application::quit();
             break;
@@ -280,6 +279,15 @@ std::string getLatestTag(const char *url){
     catch (...){
         return "";
     }
+}
+
+void cp(const char *from, const char *to){
+    std::ifstream src(from, std::ios::binary);
+    std::ofstream dst(to, std::ios::binary);
+
+    if (src.good() && dst.good()) {
+        dst << src.rdbuf();
+}
 }
 
 Result CopyFile(const char src_path[FS_MAX_PATH], const char dest_path[FS_MAX_PATH]) {

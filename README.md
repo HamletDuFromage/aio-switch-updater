@@ -58,10 +58,12 @@ sudo (dkp-)pacman -Sy
 ```
 ```bash
 sudo (dkp-)pacman -S switch-glfw \
+switch-curl \
 switch-glm \
 switch-mbedtls \
 switch-zlib
 ```
+Use [`switch-ex-curl`](https://github.com/eXhumer/switch-ex-curl) instead of `switch-curl` to use this app with an invalid SSL certificate.
 
 Clone the repository
 ```bash
@@ -72,12 +74,14 @@ cd aio-switch-updater
 Compile 
 ```bash
 make
+```
 OR
+```bash
 make -j$(nproc)
 ```
 
 ## Disclaimer
-I do not own, host nor distribute any of the files that can be downloaded with this homebrew tool. At the owner's request, I will immediately remove the ability to download the problematic files.
+I do not own, host nor distribute any of the files that can be downloaded with this homebrew tool. At the owner's request, I will immediately remove the ability to download any problematic file.
 
 ## Special thanks
 - [tiansongyu](https://github.com/tiansongyu) for bringing support for multi-language and for his Chinese translation.

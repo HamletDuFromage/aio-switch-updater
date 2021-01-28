@@ -13,9 +13,12 @@ jobs:
         
     - name: Building aio-switch-updater
       run: |
+        pushd aiosu-forwarder
+        make
+        popd
         make -j$(nproc)
         
     - uses: actions/upload-artifact@master
       with:
         name: aio-switch-updater
-        path: aio-switch-updater*.nro
+        path: aio-switch-updater.nro
