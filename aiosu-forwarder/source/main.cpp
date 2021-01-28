@@ -15,7 +15,6 @@ int main(int argc, char* argv[])
 
 {
     std::filesystem::create_directory(PATH);
-    std::filesystem::remove(FULL_PATH);
     for (const auto & entry : std::filesystem::directory_iterator(PATH)){
         if(entry.path().string().find(PREFIX) != std::string::npos) {
             std::filesystem::remove(entry.path().string());
@@ -25,6 +24,7 @@ int main(int argc, char* argv[])
 
     if(std::filesystem::exists(CONFIG_PATH)){
         std::filesystem::create_directory(PATH);
+        std::filesystem::remove(FULL_PATH);
         std::filesystem::rename(CONFIG_PATH, FULL_PATH);
         std::filesystem::remove_all("/config/aio-switch-updater/switch/aio-switch-updater/");
         rmdir("/config/aio-switch-updater/switch/aio-switch-updater/");

@@ -8,6 +8,7 @@ switch/
 *.nro
 *.zip
 *.bin
+*.nsp
 resources/i18n/zh-Hans
 resources/i18n/zh-Hant
 resources/i18n/en-GB
