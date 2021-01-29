@@ -8,8 +8,10 @@ MainFrame::MainFrame() : TabFrame()
     std::string tag = getLatestTag(TAGS_INFO);
     if(!tag.empty() && tag != APP_VERSION)
         setTitle(std::string(APP_TITLE) + "menus/main_app"_i18n );
-    else
-        setTitle(std::string(APP_TITLE) + "menus/main_v"_i18n  + std::string(APP_VERSION));
+    /* else
+        setTitle(std::string(APP_TITLE) + "menus/main_v"_i18n  + std::string(APP_VERSION)); */
+    this->setIcon("romfs:/gui_icon.png");
+    this->setFooterText("v" + std::string(APP_VERSION));
 
     this->addTab("menus/main_about"_i18n , new AboutTab());
 

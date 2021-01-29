@@ -58,6 +58,8 @@
     "v1_4_3_text":           "\uE016 Fixed switch not rebooting to hekate payload after updating.",
     "v1_5_0":            "v1.5.0",
     "v1_5_0_text":           "\uE016 Overhauled the app update feature.",
+    "v1_5_1":            "v1.5.0",
+    "v1_5_1_text":           "\uE016 A few graphical tweaks.",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",

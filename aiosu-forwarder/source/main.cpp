@@ -1,6 +1,5 @@
 #include <filesystem>
 #include <string>
-#include <iostream>
 
 #include <switch.h>
 

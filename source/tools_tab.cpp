@@ -123,7 +123,8 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     cleanUp->setHeight(LISTITEM_HEIGHT);
     this->addView(cleanUp);
     
-    //tag = "1.TEST";
+    //tag = "1.TEST"
+    //std::cout << "tag: " << tag << std::endl;
     if(!tag.empty() && tag != APP_VERSION){
         updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");
         std::string text("menus/tool_DownLoad"_i18n  + std::string(APP_URL));

@@ -9,6 +9,7 @@ switch/
 *.zip
 *.bin
 *.nsp
+*.psd
 resources/i18n/zh-Hans
 resources/i18n/zh-Hant
 resources/i18n/en-GB
