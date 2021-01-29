@@ -178,7 +178,7 @@ clean:
 	@echo clean ...
 ifeq ($(strip $(APP_JSON)),)
 	@rm -fr $(BUILD) $(notdir $(CURDIR))*.nro $(notdir $(CURDIR))*.nacp $(notdir $(CURDIR))*.elf
-	@rm -fr $(CURDIR)/aiosu-forwarder/build $(CURDIR)/aiosu-forwarder/*.nro $(CURDIR)/aiosu-forwarder/*.nacp $(CURDIR)/aiosu-forwarder/*.elf
+	#@rm -fr $(CURDIR)/aiosu-forwarder/build $(CURDIR)/aiosu-forwarder/*.nro $(CURDIR)/aiosu-forwarder/*.nacp $(CURDIR)/aiosu-forwarder/*.elf
 else
 	@rm -fr $(BUILD) $(TARGET).nsp $(TARGET).nso $(TARGET).npdm $(TARGET).elf
 endif
