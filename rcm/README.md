@@ -1,6 +1,6 @@
 # RCM Payload
 
-Simple mitm payload to bypass Atmosphere's write protection on the `fusee_secondary.bin`, and `payload.bin` files. This payload is built using the Hekate codebase.
+Simple mitm payload to bypass Atmosphère's write protection on the `fusee_secondary.bin`, and `payload.bin` files. This payload is built using the Hekate codebase.
 This is DeepSea Updater's code.
 
 

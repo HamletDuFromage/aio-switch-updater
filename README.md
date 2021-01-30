@@ -12,7 +12,7 @@ All-in-One Nintendo Switch Updater
 <img src = "https://user-images.githubusercontent.com/61667930/93691188-7833f000-fad1-11ea-866d-42e19be54425.jpg"\><br>
 </p>
 
-A Nintendo Switch homebrew app to download and update CFWs, sigpatches, FWs and cheat codes. Supports Atmosphere, ReiNX and SXOS.
+A Nintendo Switch homebrew app to download and update CFWs, sigpatches, FWs and cheat codes. Supports Atmosphère, ReiNX and SXOS.
 
 ## How to install
 Copy the `aio-switch-updater/` directory to `/switch/` in your sdcard
@@ -22,7 +22,7 @@ Copy the `aio-switch-updater/` directory to `/switch/` in your sdcard
 Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files. If you would like to preserve additional files or directories, write their path (one line each) in `/config/aio-switch-updater/preserve.txt` and they won't be overwritten when updating.
 
 ### ⬦ Update Sigpatches
-For Atmosphere. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available. After downloading the sigpatches archive, the program will ask you whether you want to override your existing .ini files.
+For Atmosphère. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available. After downloading the sigpatches archive, the program will ask you whether you want to override your existing .ini files.
 
 ### ⬦ Download firmwares
 Download firmare files to `/firmware` that can then be installed using DayBreak or ChoiDuJour.

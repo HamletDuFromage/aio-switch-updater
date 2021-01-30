@@ -72,7 +72,7 @@
     "firmware_text":            "\uE016  ファームウェアは'https://darthsternie.net/switch-firmwares/'からダンプされます。 ダウンロードすると、「/ firmware」に抽出されます。 その後、DaybreakまたはChoiDuJourを介してアップデートをインストールできます。\n\uE016  現在のファームウェア: ",
     "currentCeatsver":      "\uE016  これにより、毎日更新されるチートコードのアーカイブが「gbatemp.net」からダウンロードされます。 インストールしていないゲームのチートコードはSDカードに抽出されません。 「ツール->チートメニュー」で更新されたチートをオフにすることができます。\n\uE016  現在のチートバージョン: ",
     "operation_1":           "sigpatch",
-    "list_sigpatches":             "\uE016  Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。セットアップに適したsigpatchを選択してください（AtmosphereまたはHekate + Atmosphere）。",
+    "list_sigpatches":             "\uE016  Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。セットアップに適したsigpatchを選択してください（AtmosphereまたはHekate + Atmosphère）。",
     "operation_2":           "FW",
     "list_not":            "見つかりませんでした",
     "list_latest":           "最新バージョン",
