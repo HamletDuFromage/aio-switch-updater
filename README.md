@@ -89,8 +89,10 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 - [sergiou87](https://github.com/sergiou87) for the Spanish locale.
 - [pedruhb](https://github.com/pedruhb) for the Brazilian locale.
 - [AD2076](https://github.com/AD2076) for the Italian locale.
+- [qazrfv1234](https://github.com/qazrfv1234) for the Traditional Chinese locale.
 - [Team Neptune](https://github.com/Team-Neptune) whose rcm code I used
 - [fennectech](https://github.com/fennectech) for helping test the app and providing suggestions
+- 
 
 ### Like the app?
 [//]: [![5cbed8a433a3f45a772abaf5_SupportMe_blue-p-500](https://user-images.githubusercontent.com/61667930/93899702-1a2b2680-fce4-11ea-9eaa-4e2b44eebe86.png)](https://ko-fi.com/hamletdufromage)
