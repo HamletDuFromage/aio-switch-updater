@@ -8,18 +8,6 @@
 #include "main_frame.hpp"
 #include "constants.hpp"
 #include "utils.hpp"
- 
-
-//#include <string.h>
-//#include <stdio.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <sys/errno.h>
-#include <unistd.h>
-#include <dirent.h>
-
-#include <sstream>
-#include <fstream>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

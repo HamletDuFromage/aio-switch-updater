@@ -5,15 +5,10 @@
 #include <switch.h>
 #include <sstream>
 #include <iomanip>
-#include <iostream> 
 #include <algorithm>
 #include <iterator>
-#include <string.h>
-#include <stdio.h>
 #include <filesystem>
-#include <iostream>
 #include <fstream>
-#include <unistd.h>
 #include <set>
 
 #include <unzipper.h>

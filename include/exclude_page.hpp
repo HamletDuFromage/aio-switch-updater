@@ -2,11 +2,9 @@
 
 #include <borealis.hpp>
 #include <switch.h>
-#include <cstring>
 #include "utils.hpp"
 #include <filesystem>
 #include <fstream>
-#include <iostream>
 #include <algorithm>
 #include <tuple>
 #include <vector>
@@ -22,7 +20,6 @@ class ExcludePage : public brls::AppletFrame
         brls::ListItem* save;
         std::vector<App*> apps;
         std::set<std::string> titles;
-        //std::vector<brls::ToggleListItem*> items;
         std::tuple<std::vector<brls::ToggleListItem*>, std::vector<std::string>> items;
 
     public:

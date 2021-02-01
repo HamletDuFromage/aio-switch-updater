@@ -2,11 +2,9 @@
 
 #include <borealis.hpp>
 #include <switch.h>
-#include <cstring>
 #include "utils.hpp"
 #include <filesystem>
 #include <fstream>
-#include <iostream>
 #include <algorithm>
 
 #include "worker_page.hpp"

@@ -18,7 +18,6 @@ DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text)
     });
 
     this->button2->getClickEvent()->subscribe([frame, this](View* view) {
-        std::cout << "rebootin" << std::endl;
         reboot_to_payload(RCM_PAYLOAD_PATH);
         brls::Application::popView();
     });

@@ -5,14 +5,15 @@ using namespace i18n::literals;
 
 MainFrame::MainFrame() : TabFrame()
 {
+    this->setIcon("romfs:/gui_icon.png");
+    this->setTitle(std::string(APP_TITLE));
+
     std::string tag = getLatestTag(TAGS_INFO);
     if(!tag.empty() && tag != APP_VERSION)
-        setTitle(std::string(APP_TITLE) + "menus/main_app"_i18n );
+        this->setFooterText("v" + std::string(APP_VERSION) + "menus/main_app"_i18n );
     else
-        setTitle(std::string(APP_TITLE));
-    this->setIcon("romfs:/gui_icon.png");
-    this->setFooterText("v" + std::string(APP_VERSION));
-
+        this->setFooterText("v" + std::string(APP_VERSION));
+    
     this->addTab("menus/main_about"_i18n , new AboutTab());
 
     //this->addSeparator();
