@@ -13,6 +13,7 @@
 #include "net_page.hpp"
 #include "extract.hpp"
 #include "utils.hpp"
+#include "hide_tabs_page.hpp"
 //#include "ntcp.hpp"
 
 class ToolsTab : public brls::List
@@ -27,6 +28,7 @@ class ToolsTab : public brls::List
         brls::ListItem* changelog;
         brls::ListItem* language;
         brls::ListItem* cleanUp;
+        brls::ListItem* hideTabs;
         brls::ListItem* ntcp;
         brls::ListItem* netSettings;
         brls::ListItem* browser;

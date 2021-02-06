@@ -1,8 +1,5 @@
 #include "net_page.hpp"
-#include <iostream>
 #include <arpa/inet.h>
-
-
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

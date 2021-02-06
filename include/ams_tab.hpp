@@ -11,7 +11,7 @@
 class AmsTab : public brls::List
 {
     private:
-        std::vector<brls::ListItem*> linkItems;
+        brls::ListItem* listItem;
         brls::Label *notFound;
         brls::Label *description;
     public:

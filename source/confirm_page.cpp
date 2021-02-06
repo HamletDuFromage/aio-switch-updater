@@ -14,7 +14,6 @@ ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool 
             brls::Application::pushView(new MainFrame());
         }
         else if (this->reboot){
-            std::cout << "rebootin" << std::endl;
             reboot_to_payload(RCM_PAYLOAD_PATH);
         }
     });

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <regex>
-#include <iostream>
 #include <set>
 #include <switch.h>
 #include "download.hpp"
@@ -19,7 +18,6 @@ struct app
     uint64_t tid;
     NsApplicationName name;
     NsApplicationIcon icon;
-
     brls::ListItem* listItem;
 };
 

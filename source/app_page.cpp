@@ -1,15 +1,14 @@
 #include "app_page.hpp"
-//TODO: Serialize it in extract.cpp
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-AppPage::AppPage() : AppletFrame(true, true)
+AppPage::AppPage(bool cheatSlips) : AppletFrame(true, true)
 {
     this->setTitle("menus/app_title"_i18n );
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/app_label"_i18n ,
+        cheatSlips ? "menus/app_cheatslips_label"_i18n : "menus/app_label"_i18n,
         true
     );
     list->addView(label);
@@ -26,42 +25,41 @@ AppPage::AppPage() : AppletFrame(true, true)
 
     titles = readLineByLine(UPDATED_TITLES_PATH);
 
-    if(!titles.empty()){
+    if(!titles.empty() || cheatSlips){
         while (true)
         {
             rc = nsListApplicationRecord(&record, sizeof(record), i, &recordCount);
             if (R_FAILED(rc)) break;
-
-            if(recordCount <= 0)
-                break;
+            if(recordCount <= 0) break;
 
             tid = record.application_id;
             rc = nsGetApplicationControlData(NsApplicationControlSource_Storage, tid, &controlData, sizeof(controlData), &controlSize);
             if (R_FAILED(rc)) break;
             rc = nacpGetLanguageEntry(&controlData.nacp, &langEntry);
             if (R_FAILED(rc)) break;
-            if (!langEntry->name || titles.find(formatApplicationId(tid)) == titles.end())
-            {
+            
+            if (!langEntry->name) {
                 i++;
                 continue;
             }
-            App* app = (App*) malloc(sizeof(App));
-            app->tid = tid;
+            if(!cheatSlips && titles.find(formatApplicationId(tid)) == titles.end()) {
+                i++;
+                continue;
+            }
 
-            memset(app->name, 0, sizeof(app->name));
-            strncpy(app->name, langEntry->name, sizeof(app->name)-1);
+            listItem = new brls::ListItem(formatListItemTitle(std::string(langEntry->name)), "", formatApplicationId(tid));
+            listItem->setThumbnail(controlData.icon, sizeof(controlData.icon));
+            if(cheatSlips){
+                listItem->getClickEvent()->subscribe([&, tid](brls::View* view) {
+                    brls::Application::pushView(new DownloadCheatsPage(tid));
+                });
+            }
 
-            memcpy(app->icon, controlData.icon, sizeof(app->icon));
-
-            // Add the ListItem
-            brls::ListItem *listItem = new brls::ListItem(formatListItemTitle(std::string(app->name)), "", formatApplicationId(app->tid));
-
-            listItem->setThumbnail(app->icon, sizeof(app->icon));
             list->addView(listItem);
             i++;
         }
     }
-    std::string text("text_download");
+    std::string text("menus/text_download"_i18n);
     std::string url = "";
     switch(getCFW()){
         case ams:

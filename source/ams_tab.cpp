@@ -25,13 +25,12 @@ AmsTab::AmsTab() :
         std::string hekate_url = std::get<1>(hekate_link)[0];
         std::string text_hekate = "menus/list_down"_i18n  + std::get<0>(hekate_link)[0];
 
-        linkItems.reserve(nbLinks);
         for (int i = 0; i<nbLinks; i++){
             std::string url = std::get<1>(links)[i];
             std::string text("menus/list_down"_i18n  + std::get<0>(links)[i] + "menus/list_from"_i18n  + url);
-            linkItems[i] = new brls::ListItem(std::get<0>(links)[i]);
-            linkItems[i]->setHeight(LISTITEM_HEIGHT);
-            linkItems[i]->getClickEvent()->subscribe([&, text, text_hekate, url, hekate_url, operation](brls::View* view) {
+            listItem = new brls::ListItem(std::get<0>(links)[i]);
+            listItem->setHeight(LISTITEM_HEIGHT);
+            listItem->getClickEvent()->subscribe([&, text, text_hekate, url, hekate_url, operation](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(operation);
                 stagedFrame->addStage(
@@ -57,7 +56,7 @@ AmsTab::AmsTab() :
                 );
                 brls::Application::pushView(stagedFrame);
             });
-            this->addView(linkItems[i]);
+            this->addView(listItem);
         }
     }
     else{

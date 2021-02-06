@@ -9,6 +9,7 @@
 
 #include "worker_page.hpp"
 #include "confirm_page.hpp"
+#include "download_cheats_page.hpp"
 
 typedef struct app App;
 
@@ -19,10 +20,10 @@ class AppPage : public brls::AppletFrame
         brls::List* list;
         brls::Label* label;
         brls::ListItem* download;
+        brls::ListItem* listItem;
         std::vector<App*> apps;
         std::set<std::string> titles;
-        std::vector<brls::ListItem*> items;
 
     public:
-        AppPage();
+        AppPage(bool cheatSlips = false);
 };

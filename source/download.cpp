@@ -7,6 +7,8 @@
 #define API_AGENT           "HamletDuFromage"
 #define _1MiB   0x100000
 
+using json = nlohmann::json;
+
 typedef struct
 {
     char *memory;
@@ -189,10 +191,11 @@ std::string fetchTitle(const char *url){
     return ver;
 }
 
-std::string downloadPage(const char* url){
+std::string downloadPage(const char* url, std::vector<std::string> headers, std::string body){
     std::string res;
     CURL *curl_handle; 
     struct MemoryStruct chunk;
+    struct curl_slist *list = NULL;
  
     chunk.memory = static_cast<char *>(malloc(1));  /* will be grown as needed by the realloc above */ 
     chunk.size = 0;    /* no data at this point */ 
@@ -200,6 +203,16 @@ std::string downloadPage(const char* url){
     curl_global_init(CURL_GLOBAL_ALL);
     curl_handle = curl_easy_init();
     curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+    if(!headers.empty()){
+        for (auto& h : headers){
+            list = curl_slist_append(list, h.c_str());
+        }
+        curl_easy_setopt(curl_handle, CURLOPT_HTTPHEADER, list);
+    }
+    if(body != "") {
+        curl_easy_setopt(curl_handle, CURLOPT_POSTFIELDS, body.c_str());
+    }
+
     curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback2);
     curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
     curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, API_AGENT);
@@ -212,4 +225,14 @@ std::string downloadPage(const char* url){
  
     curl_global_cleanup();
     return res;
+}
+
+json getRequest(std::string url, std::vector<std::string> headers, std::string body) {
+    std::string request;
+    request = downloadPage(url.c_str(), headers, body);
+
+    json res = {};
+    bool valid = json::accept(request);
+    if(valid)       return json::parse(request);
+    else            return json::object();
 }

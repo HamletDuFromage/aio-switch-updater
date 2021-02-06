@@ -130,7 +130,6 @@
     "list_cfw":             "CFW",
     "list_ams":        "\uE016  請從清單進行選擇更新的項目，你可以選擇包含可執行第三方自製程式韌體的Atmosphère。\n\uE016 DeepSea是由Team Neptune提供的CFW整合套件，包括Atmosphère、hekate與數種第三方自製程式。",
     "list_main":            "\uE016  備用CFWs、引導程序",
-    "list_latest_ver":           "最新(版本 ",
     "list_cheats":             "金手指",
     "list_down":           "正在下載:\n",
     "list_from":            "\n\n來源:\n",

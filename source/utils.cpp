@@ -252,7 +252,6 @@ std::vector<std::string> fetchPayloads(){
     for (auto& path : payloadPaths){
         for (const auto & entry : std::filesystem::directory_iterator(path)){
             if(entry.path().extension().string() == ".bin"){
-                std::cout << entry.path().string() << std::endl;
                 if(entry.path().string() != FUSEE_SECONDARY && entry.path().string() != FUSEE_MTC)
                     res.push_back(entry.path().string().c_str());
             }
@@ -287,7 +286,7 @@ void cp(const char *from, const char *to){
 
     if (src.good() && dst.good()) {
         dst << src.rdbuf();
-}
+    }
 }
 
 Result CopyFile(const char src_path[FS_MAX_PATH], const char dest_path[FS_MAX_PATH]) {

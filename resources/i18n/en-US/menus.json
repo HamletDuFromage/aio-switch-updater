@@ -3,7 +3,8 @@
     "About_Title":           "All-in-One Nintendo Switch Updater",
     "copyright":           "AIO-switch-updater is licensed under GPL-3.0\n\u00A9 2020 HamletDuFromage",
     "Disclaimers":            "\uE016  Aside from cheat codes that are mirrored from the main Gbatemp thread, HamletDuFromage isn't hosting anything. All credits go to respective owners.\n\uE016  Links are refreshed every three hours. If a link remains broken after 3 hours have passed, please open a Github issue.\n",
-    
+    "donate":           "\uE016  Like the app? Consider donating to support my efforts: 'https://git.io/donate_homlet'",
+
     "app_page.cpp":"",
     "app_title":            "Installed cheats",
     "app_label":           "The following titles have received cheat code updates the last time you used the app. Please note that despite having been downloaded for a game, cheats may not match its current update.",
@@ -62,6 +63,8 @@
     "v1_5_1_text":           "\uE016 A few graphical tweaks.",
     "v1_5_2":            "v1.5.2",
     "v1_5_2_text":           "\uE016 Added support for Traditional Chinese (thanks to 'https://github.com/qazrfv1234')",
+    "v2_0_0":            "v2.0.0",
+    "v2_0_0_text":           "\uE016 Added ability to download cheatslips cheats\n\uE016 Added way to toggle out tabs\n\uE016 Various code improvements",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -72,6 +75,16 @@
     "cheat_delete_all_cheat":           "Delete all cheats",
     "cheat_Deleting":            "Deleting...",
     "cheat_All_done":           "All done!",
+
+    "get_cheatslips":           "Download CheatSlips.com cheat sheets",
+    "download_cheatslips":      "Download a selection of cheat sheets from CheatSlips.com.\nThose cheat codes will be added to the end of your existing cheat file.",
+    "delete_cheat":             "Delete existing cheat file",
+    "couldnt_dl_cheats":        "Could not fetch selected cheat codes/invalid token.\nYou may have reached your daily download quota. Head on to 'https://www.cheatslips.com/subscriptions' to see increase it.\n",
+    "cheat_cheat_content":      "Cheatsheet content: ",
+    "app_cheatslips_label":     "Select a game to download cheats for.",
+    "/wrong_cheatslips_id":     "Couldn't retrieve token, make you enter you login properly",
+    "see_more":                 "See more",
+    "download_cheats":          "Download cheats and go back",
 
     "choice_page.cpp":"",
     "choice_yes":"Yes",
@@ -132,7 +145,7 @@
     "list_cfw":             "CFW",
     "list_ams":        "\uE016  From this menu, you can download and update the Atmosphère custom firmware necessary to run homebrew software.\n\uE016  DeepSea by Team Neptune is a CFW pack that includes Atmosphère, hekate, and various homebrew apps.",
     "list_main":            "\uE016  Alternative CFWs, bootloaders.",
-    "list_latest_ver":           "Latest (ver ",
+    "list_latest_ver":           "Download GBAtemp.net cheat archive (ver ",
     "list_cheats":             "cheats",
     "list_down":           "Downloading:\n",
     "list_from":            "\n\nFrom:\n",
@@ -163,6 +176,9 @@
     "payload_shut":            "Shut Down",
     "payload_reboot_2":           "Reboot",
 
+    "hide_tabs_page":       "Hide tabs",
+    "hide_tabs_label":      "Hide tabs from the main menu",
+
     "tools_tab.cpp":"",
     "tool_cheats":           "Cheats menu",
     "tool_change":            "Change the Joy-Cons color",
@@ -177,6 +193,7 @@
     "tool_all_done":            " All done!",
     "tool_changelog":           "Changelog",
     "tool_cleanUp":        "Clean up downloaded files",
+    "hide_tabs":            "Hide tabs",
     "tool_net_settings":    "Edit internet settings",
     "tool_browser":         "Web Browser",
 

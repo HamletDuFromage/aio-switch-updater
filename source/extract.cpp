@@ -26,7 +26,6 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
         }
         while (it != ignoreList.end() ){
             k = ("/" + entries[i].name).find((*it));
-            //std::cout << k << " " << (*it) << " " << entries[i].name << std::endl;
             if(k == 0 || k == 1){
                 isIgnored = true;
                 if(!std::filesystem::exists("/" + entries[i].name)){
@@ -38,15 +37,13 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
         }
         if(!isIgnored){
             if(entries[i].name == "sept/payload.bin" || entries[i].name == "atmosphere/fusee-secondary.bin"){
-                //std::cout << entries[i].name << std::endl;
                 unzipper.extractEntry(entries[i].name, CONFIG_PATH_UNZIP);
             }
             else if(entries[i].name.substr(0, 13) == "hekate_ctcaer"){
-                std::cout << "Found hekate payload : " << entries[i].name << std::endl;
                 unzipper.extractEntry(entries[i].name);
                 int c = 0;
                 while(R_FAILED(CopyFile(("/" + entries[i].name).c_str(), UPDATE_BIN_PATH)) && c < 10){
-                    std::cout << c++ << std::endl;
+                    c++;
                 }
             }
             else{

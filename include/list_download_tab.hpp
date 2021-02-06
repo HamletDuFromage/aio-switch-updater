@@ -10,7 +10,8 @@
 class ListDownloadTab : public brls::List
 {
     private:
-        std::vector<brls::ListItem*> linkItems;
+        brls::ListItem* listItem;
+        brls::ListItem *cheatslipsItem;
         brls::Label *notFound;
         brls::Label *description;
     public:

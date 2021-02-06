@@ -11,6 +11,8 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
 
     this->button = new brls::Button(brls::ButtonStyle::BORDERLESS);  // avoid back button bug
     this->button->setParent(this);
+
+    this->registerAction("", brls::Key::B, [this] { return true; });
 }
 
 void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
