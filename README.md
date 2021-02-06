@@ -106,4 +106,4 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 ### Like the app?
 - BTC: 1CoFc1bY5AHLP6Noe1zmqnJnp7ZWBxyo79
 - ETH: 0xf68f568e21a15934e0e9a6949288c3ca009140ba
-- LINKCHAIN: 0xf68f568e21a15934e0e9a6949288c3ca009140ba
+- CHAINLINK: 0xf68f568e21a15934e0e9a6949288c3ca009140ba
