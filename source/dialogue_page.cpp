@@ -25,6 +25,16 @@ DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text)
     this->label = new brls::Label(brls::LabelStyle::DIALOG, "menus/hekate_dialogue"_i18n + "\n\n" + text, true);
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
+
+    this->navigationMap.add(
+        this->button1,
+        brls::FocusDirection::RIGHT,
+        this->button2);
+
+    this->navigationMap.add(
+        this->button2,
+        brls::FocusDirection::LEFT,
+        this->button1);
 }
 
 void DialoguePage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
@@ -63,12 +73,6 @@ brls::View* DialoguePage::getDefaultFocus()
     return this->button1;
 }
 
-brls::View* DialoguePage::getNextFocus(brls::FocusDirection direction, void* parentUserdata){
-    if(direction == brls::FocusDirection::LEFT){
-        return this->button1;
-    }
-    if(direction == brls::FocusDirection::RIGHT){
-        return this->button2;
-    }
-    return nullptr;
+brls::View* DialoguePage::getNextFocus(brls::FocusDirection direction, brls::View* currentView){
+    return this->navigationMap.getNextFocus(direction, currentView);
 }
