@@ -95,6 +95,16 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
 
     }
 
+    else{
+        notFound = new brls::Label(
+            brls::LabelStyle::DESCRIPTION,
+            "menus/list_could_done"_i18n ,
+            true
+        );
+        notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
+        this->addView(notFound);
+    }
+
     if(type == cheats){
         cheatSlipLabel = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
@@ -156,16 +166,6 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
             }
         });
         this->addView(cheatslipsItem);
-    }
-
-    else{
-        notFound = new brls::Label(
-            brls::LabelStyle::DESCRIPTION,
-            "menus/list_could_done"_i18n ,
-            true
-        );
-        notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
-        this->addView(notFound);
     }
 
 }
