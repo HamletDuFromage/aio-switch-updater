@@ -84,7 +84,7 @@
     "quota_cheatslips":         "Quota exceeded for today!\nHead on to 'https://www.cheatslips.com/subscriptions' to see increase it.",
     "cheat_cheat_content":      "Cheatsheet content: ",
     "app_cheatslips_label":     "Select a game to download cheats for.",
-    "/wrong_cheatslips_id":     "Couldn't retrieve token, make you enter you login properly",
+    "wrong_cheatslips_id":     "Couldn't retrieve token, make you enter you login properly",
     "see_more":                 "See more",
     "download_cheats":          "Download cheats and go back",
 

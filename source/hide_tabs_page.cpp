@@ -62,7 +62,7 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
     if(hideStatus.find("cheats") != hideStatus.end()) {
         status = hideStatus["cheats"];
     }
-    cheats = new brls::ToggleListItem("menus/Download cheats"_i18n, status);
+    cheats = new brls::ToggleListItem("menus/main_cheats"_i18n, status);
     list->addView(cheats);
 
     list->registerAction("menus/save"_i18n , brls::Key::B, [this] { 
