@@ -56,6 +56,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
                 ids.push_back(e.second);
             }
         }
+        int error = 0;
         if(!ids.empty()) {
             json token;
             std::ifstream tokenFile(TOKEN_PATH);
@@ -69,12 +70,29 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
             if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
                 for (const auto& p : cheatsInfo["cheats"].items()) {
                     if(std::find(ids.begin(), ids.end(), p.value()["id"]) != ids.end()) {
-                        WriteCheats(tid, bid, p.value()["content"]);
+                        if(p.value()["content"].get<std::string>() == "Quota exceeded for today !"){
+                            error = 1;
+                        }
+                        else {
+                            WriteCheats(tid, bid, p.value()["content"]);
+                        }
                     }
                 }
             }
             else {
-                brls::Dialog* dialog = new brls::Dialog("menus/couldnt_dl_cheats"_i18n);
+                error = 2;
+            }
+
+            if(error != 0){
+                brls::Dialog* dialog;
+                switch(error){
+                    case 1:
+                        dialog = new brls::Dialog("menus/quota_cheatslips"_i18n);
+                        break;
+                    case 2:
+                        dialog = new brls::Dialog("menus/couldnt_dl_cheats"_i18n);
+                        break;
+                }
                 brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                     dialog->close();
                 };
@@ -83,7 +101,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
                 dialog->open();
             }
         }
-        brls::Application::popView();
+        if(error == 0) brls::Application::popView();
         return true;
     });
 

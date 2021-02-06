@@ -77,9 +77,11 @@
     "cheat_All_done":           "All done!",
 
     "get_cheatslips":           "Download CheatSlips.com cheat sheets",
+    "cheatslips_label":         "\uE016  Log into CheatSlips.com and download cheat sheets for your games.",
     "download_cheatslips":      "Download a selection of cheat sheets from CheatSlips.com.\nThose cheat codes will be added to the end of your existing cheat file.",
     "delete_cheat":             "Delete existing cheat file",
-    "couldnt_dl_cheats":        "Could not fetch selected cheat codes/invalid token.\nYou may have reached your daily download quota. Head on to 'https://www.cheatslips.com/subscriptions' to see increase it.\n",
+    "couldnt_dl_cheats":        "Could not fetch selected cheat codes/invalid token.",
+    "quota_cheatslips":         "Quota exceeded for today!\nHead on to 'https://www.cheatslips.com/subscriptions' to see increase it.",
     "cheat_cheat_content":      "Cheatsheet content: ",
     "app_cheatslips_label":     "Select a game to download cheats for.",
     "/wrong_cheatslips_id":     "Couldn't retrieve token, make you enter you login properly",

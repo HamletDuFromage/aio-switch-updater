@@ -5,11 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/HamletDuFromage/aio-switch-updater)
 
 [![btc](https://img.shields.io/badge/BTC-1CoFc1bY5AHLP6Noe1zmqnJnp7ZWBxyo79-yellow)](https://github.com/HamletDuFromage/aio-switch-updater#like-the-app)
-
 [![eth](https://img.shields.io/badge/ETH-0xf68f568e21a15934e0e9a6949288c3ca009140ba-purple)](https://github.com/HamletDuFromage/aio-switch-updater#like-the-app)
-
-[![eth](https://img.shields.io/badge/LINK-0xf68f568e21a15934e0e9a6949288c3ca009140ba-lightblue
-)](https://github.com/HamletDuFromage/aio-switch-updater#like-the-app)
 
 [//]: ([![ko-fi](https://img.shields.io/badge/ko--fi-buy%20me%20a%20coffee-ff69b4)](https://ko-fi.com/hamletdufromage))
 

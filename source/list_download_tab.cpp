@@ -65,7 +65,43 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
     }
 
     this->addView(description);
+
+    int nbLinks = std::get<0>(links).size();
+    if(nbLinks){
+        for (int i = 0; i<nbLinks; i++){
+            std::string url = std::get<1>(links)[i];
+            std::string text("menus/list_down"_i18n  + std::get<0>(links)[i] + "menus/list_from"_i18n  + url);
+            listItem = new brls::ListItem(std::get<0>(links)[i]);
+            listItem->setHeight(LISTITEM_HEIGHT);
+            listItem->getClickEvent()->subscribe([&, text, url, type, operation](brls::View* view) {
+                brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
+                stagedFrame->setTitle(operation);
+                stagedFrame->addStage(
+                    new ConfirmPage(stagedFrame, text)
+                );
+                stagedFrame->addStage(
+                    new WorkerPage(stagedFrame, "menus/list_downing"_i18n , [url, type](){downloadArchive(url, type);})
+                );
+                stagedFrame->addStage(
+                    new WorkerPage(stagedFrame, "menus/list_extracting"_i18n , [type](){extractArchive(type);})
+                );
+                stagedFrame->addStage(
+                    new ConfirmPage(stagedFrame, "menus/list_All"_i18n , true)
+                );
+                brls::Application::pushView(stagedFrame);
+            });
+            this->addView(listItem);
+        }
+
+    }
+
     if(type == cheats){
+        cheatSlipLabel = new brls::Label(
+        brls::LabelStyle::DESCRIPTION,
+        "menus/cheatslips_label"_i18n ,
+            true
+        );
+        this->addView(cheatSlipLabel);
         cheatslipsItem = new brls::ListItem("menus/get_cheatslips"_i18n);
         cheatslipsItem->setHeight(LISTITEM_HEIGHT);
         cheatslipsItem->getClickEvent()->subscribe([&](brls::View* view) {
@@ -122,34 +158,6 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
         this->addView(cheatslipsItem);
     }
 
-    int nbLinks = std::get<0>(links).size();
-    if(nbLinks){
-        for (int i = 0; i<nbLinks; i++){
-            std::string url = std::get<1>(links)[i];
-            std::string text("menus/list_down"_i18n  + std::get<0>(links)[i] + "menus/list_from"_i18n  + url);
-            listItem = new brls::ListItem(std::get<0>(links)[i]);
-            listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([&, text, url, type, operation](brls::View* view) {
-                brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-                stagedFrame->setTitle(operation);
-                stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, text)
-                );
-                stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/list_downing"_i18n , [url, type](){downloadArchive(url, type);})
-                );
-                stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/list_extracting"_i18n , [type](){extractArchive(type);})
-                );
-                stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, "menus/list_All"_i18n , true)
-                );
-                brls::Application::pushView(stagedFrame);
-            });
-            this->addView(listItem);
-        }
-
-    }
     else{
         notFound = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
