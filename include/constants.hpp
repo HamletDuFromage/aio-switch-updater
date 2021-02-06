@@ -35,6 +35,7 @@
 #define CHEATS_URL_TITLES   "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/titles.zip"
 #define CHEATS_URL_CONTENTS "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/contents.zip"
 #define LOOKUP_TABLE_URL    "https://raw.githubusercontent.com/HamletDuFromage/switch-cheats-db/master/versions.json"
+#define CHEATSLIPS_CHEATS_URL "https://www.cheatslips.com/api/v1/cheats/"
 #define CHEATSLIPS_TOKEN_URL "https://www.cheatslips.com/api/v1/token"
 #define TOKEN_PATH          "/config/aio-switch-updater/token.json"
 #define CHEATS_FILENAME     "/config/aio-switch-updater/cheats.zip"

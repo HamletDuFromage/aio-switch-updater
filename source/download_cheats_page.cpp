@@ -20,7 +20,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
 
     if(bid != "") {
         std::vector<std::string> headers = {"accept: application/json"};
-        json cheatsInfo = getRequest(("https://www.cheatslips.com/api/v1/cheats/" + formatApplicationId(tid) + "/" + bid).c_str(), headers);
+        json cheatsInfo = getRequest((CHEATSLIPS_CHEATS_URL + formatApplicationId(tid) + "/" + bid).c_str(), headers);
         if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
             for (const auto& p : cheatsInfo["cheats"].items()) {
                 json cheat = p.value();
