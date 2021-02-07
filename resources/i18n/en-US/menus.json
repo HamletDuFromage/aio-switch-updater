@@ -81,10 +81,10 @@
     "download_cheatslips":      "Download a selection of cheat sheets from CheatSlips.com.\nThose cheat codes will be added to the end of your existing cheat file.",
     "delete_cheat":             "Delete existing cheat file",
     "couldnt_dl_cheats":        "Could not fetch selected cheat codes/invalid token.",
-    "quota_cheatslips":         "Quota exceeded for today!\nHead on to 'https://www.cheatslips.com/subscriptions' to see increase it.",
+    "quota_cheatslips":         "Quota exceeded for today!\nHead on to 'https://www.cheatslips.com/subscriptions' to see how to increase it.",
     "cheat_cheat_content":      "Cheatsheet content: ",
     "app_cheatslips_label":     "Select a game to download cheats for.",
-    "wrong_cheatslips_id":     "Couldn't retrieve token, make you enter you login properly",
+    "wrong_cheatslips_id":     "Couldn't retrieve token, make sure you enter you login properly",
     "see_more":                 "See more",
     "download_cheats":          "Download cheats and go back",
 
