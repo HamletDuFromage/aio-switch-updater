@@ -65,8 +65,8 @@
     "v1_5_2_text":           "\uE016 Added support for Traditional Chinese (thanks to 'https://github.com/qazrfv1234')",
     "v2_0_0":            "v2.0.0",
     "v2_0_0_text":           "\uE016 Added ability to download cheatslips cheats.\n\uE016 Added way to toggle out tabs.\n\uE016 Various code improvements.",
-    "v2_0_0":            "v2.0.0",
-    "v2_0_0_text":           "\uE016 Fixed a bug not letting the user click no when asked if they want to install hekate.n\uE016 Correct a bunch of typos.",
+    "v2_0_1":            "v2.0.1",
+    "v2_0_1_text":           "\uE016 Fixed a bug not letting the user click no when asked if they want to install hekate.n\uE016 Correct a bunch of typos.",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
