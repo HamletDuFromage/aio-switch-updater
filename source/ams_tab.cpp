@@ -6,10 +6,10 @@ using namespace i18n::literals;
 AmsTab::AmsTab() :
     brls::List()
 {
-    std::tuple<std::vector<std::string>, std::vector<std::string>> links;
+    std::vector<std::pair<std::string, std::string>> links;
     std::string operation = "menus/Getting"_i18n ;
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
-    links = fetchLinks(AMS_URL);
+    links = getLinks(AMS_URL);
     operation += "menus/list_cfw"_i18n ;
     this->description->setText(
         "menus/list_ams"_i18n 
@@ -19,16 +19,16 @@ AmsTab::AmsTab() :
 
     
 
-    int nbLinks = std::get<0>(links).size();
+    int nbLinks = links.size();
     if(nbLinks){
-        auto hekate_link = fetchLinks(HEKATE_URL);
-        std::string hekate_url = std::get<1>(hekate_link)[0];
-        std::string text_hekate = "menus/list_down"_i18n  + std::get<0>(hekate_link)[0];
+        auto hekate_link = getLinks(HEKATE_URL);
+        std::string hekate_url = links[0].second;
+        std::string text_hekate = "menus/list_down"_i18n  + links[0].first;
 
-        for (int i = 0; i<nbLinks; i++){
-            std::string url = std::get<1>(links)[i];
-            std::string text("menus/list_down"_i18n  + std::get<0>(links)[i] + "menus/list_from"_i18n  + url);
-            listItem = new brls::ListItem(std::get<0>(links)[i]);
+        for (int i = 0; i < nbLinks; i++){
+            std::string url = links[i].second;
+            std::string text("menus/list_down"_i18n  + links[i].first + "menus/list_from"_i18n  + url);
+            listItem = new brls::ListItem(links[i].first);
             listItem->setHeight(LISTITEM_HEIGHT);
             listItem->getClickEvent()->subscribe([&, text, text_hekate, url, hekate_url, operation](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();

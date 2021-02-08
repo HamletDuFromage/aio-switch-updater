@@ -13,23 +13,24 @@
 #define TAGS_INFO           "https://api.github.com/repos/HamletDuFromage/aio-switch-updater/tags"
 #define APP_FILENAME         "/config/aio-switch-updater/app.zip"
 
-#define SIGPATCHES_URL      "https://hamletdufromage.github.io/sigpatches-updater/sigpatches.html"
+#define SIGPATCHES_URL      "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/sigpatches.json"
 #define SIGPATCHES_FILENAME "/config/aio-switch-updater/sigpatches.zip"
 #define HEKATE_IPL_PATH     "/bootloader/hekate_ipl.ini"
 
-#define FIRMWARE_URL        "https://hamletdufromage.github.io/switch-fw/firmwares.html"
+#define FIRMWARE_URL        "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/firmwares.json"
 #define FIRMWARE_FILENAME   "/config/aio-switch-updater/firmware.zip"
 #define FIRMWARE_PATH       "/firmware/"
 
-#define CFW_URL             "https://hamletdufromage.github.io/switch-cfw/cfw.html"
+#define CFW_URL             "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/cfw.json"
 #define CFW_FILENAME        "/config/aio-switch-updater/cfw.zip"
 
-#define AMS_URL             "https://hamletdufromage.github.io/switch-cfw/ams.html"
+#define AMS_URL             "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/ams.json"
+#define SXOS_URL            "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/sxos.json"
 #define AMS_FILENAME        "/config/aio-switch-updater/ams.zip"
 
-#define HEKATE_URL          "https://hamletdufromage.github.io/switch-cfw/hekate.html"
+#define HEKATE_URL          "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/hekate.json"
 
-#define PAYLOAD_URL         "https://hamletdufromage.github.io/switch-payloads/payloads.html"
+#define PAYLOAD_URL         "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/payloads.json"
 
 #define CHEATS_RELEASE_URL  "https://github.com/HamletDuFromage/switch-cheats-db/releases/tag/v1.0"
 #define CHEATS_URL_TITLES   "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/titles.zip"

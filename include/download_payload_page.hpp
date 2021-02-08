@@ -10,7 +10,7 @@ class DownloadPayloadPage : public brls::AppletFrame
         brls::Label* label;
         brls::Label* notFound;
         brls::List* list;
-        std::vector<brls::ListItem*> items;
+        brls::ListItem* listItem;
 
     public:
         DownloadPayloadPage();

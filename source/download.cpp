@@ -1,8 +1,6 @@
 #include "download.hpp"
 #include "utils.hpp"
-
 #include <algorithm>
-
 
 #define API_AGENT           "HamletDuFromage"
 #define _1MiB   0x100000
@@ -120,42 +118,6 @@ static size_t WriteMemoryCallback2(void *contents, size_t size, size_t nmemb, vo
     return realsize;
 }
 
-
-std::tuple<std::vector<std::string>, std::vector<std::string>> fetchLinks(const char *url){
-    CURL *curl_handle;
-    struct MemoryStruct chunk;
-
-    chunk.memory = static_cast<char *>(malloc(1));  /* will be grown as needed by the realloc above */ 
-    chunk.size = 0;    /* no data at this point */ 
-
-    curl_global_init(CURL_GLOBAL_ALL);
-    curl_handle = curl_easy_init();
-    curl_easy_setopt(curl_handle, CURLOPT_URL, url);
-    curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback2);
-    curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
-    curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, API_AGENT);
-    curl_easy_setopt(curl_handle, CURLOPT_SSL_VERIFYPEER, 0L);
-    curl_easy_perform(curl_handle);
- 
-    std::tuple <std::vector<std::string>, std::vector<std::string>> links;
-
-    std::string s = std::string(chunk.memory);
-    //<a href=.*?> links
-    //>(?:(?!>).)*?</a> titles
-    auto titles = htmlProcess(s, std::regex(">(?:(?!>).)*?</a>"));
-    std::transform(titles.begin(), titles.end(), titles.begin(), 
-                    [](std::string s) -> std::string {return s.substr(1, s.size() - 1 - 4);});
-    auto targets = htmlProcess(s, std::regex("<a href=.*?>"));
-    std::transform(targets.begin(), targets.end(), targets.begin(), 
-                    [](std::string s) -> std::string {return s.substr(8, s.size() - 8 - 1);});
-    links = std::make_tuple(titles, targets);
-
-    curl_easy_cleanup(curl_handle);
-    free(chunk.memory);
-    curl_global_cleanup();
-    return links;
-}
-
 std::string fetchTitle(const char *url){
     CURL *curl_handle; 
     struct MemoryStruct chunk;
@@ -231,8 +193,20 @@ json getRequest(std::string url, std::vector<std::string> headers, std::string b
     std::string request;
     request = downloadPage(url.c_str(), headers, body);
 
-    json res = {};
-    bool valid = json::accept(request);
-    if(valid)       return json::parse(request);
-    else            return json::object();
+    if(json::accept(request))   return json::parse(request);
+    else                        return json::object();
+}
+
+std::vector<std::pair<std::string, std::string>> getLinks(const char *url) {
+    std::string request;
+    request = downloadPage(url);
+
+    nlohmann::ordered_json jason = json::accept(request) ? nlohmann::ordered_json::parse(request) : nlohmann::ordered_json::object();
+
+    std::vector<std::pair<std::string, std::string>> res;
+    for (auto it = jason.begin(); it != jason.end(); ++it) {
+        res.push_back(std::make_pair(it.key(), it.value()));
+    }
+    return res;
+
 }

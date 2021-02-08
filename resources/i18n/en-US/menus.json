@@ -2,7 +2,7 @@
     "about_tab.cpp":"",
     "About_Title":           "All-in-One Nintendo Switch Updater",
     "copyright":           "AIO-switch-updater is licensed under GPL-3.0\n\u00A9 2020 HamletDuFromage",
-    "Disclaimers":            "\uE016  Aside from cheat codes that are mirrored from the main Gbatemp thread, HamletDuFromage isn't hosting anything. All credits go to respective owners.\n\uE016  Links are refreshed every three hours. If a link remains broken after 3 hours have passed, please open a Github issue.\n",
+    "Disclaimers":            "\uE016  Aside from cheat codes that are mirrored from the main Gbatemp thread, HamletDuFromage isn't hosting anything. All credits go to respective owners.\n\uE016  Links are refreshed every 30 minutes. If a link remains broken after 30 minutes have passed, please open a Github issue.\n",
     "donate":           "\uE016  Like the app? Consider donating to support my efforts: 'https://git.io/donate_homlet'",
 
     "app_page.cpp":"",
@@ -67,6 +67,8 @@
     "v2_0_0_text":           "\uE016 Added ability to download cheatslips cheats.\n\uE016 Added way to toggle out tabs.\n\uE016 Various code improvements.",
     "v2_0_1":            "v2.0.1",
     "v2_0_1_text":           "\uE016 Fixed a bug not letting the user click no when asked if they want to install hekate.n\uE016 Correct a bunch of typos.",
+    "v2_1_0":            "v2.1.0",
+    "v2_1_0_text":           "\uE016 Switched to a better way to get links.",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -208,10 +210,10 @@
     "utils_do":            " Do you want to overwrite existing ",
     "utils_no":                 "No",
     "utils_yes":                "Yes",
-    "utils_the":           "The downloaded file is not a sigpatches archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, please open an issue on Github.",
-    "utils_the_downloaded":             "The downloaded file is not a firmware archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, please open an issue on Github.",
+    "utils_the":           "The downloaded file is not a sigpatches archive. This is most likely due to a broken link. If the problem persists after more than 30 minutes, please open an issue on Github.",
+    "utils_the_downloaded":             "The downloaded file is not a firmware archive. This is most likely due to a broken link. If the problem persists after more than 30 minutes, please open an issue on Github.",
     "ultils_overwrite":           "Do you want to overwrite existing .ini config files?",
-    "ultis_file":            "The downloaded file is not a CFW archive. This is most likely due to a broken link. If the problem persists after more than 3 hours, please open an issue on Github.",
+    "ultis_file":            "The downloaded file is not a CFW archive. This is most likely due to a broken link. If the problem persists after more than 30 minutes, please open an issue on Github.",
 
     "reboot_rcm" :        "The Switch will now reboot to a special payload in order to finalise the install.",
     "hekate_dialogue" :     "Do you want to also download Hekate?\nIf not, the Switch will now launch reboot to a special payload in order to finalise the install.",

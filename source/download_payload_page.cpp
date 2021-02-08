@@ -12,16 +12,16 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
         true
     );
     list->addView(label);
-    std::tuple<std::vector<std::string>, std::vector<std::string>> links =  fetchLinks(PAYLOAD_URL);
-    int nbLinks = std::get<0>(links).size();
+    
+    auto links =  getLinks(PAYLOAD_URL);
+    int nbLinks = links.size();
     if(nbLinks){
-        items.reserve(nbLinks);
         for (int i = 0; i<nbLinks; i++){
-            std::string url = std::get<1>(links)[i];
-            std::string path = std::string(BOOTLOADER_PL_PATH) + std::get<0>(links)[i];
-            std::string text("menus/Download"_i18n  + std::get<0>(links)[i] + "menus/from"_i18n + url);
-            items[i] = new brls::ListItem(std::get<0>(links)[i]);
-            items[i]->getClickEvent()->subscribe([&, text, url, path](brls::View* view) {
+            std::string url = links[i].second;
+            std::string path = std::string(BOOTLOADER_PL_PATH) + links[i].first;
+            std::string text("menus/Download"_i18n  + links[i].first + "menus/from"_i18n + url);
+            listItem = new brls::ListItem(links[i].first);
+            listItem->getClickEvent()->subscribe([&, text, url, path](brls::View* view) {
                 createTree(BOOTLOADER_PL_PATH);
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle("menus/getting_paylaod"_i18n );
@@ -36,7 +36,7 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
                 );
                 brls::Application::pushView(stagedFrame);
             });
-            list->addView(items[i]);
+            list->addView(listItem);
         }
     }
     else{
