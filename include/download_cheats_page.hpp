@@ -21,4 +21,5 @@ class DownloadCheatsPage : public brls::AppletFrame
         std::string GetCheatsTitle(nlohmann::json cheat);
         void WriteCheats(uint64_t tid, std::string bid, std::string cheatContent);
         void DeleteCheats(uint64_t tid, std::string bid);
+        void ShowCheatsContent(nlohmann::ordered_json titles);
 };

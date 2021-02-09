@@ -26,20 +26,9 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
                 json cheat = p.value();
                 listItem = new::brls::ToggleListItem(GetCheatsTitle(cheat), 0);
                 listItem->registerAction("menus/see_more"_i18n , brls::Key::Y, [this, cheat] { 
-                    std::string str = "menus/cheat_cheat_content"_i18n + "\n";
                     if(cheat.find("titles") != cheat.end()) {
-                        for(auto& p : cheat["titles"]){
-                            str += "[" + p.get<std::string>() + "]" + "\n";
-                        }
-                        str.pop_back();
+                        ShowCheatsContent(cheat["titles"]);
                     }
-                    brls::Dialog* dialog = new brls::Dialog(str);
-                    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                        dialog->close();
-                    };
-                    dialog->addButton("menus/Ok_button"_i18n , callback);
-                    dialog->setCancelable(true);
-                    dialog->open();
                     return true;
                 });
                 toggles.push_back(std::make_pair(listItem, cheat["id"]));
@@ -198,4 +187,16 @@ void DownloadCheatsPage::DeleteCheats(uint64_t tid, std::string bid) {
             break;
     }
     std::filesystem::remove(path + formatApplicationId(tid) + "/cheats/" + bid + ".txt");
+}
+
+void DownloadCheatsPage::ShowCheatsContent(nlohmann::ordered_json titles) {
+    brls::AppletFrame* appView = new brls::AppletFrame(true, true);
+    brls::List* list = new brls::List();
+    brls::ListItem* listItem;
+    for(auto& p : titles){
+        listItem = new brls::ListItem(p.get<std::string>());
+        list->addView(listItem);
+    }
+    appView->setContentView(list);
+    brls::PopupFrame::open("menus/cheat_cheat_content"_i18n, appView, "", "");
 }
