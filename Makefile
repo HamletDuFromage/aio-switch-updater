@@ -160,10 +160,10 @@ all: $(BUILD)
 $(ROMFS):
 	@[ -d $@ ] || mkdir -p $@
 	@echo Merging ROMFS...
-	@cp -ruf $(CURDIR)/$(BOREALIS_PATH)/resources/. $(CURDIR)/$(ROMFS)/
+	@cp -ruf $(CURDIR)/$(BOREALIS_PATH)/resources/i18n/. $(CURDIR)/$(ROMFS)/i18n/
 	@cp -ruf $(CURDIR)/$(ROMFS)/i18n/zh-CN/. $(CURDIR)/$(ROMFS)/i18n/zh-Hans/
 	@cp -ruf $(CURDIR)/$(ROMFS)/i18n/zh-TW/. $(CURDIR)/$(ROMFS)/i18n/zh-Hant/
-	@rm $(CURDIR)/$(ROMFS)/i18n/*/installer.json $(CURDIR)/$(ROMFS)/i18n/*/main.json $(CURDIR)/$(ROMFS)/i18n/*/popup.json 
+	@rm $(CURDIR)/$(ROMFS)/i18n/*/installer.json $(CURDIR)/$(ROMFS)/i18n/*/main.json $(CURDIR)/$(ROMFS)/i18n/*/popup.json $(CURDIR)/$(ROMFS)/i18n/*/custom_layout.json
 	@$(MAKE) -C $(CURDIR)/rcm -f $(CURDIR)/rcm/Makefile
 	@cp $(CURDIR)/rcm/output/aio_rcm.bin $(CURDIR)/$(ROMFS)/aio_rcm.bin
 	#@$(MAKE) -C $(CURDIR)/aiosu-forwarder -f $(CURDIR)/aiosu-forwarder/Makefile

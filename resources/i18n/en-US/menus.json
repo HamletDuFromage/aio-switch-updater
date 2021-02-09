@@ -69,6 +69,7 @@
     "v2_0_1_text":           "\uE016 Fixed a bug not letting the user click no when asked if they want to install hekate.n\uE016 Correct a bunch of typos.",
     "v2_1_0":            "v2.1.0",
     "v2_1_0_text":           "\uE016 Switched to a better way to get links.",
+    "v2_1_1_text":           "\uE016 Added a friendly reminder to reboot for new sigpatches to apply",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -79,6 +80,7 @@
     "cheat_delete_all_cheat":           "Delete all cheats",
     "cheat_Deleting":            "Deleting...",
     "cheat_All_done":           "All done!",
+    "please_reboot":            "The changes will take effect at the next reboot.",
 
     "cheastlips_title":         "Cheatslips cheats",
     "get_cheatslips":           "Download CheatSlips.com cheat sheets",

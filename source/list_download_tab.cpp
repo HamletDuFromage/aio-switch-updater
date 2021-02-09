@@ -87,7 +87,11 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
                     new WorkerPage(stagedFrame, "menus/list_extracting"_i18n , [type](){extractArchive(type);})
                 );
                 stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, "menus/list_All"_i18n , true)
+                    new ConfirmPage(stagedFrame, 
+                        (type == sigpatches) ? 
+                            "menus/list_All"_i18n + "\n" + "menus/please_reboot"_i18n : 
+                            "menus/list_All"_i18n,
+                        true)
                 );
                 brls::Application::pushView(stagedFrame);
             });
