@@ -195,6 +195,9 @@ void DownloadCheatsPage::ShowCheatsContent(nlohmann::ordered_json titles) {
     brls::ListItem* listItem;
     for(auto& p : titles){
         listItem = new brls::ListItem(p.get<std::string>());
+        listItem->registerAction("", brls::Key::A, [this] { 
+            return true;
+        });
         list->addView(listItem);
     }
     appView->setContentView(list);
