@@ -10,10 +10,8 @@
 #include <filesystem>
 #include <fstream>
 #include <set>
-
 #include <unzipper.h>
 #include "progress_event.hpp"
-#include "current_cfw.hpp"
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
