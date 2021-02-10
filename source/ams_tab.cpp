@@ -22,8 +22,8 @@ AmsTab::AmsTab() :
     int nbLinks = links.size();
     if(nbLinks){
         auto hekate_link = getLinks(HEKATE_URL);
-        std::string hekate_url = links[0].second;
-        std::string text_hekate = "menus/list_down"_i18n  + links[0].first;
+        std::string hekate_url = hekate_link[0].second;
+        std::string text_hekate = "menus/list_down"_i18n  + hekate_link[0].first;
 
         for (int i = 0; i < nbLinks; i++){
             std::string url = links[i].second;

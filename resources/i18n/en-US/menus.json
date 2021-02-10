@@ -70,6 +70,7 @@
     "v2_1_0":            "v2.1.0",
     "v2_1_0_text":           "\uE016 Switched to a better way to get links.",
     "v2_1_1_text":           "\uE016 Added a friendly reminder to reboot for new sigpatches to apply.\n\uE016 Changed the cheatslips cheatsheet view.",
+    "v2_1_2_text":           "\uE016 Fixed wronge hekate link.",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
