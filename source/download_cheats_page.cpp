@@ -44,8 +44,8 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
                 toggles.push_back(std::make_pair(listItem, cheat["id"]));
                 list->addView(listItem);
             }
+            list->addView(new brls::ListItemGroupSpacing(true));
         }
-        list->addView(new brls::ListItemGroupSpacing(true));
     }
 
     else {
