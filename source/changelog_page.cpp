@@ -94,6 +94,11 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.1.2");
     changes.push_back("menus/v2_1_2_text"_i18n );
 
+    verTitles.push_back("v2.2.0");
+    changes.push_back("menus/v2_2_0_text"_i18n );
+
+
+
     int nbVersions = verTitles.size();
     items.reserve(nbVersions);
     for(int i = nbVersions -1 ; i >= 0; i--){

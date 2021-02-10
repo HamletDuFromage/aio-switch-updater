@@ -14,7 +14,12 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
 {
     this->setTitle("menus/cheat_menu"_i18n );
 
-    std::string bid = GetBuilID(tid);
+    std::string bid = "";
+    if(running_cfw == ams)
+        bid = GetBuilID(tid);
+    if(bid == "")
+        bid = GetBuilIDFromFile(tid);
+
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
@@ -43,7 +48,16 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
         list->addView(new brls::ListItemGroupSpacing(true));
     }
 
-    list->registerAction("menus/download_cheats"_i18n , brls::Key::B, [this, bid, tid] { 
+    else {
+        label = new brls::Label(
+            brls::LabelStyle::REGULAR,
+            "menus/bid_not_found"_i18n,
+            true
+        );
+        list->addView(label);
+    }
+
+    list->registerAction((bid != "") ? "menus/download_cheats"_i18n : "brls/hints/back"_i18n, brls::Key::B, [this, bid, tid] { 
         std::vector<int> ids;
         for(auto& e : toggles){
             if(e.first->getToggleState()){
@@ -111,11 +125,29 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
         dialog->open();
     });
     list->addView(del);
-    
     this->setContentView(list);
 }
-
 std::string DownloadCheatsPage::GetBuilID(uint64_t tid) {
+    static Service g_dmntchtSrv;
+    DmntCheatProcessMetadata metadata;
+    smGetService(&g_dmntchtSrv, "dmnt:cht");
+    serviceDispatch(&g_dmntchtSrv, 65003);
+    serviceDispatchOut(&g_dmntchtSrv, 65002, metadata);
+    serviceClose(&g_dmntchtSrv);
+    if(metadata.title_id == tid){
+        u8 buildID[0x20];
+        memcpy(buildID, metadata.main_nso_build_id, 0x20);
+        std::stringstream ss;
+        for (u8 i = 0; i < 8; i++)
+            ss << std::uppercase << std::hex << std::setfill('0') << std::setw(2) << (u16)buildID[i];
+        return ss.str();
+    }
+    else{
+        return "";
+    }
+}
+
+std::string DownloadCheatsPage::GetBuilIDFromFile(uint64_t tid) {
     NsApplicationContentMetaStatus *MetaSatus = new NsApplicationContentMetaStatus[100U];
     s32 out;
     nsListApplicationContentMetaStatus(tid, 0, MetaSatus, 100, &out);
