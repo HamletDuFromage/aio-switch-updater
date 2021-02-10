@@ -1,4 +1,12 @@
 #include "worker_page.hpp"
+#include <string>
+#include <functional>
+
+#include "utils.hpp"
+#include "download.hpp"
+#include "extract.hpp"
+#include "constants.hpp"
+#include "progress_event.hpp"
 
 WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, worker_func_t worker_func): frame(frame), workerFunc(worker_func)
 {

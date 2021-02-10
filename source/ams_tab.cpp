@@ -1,4 +1,11 @@
 #include "ams_tab.hpp"
+#include <string>
+#include "download.hpp"
+#include "extract.hpp"
+#include "confirm_page.hpp"
+#include "dialogue_page.hpp"
+#include "worker_page.hpp"
+#include "utils.hpp"
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

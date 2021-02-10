@@ -1,5 +1,13 @@
 #include "net_page.hpp"
 #include <arpa/inet.h>
+#include <switch.h>
+#include <json.hpp>
+#include "constants.hpp"
+#include "main_frame.hpp"
+#include <fstream>
+#include <filesystem>
+#include <tuple>
+#include <iomanip>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

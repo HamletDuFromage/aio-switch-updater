@@ -1,16 +1,5 @@
 #pragma once
 
-#include <iomanip>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <filesystem>
-#include <tuple>
-
-#include <switch.h>
-#include "constants.hpp"
-#include "progress_event.hpp"
-#include "utils.hpp"
 #include "json.hpp"
 
 int hexToBGR(std::string hex);

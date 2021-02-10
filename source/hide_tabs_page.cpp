@@ -1,4 +1,7 @@
 #include "hide_tabs_page.hpp"
+#include "json.hpp"
+#include "constants.hpp"
+#include <fstream>
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

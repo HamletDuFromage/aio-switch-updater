@@ -1,11 +1,7 @@
 #pragma once
 
 #include <borealis.hpp>
-#include <string>
-#include "download.hpp"
-#include "extract.hpp"
-#include "confirm_page.hpp"
-#include "worker_page.hpp"
+#include "constants.hpp"
 
 class ListDownloadTab : public brls::List
 {

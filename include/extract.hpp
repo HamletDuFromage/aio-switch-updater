@@ -1,22 +1,10 @@
 #pragma once
 
+#include "constants.hpp"
+#include <switch.h>
+#include <set>
 #include <string>
 #include <vector>
-#include <switch.h>
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
-#include <iterator>
-#include <filesystem>
-#include <fstream>
-#include <set>
-
-#include <unzipper.h>
-
-#include <borealis.hpp>
-
-#include "progress_event.hpp"
-#include "constants.hpp"
 
 static constexpr u32 MaxTitleCount = 64000;
 

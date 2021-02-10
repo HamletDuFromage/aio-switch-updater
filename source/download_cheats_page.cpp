@@ -1,5 +1,10 @@
 #include "download_cheats_page.hpp"
 #include "constants.hpp"
+#include "download.hpp"
+#include "utils.hpp"
+#include "current_cfw.hpp"
+#include <fstream>
+#include <filesystem>
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -151,7 +156,7 @@ std::string DownloadCheatsPage::GetCheatsTitle(json cheat) {
 void DownloadCheatsPage::WriteCheats(uint64_t tid, std::string bid, std::string cheatContent) {
     std::string path;
     std::string tidstr = formatApplicationId(tid);
-    switch(getCFW()){
+    switch(running_cfw){
         case ams:
             path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
             break;
@@ -175,7 +180,7 @@ void DownloadCheatsPage::WriteCheats(uint64_t tid, std::string bid, std::string 
 
 void DownloadCheatsPage::DeleteCheats(uint64_t tid, std::string bid) {
     std::string path;
-    switch(getCFW()){
+    switch(running_cfw){
         case ams:
             path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
             break;

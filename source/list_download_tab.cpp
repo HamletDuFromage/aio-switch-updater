@@ -1,4 +1,14 @@
 #include "list_download_tab.hpp"
+#include <string>
+#include "download.hpp"
+#include "extract.hpp"
+#include "confirm_page.hpp"
+#include "worker_page.hpp"
+#include "current_cfw.hpp"
+#include "utils.hpp"
+#include "app_page.hpp"
+#include <filesystem>
+#include <fstream>
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -47,7 +57,7 @@ ListDownloadTab::ListDownloadTab(archiveType type) :
         case cheats:
             std::string cheatsVer = fetchTitle(CHEATS_RELEASE_URL);
             if(cheatsVer != "-1"){
-                switch(getCFW()){
+                switch(running_cfw){
                     case sxos:
                         links.push_back(std::make_pair("menus/list_latest_ver"_i18n  + cheatsVer + ")", CHEATS_URL_TITLES));
                         break;

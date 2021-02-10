@@ -1,4 +1,7 @@
 #include "dialogue_page.hpp"
+#include "utils.hpp"
+#include "reboot_payload.h"
+#include "main_frame.hpp"
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

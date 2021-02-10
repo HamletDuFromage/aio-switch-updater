@@ -1,4 +1,8 @@
 #include "PC_page.hpp"
+#include "PC_color_swapper.hpp"
+#include "confirm_page.hpp"
+#include "worker_page.hpp"
+#include "constants.hpp"
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

@@ -2,10 +2,6 @@
 
 #include <borealis.hpp>
 
-#include <utils.hpp>
-#include "reboot_payload.h"
-
-
 class DialoguePage : public brls::View
 {
     private:

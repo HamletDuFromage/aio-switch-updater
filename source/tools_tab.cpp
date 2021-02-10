@@ -1,4 +1,17 @@
 #include "tools_tab.hpp"
+#include "confirm_page.hpp"
+#include "worker_page.hpp"
+#include "cheats_page.hpp"
+#include "payload_page.hpp"
+#include "download_payload_page.hpp"
+#include "changelog_page.hpp"
+#include "JC_page.hpp"
+#include "PC_page.hpp"
+#include "net_page.hpp"
+#include "extract.hpp"
+#include "utils.hpp"
+#include "hide_tabs_page.hpp"
+#include <filesystem>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

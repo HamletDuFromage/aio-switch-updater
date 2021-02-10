@@ -1,4 +1,12 @@
 #include "app_page.hpp"
+#include <switch.h>
+#include "utils.hpp"
+#include <filesystem>
+#include <fstream>
+#include "current_cfw.hpp"
+#include "worker_page.hpp"
+#include "confirm_page.hpp"
+#include "download_cheats_page.hpp"
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -61,7 +69,7 @@ AppPage::AppPage(bool cheatSlips) : AppletFrame(true, true)
     }
     std::string text("menus/text_download"_i18n);
     std::string url = "";
-    switch(getCFW()){
+    switch(running_cfw){
         case ams:
             url += CHEATS_URL_CONTENTS;
             break;

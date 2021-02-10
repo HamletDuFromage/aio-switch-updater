@@ -2,11 +2,6 @@
 
 #include <borealis.hpp>
 #include <chrono>
-#include <algorithm>
-
-#include "utils.hpp"
-#include "main_frame.hpp"
-#include "reboot_payload.h"
 
 class ConfirmPage : public brls::View
 {

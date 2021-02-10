@@ -1,14 +1,8 @@
 #pragma once
 
 #include <borealis.hpp>
-#include <switch.h>
-#include "utils.hpp"
-#include <filesystem>
-#include <fstream>
-#include <algorithm>
 #include <tuple>
-#include <vector>
-#include <string>
+#include <set>
 
 typedef struct app App;
 

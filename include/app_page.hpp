@@ -1,15 +1,8 @@
 #pragma once
 
 #include <borealis.hpp>
-#include <switch.h>
-#include "utils.hpp"
-#include <filesystem>
-#include <fstream>
 #include <algorithm>
-
-#include "worker_page.hpp"
-#include "confirm_page.hpp"
-#include "download_cheats_page.hpp"
+#include <set>
 
 typedef struct app App;
 

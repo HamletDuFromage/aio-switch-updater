@@ -1,6 +1,15 @@
 #include "download.hpp"
 #include "utils.hpp"
 #include <algorithm>
+#include <time.h>
+#include <math.h>
+#include <curl/curl.h>
+
+#include <string>
+#include <regex>
+#include <switch.h>
+
+#include "progress_event.hpp"
 
 #define API_AGENT           "HamletDuFromage"
 #define _1MiB   0x100000

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "PC_color_swapper.hpp"
-#include "confirm_page.hpp"
-#include "worker_page.hpp"
+#include <borealis.hpp>
 
 class PCPage : public brls::AppletFrame
 {

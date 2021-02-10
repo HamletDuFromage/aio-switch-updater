@@ -1,8 +1,6 @@
 #pragma once
 
-#include "JC_color_swapper.hpp"
-#include "confirm_page.hpp"
-#include "worker_page.hpp"
+#include <borealis.hpp>
 
 class JCPage : public brls::AppletFrame
 {

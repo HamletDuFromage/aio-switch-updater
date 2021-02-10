@@ -1,7 +1,6 @@
 #pragma once
 
-#include "utils.hpp"
-#include "reboot_payload.h"
+#include <borealis.hpp>
 
 class PayloadPage : public brls::AppletFrame
 {

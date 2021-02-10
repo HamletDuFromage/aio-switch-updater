@@ -1,4 +1,8 @@
 #include "download_payload_page.hpp"
+#include "utils.hpp"
+#include "confirm_page.hpp"
+#include "worker_page.hpp"
+#include "download.hpp"
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

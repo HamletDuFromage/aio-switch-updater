@@ -1,8 +1,6 @@
 #pragma once 
 
 #include <borealis.hpp>
-#include "app_page.hpp"
-#include "exclude_page.hpp"
 
 class CheatsPage : public brls::AppletFrame
 {

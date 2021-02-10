@@ -2,14 +2,7 @@
 
 #include <borealis.hpp>
 #include <thread>
-#include <string>
-#include <functional>
 
-#include "utils.hpp"
-#include "download.hpp"
-#include "extract.hpp"
-#include "constants.hpp"
-#include "progress_event.hpp"
 
 typedef std::function<void()> worker_func_t;
 

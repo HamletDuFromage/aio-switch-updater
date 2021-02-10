@@ -1,9 +1,6 @@
 #pragma once
 
 #include <borealis.hpp>
-#include "json.hpp"
-#include "constants.hpp"
-#include <fstream>  
 
 class HideTabsPage : public brls::AppletFrame
 {

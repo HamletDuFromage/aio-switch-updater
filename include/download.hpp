@@ -3,15 +3,6 @@
 #define ON              1
 #define OFF             0
 
-#include <time.h>
-#include <math.h>
-#include <curl/curl.h>
-
-#include <string>
-#include <regex>
-#include <switch.h>
-
-#include "progress_event.hpp"
 #include "json.hpp"
 
 void downloadFile(const char *url, const char *output, int api);

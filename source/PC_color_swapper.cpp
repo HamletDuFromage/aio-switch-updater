@@ -1,4 +1,15 @@
 #include "PC_color_swapper.hpp"
+#include <iomanip>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <filesystem>
+#include <tuple>
+
+#include <switch.h>
+#include "constants.hpp"
+#include "progress_event.hpp"
+#include "utils.hpp"
 
 using json = nlohmann::json;
 

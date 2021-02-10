@@ -1,4 +1,10 @@
 #include "exclude_page.hpp"
+#include <switch.h>
+#include "utils.hpp"
+#include "extract.hpp"
+#include <filesystem>
+#include <fstream>
+#include <algorithm>
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

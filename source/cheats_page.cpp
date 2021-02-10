@@ -1,4 +1,10 @@
 #include "cheats_page.hpp"
+#include "app_page.hpp"
+#include "exclude_page.hpp"
+#include "worker_page.hpp"
+#include "confirm_page.hpp"
+#include "current_cfw.hpp"
+#include "extract.hpp"
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -25,7 +31,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
         stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->setTitle("menus/cheat_delete_all_cheat"_i18n );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/cheat_Deleting"_i18n  , [](){removeCheats(getCFW());})
+            new WorkerPage(stagedFrame, "menus/cheat_Deleting"_i18n  , [](){removeCheats(running_cfw);})
         );
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, "menus/cheat_All_done"_i18n , true)

@@ -1,10 +1,13 @@
 #include "payload_page.hpp"
+#include "utils.hpp"
+#include "reboot_payload.h"
+#include "current_cfw.hpp"
+#include "utils.hpp"
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 PayloadPage::PayloadPage() : AppletFrame(true, true)
 {
-    CFW cfw = getCFW();
     this->setTitle("menus/payload_reboot"_i18n );
     list = new brls::List();
     label = new brls::Label(
@@ -23,7 +26,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
             reboot_to_payload(payload.c_str());
             brls::Application::popView();
         });
-        if(cfw == ams){
+        if(running_cfw == ams){
             items[i]->registerAction("menus/payload_set"_i18n , brls::Key::X, [this, payload] { 
                 std::string res1;
                 if(R_SUCCEEDED(CopyFile(payload.c_str(), REBOOT_PAYLOAD_PATH))){

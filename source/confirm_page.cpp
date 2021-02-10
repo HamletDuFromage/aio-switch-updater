@@ -1,4 +1,8 @@
 #include "confirm_page.hpp"
+#include "utils.hpp"
+#include "main_frame.hpp"
+#include "reboot_payload.h"
+#include <algorithm>
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

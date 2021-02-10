@@ -2,8 +2,6 @@
 
 #include <borealis.hpp>
 #include <switch.h>
-#include "download.hpp"
-#include "utils.hpp"
 #include "json.hpp"
 
 class DownloadCheatsPage : public brls::AppletFrame

@@ -2,9 +2,7 @@
 //#include <stdlib.h>
 #include <string>
 #include <switch.h>
-
 #include <borealis.hpp>
-
 #include "main_frame.hpp"
 #include "constants.hpp"
 #include "utils.hpp"

@@ -3,12 +3,9 @@
 #include <regex>
 #include <set>
 #include <switch.h>
-#include "download.hpp"
-#include "extract.hpp"
 #include "constants.hpp"
-#include "progress_event.hpp"
-#include "json.hpp"
-#include "main_frame.hpp"
+#include <borealis.hpp>
+
 
 typedef char NsApplicationName[0x201];
 typedef uint8_t NsApplicationIcon[0x20000];
@@ -21,8 +18,6 @@ struct app
     brls::ListItem* listItem;
 };
 
-CFW getCFW();
-bool isServiceRunning(const char *serviceName);
 std::vector<std::string> htmlProcess(std::string s, std::regex rgx);
 void createTree(std::string path);
 void clearConsole();

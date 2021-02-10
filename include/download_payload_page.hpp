@@ -1,8 +1,6 @@
 #pragma once
 
-#include "utils.hpp"
-#include "confirm_page.hpp"
-#include "worker_page.hpp"
+#include <borealis.hpp>
 
 class DownloadPayloadPage : public brls::AppletFrame
 {

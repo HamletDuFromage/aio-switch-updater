@@ -1,4 +1,12 @@
 #include "main_frame.hpp"
+#include "current_cfw.hpp"
+#include "about_tab.hpp"
+#include "list_download_tab.hpp"
+#include "ams_tab.hpp"
+#include "tools_tab.hpp"
+#include "json.hpp"
+#include <fstream>
+#include "utils.hpp"
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -15,6 +23,8 @@ MainFrame::MainFrame() : TabFrame()
     else
         this->setFooterText("v" + std::string(APP_VERSION));
 
+    static CFW running_cfw = getCFW();
+    
     json hideStatus;
     std::ifstream hideFile(HIDE_TABS_JSON);
 

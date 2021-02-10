@@ -1,23 +1,16 @@
 #include "utils.hpp"
- 
+#include "current_cfw.hpp"
+#include <switch.h>
+#include "download.hpp"
+#include "extract.hpp"
+#include "progress_event.hpp"
+#include "json.hpp"
+#include "main_frame.hpp"
+#include <filesystem>
+#include <fstream>
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-bool isServiceRunning(const char *serviceName) {
-    Handle handle;
-    SmServiceName service_name = smEncodeName(serviceName);
-    bool running = R_FAILED(smRegisterService(&handle, service_name, false, 1));
-    svcCloseHandle(handle);
-    if (!running)
-        smUnregisterService(service_name);
-
-    return running;
-}
-
-CFW getCFW(){
-    if(isServiceRunning("rnx"))         return rnx;
-    else if(isServiceRunning("tx"))     return sxos;
-    else                                return ams;
-}
 
 std::vector<std::string> htmlProcess(std::string s, std::regex rgx){
     //std::vector<std::regex> rgx = {std::regex(">(?:(?!>).)*?</a>"), std::regex(">(?:(?!>).)*?</a>")};
@@ -159,7 +152,7 @@ void extractArchive(archiveType type, std::string tag){
         case cheats: 
             titles = getInstalledTitlesNs();
             titles = excludeTitles(CHEATS_EXCLUDE, titles);
-            extractCheats(CHEATS_FILENAME, titles, getCFW());
+            extractCheats(CHEATS_FILENAME, titles, running_cfw);
             break;
         case fw:
             if(std::filesystem::file_size(FIRMWARE_FILENAME) < 200000){
