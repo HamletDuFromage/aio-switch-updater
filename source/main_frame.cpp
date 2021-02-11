@@ -1,5 +1,4 @@
 #include "main_frame.hpp"
-#include "current_cfw.hpp"
 #include "about_tab.hpp"
 #include "list_download_tab.hpp"
 #include "ams_tab.hpp"
@@ -22,8 +21,6 @@ MainFrame::MainFrame() : TabFrame()
         this->setFooterText("v" + std::string(APP_VERSION) + "menus/main_app"_i18n );
     else
         this->setFooterText("v" + std::string(APP_VERSION));
-
-    static CFW running_cfw = getCFW();
     
     json hideStatus;
     std::ifstream hideFile(HIDE_TABS_JSON);

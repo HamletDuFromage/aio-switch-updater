@@ -72,6 +72,7 @@
     "v2_1_1_text":           "\uE016 Added a friendly reminder to reboot for new sigpatches to apply.\n\uE016 Changed the cheatslips cheatsheet view.",
     "v2_1_2_text":           "\uE016 Fixed wronge hekate link.",
     "v2_2_0_text":           "\uE016 For cheatslips.com, the build ID of a running game will now be fetched, allowing you to access cheatsheets even if the build ID isn't listed in the versions database.",
+    "v2_2_1_text":           "\uE016 Fixed non Atmosphere CFW being wrongly categorised as ams.",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",

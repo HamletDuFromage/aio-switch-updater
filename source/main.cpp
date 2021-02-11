@@ -6,11 +6,14 @@
 #include "main_frame.hpp"
 #include "constants.hpp"
 #include "utils.hpp"
+#include "current_cfw.hpp"
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
 //TimeServiceType __nx_time_service_type = TimeServiceType_System;
+
+CFW running_cfw = getCFW();
 
 int main(int argc, char* argv[])
 {

@@ -4,4 +4,4 @@
 
 bool isServiceRunning(const char *serviceName);
 CFW getCFW();
-static CFW running_cfw = ams;
+extern CFW running_cfw;
