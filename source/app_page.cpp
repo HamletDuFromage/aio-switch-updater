@@ -10,7 +10,7 @@
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-AppPage::AppPage(bool cheatSlips) : AppletFrame(true, true)
+AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
 {
     this->setTitle(cheatSlips ? "menus/cheastlips_title"_i18n : "menus/app_title"_i18n );
     list = new brls::List();

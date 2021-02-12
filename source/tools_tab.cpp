@@ -11,12 +11,41 @@
 #include "extract.hpp"
 #include "utils.hpp"
 #include "hide_tabs_page.hpp"
+#include "json.hpp"
 #include <filesystem>
+#include <fstream>
+#include <iostream>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
+using json = nlohmann::json;
+
 ToolsTab::ToolsTab(std::string tag) : brls::List()
 {
+    if(!tag.empty() && tag != APP_VERSION){
+        updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");
+        std::string text("menus/tool_DownLoad"_i18n  + std::string(APP_URL));
+        updateApp->getClickEvent()->subscribe([&, text, tag](brls::View* view) {
+            brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
+            stagedFrame->setTitle("menus/tool_updating"_i18n );
+            stagedFrame->addStage(
+                new ConfirmPage(stagedFrame, text)
+            );
+            stagedFrame->addStage(
+                new WorkerPage(stagedFrame, "menus/tool_downloading"_i18n , [](){downloadArchive(APP_URL, app);})
+            );
+            stagedFrame->addStage(
+                new WorkerPage(stagedFrame, "menus/tool_extracting"_i18n , [tag](){extractArchive(app, tag);})
+            );
+            stagedFrame->addStage(
+                new ConfirmPage(stagedFrame, "menus/tool_all_done"_i18n , true)
+            );
+            brls::Application::pushView(stagedFrame);
+        });
+        updateApp->setHeight(LISTITEM_HEIGHT);
+        this->addView(updateApp);
+    }
+
     cheats = new brls::ListItem("menus/tool_cheats"_i18n );
     cheats->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new CheatsPage());
@@ -121,6 +150,45 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     browser->setHeight(LISTITEM_HEIGHT);
     this->addView(browser);
 
+    moveFiles = new brls::ListItem("menus/tool_copyFiles"_i18n );
+    moveFiles->getClickEvent()->subscribe([&](brls::View* view){
+        chdir("/");
+        std::string error = "";
+        if(std::filesystem::exists(MOVE_FILES_JSON)){
+            json toMove;
+            std::ifstream f(MOVE_FILES_JSON);
+            f >> toMove;
+            f.close();
+            for (auto it = toMove.begin(); it != toMove.end(); ++it) {
+                if(std::filesystem::exists(it.key())) {
+                    createTree(std::string(std::filesystem::path(it.value().get<std::string>()).parent_path()) + "/");
+                    cp(it.key().c_str(), it.value().get<std::string>().c_str());
+                }
+                else {
+                    error += it.key() + "\n";
+                }
+            }
+            if(error == "") {
+                error = "menus/All_done"_i18n;
+            }
+            else {
+                error = "menus/files_not_found"_i18n + error;
+            }
+        }
+        else{
+            error = "menus/move_files_not_found"_i18n;
+        }
+        brls::Dialog* dialog = new brls::Dialog(error);
+        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+            dialog->close();
+        };
+        dialog->addButton("menus/Ok_button"_i18n , callback);
+        dialog->setCancelable(true);
+        dialog->open();
+    });
+    moveFiles->setHeight(LISTITEM_HEIGHT);
+    this->addView(moveFiles);
+
     cleanUp = new brls::ListItem("menus/tool_cleanUp"_i18n );
     cleanUp->getClickEvent()->subscribe([&](brls::View* view){
         std::filesystem::remove(AMS_ZIP_PATH);
@@ -152,31 +220,6 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     });
     hideTabs->setHeight(LISTITEM_HEIGHT);
     this->addView(hideTabs);
-    
-    //tag = "1.TEST"
-    if(!tag.empty() && tag != APP_VERSION){
-        updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");
-        std::string text("menus/tool_DownLoad"_i18n  + std::string(APP_URL));
-        updateApp->getClickEvent()->subscribe([&, text, tag](brls::View* view) {
-            brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-            stagedFrame->setTitle("menus/tool_updating"_i18n );
-            stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, text)
-            );
-            stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/tool_downloading"_i18n , [](){downloadArchive(APP_URL, app);})
-            );
-            stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/tool_extracting"_i18n , [tag](){extractArchive(app, tag);})
-            );
-            stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/tool_all_done"_i18n , true)
-            );
-            brls::Application::pushView(stagedFrame);
-        });
-        updateApp->setHeight(LISTITEM_HEIGHT);
-        this->addView(updateApp);
-    }
 
     changelog = new brls::ListItem("menus/tool_changelog"_i18n );
     changelog->getClickEvent()->subscribe([&](brls::View* view){

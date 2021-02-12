@@ -13,7 +13,7 @@ using namespace i18n::literals;
 
 //TimeServiceType __nx_time_service_type = TimeServiceType_System;
 
-CFW running_cfw = getCFW();
+const CFW running_cfw = getCFW();
 
 int main(int argc, char* argv[])
 {

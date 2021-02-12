@@ -13,7 +13,7 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-ListDownloadTab::ListDownloadTab(archiveType type) :
+ListDownloadTab::ListDownloadTab(const archiveType type) :
     brls::List()
 {
     std::vector<std::pair<std::string, std::string>> links;

@@ -63,8 +63,8 @@ void downloadArchive(std::string url, archiveType type){
                 downloadFile(url.c_str(), FIRMWARE_FILENAME, OFF);
             }
             else{
-                showDialogBox("menus/utils_because"_i18n , "utils_ok"_i18n );
-                brls::Application::pushView(new MainFrame());
+                showDialogBox("menus/utils_because"_i18n , "menus/utils_ok"_i18n );
+                brls::Application::popView();
             }
             break;
         case app:

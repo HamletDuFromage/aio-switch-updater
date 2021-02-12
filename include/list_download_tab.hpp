@@ -12,6 +12,6 @@ class ListDownloadTab : public brls::List
         brls::Label *description;
         brls::Label *cheatSlipLabel;
     public:
-        ListDownloadTab(archiveType type);
+        ListDownloadTab(const archiveType type);
         ~ListDownloadTab();
 };

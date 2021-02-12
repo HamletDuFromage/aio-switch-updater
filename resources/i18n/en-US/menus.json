@@ -229,7 +229,11 @@
     "net_settings":     "Internet settings",
     "go_back" : "Go back",
     "Confirm_button" : "Confirm",
-    "Cancel_button" : "Cancel"
+    "Cancel_button" : "Cancel",
+
+    "tool_copyFiles":       "Batch copy files",
+    "files_not_found":      "The following files were not found and couldn't be copied:\n",
+    "move_files_not_found": ""
 
 
 

@@ -18,5 +18,5 @@ class AppPage : public brls::AppletFrame
         std::set<std::string> titles;
 
     public:
-        AppPage(bool cheatSlips = false);
+        AppPage(const bool cheatSlips = false);
 };
