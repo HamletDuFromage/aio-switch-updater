@@ -63,8 +63,7 @@ void downloadArchive(std::string url, archiveType type){
                 downloadFile(url.c_str(), FIRMWARE_FILENAME, OFF);
             }
             else{
-                showDialogBox("menus/utils_because"_i18n , "menus/utils_ok"_i18n );
-                brls::Application::popView();
+                brls::Application::crash("menus/utils_because"_i18n);
             }
             break;
         case app:
@@ -145,8 +144,7 @@ void extractArchive(archiveType type, std::string tag){
                 }
             }
             else{
-                showDialogBox("menus/utils_the"_i18n , "menus/utils_ok"_i18n );
-                brls::Application::pushView(new MainFrame());
+                brls::Application::crash("menus/utils_the"_i18n);
             }
             break;
         case cheats: 
@@ -156,8 +154,7 @@ void extractArchive(archiveType type, std::string tag){
             break;
         case fw:
             if(std::filesystem::file_size(FIRMWARE_FILENAME) < 200000){
-                showDialogBox("menus/utils_the_downloaded"_i18n , "menus/utils_ok"_i18n );
-                brls::Application::pushView(new MainFrame());
+                brls::Application::crash("menus/utils_the_downloaded"_i18n);
             }
             else{
                 if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
@@ -178,8 +175,7 @@ void extractArchive(archiveType type, std::string tag){
                 extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
             }
             else{
-                showDialogBox("menus/ultis_file"_i18n , "menus/utils_ok"_i18n );
-                brls::Application::pushView(new MainFrame());
+                brls::Application::crash("menus/ultis_file"_i18n);
             }
             break;
         case ams_cfw:

@@ -73,6 +73,7 @@
     "v2_1_2_text":           "\uE016 Fixed wronge hekate link.",
     "v2_2_0_text":           "\uE016 For cheatslips.com, the build ID of a running game will now be fetched, allowing you to access cheatsheets even if the build ID isn't listed in the versions database.",
     "v2_2_1_text":           "\uE016 Fixed non Atmosphere CFW being wrongly categorised as ams.",
+    "v2_3_0_text":           "\uE016 Added possibility to copy a list of files to custom locations. This may come in handy for trinket/esoteric bootloader users.",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -233,7 +234,7 @@
 
     "tool_copyFiles":       "Batch copy files",
     "files_not_found":      "The following files were not found and couldn't be copied:\n",
-    "move_files_not_found": ""
+    "move_files_not_found": "This tools allows you to copy files to other locations, which may be needed for your bootloader/trinket. Grab move_files.json at 'https://git.io/aiosu_move_files' and add it to your config folder"
 
 
 
