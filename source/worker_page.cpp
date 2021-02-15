@@ -21,6 +21,7 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
     this->button->setParent(this);
 
     this->registerAction("", brls::Key::B, [this] { return true; });
+    this->registerAction("", brls::Key::A, [this] { return true; });
 }
 
 void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)

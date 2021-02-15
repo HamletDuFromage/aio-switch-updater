@@ -180,15 +180,17 @@ void extractArchive(archiveType type, std::string tag){
             break;
         case ams_cfw:
             if(isArchive(AMS_FILENAME)){
-                overwriteInis = showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n );
-                if(showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n) == 0)
+                overwriteInis = showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n, "menus/utils_yes"_i18n);
+                usleep(800000);
+                int deleteContents = showDialogBox("menus/delete_contents"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n);
+                if(deleteContents == 1)
                     removeDir(AMS_CONTENTS);
                 extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
             }
             break;
     }
-    if(std::filesystem::exists(MOVE_FILES_JSON))
-        copyFiles(MOVE_FILES_JSON);
+    if(std::filesystem::exists(COPY_FILES_JSON))
+        copyFiles(COPY_FILES_JSON);
 }
 
 void progressTest(std::string url, archiveType type){
@@ -208,7 +210,6 @@ std::string formatListItemTitle(const std::string str, size_t maxScore) {
             return str.substr(0, i-1) + "\u2026";
         }
     }
-
     return str;
 }
 
@@ -366,7 +367,7 @@ std::string readVersion(const char* path){
 
 std::string copyFiles(const char* path) {
     nlohmann::json toMove;
-    std::ifstream f(MOVE_FILES_JSON);
+    std::ifstream f(COPY_FILES_JSON);
     f >> toMove;
     f.close();
     std::string error = "";

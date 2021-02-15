@@ -153,11 +153,11 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     move->getClickEvent()->subscribe([&](brls::View* view){
         chdir("/");
         std::string error = "";
-        if(std::filesystem::exists(MOVE_FILES_JSON)){
-            error = copyFiles(MOVE_FILES_JSON);
+        if(std::filesystem::exists(COPY_FILES_JSON)){
+            error = copyFiles(COPY_FILES_JSON);
         }
         else{
-            error = "menus/move_files_not_found"_i18n;
+            error = "menus/copy_files_not_found"_i18n;
         }
         brls::Dialog* dialog = new brls::Dialog(error);
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {

@@ -235,7 +235,9 @@
 
     "tool_copyFiles":       "Batch copy files",
     "files_not_found":      "The following files were not found and couldn't be copied:\n",
-    "move_files_not_found": "This tool allows you to copy files to other locations, which may be needed for your bootloader/trinket. Grab move_files.json at 'https://git.io/aiosu_move_files' and add it to your config folder. This will also be performed after updates."
+    "copy_files_not_found": "This tool allows you to copy files to other locations, which may be needed for your bootloader/trinket. Grab copy_files.json at 'https://git.io/aiosu_copy_files' and add it to your config folder. This will also be performed after updates.",
+
+    "delete_contents":      "Would you like to remove the existing '/atmosphere/contents/' directory? This will prevent crashes if you have sysmodules that do not support the latest Atmosphère. Please note that it will delete all your existing sysmodules and cheats."
 
 
 

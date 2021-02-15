@@ -26,9 +26,7 @@ ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool 
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
 
-    this->registerAction("", brls::Key::B, [this] {
-        return true;
-    });
+    this->registerAction("", brls::Key::B, [this] { return true; });
 }
 
 void ConfirmPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)

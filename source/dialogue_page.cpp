@@ -38,6 +38,8 @@ DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text)
         this->button2,
         brls::FocusDirection::LEFT,
         this->button1);
+    
+    this->registerAction("", brls::Key::B, [this] { return true; });
 }
 
 void DialoguePage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
