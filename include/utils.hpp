@@ -38,3 +38,4 @@ void saveVersion(std::string version, const char* path);
 std::string readVersion(const char* path);
 void cp(const char *to, const char *from);
 std::string copyFiles(const char* path);
+int removeDir(const char* path);

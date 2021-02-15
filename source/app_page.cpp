@@ -55,7 +55,7 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
                 continue;
             }
 
-            listItem = new brls::ListItem(formatListItemTitle(std::string(langEntry->name)), "", formatApplicationId(tid));
+            listItem = new brls::ListItem(std::string(langEntry->name), "", formatApplicationId(tid));
             listItem->setThumbnail(controlData.icon, sizeof(controlData.icon));
             if(cheatSlips){
                 listItem->getClickEvent()->subscribe([&, tid](brls::View* view) {

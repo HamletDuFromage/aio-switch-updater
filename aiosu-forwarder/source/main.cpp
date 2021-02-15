@@ -9,9 +9,17 @@
 #define PREFIX      "/switch/aio-switch-updater/aio-switch-updater-v"
 #define FORWARDER_PATH      "/config/aio-switch-updater/aiosu-forwarder.nro"
 
+int removeDir(const char* path)
+{
+    Result ret = 0;
+    FsFileSystem *fs = fsdevGetDeviceFileSystem("sdmc");
+    if (R_FAILED(ret = fsFsDeleteDirectoryRecursively(fs, path))) {
+        return ret;
+    }
+    return 0;
+}
 
 int main(int argc, char* argv[])
-
 {
     std::filesystem::create_directory(PATH);
     for (const auto & entry : std::filesystem::directory_iterator(PATH)){
@@ -25,9 +33,7 @@ int main(int argc, char* argv[])
         std::filesystem::create_directory(PATH);
         std::filesystem::remove(FULL_PATH);
         std::filesystem::rename(CONFIG_PATH, FULL_PATH);
-        std::filesystem::remove_all("/config/aio-switch-updater/switch/aio-switch-updater/");
-        rmdir("/config/aio-switch-updater/switch/aio-switch-updater/");
-        rmdir("/config/aio-switch-updater/switch/");
+        removeDir("/config/aio-switch-updater/switch/");
     }
 
     std::filesystem::remove(FORWARDER_PATH);

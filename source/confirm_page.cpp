@@ -26,8 +26,7 @@ ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool 
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
 
-    this->registerAction("menus/Back"_i18n , brls::Key::B, [this] {
-        brls::Application::popView();
+    this->registerAction("", brls::Key::B, [this] {
         return true;
     });
 }

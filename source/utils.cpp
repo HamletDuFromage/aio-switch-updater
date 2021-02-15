@@ -8,6 +8,7 @@
 #include "main_frame.hpp"
 #include <filesystem>
 #include <fstream>
+#include <iostream>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -77,12 +78,12 @@ void downloadArchive(std::string url, archiveType type){
     }
 }
 
-int dialogResult = -1;
 
 int showDialogBox(std::string text, std::string opt){
+    int dialogResult = -1;
     int result = -1;
     brls::Dialog* dialog = new brls::Dialog(text);
-    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+    brls::GenericEvent::Callback callback = [dialog, &dialogResult](brls::View* view) {
         dialogResult = 0;
         dialog->close();
     };
@@ -93,18 +94,18 @@ int showDialogBox(std::string text, std::string opt){
         usleep(1);
         result = dialogResult;
     }
-    dialogResult = -1;
     return result;
 }
 
 int showDialogBox(std::string text, std::string opt1, std::string opt2){
+    int dialogResult = -1;
     int result = -1;
     brls::Dialog* dialog = new brls::Dialog(text);
-    brls::GenericEvent::Callback callback1 = [dialog](brls::View* view) {
+    brls::GenericEvent::Callback callback1 = [dialog, &dialogResult](brls::View* view) {
         dialogResult = 0;
         dialog->close();
     };
-    brls::GenericEvent::Callback callback2 = [dialog](brls::View* view) {
+    brls::GenericEvent::Callback callback2 = [dialog, &dialogResult](brls::View* view) {
         dialogResult = 1;
         dialog->close();
     };
@@ -116,7 +117,6 @@ int showDialogBox(std::string text, std::string opt1, std::string opt2){
         usleep(1);
         result = dialogResult;
     }
-    dialogResult = -1;
     return result;
 }
 
@@ -128,8 +128,8 @@ void extractArchive(archiveType type, std::string tag){
     switch(type){
         case sigpatches:
             if(isArchive(SIGPATCHES_FILENAME)) {
-                std::string backup(HEKATE_IPL_PATH);
-                backup += ".old";
+                /* std::string backup(HEKATE_IPL_PATH);
+                backup += ".old"; */
                 if(std::filesystem::exists(HEKATE_IPL_PATH)){
                     overwriteInis = showDialogBox("menus/utils_do"_i18n  + std::string(HEKATE_IPL_PATH) +"?", "menus/utils_no"_i18n , "menus/utils_yes"_i18n );
                     if(overwriteInis == 0){
@@ -181,11 +181,14 @@ void extractArchive(archiveType type, std::string tag){
         case ams_cfw:
             if(isArchive(AMS_FILENAME)){
                 overwriteInis = showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n );
+                if(showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n) == 0)
+                    removeDir(AMS_CONTENTS);
                 extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
             }
+            break;
+    }
     if(std::filesystem::exists(MOVE_FILES_JSON))
         copyFiles(MOVE_FILES_JSON);
-    }
 }
 
 void progressTest(std::string url, archiveType type){
@@ -383,4 +386,13 @@ std::string copyFiles(const char* path) {
         error = "menus/files_not_found"_i18n + error;
     }
     return error;
+}
+
+int removeDir(const char* path) {
+    Result ret = 0;
+    FsFileSystem *fs = fsdevGetDeviceFileSystem("sdmc");
+    if (R_FAILED(ret = fsFsDeleteDirectoryRecursively(fs, path))) {
+        return ret;
+    }
+    return 0;
 }

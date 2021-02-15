@@ -109,7 +109,24 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
                 dialog->open();
             }
         }
-        if(error == 0) brls::Application::popView();
+        if(error == 0) {
+           /*  brls::Dialog* dialog = new brls::Dialog("menus/cheatslips_success"_i18n);
+            bool dialogResult = false;
+            bool result = false;
+            brls::GenericEvent::Callback callback = [dialog, &dialogResult](brls::View* view) {
+                dialogResult = true;
+                dialog->close();
+            };
+            dialog->addButton("menus/Ok_button"_i18n , callback);
+            dialog->setCancelable(true);
+            dialog->open();
+            while(result == false){
+                usleep(1);
+                result = dialogResult;
+            }
+            dialogResult = false; */
+            brls::Application::popView();
+        }
         return true;
     });
 
@@ -180,7 +197,7 @@ std::string DownloadCheatsPage::GetCheatsTitle(json cheat) {
     }
     res.erase(res.length() - 3);
     if(res.size() > 80){
-        res = res.substr(0, 79) + "...";
+        res = res.substr(0, 79) + "\u2026";
     }
     return res;
 }
