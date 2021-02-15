@@ -37,3 +37,4 @@ Result CopyFile(const char src_path[FS_MAX_PATH], const char dest_path[FS_MAX_PA
 void saveVersion(std::string version, const char* path);
 std::string readVersion(const char* path);
 void cp(const char *to, const char *from);
+std::string copyFiles(const char* path);

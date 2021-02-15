@@ -18,7 +18,7 @@ class ToolsTab : public brls::List
         brls::ListItem* hideTabs;
         //brls::ListItem* ntcp;
         brls::ListItem* netSettings;
-        brls::ListItem* moveFiles;
+        brls::ListItem* move;
         brls::ListItem* browser;
 
         brls::StagedAppletFrame* stagedFrame;

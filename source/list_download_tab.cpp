@@ -169,7 +169,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                     return true;
                 }
                 else {
-                    brls::Dialog* dialog = new brls::Dialog("menus/wrong_cheatslips_id"_i18n);
+                    brls::Dialog* dialog = new brls::Dialog("menus/wrong_cheatslips_id"_i18n + "\n" + "menus/keyboard_no_show"_i18n);
                     brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                         dialog->close();
                     };

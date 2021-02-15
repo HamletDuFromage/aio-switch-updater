@@ -183,6 +183,8 @@ void extractArchive(archiveType type, std::string tag){
                 overwriteInis = showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n );
                 extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
             }
+    if(std::filesystem::exists(MOVE_FILES_JSON))
+        copyFiles(MOVE_FILES_JSON);
     }
 }
 
@@ -357,4 +359,28 @@ std::string readVersion(const char* path){
         versionFile.close();
     }
     return version;
+}
+
+std::string copyFiles(const char* path) {
+    nlohmann::json toMove;
+    std::ifstream f(MOVE_FILES_JSON);
+    f >> toMove;
+    f.close();
+    std::string error = "";
+    for (auto it = toMove.begin(); it != toMove.end(); ++it) {
+        if(std::filesystem::exists(it.key())) {
+            createTree(std::string(std::filesystem::path(it.value().get<std::string>()).parent_path()) + "/");
+            cp(it.key().c_str(), it.value().get<std::string>().c_str());
+        }
+        else {
+            error += it.key() + "\n";
+        }
+    }
+    if(error == "") {
+        error = "menus/All_done"_i18n;
+    }
+    else {
+        error = "menus/files_not_found"_i18n + error;
+    }
+    return error;
 }

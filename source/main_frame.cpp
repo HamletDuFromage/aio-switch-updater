@@ -51,4 +51,8 @@ MainFrame::MainFrame() : TabFrame()
 
     this->addTab("menus/main_tools"_i18n , new ToolsTab(tag));
 
+    this->registerAction("" , brls::Key::B, [this] {
+        return true;
+    });
+
 }

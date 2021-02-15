@@ -150,30 +150,12 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     browser->setHeight(LISTITEM_HEIGHT);
     this->addView(browser);
 
-    moveFiles = new brls::ListItem("menus/tool_copyFiles"_i18n );
-    moveFiles->getClickEvent()->subscribe([&](brls::View* view){
+    move = new brls::ListItem("menus/tool_copyFiles"_i18n );
+    move->getClickEvent()->subscribe([&](brls::View* view){
         chdir("/");
         std::string error = "";
         if(std::filesystem::exists(MOVE_FILES_JSON)){
-            json toMove;
-            std::ifstream f(MOVE_FILES_JSON);
-            f >> toMove;
-            f.close();
-            for (auto it = toMove.begin(); it != toMove.end(); ++it) {
-                if(std::filesystem::exists(it.key())) {
-                    createTree(std::string(std::filesystem::path(it.value().get<std::string>()).parent_path()) + "/");
-                    cp(it.key().c_str(), it.value().get<std::string>().c_str());
-                }
-                else {
-                    error += it.key() + "\n";
-                }
-            }
-            if(error == "") {
-                error = "menus/All_done"_i18n;
-            }
-            else {
-                error = "menus/files_not_found"_i18n + error;
-            }
+            error = copyFiles(MOVE_FILES_JSON);
         }
         else{
             error = "menus/move_files_not_found"_i18n;
@@ -186,8 +168,8 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
         dialog->setCancelable(true);
         dialog->open();
     });
-    moveFiles->setHeight(LISTITEM_HEIGHT);
-    this->addView(moveFiles);
+    move->setHeight(LISTITEM_HEIGHT);
+    this->addView(move);
 
     cleanUp = new brls::ListItem("menus/tool_cleanUp"_i18n );
     cleanUp->getClickEvent()->subscribe([&](brls::View* view){

@@ -95,7 +95,8 @@
     "quota_cheatslips":         "Quota exceeded for today!\nHead on to 'https://www.cheatslips.com/subscriptions' to see how to increase it.",
     "cheat_cheat_content":      "Cheatsheet content",
     "app_cheatslips_label":     "Select a game to download cheats for.",
-    "wrong_cheatslips_id":     "Couldn't retrieve token, make sure you enter you login properly",
+    "wrong_cheatslips_id":      "Couldn't retrieve token, make sure you enter you login properly",
+    "keyboard_no_show":         "If they keyboard did not show up, try running the app with full RAM access (title redirection)",
     "see_more":                 "See more",
     "download_cheats":          "Download cheats and go back",
     "bid_not_found":            "Couldn't obtain build ID. Try launching aio-switch-updater in applet mode while the game is running.",
@@ -234,7 +235,7 @@
 
     "tool_copyFiles":       "Batch copy files",
     "files_not_found":      "The following files were not found and couldn't be copied:\n",
-    "move_files_not_found": "This tools allows you to copy files to other locations, which may be needed for your bootloader/trinket. Grab move_files.json at 'https://git.io/aiosu_move_files' and add it to your config folder"
+    "move_files_not_found": "This tool allows you to copy files to other locations, which may be needed for your bootloader/trinket. Grab move_files.json at 'https://git.io/aiosu_move_files' and add it to your config folder. This will also be performed after updates."
 
 
 
