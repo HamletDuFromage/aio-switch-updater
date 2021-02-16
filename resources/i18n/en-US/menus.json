@@ -74,6 +74,7 @@
     "v2_2_0_text":           "\uE016 For cheatslips.com, the build ID of a running game will now be fetched, allowing you to access cheatsheets even if the build ID isn't listed in the versions database.",
     "v2_2_1_text":           "\uE016 Fixed non Atmosphere CFW being wrongly categorised as ams.",
     "v2_3_0_text":           "\uE016 Added possibility to copy a list of files to custom locations. This may come in handy for trinket/esoteric bootloader users.\n\uE016 Added warning screen on launch.\n\uE016 Few UI tweaks.\n\uE016 Traditional Chinese translation updated (qazrfv1234)",
+    "v2_3_1_text":           "\uE016 Files for batch copy are now copied according to the json order (formerly alphabetical order).",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",

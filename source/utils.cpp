@@ -366,7 +366,7 @@ std::string readVersion(const char* path){
 }
 
 std::string copyFiles(const char* path) {
-    nlohmann::json toMove;
+    nlohmann::ordered_json toMove;
     std::ifstream f(COPY_FILES_JSON);
     f >> toMove;
     f.close();
@@ -374,7 +374,8 @@ std::string copyFiles(const char* path) {
     for (auto it = toMove.begin(); it != toMove.end(); ++it) {
         if(std::filesystem::exists(it.key())) {
             createTree(std::string(std::filesystem::path(it.value().get<std::string>()).parent_path()) + "/");
-            cp(it.key().c_str(), it.value().get<std::string>().c_str());
+            //cp(it.key().c_str(), it.value().get<std::string>().c_str());
+            std::cout << it.key() << it.value().get<std::string>() << std::endl;
         }
         else {
             error += it.key() + "\n";
