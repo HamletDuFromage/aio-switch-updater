@@ -34,7 +34,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
         if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
             for (const auto& p : cheatsInfo["cheats"].items()) {
                 json cheat = p.value();
-                listItem = new::brls::ToggleListItem(GetCheatsTitle(cheat), 0);
+                listItem = new::brls::ToggleListItem(GetCheatsTitle(cheat), 0, "", "\uE016", "o");
                 listItem->registerAction("menus/see_more"_i18n , brls::Key::Y, [this, cheat] { 
                     if(cheat.find("titles") != cheat.end()) {
                         ShowCheatsContent(cheat["titles"]);

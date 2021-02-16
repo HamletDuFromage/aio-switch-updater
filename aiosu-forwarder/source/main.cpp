@@ -8,6 +8,8 @@
 #define CONFIG_PATH "/config/aio-switch-updater/switch/aio-switch-updater/aio-switch-updater.nro"
 #define PREFIX      "/switch/aio-switch-updater/aio-switch-updater-v"
 #define FORWARDER_PATH      "/config/aio-switch-updater/aiosu-forwarder.nro"
+#define CONFIG_SWITCH       "/config/aio-switch-updater/switch/"
+#define HIDDEN_FILE "/config/aio-switch-updater/.aio-switch-updater"
 
 int removeDir(const char* path)
 {
@@ -28,12 +30,13 @@ int main(int argc, char* argv[])
             std::filesystem::remove(entry.path().string() + ".star");
         }
     }
+    std::filesystem::remove(HIDDEN_FILE);
 
     if(std::filesystem::exists(CONFIG_PATH)){
         std::filesystem::create_directory(PATH);
         std::filesystem::remove(FULL_PATH);
         std::filesystem::rename(CONFIG_PATH, FULL_PATH);
-        removeDir("/config/aio-switch-updater/switch/");
+        removeDir(CONFIG_SWITCH);
     }
 
     std::filesystem::remove(FORWARDER_PATH);
