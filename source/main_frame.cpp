@@ -49,7 +49,8 @@ MainFrame::MainFrame() : TabFrame()
     if(hideStatus.find("cheats") == hideStatus.end() || !hideStatus["cheats"])
         this->addTab("menus/main_cheats"_i18n, new ListDownloadTab(cheats));
 
-    this->addTab("menus/main_tools"_i18n , new ToolsTab(tag));
+    if(hideStatus.find("tools") == hideStatus.end() || !hideStatus["tools"])
+        this->addTab("menus/main_tools"_i18n , new ToolsTab(tag));
 
     this->registerAction("" , brls::Key::B, [this] { return true; });
 

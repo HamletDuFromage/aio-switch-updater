@@ -8,9 +8,9 @@ using namespace i18n::literals;
 
 DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text)
 {
-    this->button1 = (new brls::Button(brls::ButtonStyle::BORDERLESS))->setLabel("menus/Yes"_i18n);
+    this->button1 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/Yes"_i18n);
     this->button1->setParent(this);
-    this->button2 = (new brls::Button(brls::ButtonStyle::BORDERLESS))->setLabel("menus/No"_i18n);
+    this->button2 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/No"_i18n);
     this->button2->setParent(this);
 
     this->button1->getClickEvent()->subscribe([frame, this](View* view) {

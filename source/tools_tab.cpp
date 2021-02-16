@@ -133,7 +133,7 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
             if (R_FAILED(rc))
                 error += "\uE016 Error starting Browser\n\uE016 Lookup error code for more info " + rc;
         } else { // Running under applet
-            error += "\uE016 Running in applet mode.\n\uE016 Please launch hbmenu by holding [R] on a game";
+            error += "\uE016 Running in applet mode/through a forwarder.\n\uE016 Please launch hbmenu by holding [R] on a game";
         }
         if(!error.empty()){
             brls::Dialog* dialog = new brls::Dialog(error);

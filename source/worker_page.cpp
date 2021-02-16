@@ -17,7 +17,7 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
 
-    this->button = new brls::Button(brls::ButtonStyle::BORDERLESS);  // avoid back button bug
+    this->button = new brls::Button(brls::ButtonStyle::REGULAR);
     this->button->setParent(this);
 
     this->registerAction("", brls::Key::B, [this] { return true; });

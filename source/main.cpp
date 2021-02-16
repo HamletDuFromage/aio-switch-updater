@@ -7,6 +7,8 @@
 #include "constants.hpp"
 #include "utils.hpp"
 #include "current_cfw.hpp"
+#include "warning_page.hpp"
+#include <filesystem>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -46,11 +48,13 @@ int main(int argc, char* argv[])
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
     brls::Logger::debug("Start");
 
-    // Create root view
-    MainFrame *mainFrame = new MainFrame();
+    if(std::filesystem::exists(HIDDEN_AIO_FILE)) {
+        brls::Application::pushView(new MainFrame());
+    }
+    else {
+        brls::Application::pushView(new WarningPage("menus/launch_warning"_i18n));
+    }
 
-    // Add the root view to the stack
-    brls::Application::pushView(mainFrame);
 
     // Run the app
     while (brls::Application::mainLoop());

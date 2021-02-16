@@ -237,7 +237,9 @@
     "files_not_found":      "The following files were not found and couldn't be copied:\n",
     "copy_files_not_found": "This tool allows you to copy files to other locations, which may be needed for your bootloader/trinket. Grab copy_files.json at 'https://git.io/aiosu_copy_files' and add it to your config folder. This will also be performed after updates.",
 
-    "delete_contents":      "Would you like to remove the existing '/atmosphere/contents/' directory? This will prevent crashes if you have sysmodules that do not support the latest Atmosphère. Please note that it will delete all your existing sysmodules and cheats."
+    "delete_contents":      "Would you like to remove the existing '/atmosphere/contents/' directory? This will prevent crashes if you have sysmodules that do not support the latest Atmosphère. Please note that it will delete all your existing sysmodules and cheats.",
+
+    "launch_warning":       "Please pay attention to the following points before using the app:\n\n\uE016  Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\uE016  On Mariko (i.e. chipped) switches, payloads cannot be launched from HOS. This means you WILL NOT be able to update Atmosphère with this app. You won't be able to use the reboot to payload feature either.\n\uE016  Please note that using this app (or any homebrew) on a exFAT SD card is not recommended, as those are more likely to corrupt.\n\nThis screen won't show again."
 
 
 

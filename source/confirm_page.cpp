@@ -8,7 +8,7 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool done, bool reboot): done(done), reboot(reboot)
 {
-    this->button = (new brls::Button(brls::ButtonStyle::BORDERLESS))->setLabel(done ? "menus/Back"_i18n : "menus/Continue"_i18n );
+    this->button = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel(done ? "menus/Back"_i18n : "menus/Continue"_i18n );
     this->button->setParent(this);
     this->button->getClickEvent()->subscribe([frame, this](View* view) {
         if (!frame->isLastStage()) {
