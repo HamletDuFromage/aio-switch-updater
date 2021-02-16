@@ -234,7 +234,7 @@
 
     "tool_copyFiles":       "批次複製檔案",
     "files_not_found":      "列出的檔案已不在原先的位置，因此無法複製:\n",
-    "copy_files_not_found": "此功能可將檔案複製到其他儲存位置，部分檔案路徑需要你的bootloader/trinket。請前往'https://git.io/aiosu_move_files' 下載move_files.json並複製到config資料夾內。更新後也將執行此操作。"
+    "copy_files_not_found": "此功能可將檔案複製到其他儲存位置，部分檔案路徑需要你的bootloader/trinket。請前往'https://git.io/aiosu_copy_files' 下載copy_files.json並複製到config資料夾內。更新後也將執行此操作。"
 
 
 
