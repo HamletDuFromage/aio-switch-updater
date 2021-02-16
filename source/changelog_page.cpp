@@ -106,7 +106,8 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.3.1");
     changes.push_back("menus/v2_3_1_text"_i18n );
 
-
+    verTitles.push_back("v2.3.2");
+    changes.push_back("menus/v2_3_1_text"_i18n );
 
     int nbVersions = verTitles.size();
     items.reserve(nbVersions);

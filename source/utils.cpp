@@ -8,7 +8,6 @@
 #include "main_frame.hpp"
 #include <filesystem>
 #include <fstream>
-#include <iostream>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -374,8 +373,8 @@ std::string copyFiles(const char* path) {
     for (auto it = toMove.begin(); it != toMove.end(); ++it) {
         if(std::filesystem::exists(it.key())) {
             createTree(std::string(std::filesystem::path(it.value().get<std::string>()).parent_path()) + "/");
-            //cp(it.key().c_str(), it.value().get<std::string>().c_str());
-            std::cout << it.key() << it.value().get<std::string>() << std::endl;
+            cp(it.key().c_str(), it.value().get<std::string>().c_str());
+            //std::cout << it.key() << it.value().get<std::string>() << std::endl;
         }
         else {
             error += it.key() + "\n";
