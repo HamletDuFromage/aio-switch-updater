@@ -19,7 +19,7 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 using json = nlohmann::json;
 
-ToolsTab::ToolsTab(std::string tag) : brls::List()
+ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
 {
     if(!tag.empty() && tag != APP_VERSION){
         updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");
@@ -73,12 +73,14 @@ ToolsTab::ToolsTab(std::string tag) : brls::List()
     downloadPayload->setHeight(LISTITEM_HEIGHT);
     this->addView(downloadPayload);
 
-    rebootPayload = new brls::ListItem("menus/tool_inject"_i18n );
-    rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
-        brls::Application::pushView(new PayloadPage());
-    });
-    rebootPayload->setHeight(LISTITEM_HEIGHT);
-    this->addView(rebootPayload);
+    if(erista) {
+        rebootPayload = new brls::ListItem("menus/tool_inject"_i18n );
+        rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
+            brls::Application::pushView(new PayloadPage());
+        });
+        rebootPayload->setHeight(LISTITEM_HEIGHT);
+        this->addView(rebootPayload);
+    }
 
     /* ntcp = new brls::ListItem("menus/ntcp"_i18n );
     ntcp->getClickEvent()->subscribe([&](brls::View* view){

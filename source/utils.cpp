@@ -397,3 +397,28 @@ int removeDir(const char* path) {
     }
     return 0;
 }
+
+
+bool isErista() {
+    splInitialize();
+    u64 hwType;
+    Result rc = splGetConfig(SplConfigItem_HardwareType, &hwType);
+    splExit();
+
+    if(R_FAILED(rc))
+        return true;
+
+    switch (hwType)
+    {
+        case 0:
+        case 1:
+            return true;
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            return false;
+        default:
+            return true;
+    }
+};

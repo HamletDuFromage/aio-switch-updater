@@ -24,6 +24,6 @@ class ToolsTab : public brls::List
         brls::StagedAppletFrame* stagedFrame;
 
     public:
-    ToolsTab(std::string tag);
+    ToolsTab(std::string tag, bool erista = true);
 
 };

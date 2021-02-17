@@ -31,10 +31,12 @@ MainFrame::MainFrame() : TabFrame()
     if(json::accept(fileContent))   hideStatus = json::parse(fileContent);
     else                            hideStatus = json::object();
 
+    bool erista = isErista();
+
     if(hideStatus.find("about") == hideStatus.end() || !hideStatus["about"])
         this->addTab("menus/main_about"_i18n, new AboutTab());
     
-    if(hideStatus.find("atmosphere") == hideStatus.end() || !hideStatus["atmosphere"])
+    if(erista && (hideStatus.find("atmosphere") == hideStatus.end() || !hideStatus["atmosphere"]))
         this->addTab("menus/main_update_ams"_i18n, new AmsTab());
 
     if(hideStatus.find("cfw") == hideStatus.end() || !hideStatus["cfw"])
@@ -50,8 +52,7 @@ MainFrame::MainFrame() : TabFrame()
         this->addTab("menus/main_cheats"_i18n, new ListDownloadTab(cheats));
 
     if(hideStatus.find("tools") == hideStatus.end() || !hideStatus["tools"])
-        this->addTab("menus/main_tools"_i18n , new ToolsTab(tag));
+        this->addTab("menus/main_tools"_i18n , new ToolsTab(tag, erista));
 
     this->registerAction("" , brls::Key::B, [this] { return true; });
-
 }
