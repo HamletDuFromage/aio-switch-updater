@@ -76,6 +76,7 @@
     "v2_3_0_text":           "\uE016 Added possibility to copy a list of files to custom locations. This may come in handy for trinket/esoteric bootloader users.\n\uE016 Added warning screen on launch.\n\uE016 Few UI tweaks.\n\uE016 Traditional Chinese translation updated (qazrfv1234)",
     "v2_3_1_text":           "\uE016 Files for batch copy are now copied according to the json order (formerly alphabetical order).",
     "v2_3_2_text":           "\uE016 Fixed batch copy not copying :^)",
+    "v2_3_3_text":           "\uE016 Hide unsupported features for Mariko Switches",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",
@@ -241,8 +242,6 @@
 
     "delete_contents":      "Would you like to remove the existing '/atmosphere/contents/' directory? This will prevent crashes if you have sysmodules that do not support the latest Atmosphère. Please note that it will delete all your existing sysmodules, mods and cheats.",
 
-    "launch_warning":       "Please pay attention to the following points before using the app:\n\n\uE016  Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\uE016  On Mariko (i.e. chipped) Switches, payloads cannot be launched from HOS. This means you WILL NOT be able to update Atmosphère with this app. You won't be able to use the reboot to payload feature either.\n\uE016  Please note that using this app (or any homebrew) on a exFAT SD card is not recommended, as those are more likely to corrupt.\n\nThis screen won't show again."
-
-
+    "launch_warning":       "Please pay attention to the following points before using the app:\n\n\uE016  Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\uE016  Please note that using this app (or any homebrew) on a exFAT SD card is not recommended, as those are more likely to corrupt.\n\nThis screen won't show again."
 
 }
