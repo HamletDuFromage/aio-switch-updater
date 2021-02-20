@@ -13,8 +13,8 @@ jobs:
 
     - name: update libnx
       run: |
-        sudo pacman -S libnx
-    - name: Update repo.
+        dkp-pacman -Sy --noconfirm devkitARM devkitarm-rules && dkp-pacman -Scc --noconfirm
+    - name: update repo
       run: |
         git submodule update --init --recursive
         
