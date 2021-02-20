@@ -20,9 +20,9 @@ jobs:
         
     - name: Building aio-switch-updater
       run: |
-        pushd aiosu-forwarder
+        cd aiosu-forwarder
         make
-        popd
+        cd ..
         make -j$(nproc)
         
     - uses: actions/upload-artifact@master
