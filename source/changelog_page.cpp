@@ -112,12 +112,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.3.3");
     changes.push_back("menus/v2_3_3_text"_i18n );
 
-    int nbVersions = verTitles.size();
-    items.reserve(nbVersions);
-    for(int i = nbVersions -1 ; i >= 0; i--){
-        items[i] = new brls::ListItem(verTitles[i]);
+    for(int i = verTitles.size() -1 ; i >= 0; i--){
+        listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
-        items[i]->getClickEvent()->subscribe([&, change](brls::View* view){
+        listItem->getClickEvent()->subscribe([&, change](brls::View* view){
             brls::Dialog* dialog = new brls::Dialog(change);
             brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                 dialog->close();
@@ -126,7 +124,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
             dialog->setCancelable(true);
             dialog->open();
         });
-        list->addView(items[i]);
+        list->addView(listItem);
     }
     this->setContentView(list);
 }

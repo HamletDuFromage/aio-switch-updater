@@ -6,7 +6,7 @@ class ChangelogPage : public brls::AppletFrame
 {
     private:
         brls::List* list;
-        std::vector<brls::ListItem*> items;
+        brls::ListItem* listItem;
 
     public:
         ChangelogPage();

@@ -1,12 +1,19 @@
 name: Build AIO-switch-updater
 
-on: [push]
+on: 
+  push:
+  workflow_dispatch:
+
 jobs:
   AIO-switch-updater:
     runs-on: ubuntu-latest
     container: devkitpro/devkita64_devkitarm
     steps:
     - uses: actions/checkout@v1
+
+    - name: update libnx
+      run: |
+        sudo pacman -S libnx
     - name: Update repo.
       run: |
         git submodule update --init --recursive
