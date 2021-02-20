@@ -11,9 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: update libnx
-      run: |
-        dkp-pacman -Syu --noconfirm
+    #- name: update libnx
+      #run: |
+        #dkp-pacman -Syu --noconfirm
     - name: update repo
       run: |
         git submodule update --init --recursive
