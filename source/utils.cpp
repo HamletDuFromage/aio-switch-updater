@@ -121,7 +121,7 @@ int showDialogBox(std::string text, std::string opt1, std::string opt2){
 
 void extractArchive(archiveType type, std::string tag){
     int overwriteInis = 0;
-    std::vector<Title> titles;
+    std::vector<std::string> titles;
     std::string nroPath ="sdmc:" + std::string(APP_PATH);
     chdir(ROOT_PATH);
     switch(type){

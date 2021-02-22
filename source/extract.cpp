@@ -104,129 +104,73 @@ void extract(const char * filename, const char* workingPath, const char* toExclu
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
-std::vector<Title> getInstalledTitlesNs(){
-    // This function has been cobbled together from the "app_controldata" example in devkitpro.
-
-    // Set the rc variable to begin with
+std::vector<std::string> getInstalledTitlesNs(){
     Result rc = 0;
-
-    // Initialise a vector of tuples, storing the title ID and the title name.
-    std::vector<Title> titles;
-
-    // Initialise an application record array, where the size is MaxTitleCount
+    std::vector<std::string> titles;
     NsApplicationRecord *recs = new NsApplicationRecord[MaxTitleCount]();
-
-    // Set the buffer to NULL
     NsApplicationControlData *buf=NULL;
-    // Set outsize to 0
-    u64 outsize=0;
-    // Set the language entry to NULL
+    u64 outsize = 0;
     NacpLanguageEntry *langentry = NULL;
-
-    // Create a char array to store the name of the title
-    char name[0x201];
-
-    // Set the total records to 0
     s32 total = 0;
-    // Set a failed counter to 0
-    int totalFailed = 0;
-    // Fill the recs array with application records
     rc = nsListApplicationRecord(recs, MaxTitleCount, 0, &total);
 
-    // If filling the recs array was successful
     if (R_SUCCEEDED(rc)){
-        // Loop through records
         for (s32 i = 0; i < total; i++){
-
-            // Reset varaibles for accessing memory
-            outsize=0;
+            outsize = 0;
             buf = (NsApplicationControlData*)malloc(sizeof(NsApplicationControlData));
-            if (buf==NULL) {
+            if (buf == NULL) {
                 rc = MAKERESULT(Module_Libnx, LibnxError_OutOfMemory);
             } else {
                 memset(buf, 0, sizeof(NsApplicationControlData));
             }
             
             if (R_SUCCEEDED(rc)) {
-                rc = nsInitialize();
-                if (R_FAILED(rc)) {
+                if (R_FAILED(rc))
                     printf("nsInitialize() failed: 0x%x\n", rc);
-                }
             }
-            // Get the application control data for the current record
+
             rc = nsGetApplicationControlData(NsApplicationControlSource_Storage, recs[i].application_id, buf, sizeof(NsApplicationControlData), &outsize);
 
-            if (R_FAILED(rc)) {
-                totalFailed++;
-            }
-
-            if (outsize < sizeof(buf->nacp)) {
+            if (outsize < sizeof(buf->nacp))
                 rc = -1;
-            }
 
-            // If application control data was retrieved successfully
-            if (R_SUCCEEDED(rc)) {
+            if (R_SUCCEEDED(rc))
                 rc = nacpGetLanguageEntry(&buf->nacp, &langentry);
-            }
 
-            // If nacp language entry was retrieved successfully
             if (R_SUCCEEDED(rc)) {
-                memset(name, 0, sizeof(name));
-                strncpy(name, langentry->name, sizeof(name)-1); //Don't assume the nacp string is NUL-terminated for safety.
-                titles.push_back({formatApplicationId(recs[i].application_id), name});
+                titles.push_back(formatApplicationId(recs[i].application_id));
             }
-
-            nsExit();
         }
     }
-
     free(buf);
     delete[] recs;
     std::sort(titles.begin(), titles.end());
     return titles;
 }
 
-std::vector<Title> excludeTitles(const char* path, std::vector<Title> listedTitles){
-    // Initialise a vector of titles
-    std::vector<Title> titles;
-    // Open a file stream
+std::vector<std::string> excludeTitles(const char* path, std::vector<std::string> listedTitles){
+    std::vector<std::string> titles;
     std::ifstream file(path);
-    // Declare a total variable and set to 0
     int total = 0;
-    // Declare a name variable
     std::string name;
-
 
     if (file.is_open()) {
         std::string line;
-        // Read each line of the file in
         while (std::getline(file, line)) {
-            name = "No name provided";
-            // Change the line to uppercase
             std::transform(line.begin(), line.end(), line.begin(), ::toupper);
-
-            for(int i = 0; i < (int)listedTitles.size(); i++) {
-                // Iterate through the listedTitles, and compare the id's in the file, to the installed title ids
-                // When a match is found, it sets the name of the excluded title to the name of the installed title
-                if(listedTitles.at(i).id == line) {
-                    name = listedTitles.at(i).name;
+            for(size_t i = 0; i < listedTitles.size(); i++) {
+                if(line == listedTitles[i]) {
+                    titles.push_back(line);
                     break;
                 }
             }
-            // Push a new title to the titles vector and increment the total number of excluded titles
-            titles.push_back({line, name});
-            total++;
         }
-        // Close the file
         file.close();
     }
 
-    // Sort the titles list (uses an overloaded < operator to sort based on ID's)
     std::sort(titles.begin(), titles.end());
 
-    // Create a vector to store the difference between the excluded titles list, and the installed title list
-    std::vector<Title> diff;
-    // Populate the difference vector
+    std::vector<std::string> diff;
     std::set_difference(listedTitles.begin(), listedTitles.end(), titles.begin(), titles.end(), 
                          std::inserter(diff, diff.begin()));
     return diff;
@@ -236,7 +180,7 @@ bool caselessCompare (const std::string& a, const std::string& b){
     return strcasecmp(a.c_str(), b.c_str()) < 0;
 }
 
-void extractCheats(const char * zipPath, std::vector<Title> titles, CFW cfw, bool credits){
+void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cfw, bool credits){
     //TODO: REWRITE WITH SETS INSTEAD OF VECTORS
     ProgressEvent::instance().reset();
     zipper::Unzipper unzipper(zipPath);
@@ -303,18 +247,16 @@ void extractCheats(const char * zipPath, std::vector<Title> titles, CFW cfw, boo
     }
 
     size_t lastL = 0;
-    std::string name;
     std::string id;
     ProgressEvent::instance().setTotalSteps(titles.size());
     for(size_t j = 0; j < titles.size(); j++){
         for(size_t l = lastL; l < parents.size(); l++){
-            if(strcasecmp((titles.at(j).id).c_str(), parents[l].substr(offset, 16).c_str()) == 0){
+            if(strcasecmp((titles[j]).c_str(), parents[l].substr(offset, 16).c_str()) == 0){
                 unzipper.extractEntry(parents[l]);
                 for(auto& e : children[l]){
                     unzipper.extractEntry(e);
                     extractedTitles.insert(id);
                     ProgressEvent::instance().setStep(j);
-                    name = "No name retrieved.";
                     id = e.substr(offset, 16);
                     std::transform(id.begin(), id.end(), id.begin(), ::toupper);
                 }
