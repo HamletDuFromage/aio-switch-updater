@@ -12,8 +12,21 @@ bool isServiceRunning(const char *serviceName) {
     return running;
 };
 
+Result smAtmosphereHasService(bool *out, SmServiceName name) {
+    u8 tmp = 0;
+    Result rc = serviceDispatchInOut(smGetServiceSession(), 65100, name, tmp);
+    if (R_SUCCEEDED(rc) && out)
+        *out = tmp;
+    return rc;
+}
+
 CFW getCFW(){
-    if(isServiceRunning("rnx"))         return rnx;
-    else if(isServiceRunning("tx"))     return sxos;
-    else                                return ams;
+    bool res = false;
+    smAtmosphereHasService(&res, (SmServiceName) {"rnx"});
+    if(res) 
+        return rnx;
+    smAtmosphereHasService(&res, (SmServiceName) {"tx"});
+    if(res)
+        return sxos;
+    return ams;
 };

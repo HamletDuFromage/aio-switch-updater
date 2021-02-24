@@ -112,6 +112,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.3.3");
     changes.push_back("menus/v2_3_3_text"_i18n );
 
+    verTitles.push_back("v2.3.4");
+    changes.push_back("menus/v2_3_4_text"_i18n );
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

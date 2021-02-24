@@ -77,6 +77,7 @@
     "v2_3_1_text":           "\uE016 Files for batch copy are now copied according to the json order (formerly alphabetical order).",
     "v2_3_2_text":           "\uE016 Fixed batch copy not copying :^)",
     "v2_3_3_text":           "\uE016 Hide unsupported features for Mariko Switches",
+    "v2_3_4_text":           "\uE016 Minor fixes, refactored old switch-cheats updater code and changed way to detect CFW",
     "Ok_button":    "Ok",
 
     "cheats_page.cpp":"",

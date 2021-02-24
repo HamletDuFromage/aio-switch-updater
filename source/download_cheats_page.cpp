@@ -221,7 +221,7 @@ void DownloadCheatsPage::WriteCheats(uint64_t tid, std::string bid, std::string 
     path += bid + ".txt";
     std::ofstream cheatFile;
     cheatFile.open(path, std::ios::app);
-    cheatFile << "\n" << cheatContent;
+    cheatFile << "\n\n" << cheatContent;
     std::ofstream updated;
     updated.open(UPDATED_TITLES_PATH, std::ios::app);
     updated << "\n" << tidstr;
