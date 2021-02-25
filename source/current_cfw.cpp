@@ -22,11 +22,16 @@ Result smAtmosphereHasService(bool *out, SmServiceName name) {
 
 CFW getCFW(){
     bool res = false;
-    smAtmosphereHasService(&res, (SmServiceName) {"rnx"});
-    if(res) 
-        return rnx;
-    smAtmosphereHasService(&res, (SmServiceName) {"tx"});
-    if(res)
-        return sxos;
+    if(R_SUCCEEDED(smAtmosphereHasService(&res, smEncodeName("rnx")))) {
+        if(res) 
+            return rnx;
+        smAtmosphereHasService(&res, smEncodeName("tx"));
+        if(res)
+            return sxos;
+    }
+    else { // use old method just in case
+        if(isServiceRunning("rnx"))         return rnx;
+        else if(isServiceRunning("tx"))     return sxos;
+    }
     return ams;
 };
