@@ -263,15 +263,11 @@ void shut_down(bool reboot){
 }
 
 std::string getLatestTag(const char *url){
-    std::string page = downloadPage(url);
-    try{
-        nlohmann::json tags = nlohmann::json::parse(page);
-        nlohmann::json:: iterator latest = tags.begin();
-        return latest.value()["name"];
-    }
-    catch (...){
+    nlohmann::json tag = getRequest(url, {"accept: application/vnd.github.v3+json"});
+    if(tag.find("tag_name") != tag.end())
+        return tag["tag_name"];
+    else
         return "";
-    }
 }
 
 void cp(const char *from, const char *to){

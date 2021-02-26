@@ -198,12 +198,12 @@ std::string downloadPage(const char* url, std::vector<std::string> headers, std:
     return res;
 }
 
-json getRequest(std::string url, std::vector<std::string> headers, std::string body) {
+nlohmann::ordered_json getRequest(std::string url, std::vector<std::string> headers, std::string body) {
     std::string request;
     request = downloadPage(url.c_str(), headers, body);
 
-    if(json::accept(request))   return json::parse(request);
-    else                        return json::object();
+    if(json::accept(request))   return nlohmann::ordered_json::parse(request);
+    else                        return nlohmann::ordered_json::object();
 }
 
 std::vector<std::pair<std::string, std::string>> getLinks(const char *url) {

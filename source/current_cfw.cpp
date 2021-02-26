@@ -10,7 +10,7 @@ bool isServiceRunning(const char *serviceName) {
         smUnregisterService(service_name);
 
     return running;
-};
+}
 
 Result smAtmosphereHasService(bool *out, SmServiceName name) {
     u8 tmp = 0;
@@ -30,8 +30,8 @@ CFW getCFW(){
             return sxos;
     }
     else { // use old method just in case
-        if(isServiceRunning("rnx"))         return rnx;
-        else if(isServiceRunning("tx"))     return sxos;
+        if(isServiceRunning("rnx"))     return rnx;
+        if(isServiceRunning("tx"))      return sxos;
     }
     return ams;
-};
+}

@@ -10,7 +10,7 @@
 #define RCM_PAYLOAD_PATH    "romfs:/aio_rcm.bin"
 
 #define APP_URL             "https://github.com/HamletDuFromage/aio-switch-updater/releases/latest/download/aio-switch-updater.zip"
-#define TAGS_INFO           "https://api.github.com/repos/HamletDuFromage/aio-switch-updater/tags"
+#define TAGS_INFO           "https://api.github.com/repos/HamletDuFromage/aio-switch-updater/releases/latest"
 #define APP_FILENAME         "/config/aio-switch-updater/app.zip"
 
 #define SIGPATCHES_URL      "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/sigpatches.json"
