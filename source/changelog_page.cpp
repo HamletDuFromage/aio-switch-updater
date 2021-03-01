@@ -4,7 +4,7 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 ChangelogPage::ChangelogPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/Changelog"_i18n );
+    this->setTitle("menus/changelog/changelog"_i18n );
     list = new brls::List();
     std::vector<std::string> verTitles;
     std::string change;

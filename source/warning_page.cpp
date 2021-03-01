@@ -11,7 +11,7 @@ WarningPage::WarningPage(std::string text)
 {
     createTree(CONFIG_PATH);
     std::ofstream(HIDDEN_AIO_FILE);
-    this->button = (new brls::Button(brls::ButtonStyle::PRIMARY))->setLabel("menus/Continue"_i18n);
+    this->button = (new brls::Button(brls::ButtonStyle::PRIMARY))->setLabel("menus/common/continue"_i18n);
     this->button->setParent(this);
     this->button->getClickEvent()->subscribe([this](View* view) {
         brls::Application::pushView(new MainFrame());
@@ -30,7 +30,7 @@ void WarningPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned he
 
     auto end = std::chrono::high_resolution_clock::now();
     auto missing = std::max(1l - std::chrono::duration_cast<std::chrono::seconds>(end - start).count(), 0l);
-    auto text =  std::string("menus/Continue"_i18n );
+    auto text =  std::string("menus/common/continue"_i18n );
     if (missing > 0) {
         this->button->setLabel(text + " (" + std::to_string(missing) + ")");
         this->button->setState(brls::ButtonState::DISABLED);

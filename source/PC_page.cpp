@@ -8,22 +8,22 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 PCPage::PCPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/pro_con"_i18n );
+    this->setTitle("menus/pro_con/title"_i18n );
     list = new brls::List();
-    std::string labelText = "menus/pc_you_can"_i18n;
+    std::string labelText = "menus/pro_con/desc"_i18n;
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
     list->addView(label);
 
-    backup = new brls::ListItem("menus/jc_backup"_i18n );
+    backup = new brls::ListItem("menus/joy_con/backup"_i18n );
     backup->getClickEvent()->subscribe([&](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("menus/pc_color"_i18n );
+        stagedFrame->setTitle("menus/pro_con/label"_i18n );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/pc_backing"_i18n , 
+            new WorkerPage(stagedFrame, "menus/pro_con/backing_up"_i18n , 
             [](){pc::backupPCColor(PC_COLOR_PATH);})
         );
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/jc_all_done"_i18n , true)
+            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n , true)
         );
         brls::Application::pushView(stagedFrame);
     });
@@ -41,13 +41,13 @@ PCPage::PCPage() : AppletFrame(true, true)
         items[i] = new brls::ListItem(names[i]);
         items[i]->getClickEvent()->subscribe([&, value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-            stagedFrame->setTitle("menus/pc_color"_i18n );
+            stagedFrame->setTitle("menus/pro_con/label"_i18n );
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/jc_changing"_i18n , 
                 [value](){pc::changePCColor(value);})
             );
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/pc_all_done"_i18n , true)
+                new ConfirmPage(stagedFrame, "menus/pro_con/all_done"_i18n , true)
             );
             brls::Application::pushView(stagedFrame);
         });

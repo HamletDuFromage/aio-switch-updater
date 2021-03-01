@@ -18,40 +18,40 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
 {
     std::vector<std::pair<std::string, std::string>> links;
     std::vector<std::pair<std::string, std::string>> sxoslinks;
-    std::string operation = "menus/Getting"_i18n ;
-    std::string firmwareText("menus/firmware_text"_i18n);
+    std::string operation = "menus/main/getting"_i18n ;
+    std::string firmwareText("menus/main/firmware_text"_i18n);
 
     std::string currentCheatsVer = 
-                "menus/currentCeatsver"_i18n ;
+                "menus/main/cheats_text"_i18n ;
 
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
         case sigpatches:
             links = getLinks(SIGPATCHES_URL);
-            operation += "menus/operation_1"_i18n ;
+            operation += "menus/main/sigpatches"_i18n ;
             this->description->setText(
-                "menus/list_sigpatches"_i18n 
+                "menus/main/sigpatches_text"_i18n 
             );
             break;
         case fw:
             links = getLinks(FIRMWARE_URL);
-            operation += "menus/operation_2"_i18n ;
+            operation += "menus/main/firmware"_i18n ;
             SetSysFirmwareVersion ver;
             if (R_SUCCEEDED(setsysGetFirmwareVersion(&ver))) firmwareText += ver.display_version;
-            else firmwareText += "menus/list_not"_i18n ;
+            else firmwareText += "menus/main/not_found"_i18n ;
             this->description->setText(firmwareText);
             break;
         case app:
-            links.push_back(std::make_pair("menus/list_latest"_i18n, APP_URL));
-            operation += "menus/list_app"_i18n ;
+            links.push_back(std::make_pair("menus/main/latest_cheats"_i18n, APP_URL));
+            operation += "menus/main/app"_i18n ;
             break;
         case cfw:
             links = getLinks(CFW_URL);
             sxoslinks = getLinks(SXOS_URL);
             links.insert(links.end(), sxoslinks.begin(), sxoslinks.end());
-            operation += "menus/list_cfw"_i18n ;
+            operation += "menus/main/cfw"_i18n ;
             this->description->setText(
-                "menus/list_main"_i18n 
+                "menus/main/cfw_text"_i18n 
             );
             break;
         case cheats:
@@ -59,17 +59,17 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
             if(cheatsVer != "-1"){
                 switch(running_cfw){
                     case sxos:
-                        links.push_back(std::make_pair("menus/list_latest_ver"_i18n  + cheatsVer + ")", CHEATS_URL_TITLES));
+                        links.push_back(std::make_pair("menus/main/cheats_text"_i18n  + cheatsVer + ")", CHEATS_URL_TITLES));
                         break;
                     case ams:
-                        links.push_back(std::make_pair("menus/list_latest_ver"_i18n  + cheatsVer + ")", CHEATS_URL_CONTENTS));
+                        links.push_back(std::make_pair("menus/main/cheats_text"_i18n  + cheatsVer + ")", CHEATS_URL_CONTENTS));
                         break;
                     case rnx:
-                        links.push_back(std::make_pair("menus/list_latest_ver"_i18n  + cheatsVer + ")", CHEATS_URL_CONTENTS));
+                        links.push_back(std::make_pair("menus/main/cheats_text"_i18n  + cheatsVer + ")", CHEATS_URL_CONTENTS));
                         break;
                 }
             }
-            operation += "menus/list_cheats"_i18n ;
+            operation += "menus/main/cheats"_i18n ;
             currentCheatsVer += readVersion(CHEATS_VERSION);
             this->description->setText(currentCheatsVer);
             break;
@@ -81,7 +81,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
     if(nbLinks){
         for (int i = 0; i<nbLinks; i++){
             std::string url = links[i].second;
-            std::string text("menus/list_down"_i18n  + links[i].first + "menus/list_from"_i18n  + url);
+            std::string text("menus/common/download"_i18n  + links[i].first + "menus/common/from"_i18n  + url);
             listItem = new brls::ListItem(links[i].first);
             listItem->setHeight(LISTITEM_HEIGHT);
             listItem->getClickEvent()->subscribe([&, text, url, type, operation](brls::View* view) {
@@ -91,16 +91,16 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                     new ConfirmPage(stagedFrame, text)
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/list_downing"_i18n , [url, type](){downloadArchive(url, type);})
+                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n , [url, type](){downloadArchive(url, type);})
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/list_extracting"_i18n , [type](){extractArchive(type);})
+                    new WorkerPage(stagedFrame, "menus/common/extracting"_i18n , [type](){extractArchive(type);})
                 );
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, 
                         (type == sigpatches) ? 
-                            "menus/list_All"_i18n + "\n" + "menus/please_reboot"_i18n : 
-                            "menus/list_All"_i18n,
+                            "menus/common/all_done"_i18n + "\n" + "menus/sigpatches/reboot"_i18n : 
+                            "menus/common/all_done"_i18n,
                         true)
                 );
                 brls::Application::pushView(stagedFrame);
@@ -113,7 +113,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
     else{
         notFound = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
-            "menus/list_could_done"_i18n ,
+            "menus/main/links_not_found"_i18n ,
             true
         );
         notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
@@ -123,11 +123,11 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
     if(type == cheats){
         cheatSlipLabel = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/cheatslips_label"_i18n ,
+        "menus/cheats/cheatslips_label"_i18n ,
             true
         );
         this->addView(cheatSlipLabel);
-        cheatslipsItem = new brls::ListItem("menus/get_cheatslips"_i18n);
+        cheatslipsItem = new brls::ListItem("menus/cheats/get_cheatslips"_i18n);
         cheatslipsItem->setHeight(LISTITEM_HEIGHT);
         cheatslipsItem->getClickEvent()->subscribe([&](brls::View* view) {
             if(std::filesystem::exists(TOKEN_PATH)) {
@@ -169,7 +169,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                     return true;
                 }
                 else {
-                    brls::Dialog* dialog = new brls::Dialog("menus/wrong_cheatslips_id"_i18n + "\n" + "menus/keyboard_no_show"_i18n);
+                    brls::Dialog* dialog = new brls::Dialog("menus/cheats/cheatslips_wrong_id"_i18n + "\n" + "menus/cheats/kb_error"_i18n);
                     brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                         dialog->close();
                     };

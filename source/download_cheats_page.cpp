@@ -12,7 +12,7 @@ using json = nlohmann::json;
 
 DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
 {
-    this->setTitle("menus/cheat_menu"_i18n );
+    this->setTitle("menus/cheats/menu"_i18n );
 
     std::string bid = "";
     if(running_cfw == ams)
@@ -23,7 +23,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/download_cheatslips"_i18n + "\n\uE016  Build ID: " + bid,
+        "menus/cheats/cheatslips_dl"_i18n + "\n\uE016  Build ID: " + bid,
         true
     );
     list->addView(label);
@@ -35,7 +35,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
             for (const auto& p : cheatsInfo["cheats"].items()) {
                 json cheat = p.value();
                 listItem = new::brls::ToggleListItem(GetCheatsTitle(cheat), 0, "", "\uE016", "o");
-                listItem->registerAction("menus/see_more"_i18n , brls::Key::Y, [this, cheat] { 
+                listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n , brls::Key::Y, [this, cheat] { 
                     if(cheat.find("titles") != cheat.end()) {
                         ShowCheatsContent(cheat["titles"]);
                     }
@@ -51,13 +51,13 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
     else {
         label = new brls::Label(
             brls::LabelStyle::REGULAR,
-            "menus/bid_not_found"_i18n,
+            "menus/cheats/bid_not_found"_i18n,
             true
         );
         list->addView(label);
     }
 
-    list->registerAction((bid != "") ? "menus/download_cheats"_i18n : "brls/hints/back"_i18n, brls::Key::B, [this, bid, tid] { 
+    list->registerAction((bid != "") ? "menus/cheats/cheatslips_dl_cheats"_i18n : "brls/hints/back"_i18n, brls::Key::B, [this, bid, tid] { 
         std::vector<int> ids;
         for(auto& e : toggles){
             if(e.first->getToggleState()){
@@ -95,10 +95,10 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
                 brls::Dialog* dialog;
                 switch(error){
                     case 1:
-                        dialog = new brls::Dialog("menus/quota_cheatslips"_i18n);
+                        dialog = new brls::Dialog("menus/cheats/quota"_i18n);
                         break;
                     case 2:
-                        dialog = new brls::Dialog("menus/couldnt_dl_cheats"_i18n);
+                        dialog = new brls::Dialog("menus/cheats/cheatslips_error"_i18n);
                         break;
                 }
                 brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
@@ -130,10 +130,10 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
         return true;
     });
 
-    del = new brls::ListItem("menus/delete_cheat"_i18n);
+    del = new brls::ListItem("menus/cheats/delete_file"_i18n);
     del->getClickEvent()->subscribe([this, tid, bid](brls::View* view) {
         DeleteCheats(tid, bid);
-        brls::Dialog* dialog = new brls::Dialog("menus/All_done"_i18n);
+        brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
             dialog->close();
         };
@@ -255,5 +255,5 @@ void DownloadCheatsPage::ShowCheatsContent(nlohmann::ordered_json titles) {
         list->addView(listItem);
     }
     appView->setContentView(list);
-    brls::PopupFrame::open("menus/cheat_cheat_content"_i18n, appView, "", "");
+    brls::PopupFrame::open("menus/cheats/sheet_content"_i18n, appView, "", "");
 }

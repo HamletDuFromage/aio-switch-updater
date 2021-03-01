@@ -8,11 +8,11 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 PayloadPage::PayloadPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/payload_reboot"_i18n );
+    this->setTitle("menus/payloads/reboot_title"_i18n );
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/payload_select"_i18n ,
+        "menus/payloads/select"_i18n ,
         true
     );
     list->addView(label);
@@ -27,10 +27,10 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
             brls::Application::popView();
         });
         if(running_cfw == ams){
-            items[i]->registerAction("menus/payload_set"_i18n , brls::Key::X, [this, payload] { 
+            items[i]->registerAction("menus/payloads/set_reboot_payload"_i18n , brls::Key::X, [this, payload] { 
                 std::string res1;
                 if(R_SUCCEEDED(CopyFile(payload.c_str(), REBOOT_PAYLOAD_PATH))){
-                    res1 += "menus/payload_success"_i18n  + payload + "menus/payload_to"_i18n  + std::string(REBOOT_PAYLOAD_PATH) + "'.";
+                    res1 += "menus/payloads/copy_success"_i18n  + payload + "menus/payloads/to"_i18n  + std::string(REBOOT_PAYLOAD_PATH) + "'.";
                     
                 }
                 else{
@@ -40,16 +40,16 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
                 brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                     dialog->close();
                 };
-                dialog->addButton("menus/payload_ok"_i18n , callback);
+                dialog->addButton("menus/common/ok"_i18n , callback);
                 dialog->setCancelable(true);
                 dialog->open();
                 return true;
             });
         }
-        items[i]->registerAction("menus/payload_set_up"_i18n , brls::Key::Y, [this, payload] { 
+        items[i]->registerAction("menus/payloads/set_reboot_payload_up"_i18n , brls::Key::Y, [this, payload] { 
                 std::string res2;
                 if(R_SUCCEEDED(CopyFile(payload.c_str(), UPDATE_BIN_PATH))){
-                    res2 += "menus/payload_success"_i18n  + payload + "menus/payload_to"_i18n  + std::string(UPDATE_BIN_PATH) + "'.";
+                    res2 += "menus/payloads/copy_success"_i18n  + payload + "menus/payloads/to"_i18n  + std::string(UPDATE_BIN_PATH) + "'.";
                 }
                 else{
                     res2 += "Failed.";
@@ -58,7 +58,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
                 brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                     dialog->close();
                 };
-                dialog->addButton("menus/payload_ok"_i18n , callback);
+                dialog->addButton("menus/common/ok"_i18n , callback);
                 dialog->setCancelable(true);
                 dialog->open();
                 return true;
@@ -67,14 +67,14 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
     }
     list->addView(new brls::ListItemGroupSpacing(true));
 
-    shutDown = new brls::ListItem("menus/payload_shut"_i18n );
+    shutDown = new brls::ListItem("menus/common/shut_down"_i18n );
     shutDown->getClickEvent()->subscribe([](brls::View* view) {
         shut_down(false);
         brls::Application::popView();
     });
     list->addView(shutDown);
 
-    reboot = new brls::ListItem("menus/payload_reboot_2"_i18n );
+    reboot = new brls::ListItem("menus/payloads/reboot"_i18n );
     reboot->getClickEvent()->subscribe([](brls::View* view) {
         shut_down(true);
         brls::Application::popView();

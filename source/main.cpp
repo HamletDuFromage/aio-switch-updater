@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
         brls::Application::pushView(new MainFrame());
     }
     else {
-        brls::Application::pushView(new WarningPage("menus/launch_warning"_i18n));
+        brls::Application::pushView(new WarningPage("menus/main/launch_warning"_i18n));
     }
 
 

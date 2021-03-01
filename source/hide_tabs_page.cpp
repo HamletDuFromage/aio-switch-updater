@@ -8,11 +8,11 @@ using namespace i18n::literals;
 using json = nlohmann::json;
 
 HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
-    this->setTitle("menus/hide_tabs_page"_i18n );
+    this->setTitle("menus/hide/title"_i18n );
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/hide_tabs_label"_i18n ,
+        "menus/hide/desc"_i18n ,
         true
     );
     list->addView(label);
@@ -30,45 +30,45 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
     if(hideStatus.find("about") != hideStatus.end()) {
         status = hideStatus["about"];
     }
-    about = new brls::ToggleListItem("menus/main_about"_i18n, status);
+    about = new brls::ToggleListItem("menus/main/about"_i18n, status);
     list->addView(about);
 
     status = false;
     if(hideStatus.find("atmosphere") != hideStatus.end()) {
         status = hideStatus["atmosphere"];
     }
-    ams = new brls::ToggleListItem("menus/main_update_ams"_i18n, status);
+    ams = new brls::ToggleListItem("menus/main/update_ams"_i18n, status);
     list->addView(ams);
 
     status = false;
     if(hideStatus.find("cfw") != hideStatus.end()) {
         status = hideStatus["cfw"];
     }
-    cfws = new brls::ToggleListItem("menus/main_update_cfw"_i18n, status);
+    cfws = new brls::ToggleListItem("menus/main/update_cfw"_i18n, status);
     list->addView(cfws);
 
     status = false;
     if(hideStatus.find("sigpatches") != hideStatus.end()) {
         status = hideStatus["sigpatches"];
     }
-    sigpatches = new brls::ToggleListItem("menus/main_update_si"_i18n, status);
+    sigpatches = new brls::ToggleListItem("menus/main/update_sigpatches"_i18n, status);
     list->addView(sigpatches);
 
     status = false;
     if(hideStatus.find("firmwares") != hideStatus.end()) {
         status = hideStatus["firmwares"];
     }
-    fws = new brls::ToggleListItem("menus/main_firmwares"_i18n, status);
+    fws = new brls::ToggleListItem("menus/main/download_firmware"_i18n, status);
     list->addView(fws);
 
     status = false;
     if(hideStatus.find("cheats") != hideStatus.end()) {
         status = hideStatus["cheats"];
     }
-    cheats = new brls::ToggleListItem("menus/main_cheats"_i18n, status);
+    cheats = new brls::ToggleListItem("menus/main/download_cheats"_i18n, status);
     list->addView(cheats);
 
-    list->registerAction("menus/save"_i18n , brls::Key::B, [this] { 
+    list->registerAction("menus/cheats/exclude_titles_save"_i18n , brls::Key::B, [this] { 
         json updatedStatus = json::object();
         updatedStatus["about"] = about->getToggleState();
         updatedStatus["atmosphere"] = ams->getToggleState();

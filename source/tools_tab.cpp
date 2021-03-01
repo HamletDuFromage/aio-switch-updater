@@ -22,22 +22,22 @@ using json = nlohmann::json;
 ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
 {
     if(!tag.empty() && tag != APP_VERSION){
-        updateApp = new brls::ListItem("menus/tool_update"_i18n  + tag +")");
-        std::string text("menus/tool_DownLoad"_i18n  + std::string(APP_URL));
+        updateApp = new brls::ListItem("menus/tools/update_app"_i18n  + tag +")");
+        std::string text("menus/tools/dl_app"_i18n  + std::string(APP_URL));
         updateApp->getClickEvent()->subscribe([&, text, tag](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-            stagedFrame->setTitle("menus/tool_updating"_i18n );
+            stagedFrame->setTitle("menus/common/updating"_i18n );
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, text)
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/tool_downloading"_i18n , [](){downloadArchive(APP_URL, app);})
+                new WorkerPage(stagedFrame, "menus/tools/dl_payloadsing"_i18n , [](){downloadArchive(APP_URL, app);})
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/tool_extracting"_i18n , [tag](){extractArchive(app, tag);})
+                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n , [tag](){extractArchive(app, tag);})
             );
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/tool_all_done"_i18n , true)
+                new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n , true)
             );
             brls::Application::pushView(stagedFrame);
         });
@@ -45,28 +45,28 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         this->addView(updateApp);
     }
 
-    cheats = new brls::ListItem("menus/tool_cheats"_i18n );
+    cheats = new brls::ListItem("menus/tools/cheats"_i18n );
     cheats->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new CheatsPage());
     });
     cheats->setHeight(LISTITEM_HEIGHT);
     this->addView(cheats);
 
-    JCcolor = new brls::ListItem("menus/tool_change"_i18n );
+    JCcolor = new brls::ListItem("menus/tools/joy_cons"_i18n );
     JCcolor->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new JCPage());
     });
     JCcolor->setHeight(LISTITEM_HEIGHT);
     this->addView(JCcolor);
 
-    PCcolor = new brls::ListItem("menus/tool_change_procon"_i18n );
+    PCcolor = new brls::ListItem("menus/tools/pro_cons"_i18n );
     PCcolor->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new PCPage());
     });
     PCcolor->setHeight(LISTITEM_HEIGHT);
     this->addView(PCcolor);
 
-    downloadPayload = new brls::ListItem("menus/tool_download"_i18n  + std::string(BOOTLOADER_PL_PATH));
+    downloadPayload = new brls::ListItem("menus/tools/dl_payloads"_i18n  + std::string(BOOTLOADER_PL_PATH));
     downloadPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new DownloadPayloadPage());
     });
@@ -74,7 +74,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
     this->addView(downloadPayload);
 
     if(erista) {
-        rebootPayload = new brls::ListItem("menus/tool_inject"_i18n );
+        rebootPayload = new brls::ListItem("menus/tools/inject_payloads"_i18n );
         rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
             brls::Application::pushView(new PayloadPage());
         });
@@ -97,14 +97,14 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
     ntcp->setHeight(LISTITEM_HEIGHT);
     this->addView(ntcp); */
 
-    netSettings = new brls::ListItem("menus/tool_net_settings"_i18n );
+    netSettings = new brls::ListItem("menus/tools/internet_settings"_i18n );
     netSettings->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new NetPage());
     });
     netSettings->setHeight(LISTITEM_HEIGHT);
     this->addView(netSettings);
 
-    browser = new brls::ListItem("menus/tool_browser"_i18n );
+    browser = new brls::ListItem("menus/tools/browser"_i18n );
     browser->getClickEvent()->subscribe([&](brls::View* view){
         char url[0xc00] = {0};
         SwkbdConfig kbd;
@@ -151,7 +151,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
     browser->setHeight(LISTITEM_HEIGHT);
     this->addView(browser);
 
-    move = new brls::ListItem("menus/tool_copyFiles"_i18n );
+    move = new brls::ListItem("menus/tools/batch_copy"_i18n );
     move->getClickEvent()->subscribe([&](brls::View* view){
         chdir("/");
         std::string error = "";
@@ -159,7 +159,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
             error = copyFiles(COPY_FILES_JSON);
         }
         else{
-            error = "menus/copy_files_not_found"_i18n;
+            error = "menus/tools/batch_copy_config_not_found"_i18n;
         }
         brls::Dialog* dialog = new brls::Dialog(error);
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
@@ -172,7 +172,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
     move->setHeight(LISTITEM_HEIGHT);
     this->addView(move);
 
-    cleanUp = new brls::ListItem("menus/tool_cleanUp"_i18n );
+    cleanUp = new brls::ListItem("menus/tools/clean_up"_i18n );
     cleanUp->getClickEvent()->subscribe([&](brls::View* view){
         std::filesystem::remove(AMS_ZIP_PATH);
         std::filesystem::remove(APP_ZIP_PATH);
@@ -183,7 +183,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         removeDir(AMS_DIRECTORY_PATH);
         removeDir(SEPT_DIRECTORY_PATH);
         removeDir(FW_DIRECTORY_PATH);
-        brls::Dialog* dialog = new brls::Dialog("menus/All_done"_i18n);
+        brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
             dialog->close();
         };
@@ -194,14 +194,14 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
     cleanUp->setHeight(LISTITEM_HEIGHT);
     this->addView(cleanUp);
 
-    hideTabs = new brls::ListItem("menus/hide_tabs"_i18n );
+    hideTabs = new brls::ListItem("menus/tools/hide_tabs"_i18n );
     hideTabs->getClickEvent()->subscribe([&](brls::View* view) {
         brls::Application::pushView(new HideTabsPage());
     });
     hideTabs->setHeight(LISTITEM_HEIGHT);
     this->addView(hideTabs);
 
-    changelog = new brls::ListItem("menus/tool_changelog"_i18n );
+    changelog = new brls::ListItem("menus/tools/changelog"_i18n );
     changelog->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new ChangelogPage());
     });

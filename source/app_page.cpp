@@ -12,11 +12,11 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
 {
-    this->setTitle(cheatSlips ? "menus/cheastlips_title"_i18n : "menus/app_title"_i18n );
+    this->setTitle(cheatSlips ? "menus/cheats/cheastlips_title"_i18n : "menus/cheats/installed"_i18n );
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        cheatSlips ? "menus/app_cheatslips_label"_i18n : "menus/app_label"_i18n,
+        cheatSlips ? "menus/cheats/cheatslips_select"_i18n : "menus/cheats/label"_i18n,
         true
     );
     list->addView(label);
@@ -67,7 +67,7 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
             i++;
         }
     }
-    std::string text("menus/text_download"_i18n);
+    std::string text("menus/cheats/downloading"_i18n);
     std::string url = "";
     switch(running_cfw){
         case ams:
@@ -81,22 +81,22 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
             break;
     }
     text += url;
-    download = new brls::ListItem("menus/text_download_list"_i18n );
+    download = new brls::ListItem("menus/cheats/downloading_list"_i18n );
     archiveType type = cheats;
     download->getClickEvent()->subscribe([&, url, text, type](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("menus/text_title"_i18n );
+        stagedFrame->setTitle("menus/cheats/getting_cheats"_i18n );
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, text)
         );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/Downloading"_i18n , [url, type](){downloadArchive(url, type);})
+            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n , [url, type](){downloadArchive(url, type);})
         );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/Extracting"_i18n , [type](){extractArchive(type);})
+            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n , [type](){extractArchive(type);})
         );
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/All_done"_i18n , true)
+            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n , true)
         );
         brls::Application::pushView(stagedFrame);
     });

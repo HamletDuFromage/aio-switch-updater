@@ -8,23 +8,23 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 JCPage::JCPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/joy_con"_i18n );
+    this->setTitle("menus/joy_con/title"_i18n );
     list = new brls::List();
-    std::string labelText = "menus/jc_you_can_1"_i18n  + std::string(COLOR_PROFILES_PATH) + "menus/jc_you_can_goto"_i18n +
-                            "menus/jc_you_can_2"_i18n ;
+    std::string labelText = "menus/joy_con/desc_1"_i18n  + std::string(COLOR_PROFILES_PATH) + "menus/joy_con/desc_2"_i18n +
+                            "menus/joy_con/desc_3"_i18n ;
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
     list->addView(label);
 
-    backup = new brls::ListItem("menus/jc_backup"_i18n );
+    backup = new brls::ListItem("menus/joy_con/backup"_i18n );
     backup->getClickEvent()->subscribe([&](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-        stagedFrame->setTitle("menus/jc_color"_i18n );
+        stagedFrame->setTitle("menus/joy_con/label"_i18n );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/jc_backing"_i18n , 
+            new WorkerPage(stagedFrame, "menus/joy_con/backing_up"_i18n , 
             [](){backupJCColor(COLOR_PROFILES_PATH);})
         );
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/jc_all_done"_i18n , true)
+            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n , true)
         );
         brls::Application::pushView(stagedFrame);
     });
@@ -48,7 +48,7 @@ JCPage::JCPage() : AppletFrame(true, true)
                 [value](){changeJCColor(value);})
             );
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/jc_all_"_i18n , true)
+                new ConfirmPage(stagedFrame, "menus/joy_con/all_done"_i18n , true)
             );
             brls::Application::pushView(stagedFrame);
         });

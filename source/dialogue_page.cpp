@@ -8,9 +8,9 @@ using namespace i18n::literals;
 
 DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text)
 {
-    this->button1 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/Yes"_i18n);
+    this->button1 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/common/yes"_i18n);
     this->button1->setParent(this);
-    this->button2 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/No"_i18n);
+    this->button2 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/common/no"_i18n);
     this->button2->setParent(this);
 
     this->button1->getClickEvent()->subscribe([frame, this](View* view) {
@@ -25,7 +25,7 @@ DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text)
         brls::Application::popView();
     });
 
-    this->label = new brls::Label(brls::LabelStyle::DIALOG, "menus/hekate_dialogue"_i18n + "\n\n" + text, true);
+    this->label = new brls::Label(brls::LabelStyle::DIALOG, "menus/ams_update/install_hekate"_i18n + "\n\n" + text, true);
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
 

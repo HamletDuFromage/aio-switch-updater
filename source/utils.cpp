@@ -63,7 +63,7 @@ void downloadArchive(std::string url, archiveType type){
                 downloadFile(url.c_str(), FIRMWARE_FILENAME, OFF);
             }
             else{
-                brls::Application::crash("menus/utils_because"_i18n);
+                brls::Application::crash("menus/utils/fw_warning"_i18n);
             }
             break;
         case app:
@@ -130,7 +130,7 @@ void extractArchive(archiveType type, std::string tag){
                 /* std::string backup(HEKATE_IPL_PATH);
                 backup += ".old"; */
                 if(std::filesystem::exists(HEKATE_IPL_PATH)){
-                    overwriteInis = showDialogBox("menus/utils_do"_i18n  + std::string(HEKATE_IPL_PATH) +"?", "menus/utils_no"_i18n , "menus/utils_yes"_i18n );
+                    overwriteInis = showDialogBox("menus/utils/overwrite"_i18n  + std::string(HEKATE_IPL_PATH) +"?", "menus/common/no"_i18n , "menus/common/yes"_i18n );
                     if(overwriteInis == 0){
                         extract(SIGPATCHES_FILENAME, ROOT_PATH, HEKATE_IPL_PATH);
                     }
@@ -143,7 +143,7 @@ void extractArchive(archiveType type, std::string tag){
                 }
             }
             else{
-                brls::Application::crash("menus/utils_the"_i18n);
+                brls::Application::crash("menus/utils/wrong_type_sigpatches"_i18n);
             }
             break;
         case cheats: 
@@ -153,7 +153,7 @@ void extractArchive(archiveType type, std::string tag){
             break;
         case fw:
             if(std::filesystem::file_size(FIRMWARE_FILENAME) < 200000){
-                brls::Application::crash("menus/utils_the_downloaded"_i18n);
+                brls::Application::crash("menus/utils/wrong_type_sigpatches_downloaded"_i18n);
             }
             else{
                 if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
@@ -170,18 +170,18 @@ void extractArchive(archiveType type, std::string tag){
             break;
         case cfw:
             if(isArchive(CFW_FILENAME)){
-                overwriteInis = showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n );
+                overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n , "menus/common/no"_i18n , "menus/common/yes"_i18n );
                 extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
             }
             else{
-                brls::Application::crash("menus/ultis_file"_i18n);
+                brls::Application::crash("menus/utils/wrong_type_cfw"_i18n);
             }
             break;
         case ams_cfw:
             if(isArchive(AMS_FILENAME)){
-                overwriteInis = showDialogBox("menus/ultils_overwrite"_i18n , "menus/utils_no"_i18n, "menus/utils_yes"_i18n);
+                overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n , "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 usleep(800000);
-                int deleteContents = showDialogBox("menus/delete_contents"_i18n , "menus/utils_no"_i18n , "menus/utils_yes"_i18n);
+                int deleteContents = showDialogBox("menus/ams_update/delete_contents"_i18n , "menus/common/no"_i18n , "menus/common/yes"_i18n);
                 if(deleteContents == 1)
                     removeDir(AMS_CONTENTS);
                 extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
@@ -377,10 +377,10 @@ std::string copyFiles(const char* path) {
         }
     }
     if(error == "") {
-        error = "menus/All_done"_i18n;
+        error = "menus/common/all_done"_i18n;
     }
     else {
-        error = "menus/files_not_found"_i18n + error;
+        error = "menus/tools/batch_copy_not_found"_i18n + error;
     }
     return error;
 }
