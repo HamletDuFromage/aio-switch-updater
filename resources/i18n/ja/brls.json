@@ -1,0 +1,15 @@
+{
+    "hints": {
+        "ok": "決定",
+        "back": "戻る",
+        "exit": "閉じる"
+    },
+
+    "crash_frame": {
+        "button": "決定"
+    }
+
+    "thumbnail_sidebar": {
+        "save": "保存"
+    }
+}
