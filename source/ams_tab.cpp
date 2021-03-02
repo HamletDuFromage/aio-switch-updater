@@ -77,7 +77,3 @@ AmsTab::AmsTab() :
     }
 
 }
-
-AmsTab::~AmsTab(){
-    
-}

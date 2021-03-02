@@ -10,5 +10,4 @@ class AmsTab : public brls::List
         brls::Label *description;
     public:
         AmsTab();
-        ~AmsTab();
 };

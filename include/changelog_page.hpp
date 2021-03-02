@@ -10,4 +10,5 @@ class ChangelogPage : public brls::AppletFrame
 
     public:
         ChangelogPage();
+        void ShowChangelogContent(const std::string version, const std::string content);
 };

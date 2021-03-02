@@ -26,7 +26,7 @@
     "quota": "Quota exceeded for today!\nHead on to 'https://www.cheatslips.com/subscriptions' to see how to increase it.",
     "sheet_content": "Cheatsheet content",
     "cheatslips_select": "Select a game to download cheats for.",
-    "cheatslips_wrong_id": "Couldn't retrieve token, make sure you enter you login properly",
+    "cheatslips_wrong_id": "Couldn't retrieve token, make sure you enter your login properly",
     "kb_error": "If they keyboard did not show up, try running the app with full RAM access (title redirection)",
     "cheatslips_see_more": "See more",
     "cheatslips_dl_cheats": "Download cheats and go back",
@@ -144,7 +144,8 @@
   "ams_update": {
     "reboot_rcm": "The Switch will now reboot to a special payload in order to finalise the install.",
     "install_hekate": "Do you want to also download Hekate?\nIf not, the Switch will now launch reboot to a special payload in order to finalise the install.",
-    "delete_contents": "Would you like to remove the existing '/atmosphere/contents/' directory? This will prevent crashes if you have sysmodules that do not support the latest Atmosph\u00e8re. Please note that it will delete all your existing sysmodules, mods and cheats."
+    "delete_contents": "Would you like to remove the existing '/atmosphere/contents/' directory? This will prevent crashes if you have sysmodules that do not support the latest Atmosph\u00e8re. Please note that it will delete all your existing sysmodules, mods and cheats.",
+    "delete_sysmodules_flags": "Would you like to delete all the custom sysmodules startup flags? This will turn off all your sysmodules and prevent crashes if you have sysmodules that do not support the latest Atmosphère."
   },
   "net": {
     "title": "Internet settings"

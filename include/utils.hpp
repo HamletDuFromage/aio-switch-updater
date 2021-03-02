@@ -40,3 +40,4 @@ void cp(const char *to, const char *from);
 std::string copyFiles(const char* path);
 int removeDir(const char* path);
 bool isErista();
+void removeSysmodulesFlags(const char * directory);

@@ -181,9 +181,9 @@ void extractArchive(archiveType type, std::string tag){
             if(isArchive(AMS_FILENAME)){
                 overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n , "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 usleep(800000);
-                int deleteContents = showDialogBox("menus/ams_update/delete_contents"_i18n , "menus/common/no"_i18n , "menus/common/yes"_i18n);
+                int deleteContents = showDialogBox("menus/ams_update/delete_sysmodules_flags"_i18n , "menus/common/no"_i18n , "menus/common/yes"_i18n);
                 if(deleteContents == 1)
-                    removeDir(AMS_CONTENTS);
+                    removeSysmodulesFlags(AMS_CONTENTS);
                 extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
             }
             break;
@@ -394,7 +394,6 @@ int removeDir(const char* path) {
     return 0;
 }
 
-
 bool isErista() {
     splInitialize();
     u64 hwType;
@@ -418,3 +417,31 @@ bool isErista() {
             return true;
     }
 };
+
+void removeSysmodulesFlags(const char * directory) {
+    const std::set<std::string> AMS_SYSMODULES{
+        "010000000000000D",
+        "010000000000002B",
+        "0100000000000032",
+        "0100000000000036",
+        "0100000000000042",
+        "0100000000000008",
+        "010000000000003C",
+        "0100000000000034",
+        "0100000000000037"
+    };
+    bool found = false;
+    for (const auto & e : std::filesystem::recursive_directory_iterator(directory)) {
+        if(e.path().string().find("boot2.flag") != std::string::npos) {
+            for(const auto & c : AMS_SYSMODULES) {
+                if(e.path().string().find(c) != std::string::npos) {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found)
+                std::filesystem::remove(e.path());
+        }
+        found = false;
+    }
+}
