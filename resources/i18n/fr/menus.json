@@ -2,7 +2,7 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-switch-updater est distribuée sous la license GPL-3.0\n© 2020 HamletDuFromage",
-    "disclaimers": "  A part les cheat codes qui proviennent d'un mirroir d'un topic Gbatemp, HamletDuFromage n'héberge rien. Tous les crédits vont aux propriétaires respectifs\n  Les liens sont actualisés toutes les 3 heures. Si un lien reste inactif après 3 heures, merci de bien vouloir ouvrir une issue sur Github.\n"
+    "disclaimers": "\ue016  A part les cheat codes qui proviennent d'un mirroir d'un topic Gbatemp, HamletDuFromage n'héberge rien. Tous les crédits vont aux propriétaires respectifs\n\ue016  Les liens sont actualisés toutes les 3 heures. Si un lien reste inactif après 3 heures, merci de bien vouloir ouvrir une issue sur Github.\n"
   },
   "cheats": {
     "installed": "Cheats codes installés",
@@ -61,16 +61,16 @@
   },
   "main": {
     "getting": "Téléchargement du ",
-    "firmware_text": "  Firmware depuis 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargés, ils seront dans '/firmware'. Vous pouvez ensuite les installer avec Daybreak ou ChoiDuJour.\n  FW actuel : ",
-    "cheats_text": "  Archive mise à jour quotidiennement des codes de triche de 'gbatemp.net'. Les codes de triche pour les jeux que vous ne possedez pas ne seront pas extraits sur votre carte SD. Vous pouvez désactiver les mises à jour pour pour une sélection de jeux dans le menu 'Outils->Menu de cheat'.\n  Version actuelle des cheats : ",
+    "firmware_text": "\ue016  Firmware depuis 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargés, ils seront dans '/firmware'. Vous pouvez ensuite les installer avec Daybreak ou ChoiDuJour.\n\ue016  FW actuel : ",
+    "cheats_text": "\ue016  Archive mise à jour quotidiennement des codes de triche de 'gbatemp.net'. Les codes de triche pour les jeux que vous ne possedez pas ne seront pas extraits sur votre carte SD. Vous pouvez désactiver les mises à jour pour pour une sélection de jeux dans le menu 'Outils->Menu de cheat'.\n\ue016  Version actuelle des cheats : ",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "  Les Sigpatches permettent à votre Switch d'installer et d'exécuter des fichiers NSP non officiels. Assurez-vous de choisir les bons patchs pour votre configuration (Atmosphère seul ou Hekate + Atmosphère).",
+    "sigpatches_text": "\ue016  Les Sigpatches permettent à votre Switch d'installer et d'exécuter des fichiers NSP non officiels. Assurez-vous de choisir les bons patchs pour votre configuration (Atmosphère seul ou Hekate + Atmosphère).",
     "firmware": "firmware",
     "not_found": "non trouvé",
     "latest_cheats": "Dernière version",
     "app": "app",
     "cfw": "CFW",
-    "cfw_text": "  Principaux CFWs. Si vous souhaitez utiliser Atmosphère avec Hekate, téléchargez Atmosphère, puis Hekate.",
+    "cfw_text": "\ue016  Principaux CFWs. Si vous souhaitez utiliser Atmosphère avec Hekate, téléchargez Atmosphère, puis Hekate.",
     "cheats": "codes de triche",
     "links_not_found": "Impossible de trouver un lien de téléchargement, assurez vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur Github.",
     "new_update": " - Nouvelle MàJ de l'app disponible",

@@ -2,8 +2,8 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-switch-updaterはGPL-3.0の下でライセンスされています\n© 2020 HamletDuFromage",
-    "disclaimers": "  メインのGbatempスレッドからミラーリングされたチートコードを除いて、HamletDuFromageは何もホストしていません。すべてのクレジットはそれぞれの所有者に送られます。\n  リンクは3時間ごとに更新されます。 3時間経過してもリンクが壊れたままの場合は、Githubの問題を開いてください。\n",
-    "donate": "  アプリが好きですか？私の努力を支援するために寄付することを検討してください: 'https://git.io/donate_homlet'"
+    "disclaimers": "\ue016  メインのGbatempスレッドからミラーリングされたチートコードを除いて、HamletDuFromageは何もホストしていません。すべてのクレジットはそれぞれの所有者に送られます。\n\ue016  リンクは3時間ごとに更新されます。 3時間経過してもリンクが壊れたままの場合は、Githubの問題を開いてください。\n",
+    "donate": "\ue016  アプリが好きですか？私の努力を支援するために寄付することを検討してください: 'https://git.io/donate_homlet'"
   },
   "cheats": {
     "installed": "インストールされたチートコード",
@@ -19,7 +19,7 @@
     "deleting": "削除中...",
     "cheastlips_title": "CheatSlipチート",
     "get_cheatslips": "CheatSlips.comのチートシートをダウンロードする",
-    "cheatslips_label": "  CheatSlips.comにログインして、ゲームのチートシートをダウンロードします。",
+    "cheatslips_label": "\ue016  CheatSlips.comにログインして、ゲームのチートシートをダウンロードします。",
     "cheatslips_dl": "CheatSlips.comから選択したチートシートをダウンロードします。\nこれらのチートコードは、既存のチートファイルの最後に追加されます。",
     "delete_file": "既存のチートファイルを削除する",
     "cheatslips_error": "選択したチートコード/無効なトークンをフェッチできませんでした。",
@@ -89,17 +89,17 @@
   },
   "main": {
     "getting": "取得中 ",
-    "firmware_text": "  ファームウェアは'https://darthsternie.net/switch-firmwares/'からダンプされます。 ダウンロードすると、「/ firmware」に抽出されます。 その後、DaybreakまたはChoiDuJourを介してアップデートをインストールできます。\n  現在のファームウェア: ",
+    "firmware_text": "\ue016  ファームウェアは'https://darthsternie.net/switch-firmwares/'からダンプされます。 ダウンロードすると、「/ firmware」に抽出されます。 その後、DaybreakまたはChoiDuJourを介してアップデートをインストールできます。\n\ue016  現在のファームウェア: ",
     "cheats_text": "Download GBAtemp.net チートアーカイブ (ver ",
     "sigpatches": "sigpatch",
-    "sigpatches_text": "  Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。セットアップに適したsigpatchを選択してください（AtmosphereまたはHekate + Atmosphère）。",
+    "sigpatches_text": "\ue016  Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。セットアップに適したsigpatchを選択してください（AtmosphereまたはHekate + Atmosphère）。",
     "firmware": "FW",
     "not_found": "見つかりませんでした",
     "latest_cheats": "最新バージョン",
     "app": "アプリ",
     "cfw": "CFW",
-    "ams_text": "  このメニューから、自作ソフトウェアの実行に必要なAtmosphèreカスタムファームウェアをダウンロードして更新できます。\n  DeepSea by Team Neptuneは、Atmosphère、hekate、およびさまざまな自作アプリを含むCFWパックです",
-    "cfw_text": "  AtmosphereをHekateで使用する場合は、Atmosphereをダウンロードしてから、Hekateをダウンロードしてください。",
+    "ams_text": "\ue016  このメニューから、自作ソフトウェアの実行に必要なAtmosphèreカスタムファームウェアをダウンロードして更新できます。\n\ue016  DeepSea by Team Neptuneは、Atmosphère、hekate、およびさまざまな自作アプリを含むCFWパックです",
+    "cfw_text": "\ue016  AtmosphereをHekateで使用する場合は、Atmosphereをダウンロードしてから、Hekateをダウンロードしてください。",
     "cheats": "チート",
     "links_not_found": "ダウンロードリンクが見つかりませんでした。スイッチがインターネットにアクセスできることを確認してください。\nこの問題が解決しない場合は、Githubで問題を開いてください。",
     "new_update": " - 新しいアプリのアップデートが利用可能",
@@ -110,7 +110,7 @@
     "download_firmware": "FWをダウンロード",
     "download_cheats": "チートをダウンロード",
     "tools": "ツール",
-    "launch_warning": "アプリを使用する前に、次の点に注意してください:\n\n  最初にスイッチを手動で更新する方法を読んでください。これにより、アプリをよりよく理解し、問題が発生した場合の対処方法を知ることができます。\n  exFAT SDカードでこのアプリを使用することはお勧めできません。破損する可能性が高いためです。\n\nこの画面は二度と表示されません。"
+    "launch_warning": "アプリを使用する前に、次の点に注意してください:\n\n\ue016  最初にスイッチを手動で更新する方法を読んでください。これにより、アプリをよりよく理解し、問題が発生した場合の対処方法を知ることができます。\n\ue016  exFAT SDカードでこのアプリを使用することはお勧めできません。破損する可能性が高いためです。\n\nこの画面は二度と表示されません。"
   },
   "hide": {
     "title": "タブを非表示",

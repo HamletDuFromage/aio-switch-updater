@@ -2,8 +2,8 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-switch-updater依據GNU公共授權條款GPL 3.0版本開發\n© 2020 HamletDuFromage",
-    "disclaimers": "  HamletDuFromage僅鏡像使用Gbatemp論壇的金手指，伺服器沒有儲存或託管任何相關檔案，感謝所有提供金手指的創作者。\n  程式檔案資料庫會每隔30分鐘自動擷取更新。如果更新連結超過30分鐘仍無法正常使用，請使用Github提出問題來進行回報。\n",
-    "donate": "  喜歡我們開發的app嗎? 歡迎贊助支持我們持續開發維護: 'https://git.io/donate_homlet'"
+    "disclaimers": "\ue016  HamletDuFromage僅鏡像使用Gbatemp論壇的金手指，伺服器沒有儲存或託管任何相關檔案，感謝所有提供金手指的創作者。\n\ue016  程式檔案資料庫會每隔30分鐘自動擷取更新。如果更新連結超過30分鐘仍無法正常使用，請使用Github提出問題來進行回報。\n",
+    "donate": "\ue016  喜歡我們開發的app嗎? 歡迎贊助支持我們持續開發維護: 'https://git.io/donate_homlet'"
   },
   "cheats": {
     "installed": "已安裝金手指",
@@ -19,7 +19,7 @@
     "deleting": "正在刪除...",
     "cheastlips_title": "Cheatslips金手指",
     "get_cheatslips": "下載CheatSlips.com的金手指列表",
-    "cheatslips_label": "  登入CheatSlips.com並下載遊戲的金手指",
+    "cheatslips_label": "\ue016  登入CheatSlips.com並下載遊戲的金手指",
     "cheatslips_dl": "從CheatSlips.com下載金手指。\n下載的金手指將會放置排列在目前已有的金手指項目末端",
     "delete_file": "刪除目前的金手指",
     "cheatslips_error": "無法取得所選的金手指代碼/無效的token",
@@ -88,17 +88,17 @@
   },
   "main": {
     "getting": "正在擷取 ",
-    "firmware_text": "  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。你可以透過Daybreak或ChoiDuJour來安裝更新韌體。\n  目前FW: ",
+    "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。你可以透過Daybreak或ChoiDuJour來安裝更新韌體。\n\ue016  目前FW: ",
     "cheats_text": "下載GBAtemp.net金手指資料庫(版本 ",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "  Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。請確認你安裝過程中使用合適的sigpatches(Pure Atmosphère或Hekate+Atmosphère)。安裝完成後請重新開機以套用更新",
+    "sigpatches_text": "\ue016  Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。請確認你安裝過程中使用合適的sigpatches(Pure Atmosphère或Hekate+Atmosphère)。安裝完成後請重新開機以套用更新",
     "firmware": "韌體",
     "not_found": "沒有符合的項目",
     "latest_cheats": "最新版本",
     "app": "app",
     "cfw": "CFW",
-    "ams_text": "  請從清單進行選擇更新的項目，你可以選擇包含可執行第三方自製程式韌體的Atmosphère。\n DeepSea是由Team Neptune提供的CFW整合套件，包括Atmosphère、hekate與數種第三方自製程式。",
-    "cfw_text": "  備用CFWs、引導程序",
+    "ams_text": "\ue016  請從清單進行選擇更新的項目，你可以選擇包含可執行第三方自製程式韌體的Atmosphère。\n\ue016 DeepSea是由Team Neptune提供的CFW整合套件，包括Atmosphère、hekate與數種第三方自製程式。",
+    "cfw_text": "\ue016  備用CFWs、引導程序",
     "cheats": "金手指",
     "links_not_found": "無法使用下載連結，請檢查Switch是否可正常存取網路連線。\n如果網路正常仍無法使用，請使用Github提出問題來進行回報",
     "new_update": " - 有可用的app更新",
