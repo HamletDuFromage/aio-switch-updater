@@ -115,7 +115,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.3.4");
     changes.push_back("\uE016 Minor fixes, refactored old switch-cheats updater code and changed way to detect CFW");
 
-    verTitles.push_back("v2.3.5");
+    verTitles.push_back("v2.4.0");
     changes.push_back("\uE016 Added option to extract the entire gbatemp cheats archive.\n\uE016 Shortened load times.\n\uE016 Added German localisation (thanks to github.com/Slluxx).\n\uE016 Added option to disable sysmodules prior to updating.\n\uE016 Improved Japanese localisation (thanks to github.com/yyoossk).");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
