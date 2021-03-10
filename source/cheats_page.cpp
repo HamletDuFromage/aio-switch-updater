@@ -34,7 +34,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
         stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->setTitle("menus/cheats/delete_all"_i18n);
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/cheats/deleting"_i18n  , [](){removeCheats(running_cfw);})
+            new WorkerPage(stagedFrame, "menus/cheats/deleting"_i18n, [](){removeCheats(running_cfw);})
         );
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)
