@@ -4,7 +4,7 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 ChangelogPage::ChangelogPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/changelog/changelog"_i18n );
+    this->setTitle("menus/changelog/changelog"_i18n);
     list = new brls::List();
     std::vector<std::string> verTitles;
     std::string change;
@@ -126,7 +126,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
             brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                 dialog->close();
             };
-            dialog->addButton("menus/Ok_button"_i18n , callback);
+            dialog->addButton("menus/Ok_button"_i18n, callback);
             dialog->setCancelable(true);
             dialog->open();
         });

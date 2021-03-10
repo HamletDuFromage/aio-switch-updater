@@ -8,11 +8,11 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/payloads/dl_payloads"_i18n );
+    this->setTitle("menus/payloads/dl_payloads"_i18n);
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/payloads/select"_i18n  + std::string(BOOTLOADER_PL_PATH) + "." ,
+        "menus/payloads/select"_i18n + std::string(BOOTLOADER_PL_PATH) + "." ,
         true
     );
     list->addView(label);
@@ -23,20 +23,20 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
         for (int i = 0; i<nbLinks; i++){
             std::string url = links[i].second;
             std::string path = std::string(BOOTLOADER_PL_PATH) + links[i].first;
-            std::string text("menus/common/download"_i18n  + links[i].first + "menus/common/from"_i18n + url);
+            std::string text("menus/common/download"_i18n + links[i].first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(links[i].first);
             listItem->getClickEvent()->subscribe([&, text, url, path](brls::View* view) {
                 createTree(BOOTLOADER_PL_PATH);
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-                stagedFrame->setTitle("menus/getting_paylaod"_i18n );
+                stagedFrame->setTitle("menus/getting_paylaod"_i18n);
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, text)
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n , [url, path](){downloadFile(url.c_str(), path.c_str(), OFF);})
+                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path](){downloadFile(url.c_str(), path.c_str(), OFF);})
                 );
                 stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, "menus/common/downloadingload_all_done"_i18n , true)
+                    new ConfirmPage(stagedFrame, "menus/common/downloadingload_all_done"_i18n, true)
                 );
                 brls::Application::pushView(stagedFrame);
             });
@@ -46,12 +46,12 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
     else{
         notFound = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
-            "menus/payloads/not_found"_i18n ,
+            "menus/payloads/not_found"_i18n,
             true
         );
         notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
         list->addView(notFound);
-        brls::ListItem* back = new brls::ListItem("menus/common/back"_i18n );
+        brls::ListItem* back = new brls::ListItem("menus/common/back"_i18n);
         back->getClickEvent()->subscribe([&](brls::View* view) {
             brls::Application::popView();
         });

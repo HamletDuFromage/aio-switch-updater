@@ -8,11 +8,11 @@ using namespace i18n::literals;
 using json = nlohmann::json;
 
 HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
-    this->setTitle("menus/hide/title"_i18n );
+    this->setTitle("menus/hide/title"_i18n);
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/hide/desc"_i18n ,
+        "menus/hide/desc"_i18n,
         true
     );
     list->addView(label);
@@ -68,7 +68,7 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
     cheats = new brls::ToggleListItem("menus/main/download_cheats"_i18n, status);
     list->addView(cheats);
 
-    list->registerAction("menus/cheats/exclude_titles_save"_i18n , brls::Key::B, [this] { 
+    list->registerAction("menus/cheats/exclude_titles_save"_i18n, brls::Key::B, [this] { 
         json updatedStatus = json::object();
         updatedStatus["about"] = about->getToggleState();
         updatedStatus["atmosphere"] = ams->getToggleState();

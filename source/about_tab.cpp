@@ -9,7 +9,7 @@ AboutTab::AboutTab()
     // Subtitle
     brls::Label *subTitle = new brls::Label(
         brls::LabelStyle::REGULAR,
-        "menus/about/title"_i18n , 
+        "menus/about/title"_i18n, 
         true
     );
     subTitle->setHorizontalAlign(NVG_ALIGN_CENTER);

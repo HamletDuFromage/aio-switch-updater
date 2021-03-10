@@ -13,7 +13,7 @@ using json = nlohmann::json;
 
 DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
 {
-    this->setTitle("menus/cheats/menu"_i18n );
+    this->setTitle("menus/cheats/menu"_i18n);
 
     std::string bid = "";
     if(running_cfw == ams)
@@ -36,7 +36,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
             for (const auto& p : cheatsInfo["cheats"].items()) {
                 json cheat = p.value();
                 listItem = new::brls::ToggleListItem(GetCheatsTitle(cheat), 0, "", "\uE016", "o");
-                listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n , brls::Key::Y, [this, cheat] { 
+                listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, cheat] { 
                     if(cheat.find("titles") != cheat.end()) {
                         ShowCheatsContent(cheat["titles"]);
                     }
@@ -105,7 +105,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
                 brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                     dialog->close();
                 };
-                dialog->addButton("menus/Ok_button"_i18n , callback);
+                dialog->addButton("menus/Ok_button"_i18n, callback);
                 dialog->setCancelable(true);
                 dialog->open();
             }
@@ -118,7 +118,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
                 dialogResult = true;
                 dialog->close();
             };
-            dialog->addButton("menus/Ok_button"_i18n , callback);
+            dialog->addButton("menus/Ok_button"_i18n, callback);
             dialog->setCancelable(true);
             dialog->open();
             while(result == false){
@@ -138,7 +138,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
             dialog->close();
         };
-        dialog->addButton("menus/Ok_button"_i18n , callback);
+        dialog->addButton("menus/Ok_button"_i18n, callback);
         dialog->setCancelable(true);
         dialog->open();
     });

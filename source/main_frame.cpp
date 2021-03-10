@@ -18,7 +18,7 @@ MainFrame::MainFrame() : TabFrame()
 
     std::string tag = getLatestTag(TAGS_INFO);
     if(!tag.empty() && tag != APP_VERSION)
-        this->setFooterText("v" + std::string(APP_VERSION) + "menus/main/new_update"_i18n );
+        this->setFooterText("v" + std::string(APP_VERSION) + "menus/main/new_update"_i18n);
     else
         this->setFooterText("v" + std::string(APP_VERSION));
     
@@ -52,7 +52,7 @@ MainFrame::MainFrame() : TabFrame()
         this->addTab("menus/main/download_cheats"_i18n, new ListDownloadTab(cheats));
 
     if(hideStatus.find("tools") == hideStatus.end() || !hideStatus["tools"])
-        this->addTab("menus/main/tools"_i18n , new ToolsTab(tag, erista));
+        this->addTab("menus/main/tools"_i18n, new ToolsTab(tag, erista));
 
     this->registerAction("" , brls::Key::B, [this] { return true; });
 }

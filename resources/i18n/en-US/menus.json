@@ -34,7 +34,7 @@
     "exclude_titles": "Exclude titles",
     "exclude_titles_desc": "You can turn off cheat updates with this menu",
     "exclude_titles_save": "Save choice and return",
-    "dl_all": "Download and extract THE ENTIRE     the gbatemp cheats archive"
+    "dl_all": "Download and extract the entire gbatemp cheats archive"
   },
   "common": {
     "downloading": "Downloading...",

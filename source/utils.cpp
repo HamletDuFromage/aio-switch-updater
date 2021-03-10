@@ -130,7 +130,7 @@ void extractArchive(archiveType type, std::string tag){
                 /* std::string backup(HEKATE_IPL_PATH);
                 backup += ".old"; */
                 if(std::filesystem::exists(HEKATE_IPL_PATH)){
-                    overwriteInis = showDialogBox("menus/utils/overwrite"_i18n  + std::string(HEKATE_IPL_PATH) +"?", "menus/common/no"_i18n , "menus/common/yes"_i18n );
+                    overwriteInis = showDialogBox("menus/utils/overwrite"_i18n + std::string(HEKATE_IPL_PATH) +"?", "menus/common/no"_i18n, "menus/common/yes"_i18n);
                     if(overwriteInis == 0){
                         extract(SIGPATCHES_FILENAME, ROOT_PATH, HEKATE_IPL_PATH);
                     }
@@ -170,7 +170,7 @@ void extractArchive(archiveType type, std::string tag){
             break;
         case cfw:
             if(isArchive(CFW_FILENAME)){
-                overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n , "menus/common/no"_i18n , "menus/common/yes"_i18n );
+                overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
             }
             else{
@@ -179,9 +179,9 @@ void extractArchive(archiveType type, std::string tag){
             break;
         case ams_cfw:
             if(isArchive(AMS_FILENAME)){
-                overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n , "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 usleep(800000);
-                int deleteContents = showDialogBox("menus/ams_update/delete_sysmodules_flags"_i18n , "menus/common/no"_i18n , "menus/common/yes"_i18n);
+                int deleteContents = showDialogBox("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 if(deleteContents == 1)
                     removeSysmodulesFlags(AMS_CONTENTS);
                 extract(AMS_FILENAME, ROOT_PATH, overwriteInis);

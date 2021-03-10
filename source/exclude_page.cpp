@@ -10,11 +10,11 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 ExcludePage::ExcludePage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/cheats/exclude_titles"_i18n );
+    this->setTitle("menus/cheats/exclude_titles"_i18n);
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/cheats/exclude_titles_desc"_i18n ,
+        "menus/cheats/exclude_titles_desc"_i18n,
         true
     );
     list->addView(label);
@@ -73,7 +73,7 @@ ExcludePage::ExcludePage() : AppletFrame(true, true)
         i++;
     }
 
-    list->registerAction("menus/cheats/exclude_titles_save"_i18n , brls::Key::B, [this] { 
+    list->registerAction("menus/cheats/exclude_titles_save"_i18n, brls::Key::B, [this] { 
         std::set<std::string> exclude{};
         for(int i = 0; i < (int) std::get<1>(items).size(); i++){
             if(!std::get<0>(items)[i]->getToggleState()){

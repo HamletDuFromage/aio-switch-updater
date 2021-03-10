@@ -15,7 +15,7 @@ using json = nlohmann::json;
 
 NetPage::NetPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/net/title"_i18n );
+    this->setTitle("menus/net/title"_i18n);
     
     nifmInitialize(NifmServiceType_User);
     NifmNetworkProfileData profile;
@@ -183,8 +183,8 @@ NetPage::NetPage() : AppletFrame(true, true)
             brls::GenericEvent::Callback callbackNo = [dialog](brls::View* view) {
                 dialog->close();
             };
-            dialog->addButton("menus/common/confirm"_i18n , callbackOk);
-            dialog->addButton("menus/common/cancel"_i18n , callbackNo);
+            dialog->addButton("menus/common/confirm"_i18n, callbackOk);
+            dialog->addButton("menus/common/cancel"_i18n, callbackNo);
             dialog->setCancelable(false);
             dialog->open();
         });
