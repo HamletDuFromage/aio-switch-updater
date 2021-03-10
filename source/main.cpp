@@ -32,17 +32,14 @@ int main(int argc, char* argv[])
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
 #endif
 
-    // Initialize services with a PC shim
     setsysInitialize();
     plInitialize(PlServiceType_User);
-
     nsInitialize();
     socketInitializeDefault();
     nxlinkStdio();
-
     splInitialize();
-
     romfsInit();
+    
     createTree(CONFIG_PATH);
 
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
@@ -55,11 +52,8 @@ int main(int argc, char* argv[])
         brls::Application::pushView(new WarningPage("menus/main/launch_warning"_i18n));
     }
 
-
-    // Run the app
     while (brls::Application::mainLoop());
 
-    // Exit
     romfsExit();
     splExit();
     socketExit();

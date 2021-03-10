@@ -6,7 +6,7 @@
 #include "json.hpp"
 #include <fstream>
 #include "utils.hpp"
- 
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 using json = nlohmann::json;

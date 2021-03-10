@@ -18,7 +18,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
 {
     std::vector<std::pair<std::string, std::string>> links;
     std::vector<std::pair<std::string, std::string>> sxoslinks;
-    std::string operation = "menus/main/getting"_i18n ;
+    std::string operation("menus/main/getting"_i18n);
     std::string firmwareText("menus/main/firmware_text"_i18n);
 
     std::string currentCheatsVer = "menus/main/cheats_text"_i18n ;
@@ -182,9 +182,4 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
         });
         this->addView(cheatslipsItem);
     }
-
-}
-
-ListDownloadTab::~ListDownloadTab(){
-    
 }
