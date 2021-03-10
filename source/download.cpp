@@ -57,18 +57,16 @@ int download_progress(void *p, double dltotal, double dlnow, double ultotal, dou
     return 0;
 }
 
-void downloadFile(const char *url, const char *output, int api)
+std::vector<std::uint8_t> downloadFile(const char *url, const char *output, int api)
 {
     ProgressEvent::instance().reset();
     CURL *curl = curl_easy_init();
+    ntwrk_struct_t chunk = {0};
     if (curl)
     {
         FILE *fp = fopen(output, "wb");
-        if (fp)
+        if (fp || *output == 0)
         {
-            printf("\n");
-
-            ntwrk_struct_t chunk = {0};
             chunk.data = static_cast<u_int8_t *>(malloc(_1MiB));
             chunk.data_size = _1MiB;
             chunk.out = fp;
@@ -90,16 +88,26 @@ void downloadFile(const char *url, const char *output, int api)
                 curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, download_progress);
             }
             curl_easy_perform(curl);
-            if (chunk.offset)
+            if (fp && chunk.offset)
               fwrite(chunk.data, 1, chunk.offset, fp);
 
             curl_easy_cleanup(curl);
-            free(chunk.data);
-            fclose(chunk.out);
-
             ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
         }
     }
+
+    if (*output == 0) {
+        std::vector<std::uint8_t> res(chunk.data, chunk.data + chunk.offset);
+        free(chunk.data);
+        fclose(chunk.out);
+        return res;
+    }
+    else {
+        free(chunk.data);
+        fclose(chunk.out);
+        return (std::vector<std::uint8_t>){};
+    }
+
 }
 
 struct MemoryStruct {
@@ -115,7 +123,6 @@ static size_t WriteMemoryCallback2(void *contents, size_t size, size_t nmemb, vo
     char *ptr = static_cast<char *>(realloc(mem->memory, mem->size + realsize + 1));
     if(ptr == NULL) {
         /* out of memory! */ 
-        printf("not enough memory (realloc returned NULL)\n");
         return 0;
     }
 
@@ -198,6 +205,41 @@ std::string downloadPage(const char* url, std::vector<std::string> headers, std:
     return res;
 }
 
+std::vector<std::uint8_t> downloadPageBinary(const char* url, std::vector<std::string> headers, std::string body){
+    CURL *curl_handle; 
+    struct MemoryStruct chunk;
+    struct curl_slist *list = NULL;
+ 
+    chunk.memory = static_cast<char *>(malloc(1));  /* will be grown as needed by the realloc above */ 
+    chunk.size = 0;    /* no data at this point */ 
+ 
+    curl_global_init(CURL_GLOBAL_ALL);
+    curl_handle = curl_easy_init();
+    curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+    if(!headers.empty()){
+        for (auto& h : headers){
+            list = curl_slist_append(list, h.c_str());
+        }
+        curl_easy_setopt(curl_handle, CURLOPT_HTTPHEADER, list);
+    }
+    if(body != "") {
+        curl_easy_setopt(curl_handle, CURLOPT_POSTFIELDS, body.c_str());
+    }
+
+    curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback2);
+    curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
+    curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, API_AGENT);
+
+    curl_easy_setopt(curl_handle, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_perform(curl_handle);
+    curl_easy_cleanup(curl_handle);
+    std::vector<std::uint8_t> res(chunk.memory, chunk.memory + ((sizeof(chunk.memory)) * (chunk.size + 16)));
+    free(chunk.memory);
+ 
+    curl_global_cleanup();
+    return res;
+}
+
 nlohmann::ordered_json getRequest(std::string url, std::vector<std::string> headers, std::string body) {
     std::string request;
     request = downloadPage(url.c_str(), headers, body);
@@ -217,5 +259,4 @@ std::vector<std::pair<std::string, std::string>> getLinks(const char *url) {
         res.push_back(std::make_pair(it.key(), it.value()));
     }
     return res;
-
 }

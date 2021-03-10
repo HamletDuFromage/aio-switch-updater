@@ -9,7 +9,7 @@
 #include "app_page.hpp"
 #include <filesystem>
 #include <fstream>
- 
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
@@ -21,8 +21,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
     std::string operation = "menus/main/getting"_i18n ;
     std::string firmwareText("menus/main/firmware_text"_i18n);
 
-    std::string currentCheatsVer = 
-                "menus/main/cheats_text"_i18n ;
+    std::string currentCheatsVer = "menus/main/cheats_text"_i18n ;
 
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
@@ -55,17 +54,18 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
             );
             break;
         case cheats:
-            std::string cheatsVer = fetchTitle(CHEATS_RELEASE_URL);
-            if(cheatsVer != "-1"){
+            auto cheatsVerVec = downloadFile(CHEATS_URL_VERSION);
+            std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
+            if(cheatsVer != ""){
                 switch(running_cfw){
                     case sxos:
-                        links.push_back(std::make_pair("menus/main/cheats_text"_i18n  + cheatsVer + ")", CHEATS_URL_TITLES));
+                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_TITLES));
                         break;
                     case ams:
-                        links.push_back(std::make_pair("menus/main/cheats_text"_i18n  + cheatsVer + ")", CHEATS_URL_CONTENTS));
+                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_CONTENTS));
                         break;
                     case rnx:
-                        links.push_back(std::make_pair("menus/main/cheats_text"_i18n  + cheatsVer + ")", CHEATS_URL_CONTENTS));
+                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_CONTENTS));
                         break;
                 }
             }

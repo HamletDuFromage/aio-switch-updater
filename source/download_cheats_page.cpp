@@ -5,6 +5,7 @@
 #include "current_cfw.hpp"
 #include <fstream>
 #include <filesystem>
+//#include <iostream>
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -175,8 +176,15 @@ std::string DownloadCheatsPage::GetBuilIDFromFile(uint64_t tid) {
 
     this->setFooterText("Game version: v" + std::to_string(version / 0x10000));
 
-    json lookupTable = getRequest(LOOKUP_TABLE_URL);
-    
+    json lookupTable;
+    try { 
+        lookupTable = json::parse(std::string(json::from_cbor(downloadFile(LOOKUP_TABLE_CBOR))));
+    }
+    catch (json::parse_error& e)
+    {
+        //std::cout << "message: " << e.what() << '\n' << "exception id: " << e.id << '\n' << "byte position of error: " << e.byte << std::endl;
+    }
+
     std::string tidstr = formatApplicationId(tid);
     std::string versionstr = std::to_string(version);
     if(lookupTable.find(tidstr) != lookupTable.end()) {

@@ -48,8 +48,6 @@ int main(int argc, char* argv[])
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
     brls::Logger::debug("Start");
 
-    removeSysmodulesFlags(AMS_CONTENTS);
-
     if(std::filesystem::exists(HIDDEN_AIO_FILE)) {
         brls::Application::pushView(new MainFrame());
     }

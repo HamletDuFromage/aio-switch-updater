@@ -12,7 +12,7 @@
 #include <set>
 #include <unzipper.h>
 #include "progress_event.hpp"
- 
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 void extract(const char * filename, const char* workingPath, int overwriteInis){
@@ -267,8 +267,51 @@ void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cf
     }
     unzipper.close();
     writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
-    saveVersion(fetchTitle(CHEATS_RELEASE_URL), CHEATS_VERSION);
+    saveVersion(downloadPage(CHEATS_RELEASE_URL), CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
+}
+
+void extractAllCheats(const char * zipPath, CFW cfw){
+    ProgressEvent::instance().reset();
+    zipper::Unzipper unzipper(zipPath);
+    std::vector<zipper::ZipEntry> entries = unzipper.entries();
+    int offset = 0;
+    switch(cfw){
+        case ams:
+            offset = std::string(CONTENTS_PATH).length() + 17 + 7;
+            std::filesystem::create_directory(AMS_PATH);
+            std::filesystem::create_directory(AMS_CONTENTS);
+            chdir(AMS_PATH);
+            break;
+        case rnx:
+            offset = std::string(CONTENTS_PATH).length() + 17 + 7;
+            std::filesystem::create_directory(REINX_PATH);
+            std::filesystem::create_directory(REINX_CONTENTS);
+            chdir(REINX_PATH);
+            break;
+        case sxos:
+            offset = std::string(TITLES_PATH).length() + 17 + 7;
+            std::filesystem::create_directory(SXOS_PATH);
+            std::filesystem::create_directory(SXOS_TITLES);
+            chdir(SXOS_PATH);
+            break;
+    }
+    ProgressEvent::instance().setTotalSteps(entries.size());
+    for(size_t j = 0; j < entries.size(); j++){
+        if(((int) entries[j].name.size() == offset + 16 + 4) && (isBID(entries[j].name.substr(offset, 16)))) {
+            unzipper.extractEntry(entries[j].name);
+        }
+        ProgressEvent::instance().setStep(j);
+    }
+    unzipper.close();
+    ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
+}
+
+bool isBID(std::string bid) {
+    for(char const &c : bid){
+        if(!isxdigit(c)) return false;
+    }
+    return true;
 }
 
 void writeTitlesToFile(std::set<std::string> titles, const char* path){

@@ -9,6 +9,7 @@ class CheatsPage : public brls::AppletFrame
         brls::ListItem* view;
         brls::ListItem* deleteCheats;
         brls::ListItem* exclude;
+        brls::ListItem* dlAll;
         brls::StagedAppletFrame* stagedFrame;
 
     public:

@@ -33,7 +33,8 @@
     "bid_not_found": "Couldn't obtain build ID. Try launching aio-switch-updater in applet mode while the game is running.",
     "exclude_titles": "Exclude titles",
     "exclude_titles_desc": "You can turn off cheat updates with this menu",
-    "exclude_titles_save": "Save choice and return"
+    "exclude_titles_save": "Save choice and return",
+    "dl_all": "Download and extract THE ENTIRE     the gbatemp cheats archive"
   },
   "common": {
     "downloading": "Downloading...",
@@ -90,7 +91,8 @@
   "main": {
     "getting": "Getting ",
     "firmware_text": "\ue016  Firmware dumps from 'https://darthsternie.net/switch-firmwares/'. Once downloaded, it will be extracted in '/firmware'. You can then install the update through Daybreak or ChoiDuJour.\n\ue016  Current FW: ",
-    "cheats_text": "Download GBAtemp.net cheat archive (ver ",
+    "cheats_text": "\uE016  This will download a daily updated archive of cheat codes from 'gbatemp.net'. Cheat codes for games you don't have installed won't be extracted to your SD card. You can turn off cheat updates for specific games in 'Tools->Cheat menu'.\n\uE016  Current cheats version: ",
+    "get_cheats": "Download GBAtemp.net cheat archive (ver ",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\ue016  Sigpatches allow your Switch to install and run unofficial NSP file. Make sure you pick the correct sigpatches for your setup (pure Atmosph\u00e8re or Hekate+Atmosph\u00e8re). Reboot the console to apply patches.",
     "firmware": "firmware",

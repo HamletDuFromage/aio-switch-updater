@@ -27,4 +27,6 @@ std::vector<std::string> getInstalledTitlesNs();
 std::vector<std::string> excludeTitles(const char* path, std::vector<std::string> listedTitles);
 void writeTitlesToFile(std::set<std::string> titles, const char* path);
 void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cfw, bool credits = false);
+void extractAllCheats(const char * zipPath, CFW cfw);
 void removeCheats(CFW cfw);
+bool isBID(std::string bid);
