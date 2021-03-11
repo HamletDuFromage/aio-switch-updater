@@ -4,6 +4,7 @@
 #include <time.h>
 #include <math.h>
 #include <curl/curl.h>
+#include <chrono>
 
 #include <string>
 #include <regex>
@@ -15,6 +16,9 @@
 #define _1MiB   0x100000
 
 using json = nlohmann::json;
+
+std::chrono::_V2::steady_clock::time_point time_old;
+double dlold;
 
 typedef struct
 {
@@ -54,6 +58,15 @@ int download_progress(void *p, double dltotal, double dlnow, double ultotal, dou
     double fractionDownloaded = dlnow / dltotal;
     int counter = (int) (fractionDownloaded * ProgressEvent::instance().getMax()); //20 is the number of increments
     ProgressEvent::instance().setStep(std::min(ProgressEvent::instance().getMax() - 1, counter));
+    ProgressEvent::instance().setNow(dlnow);
+    ProgressEvent::instance().setTotalCount(dltotal);
+    auto time_now = std::chrono::steady_clock::now();
+    double elasped_time = ((std::chrono::duration<double>) (time_now - time_old)).count();
+    if(elasped_time > 1.0f) {
+        ProgressEvent::instance().setSpeed((dlnow - dlold) / elasped_time);
+        dlold = dlnow;
+        time_old = time_now;
+    }
     return 0;
 }
 
@@ -62,6 +75,8 @@ std::vector<std::uint8_t> downloadFile(const char *url, const char *output, int 
     ProgressEvent::instance().reset();
     CURL *curl = curl_easy_init();
     ntwrk_struct_t chunk = {0};
+    time_old = std::chrono::steady_clock::now();
+    dlold = 0.0f;
     if (curl)
     {
         FILE *fp = fopen(output, "wb");
@@ -84,7 +99,6 @@ std::vector<std::uint8_t> downloadFile(const char *url, const char *output, int 
             if (api == OFF)
             {
                 curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
-                //curl_easy_setopt(curl, CURLOPT_PROGRESSDATA, &prog);
                 curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, download_progress);
             }
             curl_easy_perform(curl);

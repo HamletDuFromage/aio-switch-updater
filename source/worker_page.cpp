@@ -8,7 +8,8 @@
 #include "constants.hpp"
 #include "progress_event.hpp"
 
-WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, worker_func_t worker_func): frame(frame), workerFunc(worker_func)
+
+WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, worker_func_t worker_func): frame(frame), workerFunc(worker_func), text(text)
 {
     this->progressDisp = new brls::ProgressDisplay();
     this->progressDisp->setParent(this);
@@ -43,6 +44,10 @@ void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned hei
     {
         this->progressDisp->setProgress(ProgressEvent::instance().getStep(), ProgressEvent::instance().getMax());
         this->progressDisp->frame(ctx);
+        if(ProgressEvent::instance().getTotal()) {
+            this->label->setText(fmt::format("{0} ({1:.1f} MB of {2:.1f} MB - {3:.1f} MB/s)", text, ProgressEvent::instance().getNow() / 0x100000, ProgressEvent::instance().getTotal() / 0x100000, ProgressEvent::instance().getSpeed() / 0x100000));
+            //this->label->setText(fmt::format("{0} ({1:.1f}MB of {2:.1f}MB - MB/s)", text, ProgressEvent::instance().getNow() / 0x100000, ProgressEvent::instance().getTotal() / 0x100000));
+        }
         this->label->frame(ctx);
     }
 }

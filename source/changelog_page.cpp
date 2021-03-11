@@ -118,6 +118,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.4.0");
     changes.push_back("\uE016 Added option to extract the entire gbatemp cheats archive.\n\uE016 Shortened load times.\n\uE016 Added German localisation (thanks to github.com/Slluxx).\n\uE016 Added option to disable sysmodules prior to updating.\n\uE016 Improved Japanese localisation (thanks to github.com/yyoossk).\n\uE016 Added current AMS version display.");
 
+    verTitles.push_back("v2.4.1");
+    changes.push_back("\uE016 Added information about download progress.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

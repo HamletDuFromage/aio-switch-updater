@@ -3,7 +3,6 @@
 #include <borealis.hpp>
 #include <thread>
 
-
 typedef std::function<void()> worker_func_t;
 
 class WorkerPage : public brls::View
@@ -13,6 +12,7 @@ class WorkerPage : public brls::View
     brls::StagedAppletFrame* frame;
     brls::Button* button;
     brls::Label* label;
+    std::string text;
     int progressValue = 0;
     bool workStarted = false;
     std::thread* workerThread;
