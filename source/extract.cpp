@@ -267,7 +267,9 @@ void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cf
     }
     unzipper.close();
     writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
-    saveVersion(downloadPage(CHEATS_RELEASE_URL), CHEATS_VERSION);
+    auto cheatsVerVec = downloadFile(CHEATS_URL_VERSION);
+    std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
+    saveVersion(cheatsVer, CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
@@ -304,6 +306,9 @@ void extractAllCheats(const char * zipPath, CFW cfw){
         ProgressEvent::instance().setStep(j);
     }
     unzipper.close();
+    auto cheatsVerVec = downloadFile(CHEATS_URL_VERSION);
+    std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
+    saveVersion(cheatsVer, CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 

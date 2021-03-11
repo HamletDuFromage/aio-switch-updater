@@ -62,7 +62,7 @@ int download_progress(void *p, double dltotal, double dlnow, double ultotal, dou
     ProgressEvent::instance().setTotalCount(dltotal);
     auto time_now = std::chrono::steady_clock::now();
     double elasped_time = ((std::chrono::duration<double>) (time_now - time_old)).count();
-    if(elasped_time > 1.0f) {
+    if(elasped_time > 1.2f) {
         ProgressEvent::instance().setSpeed((dlnow - dlold) / elasped_time);
         dlold = dlnow;
         time_old = time_now;

@@ -107,7 +107,6 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
             });
             this->addView(listItem);
         }
-
     }
 
     else{
