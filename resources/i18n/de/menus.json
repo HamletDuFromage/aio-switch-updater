@@ -146,7 +146,7 @@
   "ams_update": {
     "reboot_rcm": "Die switch wird nun zu einem Speziellem Payload rebooten um den Installationsprozess ab zu schließen.",
     "install_hekate": "Möchtest du auch Hekate herunterladen?\nFalls nein, wird die Switch nun zu einem Speziellem Payload rebooten um den Installationsprozess ab zu schließen.",
-    "delete_contents": "möchtest du den existierenden '/atmosphere/contents/' Ordner löschen? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosph\u00e8re version nicht unterstützt. Bedenke dass dies all deine Sysmodule, Mods und Cheats löscht!",
+    "delete_contents": "Möchtest du den existierenden '/atmosphere/contents/' Ordner löschen? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosph\u00e8re version nicht unterstützt. Bedenke dass dies all deine Sysmodule, Mods und Cheats löscht!",
     "delete_sysmodules_flags": "Möchtest du den Autostart von allen Sysmodules verhindern? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosph\u00e8re version nicht unterstützt.",
     "current_ams": "\ue016  Momentane Atmosphère version: "
   },

@@ -86,7 +86,8 @@
     "desc": "You can change the internal color of your Pro Controller. Make sure it's set to Player 1.",
     "label": "Pro Controller color swapper",
     "backing_up": "Backing up the color profile",
-    "all_done": "All done! You may need to turn your controller on and off for the change to take effect"
+    "all_done": "All done! You may need to turn your controller on and off for the change to take effect.",
+    "changing": "Changing color. Make sure the Pro-Con is set to player 1."
   },
   "main": {
     "getting": "Getting ",

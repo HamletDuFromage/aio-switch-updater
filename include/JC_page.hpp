@@ -7,7 +7,7 @@ class JCPage : public brls::AppletFrame
     private:
         brls::List* list;
         brls::Label* label;
-        std::vector<brls::ListItem*> items;
+        brls::ListItem* listItem;
         brls::ListItem* restore;
         brls::ListItem* backup;
     

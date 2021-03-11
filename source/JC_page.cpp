@@ -35,16 +35,15 @@ JCPage::JCPage() : AppletFrame(true, true)
     auto profiles = getProfiles(COLOR_PROFILES_PATH);
     std::vector<std::string> names = std::get<0>(profiles);
     int nbProfiles = names.size();
-    items.reserve(nbProfiles);
     for (int i = nbProfiles - 1; i >= 0; i--){
         std::string name = std::get<0>(profiles)[i];
         std::vector<int> value = std::get<1>(profiles)[i];
-        items[i] = new brls::ListItem(names[i]);
-        items[i]->getClickEvent()->subscribe([&, value](brls::View* view) {
+        listItem = new brls::ListItem(names[i]);
+        listItem->getClickEvent()->subscribe([&, value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-            stagedFrame->setTitle("joy_con/title"_i18n);
+            stagedFrame->setTitle("menus/joy_con/label"_i18n);
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/jc_changing"_i18n, 
+                new WorkerPage(stagedFrame, "menus/joy_con/changing"_i18n, 
                 [value](){changeJCColor(value);})
             );
             stagedFrame->addStage(
@@ -52,7 +51,7 @@ JCPage::JCPage() : AppletFrame(true, true)
             );
             brls::Application::pushView(stagedFrame);
         });
-        list->addView(items[i]);
+        list->addView(listItem);
     }
     this->setContentView(list);
 }
