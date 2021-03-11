@@ -1,0 +1,156 @@
+{
+  "about": {
+    "title": "All-in-One Nintendo Switch Updater",
+    "copyright": "AIO-switch-updater ist lizensiert unter: GPL-3.0\n\u00a9 2020 HamletDuFromage",
+    "disclaimers": "\ue016  Außer cheat-codes die vom haupt GBAtemp thread stammen, hostet HamletDuFromage nichts selber. Alle Anerkennung geht an die jeweiligen Besitzer.\n\ue016  Links werden alle 30 Minuten aktualisiert. Wenn ein Link nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein Github issue.\n",
+    "donate": "\ue016  Gefällt dir die App? Hier kannst du meine Bemühungen unterstützen: 'https://git.io/donate_homlet'"
+  },
+  "cheats": {
+    "installed": "Installierte Cheats",
+    "label": "Die folgenden Titel haben Cheat-updates. Bitte berücksichtige, dass runtergeladene Cheats möglicherweise nicht mit deiner Spielversion übereinstimmen.",
+    "downloading": "Wird heruntergeladen:\nNeueste Cheats\n\nVonFrom:\n",
+    "dl_latest": "Lade neueste Cheats herunter",
+    "getting_cheats": "Sammle Cheats",
+    "menu": "Cheats Menü",
+    "view": "Zeige installierte Cheats",
+    "exclude": "Schließe Spiele von Cheat updates aus",
+    "delete_existing": "Lösche alle existierenden Cheats",
+    "delete_all": "Lösche alle Cheats",
+    "deleting": "Löschen...",
+    "cheastlips_title": "Cheatslips Cheats",
+    "get_cheatslips": "Lade CheatSlips.com Cheats herunter",
+    "cheatslips_label": "\ue016  Log dich in CheatSlips.com ein und lade Cheats für deine Spiele runter.",
+    "cheatslips_dl": "Lade eine auswahl von Cheats von CheatSlips.com herunter.\nDie Cheats werden deiner existierenden Cheat-datei hinzugefügt.",
+    "delete_file": "Lösche Cheat-datei",
+    "cheatslips_error": "Konnte keine cheats laden / ungüliger Token.",
+    "quota": "Limit für heute erreicht!\nGehe auf 'https://www.cheatslips.com/subscriptions' um zu sehen wie du es erhöhen kannst.",
+    "sheet_content": "Cheat-datei Inhalt",
+    "cheatslips_select": "Wähle ein Spiel aus um cheats herunter zu laden.",
+    "cheatslips_wrong_id": "Token konnte nicht abgerufen werden. Stellen Sie sicher, dass die Logindaten richtig sind.",
+    "kb_error": "Wenn die Tastatur nicht auftaucht, starte die App mit vollem RAM zugriff. (title redirection)",
+    "cheatslips_see_more": "Weiteres",
+    "cheatslips_dl_cheats": "Lade cheats & geh zurück",
+    "bid_not_found": "ID konnte nicht abgerufen werden. Versuchen Sie, aio-switch-updater im Applet-Modus zu starten, während das Spiel läuft.",
+    "exclude_titles": "Spiele ausschließen",
+    "exclude_titles_desc": "Mit diesem Menü kannst du cheat-updates ausstellen",
+    "exclude_titles_save": "Auswahl speichern und zurück",
+    "dl_all": "Das gesammte GBAtemp Cheat-archiv herunterladen und enptacken"
+  },
+  "common": {
+    "downloading": "Wird heruntergeladen...",
+    "extracting": "Wird entpackt...",
+    "all_done": " Fertig!",
+    "back": "Zurück",
+    "continue": "Weiter",
+    "download": "Wird heruntergeladen:\n",
+    "from": "\n\nVon:\n",
+    "ok": "Ok",
+    "shut_down": "Ausschalten",
+    "reboot": "Neustarten",
+    "updating": "App updaten",
+    "no": "Nein",
+    "yes": "Ja",
+    "go_back": "Zurück",
+    "confirm": "Bestätigen",
+    "cancel": "Abbrechen"
+  },
+  "changelog": {
+    "changelog": "Changelog"
+  },
+  "sigpatches": {
+    "reboot": "Änderung werden nach dem nächsten Neustart wirksam."
+  },
+  "payloads": {
+    "dl_payloads": "Payloads herunterladen",
+    "select": " Wähle ein Payload zum neustarten aus.",
+    "not_found": "Konnte keinen Downloadlink finden. Stelle sicher, dass deine Switch Internetzugriff hat.\nWenn das Problem bestehen bleibt, öffne bitte ein issue auf Github.",
+    "reboot_title": "Neustart Menü",
+    "set_reboot_payload": "Setze als reboot_payload.bin",
+    "set_update_bin": "Setze als /bootloader/update.bin",
+    "copy_success": "Erfolgreich kopiert '",
+    "to": "' zu '"
+  },
+  "joy_con": {
+    "title": "Joy-Con Farbwechseler",
+    "desc_1": "Du kannst die Farbe deiner Joy-Cons ändern. Stell sicher, dass die Joy-Cons angeschlossen sind.\nFarbprofile werden gespeichert in: '",
+    "desc_2": "'. Gehe auf 'http://bit.ly/JC-color' ",
+    "desc_3": "um deine eigenen benutzerdefinierten Profile zu erstellen.",
+    "backup": "Derzeitiges Profil sichern",
+    "label": "Joy-Con Farbwechseler",
+    "backing_up": "Sichern des momentanen Farbprofils. Stell sicher, dass die Joy-Cons angeschlossen sind. Wenn der Prozess hängt, versuche die JC's ab- und anzuschließen.",
+    "changing": "Wechsle Farbe. Stell sicher, dass die Joy-Cons angeschlossen sind. Wenn der Prozess hängt, versuche die JC's ab- und anzuschließen.",
+    "all_done": "Fertig! Du musst die Joy-Cons vielleicht trennen und anschließen um den Effekt zu sehen."
+  },
+  "pro_con": {
+    "title": "Pro-Con Farbwechsler",
+    "desc": "Du kannst die Farbe deines Pro Controlers ändern. Stelle sicher, dass er als Spieler 1 erkannt wird.",
+    "label": "Pro Controller Farbwechsler",
+    "backing_up": "Derzeitiges Profil sichern",
+    "all_done": "Fertig! Du musst dn Pro Controler vielleicht trennen und anschließen um den Effekt zu sehen."
+  },
+  "main": {
+    "getting": "Herunterladen: ",
+    "firmware_text": "\ue016  firmware von: 'https://darthsternie.net/switch-firmwares/'. Sobald runtergeladen, wird sie in '/firmware' entpackt . Danach kannst du das Update mit Daybreak oder ChoiDuJour installieren.\n\ue016  Mometnane FW: ",
+    "cheats_text": "\uE016  Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen die du nicht besitzt, werden nicht entpackt. Du kannst updates für ausgewählte Spiele unter 'Tools->Cheat menu' deaktivieren.\n\uE016  Momentane Cheatversion: ",
+    "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver ",
+    "sigpatches": "Sigpatches",
+    "sigpatches_text": "\ue016  Sigpatches erlauben dir inoffizielle NSPs zu installieren und starten. Stell sicher, dass du die korrekten patches für dein Setup auswählst(reines Atmosph\u00e8re or Hekate+Atmosph\u00e8re). Starte die Konsole neu um die Patches zu aktivieren.",
+    "firmware": "Firmware",
+    "not_found": "nicht gefunden",
+    "latest_cheats": "Neueste Version",
+    "app": "App",
+    "cfw": "CFW",
+    "ams_text": "\ue016  Aus diesem Menü kannst du die Atmosph\u00e8re custom firmware runterladen und updaten.\n\ue016  DeepSea von Team Neptune ist ein CFW Paket, dass Atmosph\u00e8re, Hekate and andere nützliche Homebrews enthält.",
+    "cfw_text": "\ue016  Alternative CFWs, Bootloaders.",
+    "cheats": "Cheats",
+    "links_not_found": "Konnte keinen Downloadlink finden. Stelle sicher, dass deine Switch Internetzugriff hat.\nWenn das Problem bestehen bleibt, öffne bitte ein issue auf Github.",
+    "new_update": " - Neues App update verfügbar",
+    "about": "Über",
+    "update_ams": "Update Atmosph\u00e8re",
+    "update_cfw": "Update CFW",
+    "update_sigpatches": "Update Sigpatches",
+    "download_firmware": "Firmwares runterladen",
+    "download_cheats": "Cheats runterladen",
+    "tools": "Werkzeuge",
+    "launch_warning": "Bitte beachten Sie die folgenden Punkte, bevor Sie die App verwenden:\n\n\ue016  Lesen Sie zuerst, wie Sie Ihren Switch manuell aktualisieren. Auf diese Weise können Sie die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachten Sie, dass die Verwendung dieser App (oder eines Homebrews) auf einer exFAT SD-Karte nicht empfohlen wird, da diese höchstwahrscheinlich im laufe der Zeit ihre Daten beschädigen wird.\n\nDieser Bildschirm wird nicht mehr angezeigt."
+  },
+  "hide": {
+    "title": "Tabs verstecken",
+    "desc": "Verstecke Tabs aus dem Hauptmenü"
+  },
+  "tools": {
+    "cheats": "Cheats Menü",
+    "joy_cons": "Ändere die farbe deiner Joy-Cons",
+    "pro_cons": "Ändere die farbe deines Pro Controlers",
+    "dl_payloads": "Lade Payloads hierhin runter: ",
+    "inject_payloads": "Injiziere Payload",
+    "update_app": "Update die App (v",
+    "dl_app": "Lade herunter:\nAIO-switch-updater\n\nVon:\n",
+    "changelog": "Changelog",
+    "clean_up": "Lösche übrig gebliebende Dateien",
+    "hide_tabs": "Tabs verstecken",
+    "internet_settings": "Editiere Interneteinstellungen",
+    "browser": "Web Browser",
+    "batch_copy": "Massen Datei kopieren",
+    "batch_copy_not_found": "Die folgenden Dateien wurden nicht gefunden und konnten nicht kopiert werden:\n",
+    "batch_copy_config_not_found": "Dieses Tool erlaubt dir Dateien zu anderen Orten zu kopieren, was vielleicht für bootloader/trinket gebraucht wird. Lade copy_files.json von 'https://git.io/aiosu_copy_files' runter und pack es in deinen config Ordner. Wird auch nach Updates ausgeführt."
+  },
+  "utils": {
+    "fw_warning": "Wegen der größe der Firmwarearchive werden downloads im Applet Mode nicht unterstützt. Bitte öffne die App mit vollem RAM Zugriff.",
+    "overwrite": " Möchtest du folgende Datei überschreiben: ",
+    "wrong_type_sigpatches": "Die heruntergeladene Datei ist kein Sigpatches Archive. Dies kommt vermutlich durch einen kaputten Link. Wenn der Download nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein Github issue.",
+    "wrong_type_fw": "Die heruntergeladene Datei ist kein firmware Archive. Dies kommt vermutlich durch einen kaputten Link. Wenn der Download nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein Github issue.",
+    "overwrite_inis": "Möchtestet du vorhandene .ini Konfigurationsdateien überschreiben?",
+    "wrong_type_cfw": "Die heruntergeladene Datei ist kein CFW Archive. Dies kommt vermutlich durch einen kaputten Link. Wenn der Download nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein Github issue."
+  },
+  "ams_update": {
+    "reboot_rcm": "Die switch wird nun zu einem Speziellem Payload rebooten um den Installationsprozess ab zu schließen.",
+    "install_hekate": "Möchtest du auch Hekate herunterladen?\nFalls nein, wird die Switch nun zu einem Speziellem Payload rebooten um den Installationsprozess ab zu schließen.",
+    "delete_contents": "möchtest du den existierenden '/atmosphere/contents/' Ordner löschen? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosph\u00e8re version nicht unterstützt. Bedenke dass dies all deine Sysmodule, Mods und Cheats löscht!",
+    "delete_sysmodules_flags": "Möchtest du den Autostart von allen Sysmodules verhindern? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosph\u00e8re version nicht unterstützt.",
+    "current_ams": "\ue016  Momentane Atmosphère version: "
+  },
+  "net": {
+    "title": "Interneteinstellungen"
+  }
+}

@@ -1,0 +1,15 @@
+{
+    "hints": {
+        "ok": "OK",
+        "back": "Zurück",
+        "exit": "Verlassen"
+    },
+
+    "crash_frame": {
+        "button": "OK"
+    },
+
+    "thumbnail_sidebar": {
+        "save": "Speichern"
+    }
+}
