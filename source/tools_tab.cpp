@@ -31,7 +31,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
                 new ConfirmPage(stagedFrame, text)
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/tools/dl_payloadsing"_i18n, [](){downloadArchive(APP_URL, app);})
+                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [](){downloadArchive(APP_URL, app);})
             );
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [tag](){extractArchive(app, tag);})
