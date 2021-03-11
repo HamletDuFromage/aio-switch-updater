@@ -126,7 +126,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
             brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                 dialog->close();
             };
-            dialog->addButton("menus/Ok_button"_i18n, callback);
+            dialog->addButton("menus/common/ok"_i18n, callback);
             dialog->setCancelable(true);
             dialog->open();
         });

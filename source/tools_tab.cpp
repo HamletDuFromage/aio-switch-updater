@@ -89,7 +89,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
             dialog->close();
         };
-        dialog->addButton("menus/Ok_button"_i18n, callback);
+        dialog->addButton("menus/common/ok"_i18n, callback);
         dialog->setCancelable(true);
         dialog->open();
 
@@ -142,7 +142,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
             brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                 dialog->close();
             };
-            dialog->addButton("menus/Ok_button"_i18n, callback);
+            dialog->addButton("menus/common/ok"_i18n, callback);
             dialog->setCancelable(true);
             dialog->open();
         }
@@ -165,7 +165,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
             dialog->close();
         };
-        dialog->addButton("menus/Ok_button"_i18n, callback);
+        dialog->addButton("menus/common/ok"_i18n, callback);
         dialog->setCancelable(true);
         dialog->open();
     });
@@ -187,7 +187,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
             dialog->close();
         };
-        dialog->addButton("menus/Ok_button"_i18n, callback);
+        dialog->addButton("menus/common/ok"_i18n, callback);
         dialog->setCancelable(true);
         dialog->open();
     });
