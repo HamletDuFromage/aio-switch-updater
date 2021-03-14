@@ -9,6 +9,8 @@
 #include "current_cfw.hpp"
 #include "warning_page.hpp"
 #include <filesystem>
+#include "json.hpp"
+#include <constants.hpp>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -25,7 +27,13 @@ int main(int argc, char* argv[])
         brls::Logger::error("Unable to init Borealis application");
         return EXIT_FAILURE;
     }
-    i18n::loadTranslations();
+    
+    nlohmann::json languageFile = parseJsonFile(LANGUAGE_JSON);
+    if(languageFile.find("language") != languageFile.end())
+        i18n::loadTranslations(languageFile["language"]);
+    else
+        i18n::loadTranslations();
+
     
     // Setup verbose logging on PC
 #ifndef __SWITCH__

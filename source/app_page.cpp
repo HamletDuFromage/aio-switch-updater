@@ -81,7 +81,7 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
             break;
     }
     text += url;
-    download = new brls::ListItem("menus/cheats/downloading_list"_i18n);
+    download = new brls::ListItem("menus/cheats/dl_latest"_i18n);
     archiveType type = cheats;
     download->getClickEvent()->subscribe([&, url, text, type](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();

@@ -5,7 +5,7 @@
 #include <switch.h>
 #include "constants.hpp"
 #include <borealis.hpp>
-
+#include "json.hpp"
 
 typedef char NsApplicationName[0x201];
 typedef uint8_t NsApplicationIcon[0x20000];
@@ -41,3 +41,4 @@ std::string copyFiles(const char* path);
 int removeDir(const char* path);
 bool isErista();
 void removeSysmodulesFlags(const char * directory);
+nlohmann::json parseJsonFile(const char* path);

@@ -18,7 +18,7 @@ All-in-One Nintendo Switch Updater
 A Nintendo Switch homebrew app to download and update CFWs, sigpatches, FWs and cheat codes. Supports Atmosphère, ReiNX and SXOS.
 
 ## How to install
-Copy the `aio-switch-updater/` directory to `/switch/` in your sdcard
+Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 
 ## Description of the features
 ### ⬦ Update CFW

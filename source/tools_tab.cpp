@@ -99,7 +99,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
 
     netSettings = new brls::ListItem("menus/tools/internet_settings"_i18n);
     netSettings->getClickEvent()->subscribe([&](brls::View* view){
-        brls::Application::pushView(new NetPage());
+        brls::PopupFrame::open("menus/tools/internet_settings"_i18n, new NetPage(), "", "");
     });
     netSettings->setHeight(LISTITEM_HEIGHT);
     this->addView(netSettings);
@@ -194,16 +194,59 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
     cleanUp->setHeight(LISTITEM_HEIGHT);
     this->addView(cleanUp);
 
+    language = new brls::ListItem("menus/tools/language"_i18n);
+    language->getClickEvent()->subscribe([&](brls::View* view){
+        std::vector<std::pair<std::string, std::string>> languages{
+            std::make_pair("menus/language/en-US"_i18n, "en-US"),
+            std::make_pair("menus/language/ja"_i18n, "ja"),
+            std::make_pair("menus/language/fr"_i18n, "fr"),
+            std::make_pair("menus/language/de"_i18n, "de"),
+            std::make_pair("menus/language/it"_i18n, "it"),
+            std::make_pair("menus/language/es"_i18n, "es"),
+            std::make_pair("menus/language/zh-CN"_i18n, "zh-CN"),
+            std::make_pair("menus/language/ko"_i18n, "ko"),
+            std::make_pair("menus/language/nl"_i18n, "nl"),
+            std::make_pair("menus/language/pt"_i18n, "pt"),
+            std::make_pair("menus/language/ru"_i18n, "ru"),
+            std::make_pair("menus/language/zh-TW"_i18n, "zh-TW"),
+            std::make_pair("menus/language/en-GB"_i18n, "en-GB"),
+            std::make_pair("menus/language/fr-CA"_i18n, "fr-CA"),
+            std::make_pair("menus/language/es-419"_i18n, "es-419"),
+            std::make_pair("menus/language/zh-Hant"_i18n, "zh-Hant"),
+            std::make_pair("menus/language/zh-Hans"_i18n, "zh-Hans")
+        };
+        brls::AppletFrame* appView = new brls::AppletFrame(true, true);
+        brls::List* list = new brls::List();
+        brls::ListItem* listItem;
+        for(auto& l : languages){
+            listItem = new brls::ListItem(l.first);
+            listItem->registerAction("menus/tools/language"_i18n, brls::Key::A, [this, l] { 
+                json updatedLanguage = json::object();
+                updatedLanguage["language"] = l.second;
+                std::ofstream out(LANGUAGE_JSON);
+                out << updatedLanguage.dump();
+                out.close();
+                brls::Application::quit();
+                return true;
+            });
+            list->addView(listItem);
+        }
+        appView->setContentView(list);
+        brls::PopupFrame::open("menus/tools/language"_i18n, appView, "", "");
+    });
+    language->setHeight(LISTITEM_HEIGHT);
+    this->addView(language);
+
     hideTabs = new brls::ListItem("menus/tools/hide_tabs"_i18n);
     hideTabs->getClickEvent()->subscribe([&](brls::View* view) {
-        brls::Application::pushView(new HideTabsPage());
+        brls::PopupFrame::open("menus/tools/hide_tabs"_i18n, new HideTabsPage(), "", "");
     });
     hideTabs->setHeight(LISTITEM_HEIGHT);
     this->addView(hideTabs);
 
     changelog = new brls::ListItem("menus/tools/changelog"_i18n);
     changelog->getClickEvent()->subscribe([&](brls::View* view){
-        brls::Application::pushView(new ChangelogPage());
+        brls::PopupFrame::open("menus/tools/changelog"_i18n, new ChangelogPage(), "", "");
     });
     changelog->setHeight(LISTITEM_HEIGHT);
     this->addView(changelog);

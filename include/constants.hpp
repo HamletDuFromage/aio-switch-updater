@@ -79,6 +79,7 @@
 
 #define HIDE_TABS_JSON      "/config/aio-switch-updater/hide_tabs.json"
 #define COPY_FILES_JSON     "/config/aio-switch-updater/copy_files.json"
+#define LANGUAGE_JSON       "/config/aio-switch-updater/language.json"
 
 #define ROMFS_FORWARDER     "romfs:/aiosu-forwarder.nro"
 #define FORWARDER_PATH      "/config/aio-switch-updater/aiosu-forwarder.nro"

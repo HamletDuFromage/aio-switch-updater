@@ -22,14 +22,7 @@ MainFrame::MainFrame() : TabFrame()
     else
         this->setFooterText("v" + std::string(APP_VERSION));
     
-    json hideStatus;
-    std::ifstream hideFile(HIDE_TABS_JSON);
-
-    std::string fileContent((std::istreambuf_iterator<char>(hideFile) ),
-                            (std::istreambuf_iterator<char>()    ));
-
-    if(json::accept(fileContent))   hideStatus = json::parse(fileContent);
-    else                            hideStatus = json::object();
+    json hideStatus = parseJsonFile(HIDE_TABS_JSON);
 
     bool erista = isErista();
 

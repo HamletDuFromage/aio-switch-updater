@@ -22,7 +22,7 @@ DATA		:=	data
 INCLUDES	:=	include lib/zipper/include
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  2.4.1
+APP_VERSION :=  2.4.2
 TARGET		:=	$(notdir $(CURDIR))
 
 ROMFS				:=	resources

@@ -121,6 +121,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.4.1");
     changes.push_back("\uE016 Added information about download progress.");
 
+    verTitles.push_back("v2.4.2");
+    changes.push_back("\uE016 Added option to manually change language.\n\uE016 Fixed broken strings.\n\uE016 Few visual tweaks.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

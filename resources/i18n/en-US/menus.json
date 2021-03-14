@@ -135,7 +135,8 @@
     "browser": "Web Browser",
     "batch_copy": "Batch copy files",
     "batch_copy_not_found": "The following files were not found and couldn't be copied:\n",
-    "batch_copy_config_not_found": "This tool allows you to copy files to other locations, which may be needed for your bootloader/trinket. Grab copy_files.json at 'https://git.io/aiosu_copy_files' and add it to your config folder. This will also be performed after updates."
+    "batch_copy_config_not_found": "This tool allows you to copy files to other locations, which may be needed for your bootloader/trinket. Grab copy_files.json at 'https://git.io/aiosu_copy_files' and add it to your config folder. This will also be performed after updates.",
+    "language": "Change app language"
   },
   "utils": {
     "fw_warning": "Because of the size of the FW archive, downloading firmwares in Applet Mode is not supported. Please launch the app with full RAM access.",
@@ -154,5 +155,24 @@
   },
   "net": {
     "title": "Internet settings"
+  },
+  "language": {
+    "en-US": "American English (en-US)",
+    "ja": "Japanese (ja)",
+    "fr": "French (fr)",
+    "de": "German (de)",
+    "it": "Italian (it)",
+    "es": "Spanish",
+    "zh-CN": "Simplified Chinese (zh-CN)",
+    "ko": "Korean (ko)",
+    "nl": "Dutch (nl)",
+    "pt": "Portuguese (pt)",
+    "ru": "Russian (ru)",
+    "zh-TW": "Traditional Chinese (zh-TW)",
+    "en-GB": "British English (en-GB)",
+    "fr-CA": "Canadian French (fr-CA)",
+    "es-419": "Latin American Spanish (es-419)",
+    "zh-Hant": "Traditional Chinese (zh-Hant)",
+    "zh-Hans": "Simplified Chinese (zh-Hans)"
   }
 }

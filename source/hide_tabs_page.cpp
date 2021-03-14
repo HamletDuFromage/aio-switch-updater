@@ -1,6 +1,7 @@
 #include "hide_tabs_page.hpp"
 #include "json.hpp"
 #include "constants.hpp"
+#include "utils.hpp"
 #include <fstream>
  
 namespace i18n = brls::i18n;
@@ -17,14 +18,7 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
     );
     list->addView(label);
 
-    json hideStatus;
-    std::ifstream hideFile(HIDE_TABS_JSON);
-
-    std::string fileContent((std::istreambuf_iterator<char>(hideFile) ),
-                            (std::istreambuf_iterator<char>()    ));
-
-    if(json::accept(fileContent))   hideStatus = json::parse(fileContent);
-    else                            hideStatus = json::object();
+    json hideStatus = parseJsonFile(HIDE_TABS_JSON);
 
     bool status = false;
     if(hideStatus.find("about") != hideStatus.end()) {

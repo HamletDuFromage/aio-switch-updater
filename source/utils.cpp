@@ -4,7 +4,6 @@
 #include "download.hpp"
 #include "extract.hpp"
 #include "progress_event.hpp"
-#include "json.hpp"
 #include "main_frame.hpp"
 #include <filesystem>
 #include <fstream>
@@ -213,9 +212,7 @@ std::string formatListItemTitle(const std::string str, size_t maxScore) {
 }
 
 std::string formatApplicationId(u64 ApplicationId){
-    std::stringstream strm;
-    strm << std::uppercase << std::setfill('0') << std::setw(16) << std::hex << ApplicationId;
-    return strm.str();
+    return fmt::format("{:016X}", ApplicationId);
 }
 
 std::set<std::string> readLineByLine(const char * path){
@@ -444,4 +441,14 @@ void removeSysmodulesFlags(const char * directory) {
         }
         found = false;
     }
+}
+
+nlohmann::json parseJsonFile(const char* path) {
+    std::ifstream file(path);
+
+    std::string fileContent((std::istreambuf_iterator<char>(file) ),
+                            (std::istreambuf_iterator<char>()    ));
+
+    if(nlohmann::json::accept(fileContent))   return nlohmann::json::parse(fileContent);
+    else                                      return nlohmann::json::object();
 }

@@ -333,8 +333,6 @@ void writeTitlesToFile(std::set<std::string> titles, const char* path){
 }
 
 void removeCheats(CFW cfw){
-    ProgressEvent::instance().reset();
-    ProgressEvent::instance().setStep(1);
     std::string path;
     switch(cfw){
         case ams:
@@ -347,6 +345,9 @@ void removeCheats(CFW cfw){
             path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
             break;
     }
+    ProgressEvent::instance().reset();
+    ProgressEvent::instance().setTotalSteps(std::distance(std::filesystem::directory_iterator(path), std::filesystem::directory_iterator()));
+    int c = 0;
     for (const auto & entry : std::filesystem::directory_iterator(path)){
         std::string cheatsPath =  entry.path().string() + "/cheats";
         if(std::filesystem::exists(cheatsPath)){
@@ -358,6 +359,7 @@ void removeCheats(CFW cfw){
                 rmdir(entry.path().string().c_str());
             }
         }
+        ProgressEvent::instance().setStep(c++);
     }
     std::filesystem::remove(UPDATED_TITLES_PATH);
     std::filesystem::remove(CHEATS_VERSION);

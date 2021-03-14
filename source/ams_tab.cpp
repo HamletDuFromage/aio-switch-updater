@@ -16,13 +16,10 @@ AmsTab::AmsTab() :
 {
     std::vector<std::pair<std::string, std::string>> links;
     std::string operation("menus/main/getting"_i18n);
-    this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
+    this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (running_cfw == ams ? "\n" + "menus/ams_update/current_ams"_i18n + getAmsInfo() : ""), true);
+    this->addView(description);
     operation += "menus/main/ams"_i18n;
     links = getLinks(AMS_URL);
-    this->description->setText(
-        "menus/main/ams_text"_i18n + (running_cfw == ams ? "\n" + "menus/ams_update/current_ams"_i18n + getAmsInfo() : "")
-    );
-    this->addView(description);
 
     int nbLinks = links.size();
     if(nbLinks){
