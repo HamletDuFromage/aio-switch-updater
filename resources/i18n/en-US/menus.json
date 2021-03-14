@@ -157,12 +157,13 @@
     "title": "Internet settings"
   },
   "language": {
+    "system_default": "System default",
     "en-US": "American English (en-US)",
     "ja": "Japanese (ja)",
     "fr": "French (fr)",
     "de": "German (de)",
     "it": "Italian (it)",
-    "es": "Spanish",
+    "es": "Spanish (es)",
     "zh-CN": "Simplified Chinese (zh-CN)",
     "ko": "Korean (ko)",
     "nl": "Dutch (nl)",

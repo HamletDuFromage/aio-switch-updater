@@ -50,15 +50,6 @@ static void inject_payload(void) {
 
 int reboot_to_payload(const char* path){
     bool can_reboot = true;
-    //Result rc = splInitialize();
-    /* if(0){
-    //if (R_FAILED(rc)) {
-        can_reboot = false;
-        printf("Can't reboot");
-    } */
-    const char* lol = "lol";
-    printf(lol);
-    printf(path);
     FILE *f;
     f = fopen(path, "rb");
     if (f == NULL) can_reboot = false;

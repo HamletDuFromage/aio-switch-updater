@@ -218,6 +218,13 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         brls::AppletFrame* appView = new brls::AppletFrame(true, true);
         brls::List* list = new brls::List();
         brls::ListItem* listItem;
+        listItem = new brls::ListItem(fmt::format("{} ({})", "menus/language/system_default"_i18n, i18n::getCurrentLocale()));
+        listItem->registerAction("menus/tools/language"_i18n, brls::Key::A, [this] {
+            std::filesystem::remove(LANGUAGE_JSON);
+            brls::Application::quit();
+            return true;
+        });
+        list->addView(listItem);
         for(auto& l : languages){
             listItem = new brls::ListItem(l.first);
             listItem->registerAction("menus/tools/language"_i18n, brls::Key::A, [this, l] { 

@@ -60,7 +60,7 @@
 #define PC_COLOR_PATH       "/config/aio-switch-updater/pc_profiles.json"
 
 #define PAYLOAD_PATH        "/payloads/"
-#define BOOTLOADER_PATH     "/bootloader"
+#define BOOTLOADER_PATH     "/bootloader/"
 #define BOOTLOADER_PL_PATH  "/bootloader/payloads/"
 #define UPDATE_BIN_PATH     "/bootloader/update.bin"
 #define REBOOT_PAYLOAD_PATH "/atmosphere/reboot_payload.bin"
