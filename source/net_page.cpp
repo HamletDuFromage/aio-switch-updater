@@ -35,6 +35,8 @@ NetPage::NetPage() : AppletFrame(true, true)
                         +"\nSubnet Mask: "  + ipToString(profile.ip_setting_data.ip_address_setting.subnet_mask.addr)
                         +"\nGateway: "      + ipToString(profile.ip_setting_data.ip_address_setting.gateway.addr);
         }
+        struct in_addr addr = {(in_addr_t) gethostid()};
+        labelText += "\n Local IP addr" + std::string(inet_ntoa(addr));
         labelText += "\nMTU: " + std::to_string(unsigned(profile.ip_setting_data.mtu));
 
         if(profile.ip_setting_data.dns_setting.is_automatic){
@@ -113,15 +115,12 @@ NetPage::NetPage() : AppletFrame(true, true)
         {"name", "ACNH lan-play"}
     }));
 
-    int nbProfiles = profiles.size();
-    listItems.reserve(nbProfiles);
-
     int iter = 0;
     for (const auto& p : profiles.items()){
         json values = p.value();
-        if(values.find("name") != values.end()) listItems[iter] = new brls::ListItem(values["name"]);
-        else listItems[iter] = new brls::ListItem("Unnamed");
-        listItems[iter]->getClickEvent()->subscribe([&, values](brls::View* view){
+        if(values.find("name") != values.end()) listItem = new brls::ListItem(values["name"]);
+        else listItem = new brls::ListItem("Unnamed");
+        listItem->getClickEvent()->subscribe([&, values](brls::View* view){
             brls::Dialog* dialog = new brls::Dialog(values.dump(0).substr(1, values.dump(0).size() - 2));
             brls::GenericEvent::Callback callbackOk = [&, dialog, values](brls::View* view) {
                 nifmInitialize(NifmServiceType_Admin);
@@ -188,7 +187,7 @@ NetPage::NetPage() : AppletFrame(true, true)
             dialog->setCancelable(false);
             dialog->open();
         });
-        list->addView(listItems[iter]);
+        list->addView(listItem);
         iter++;
     }
     }

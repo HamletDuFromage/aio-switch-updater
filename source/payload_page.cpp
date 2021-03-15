@@ -18,16 +18,15 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
     list->addView(label);
     std::vector<std::string> payloads = fetchPayloads();
     int nbPayloads = payloads.size();
-    items.reserve(nbPayloads);
     for (int i = 0; i < nbPayloads; i++){
         std::string payload = payloads[i];
-        items[i] = new brls::ListItem(payload);
-        items[i]->getClickEvent()->subscribe([&, payload](brls::View* view) {
+        listItem = new brls::ListItem(payload);
+        listItem->getClickEvent()->subscribe([&, payload](brls::View* view) {
             reboot_to_payload(payload.c_str());
             brls::Application::popView();
         });
         if(running_cfw == ams){
-            items[i]->registerAction("menus/payloads/set_reboot_payload"_i18n, brls::Key::X, [this, payload] { 
+            listItem->registerAction("menus/payloads/set_reboot_payload"_i18n, brls::Key::X, [this, payload] { 
                 std::string res1;
                 if(R_SUCCEEDED(CopyFile(payload.c_str(), REBOOT_PAYLOAD_PATH))){
                     res1 += "menus/payloads/copy_success"_i18n + payload + "menus/payloads/to"_i18n + std::string(REBOOT_PAYLOAD_PATH) + "'.";
@@ -46,7 +45,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
                 return true;
             });
         }
-        items[i]->registerAction("menus/payloads/set_reboot_payload_up"_i18n, brls::Key::Y, [this, payload] { 
+        listItem->registerAction("menus/payloads/set_reboot_payload_up"_i18n, brls::Key::Y, [this, payload] { 
                 std::string res2;
                 if(R_SUCCEEDED(CopyFile(payload.c_str(), UPDATE_BIN_PATH))){
                     res2 += "menus/payloads/copy_success"_i18n + payload + "menus/payloads/to"_i18n + std::string(UPDATE_BIN_PATH) + "'.";
@@ -63,7 +62,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
                 dialog->open();
                 return true;
             });
-        list->addView(items[i]);
+        list->addView(listItem);
     }
     list->addView(new brls::ListItemGroupSpacing(true));
 

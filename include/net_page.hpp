@@ -9,7 +9,7 @@ class NetPage : public brls::AppletFrame
     private:
         brls::List* list;
         brls::Label* label;
-        std::vector<brls::ListItem*> listItems;
+        brls::ListItem* listItem;
         brls::ListItem* cancel;
 
     public:
