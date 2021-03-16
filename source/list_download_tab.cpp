@@ -25,52 +25,53 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
 
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
-        case sigpatches:
-            links = getLinks(SIGPATCHES_URL);
+        case archiveType::ams_cfw:
+        case archiveType::sigpatches:
+            links = download::getLinks(SIGPATCHES_URL);
             operation += "menus/main/sigpatches"_i18n;
             this->description->setText(
                 "menus/main/sigpatches_text"_i18n 
             );
             break;
-        case fw:
-            links = getLinks(FIRMWARE_URL);
+        case archiveType::fw:
+            links = download::getLinks(FIRMWARE_URL);
             operation += "menus/main/firmware"_i18n;
             SetSysFirmwareVersion ver;
             if (R_SUCCEEDED(setsysGetFirmwareVersion(&ver))) firmwareText += ver.display_version;
             else firmwareText += "menus/main/not_found"_i18n;
             this->description->setText(firmwareText);
             break;
-        case app:
+        case archiveType::app:
             links.push_back(std::make_pair("menus/main/latest_cheats"_i18n, APP_URL));
             operation += "menus/main/app"_i18n;
             break;
-        case cfw:
-            links = getLinks(CFW_URL);
-            sxoslinks = getLinks(SXOS_URL);
+        case archiveType::cfw:
+            links = download::getLinks(CFW_URL);
+            sxoslinks = download::getLinks(SXOS_URL);
             links.insert(links.end(), sxoslinks.begin(), sxoslinks.end());
             operation += "menus/main/cfw"_i18n;
             this->description->setText(
                 "menus/main/cfw_text"_i18n 
             );
             break;
-        case cheats:
-            auto cheatsVerVec = downloadFile(CHEATS_URL_VERSION);
+        case archiveType::cheats:
+            auto cheatsVerVec = download::downloadFile(CHEATS_URL_VERSION);
             std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
             if(cheatsVer != ""){
-                switch(running_cfw){
-                    case sxos:
+                switch(CurrentCfw::running_cfw){
+                    case CFW::sxos:
                         links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_TITLES));
                         break;
-                    case ams:
+                    case CFW::ams:
                         links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_CONTENTS));
                         break;
-                    case rnx:
+                    case CFW::rnx:
                         links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_CONTENTS));
                         break;
                 }
             }
             operation += "menus/main/cheats"_i18n;
-            currentCheatsVer += readVersion(CHEATS_VERSION);
+            currentCheatsVer += util::readVersion(CHEATS_VERSION);
             this->description->setText(currentCheatsVer);
             break;
     }
@@ -91,14 +92,14 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                     new ConfirmPage(stagedFrame, text)
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, type](){downloadArchive(url, type);})
+                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, type](){util::downloadArchive(url, type);})
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type](){extractArchive(type);})
+                    new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type](){util::extractArchive(type);})
                 );
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, 
-                        (type == sigpatches) ? 
+                        (type == archiveType::sigpatches) ? 
                             "menus/common/all_done"_i18n + "\n" + "menus/sigpatches/reboot"_i18n : 
                             "menus/common/all_done"_i18n,
                         true)
@@ -119,7 +120,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
         this->addView(notFound);
     }
 
-    if(type == cheats){
+    if(type == archiveType::cheats){
         cheatSlipLabel = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
         "menus/cheats/cheatslips_label"_i18n,
@@ -155,7 +156,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                 }
                 std::string body =  "{\"email\":\"" + std::string(usr) 
                                     + "\",\"password\":\"" + std::string(pwd) + "\"}";
-                nlohmann::json token = getRequest(CHEATSLIPS_TOKEN_URL, 
+                nlohmann::json token = download::getRequest(CHEATSLIPS_TOKEN_URL, 
                     {"Accept: application/json", 
                     "Content-Type: application/json", 
                     "charset: utf-8"}, 

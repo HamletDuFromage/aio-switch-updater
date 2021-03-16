@@ -31,10 +31,10 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
                 new ConfirmPage(stagedFrame, text)
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [](){downloadArchive(APP_URL, app);})
+                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [](){util::downloadArchive(APP_URL, archiveType::app);})
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [tag](){extractArchive(app, tag);})
+                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [tag](){util::extractArchive(archiveType::app, tag);})
             );
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)
@@ -156,7 +156,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         chdir("/");
         std::string error = "";
         if(std::filesystem::exists(COPY_FILES_JSON)){
-            error = copyFiles(COPY_FILES_JSON);
+            error = util::copyFiles(COPY_FILES_JSON);
         }
         else{
             error = "menus/tools/batch_copy_config_not_found"_i18n;
@@ -180,9 +180,9 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         std::filesystem::remove(FW_ZIP_PATH);
         std::filesystem::remove(CHEATS_ZIP_PATH);
         std::filesystem::remove(SIGPATCHES_ZIP_PATH);
-        removeDir(AMS_DIRECTORY_PATH);
-        removeDir(SEPT_DIRECTORY_PATH);
-        removeDir(FW_DIRECTORY_PATH);
+        util::removeDir(AMS_DIRECTORY_PATH);
+        util::removeDir(SEPT_DIRECTORY_PATH);
+        util::removeDir(FW_DIRECTORY_PATH);
         brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
             dialog->close();

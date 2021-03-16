@@ -11,16 +11,7 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-std::vector<std::string> htmlProcess(std::string s, std::regex rgx){
-    //std::vector<std::regex> rgx = {std::regex(">(?:(?!>).)*?</a>"), std::regex(">(?:(?!>).)*?</a>")};
-    std::vector<std::string> res;
-    std::smatch match;
-    while (std::regex_search(s, match, rgx)){
-        res.push_back(match[0].str());
-        s = match.suffix();
-    }
-    return res;
-}
+namespace util {
 
 void createTree(std::string path){
     std::string delimiter = "/";
@@ -50,29 +41,29 @@ void downloadArchive(std::string url, archiveType type){
     createTree(DOWNLOAD_PATH);
     AppletType at;
     switch(type){
-        case sigpatches:
-            downloadFile(url.c_str(), SIGPATCHES_FILENAME, OFF);
+        case archiveType::sigpatches:
+            download::downloadFile(url.c_str(), SIGPATCHES_FILENAME, OFF);
             break;
-        case cheats:
-            downloadFile(url.c_str(), CHEATS_FILENAME, OFF);
+        case archiveType::cheats:
+            download::downloadFile(url.c_str(), CHEATS_FILENAME, OFF);
             break;
-        case fw:
+        case archiveType::fw:
             at = appletGetAppletType();
             if (at == AppletType_Application || at == AppletType_SystemApplication) {
-                downloadFile(url.c_str(), FIRMWARE_FILENAME, OFF);
+                download::downloadFile(url.c_str(), FIRMWARE_FILENAME, OFF);
             }
             else{
                 brls::Application::crash("menus/utils/fw_warning"_i18n);
             }
             break;
-        case app:
-            downloadFile(url.c_str(), APP_FILENAME, OFF);
+        case archiveType::app:
+            download::downloadFile(url.c_str(), APP_FILENAME, OFF);
             break;
-        case cfw:
-            downloadFile(url.c_str(), CFW_FILENAME, OFF);
+        case archiveType::cfw:
+            download::downloadFile(url.c_str(), CFW_FILENAME, OFF);
             break;
-        case ams_cfw:
-            downloadFile(url.c_str(), AMS_FILENAME, OFF);
+        case archiveType::ams_cfw:
+            download::downloadFile(url.c_str(), AMS_FILENAME, OFF);
     }
 }
 
@@ -124,66 +115,66 @@ void extractArchive(archiveType type, std::string tag){
     std::string nroPath ="sdmc:" + std::string(APP_PATH);
     chdir(ROOT_PATH);
     switch(type){
-        case sigpatches:
+        case archiveType::sigpatches:
             if(isArchive(SIGPATCHES_FILENAME)) {
                 /* std::string backup(HEKATE_IPL_PATH);
                 backup += ".old"; */
                 if(std::filesystem::exists(HEKATE_IPL_PATH)){
                     overwriteInis = showDialogBox("menus/utils/overwrite"_i18n + std::string(HEKATE_IPL_PATH) +"?", "menus/common/no"_i18n, "menus/common/yes"_i18n);
                     if(overwriteInis == 0){
-                        extract(SIGPATCHES_FILENAME, ROOT_PATH, HEKATE_IPL_PATH);
+                        extract::extract(SIGPATCHES_FILENAME, ROOT_PATH, HEKATE_IPL_PATH);
                     }
                     else{
-                        extract(SIGPATCHES_FILENAME);
+                        extract::extract(SIGPATCHES_FILENAME);
                     }
                 }
                 else{
-                    extract(SIGPATCHES_FILENAME);
+                    extract::extract(SIGPATCHES_FILENAME);
                 }
             }
             else{
                 brls::Application::crash("menus/utils/wrong_type_sigpatches"_i18n);
             }
             break;
-        case cheats: 
-            titles = getInstalledTitlesNs();
-            titles = excludeTitles(CHEATS_EXCLUDE, titles);
-            extractCheats(CHEATS_FILENAME, titles, running_cfw);
+        case archiveType::cheats: 
+            titles = extract::getInstalledTitlesNs();
+            titles = extract::excludeTitles(CHEATS_EXCLUDE, titles);
+            extract::extractCheats(CHEATS_FILENAME, titles, CurrentCfw::running_cfw);
             break;
-        case fw:
+        case archiveType::fw:
             if(std::filesystem::file_size(FIRMWARE_FILENAME) < 200000){
                 brls::Application::crash("menus/utils/wrong_type_sigpatches_downloaded"_i18n);
             }
             else{
                 if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
                 createTree(FIRMWARE_PATH);
-                extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
+                extract::extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
             }
             break;
-        case app:
-            extract(APP_FILENAME, CONFIG_PATH);
+        case archiveType::app:
+            extract::extract(APP_FILENAME, CONFIG_PATH);
             cp(ROMFS_FORWARDER, FORWARDER_PATH);
             envSetNextLoad(FORWARDER_PATH, ("\"" + std::string(FORWARDER_PATH) + "\"").c_str());
             romfsExit();
             brls::Application::quit();
             break;
-        case cfw:
+        case archiveType::cfw:
             if(isArchive(CFW_FILENAME)){
                 overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
+                extract::extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
             }
             else{
                 brls::Application::crash("menus/utils/wrong_type_cfw"_i18n);
             }
             break;
-        case ams_cfw:
+        case archiveType::ams_cfw:
             if(isArchive(AMS_FILENAME)){
                 overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 usleep(800000);
                 int deleteContents = showDialogBox("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 if(deleteContents == 1)
                     removeSysmodulesFlags(AMS_CONTENTS);
-                extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
+                extract::extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
             }
             break;
     }
@@ -191,14 +182,7 @@ void extractArchive(archiveType type, std::string tag){
         copyFiles(COPY_FILES_JSON);
 }
 
-void progressTest(std::string url, archiveType type){
-    ProgressEvent::instance().reset();
-    ProgressEvent::instance().setTotalSteps(2);
-    ProgressEvent::instance().setStep(1);
-    ProgressEvent::instance().setStep(2);
-}
-
-std::string formatListItemTitle(const std::string str, size_t maxScore) {
+std::string formatListItemTitle(const std::string &str, size_t maxScore) {
     size_t score = 0;
     for (size_t i = 0; i < str.length(); i++)
     {
@@ -260,7 +244,7 @@ void shut_down(bool reboot){
 }
 
 std::string getLatestTag(const char *url){
-    nlohmann::json tag = getRequest(url, {"accept: application/vnd.github.v3+json"});
+    nlohmann::json tag = download::getRequest(url, {"accept: application/vnd.github.v3+json"});
     if(tag.find("tag_name") != tag.end())
         return tag["tag_name"];
     else
@@ -451,4 +435,13 @@ nlohmann::json parseJsonFile(const char* path) {
 
     if(nlohmann::json::accept(fileContent))   return nlohmann::json::parse(fileContent);
     else                                      return nlohmann::json::object();
+}
+
+void writeJsonToFile(nlohmann::json &profiles, const char* path) {
+    std::fstream newProfiles;
+    newProfiles.open(path, std::fstream::out | std::fstream::trunc);
+    newProfiles << std::setw(4) << profiles << std::endl;
+    newProfiles.close();
+}
+
 }

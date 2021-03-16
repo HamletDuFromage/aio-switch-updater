@@ -100,7 +100,7 @@
 /   936 - Simplified Chinese (DBCS)
 /   949 - Korean (DBCS)
 /   950 - Traditional Chinese (DBCS)
-/     0 - Include all code pages above and configured by f_setcp()
+/     0 - Include all code pages above and configured by f_setutil::cp()
 */
 
 

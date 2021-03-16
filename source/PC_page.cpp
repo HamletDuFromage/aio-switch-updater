@@ -1,5 +1,5 @@
 #include "PC_page.hpp"
-#include "PC_color_swapper.hpp"
+#include "color_swapper.hpp"
 #include "confirm_page.hpp"
 #include "worker_page.hpp"
 #include "constants.hpp"
@@ -20,7 +20,7 @@ PCPage::PCPage() : AppletFrame(true, true)
         stagedFrame->setTitle("menus/pro_con/label"_i18n);
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/pro_con/backing_up"_i18n, 
-            [](){pc::backupPCColor(PC_COLOR_PATH);})
+            [](){PC::backupPCColor(PC_COLOR_PATH);})
         );
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)
@@ -31,7 +31,7 @@ PCPage::PCPage() : AppletFrame(true, true)
 
     list->addView(new brls::ListItemGroupSpacing(true));
 
-    auto profiles = pc::getProfiles(PC_COLOR_PATH);
+    auto profiles = PC::getProfiles(PC_COLOR_PATH);
     std::vector<std::string> names = std::get<0>(profiles);
     int nbProfiles = names.size();
     for (int i = nbProfiles - 1; i >= 0; i--){
@@ -43,7 +43,7 @@ PCPage::PCPage() : AppletFrame(true, true)
             stagedFrame->setTitle("menus/pro_con/label"_i18n);
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/pro_con/changing"_i18n, 
-                [value](){pc::changePCColor(value);})
+                [value](){PC::changePCColor(value);})
             );
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, "menus/pro_con/all_done"_i18n, true)

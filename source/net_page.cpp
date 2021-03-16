@@ -1,13 +1,14 @@
 #include "net_page.hpp"
 #include <arpa/inet.h>
 #include <switch.h>
-#include <json.hpp>
-#include "constants.hpp"
-#include "main_frame.hpp"
 #include <fstream>
 #include <filesystem>
 #include <tuple>
 #include <iomanip>
+#include "constants.hpp"
+#include "main_frame.hpp"
+#include "json.hpp"
+#include "utils.hpp"
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -65,24 +66,20 @@ NetPage::NetPage() : AppletFrame(true, true)
     //dns_auto
 
     if(uuid){
-    std::fstream profilesFile;
-    json profiles;
-    if(std::filesystem::exists(INTERNET_JSON)){
-        profilesFile.open(INTERNET_JSON, std::fstream::in);
-        profilesFile >> profiles;
-        profilesFile.close();
-        profiles.push_back(json::object({
-            {"name", "90DNS (Europe)"},
-            {"dns1", "163.172.141.219"},
-            {"dns2", "207.246.121.77"}
-        }));
-    }
-    else{
+    json profiles = util::parseJsonFile(INTERNET_JSON);
+    if(profiles.empty()) {
         profiles = {{
             {"name", "90DNS (Europe)"},
             {"dns1", "163.172.141.219"},
             {"dns2", "207.246.121.77"}
         }};
+    }
+    else {
+        profiles.push_back(json::object({
+            {"name", "90DNS (Europe)"},
+            {"dns1", "163.172.141.219"},
+            {"dns2", "207.246.121.77"}
+        }));
     }
 
     profiles.push_back(json::object({
@@ -130,7 +127,6 @@ NetPage::NetPage() : AppletFrame(true, true)
                 if(values.find("ip_addr") != values.end()){
                     if(inet_pton(AF_INET, std::string(values["ip_addr"]).c_str(), buf)){
                         profile.ip_setting_data.ip_address_setting.is_automatic = u8(0);
-                        //nifmSetNetworkProfile(&profile, &profile.uuid);
                         stringToIp(std::string(values["ip_addr"]), profile.ip_setting_data.ip_address_setting.current_addr.addr);
                     }
                 }

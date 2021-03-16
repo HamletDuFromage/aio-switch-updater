@@ -18,7 +18,7 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
     );
     list->addView(label);
 
-    json hideStatus = parseJsonFile(HIDE_TABS_JSON);
+    json hideStatus = util::parseJsonFile(HIDE_TABS_JSON);
 
     bool status = false;
     if(hideStatus.find("about") != hideStatus.end()) {

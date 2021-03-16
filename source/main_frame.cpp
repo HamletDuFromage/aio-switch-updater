@@ -16,15 +16,15 @@ MainFrame::MainFrame() : TabFrame()
     this->setIcon("romfs:/gui_icon.png");
     this->setTitle(std::string(APP_TITLE));
 
-    std::string tag = getLatestTag(TAGS_INFO);
+    std::string tag = util::getLatestTag(TAGS_INFO);
     if(!tag.empty() && tag != APP_VERSION)
         this->setFooterText("v" + std::string(APP_VERSION) + "menus/main/new_update"_i18n);
     else
         this->setFooterText("v" + std::string(APP_VERSION));
     
-    json hideStatus = parseJsonFile(HIDE_TABS_JSON);
+    json hideStatus = util::parseJsonFile(HIDE_TABS_JSON);
 
-    bool erista = isErista();
+    bool erista = util::isErista();
 
     if(hideStatus.find("about") == hideStatus.end() || !hideStatus["about"])
         this->addTab("menus/main/about"_i18n, new AboutTab());
@@ -33,16 +33,16 @@ MainFrame::MainFrame() : TabFrame()
         this->addTab("menus/main/update_ams"_i18n, new AmsTab());
 
     if(hideStatus.find("cfw") == hideStatus.end() || !hideStatus["cfw"])
-        this->addTab("menus/main/update_cfw"_i18n, new ListDownloadTab(cfw));
+        this->addTab("menus/main/update_cfw"_i18n, new ListDownloadTab(archiveType::cfw));
 
     if(hideStatus.find("sigpatches") == hideStatus.end() || !hideStatus["sigpatches"])
-        this->addTab("menus/main/update_sigpatches"_i18n, new ListDownloadTab(sigpatches));
+        this->addTab("menus/main/update_sigpatches"_i18n, new ListDownloadTab(archiveType::sigpatches));
 
     if(hideStatus.find("firmwares") == hideStatus.end() || !hideStatus["firmwares"])
-        this->addTab("menus/main/download_firmware"_i18n, new ListDownloadTab(fw));
+        this->addTab("menus/main/download_firmware"_i18n, new ListDownloadTab(archiveType::fw));
 
     if(hideStatus.find("cheats") == hideStatus.end() || !hideStatus["cheats"])
-        this->addTab("menus/main/download_cheats"_i18n, new ListDownloadTab(cheats));
+        this->addTab("menus/main/download_cheats"_i18n, new ListDownloadTab(archiveType::cheats));
 
     if(hideStatus.find("tools") == hideStatus.end() || !hideStatus["tools"])
         this->addTab("menus/main/tools"_i18n, new ToolsTab(tag, erista));

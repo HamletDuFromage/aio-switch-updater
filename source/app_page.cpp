@@ -31,7 +31,7 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
     int recordCount     = 0;
     size_t controlSize  = 0;
 
-    titles = readLineByLine(UPDATED_TITLES_PATH);
+    titles = util::readLineByLine(UPDATED_TITLES_PATH);
 
     if(!titles.empty() || cheatSlips){
         while (true)
@@ -50,12 +50,12 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
                 i++;
                 continue;
             }
-            if(!cheatSlips && titles.find(formatApplicationId(tid)) == titles.end()) {
+            if(!cheatSlips && titles.find(util::formatApplicationId(tid)) == titles.end()) {
                 i++;
                 continue;
             }
 
-            listItem = new brls::ListItem(std::string(langEntry->name), "", formatApplicationId(tid));
+            listItem = new brls::ListItem(std::string(langEntry->name), "", util::formatApplicationId(tid));
             listItem->setThumbnail(controlData.icon, sizeof(controlData.icon));
             if(cheatSlips){
                 listItem->getClickEvent()->subscribe([&, tid](brls::View* view) {
@@ -69,31 +69,30 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
     }
     std::string text("menus/cheats/downloading"_i18n);
     std::string url = "";
-    switch(running_cfw){
-        case ams:
+    switch(CurrentCfw::running_cfw){
+        case CFW::ams:
             url += CHEATS_URL_CONTENTS;
             break;
-        case rnx:
+        case CFW::rnx:
             url += CHEATS_URL_CONTENTS;
             break;
-        case sxos:
+        case CFW::sxos:
             url += CHEATS_URL_CONTENTS;
             break;
     }
     text += url;
     download = new brls::ListItem("menus/cheats/dl_latest"_i18n);
-    archiveType type = cheats;
-    download->getClickEvent()->subscribe([&, url, text, type](brls::View* view) {
+    download->getClickEvent()->subscribe([&, url, text](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->setTitle("menus/cheats/getting_cheats"_i18n);
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, text)
         );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, type](){downloadArchive(url, type);})
+            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url](){util::downloadArchive(url, archiveType::cheats);})
         );
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type](){extractArchive(type);})
+            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [](){util::extractArchive(archiveType::cheats);})
         );
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)

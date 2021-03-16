@@ -1,11 +1,11 @@
 #include "exclude_page.hpp"
 #include <switch.h>
-#include "utils.hpp"
-#include "extract.hpp"
 #include <filesystem>
 #include <fstream>
 #include <algorithm>
- 
+#include "extract.hpp"
+#include "utils.hpp"
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 ExcludePage::ExcludePage() : AppletFrame(true, true)
@@ -29,9 +29,7 @@ ExcludePage::ExcludePage() : AppletFrame(true, true)
     int recordCount     = 0;
     size_t controlSize  = 0;
 
-    titles = readLineByLine(CHEATS_EXCLUDE);
-
-    //std::tuple<std::vector<brls::ToggleListItem*>, std::vector<std::string>> items;
+    titles = util::readLineByLine(CHEATS_EXCLUDE);
 
     while (true)
     {
@@ -51,7 +49,7 @@ ExcludePage::ExcludePage() : AppletFrame(true, true)
             i++;
             continue;
         }
-        App* app = (App*) malloc(sizeof(App));
+        util::app* app = (util::app*) malloc(sizeof(util::app));
         app->tid = tid;
 
         memset(app->name, 0, sizeof(app->name));
@@ -59,28 +57,26 @@ ExcludePage::ExcludePage() : AppletFrame(true, true)
 
         memcpy(app->icon, controlData.icon, sizeof(app->icon));
 
-        // Add the ListItem
         brls::ToggleListItem *listItem;
-        if(titles.find(formatApplicationId(tid)) != titles.end())
-            listItem = new brls::ToggleListItem(formatListItemTitle(std::string(app->name)), 0);
+        if(titles.find(util::formatApplicationId(tid)) != titles.end())
+            listItem = new brls::ToggleListItem(util::formatListItemTitle(std::string(app->name)), 0);
         else
-            listItem = new brls::ToggleListItem(formatListItemTitle(std::string(app->name)), 1);
+            listItem = new brls::ToggleListItem(util::formatListItemTitle(std::string(app->name)), 1);
 
         listItem->setThumbnail(app->icon, sizeof(app->icon));
-        std::get<0>(items).push_back(listItem);
-        std::get<1>(items).push_back(formatApplicationId(app->tid));
+        items.insert(std::make_pair(listItem, util::formatApplicationId(app->tid)));
         list->addView(listItem);
         i++;
     }
 
     list->registerAction("menus/cheats/exclude_titles_save"_i18n, brls::Key::B, [this] { 
-        std::set<std::string> exclude{};
-        for(int i = 0; i < (int) std::get<1>(items).size(); i++){
-            if(!std::get<0>(items)[i]->getToggleState()){
-                exclude.insert(std::get<1>(items)[i]);
+        std::set<std::string> exclude;
+        for (const auto& item : items) {
+            if(!item.first->getToggleState()) {
+                exclude.insert(item.second);
             }
         }
-        writeTitlesToFile(exclude, CHEATS_EXCLUDE);
+        extract::writeTitlesToFile(exclude, CHEATS_EXCLUDE);
         brls::Application::popView();
         return true;
     });

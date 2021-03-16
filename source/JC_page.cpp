@@ -1,5 +1,5 @@
 #include "JC_page.hpp"
-#include "JC_color_swapper.hpp"
+#include "color_swapper.hpp"
 #include "confirm_page.hpp"
 #include "worker_page.hpp"
 #include "constants.hpp"
@@ -21,7 +21,7 @@ JCPage::JCPage() : AppletFrame(true, true)
         stagedFrame->setTitle("menus/joy_con/label"_i18n);
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/joy_con/backing_up"_i18n, 
-            [](){backupJCColor(COLOR_PROFILES_PATH);})
+            [](){JC::backupJCColor(COLOR_PROFILES_PATH);})
         );
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)
@@ -32,7 +32,7 @@ JCPage::JCPage() : AppletFrame(true, true)
 
     list->addView(new brls::ListItemGroupSpacing(true));
 
-    auto profiles = getProfiles(COLOR_PROFILES_PATH);
+    auto profiles = JC::getProfiles(COLOR_PROFILES_PATH);
     std::vector<std::string> names = std::get<0>(profiles);
     int nbProfiles = names.size();
     for (int i = nbProfiles - 1; i >= 0; i--){
@@ -44,7 +44,7 @@ JCPage::JCPage() : AppletFrame(true, true)
             stagedFrame->setTitle("menus/joy_con/label"_i18n);
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/joy_con/changing"_i18n, 
-                [value](){changeJCColor(value);})
+                [value](){JC::changeJCColor(value);})
             );
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, "menus/joy_con/all_done"_i18n, true)

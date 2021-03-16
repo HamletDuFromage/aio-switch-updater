@@ -7,6 +7,8 @@
 #include <borealis.hpp>
 #include "json.hpp"
 
+namespace util {
+
 typedef char NsApplicationName[0x201];
 typedef uint8_t NsApplicationIcon[0x20000];
 
@@ -18,14 +20,12 @@ struct app
     brls::ListItem* listItem;
 };
 
-std::vector<std::string> htmlProcess(std::string s, std::regex rgx);
 void createTree(std::string path);
 void clearConsole();
 bool isArchive(const char * path);
 void downloadArchive(std::string url, archiveType type);
 void extractArchive(archiveType type, std::string tag = "0");
-void progressTest(std::string url, archiveType type);
-std::string formatListItemTitle(const std::string str, size_t maxScore = 140);
+std::string formatListItemTitle(const std::string &str, size_t maxScore = 140);
 std::string formatApplicationId(u64 ApplicationId);
 std::set<std::string> readLineByLine(const char * path);
 std::vector<std::string> fetchPayloads();
@@ -42,3 +42,6 @@ int removeDir(const char* path);
 bool isErista();
 void removeSysmodulesFlags(const char * directory);
 nlohmann::json parseJsonFile(const char* path);
+void writeJsonToFile(nlohmann::json &profiles, const char* path);
+
+}

@@ -15,11 +15,20 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
+
+namespace extract {
+
+    namespace {
+        bool caselessCompare (const std::string& a, const std::string& b){
+            return strcasecmp(a.c_str(), b.c_str()) < 0;
+        }
+    }
+
 void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
     chdir(workingPath);
-    std::set<std::string> ignoreList = readLineByLine(FILES_IGNORE);
+    std::set<std::string> ignoreList = util::readLineByLine(FILES_IGNORE);
     std::set<std::string>::iterator it;
     zipper::Unzipper unzipper(filename);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
@@ -53,7 +62,7 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
             else if(entries[i].name.substr(0, 13) == "hekate_ctcaer"){
                 unzipper.extractEntry(entries[i].name);
                 int c = 0;
-                while(R_FAILED(CopyFile(("/" + entries[i].name).c_str(), UPDATE_BIN_PATH)) && c < 10){
+                while(R_FAILED(util::CopyFile(("/" + entries[i].name).c_str(), UPDATE_BIN_PATH)) && c < 10){
                     c++;
                 }
             }
@@ -72,7 +81,7 @@ void extract(const char * filename, const char* workingPath, const char* toExclu
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
     chdir(workingPath);
-    std::set<std::string> ignoreList = readLineByLine(FILES_IGNORE);
+    std::set<std::string> ignoreList = util::readLineByLine(FILES_IGNORE);
     ignoreList.insert(toExclude);
     std::set<std::string>::iterator it;
     zipper::Unzipper unzipper(filename);
@@ -138,7 +147,7 @@ std::vector<std::string> getInstalledTitlesNs(){
                 rc = nacpGetLanguageEntry(&buf->nacp, &langentry);
 
             if (R_SUCCEEDED(rc)) {
-                titles.push_back(formatApplicationId(recs[i].application_id));
+                titles.push_back(util::formatApplicationId(recs[i].application_id));
             }
         }
     }
@@ -176,10 +185,6 @@ std::vector<std::string> excludeTitles(const char* path, std::vector<std::string
     return diff;
 }
 
-bool caselessCompare (const std::string& a, const std::string& b){
-    return strcasecmp(a.c_str(), b.c_str()) < 0;
-}
-
 void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cfw, bool credits){
     //TODO: REWRITE WITH SETS INSTEAD OF VECTORS
     ProgressEvent::instance().reset();
@@ -188,19 +193,19 @@ void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cf
     std::set<std::string> extractedTitles;
     int offset = 0;
     switch(cfw){
-        case ams:
+        case CFW::ams:
             offset = std::string(CONTENTS_PATH).length();
             std::filesystem::create_directory(AMS_PATH);
             std::filesystem::create_directory(AMS_CONTENTS);
             chdir(AMS_PATH);
             break;
-        case rnx:
+        case CFW::rnx:
             offset = std::string(CONTENTS_PATH).length();
             std::filesystem::create_directory(REINX_PATH);
             std::filesystem::create_directory(REINX_CONTENTS);
             chdir(REINX_PATH);
             break;
-        case sxos:
+        case CFW::sxos:
             offset = std::string(TITLES_PATH).length();
             std::filesystem::create_directory(SXOS_PATH);
             std::filesystem::create_directory(SXOS_TITLES);
@@ -213,7 +218,6 @@ void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cf
     for (size_t i = 1; i < entries.size(); i++){
         entriesNames.push_back(entries[i].name);
     }
-
 
     std::sort(entriesNames.begin(), entriesNames.end(), caselessCompare);
 
@@ -267,9 +271,9 @@ void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cf
     }
     unzipper.close();
     writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
-    auto cheatsVerVec = downloadFile(CHEATS_URL_VERSION);
+    auto cheatsVerVec = download::downloadFile(CHEATS_URL_VERSION);
     std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
-    saveVersion(cheatsVer, CHEATS_VERSION);
+    util::saveVersion(cheatsVer, CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
@@ -279,19 +283,19 @@ void extractAllCheats(const char * zipPath, CFW cfw){
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
     int offset = 0;
     switch(cfw){
-        case ams:
+        case CFW::ams:
             offset = std::string(CONTENTS_PATH).length() + 17 + 7;
             std::filesystem::create_directory(AMS_PATH);
             std::filesystem::create_directory(AMS_CONTENTS);
             chdir(AMS_PATH);
             break;
-        case rnx:
+        case CFW::rnx:
             offset = std::string(CONTENTS_PATH).length() + 17 + 7;
             std::filesystem::create_directory(REINX_PATH);
             std::filesystem::create_directory(REINX_CONTENTS);
             chdir(REINX_PATH);
             break;
-        case sxos:
+        case CFW::sxos:
             offset = std::string(TITLES_PATH).length() + 17 + 7;
             std::filesystem::create_directory(SXOS_PATH);
             std::filesystem::create_directory(SXOS_TITLES);
@@ -306,9 +310,9 @@ void extractAllCheats(const char * zipPath, CFW cfw){
         ProgressEvent::instance().setStep(j);
     }
     unzipper.close();
-    auto cheatsVerVec = downloadFile(CHEATS_URL_VERSION);
+    auto cheatsVerVec = download::downloadFile(CHEATS_URL_VERSION);
     std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
-    saveVersion(cheatsVer, CHEATS_VERSION);
+    util::saveVersion(cheatsVer, CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
@@ -335,13 +339,13 @@ void writeTitlesToFile(std::set<std::string> titles, const char* path){
 void removeCheats(CFW cfw){
     std::string path;
     switch(cfw){
-        case ams:
+        case CFW::ams:
             path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
             break;
-        case rnx:
+        case CFW::rnx:
             path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
             break;
-        case sxos:
+        case CFW::sxos:
             path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
             break;
     }
@@ -364,4 +368,6 @@ void removeCheats(CFW cfw){
     std::filesystem::remove(UPDATED_TITLES_PATH);
     std::filesystem::remove(CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
+}
+
 }

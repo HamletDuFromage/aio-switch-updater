@@ -2,7 +2,7 @@
 
 #include <borealis.hpp>
 
-#define AF_INET     2
+constexpr int AF_INET = 2;
 
 class NetPage : public brls::AppletFrame
 {

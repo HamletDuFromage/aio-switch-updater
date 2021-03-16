@@ -12,63 +12,93 @@
 
 #include "progress_event.hpp"
 
-#define API_AGENT           "HamletDuFromage"
-#define _1MiB   0x100000
+constexpr const char API_AGENT[] =  "HamletDuFromage";
+constexpr int _1MiB =               0x100000;
 
 using json = nlohmann::json;
 
-std::chrono::_V2::steady_clock::time_point time_old;
-double dlold;
+namespace download {
 
-typedef struct
-{
-    char *memory;
-    size_t size;
-} MemoryStruct_t;
+    namespace {
 
-typedef struct
-{
-    u_int8_t *data;
-    size_t data_size;
-    u_int64_t offset;
-    FILE *out;
-} ntwrk_struct_t;
+        std::chrono::_V2::steady_clock::time_point time_old;
+        double dlold;
 
-static size_t WriteMemoryCallback(void *contents, size_t size, size_t num_files, void *userp)
-{
-    ntwrk_struct_t *data_struct = (ntwrk_struct_t *)userp;
-    size_t realsize = size * num_files;
+        typedef struct
+        {
+            char *memory;
+            size_t size;
+        } MemoryStruct_t;
 
-    if (realsize + data_struct->offset >= data_struct->data_size)
-    {
-        fwrite(data_struct->data, data_struct->offset, 1, data_struct->out);
-        data_struct->offset = 0;
+        typedef struct
+        {
+            u_int8_t *data;
+            size_t data_size;
+            u_int64_t offset;
+            FILE *out;
+        } ntwrk_struct_t;
+
+        static size_t WriteMemoryCallback(void *contents, size_t size, size_t num_files, void *userp)
+        {
+            ntwrk_struct_t *data_struct = (ntwrk_struct_t *)userp;
+            size_t realsize = size * num_files;
+
+            if (realsize + data_struct->offset >= data_struct->data_size)
+            {
+                fwrite(data_struct->data, data_struct->offset, 1, data_struct->out);
+                data_struct->offset = 0;
+            }
+
+            memcpy(&data_struct->data[data_struct->offset], contents, realsize);
+            data_struct->offset += realsize;
+            data_struct->data[data_struct->offset] = 0;
+            return realsize;
+        }
+
+        int download_progress(void *p, double dltotal, double dlnow, double ultotal, double ulnow)
+        {
+            if (dltotal <= 0.0) return 0;
+
+            double fractionDownloaded = dlnow / dltotal;
+            int counter = (int) (fractionDownloaded * ProgressEvent::instance().getMax()); //20 is the number of increments
+            ProgressEvent::instance().setStep(std::min(ProgressEvent::instance().getMax() - 1, counter));
+            ProgressEvent::instance().setNow(dlnow);
+            ProgressEvent::instance().setTotalCount(dltotal);
+            auto time_now = std::chrono::steady_clock::now();
+            double elasped_time = ((std::chrono::duration<double>) (time_now - time_old)).count();
+            if(elasped_time > 1.2f) {
+                ProgressEvent::instance().setSpeed((dlnow - dlold) / elasped_time);
+                dlold = dlnow;
+                time_old = time_now;
+            }
+            return 0;
+        }
+
+        struct MemoryStruct {
+            char *memory;
+            size_t size;
+        };
+
+        static size_t WriteMemoryCallback2(void *contents, size_t size, size_t nmemb, void *userp)
+        {
+            size_t realsize = size * nmemb;
+            struct MemoryStruct *mem = (struct MemoryStruct *)userp;
+
+            char *ptr = static_cast<char *>(realloc(mem->memory, mem->size + realsize + 1));
+            if(ptr == NULL) {
+                /* out of memory! */ 
+                return 0;
+            }
+
+            mem->memory = ptr;
+            memcpy(&(mem->memory[mem->size]), contents, realsize);
+            mem->size += realsize;
+            mem->memory[mem->size] = 0;
+
+            return realsize;
+        }
+
     }
-
-    memcpy(&data_struct->data[data_struct->offset], contents, realsize);
-    data_struct->offset += realsize;
-    data_struct->data[data_struct->offset] = 0;
-    return realsize;
-}
-
-int download_progress(void *p, double dltotal, double dlnow, double ultotal, double ulnow)
-{
-    if (dltotal <= 0.0) return 0;
-
-    double fractionDownloaded = dlnow / dltotal;
-    int counter = (int) (fractionDownloaded * ProgressEvent::instance().getMax()); //20 is the number of increments
-    ProgressEvent::instance().setStep(std::min(ProgressEvent::instance().getMax() - 1, counter));
-    ProgressEvent::instance().setNow(dlnow);
-    ProgressEvent::instance().setTotalCount(dltotal);
-    auto time_now = std::chrono::steady_clock::now();
-    double elasped_time = ((std::chrono::duration<double>) (time_now - time_old)).count();
-    if(elasped_time > 1.2f) {
-        ProgressEvent::instance().setSpeed((dlnow - dlold) / elasped_time);
-        dlold = dlnow;
-        time_old = time_now;
-    }
-    return 0;
-}
 
 std::vector<std::uint8_t> downloadFile(const char *url, const char *output, int api)
 {
@@ -122,30 +152,6 @@ std::vector<std::uint8_t> downloadFile(const char *url, const char *output, int 
         return (std::vector<std::uint8_t>){};
     }
 
-}
-
-struct MemoryStruct {
-    char *memory;
-    size_t size;
-};
-
-static size_t WriteMemoryCallback2(void *contents, size_t size, size_t nmemb, void *userp)
-{
-    size_t realsize = size * nmemb;
-    struct MemoryStruct *mem = (struct MemoryStruct *)userp;
-
-    char *ptr = static_cast<char *>(realloc(mem->memory, mem->size + realsize + 1));
-    if(ptr == NULL) {
-        /* out of memory! */ 
-        return 0;
-    }
-
-    mem->memory = ptr;
-    memcpy(&(mem->memory[mem->size]), contents, realsize);
-    mem->size += realsize;
-    mem->memory[mem->size] = 0;
-
-    return realsize;
 }
 
 std::string fetchTitle(const char *url){
@@ -273,4 +279,6 @@ std::vector<std::pair<std::string, std::string>> getLinks(const char *url) {
         res.push_back(std::make_pair(it.key(), it.value()));
     }
     return res;
+}
+
 }

@@ -16,7 +16,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
     this->setTitle("menus/cheats/menu"_i18n);
 
     std::string bid = "";
-    if(running_cfw == ams)
+    if(CurrentCfw::running_cfw == CFW::ams)
         bid = GetBuilID(tid);
     if(bid == "")
         bid = GetBuilIDFromFile(tid);
@@ -31,7 +31,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
 
     if(bid != "") {
         std::vector<std::string> headers = {"accept: application/json"};
-        json cheatsInfo = getRequest((CHEATSLIPS_CHEATS_URL + formatApplicationId(tid) + "/" + bid).c_str(), headers);
+        json cheatsInfo = download::getRequest((CHEATSLIPS_CHEATS_URL + util::formatApplicationId(tid) + "/" + bid).c_str(), headers);
         if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
             for (const auto& p : cheatsInfo["cheats"].items()) {
                 json cheat = p.value();
@@ -75,7 +75,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
             if(token.find("token") != token.end()) {
                 headers.push_back("X-API-TOKEN: " + token["token"].get<std::string>());
             }
-            json cheatsInfo = getRequest(("https://www.cheatslips.com/api/v1/cheats/" + formatApplicationId(tid) + "/" + bid).c_str(), headers);
+            json cheatsInfo = download::getRequest(("https://www.cheatslips.com/api/v1/cheats/" + util::formatApplicationId(tid) + "/" + bid).c_str(), headers);
             if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
                 for (const auto& p : cheatsInfo["cheats"].items()) {
                     if(std::find(ids.begin(), ids.end(), p.value()["id"]) != ids.end()) {
@@ -178,14 +178,14 @@ std::string DownloadCheatsPage::GetBuilIDFromFile(uint64_t tid) {
 
     json lookupTable;
     try { 
-        lookupTable = json::parse(std::string(json::from_cbor(downloadFile(LOOKUP_TABLE_CBOR))));
+        lookupTable = json::parse(std::string(json::from_cbor(download::downloadFile(LOOKUP_TABLE_CBOR))));
     }
     catch (json::parse_error& e)
     {
         //std::cout << "message: " << e.what() << '\n' << "exception id: " << e.id << '\n' << "byte position of error: " << e.byte << std::endl;
     }
 
-    std::string tidstr = formatApplicationId(tid);
+    std::string tidstr = util::formatApplicationId(tid);
     std::string versionstr = std::to_string(version);
     if(lookupTable.find(tidstr) != lookupTable.end()) {
         json buildIDs = lookupTable[tidstr];
@@ -212,20 +212,20 @@ std::string DownloadCheatsPage::GetCheatsTitle(json cheat) {
 
 void DownloadCheatsPage::WriteCheats(uint64_t tid, std::string bid, std::string cheatContent) {
     std::string path;
-    std::string tidstr = formatApplicationId(tid);
-    switch(running_cfw){
-        case ams:
+    std::string tidstr = util::formatApplicationId(tid);
+    switch(CurrentCfw::running_cfw){
+        case CFW::ams:
             path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
             break;
-        case rnx:
+        case CFW::rnx:
             path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
             break;
-        case sxos:
+        case CFW::sxos:
             path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
             break;
     }
     path += tidstr + "/cheats/";
-    createTree(path);
+    util::createTree(path);
     path += bid + ".txt";
     std::ofstream cheatFile;
     cheatFile.open(path, std::ios::app);
@@ -237,18 +237,18 @@ void DownloadCheatsPage::WriteCheats(uint64_t tid, std::string bid, std::string 
 
 void DownloadCheatsPage::DeleteCheats(uint64_t tid, std::string bid) {
     std::string path;
-    switch(running_cfw){
-        case ams:
+    switch(CurrentCfw::running_cfw){
+        case CFW::ams:
             path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
             break;
-        case rnx:
+        case CFW::rnx:
             path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
             break;
-        case sxos:
+        case CFW::sxos:
             path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
             break;
     }
-    std::filesystem::remove(path + formatApplicationId(tid) + "/cheats/" + bid + ".txt");
+    std::filesystem::remove(path + util::formatApplicationId(tid) + "/cheats/" + bid + ".txt");
 }
 
 void DownloadCheatsPage::ShowCheatsContent(nlohmann::ordered_json titles) {

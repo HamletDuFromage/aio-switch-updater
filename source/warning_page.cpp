@@ -9,7 +9,7 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 WarningPage::WarningPage(std::string text)
 {
-    createTree(CONFIG_PATH);
+    util::createTree(CONFIG_PATH);
     std::ofstream(HIDDEN_AIO_FILE);
     this->button = (new brls::Button(brls::ButtonStyle::PRIMARY))->setLabel("menus/common/continue"_i18n);
     this->button->setParent(this);

@@ -34,7 +34,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
         stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->setTitle("menus/cheats/delete_all"_i18n);
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/cheats/deleting"_i18n, [](){removeCheats(running_cfw);})
+            new WorkerPage(stagedFrame, "menus/cheats/deleting"_i18n, [](){extract::removeCheats(CurrentCfw::running_cfw);})
         );
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)
@@ -43,20 +43,20 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
     });
     list->addView(deleteCheats);
 
-    auto cheatsVerVec = downloadFile(CHEATS_URL_VERSION);
+    auto cheatsVerVec = download::downloadFile(CHEATS_URL_VERSION);
     std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
     if(cheatsVer != "") {
         dlAll = new brls::ListItem("menus/cheats/dl_all"_i18n);
         dlAll->getClickEvent()->subscribe([&, cheatsVer](brls::View* view) {
             std::string url;
-            switch(running_cfw){
-                case sxos:
+            switch(CurrentCfw::running_cfw){
+                case CFW::sxos:
                     url = CHEATS_URL_TITLES;
                     break;
-                case ams:
+                case CFW::ams:
                     url = CHEATS_URL_CONTENTS;
                     break;
-                case rnx:
+                case CFW::rnx:
                     url = CHEATS_URL_CONTENTS;
                     break;
             }
@@ -67,10 +67,10 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
                 new ConfirmPage(stagedFrame, text)
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url](){downloadArchive(url, cheats);})
+                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url](){util::downloadArchive(url, archiveType::cheats);})
             );
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [](){extractAllCheats(CHEATS_ZIP_PATH, running_cfw);})
+                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [](){extract::extractAllCheats(CHEATS_ZIP_PATH, CurrentCfw::running_cfw);})
             );
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)

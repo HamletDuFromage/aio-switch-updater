@@ -1,5 +1,4 @@
 #include "reboot_payload.h"
-#include "constants.hpp"
 
 #define IRAM_PAYLOAD_MAX_SIZE   0x2F000
 #define IRAM_PAYLOAD_BASE       0x40010000

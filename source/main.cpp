@@ -17,7 +17,7 @@ using namespace i18n::literals;
 
 //TimeServiceType __nx_time_service_type = TimeServiceType_System;
 
-const CFW running_cfw = getCFW();
+const CFW CurrentCfw::running_cfw = CurrentCfw::getCFW();
 
 int main(int argc, char* argv[])
 {
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
     
-    nlohmann::json languageFile = parseJsonFile(LANGUAGE_JSON);
+    nlohmann::json languageFile = util::parseJsonFile(LANGUAGE_JSON);
     if(languageFile.find("language") != languageFile.end())
         i18n::loadTranslations(languageFile["language"]);
     else
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
     splInitialize();
     romfsInit();
     
-    createTree(CONFIG_PATH);
+    util::createTree(CONFIG_PATH);
 
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
     brls::Logger::debug("Start");

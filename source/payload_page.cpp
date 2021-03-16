@@ -16,7 +16,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
         true
     );
     list->addView(label);
-    std::vector<std::string> payloads = fetchPayloads();
+    std::vector<std::string> payloads = util::fetchPayloads();
     int nbPayloads = payloads.size();
     for (int i = 0; i < nbPayloads; i++){
         std::string payload = payloads[i];
@@ -25,10 +25,10 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
             reboot_to_payload(payload.c_str());
             brls::Application::popView();
         });
-        if(running_cfw == ams){
+        if(CurrentCfw::running_cfw == CFW::ams){
             listItem->registerAction("menus/payloads/set_reboot_payload"_i18n, brls::Key::X, [this, payload] { 
                 std::string res1;
-                if(R_SUCCEEDED(CopyFile(payload.c_str(), REBOOT_PAYLOAD_PATH))){
+                if(R_SUCCEEDED(util::CopyFile(payload.c_str(), REBOOT_PAYLOAD_PATH))){
                     res1 += "menus/payloads/copy_success"_i18n + payload + "menus/payloads/to"_i18n + std::string(REBOOT_PAYLOAD_PATH) + "'.";
                     
                 }
@@ -47,7 +47,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
         }
         listItem->registerAction("menus/payloads/set_reboot_payload_up"_i18n, brls::Key::Y, [this, payload] { 
                 std::string res2;
-                if(R_SUCCEEDED(CopyFile(payload.c_str(), UPDATE_BIN_PATH))){
+                if(R_SUCCEEDED(util::CopyFile(payload.c_str(), UPDATE_BIN_PATH))){
                     res2 += "menus/payloads/copy_success"_i18n + payload + "menus/payloads/to"_i18n + std::string(UPDATE_BIN_PATH) + "'.";
                 }
                 else{
@@ -68,14 +68,14 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
 
     shutDown = new brls::ListItem("menus/common/shut_down"_i18n);
     shutDown->getClickEvent()->subscribe([](brls::View* view) {
-        shut_down(false);
+        util::shut_down(false);
         brls::Application::popView();
     });
     list->addView(shutDown);
 
     reboot = new brls::ListItem("menus/payloads/reboot"_i18n);
     reboot->getClickEvent()->subscribe([](brls::View* view) {
-        shut_down(true);
+        util::shut_down(true);
         brls::Application::popView();
     });
     list->addView(reboot);

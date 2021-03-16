@@ -17,7 +17,7 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
     );
     list->addView(label);
     
-    auto links =  getLinks(PAYLOAD_URL);
+    auto links =  download::getLinks(PAYLOAD_URL);
     int nbLinks = links.size();
     if(nbLinks){
         for (int i = 0; i<nbLinks; i++){
@@ -26,14 +26,14 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
             std::string text("menus/common/download"_i18n + links[i].first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(links[i].first);
             listItem->getClickEvent()->subscribe([&, text, url, path](brls::View* view) {
-                createTree(BOOTLOADER_PL_PATH);
+                util::createTree(BOOTLOADER_PL_PATH);
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle("menus/getting_paylaod"_i18n);
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, text)
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path](){downloadFile(url.c_str(), path.c_str(), OFF);})
+                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path](){download::downloadFile(url.c_str(), path.c_str(), OFF);})
                 );
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, "menus/common/downloadingload_all_done"_i18n, true)
