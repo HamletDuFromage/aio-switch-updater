@@ -1,5 +1,19 @@
 [
     {
+        "L_BTN": "1A1100",
+        "L_JC": "FFCC00",
+        "R_BTN": "000F1E",
+        "R_JC": "0084FF",
+        "name": "Fortnite Wildcat"
+    },
+    {
+        "L_BTN": "1E1914",
+        "L_JC": "F04614",
+        "R_BTN": "1E1914",
+        "R_JC": "F04614",
+        "name": "Mario Red & Blue"
+    },
+    {
         "L_BTN": "0F0F0F",
         "L_JC": "828282",
         "R_BTN": "0F0F0F",
