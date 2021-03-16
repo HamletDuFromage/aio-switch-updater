@@ -124,6 +124,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.4.2");
     changes.push_back("\uE016 Added option to manually change language.\n\uE016 Fixed broken strings.\n\uE016 Few visual tweaks.");
 
+    verTitles.push_back("v2.4.3");
+    changes.push_back("\uE016 Added way to select system default in language selection.\n\uE016 Display local IP in internet settings.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
