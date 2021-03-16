@@ -2,7 +2,7 @@
 
 #include <borealis.hpp>
 #include <switch.h>
-#include "json.hpp"
+#include <json.hpp>
 
 class DownloadCheatsPage : public brls::AppletFrame
 {

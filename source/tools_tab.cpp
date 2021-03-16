@@ -11,7 +11,7 @@
 #include "extract.hpp"
 #include "utils.hpp"
 #include "hide_tabs_page.hpp"
-#include "json.hpp"
+#include <json.hpp>
 #include <filesystem>
 #include <fstream>
 

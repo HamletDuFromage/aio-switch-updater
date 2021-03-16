@@ -3,9 +3,9 @@
 #include <regex>
 #include <set>
 #include <switch.h>
-#include "constants.hpp"
 #include <borealis.hpp>
-#include "json.hpp"
+#include <json.hpp>
+#include "constants.hpp"
 
 namespace util {
 

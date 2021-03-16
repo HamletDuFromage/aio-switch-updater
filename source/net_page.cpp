@@ -7,7 +7,7 @@
 #include <iomanip>
 #include "constants.hpp"
 #include "main_frame.hpp"
-#include "json.hpp"
+#include <json.hpp>
 #include "utils.hpp"
 
 namespace i18n = brls::i18n;
