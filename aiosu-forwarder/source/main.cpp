@@ -11,7 +11,7 @@
 #define CONFIG_SWITCH       "/config/aio-switch-updater/switch/"
 #define HIDDEN_FILE "/config/aio-switch-updater/.aio-switch-updater"
 
-int util::removeDir(const char* path)
+int removeDir(const char* path)
 {
     Result ret = 0;
     FsFileSystem *fs = fsdevGetDeviceFileSystem("sdmc");
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
         std::filesystem::create_directory(PATH);
         std::filesystem::remove(FULL_PATH);
         std::filesystem::rename(CONFIG_PATH, FULL_PATH);
-        util::removeDir(CONFIG_SWITCH);
+        removeDir(CONFIG_SWITCH);
     }
 
     std::filesystem::remove(FORWARDER_PATH);
