@@ -1,4 +1,5 @@
 #include "utils.hpp"
+#include "fs.hpp"
 #include "current_cfw.hpp"
 #include <switch.h>
 #include "download.hpp"
@@ -13,19 +14,6 @@ using namespace i18n::literals;
 
 namespace util {
 
-void createTree(std::string path){
-    std::string delimiter = "/";
-    size_t pos = 0;
-    std::string token;
-    std::string directories("");
-    while ((pos = path.find(delimiter)) != std::string::npos) {
-        token = path.substr(0, pos);
-        directories += token + "/";
-        std::filesystem::create_directory(directories);
-        path.erase(0, pos + delimiter.length());
-    }
-}
-
 bool isArchive(const char * path){
     std::fstream file;
     std::string fileContent;
@@ -38,7 +26,7 @@ bool isArchive(const char * path){
 }
 
 void downloadArchive(std::string url, archiveType type){
-    createTree(DOWNLOAD_PATH);
+    fs::createTree(DOWNLOAD_PATH);
     AppletType at;
     switch(type){
         case archiveType::sigpatches:
@@ -147,13 +135,13 @@ void extractArchive(archiveType type, std::string tag){
             }
             else{
                 if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
-                createTree(FIRMWARE_PATH);
+                fs::createTree(FIRMWARE_PATH);
                 extract::extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
             }
             break;
         case archiveType::app:
             extract::extract(APP_FILENAME, CONFIG_PATH);
-            cp(ROMFS_FORWARDER, FORWARDER_PATH);
+            fs::copyFile(ROMFS_FORWARDER, FORWARDER_PATH);
             envSetNextLoad(FORWARDER_PATH, ("\"" + std::string(FORWARDER_PATH) + "\"").c_str());
             romfsExit();
             brls::Application::quit();
@@ -179,16 +167,14 @@ void extractArchive(archiveType type, std::string tag){
             break;
     }
     if(std::filesystem::exists(COPY_FILES_JSON))
-        copyFiles(COPY_FILES_JSON);
+        fs::copyFiles(COPY_FILES_JSON);
 }
 
 std::string formatListItemTitle(const std::string &str, size_t maxScore) {
     size_t score = 0;
-    for (size_t i = 0; i < str.length(); i++)
-    {
+    for (size_t i = 0; i < str.length(); i++) {
         score += std::isupper(str[i]) ? 4 : 3;
-        if(score > maxScore)
-        {
+        if(score > maxScore) {
             return str.substr(0, i-1) + "\u2026";
         }
     }
@@ -197,21 +183,6 @@ std::string formatListItemTitle(const std::string &str, size_t maxScore) {
 
 std::string formatApplicationId(u64 ApplicationId){
     return fmt::format("{:016X}", ApplicationId);
-}
-
-std::set<std::string> readLineByLine(const char * path){
-    std::set<std::string> titles;
-    std::string str;
-    std::ifstream in(path);
-    if(in){
-        while (std::getline(in, str))
-        {
-            if(str.size() > 0)
-                titles.insert(str);
-        }
-        in.close();
-    }
-    return titles;
 }
 
 std::vector<std::string> fetchPayloads(){
@@ -224,8 +195,8 @@ std::vector<std::string> fetchPayloads(){
     if(std::filesystem::exists(BOOTLOADER_PL_PATH)) payloadPaths.push_back(BOOTLOADER_PL_PATH);
     if(std::filesystem::exists(SXOS_PATH))          payloadPaths.push_back(SXOS_PATH);
     std::vector<std::string> res;
-    for (auto& path : payloadPaths){
-        for (const auto & entry : std::filesystem::directory_iterator(path)){
+    for (const auto& path : payloadPaths){
+        for (const auto& entry : std::filesystem::directory_iterator(path)){
             if(entry.path().extension().string() == ".bin"){
                 if(entry.path().string() != FUSEE_SECONDARY && entry.path().string() != FUSEE_MTC)
                     res.push_back(entry.path().string().c_str());
@@ -236,7 +207,7 @@ std::vector<std::string> fetchPayloads(){
     return res;
 }
 
-void shut_down(bool reboot){
+void shutDown(bool reboot){
     bpcInitialize();
     if(reboot) bpcRebootSystem();
     else bpcShutdownSystem();
@@ -249,78 +220,6 @@ std::string getLatestTag(const char *url){
         return tag["tag_name"];
     else
         return "";
-}
-
-void cp(const char *from, const char *to){
-    std::ifstream src(from, std::ios::binary);
-    std::ofstream dst(to, std::ios::binary);
-
-    if (src.good() && dst.good()) {
-        dst << src.rdbuf();
-    }
-}
-
-Result CopyFile(const char src_path[FS_MAX_PATH], const char dest_path[FS_MAX_PATH]) {
-    FsFileSystem *fs;
-    Result ret = 0;
-    FsFile src_handle, dest_handle;
-    int PREVIOUS_BROWSE_STATE = 0;
-    FsFileSystem devices[4];
-    devices[0] = *fsdevGetDeviceFileSystem("sdmc");
-    fs = &devices[0];
-
-    ret = fsFsOpenFile(&devices[PREVIOUS_BROWSE_STATE], src_path, FsOpenMode_Read, &src_handle);
-    if (R_FAILED(ret)) {
-        return ret;
-    }
-    
-    s64 size = 0;
-    ret = fsFileGetSize(&src_handle, &size);
-    if (R_FAILED(ret)){
-        fsFileClose(&src_handle);
-        return ret;
-    }
-    
-    std::filesystem::remove(dest_path);
-    fsFsCreateFile(fs, dest_path, size, 0);
-        
-    ret = fsFsOpenFile(fs, dest_path, FsOpenMode_Write, &dest_handle);
-    if (R_FAILED(ret)){
-        fsFileClose(&src_handle);
-        return ret;
-    }
-    
-    uint64_t bytes_read = 0;
-    const u64 buf_size = 0x10000;
-    s64 offset = 0;
-    unsigned char *buf = new unsigned char[buf_size];
-    std::string filename = std::filesystem::path(src_path).filename();
-    
-    do {
-        std::memset(buf, 0, buf_size);
-        
-        ret = fsFileRead(&src_handle, offset, buf, buf_size, FsReadOption_None, &bytes_read);
-        if (R_FAILED(ret)) {
-            delete[] buf;
-            fsFileClose(&src_handle);
-            fsFileClose(&dest_handle);
-            return ret;
-        }
-        ret = fsFileWrite(&dest_handle, offset, buf, bytes_read, FsWriteOption_Flush);
-        if (R_FAILED(ret)) {
-            delete[] buf;
-            fsFileClose(&src_handle);
-            fsFileClose(&dest_handle);
-            return ret;
-        }
-        
-        offset += bytes_read;
-    } while(offset < size);
-    
-    delete[] buf;
-    fsFileClose(&src_handle);
-    fsFileClose(&dest_handle);
-    return 0;
 }
 
 void saveVersion(std::string version, const char* path){
@@ -339,40 +238,6 @@ std::string readVersion(const char* path){
         versionFile.close();
     }
     return version;
-}
-
-std::string copyFiles(const char* path) {
-    nlohmann::ordered_json toMove;
-    std::ifstream f(COPY_FILES_JSON);
-    f >> toMove;
-    f.close();
-    std::string error = "";
-    for (auto it = toMove.begin(); it != toMove.end(); ++it) {
-        if(std::filesystem::exists(it.key())) {
-            createTree(std::string(std::filesystem::path(it.value().get<std::string>()).parent_path()) + "/");
-            cp(it.key().c_str(), it.value().get<std::string>().c_str());
-            //std::cout << it.key() << it.value().get<std::string>() << std::endl;
-        }
-        else {
-            error += it.key() + "\n";
-        }
-    }
-    if(error == "") {
-        error = "menus/common/all_done"_i18n;
-    }
-    else {
-        error = "menus/tools/batch_copy_not_found"_i18n + error;
-    }
-    return error;
-}
-
-int removeDir(const char* path) {
-    Result ret = 0;
-    FsFileSystem *fs = fsdevGetDeviceFileSystem("sdmc");
-    if (R_FAILED(ret = fsFsDeleteDirectoryRecursively(fs, path))) {
-        return ret;
-    }
-    return 0;
 }
 
 bool isErista() {
@@ -425,23 +290,6 @@ void removeSysmodulesFlags(const char * directory) {
         }
         found = false;
     }
-}
-
-nlohmann::json parseJsonFile(const char* path) {
-    std::ifstream file(path);
-
-    std::string fileContent((std::istreambuf_iterator<char>(file) ),
-                            (std::istreambuf_iterator<char>()    ));
-
-    if(nlohmann::json::accept(fileContent))   return nlohmann::json::parse(fileContent);
-    else                                      return nlohmann::json::object();
-}
-
-void writeJsonToFile(nlohmann::json &profiles, const char* path) {
-    std::fstream newProfiles;
-    newProfiles.open(path, std::fstream::out | std::fstream::trunc);
-    newProfiles << std::setw(4) << profiles << std::endl;
-    newProfiles.close();
 }
 
 }

@@ -78,12 +78,11 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
 
     this->addView(description);
 
-    int nbLinks = links.size();
-    if(nbLinks){
-        for (int i = 0; i<nbLinks; i++){
-            std::string url = links[i].second;
-            std::string text("menus/common/download"_i18n + links[i].first + "menus/common/from"_i18n + url);
-            listItem = new brls::ListItem(links[i].first);
+    if(links.size()){
+        for (const auto& link : links){
+            std::string url = link.second;
+            std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
+            listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
             listItem->getClickEvent()->subscribe([&, text, url, type, operation](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();

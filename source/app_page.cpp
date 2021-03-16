@@ -1,13 +1,14 @@
 #include "app_page.hpp"
 #include <switch.h>
-#include "utils.hpp"
 #include <filesystem>
 #include <fstream>
 #include "current_cfw.hpp"
 #include "worker_page.hpp"
 #include "confirm_page.hpp"
 #include "download_cheats_page.hpp"
- 
+#include "utils.hpp"
+#include "fs.hpp"
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
@@ -31,7 +32,7 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
     int recordCount     = 0;
     size_t controlSize  = 0;
 
-    titles = util::readLineByLine(UPDATED_TITLES_PATH);
+    titles = fs::readLineByLine(UPDATED_TITLES_PATH);
 
     if(!titles.empty() || cheatSlips){
         while (true)

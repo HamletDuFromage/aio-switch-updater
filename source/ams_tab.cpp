@@ -21,16 +21,15 @@ AmsTab::AmsTab() :
     operation += "menus/main/ams"_i18n;
     links = download::getLinks(AMS_URL);
 
-    int nbLinks = links.size();
-    if(nbLinks){
+    if(links.size()){
         auto hekate_link = download::getLinks(HEKATE_URL);
         std::string hekate_url = hekate_link[0].second;
         std::string text_hekate = "menus/common/download"_i18n + hekate_link[0].first;
 
-        for (int i = 0; i < nbLinks; i++){
-            std::string url = links[i].second;
-            std::string text("menus/common/download"_i18n + links[i].first + "menus/common/from"_i18n + url);
-            listItem = new brls::ListItem(links[i].first);
+        for (const auto& link : links){
+            std::string url = link.second;
+            std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
+            listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
             listItem->getClickEvent()->subscribe([&, text, text_hekate, url, hekate_url, operation](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();

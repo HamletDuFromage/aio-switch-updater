@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "extract.hpp"
 #include "utils.hpp"
+#include "fs.hpp"
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -29,7 +30,7 @@ ExcludePage::ExcludePage() : AppletFrame(true, true)
     int recordCount     = 0;
     size_t controlSize  = 0;
 
-    titles = util::readLineByLine(CHEATS_EXCLUDE);
+    titles = fs::readLineByLine(CHEATS_EXCLUDE);
 
     while (true)
     {

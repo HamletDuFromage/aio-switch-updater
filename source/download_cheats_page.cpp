@@ -1,12 +1,14 @@
 #include "download_cheats_page.hpp"
+#include <fstream>
+#include <filesystem>
 #include "constants.hpp"
 #include "download.hpp"
 #include "utils.hpp"
+#include "fs.hpp"
 #include "current_cfw.hpp"
-#include <fstream>
-#include <filesystem>
+
 //#include <iostream>
- 
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 using json = nlohmann::json;
@@ -225,7 +227,7 @@ void DownloadCheatsPage::WriteCheats(uint64_t tid, std::string bid, std::string 
             break;
     }
     path += tidstr + "/cheats/";
-    util::createTree(path);
+    fs::createTree(path);
     path += bid + ".txt";
     std::ofstream cheatFile;
     cheatFile.open(path, std::ios::app);

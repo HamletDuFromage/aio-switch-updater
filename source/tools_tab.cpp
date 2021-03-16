@@ -10,6 +10,7 @@
 #include "net_page.hpp"
 #include "extract.hpp"
 #include "utils.hpp"
+#include "fs.hpp"
 #include "hide_tabs_page.hpp"
 #include <json.hpp>
 #include <filesystem>
@@ -156,7 +157,7 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         chdir("/");
         std::string error = "";
         if(std::filesystem::exists(COPY_FILES_JSON)){
-            error = util::copyFiles(COPY_FILES_JSON);
+            error = fs::copyFiles(COPY_FILES_JSON);
         }
         else{
             error = "menus/tools/batch_copy_config_not_found"_i18n;
@@ -180,9 +181,9 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         std::filesystem::remove(FW_ZIP_PATH);
         std::filesystem::remove(CHEATS_ZIP_PATH);
         std::filesystem::remove(SIGPATCHES_ZIP_PATH);
-        util::removeDir(AMS_DIRECTORY_PATH);
-        util::removeDir(SEPT_DIRECTORY_PATH);
-        util::removeDir(FW_DIRECTORY_PATH);
+        fs::removeDir(AMS_DIRECTORY_PATH);
+        fs::removeDir(SEPT_DIRECTORY_PATH);
+        fs::removeDir(FW_DIRECTORY_PATH);
         brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
         brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
             dialog->close();

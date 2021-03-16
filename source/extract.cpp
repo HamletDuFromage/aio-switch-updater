@@ -1,6 +1,4 @@
 #include "extract.hpp"
-#include "utils.hpp"
-#include "download.hpp"
 #include <string>
 #include <vector>
 #include <sstream>
@@ -12,6 +10,9 @@
 #include <set>
 #include <unzipper.h>
 #include "progress_event.hpp"
+#include "utils.hpp"
+#include "download.hpp"
+#include "fs.hpp"
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -28,7 +29,7 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
     chdir(workingPath);
-    std::set<std::string> ignoreList = util::readLineByLine(FILES_IGNORE);
+    std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
     std::set<std::string>::iterator it;
     zipper::Unzipper unzipper(filename);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
@@ -59,15 +60,11 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
             if(entries[i].name == "sept/payload.bin" || entries[i].name == "atmosphere/fusee-secondary.bin"){
                 unzipper.extractEntry(entries[i].name, CONFIG_PATH_UNZIP);
             }
-            else if(entries[i].name.substr(0, 13) == "hekate_ctcaer"){
+            else {
                 unzipper.extractEntry(entries[i].name);
-                int c = 0;
-                while(R_FAILED(util::CopyFile(("/" + entries[i].name).c_str(), UPDATE_BIN_PATH)) && c < 10){
-                    c++;
+                if(entries[i].name.substr(0, 13) == "hekate_ctcaer") {
+                    fs::copyFile(("/" + entries[i].name).c_str(), UPDATE_BIN_PATH);
                 }
-            }
-            else{
-                unzipper.extractEntry(entries[i].name);
             }
         }
         
@@ -81,7 +78,7 @@ void extract(const char * filename, const char* workingPath, const char* toExclu
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
     chdir(workingPath);
-    std::set<std::string> ignoreList = util::readLineByLine(FILES_IGNORE);
+    std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
     ignoreList.insert(toExclude);
     std::set<std::string>::iterator it;
     zipper::Unzipper unzipper(filename);

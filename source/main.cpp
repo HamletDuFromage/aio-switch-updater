@@ -1,16 +1,13 @@
-//#include <stdio.h>
-//#include <stdlib.h>
-#include <string>
+#include <filesystem>
 #include <switch.h>
 #include <borealis.hpp>
+#include <json.hpp>
 #include "main_frame.hpp"
 #include "constants.hpp"
-#include "utils.hpp"
+#include "fs.hpp"
 #include "current_cfw.hpp"
 #include "warning_page.hpp"
-#include <filesystem>
-#include "json.hpp"
-#include <constants.hpp>
+
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -28,7 +25,7 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
     
-    nlohmann::json languageFile = util::parseJsonFile(LANGUAGE_JSON);
+    nlohmann::json languageFile = fs::parseJsonFile(LANGUAGE_JSON);
     if(languageFile.find("language") != languageFile.end())
         i18n::loadTranslations(languageFile["language"]);
     else
@@ -48,7 +45,7 @@ int main(int argc, char* argv[])
     splInitialize();
     romfsInit();
     
-    util::createTree(CONFIG_PATH);
+    fs::createTree(CONFIG_PATH);
 
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
     brls::Logger::debug("Start");

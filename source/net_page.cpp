@@ -3,12 +3,11 @@
 #include <switch.h>
 #include <fstream>
 #include <filesystem>
-#include <tuple>
 #include <iomanip>
+#include <json.hpp>
 #include "constants.hpp"
 #include "main_frame.hpp"
-#include <json.hpp>
-#include "utils.hpp"
+#include "fs.hpp"
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -23,8 +22,7 @@ NetPage::NetPage() : AppletFrame(true, true)
     nifmGetCurrentNetworkProfile (&profile);
     nifmExit();
 
-    int uuid = 0;
-    for (int j = 0; j < 16; j++) uuid +=  int(profile.uuid.uuid[j]);
+    int uuid = std::accumulate(profile.uuid.uuid, profile.uuid.uuid + 16, 0);
 
     std::string labelText = "";
     if(uuid){
@@ -37,7 +35,7 @@ NetPage::NetPage() : AppletFrame(true, true)
                         +"\nGateway: "      + ipToString(profile.ip_setting_data.ip_address_setting.gateway.addr);
         }
         struct in_addr addr = {(in_addr_t) gethostid()};
-        labelText += "\n Local IP addr" + std::string(inet_ntoa(addr));
+        labelText += "\nLocal IP addr" + std::string(inet_ntoa(addr));
         labelText += "\nMTU: " + std::to_string(unsigned(profile.ip_setting_data.mtu));
 
         if(profile.ip_setting_data.dns_setting.is_automatic){
@@ -66,7 +64,7 @@ NetPage::NetPage() : AppletFrame(true, true)
     //dns_auto
 
     if(uuid){
-    json profiles = util::parseJsonFile(INTERNET_JSON);
+    json profiles = fs::parseJsonFile(INTERNET_JSON);
     if(profiles.empty()) {
         profiles = {{
             {"name", "90DNS (Europe)"},

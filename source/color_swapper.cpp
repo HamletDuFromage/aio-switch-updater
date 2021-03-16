@@ -4,11 +4,10 @@
 #include <fstream>
 #include <sstream>
 #include <filesystem>
-#include <tuple>
-
 #include "constants.hpp"
 #include "progress_event.hpp"
 #include "utils.hpp"
+#include "fs.hpp"
 
 using json = nlohmann::json;
 
@@ -83,7 +82,7 @@ namespace JC {
                 {"R_BTN", ColorSwapper::BGRToHex(color_right.sub)}
             });
             profiles.push_back(newBackup);
-            util::writeJsonToFile(profiles, path);
+            fs::writeJsonToFile(profiles, path);
             return 0;
         }
         else{
@@ -109,17 +108,11 @@ namespace JC {
 
     }
 
-    std::tuple<std::vector<std::string>, std::vector<std::vector<int>>> getProfiles(const char* path){
-        std::vector<std::string> names;
-        std::vector<std::vector<int>> colorValues;
+    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const char* path){
+        std::vector<std::pair<std::string, std::vector<int>>> res;
         bool properData;
         std::fstream profilesFile;
-        json profilesJson;
-        if(std::filesystem::exists(path)){
-            profilesFile.open(path, std::fstream::in);
-            profilesFile >> profilesJson;
-            profilesFile.close();
-        }
+        json profilesJson = fs::parseJsonFile(path);
         if(profilesJson.empty()){
             profilesJson = {{
                 {"L_BTN", "0A1E0A"},
@@ -128,7 +121,6 @@ namespace JC {
                 {"R_JC", "96F5F5"},
                 {"name", "Animal Crossing: New Horizons"}
             }};
-            util::writeJsonToFile(profilesJson, path);
         }
         for (const auto& x : profilesJson.items()){
             std::string name = x.value()["name"];
@@ -146,16 +138,15 @@ namespace JC {
             }
             if(properData){
                 if(name == "") name = "Unamed";
-                names.push_back(name);
-                colorValues.push_back({
+                res.push_back(std::make_pair(name, (std::vector<int>){
                     ColorSwapper::hexToBGR(values[0]),
                     ColorSwapper::hexToBGR(values[1]),
                     ColorSwapper::hexToBGR(values[2]),
                     ColorSwapper::hexToBGR(values[3])
-                });
+                }));
             }
         }
-        return std::make_tuple(names, colorValues);
+        return res;
     }
 
     void changeJCColor(std::vector<int> values){
@@ -204,7 +195,7 @@ namespace JC {
 
         profiles.push_back(backup);
         //backup.push_back(profiles);
-        util::writeJsonToFile(profiles, path);
+        fs::writeJsonToFile(profiles, path);
         hiddbgExit();
         hidsysExit();
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
@@ -252,7 +243,7 @@ namespace PC {
                 {"BTN", ColorSwapper::BGRToHex(color.sub)}
             });
             profiles.push_back(newBackup);
-            util::writeJsonToFile(profiles, path);
+            fs::writeJsonToFile(profiles, path);
             return 0;
         }
         else{
@@ -275,24 +266,17 @@ namespace PC {
 
     }
 
-    std::tuple<std::vector<std::string>, std::vector<std::vector<int>>> getProfiles(const char* path){
-        std::vector<std::string> names;
-        std::vector<std::vector<int>> colorValues;
+    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const char* path){
+        std::vector<std::pair<std::string, std::vector<int>>> res;
         bool properData;
         std::fstream profilesFile;
-        json profilesJson;
-        if(std::filesystem::exists(path)){
-            profilesFile.open(path, std::fstream::in);
-            profilesFile >> profilesJson;
-            profilesFile.close();
-        }
+        json profilesJson = fs::parseJsonFile(path);
         if(profilesJson.empty()){
             profilesJson = {{
                 {"BTN", "2d2d2d"},
                 {"BODY", "e6e6e6"},
                 {"name", "Default black"}
             }};
-            util::writeJsonToFile(profilesJson, path);
         }
         for (const auto& x : profilesJson.items()){
             std::string name = x.value()["name"];
@@ -308,14 +292,13 @@ namespace PC {
             }
             if(properData){
                 if(name == "") name = "Unamed";
-                names.push_back(name);
-                colorValues.push_back({
+                res.push_back(std::make_pair(name, (std::vector<int>){
                     ColorSwapper::hexToBGR(values[0]),
                     ColorSwapper::hexToBGR(values[1])
-                });
+                }));
             }
         }
-        return std::make_tuple(names, colorValues);
+        return res;
     }
 
     void changePCColor(std::vector<int> values){
@@ -364,7 +347,7 @@ namespace PC {
 
         profiles.push_back(backup);
         //backup.push_back(profiles);
-        util::writeJsonToFile(profiles, path);
+        fs::writeJsonToFile(profiles, path);
         hiddbgExit();
         hidsysExit();
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());

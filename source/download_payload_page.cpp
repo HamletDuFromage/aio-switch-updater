@@ -1,9 +1,10 @@
 #include "download_payload_page.hpp"
-#include "utils.hpp"
 #include "confirm_page.hpp"
 #include "worker_page.hpp"
 #include "download.hpp"
- 
+#include "utils.hpp"
+#include "fs.hpp"
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
@@ -18,15 +19,14 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
     list->addView(label);
     
     auto links =  download::getLinks(PAYLOAD_URL);
-    int nbLinks = links.size();
-    if(nbLinks){
-        for (int i = 0; i<nbLinks; i++){
-            std::string url = links[i].second;
-            std::string path = std::string(BOOTLOADER_PL_PATH) + links[i].first;
-            std::string text("menus/common/download"_i18n + links[i].first + "menus/common/from"_i18n + url);
-            listItem = new brls::ListItem(links[i].first);
+    if(links.size()){
+        for (const auto& link : links){
+            std::string url = link.second;
+            std::string path = std::string(BOOTLOADER_PL_PATH) + link.first;
+            std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
+            listItem = new brls::ListItem(link.first);
             listItem->getClickEvent()->subscribe([&, text, url, path](brls::View* view) {
-                util::createTree(BOOTLOADER_PL_PATH);
+                fs::createTree(BOOTLOADER_PL_PATH);
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle("menus/getting_paylaod"_i18n);
                 stagedFrame->addStage(

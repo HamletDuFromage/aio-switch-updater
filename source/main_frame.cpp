@@ -6,6 +6,7 @@
 #include <json.hpp>
 #include <fstream>
 #include "utils.hpp"
+#include "fs.hpp"
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -22,7 +23,7 @@ MainFrame::MainFrame() : TabFrame()
     else
         this->setFooterText("v" + std::string(APP_VERSION));
     
-    json hideStatus = util::parseJsonFile(HIDE_TABS_JSON);
+    json hideStatus = fs::parseJsonFile(HIDE_TABS_JSON);
 
     bool erista = util::isErista();
 

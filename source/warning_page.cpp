@@ -1,15 +1,16 @@
 #include "warning_page.hpp"
+#include <algorithm>
+#include <fstream>
 #include "main_frame.hpp"
 #include "constants.hpp"
 #include "utils.hpp"
-#include <algorithm>
-#include <fstream>
- 
+#include "fs.hpp"
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 WarningPage::WarningPage(std::string text)
 {
-    util::createTree(CONFIG_PATH);
+    fs::createTree(CONFIG_PATH);
     std::ofstream(HIDDEN_AIO_FILE);
     this->button = (new brls::Button(brls::ButtonStyle::PRIMARY))->setLabel("menus/common/continue"_i18n);
     this->button->setParent(this);

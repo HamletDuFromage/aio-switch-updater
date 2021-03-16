@@ -2,7 +2,7 @@
 #include <json.hpp>
 #include <fstream>
 #include "constants.hpp"
-#include "utils.hpp"
+#include "fs.hpp"
 
  
 namespace i18n = brls::i18n;
@@ -19,7 +19,7 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
     );
     list->addView(label);
 
-    json hideStatus = util::parseJsonFile(HIDE_TABS_JSON);
+    json hideStatus = fs::parseJsonFile(HIDE_TABS_JSON);
 
     bool status = false;
     if(hideStatus.find("about") != hideStatus.end()) {
@@ -71,9 +71,7 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
         updatedStatus["sigpatches"] = sigpatches->getToggleState();
         updatedStatus["firmwares"] = fws->getToggleState();
         updatedStatus["cheats"] = cheats->getToggleState();
-        std::ofstream out(HIDE_TABS_JSON);
-        out << updatedStatus.dump(4);
-        out.close();
+        fs::writeJsonToFile(updatedStatus, HIDE_TABS_JSON);
         brls::Application::popView();
         return true;
     });
