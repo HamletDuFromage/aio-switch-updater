@@ -11,7 +11,7 @@ using namespace i18n::literals;
 WarningPage::WarningPage(std::string text)
 {
     fs::createTree(CONFIG_PATH);
-    std::ofstream(HIDDEN_AIO_FILE);
+    std::ofstream hiddenFile(HIDDEN_AIO_FILE);
     this->button = (new brls::Button(brls::ButtonStyle::PRIMARY))->setLabel("menus/common/continue"_i18n);
     this->button->setParent(this);
     this->button->getClickEvent()->subscribe([this](View* view) {
