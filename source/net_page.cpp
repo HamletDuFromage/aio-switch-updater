@@ -66,19 +66,14 @@ NetPage::NetPage() : AppletFrame(true, true)
     if(uuid){
     json profiles = fs::parseJsonFile(INTERNET_JSON);
     if(profiles.empty()) {
-        profiles = {{
-            {"name", "90DNS (Europe)"},
-            {"dns1", "163.172.141.219"},
-            {"dns2", "207.246.121.77"}
-        }};
+        profiles = json::array();
     }
-    else {
-        profiles.push_back(json::object({
-            {"name", "90DNS (Europe)"},
-            {"dns1", "163.172.141.219"},
-            {"dns2", "207.246.121.77"}
-        }));
-    }
+
+    profiles.push_back(json::object({
+        {"name", "90DNS (Europe)"},
+        {"dns1", "163.172.141.219"},
+        {"dns2", "207.246.121.77"}
+    }));
 
     profiles.push_back(json::object({
         {"name", "90DNS (USA)"},
@@ -142,7 +137,6 @@ NetPage::NetPage() : AppletFrame(true, true)
                     if(inet_pton(AF_INET, std::string(values["dns1"]).c_str(), buf)){
                         profile.ip_setting_data.dns_setting.is_automatic = u8(0);
                         stringToIp(std::string(values["dns1"]), profile.ip_setting_data.dns_setting.primary_dns_server.addr);
-                        //std::cout << unsigned(profile.ip_setting_data.dns_setting.primary_dns_server.addr[0]) << std::endl;
                     }
                 }
                 if(values.find("dns2") != values.end()){
@@ -153,11 +147,6 @@ NetPage::NetPage() : AppletFrame(true, true)
                 }
                 if(values.find("mtu") != values.end()){
                     profile.ip_setting_data.mtu = u16(values["mtu"]);
-                    /* try{
-                        u8 mtu = u8(std::stoi(std::string(values["mtu"])));
-                        profile.ip_setting_data.mtu = mtu;
-                    }
-                    catch(const std::invalid_argument& ia){} */
                 }
                 if(values.find("ip_auto") != values.end()){
                     profile.ip_setting_data.ip_address_setting.is_automatic = u8(values["ip_auto"]);
@@ -171,7 +160,6 @@ NetPage::NetPage() : AppletFrame(true, true)
                 nifmExit();
                 usleep(2500000); //Wait to avoid crashes when leaving too fast
                 dialog->close();
-                //brls::Application::pushView(new NetPage());
             };
             brls::GenericEvent::Callback callbackNo = [dialog](brls::View* view) {
                 dialog->close();
