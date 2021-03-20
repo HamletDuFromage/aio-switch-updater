@@ -20,7 +20,7 @@
     "cheastlips_title": "Cheaty Cheatslips",
     "get_cheatslips": "Pobierz arkusze cheatów z CheatSlips.com",
     "cheatslips_label": "\ue016  Zaloguj się na CheatSlips.com i pobierz arkusze cheatów dla swoich gier.",
-    "cheatslips_dl": "Pobierz wybrane arkusze cheatów z CheatSlips.com.\nPobrane cheaty zostaną dopisane na koniec twojego pliku z cheatami.",
+    "cheatslips_dl": "Pobierz wybrane arkusze cheatów z CheatSlips.com.\nPobrane cheaty zostaną dopisane na końcu twojego pliku z cheatami.",
     "delete_file": "Usuń istniejący plik z cheatami",
     "cheatslips_error": "Nie można było pobrać wybranych cheatów/nieprawidłowy token.",
     "quota": "Przekroczono dzienny limit pobrań!\nWejdź na 'https://www.cheatslips.com/subscriptions' aby dowiedzieć się, jak go zwiększyć.",
@@ -75,9 +75,9 @@
     "desc_1": "Możesz zmienić kolor fabrycznie przypisany do twoich Joy-Conów. Upewnij się, że są zadokowane do konsoli.\nProfile kolorów zapisywane są w '",
     "desc_2": "'. Wejdź na 'http://bit.ly/JC-color' ",
     "desc_3": "żeby utworzyć swój własny profil kolorów.",
-    "backup": "Zrób kopię zapasową bierzącego profilu kolorów",
+    "backup": "Zrób kopię zapasową bieżącego profilu kolorów",
     "label": "Zmień kolor Joy-Conów",
-    "backing_up": "Tworzę kopię zapasową bierzącego profilu kolorów. Upewnij się, że Joy-Cony są zadokowane do konsoli. Jeśli operacja zawiesi się, spróbuj wypiąć i wpiąć Joy-Cony spowrotem.",
+    "backing_up": "Tworzę kopię zapasową bieżącego profilu kolorów. Upewnij się, że Joy-Cony są zadokowane do konsoli. Jeśli operacja zawiesi się, spróbuj wypiąć i wpiąć Joy-Cony spowrotem.",
     "changing": "Zmieniam kolory. Upewnij się, że Joy-Cony są zadokowane do konsoli. Jeśli operacja zawiesi się, spróbuj wypiąć i wpiąć Joy-Cony spowrotem.",
     "all_done": "Zrobione! Aby zmiany zostały zastosowane, może być wymagane wypięcie i wpięcie Joy-Conów spowrotem."
   },
@@ -85,17 +85,17 @@
     "title": "Zmień kolor Pro-Cona",
     "desc": "Możesz zmienić kolor fabrycznie przypisany do twojego Pro Controllera. Upewnij się, że jest podłączony jako Player 1.",
     "label": "Zmień kolor Pro-Cona",
-    "backing_up": "Tworzę kopię zapasową bierzącego profilu kolorów",
+    "backing_up": "Tworzę kopię zapasową bieżącego profilu kolorów",
     "all_done": "Zrobione! Aby zmiany zostały zastosowane, może być wymagane odłączenie i ponowne podłączenie kontrolera.",
     "changing": "Zmieniam kolor. Upewnij się, że kontroler jest podłączony jako Player 1."
   },
   "main": {
     "getting": "Pobieranie ",
-    "firmware_text": "\ue016  Oprogramowanie z 'https://darthsternie.net/switch-firmwares/'. Po pobraniu zostanie rozpakowane do '/firmware'. Możesz je później zainstalować korzystając z Daybreak lub ChoiDuJour.\n\ue016  Bierzący FW: ",
-    "cheats_text": "\uE016  Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia->Menu cheatów'.\n\uE016  Bierząca wersja cheatów: ",
+    "firmware_text": "\ue016  Oprogramowanie z 'https://darthsternie.net/switch-firmwares/'. Po pobraniu zostanie rozpakowane do '/firmware'. Możesz je później zainstalować korzystając z Daybreak lub ChoiDuJour.\n\ue016  Bieżący FW: ",
+    "cheats_text": "\uE016  Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia->Menu cheatów'.\n\uE016  Bieżąca wersja cheatów: ",
     "get_cheats": "Pobierz archiwum cheatów GBAtemp.net (wersja ",
     "sigpatches": "sigpatche",
-    "sigpatches_text": "\ue016  Sigpatches umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Upewnij się, że wybierasz sigpatche zgodne z twoim setupem (czysty Atmosph\u00e8re lub Hekate+Atmosph\u00e8re). Uruchom konsolę ponownie aby zastosować zmiany.",
+    "sigpatches_text": "\ue016  Sigpatche umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Upewnij się, że wybierasz sigpatche zgodne z twoim setupem (czysty Atmosph\u00e8re lub Hekate+Atmosph\u00e8re). Uruchom konsolę ponownie aby zastosować zmiany.",
     "firmware": "firmware",
     "not_found": "nie znaleziono",
     "latest_cheats": "Najnowsza wersja",
@@ -114,7 +114,7 @@
     "download_firmware": "Pobierz firmware",
     "download_cheats": "Pobierz cheaty",
     "tools": "Narzędzia",
-    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\ue016  Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\ue016  Pamiętaj, że używanie tej aplikacji (lub innych homebrew) na karcie SD z systemem plików exFAT nie jest zalecane, ponieważ zawartość ma większą podatność na uszkodzenia.\n\nTen ekran nie wyświetli się ponownie."
+    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\ue016  Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\ue016  Pamiętaj, że używanie tej aplikacji (lub innych homebrew) na karcie SD z systemem plików exFAT nie jest zalecane, ponieważ ich zawartość ma większą podatność na uszkodzenia.\n\nTen ekran nie wyświetli się ponownie."
   },
   "hide": {
     "title": "Ukryj zakładki",
@@ -133,13 +133,13 @@
     "hide_tabs": "Ukryj zakładki",
     "internet_settings": "Zmień ustawienia internetowe",
     "browser": "Przeglądarka internetowa",
-    "batch_copy": "Kopiuj pliki zbiorowo",
+    "batch_copy": "Zbiorcza kopia plików",
     "batch_copy_not_found": "Poniższe pliki nie zostały znalezione i nie mogły zostać skopiowane:\n",
     "batch_copy_config_not_found": "To narzędzie pozwala na kopiowanie plików do innych lokalizacji, z których może korzystać twój bootloader/trinket. Pobierz copy_files.json z 'https://git.io/aiosu_copy_files' i wrzuć go do twojego folderu z konfiguracją. Operacja zostanie również wykonana po aktualizacjach.",
     "language": "Zmień język aplikacji"
   },
   "utils": {
-    "fw_warning": "Z powodu rozmiarów archiwów z firmwarem, ich pobieranie w trybie appletu nie jest wspierane . Uruchom aplikację z pełnym dostępem do pamięci RAM.",
+    "fw_warning": "Z powodu rozmiarów archiwów z firmwarem, ich pobieranie w trybie appletu nie jest wspierane. Uruchom aplikację z pełnym dostępem do pamięci RAM.",
     "overwrite": " Czy chcesz nadpisać istniejący ",
     "wrong_type_sigpatches": "Pobrany plik nie jest archiwum z sigpatchami. Jest to najprawdopodobniej spowodowane wadliwym linkiem. Jeśli problem nie ustanie po więcej niż 30 minutach, utwórz nowy problem na Githubie.",
     "wrong_type_fw": "Pobrany plik nie jest archiwum z firmwarem. Jest to najprawdopodobniej spowodowane wadliwym linkiem. Jeśli problem nie ustanie po więcej niż 30 minutach, utwórz nowy problem na Githubie.",
@@ -149,9 +149,9 @@
   "ams_update": {
     "reboot_rcm": "Switch uruchomi się teraz ponownie do specjalnego payloadu aby ukończyć instalację.",
     "install_hekate": "Czy chcesz również pobrać Hekate?\nJeżeli nie, Switch uruchomi się teraz ponownie do specjalnego payloadu aby ukończyć instalację.",
-    "delete_contents": "Czy chcesz usunąć istniejącą ścieżkę '/atmosphere/contents/'? Zapobiegnie to błędom jeśli posiadasz sysmoduły niekompatybilne z nowym Atmosph\u00e8re. Pamiętaj, że spowoduje to usunięcie wszystkich twoich sysmodułów, modów i cheatów.",
+    "delete_contents": "Czy chcesz usunąć istniejącą zawartość ścieżki '/atmosphere/contents/'? Zapobiegnie to błędom jeśli posiadasz sysmoduły niekompatybilne z nowym Atmosph\u00e8re. Pamiętaj, że spowoduje to usunięcie wszystkich twoich sysmodułów, modów i cheatów.",
     "delete_sysmodules_flags": "Czy chcesz usunąć flagi uruchamiania dodatkowych sysmodułów? Spowoduje to wyłączenie wszystkich twoich sysmodułów i zapobiegnie błędom jeśli posiadasz sysmoduły niekompatybilne z nowym Atmosphère.",
-    "current_ams": "\ue016  Bierzące Atmosphère: "
+    "current_ams": "\ue016  Bieżące Atmosphère: "
   },
   "net": {
     "title": "Ustawienia internetowe"
