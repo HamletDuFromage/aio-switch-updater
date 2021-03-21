@@ -10,8 +10,6 @@
 
 [//]: ([![ko-fi](https://img.shields.io/badge/ko--fi-buy%20me%20a%20coffee-ff69b4)](https://ko-fi.com/hamletdufromage))
 
-
-All-in-One Nintendo Switch Updater
 <p align="center">
 <img src = "https://user-images.githubusercontent.com/61667930/93691188-7833f000-fad1-11ea-866d-42e19be54425.jpg"\><br>
 </p>
