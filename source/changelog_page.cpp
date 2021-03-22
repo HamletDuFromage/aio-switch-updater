@@ -125,7 +125,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Added option to manually change language.\n\uE016 Fixed broken strings.\n\uE016 Few visual tweaks.");
 
     verTitles.push_back("v2.4.3");
-    changes.push_back("\uE016 Added way to select system default in language selection.\n\uE016 Display local IP in internet settings.\uE016 Added Polish localisation (thanks to https://github.com/teddy74eva)\n\uE016 Updated Traditional Chinese localisation (thanks to https://github.com/qazrfv1234)\n\uE016 Minor code changes");
+    changes.push_back("\uE016 Added way to select system default in language selection.\n\uE016 Display local IP in internet settings.\n\uE016 Added Polish localisation (thanks to https://github.com/teddy74eva).\n\uE016 Updated Traditional Chinese localisation (thanks to https://github.com/qazrfv1234).\n\uE016 Minor code changes.");
+
+    verTitles.push_back("v2.4.4");
+    changes.push_back("\uE016 Significantly reduced time to retrieve build IDs.\n\uE016 Updated Polish localisation (thanks to https://github.com/teddy74eva).");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);

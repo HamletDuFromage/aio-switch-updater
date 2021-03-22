@@ -7,8 +7,6 @@
 #include "fs.hpp"
 #include "current_cfw.hpp"
 
-//#include <iostream>
-
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 using json = nlohmann::json;
@@ -171,29 +169,21 @@ std::string DownloadCheatsPage::GetBuilIDFromFile(uint64_t tid) {
     NsApplicationContentMetaStatus *MetaSatus = new NsApplicationContentMetaStatus[100U];
     s32 out;
     nsListApplicationContentMetaStatus(tid, 0, MetaSatus, 100, &out);
-    u32 version = 0;
-    for(int i = 0; i < out ; i++){
-        if(version < MetaSatus[i].version) version = MetaSatus[i].version;
+    u32 v = 0;
+    for(int i = 0; i < out ; i++) {
+        if(v < MetaSatus[i].version) v = MetaSatus[i].version;
     }
 
-    this->setFooterText("Game version: v" + std::to_string(version / 0x10000));
+    this->setFooterText("Game version: v" + std::to_string(v / 0x10000));
+    std::string version = std::to_string(v);
 
-    json lookupTable;
-    try { 
-        lookupTable = json::parse(std::string(json::from_cbor(download::downloadFile(LOOKUP_TABLE_CBOR))));
-    }
-    catch (json::parse_error& e)
-    {
-        //std::cout << "message: " << e.what() << '\n' << "exception id: " << e.id << '\n' << "byte position of error: " << e.byte << std::endl;
-    }
+    std::string versions_str = download::downloadPage(std::string(VERSIONS_DIRECTORY + util::formatApplicationId(tid) + ".json").c_str());
+    json versions;
+    if (json::accept(versions_str))     versions = json::parse(versions_str);
+    else                                versions = json::object();
 
-    std::string tidstr = util::formatApplicationId(tid);
-    std::string versionstr = std::to_string(version);
-    if(lookupTable.find(tidstr) != lookupTable.end()) {
-        json buildIDs = lookupTable[tidstr];
-        if(buildIDs.find(versionstr) != buildIDs.end()) {
-            return buildIDs[versionstr];
-        }
+    if(versions.find(version) != versions.end()) {
+        return versions[version];
     }
     return "";
 }
