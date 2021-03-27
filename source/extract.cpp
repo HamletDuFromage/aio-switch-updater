@@ -111,45 +111,32 @@ void extract(const char * filename, const char* workingPath, const char* toExclu
 }
 
 std::vector<std::string> getInstalledTitlesNs(){
-    Result rc = 0;
     std::vector<std::string> titles;
-    NsApplicationRecord *recs = new NsApplicationRecord[MaxTitleCount]();
-    NsApplicationControlData *buf=NULL;
-    u64 outsize = 0;
-    NacpLanguageEntry *langentry = NULL;
-    s32 total = 0;
-    rc = nsListApplicationRecord(recs, MaxTitleCount, 0, &total);
 
-    if (R_SUCCEEDED(rc)){
-        for (s32 i = 0; i < total; i++){
-            outsize = 0;
-            buf = (NsApplicationControlData*)malloc(sizeof(NsApplicationControlData));
-            if (buf == NULL) {
-                rc = MAKERESULT(Module_Libnx, LibnxError_OutOfMemory);
-            } else {
-                memset(buf, 0, sizeof(NsApplicationControlData));
-            }
-            
-            if (R_SUCCEEDED(rc)) {
-                if (R_FAILED(rc))
-                    printf("nsInitialize() failed: 0x%x\n", rc);
-            }
+    NsApplicationRecord *records = new NsApplicationRecord[MaxTitleCount]();
+    NsApplicationControlData *controlData = NULL;
+    NacpLanguageEntry* langEntry = NULL;
 
-            rc = nsGetApplicationControlData(NsApplicationControlSource_Storage, recs[i].application_id, buf, sizeof(NsApplicationControlData), &outsize);
+    s32 recordCount     = 0;
+    u64 controlSize     = 0;
 
-            if (outsize < sizeof(buf->nacp))
-                rc = -1;
+    if (R_SUCCEEDED(nsListApplicationRecord(records, MaxTitleCount, 0, &recordCount))){
+        for (s32 i = 0; i < recordCount; i++){
+            controlSize = 0;
+            controlData = (NsApplicationControlData*)malloc(sizeof(NsApplicationControlData));
+            if(controlData != NULL)
+                memset(controlData, 0, sizeof(NsApplicationControlData));
 
-            if (R_SUCCEEDED(rc))
-                rc = nacpGetLanguageEntry(&buf->nacp, &langentry);
+            if(R_FAILED(nsGetApplicationControlData(NsApplicationControlSource_Storage, records[i].application_id, controlData, sizeof(NsApplicationControlData), &controlSize))) continue;
 
-            if (R_SUCCEEDED(rc)) {
-                titles.push_back(util::formatApplicationId(recs[i].application_id));
-            }
+            if(controlSize < sizeof(controlData->nacp)) continue;
+
+            if(R_FAILED(nacpGetLanguageEntry(&controlData->nacp, &langEntry))) continue;
+
+            titles.push_back(util::formatApplicationId(records[i].application_id));
         }
     }
-    free(buf);
-    delete[] recs;
+    delete[] records;
     std::sort(titles.begin(), titles.end());
     return titles;
 }

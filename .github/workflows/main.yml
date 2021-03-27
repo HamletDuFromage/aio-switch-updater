@@ -7,22 +7,18 @@ on:
 jobs:
   AIO-switch-updater:
     runs-on: ubuntu-latest
-    container: hamletdufromage/devkita64_devkitarm
+    #container: hamletdufromage/devkita64_devkitarm
+    container: devkitpro/devkita64_devkitarm
     steps:
     - uses: actions/checkout@v1
 
-    #- name: update libnx
-      #run: |
-        #dkp-pacman -Syu --noconfirm
     - name: update repo
       run: |
         git submodule update --init --recursive
         
     - name: Building aio-switch-updater
       run: |
-        cd aiosu-forwarder
-        make
-        cd ..
+        make -C aiosu-forwarder -f Makefile
         make -j$(nproc)
         
     - uses: actions/upload-artifact@master
