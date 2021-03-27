@@ -136,6 +136,7 @@ std::vector<std::string> getInstalledTitlesNs(){
             titles.push_back(util::formatApplicationId(records[i].application_id));
         }
     }
+    free(controlData);
     delete[] records;
     std::sort(titles.begin(), titles.end());
     return titles;
