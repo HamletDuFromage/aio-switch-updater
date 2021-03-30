@@ -83,6 +83,8 @@ $ cd ..
 $ make
 ```
 
+* Refer to the [github workflow](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/.github/workflows/main.yml), if there are any error when running [make -j$(nproc)]. You can run [make] or [make -j4] instead
+
 ## Disclaimer
 I do not own, host nor distribute any of the files that can be downloaded with this homebrew tool. At the owner's request, I will immediately remove the ability to download any problematic file.
 
