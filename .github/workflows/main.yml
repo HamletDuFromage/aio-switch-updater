@@ -21,6 +21,8 @@ jobs:
         make -C aiosu-forwarder -f Makefile
         make -j$(nproc)
         
+        * If [make -j$(nproc)] does not work, you may try [make] or [make -j4]
+        
     - uses: actions/upload-artifact@master
       with:
         name: aio-switch-updater
