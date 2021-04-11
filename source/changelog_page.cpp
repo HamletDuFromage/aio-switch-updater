@@ -130,6 +130,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.4.4");
     changes.push_back("\uE016 Significantly reduced time to retrieve build IDs.\n\uE016 Updated Polish localisation (thanks to https://github.com/teddy74eva).");
 
+    verTitles.push_back("v2.4.5-fix_ams");
+    changes.push_back("\uE016 Atmosphère 0.19+ support. Note that this version assumes your switch is running Atmosphère. I should fix this soon, but if you're on SXOS, please stay on 2.4.4.");
+
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

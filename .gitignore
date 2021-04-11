@@ -2,6 +2,7 @@
 !.vscode/c_cpp_properties.json
 build/
 screenshots/
+libnx/
 switch/
 *.elf
 *.nacp

@@ -265,30 +265,10 @@ bool isErista() {
 };
 
 void removeSysmodulesFlags(const char * directory) {
-    const std::set<std::string> AMS_SYSMODULES{
-        "010000000000000D",
-        "010000000000002B",
-        "0100000000000032",
-        "0100000000000036",
-        "0100000000000042",
-        "0100000000000008",
-        "010000000000003C",
-        "0100000000000034",
-        "0100000000000037"
-    };
-    bool found = false;
     for (const auto & e : std::filesystem::recursive_directory_iterator(directory)) {
         if(e.path().string().find("boot2.flag") != std::string::npos) {
-            for(const auto & c : AMS_SYSMODULES) {
-                if(e.path().string().find(c) != std::string::npos) {
-                    found = true;
-                    break;
-                }
-            }
-            if(!found)
                 std::filesystem::remove(e.path());
         }
-        found = false;
     }
 }
 
