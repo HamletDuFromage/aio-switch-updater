@@ -133,6 +133,8 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.4.5-fix_ams");
     changes.push_back("\uE016 Atmosphère 0.19+ support. Note that this version assumes your switch is running Atmosphère. I should fix this soon, but if you're on SXOS, please stay on 2.4.4.");
 
+    verTitles.push_back("v2.4.6");
+    changes.push_back("\uE016 Added back support for SXOS. \uE016 Removed dialogue asking to update Hekate if downloading DeepSea.\uE016 Fixed incorrect description in inject payload menu.");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);

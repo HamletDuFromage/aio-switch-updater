@@ -18,7 +18,7 @@ namespace CurrentCfw {
 
         Result smAtmosphereHasService(bool *out, SmServiceName name) {
             u8 tmp = 0;
-            Result rc = serviceDispatchInOut(smGetServiceSession(), 65100, name, tmp);
+            Result rc = tipcDispatchInOut(smGetServiceSessionTipc(), 65100, name, tmp);
             if (R_SUCCEEDED(rc) && out)
                 *out = tmp;
             return rc;

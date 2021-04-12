@@ -43,15 +43,17 @@ AmsTab::AmsTab() :
                 stagedFrame->addStage(
                     new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [](){util::extractArchive(archiveType::ams_cfw);})
                 );
-                stagedFrame->addStage(
-                    new DialoguePage(stagedFrame, text_hekate)
-                );
-                stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [hekate_url](){util::downloadArchive(hekate_url, archiveType::cfw);})
-                );
-                stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [](){util::extractArchive(archiveType::cfw);})
-                );
+                if(url.find("DeepSea") == std::string::npos) {
+                    stagedFrame->addStage(
+                        new DialoguePage(stagedFrame, text_hekate)
+                    );
+                    stagedFrame->addStage(
+                        new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [hekate_url](){util::downloadArchive(hekate_url, archiveType::cfw);})
+                    );
+                    stagedFrame->addStage(
+                        new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [](){util::extractArchive(archiveType::cfw);})
+                    );
+                }
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, "menus/ams_update/reboot_rcm"_i18n, false, true)
                 );

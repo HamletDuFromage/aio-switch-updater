@@ -69,6 +69,8 @@ $ sudo (dkp-)pacman -S  switch-glfw \
 ```
 Use [`switch-ex-curl`](https://github.com/eXhumer/switch-ex-curl) instead of `switch-curl` to use this app with an invalid SSL certificate.
 
+Compiling requires GLFW to be patched to support the latest Libnx hid API. Until this is merged upstream, use [my fork](https://github.com/HamletDuFromage/glfw)
+
 Clone the repository
 ```bash
 $ git clone --recursive https://github.com/HamletDuFromage/aio-switch-updater
