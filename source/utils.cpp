@@ -241,10 +241,8 @@ std::string readVersion(const char* path){
 }
 
 bool isErista() {
-    splInitialize();
     u64 hwType;
     Result rc = splGetConfig(SplConfigItem_HardwareType, &hwType);
-    splExit();
 
     if(R_FAILED(rc))
         return true;

@@ -7,6 +7,6 @@ namespace CurrentCfw {
 
     CFW getCFW();
     std::string getAmsInfo();
-    const extern CFW running_cfw;
+    extern CFW running_cfw;
 
 }

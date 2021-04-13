@@ -136,6 +136,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.4.6");
     changes.push_back("\uE016 Added back support for SXOS. \uE016 Removed dialogue asking to update Hekate if downloading DeepSea.\uE016 Fixed incorrect description in inject payload menu.");
 
+    verTitles.push_back("v2.4.7");
+    changes.push_back("\uE016 Fixed app only working on 0.19 AMS.\uE016 Proper replacement of stratosphere.romfs when updating.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

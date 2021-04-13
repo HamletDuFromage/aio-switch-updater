@@ -14,7 +14,7 @@ using namespace i18n::literals;
 
 //TimeServiceType __nx_time_service_type = TimeServiceType_System;
 
-const CFW CurrentCfw::running_cfw = CurrentCfw::getCFW();
+CFW CurrentCfw::running_cfw;
 
 int main(int argc, char* argv[])
 {
@@ -44,6 +44,8 @@ int main(int argc, char* argv[])
     nxlinkStdio();
     splInitialize();
     romfsInit();
+
+    CurrentCfw::running_cfw = CurrentCfw::getCFW();
     
     fs::createTree(CONFIG_PATH);
 
