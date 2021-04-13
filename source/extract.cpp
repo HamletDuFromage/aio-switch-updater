@@ -57,7 +57,7 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
             it++;
         }
         if(!isIgnored){
-            if(entries[i].name == "sept/payload.bin" || entries[i].name == "atmosphere/fusee-secondary.bin"){
+            if(entries[i].name == "sept/payload.bin" || entries[i].name == "atmosphere/fusee-secondary.bin" || entries[i].name == "atmosphere/stratosphere.romfs"){
                 unzipper.extractEntry(entries[i].name, CONFIG_PATH_UNZIP);
             }
             else {
