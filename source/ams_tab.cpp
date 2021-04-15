@@ -1,5 +1,4 @@
 #include "ams_tab.hpp"
-#include <string>
 #include "download.hpp"
 #include "extract.hpp"
 #include "confirm_page.hpp"
@@ -7,6 +6,7 @@
 #include "worker_page.hpp"
 #include "utils.hpp"
 #include "current_cfw.hpp"
+#include <string>
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -21,7 +21,8 @@ AmsTab::AmsTab() :
     operation += "menus/main/ams"_i18n;
     links = download::getLinks(AMS_URL);
 
-    if(links.size()){
+    this->size = links.size();
+    if(this->size){
         auto hekate_link = download::getLinks(HEKATE_URL);
         std::string hekate_url = hekate_link[0].second;
         std::string text_hekate = "menus/common/download"_i18n + hekate_link[0].first;
@@ -71,4 +72,12 @@ AmsTab::AmsTab() :
         notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
         this->addView(notFound);
     }
+}
+
+brls::View* AmsTab::getDefaultFocus()
+{
+    if(this->size)
+        return this->brls::List::getDefaultFocus();
+    else
+        return nullptr;
 }

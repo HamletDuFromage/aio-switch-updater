@@ -78,7 +78,8 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
 
     this->addView(description);
 
-    if(links.size()){
+    this->size = links.size();
+    if(this->size){
         for (const auto& link : links){
             std::string url = link.second;
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
@@ -126,6 +127,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
             true
         );
         this->addView(cheatSlipLabel);
+        this->size += 1;
         cheatslipsItem = new brls::ListItem("menus/cheats/get_cheatslips"_i18n);
         cheatslipsItem->setHeight(LISTITEM_HEIGHT);
         cheatslipsItem->getClickEvent()->subscribe([&](brls::View* view) {
@@ -181,4 +183,12 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
         });
         this->addView(cheatslipsItem);
     }
+}
+
+brls::View* ListDownloadTab::getDefaultFocus()
+{
+    if(this->size)
+        return this->brls::List::getDefaultFocus();
+    else
+        return nullptr;
 }

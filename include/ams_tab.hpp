@@ -8,6 +8,8 @@ class AmsTab : public brls::List
         brls::ListItem* listItem;
         brls::Label *notFound;
         brls::Label *description;
+        int size;
     public:
         AmsTab();
+        brls::View* getDefaultFocus() override;
 };
