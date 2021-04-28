@@ -139,6 +139,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.4.7");
     changes.push_back("\uE016 Fixed app only working on 0.19 AMS.\uE016 Proper replacement of stratosphere.romfs when updating.");
 
+    verTitles.push_back("v2.4.8");
+    changes.push_back("\uE016 Fixed crashes when trying to focus empty lists (typically when in airplane mode).");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

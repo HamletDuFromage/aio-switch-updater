@@ -22,7 +22,7 @@ DATA		:=	data
 INCLUDES	:=	include lib/zipper/include /lib/borealis/library/include/borealis/extern/nlohmann
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  2.4.7
+APP_VERSION :=  2.4.8
 TARGET		:=	$(notdir $(CURDIR))
 
 ROMFS				:=	resources
@@ -166,7 +166,7 @@ $(ROMFS):
 	@rm $(CURDIR)/$(ROMFS)/i18n/*/installer.json $(CURDIR)/$(ROMFS)/i18n/*/main.json $(CURDIR)/$(ROMFS)/i18n/*/popup.json $(CURDIR)/$(ROMFS)/i18n/*/custom_layout.json
 	@$(MAKE) -C $(CURDIR)/aiosu-rcm -f $(CURDIR)/aiosu-rcm/Makefile
 	@cp $(CURDIR)/aiosu-rcm/output/aio_rcm.bin $(CURDIR)/$(ROMFS)/aio_rcm.bin
-	#@$(MAKE) -C $(CURDIR)/aiosu-forwarder -f $(CURDIR)/aiosu-forwarder/Makefile
+# @$(MAKE) -C $(CURDIR)/aiosu-forwarder -f $(CURDIR)/aiosu-forwarder/Makefile
 	@cp $(CURDIR)/aiosu-forwarder/aiosu-forwarder.nro $(CURDIR)/$(ROMFS)/aiosu-forwarder.nro
 
 $(BUILD): $(ROMFS)
@@ -178,7 +178,7 @@ clean:
 	@echo clean ...
 ifeq ($(strip $(APP_JSON)),)
 	@rm -fr $(BUILD) $(notdir $(CURDIR))*.nro $(notdir $(CURDIR))*.nacp $(notdir $(CURDIR))*.elf
-	#@rm -fr $(CURDIR)/aiosu-forwarder/build $(CURDIR)/aiosu-forwarder/*.nro $(CURDIR)/aiosu-forwarder/*.nacp $(CURDIR)/aiosu-forwarder/*.elf
+# @rm -fr $(CURDIR)/aiosu-forwarder/build $(CURDIR)/aiosu-forwarder/*.nro $(CURDIR)/aiosu-forwarder/*.nacp $(CURDIR)/aiosu-forwarder/*.elf
 else
 	@rm -fr $(BUILD) $(TARGET).nsp $(TARGET).nso $(TARGET).npdm $(TARGET).elf
 endif
