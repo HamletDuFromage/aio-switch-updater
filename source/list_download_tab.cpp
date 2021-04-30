@@ -1,14 +1,15 @@
 #include "list_download_tab.hpp"
 #include <string>
+#include <filesystem>
+#include <fstream>
+#include "utils.hpp"
+#include "fs.hpp"
 #include "download.hpp"
 #include "extract.hpp"
 #include "confirm_page.hpp"
 #include "worker_page.hpp"
 #include "current_cfw.hpp"
-#include "utils.hpp"
 #include "app_page.hpp"
-#include <filesystem>
-#include <fstream>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -16,8 +17,7 @@ using namespace i18n::literals;
 ListDownloadTab::ListDownloadTab(const archiveType type) :
     brls::List()
 {
-    std::vector<std::pair<std::string, std::string>> links;
-    std::vector<std::pair<std::string, std::string>> sxoslinks;
+    std::vector<std::pair<std::string, std::string>> links, sxoslinks;
     std::string operation("menus/main/getting"_i18n);
     std::string firmwareText("menus/main/firmware_text"_i18n);
 

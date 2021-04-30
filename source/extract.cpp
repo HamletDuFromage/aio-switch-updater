@@ -58,7 +58,8 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
         }
         if(!isIgnored){
             if(entries[i].name == "sept/payload.bin" || entries[i].name == "atmosphere/fusee-secondary.bin" || entries[i].name == "atmosphere/stratosphere.romfs"){
-                unzipper.extractEntry(entries[i].name, CONFIG_PATH_UNZIP);
+                std::ofstream readonlyFile(entries[i].name + ".aio");
+                unzipper.extractEntryToStream(entries[i].name, readonlyFile);
             }
             else {
                 unzipper.extractEntry(entries[i].name);
