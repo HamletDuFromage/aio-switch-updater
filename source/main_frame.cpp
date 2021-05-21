@@ -25,13 +25,14 @@ MainFrame::MainFrame() : TabFrame()
     
     json hideStatus = fs::parseJsonFile(HIDE_TABS_JSON);
 
-    bool erista = util::isErista();
+    //bool erista = util::isErista();
+    bool erista = false;
 
     if(hideStatus.find("about") == hideStatus.end() || !hideStatus["about"])
         this->addTab("menus/main/about"_i18n, new AboutTab());
     
-    if(erista && (hideStatus.find("atmosphere") == hideStatus.end() || !hideStatus["atmosphere"]))
-        this->addTab("menus/main/update_ams"_i18n, new AmsTab());
+    if(hideStatus.find("atmosphere") == hideStatus.end() || !hideStatus["atmosphere"])
+        this->addTab("menus/main/update_ams"_i18n, new AmsTab(erista));
 
     if(hideStatus.find("cfw") == hideStatus.end() || !hideStatus["cfw"])
         this->addTab("menus/main/update_cfw"_i18n, new ListDownloadTab(archiveType::cfw));

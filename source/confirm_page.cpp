@@ -1,12 +1,15 @@
 #include "confirm_page.hpp"
 #include "utils.hpp"
 #include "main_frame.hpp"
+#include "fs.hpp"
 #include "reboot_payload.h"
 #include <algorithm>
- 
+#include <filesystem>
+#include <string>
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool done, bool reboot): done(done), reboot(reboot)
+ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool done, bool reboot, bool erista): done(done), reboot(reboot), erista(erista)
 {
     this->button = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel(done ? "menus/common/back"_i18n : "menus/common/continue"_i18n);
     this->button->setParent(this);
@@ -17,8 +20,19 @@ ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool 
         else if (this->done) {
             brls::Application::pushView(new MainFrame());
         }
-        else if (this->reboot){
-            reboot_to_payload(RCM_PAYLOAD_PATH);
+        else if (this->reboot) {
+            if(this->erista)
+                reboot_to_payload(RCM_PAYLOAD_PATH);
+            else {
+                if(std::filesystem::exists(UPDATE_BIN_PATH)) {
+                    fs::copyFile(UPDATE_BIN_PATH, MARIKO_PAYLOAD_PATH_TEMP);
+                }
+                else {
+                    fs::copyFile(REBOOT_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH_TEMP);
+                }
+                fs::copyFile(RCM_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH);
+                util::shutDown(true);
+            }
         }
     });
 

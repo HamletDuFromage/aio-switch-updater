@@ -21,7 +21,9 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 
 ## Description of the features
 ### ⬦ Update CFW
-- Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files. If you would like to preserve additional files or directories, write their path (one line each) in `/config/aio-switch-updater/preserve.txt` and they won't be overwritten when updating.
+- Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files. 
+  - If you would like to preserve additional files or directories, write their path (one line each) in `/config/aio-switch-updater/preserve.txt` and they won't be overwritten when updating.
+  - Place [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/copy_files.json) in `/config/aio-switch-updater/copy_files.json` in order to have specific copy operations performed after each download. This is mainly meant for users with trinkets who want payloads automatically copied to a directory.
 
 ### ⬦ Update Sigpatches
 - For Atmosphère. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available. After downloading the sigpatches archive, the program will ask you whether you want to override your existing .ini files.

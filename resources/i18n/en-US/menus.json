@@ -126,6 +126,7 @@
     "pro_cons": "Change the Pro Controller color",
     "dl_payloads": "Download payloads to ",
     "inject_payloads": "Inject payload",
+    "getting_payload": "Getting payload",
     "update_app": "Update the app (v",
     "dl_app": "Downloading:\nAIO-switch-updater\n\nFrom:\n",
     "changelog": "Changelog",
@@ -151,7 +152,9 @@
     "install_hekate": "Do you want to also download Hekate?\nIf not, the Switch will now reboot to a special payload in order to finalise the install.",
     "delete_contents": "Would you like to remove the existing '/atmosphere/contents/' directory? This will prevent crashes if you have sysmodules that do not support the latest Atmosph\u00e8re. Please note that it will delete all your existing sysmodules, mods and cheats.",
     "delete_sysmodules_flags": "Would you like to delete all the custom sysmodules startup flags? This will turn off all your sysmodules and prevent crashes if you have sysmodules that do not support the latest Atmosphère.",
-    "current_ams": "\ue016  Current Atmosphère: "
+    "current_ams": "\ue016  Current Atmosphère: ",
+    "erista_rev": "\ue016  Erista revision",
+    "mariko_rev": "\ue016  Mariko revision"
   },
   "net": {
     "title": "Internet settings"

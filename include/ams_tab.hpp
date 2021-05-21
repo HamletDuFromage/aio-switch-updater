@@ -10,6 +10,6 @@ class AmsTab : public brls::List
         brls::Label *description;
         int size;
     public:
-        AmsTab();
+        AmsTab(const bool erista);
         brls::View* getDefaultFocus() override;
 };

@@ -74,7 +74,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
     });
     list->addView(shutDown);
 
-    reboot = new brls::ListItem("menus/payloads/reboot"_i18n);
+    reboot = new brls::ListItem("menus/common/reboot"_i18n);
     reboot->getClickEvent()->subscribe([](brls::View* view) {
         util::shutDown(true);
         brls::Application::popView();

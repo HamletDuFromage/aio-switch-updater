@@ -2,11 +2,14 @@
 #include "utils.hpp"
 #include "reboot_payload.h"
 #include "main_frame.hpp"
+#include "fs.hpp"
+#include <filesystem>
+
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text)
+DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text, bool ersita) : erista(erista)
 {
     this->button1 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/common/yes"_i18n);
     this->button1->setParent(this);
@@ -21,7 +24,18 @@ DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text)
     });
 
     this->button2->getClickEvent()->subscribe([frame, this](View* view) {
-        reboot_to_payload(RCM_PAYLOAD_PATH);
+        if(this->erista)
+            reboot_to_payload(RCM_PAYLOAD_PATH);
+        else {
+            if(std::filesystem::exists(UPDATE_BIN_PATH)) {
+                fs::copyFile(UPDATE_BIN_PATH, MARIKO_PAYLOAD_PATH_TEMP);
+            }
+            else {
+                fs::copyFile(REBOOT_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH_TEMP);
+            }
+            fs::copyFile(RCM_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH);
+            util::shutDown(true);
+        }
         brls::Application::popView();
     });
 

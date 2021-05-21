@@ -11,12 +11,12 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-AmsTab::AmsTab() :
+AmsTab::AmsTab(const bool erista) :
     brls::List()
 {
     std::vector<std::pair<std::string, std::string>> links;
     std::string operation("menus/main/getting"_i18n);
-    this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (CurrentCfw::running_cfw == CFW::ams ? "\n" + "menus/ams_update/current_ams"_i18n + CurrentCfw::getAmsInfo() : ""), true);
+    this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (CurrentCfw::running_cfw == CFW::ams ? "\n" + "menus/ams_update/current_ams"_i18n + CurrentCfw::getAmsInfo() : "") + (erista ? "\n" + "menus/ams_update/ersita_rev"_i18n : "\n" + "menus/ams_update/mariko_rev"_i18n), true);
     this->addView(description);
     operation += "menus/main/ams"_i18n;
     links = download::getLinks(AMS_URL);
@@ -56,7 +56,7 @@ AmsTab::AmsTab() :
                     );
                 }
                 stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, "menus/ams_update/reboot_rcm"_i18n, false, true)
+                    new ConfirmPage(stagedFrame, "menus/ams_update/reboot_rcm"_i18n, false, true, erista)
                 );
                 brls::Application::pushView(stagedFrame);
             });
