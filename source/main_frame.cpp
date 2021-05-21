@@ -25,8 +25,8 @@ MainFrame::MainFrame() : TabFrame()
     
     json hideStatus = fs::parseJsonFile(HIDE_TABS_JSON);
 
-    //bool erista = util::isErista();
-    bool erista = false;
+    bool erista = util::isErista();
+    //bool erista = false;
 
     if(hideStatus.find("about") == hideStatus.end() || !hideStatus["about"])
         this->addTab("menus/main/about"_i18n, new AboutTab());
