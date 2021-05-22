@@ -1,4 +1,0 @@
-{
-    "/source/path/to/file": "/destination/path/to/file",
-    "/atmosphere/reboot_payload.bin": "/bootloader/payloads/payload.bin"
-}

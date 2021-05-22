@@ -1,3 +1,2 @@
-/hekate_ctcaer_5.5.6.bin|/lol.bin
-/hekate_ctcaer_5.5.6.bin|/xd.bin
-/bootloader/update.bin|/config/aio-switch-updater/looool
+/source/path/to/file|/destination/path/to/file
+/atmosphere/reboot_payload.bin|/bootloader/payloads/payload.bin
