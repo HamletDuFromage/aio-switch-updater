@@ -16,7 +16,7 @@ AmsTab::AmsTab(const bool erista) :
 {
     std::vector<std::pair<std::string, std::string>> links;
     std::string operation("menus/main/getting"_i18n);
-    this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (CurrentCfw::running_cfw == CFW::ams ? "\n" + "menus/ams_update/current_ams"_i18n + CurrentCfw::getAmsInfo() : "") + (erista ? "\n" + "menus/ams_update/ersita_rev"_i18n : "\n" + "menus/ams_update/mariko_rev"_i18n), true);
+    this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (CurrentCfw::running_cfw == CFW::ams ? "\n" + "menus/ams_update/current_ams"_i18n + CurrentCfw::getAmsInfo() : "") + (erista ? "\n" + "menus/ams_update/erista_rev"_i18n : "\n" + "menus/ams_update/mariko_rev"_i18n), true);
     this->addView(description);
     operation += "menus/main/ams"_i18n;
     links = download::getLinks(AMS_URL);

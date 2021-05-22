@@ -29,7 +29,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
         if(CurrentCfw::running_cfw == CFW::ams){
             listItem->registerAction("menus/payloads/set_reboot_payload"_i18n, brls::Key::X, [this, payload_path] { 
                 std::string res1;
-                if(fs::copyFile(payload_path.c_str(), REBOOT_PAYLOAD_PATH)){
+                if(fs::copyFile(payload_path, REBOOT_PAYLOAD_PATH)){
                     res1 += "menus/payloads/copy_success"_i18n + payload_path + "menus/payloads/to"_i18n + std::string(REBOOT_PAYLOAD_PATH) + "'.";
                     
                 }
@@ -48,7 +48,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
         }
         listItem->registerAction("menus/payloads/set_update_bin"_i18n, brls::Key::Y, [this, payload] { 
                 std::string res2;
-                if(fs::copyFile(payload.c_str(), UPDATE_BIN_PATH)){
+                if(fs::copyFile(payload, UPDATE_BIN_PATH)){
                     res2 += "menus/payloads/copy_success"_i18n + payload + "menus/payloads/to"_i18n + std::string(UPDATE_BIN_PATH) + "'.";
                 }
                 else{

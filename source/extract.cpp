@@ -25,10 +25,10 @@ namespace extract {
         }
     }
 
-void extract(const char * filename, const char* workingPath, int overwriteInis){
+void extract(const std::string&  filename, const std::string& workingPath, int overwriteInis){
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
-    chdir(workingPath);
+    chdir(workingPath.c_str());
     std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
     std::set<std::string>::iterator it;
     zipper::Unzipper unzipper(filename);
@@ -64,7 +64,7 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
             else {
                 unzipper.extractEntry(entries[i].name);
                 if(entries[i].name.substr(0, 13) == "hekate_ctcaer") {
-                    fs::copyFile(("/" + entries[i].name).c_str(), UPDATE_BIN_PATH);
+                    fs::copyFile("/" + entries[i].name, UPDATE_BIN_PATH);
                 }
             }
         }
@@ -75,10 +75,10 @@ void extract(const char * filename, const char* workingPath, int overwriteInis){
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
-void extract(const char * filename, const char* workingPath, const char* toExclude){
+void extract(const std::string&  filename, const std::string& workingPath, const std::string& toExclude){
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setStep(1);
-    chdir(workingPath);
+    chdir(workingPath.c_str());
     std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
     ignoreList.insert(toExclude);
     std::set<std::string>::iterator it;
@@ -143,7 +143,7 @@ std::vector<std::string> getInstalledTitlesNs(){
     return titles;
 }
 
-std::vector<std::string> excludeTitles(const char* path, std::vector<std::string> listedTitles){
+std::vector<std::string> excludeTitles(const std::string& path, std::vector<std::string> listedTitles){
     std::vector<std::string> titles;
     std::ifstream file(path);
     int total = 0;
@@ -171,7 +171,7 @@ std::vector<std::string> excludeTitles(const char* path, std::vector<std::string
     return diff;
 }
 
-void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cfw, bool credits){
+void extractCheats(const std::string&  zipPath, std::vector<std::string> titles, CFW cfw, bool credits){
     //TODO: REWRITE WITH SETS INSTEAD OF VECTORS
     ProgressEvent::instance().reset();
     zipper::Unzipper unzipper(zipPath);
@@ -263,7 +263,7 @@ void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cf
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
-void extractAllCheats(const char * zipPath, CFW cfw){
+void extractAllCheats(const std::string&  zipPath, CFW cfw){
     ProgressEvent::instance().reset();
     zipper::Unzipper unzipper(zipPath);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
@@ -309,7 +309,7 @@ bool isBID(std::string bid) {
     return true;
 }
 
-void writeTitlesToFile(std::set<std::string> titles, const char* path){
+void writeTitlesToFile(std::set<std::string> titles, const std::string& path){
     std::ofstream updatedTitlesFile;
     std::set<std::string>::iterator it = titles.begin();
     updatedTitlesFile.open(path, std::ofstream::out | std::ofstream::trunc);

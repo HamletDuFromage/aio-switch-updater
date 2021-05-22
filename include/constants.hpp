@@ -81,9 +81,9 @@ constexpr const char SEPT_DIRECTORY_PATH[] ="/config/aio-switch-updater/sept/";
 constexpr const char FW_DIRECTORY_PATH[] =  "/firmware/";
 
 constexpr const char HIDE_TABS_JSON[] =     "/config/aio-switch-updater/hide_tabs.json";
-constexpr const char COPY_FILES_JSON[] =    "/config/aio-switch-updater/copy_files.json";
+constexpr const char COPY_FILES_TXT[] =     "/config/aio-switch-updater/copy_files.txt";
 constexpr const char LANGUAGE_JSON[] =      "/config/aio-switch-updater/language.json";
-constexpr const char HOMEBREW[] =      "/config/aio-switch-updater/language.json";
+constexpr const char HOMEBREW[] =           "/config/aio-switch-updater/language.json";
 
 constexpr const char ROMFS_FORWARDER[] =    "romfs:/aiosu-forwarder.nro";
 constexpr const char FORWARDER_PATH[] =     "/config/aio-switch-updater/aiosu-forwarder.nro";

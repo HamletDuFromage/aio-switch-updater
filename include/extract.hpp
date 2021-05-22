@@ -22,13 +22,13 @@ namespace extract {
         }
     } Title;
 
-    void extract(const char* filename, const char* workingPath = ROOT_PATH, int overwriteInis = 1);
-    void extract(const char * filename, const char* workingPath, const char* toExclude);
+    void extract(const std::string& filename, const std::string& workingPath = ROOT_PATH, int overwriteInis = 1);
+    void extract(const std::string&  filename, const std::string& workingPath, const std::string& toExclude);
     std::vector<std::string> getInstalledTitlesNs();
-    std::vector<std::string> excludeTitles(const char* path, std::vector<std::string> listedTitles);
-    void writeTitlesToFile(std::set<std::string> titles, const char* path);
-    void extractCheats(const char * zipPath, std::vector<std::string> titles, CFW cfw, bool credits = false);
-    void extractAllCheats(const char * zipPath, CFW cfw);
+    std::vector<std::string> excludeTitles(const std::string& path, std::vector<std::string> listedTitles);
+    void writeTitlesToFile(std::set<std::string> titles, const std::string& path);
+    void extractCheats(const std::string&  zipPath, std::vector<std::string> titles, CFW cfw, bool credits = false);
+    void extractAllCheats(const std::string&  zipPath, CFW cfw);
     void removeCheats(CFW cfw);
     bool isBID(std::string bid);
 

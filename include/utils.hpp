@@ -20,7 +20,7 @@ namespace util {
     };
 
     void clearConsole();
-    bool isArchive(const char * path);
+    bool isArchive(const std::string&  path);
     void downloadArchive(std::string url, archiveType type);
     void extractArchive(archiveType type, std::string tag = "0");
     std::string formatListItemTitle(const std::string &str, size_t maxScore = 140);
@@ -29,10 +29,10 @@ namespace util {
     void shutDown(bool reboot = false);
     int showDialogBox(std::string text, std::string opt);
     int showDialogBox(std::string text, std::string opt1, std::string opt2);
-    std::string getLatestTag(const char *url);
-    void saveVersion(std::string version, const char* path);
-    std::string readVersion(const char* path);
+    std::string getLatestTag(const std::string& url);
+    void saveVersion(std::string version, const std::string& path);
+    std::string readVersion(const std::string& path);
     bool isErista();
-    void removeSysmodulesFlags(const char * directory);
+    void removeSysmodulesFlags(const std::string&  directory);
 
 }

@@ -100,7 +100,7 @@ namespace download {
 
     }
 
-std::vector<std::uint8_t> downloadFile(const char *url, const char *output, int api)
+std::vector<std::uint8_t> downloadFile(const std::string& url, const char* output, int api)
 {
     ProgressEvent::instance().reset();
     CURL *curl = curl_easy_init();
@@ -116,7 +116,7 @@ std::vector<std::uint8_t> downloadFile(const char *url, const char *output, int 
             chunk.data_size = _1MiB;
             chunk.out = fp;
 
-            curl_easy_setopt(curl, CURLOPT_URL, url);
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
             curl_easy_setopt(curl, CURLOPT_USERAGENT, API_AGENT);
             curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
             curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
@@ -154,7 +154,7 @@ std::vector<std::uint8_t> downloadFile(const char *url, const char *output, int 
 
 }
 
-std::string fetchTitle(const char *url){
+std::string fetchTitle(const std::string& url){
     CURL *curl_handle; 
     struct MemoryStruct chunk;
  
@@ -189,7 +189,7 @@ std::string fetchTitle(const char *url){
     return ver;
 }
 
-std::string downloadPage(const char* url, std::vector<std::string> headers, std::string body){
+std::string downloadPage(const std::string& url, std::vector<std::string> headers, std::string body){
     std::string res;
     CURL *curl_handle; 
     struct MemoryStruct chunk;
@@ -200,7 +200,7 @@ std::string downloadPage(const char* url, std::vector<std::string> headers, std:
  
     curl_global_init(CURL_GLOBAL_ALL);
     curl_handle = curl_easy_init();
-    curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+    curl_easy_setopt(curl_handle, CURLOPT_URL, url.c_str());
     if(!headers.empty()){
         for (auto& h : headers){
             list = curl_slist_append(list, h.c_str());
@@ -225,7 +225,7 @@ std::string downloadPage(const char* url, std::vector<std::string> headers, std:
     return res;
 }
 
-std::vector<std::uint8_t> downloadPageBinary(const char* url, std::vector<std::string> headers, std::string body){
+std::vector<std::uint8_t> downloadPageBinary(const std::string& url, std::vector<std::string> headers, std::string body){
     CURL *curl_handle; 
     struct MemoryStruct chunk;
     struct curl_slist *list = NULL;
@@ -260,15 +260,15 @@ std::vector<std::uint8_t> downloadPageBinary(const char* url, std::vector<std::s
     return res;
 }
 
-nlohmann::ordered_json getRequest(std::string url, std::vector<std::string> headers, std::string body) {
+nlohmann::ordered_json getRequest(const std::string& url, std::vector<std::string> headers, std::string body) {
     std::string request;
-    request = downloadPage(url.c_str(), headers, body);
+    request = downloadPage(url, headers, body);
 
     if(json::accept(request))   return nlohmann::ordered_json::parse(request);
     else                        return nlohmann::ordered_json::object();
 }
 
-std::vector<std::pair<std::string, std::string>> getLinks(const char *url) {
+std::vector<std::pair<std::string, std::string>> getLinks(const std::string& url) {
     std::string request;
     request = downloadPage(url);
 

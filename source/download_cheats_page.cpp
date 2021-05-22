@@ -31,7 +31,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
 
     if(bid != "") {
         std::vector<std::string> headers = {"accept: application/json"};
-        json cheatsInfo = download::getRequest((CHEATSLIPS_CHEATS_URL + util::formatApplicationId(tid) + "/" + bid).c_str(), headers);
+        json cheatsInfo = download::getRequest(CHEATSLIPS_CHEATS_URL + util::formatApplicationId(tid) + "/" + bid, headers);
         if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
             for (const auto& p : cheatsInfo["cheats"].items()) {
                 json cheat = p.value();
@@ -75,7 +75,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true)
             if(token.find("token") != token.end()) {
                 headers.push_back("X-API-TOKEN: " + token["token"].get<std::string>());
             }
-            json cheatsInfo = download::getRequest(("https://www.cheatslips.com/api/v1/cheats/" + util::formatApplicationId(tid) + "/" + bid).c_str(), headers);
+            json cheatsInfo = download::getRequest("https://www.cheatslips.com/api/v1/cheats/" + util::formatApplicationId(tid) + "/" + bid, headers);
             if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
                 for (const auto& p : cheatsInfo["cheats"].items()) {
                     if(std::find(ids.begin(), ids.end(), p.value()["id"]) != ids.end()) {
@@ -177,7 +177,7 @@ std::string DownloadCheatsPage::GetBuilIDFromFile(uint64_t tid) {
     this->setFooterText("Game version: v" + std::to_string(v / 0x10000));
     std::string version = std::to_string(v);
 
-    std::string versions_str = download::downloadPage(std::string(VERSIONS_DIRECTORY + util::formatApplicationId(tid) + ".json").c_str());
+    std::string versions_str = download::downloadPage(VERSIONS_DIRECTORY + util::formatApplicationId(tid) + ".json");
     json versions;
     if (json::accept(versions_str))     versions = json::parse(versions_str);
     else                                versions = json::object();

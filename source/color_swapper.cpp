@@ -58,7 +58,7 @@ namespace JC {
         return res;
     }
 
-    int backupToJSON(json &profiles, const char* path){
+    int backupToJSON(json &profiles, const std::string& path){
         HidNpadControllerColor color_left;
         HidNpadControllerColor color_right;
         Result res = hidGetNpadControllerColorSplit(HidNpadIdType_Handheld, &color_left, &color_right);
@@ -108,7 +108,7 @@ namespace JC {
 
     }
 
-    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const char* path){
+    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path){
         std::vector<std::pair<std::string, std::vector<int>>> res;
         bool properData;
         std::fstream profilesFile;
@@ -163,7 +163,7 @@ namespace JC {
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
     }
 
-    void backupJCColor(const char* path){
+    void backupJCColor(const std::string& path){
         hiddbgInitialize();
         hidsysInitialize();
         ProgressEvent::instance().reset();
@@ -222,7 +222,7 @@ namespace PC {
         return res;
     }
 
-    int backupToJSON(json &profiles, const char* path){
+    int backupToJSON(json &profiles, const std::string& path){
         HidNpadControllerColor color;
         Result res = hidGetNpadControllerColorSingle(HidNpadIdType_No1, &color);
         std::vector<int> oldBackups;
@@ -266,7 +266,7 @@ namespace PC {
 
     }
 
-    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const char* path){
+    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path){
         std::vector<std::pair<std::string, std::vector<int>>> res;
         bool properData;
         std::fstream profilesFile;
@@ -315,7 +315,7 @@ namespace PC {
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
     }
 
-    void backupPCColor(const char* path){
+    void backupPCColor(const std::string& path){
         hiddbgInitialize();
         hidsysInitialize();
         ProgressEvent::instance().reset();

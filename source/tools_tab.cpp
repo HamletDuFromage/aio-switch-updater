@@ -156,8 +156,8 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
     move->getClickEvent()->subscribe([&](brls::View* view){
         chdir("/");
         std::string error = "";
-        if(std::filesystem::exists(COPY_FILES_JSON)){
-            error = fs::copyFiles(COPY_FILES_JSON);
+        if(std::filesystem::exists(COPY_FILES_TXT)){
+            error = fs::copyFiles(COPY_FILES_TXT);
         }
         else{
             error = "menus/tools/batch_copy_config_not_found"_i18n;

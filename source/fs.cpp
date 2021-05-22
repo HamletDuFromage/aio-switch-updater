@@ -8,6 +8,18 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
+namespace {
+    std::vector<std::string> splitString(const std::string& s, char delimiter) {
+        std::vector<std::string> tokens;
+        std::string token;
+        std::istringstream tokenStream(s);
+        while (std::getline(tokenStream, token, delimiter)) {
+            tokens.push_back(token);
+        }
+        return tokens;
+    }
+}
+
 namespace fs {
 
     int removeDir(const char* path) {
@@ -18,23 +30,23 @@ namespace fs {
         return 0;
     }
 
-    nlohmann::json parseJsonFile(const char* path) {
+    nlohmann::ordered_json parseJsonFile(const std::string& path) {
         std::ifstream file(path);
 
         std::string fileContent((std::istreambuf_iterator<char>(file) ),
                                 (std::istreambuf_iterator<char>()    ));
 
-        if(nlohmann::json::accept(fileContent))   return nlohmann::json::parse(fileContent);
-        else                                      return nlohmann::json::object();
+        if(nlohmann::ordered_json::accept(fileContent))   return nlohmann::ordered_json::parse(fileContent);
+        else                                              return nlohmann::ordered_json::object();
     }
 
-    void writeJsonToFile(nlohmann::json &data, const char* path) {
+    void writeJsonToFile(nlohmann::json &data, const std::string& path) {
         std::ofstream out(path);
         out << data.dump(4);
         out.close();
     }
 
-    bool copyFile(const char *from, const char *to){
+    bool copyFile(const std::string& from, const std::string& to){
         std::ifstream src(from, std::ios::binary);
         std::ofstream dst(to, std::ios::binary);
 
@@ -46,31 +58,38 @@ namespace fs {
     }
 
     void createTree(std::string path){
-    std::string delimiter = "/";
-    size_t pos = 0;
-    std::string token;
-    std::string directories("");
-    while ((pos = path.find(delimiter)) != std::string::npos) {
-        token = path.substr(0, pos);
-        directories += token + "/";
-        std::filesystem::create_directory(directories);
-        path.erase(0, pos + delimiter.length());
+        std::string delimiter = "/";
+        size_t pos = 0;
+        std::string token;
+        std::string directories("");
+        while ((pos = path.find(delimiter)) != std::string::npos) {
+            token = path.substr(0, pos);
+            directories += token + "/";
+            std::filesystem::create_directory(directories);
+            path.erase(0, pos + delimiter.length());
+        }
     }
-}
 
-    std::string copyFiles(const char* path) {
-        nlohmann::ordered_json toMove;
-        std::ifstream f(COPY_FILES_JSON);
-        f >> toMove;
-        f.close();
+    std::string copyFiles(const std::string& path) {
         std::string error = "";
-        for (auto it = toMove.begin(); it != toMove.end(); ++it) {
-            if(std::filesystem::exists(it.key())) {
-                createTree(std::string(std::filesystem::path(it.value().get<std::string>()).parent_path()) + "/");
-                copyFile(it.key().c_str(), it.value().get<std::string>().c_str());
-            }
-            else {
-                error += it.key() + "\n";
+        if (std::filesystem::exists(path)) {
+            std::string str;
+            std::ifstream in(path);
+            if(in){
+                while (std::getline(in, str))
+                {
+                    if(str.size() > 0) {
+                        auto toMove = splitString(str, '|');
+                        if(std::filesystem::exists(toMove[0]) && toMove.size() > 1) {
+                            copyFile(toMove[0], toMove[1]);
+                        }
+                        else {
+                            error += toMove[0] + "\n";
+                        }
+                        
+                    }
+                }
+                in.close();
             }
         }
         if(error == "") {
@@ -82,7 +101,7 @@ namespace fs {
         return error;
     }
 
-    std::set<std::string> readLineByLine(const char * path){
+    std::set<std::string> readLineByLine(const std::string&  path){
         std::set<std::string> titles;
         std::string str;
         std::ifstream in(path);
