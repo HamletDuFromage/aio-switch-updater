@@ -16,6 +16,8 @@
 
 A Nintendo Switch homebrew app to download and update CFWs, sigpatches, FWs and cheat codes. Supports Atmosphère, ReiNX and SXOS.
 
+Works on **unpatched**(Erista) and **patched**(v2/Mariko) Switches.
+
 ## How to install
 Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 

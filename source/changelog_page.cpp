@@ -146,7 +146,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Fixed some read-only files not being properly extracted thus preventing updating.");
 
     verTitles.push_back("v2.5.0");
-    changes.push_back("\uE016 Added ability to update Atmosphère for Mariko (ie patched) Switches. Thanks to SkyDark for testing it out.\n\uE016 Fixed batch copy to be able to copy the same file multiple times (see https://git.io/aiosu_copyfiles).");
+    changes.push_back("\uE016 Added ability to update Atmosphère for Mariko (ie patched) Switches. Thanks to SkyDark for testing it out.\n\uE016 Fixed batch copy to be able to copy the same file multiple times (see https://git.io/aiosu_copyfiles). Existing copy_files.json files won't work anymore.");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
