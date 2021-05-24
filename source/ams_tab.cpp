@@ -32,7 +32,7 @@ AmsTab::AmsTab(const bool erista) :
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([&, text, text_hekate, url, hekate_url, operation](brls::View* view) {
+            listItem->getClickEvent()->subscribe([&, text, text_hekate, url, hekate_url, operation, erista](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(operation);
                 stagedFrame->addStage(
@@ -46,7 +46,7 @@ AmsTab::AmsTab(const bool erista) :
                 );
                 if(url.find("DeepSea") == std::string::npos) {
                     stagedFrame->addStage(
-                        new DialoguePage(stagedFrame, text_hekate)
+                        new DialoguePage(stagedFrame, text_hekate, erista)
                     );
                     stagedFrame->addStage(
                         new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [hekate_url](){util::downloadArchive(hekate_url, archiveType::cfw);})

@@ -112,7 +112,7 @@
     "download_firmware": "Firmwares runterladen",
     "download_cheats": "Cheats runterladen",
     "tools": "Werkzeuge",
-    "launch_warning": "Bitte beachten Sie die folgenden Punkte, bevor Sie die App verwenden:\n\n\ue016  Lesen Sie zuerst, wie Sie Ihren Switch manuell aktualisieren. Auf diese Weise können Sie die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachten Sie, dass die Verwendung dieser App (oder eines Homebrews) auf einer exFAT SD-Karte nicht empfohlen wird, da diese höchstwahrscheinlich im laufe der Zeit ihre Daten beschädigen wird.\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nDieser Bildschirm wird nicht mehr angezeigt."
+    "launch_warning": "Bitte beachten Sie die folgenden Punkte, bevor Sie die App verwenden:\n\n\ue016  Lesen Sie zuerst, wie Sie Ihren Switch manuell aktualisieren. Auf diese Weise können Sie die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachten Sie, dass die Verwendung dieser App (oder eines Homebrews) auf einer exFAT SD-Karte nicht empfohlen wird, da diese höchstwahrscheinlich im laufe der Zeit ihre Daten beschädigen wird.\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nDieser Bildschirm wird nicht mehr angezeigt."
   },
   "hide": {
     "title": "Tabs verstecken",

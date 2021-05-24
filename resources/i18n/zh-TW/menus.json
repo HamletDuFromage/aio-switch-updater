@@ -114,7 +114,7 @@
     "download_firmware": "下載韌體",
     "download_cheats": "下載金手指",
     "tools": "工具",
-	"launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  請注意，我們不建議在exFAT格式的記憶卡上使用此app (或其他任何第三方自製軟體)，可能會因此產生錯誤或造成損害。\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\n此提醒畫面將不再顯示"
+	"launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  請注意，我們不建議在exFAT格式的記憶卡上使用此app (或其他任何第三方自製軟體)，可能會因此產生錯誤或造成損害。\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\n此提醒畫面將不再顯示"
   },
   "hide": {
     "title": "隱藏分頁",

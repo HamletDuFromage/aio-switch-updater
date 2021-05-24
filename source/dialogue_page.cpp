@@ -5,7 +5,6 @@
 #include "fs.hpp"
 #include <filesystem>
 
-
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
@@ -24,8 +23,9 @@ DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text, boo
     });
 
     this->button2->getClickEvent()->subscribe([frame, this](View* view) {
-        if(this->erista)
+        if(this->erista) {
             reboot_to_payload(RCM_PAYLOAD_PATH);
+        }
         else {
             if(std::filesystem::exists(UPDATE_BIN_PATH)) {
                 fs::copyFile(UPDATE_BIN_PATH, MARIKO_PAYLOAD_PATH_TEMP);

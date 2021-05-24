@@ -21,8 +21,9 @@ ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool 
             brls::Application::pushView(new MainFrame());
         }
         else if (this->reboot) {
-            if(this->erista)
+            if(this->erista) {
                 reboot_to_payload(RCM_PAYLOAD_PATH);
+            }
             else {
                 if(std::filesystem::exists(UPDATE_BIN_PATH)) {
                     fs::copyFile(UPDATE_BIN_PATH, MARIKO_PAYLOAD_PATH_TEMP);
