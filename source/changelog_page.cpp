@@ -134,10 +134,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Atmosphère 0.19+ support. Note that this version assumes your switch is running Atmosphère. I should fix this soon, but if you're on SXOS, please stay on 2.4.4.");
 
     verTitles.push_back("v2.4.6");
-    changes.push_back("\uE016 Added back support for SXOS. \uE016 Removed dialogue asking to update Hekate if downloading DeepSea.\uE016 Fixed incorrect description in inject payload menu.");
+    changes.push_back("\uE016 Added back support for SXOS.\n\uE016 Removed dialogue asking to update Hekate if downloading DeepSea.\n\uE016 Fixed incorrect description in inject payload menu.");
 
     verTitles.push_back("v2.4.7");
-    changes.push_back("\uE016 Fixed app only working on 0.19 AMS.\uE016 Proper replacement of stratosphere.romfs when updating.");
+    changes.push_back("\uE016 Fixed app only working on 0.19 AMS.\n\uE016 Proper replacement of stratosphere.romfs when updating.");
 
     verTitles.push_back("v2.4.8");
     changes.push_back("\uE016 Fixed crashes when trying to focus empty lists (typically when in airplane mode).");
@@ -146,7 +146,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Fixed some read-only files not being properly extracted thus preventing updating.");
 
     verTitles.push_back("v2.5.0");
-    changes.push_back("\uE016 Added ability to update Atmosphère for Mariko (ie patched) switches.");
+    changes.push_back("\uE016 Added ability to update Atmosphère for Mariko (ie patched) Switches. Thanks to SkyDark for testing it out.\n\uE016 Fixed batch copy to be able to copy the same file multiple times (see https://git.io/aiosu_copyfiles).");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);

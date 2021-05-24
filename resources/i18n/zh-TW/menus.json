@@ -27,14 +27,14 @@
     "sheet_content": "金手指代碼內容",
     "cheatslips_select": "選擇要下載金手指的遊戲",
     "cheatslips_wrong_id": "無法取得token，請檢查輸入的帳號密碼是否正確",
-    "kb_error": "如果無法顯示虛擬鍵盤，請嘗試在能存取完整記憶體的普通模式下啟動本程式(title重新導向)",																												 
+    "kb_error": "如果無法顯示虛擬鍵盤，請嘗試在能存取完整記憶體的普通模式下啟動本程式(title重新導向)",
     "cheatslips_see_more": "檢視完整代碼",
     "cheatslips_dl_cheats": "下載金手指後返回",
     "bid_not_found": "無法取得build ID。當遊戲正在執行時，請嘗試在applet模式內啟動aio-switch-updater",
     "exclude_titles": "更新排除名單",
     "exclude_titles_desc": "可以透過變更此設定來排除沒有安裝對應遊戲的金手指更新",
     "exclude_titles_save": "儲存變更並返回",
-	"dl_all": "下載gbatemp目前全部的金手指並個別解壓縮後歸檔存放"																  
+	"dl_all": "下載gbatemp目前全部的金手指並個別解壓縮後歸檔存放"
   },
   "common": {
     "downloading": "正在下載...",
@@ -93,7 +93,7 @@
     "getting": "正在擷取 ",
     "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。你可以透過Daybreak或ChoiDuJour來安裝更新韌體。\n\ue016  目前FW: ",
 	"cheats_text": "\uE016  下載'gbatemp.net'每日更新的金手指檔案到記憶卡時，並不會複製到主機未安裝的遊戲金手指檔案。你可以從設定的 '工具->金手指選單' 內停用金手指更新。\n\uE016  目前金手指資料庫版本: ",
-    "get_cheats": "下載GBAtemp.net金手指資料庫(版本 ",													 
+    "get_cheats": "下載GBAtemp.net金手指資料庫(版本 ",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\ue016  Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。請確認你安裝過程中使用合適的sigpatches(Pure Atmosphère或Hekate+Atmosphère)。安裝完成後請重新開機以套用更新",
     "firmware": "韌體",
@@ -102,7 +102,7 @@
     "app": "app",
     "cfw": "CFW",
 	"ams": "Atmosphère",
-    "ams_text": "\ue016  請從清單進行選擇更新的項目，你可以選擇包含可執行第三方自製程式韌體的Atmosphère。\n\ue016 DeepSea是由Team Neptune提供的CFW整合套件，包括Atmosphère、hekate與數種第三方自製程式。",																																																														   
+    "ams_text": "\ue016  請從清單進行選擇更新的項目，你可以選擇包含可執行第三方自製程式韌體的Atmosphère。\n\ue016 DeepSea是由Team Neptune提供的CFW整合套件，包括Atmosphère、hekate與數種第三方自製程式。",
     "cfw_text": "\ue016  備用CFWs、引導程序",
     "cheats": "金手指",
     "links_not_found": "無法使用下載連結，請檢查Switch是否可正常存取網路連線。\n如果網路正常仍無法使用，請使用Github提出問題來進行回報",
@@ -114,7 +114,7 @@
     "download_firmware": "下載韌體",
     "download_cheats": "下載金手指",
     "tools": "工具",
-	"launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  請注意，我們不建議在exFAT格式的記憶卡上使用此app (或其他任何第三方自製軟體)，可能會因此產生錯誤或造成損害。\n\n此提醒畫面將不再顯示"
+	"launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  請注意，我們不建議在exFAT格式的記憶卡上使用此app (或其他任何第三方自製軟體)，可能會因此產生錯誤或造成損害。\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\n此提醒畫面將不再顯示"
   },
   "hide": {
     "title": "隱藏分頁",
@@ -135,7 +135,7 @@
     "browser": "網路瀏覽器",
     "batch_copy": "批次複製檔案",
     "batch_copy_not_found": "列出的檔案已不在原先的位置，因此無法複製:\n",
-    "batch_copy_config_not_found": "此功能可將檔案複製到其他儲存位置，部分檔案路徑需要你的bootloader/trinket。請前往'https://git.io/aiosu_copy_files' 下載copy_files.json並複製到config資料夾內。更新後也將執行此操作。",
+    "batch_copy_config_not_found": "此功能可將檔案複製到其他儲存位置，部分檔案路徑需要你的bootloader/trinket。請前往'https://git.io/aiosu_copyfiles' 下載copy_files.txt並複製到config資料夾內。更新後也將執行此操作。",
 	"language": "變更介面語系"								 
   },
   "utils": {

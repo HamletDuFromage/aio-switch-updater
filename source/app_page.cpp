@@ -34,7 +34,7 @@ AppPage::AppPage(const bool cheatSlips) : AppletFrame(true, true)
 
     titles = fs::readLineByLine(UPDATED_TITLES_PATH);
 
-    if(!titles.empty() || cheatSlips){
+    if(!titles.empty() || cheatSlips) {
         while (true)
         {
             rc = nsListApplicationRecord(&record, sizeof(record), i, &recordCount);

@@ -110,7 +110,7 @@
     "download_firmware": "FWをダウンロード",
     "download_cheats": "チートをダウンロード",
     "tools": "ツール",
-    "launch_warning": "アプリを使用する前に、次の点に注意してください:\n\n\ue016  最初にスイッチを手動で更新する方法を読んでください。これにより、アプリをよりよく理解し、問題が発生した場合の対処方法を知ることができます。\n\ue016  exFAT SDカードでこのアプリを使用することはお勧めできません。破損する可能性が高いためです。\n\nこの画面は二度と表示されません。"
+    "launch_warning": "アプリを使用する前に、次の点に注意してください:\n\n\ue016  最初にスイッチを手動で更新する方法を読んでください。これにより、アプリをよりよく理解し、問題が発生した場合の対処方法を知ることができます。\n\ue016  exFAT SDカードでこのアプリを使用することはお勧めできません。破損する可能性が高いためです。\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nこの画面は二度と表示されません。"
   },
   "hide": {
     "title": "タブを非表示",
@@ -131,7 +131,7 @@
     "browser": "ウェブブラウザ",
     "batch_copy": "ファイルのバッチコピー",
     "batch_copy_not_found": "次のファイルが見つからず、コピーできませんでした:\n",
-    "batch_copy_config_not_found": "このツールを使用すると、bootloader/trinketに必要なファイルを他の場所にコピーできます。 'https://git.io/aiosu_copy_files'でcopy_files.jsonを取得し、configフォルダーに追加します。これは、更新後にも実行されます。"
+    "batch_copy_config_not_found": "このツールを使用すると、bootloader/trinketに必要なファイルを他の場所にコピーできます。 'https://git.io/aiosu_copyfiles'でcopy_files.txtを取得し、configフォルダーに追加します。これは、更新後にも実行されます。"
   },
   "utils": {
     "fw_warning": "FWアーカイブのサイズが大きいため、アプレットモードでのファームウェアのダウンロードはサポートされていません。フルRAMアクセスでアプリを起動してください。",

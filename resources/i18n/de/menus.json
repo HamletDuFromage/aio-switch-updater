@@ -112,7 +112,7 @@
     "download_firmware": "Firmwares runterladen",
     "download_cheats": "Cheats runterladen",
     "tools": "Werkzeuge",
-    "launch_warning": "Bitte beachten Sie die folgenden Punkte, bevor Sie die App verwenden:\n\n\ue016  Lesen Sie zuerst, wie Sie Ihren Switch manuell aktualisieren. Auf diese Weise können Sie die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachten Sie, dass die Verwendung dieser App (oder eines Homebrews) auf einer exFAT SD-Karte nicht empfohlen wird, da diese höchstwahrscheinlich im laufe der Zeit ihre Daten beschädigen wird.\n\nDieser Bildschirm wird nicht mehr angezeigt."
+    "launch_warning": "Bitte beachten Sie die folgenden Punkte, bevor Sie die App verwenden:\n\n\ue016  Lesen Sie zuerst, wie Sie Ihren Switch manuell aktualisieren. Auf diese Weise können Sie die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachten Sie, dass die Verwendung dieser App (oder eines Homebrews) auf einer exFAT SD-Karte nicht empfohlen wird, da diese höchstwahrscheinlich im laufe der Zeit ihre Daten beschädigen wird.\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nDieser Bildschirm wird nicht mehr angezeigt."
   },
   "hide": {
     "title": "Tabs verstecken",
@@ -133,7 +133,7 @@
     "browser": "Web Browser",
     "batch_copy": "Massen Datei kopieren",
     "batch_copy_not_found": "Die folgenden Dateien wurden nicht gefunden und konnten nicht kopiert werden:\n",
-    "batch_copy_config_not_found": "Dieses Tool erlaubt dir Dateien zu anderen Orten zu kopieren, was vielleicht für bootloader/trinket gebraucht wird. Lade copy_files.json von 'https://git.io/aiosu_copy_files' runter und pack es in deinen config Ordner. Wird auch nach Updates ausgeführt."
+    "batch_copy_config_not_found": "Dieses Tool erlaubt dir Dateien zu anderen Orten zu kopieren, was vielleicht für bootloader/trinket gebraucht wird. Lade copy_files.txt von 'https://git.io/aiosu_copyfiles' runter und pack es in deinen config Ordner. Wird auch nach Updates ausgeführt."
   },
   "utils": {
     "fw_warning": "Wegen der größe der Firmwarearchive werden downloads im Applet Mode nicht unterstützt. Bitte öffne die App mit vollem RAM Zugriff.",
