@@ -33,7 +33,8 @@
     "bid_not_found": "ビルドIDを取得できませんでした。ゲームの実行中にアプレットモードでaio-switch-updaterを起動してみてください",
     "exclude_titles": "タイトルを除外する",
     "exclude_titles_desc": "このメニューでチートアップデートをオフにすることができます",
-    "exclude_titles_save": "選択を保存して戻る"
+    "exclude_titles_save": "選択を保存して戻る",
+    "dl_all": "gbatempチートアーカイブ全体をダウンロードして抽出します"
   },
   "common": {
     "downloading": "ダウンロード中...",
@@ -85,12 +86,14 @@
     "desc": "Proコントローラーの内部の色を変更できます。プレーヤー1に設定されていることを確認してください。",
     "label": "Pro Controller color swapper",
     "backing_up": "カラープロファイルのバックアップ",
+    "changing": "色を変える。 Pro-Conがプレーヤー1に設定されていることを確認してください。",
     "all_done": "完了！変更を有効にするには、コントローラーのオンとオフを切り替える必要がある場合があります"
   },
   "main": {
     "getting": "取得中 ",
     "firmware_text": "\ue016  ファームウェアは'https://darthsternie.net/switch-firmwares/'からダンプされます。 ダウンロードすると、「/ firmware」に抽出されます。 その後、DaybreakまたはChoiDuJourを介してアップデートをインストールできます。\n\ue016  現在のファームウェア: ",
     "cheats_text": "Download GBAtemp.net チートアーカイブ (ver ",
+    "get_cheats": "GBAtemp.netチートアーカイブをダウンロード (ver ",
     "sigpatches": "sigpatch",
     "sigpatches_text": "\ue016  Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。セットアップに適したsigpatchを選択してください（AtmosphereまたはHekate + Atmosphère）。",
     "firmware": "FW",
@@ -98,6 +101,7 @@
     "latest_cheats": "最新バージョン",
     "app": "アプリ",
     "cfw": "CFW",
+    "ams": "Atmosphère",
     "ams_text": "\ue016  このメニューから、自作ソフトウェアの実行に必要なAtmosphèreカスタムファームウェアをダウンロードして更新できます。\n\ue016  DeepSea by Team Neptuneは、Atmosphère、hekate、およびさまざまな自作アプリを含むCFWパックです",
     "cfw_text": "\ue016  AtmosphereをHekateで使用する場合は、Atmosphereをダウンロードしてから、Hekateをダウンロードしてください。",
     "cheats": "チート",
@@ -122,6 +126,7 @@
     "pro_cons": "プロコントローラーの色を変更する",
     "dl_payloads": "ペイロードをダウンロード ",
     "inject_payloads": "ペイロード送信",
+    "getting_payload": "ペイロードの取得",
     "update_app": "アプリを更新 (v",
     "dl_app": "ダウンロード中:\nAIO-switch-updater\n\nから:\n",
     "changelog": "更新履歴",
@@ -131,8 +136,9 @@
     "browser": "ウェブブラウザ",
     "batch_copy": "ファイルのバッチコピー",
     "batch_copy_not_found": "次のファイルが見つからず、コピーできませんでした:\n",
-    "batch_copy_config_not_found": "このツールを使用すると、bootloader/trinketに必要なファイルを他の場所にコピーできます。 'https://git.io/aiosu_copyfiles'でcopy_files.txtを取得し、configフォルダーに追加します。これは、更新後にも実行されます。"
-  },
+    "batch_copy_config_not_found": "このツールを使用すると、bootloader/trinketに必要なファイルを他の場所にコピーできます。 'https://git.io/aiosu_copyfiles'でcopy_files.txtを取得し、configフォルダーに追加します。これは、更新後にも実行されます。",
+    "language": "アプリの言語を変更する"
+ },
   "utils": {
     "fw_warning": "FWアーカイブのサイズが大きいため、アプレットモードでのファームウェアのダウンロードはサポートされていません。フルRAMアクセスでアプリを起動してください。",
     "overwrite": " 既存のものを上書きしますか ",
@@ -144,9 +150,34 @@
   "ams_update": {
     "reboot_rcm": "これで、インストールを完了するために、スイッチが特別なペイロードで再起動します。",
     "install_hekate": "Hekateもダウンロードしますか?\nそうでない場合、スイッチはインストールを完了するために特別なペイロードに対して再起動を開始します。",
-    "delete_contents": "既存の '/atmosphere/contents/' ディレクトリを削除しますか? これにより、最新のAtmosphèreをサポートしていないsysmoduleがある場合のクラッシュを防ぐことができます。既存のsysmodule、mod、およびチートがすべて削除されることに注意してください。"
+    "delete_contents": "既存の '/atmosphere/contents/' ディレクトリを削除しますか? これにより、最新のAtmosphèreをサポートしていないsysmoduleがある場合のクラッシュを防ぐことができます。既存のsysmodule、mod、およびチートがすべて削除されることに注意してください。",
+    "delete_sysmodules_flags": "すべてのカスタムsysmodules起動フラグを削除しますか？これにより、すべてのsysmoduleがオフになり、最新のAtmosphèreをサポートしていないsysmoduleがある場合のクラッシュが防止されます。",
+    "current_ams": "\ue016  現在のAtmosphère: ",
+    "erista_rev": "\ue016  Erista revision",
+    "mariko_rev": "\ue016  Mariko revision"
   },
   "net": {
     "title": "インターネット設定"
+  },
+  "language": {
+    "system_default": "システムのデフォルト",
+    "en-US": "American English (en-US)",
+    "ja": "日本語 (ja)",
+    "fr": "French (fr)",
+    "de": "German (de)",
+    "it": "Italian (it)",
+    "es": "Spanish (es)",
+    "zh-CN": "Simplified Chinese (zh-CN)",
+    "ko": "Korean (ko)",
+    "nl": "Dutch (nl)",
+    "pt": "Portuguese (pt)",
+    "ru": "Russian (ru)",
+    "pl": "Polish (pl)",
+    "zh-TW": "Traditional Chinese (zh-TW)",
+    "en-GB": "British English (en-GB)",
+    "fr-CA": "Canadian French (fr-CA)",
+    "es-419": "Latin American Spanish (es-419)",
+    "zh-Hant": "Traditional Chinese (zh-Hant)",
+    "zh-Hans": "Simplified Chinese (zh-Hans)"
   }
 }
