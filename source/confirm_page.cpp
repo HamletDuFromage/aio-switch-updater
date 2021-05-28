@@ -2,7 +2,7 @@
 #include "utils.hpp"
 #include "main_frame.hpp"
 #include "fs.hpp"
-#include "reboot_payload.h"
+#include "utils.hpp"
 #include <algorithm>
 #include <filesystem>
 #include <string>
@@ -22,7 +22,7 @@ ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool 
         }
         else if (this->reboot) {
             if(this->erista) {
-                reboot_to_payload(RCM_PAYLOAD_PATH);
+                util::rebootToPayload(RCM_PAYLOAD_PATH);
             }
             else {
                 if(std::filesystem::exists(UPDATE_BIN_PATH)) {

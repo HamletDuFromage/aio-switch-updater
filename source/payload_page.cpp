@@ -1,6 +1,5 @@
 #include "payload_page.hpp"
 #include "utils.hpp"
-#include "reboot_payload.h"
 #include "current_cfw.hpp"
 #include "utils.hpp"
 #include "fs.hpp"
@@ -23,7 +22,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
         std::string payload_path = payload;
         listItem = new brls::ListItem(payload_path);
         listItem->getClickEvent()->subscribe([&, payload](brls::View* view) {
-            reboot_to_payload(payload.c_str());
+            util::rebootToPayload(payload);
             brls::Application::popView();
         });
         if(CurrentCfw::running_cfw == CFW::ams){

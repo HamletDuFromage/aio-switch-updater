@@ -1,6 +1,5 @@
 #include "dialogue_page.hpp"
 #include "utils.hpp"
-#include "reboot_payload.h"
 #include "main_frame.hpp"
 #include "fs.hpp"
 #include <filesystem>
@@ -24,7 +23,7 @@ DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text, boo
 
     this->button2->getClickEvent()->subscribe([frame, this](View* view) {
         if(this->erista) {
-            reboot_to_payload(RCM_PAYLOAD_PATH);
+            util::rebootToPayload(RCM_PAYLOAD_PATH);
         }
         else {
             if(std::filesystem::exists(UPDATE_BIN_PATH)) {

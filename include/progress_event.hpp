@@ -32,6 +32,7 @@ public:
     inline void setTotalCount(double total) { _total = total; }
     inline void setSpeed(double speed) { _speed = speed; }
     inline void setStep(int step) { _current = step; }
+    inline void incrementStep(int increment) {_current += increment; }
     inline void setNow(double now) { _now = now; }
     inline int getStep() { return _current; }
     inline double getNow() { return _now; }

@@ -10,7 +10,7 @@ static alignas(0x1000) u8 g_work_page[0x1000];
 
 void do_iram_dram_copy(void *buf, uintptr_t iram_addr, size_t size, int option) {
     memcpy(g_work_page, buf, size);
-    
+
     SecmonArgs args = {0};
     args.X[0] = 0xF0000201;             /* smcAmsIramCopy */
     args.X[1] = (uintptr_t)g_work_page;  /* DRAM Address */
@@ -62,6 +62,8 @@ int reboot_to_payload(const char* path){
         printf("injecting payload");
         inject_payload();
     }
-    if (can_reboot) splExit();
+    if (can_reboot)
+        splExit();
+
     return 0;
 }

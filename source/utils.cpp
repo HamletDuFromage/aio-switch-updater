@@ -1,11 +1,13 @@
+#include <switch.h>
 #include "utils.hpp"
 #include "fs.hpp"
 #include "current_cfw.hpp"
-#include <switch.h>
 #include "download.hpp"
 #include "extract.hpp"
 #include "progress_event.hpp"
 #include "main_frame.hpp"
+#include "reboot_payload.h"
+#include "unistd.h"
 #include <filesystem>
 #include <fstream>
 
@@ -207,10 +209,16 @@ std::vector<std::string> fetchPayloads(){
 }
 
 void shutDown(bool reboot){
+    //sync();
     bpcInitialize();
     if(reboot) bpcRebootSystem();
     else bpcShutdownSystem();
     bpcExit();
+}
+
+void rebootToPayload(const std::string& path) {
+    //sync();
+    reboot_to_payload(path.c_str());
 }
 
 std::string getLatestTag(const std::string& url){
@@ -222,10 +230,8 @@ std::string getLatestTag(const std::string& url){
 }
 
 void saveVersion(std::string version, const std::string& path){
-    std::fstream newVersion;
-    newVersion.open(path, std::fstream::out | std::fstream::trunc);
+    std::ofstream newVersion(path);
     newVersion << version << std::endl;
-    newVersion.close();
 }
 
 std::string readVersion(const std::string& path){

@@ -1,11 +1,11 @@
 #pragma once
 
+#include "constants.hpp"
 #include <regex>
 #include <set>
 #include <switch.h>
 #include <borealis.hpp>
 #include <json.hpp>
-#include "constants.hpp"
 
 namespace util {
 
@@ -27,6 +27,7 @@ namespace util {
     std::string formatApplicationId(u64 ApplicationId);
     std::vector<std::string> fetchPayloads();
     void shutDown(bool reboot = false);
+    void rebootToPayload(const std::string& path);
     int showDialogBox(std::string text, std::string opt);
     int showDialogBox(std::string text, std::string opt1, std::string opt2);
     std::string getLatestTag(const std::string& url);

@@ -151,7 +151,6 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.5.1");
     changes.push_back("\uE016 Fixed bug copying Mariko payloads on Erista.");
 
-
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
