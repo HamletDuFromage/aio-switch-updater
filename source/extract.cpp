@@ -35,8 +35,8 @@ void extract(const std::string&  filename, const std::string& workingPath, int o
     ProgressEvent::instance().setTotalSteps(entries.size() + 1);
     for (const auto& entry : entries) {
         if((overwriteInis == 0 && entry.name.substr(entry.name.length() - 4) == ".ini")
-        || find_if(ignoreList.begin(), ignoreList.end(),    [entry](std::string ignoreList) {
-                                                            u8 res = ("/" + entry.name).find(ignoreList);
+        || find_if(ignoreList.begin(), ignoreList.end(),    [&entry](std::string ignored) {
+                                                            u8 res = ("/" + entry.name).find(ignored);
                                                             return (res == 0 || res == 1); }) != ignoreList.end())
         {
             if(!std::filesystem::exists("/" + entry.name)) {
@@ -69,8 +69,8 @@ void extract(const std::string&  filename, const std::string& workingPath, const
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
     ProgressEvent::instance().setTotalSteps(entries.size() + 1);
     for (const auto& entry : entries) {
-        if(find_if(ignoreList.begin(), ignoreList.end(),    [entry](std::string ignoreList) {
-                                                            u8 res = ("/" + entry.name).find(ignoreList);
+        if(find_if(ignoreList.begin(), ignoreList.end(),    [&entry](std::string ignored) {
+                                                            u8 res = ("/" + entry.name).find(ignored);
                                                             return (res == 0 || res == 1); }) != ignoreList.end()) 
         {
             if(!std::filesystem::exists("/" + entry.name)){
