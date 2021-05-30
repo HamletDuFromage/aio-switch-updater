@@ -34,7 +34,7 @@
     "exclude_titles": "タイトルを除外する",
     "exclude_titles_desc": "このメニューでチートアップデートをオフにすることができます",
     "exclude_titles_save": "選択を保存して戻る"
-	"dl_all": "gbatempチートアーカイブ全体をダウンロードして抽出します"
+    "dl_all": "gbatempチートアーカイブ全体をダウンロードして抽出します"
   },
   "common": {
     "downloading": "ダウンロード中...",
@@ -101,7 +101,7 @@
     "latest_cheats": "最新バージョン",
     "app": "アプリ",
     "cfw": "CFW",
-	"ams": "Atmosphère",
+    "ams": "Atmosphère",
     "ams_text": "\ue016  このメニューから、自作ソフトウェアの実行に必要なAtmosphèreカスタムファームウェアをダウンロードして更新できます。\n\ue016  DeepSea by Team Neptuneは、Atmosphère、hekate、およびさまざまな自作アプリを含むCFWパックです",
     "cfw_text": "\ue016  AtmosphereをHekateで使用する場合は、Atmosphereをダウンロードしてから、Hekateをダウンロードしてください。",
     "cheats": "チート",
@@ -126,7 +126,7 @@
     "pro_cons": "プロコントローラーの色を変更する",
     "dl_payloads": "ペイロードをダウンロード ",
     "inject_payloads": "ペイロード送信",
-	"getting_payload": "ペイロードの取得",
+    "getting_payload": "ペイロードの取得",
     "update_app": "アプリを更新 (v",
     "dl_app": "ダウンロード中:\nAIO-switch-updater\n\nから:\n",
     "changelog": "更新履歴",
