@@ -33,7 +33,7 @@
     "bid_not_found": "ビルドIDを取得できませんでした。ゲームの実行中にアプレットモードでaio-switch-updaterを起動してみてください",
     "exclude_titles": "タイトルを除外する",
     "exclude_titles_desc": "このメニューでチートアップデートをオフにすることができます",
-    "exclude_titles_save": "選択を保存して戻る"
+    "exclude_titles_save": "選択を保存して戻る",
     "dl_all": "gbatempチートアーカイブ全体をダウンロードして抽出します"
   },
   "common": {
@@ -86,7 +86,7 @@
     "desc": "Proコントローラーの内部の色を変更できます。プレーヤー1に設定されていることを確認してください。",
     "label": "Pro Controller color swapper",
     "backing_up": "カラープロファイルのバックアップ",
-    "all_done": "完了！変更を有効にするには、コントローラーのオンとオフを切り替える必要がある場合があります"
+    "all_done": "完了！変更を有効にするには、コントローラーのオンとオフを切り替える必要がある場合があります",
     "changing": "色を変える。 Pro-Conがプレーヤー1に設定されていることを確認してください。"
   },
   "main": {
@@ -136,7 +136,7 @@
     "browser": "ウェブブラウザ",
     "batch_copy": "ファイルのバッチコピー",
     "batch_copy_not_found": "次のファイルが見つからず、コピーできませんでした:\n",
-    "batch_copy_config_not_found": "このツールを使用すると、bootloader/trinketに必要なファイルを他の場所にコピーできます。 'https://git.io/aiosu_copyfiles'でcopy_files.txtを取得し、configフォルダーに追加します。これは、更新後にも実行されます。"
+    "batch_copy_config_not_found": "このツールを使用すると、bootloader/trinketに必要なファイルを他の場所にコピーできます。 'https://git.io/aiosu_copyfiles'でcopy_files.txtを取得し、configフォルダーに追加します。これは、更新後にも実行されます。",
     "language": "アプリの言語を変更する" 
  },
   "utils": {
@@ -150,7 +150,7 @@
   "ams_update": {
     "reboot_rcm": "これで、インストールを完了するために、スイッチが特別なペイロードで再起動します。",
     "install_hekate": "Hekateもダウンロードしますか?\nそうでない場合、スイッチはインストールを完了するために特別なペイロードに対して再起動を開始します。",
-    "delete_contents": "既存の '/atmosphere/contents/' ディレクトリを削除しますか? これにより、最新のAtmosphèreをサポートしていないsysmoduleがある場合のクラッシュを防ぐことができます。既存のsysmodule、mod、およびチートがすべて削除されることに注意してください。"
+    "delete_contents": "既存の '/atmosphere/contents/' ディレクトリを削除しますか? これにより、最新のAtmosphèreをサポートしていないsysmoduleがある場合のクラッシュを防ぐことができます。既存のsysmodule、mod、およびチートがすべて削除されることに注意してください。",
     "delete_sysmodules_flags": "すべてのカスタムsysmodules起動フラグを削除しますか？これにより、すべてのsysmoduleがオフになり、最新のAtmosphèreをサポートしていないsysmoduleがある場合のクラッシュが防止されます。",
     "current_ams": "\ue016  現在のAtmosphère: ",
     "erista_rev": "\ue016  Erista revision",
