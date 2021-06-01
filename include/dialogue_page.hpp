@@ -1,6 +1,7 @@
 #pragma once
 
 #include <borealis.hpp>
+#include <chrono>
 
 class DialoguePage : public brls::View
 {
@@ -8,6 +9,7 @@ class DialoguePage : public brls::View
         brls::Button* button1 = nullptr;
         brls::Button* button2 = nullptr;
         brls::Label* label = nullptr;
+        std::chrono::system_clock::time_point start = std::chrono::high_resolution_clock::now();
         brls::NavigationMap navigationMap;
         bool erista = true;
 
