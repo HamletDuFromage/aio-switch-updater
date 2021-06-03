@@ -1,9 +1,8 @@
 #include "fs.hpp"
+#include "constants.hpp"
 #include <borealis.hpp>
 #include <fstream>
 #include <filesystem>
-#include "constants.hpp"
-
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -101,7 +100,7 @@ namespace fs {
         return error;
     }
 
-    std::set<std::string> readLineByLine(const std::string&  path){
+    std::set<std::string> readLineByLine(const std::string& path){
         std::set<std::string> titles;
         std::string str;
         std::ifstream in(path);
@@ -114,6 +113,10 @@ namespace fs {
             in.close();
         }
         return titles;
+    }
+
+    Result getFreeStorageSD(s64& free) {
+        return nsGetFreeSpaceSize(NcmStorageId_SdCard, &free);
     }
 
 }

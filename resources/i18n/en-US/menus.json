@@ -159,6 +159,9 @@
   "net": {
     "title": "Internet settings"
   },
+  "errors": {
+    "unsufficient_storage": "There isn't enough space available on your SD card to perform this operation."
+  },
   "language": {
     "system_default": "System default",
     "en-US": "American English (en-US)",

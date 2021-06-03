@@ -154,6 +154,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.5.2");
     changes.push_back("\uE016 Updated Japanese and Traditional Chinese translations (thanks to yyoossk and  qazrfv1234).\n\uE016 Updated payload so that it doesn't throw errors if the bootloader folder is missing.\n\uE016 Minor code changes that may or may not result in performace improvements.");
 
+    verTitles.push_back("v2.5.3");
+    changes.push_back("\uE016 Check available size before downloading and extracting files.\n\uE016 Now displaying a message when the custom payload is running.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

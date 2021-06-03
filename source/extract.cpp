@@ -1,4 +1,9 @@
 #include "extract.hpp"
+#include "progress_event.hpp"
+#include "utils.hpp"
+#include "download.hpp"
+#include "fs.hpp"
+#include "main_frame.hpp"
 #include <string>
 #include <vector>
 #include <sstream>
@@ -9,10 +14,6 @@
 #include <fstream>
 #include <set>
 #include <unzipper.h>
-#include "progress_event.hpp"
-#include "utils.hpp"
-#include "download.hpp"
-#include "fs.hpp"
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -23,16 +24,34 @@ namespace extract {
         bool caselessCompare (const std::string& a, const std::string& b){
             return strcasecmp(a.c_str(), b.c_str()) < 0;
         }
+
+        void preWork(zipper::Unzipper& unzipper, const std::string& workingPath, std::vector<zipper::ZipEntry>& entries) {
+            chdir(workingPath.c_str());
+            entries = unzipper.entries();
+            s64 uncompressedSize = 0;
+            s64 freeStorage;
+            for (const auto& entry: entries)
+                uncompressedSize += entry.uncompressedSize;
+
+            if(R_SUCCEEDED(fs::getFreeStorageSD(freeStorage))) {
+                if(uncompressedSize * 1.1 > freeStorage) {
+                    unzipper.close();
+                    brls::Application::crash("menus/errors/unsufficient_storage"_i18n);
+                    usleep(2000000);
+                    brls::Application::quit();
+                }
+            }
+            ProgressEvent::instance().reset();
+            ProgressEvent::instance().setStep(1);
+            ProgressEvent::instance().setTotalSteps(entries.size() + 1);
+        }
     }
 
 void extract(const std::string&  filename, const std::string& workingPath, int overwriteInis){
-    ProgressEvent::instance().reset();
-    ProgressEvent::instance().setStep(1);
-    chdir(workingPath.c_str());
-    std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
     zipper::Unzipper unzipper(filename);
-    std::vector<zipper::ZipEntry> entries = unzipper.entries();
-    ProgressEvent::instance().setTotalSteps(entries.size() + 1);
+    std::vector<zipper::ZipEntry> entries;
+    preWork(unzipper, workingPath, entries);
+    std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
     for (const auto& entry : entries) {
         if((overwriteInis == 0 && entry.name.substr(entry.name.length() - 4) == ".ini")
         || find_if(ignoreList.begin(), ignoreList.end(),    [&entry](std::string ignored) {
@@ -60,14 +79,11 @@ void extract(const std::string&  filename, const std::string& workingPath, int o
 }
 
 void extract(const std::string&  filename, const std::string& workingPath, const std::string& toExclude){
-    ProgressEvent::instance().reset();
-    ProgressEvent::instance().setStep(1);
-    chdir(workingPath.c_str());
+    zipper::Unzipper unzipper(filename);
+    std::vector<zipper::ZipEntry> entries;
+    preWork(unzipper, workingPath, entries);
     std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
     ignoreList.insert(toExclude);
-    zipper::Unzipper unzipper(filename);
-    std::vector<zipper::ZipEntry> entries = unzipper.entries();
-    ProgressEvent::instance().setTotalSteps(entries.size() + 1);
     for (const auto& entry : entries) {
         if(find_if(ignoreList.begin(), ignoreList.end(),    [&entry](std::string ignored) {
                                                             u8 res = ("/" + entry.name).find(ignored);
