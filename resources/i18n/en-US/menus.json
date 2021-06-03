@@ -114,7 +114,8 @@
     "download_firmware": "Download firmwares",
     "download_cheats": "Download cheats",
     "tools": "Tools",
-    "launch_warning": "Please pay attention to the following points before using the app:\n\n\ue016  Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\ue016  Please note that using this app (or any homebrew) on a exFAT SD card is not recommended, as those are more likely to corrupt.\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nThis screen won't show again."
+    "launch_warning": "Please pay attention to the following points before using the app:\n\n\ue016  Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\ue016  Please note that using this app (or any homebrew) on a exFAT SD card is not recommended, as those are more likely to corrupt.\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nThis screen won't show again.",
+    "GB_available": "GB available"
   },
   "hide": {
     "title": "Hide tabs",

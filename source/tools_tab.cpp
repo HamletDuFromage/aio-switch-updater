@@ -20,9 +20,13 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 using json = nlohmann::json;
 
+namespace {
+    constexpr const char AppVersion[] = APP_VERSION;
+}
+
 ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
 {
-    if(!tag.empty() && tag != APP_VERSION){
+    if(!tag.empty() && tag != AppVersion){
         updateApp = new brls::ListItem("menus/tools/update_app"_i18n + tag +")");
         std::string text("menus/tools/dl_app"_i18n + std::string(APP_URL));
         updateApp->getClickEvent()->subscribe([&, text, tag](brls::View* view) {
