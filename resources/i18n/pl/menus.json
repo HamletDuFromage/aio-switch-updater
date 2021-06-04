@@ -114,7 +114,8 @@
     "download_firmware": "Pobierz firmware",
     "download_cheats": "Pobierz cheaty",
     "tools": "Narzędzia",
-    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\ue016  Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\ue016  Pamiętaj, że używanie tej aplikacji (lub innych homebrew) na karcie SD z systemem plików exFAT nie jest zalecane, ponieważ ich zawartość ma większą podatność na uszkodzenia.\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nTen ekran nie wyświetli się ponownie."
+    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\ue016  Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\ue016  Pamiętaj, że używanie tej aplikacji (lub innych homebrew) na karcie SD z systemem plików exFAT nie jest zalecane, ponieważ ich zawartość ma większą podatność na uszkodzenia.\n\n\ue016  Mogły zostać wprowadzone nowe funkcje i/lub zmiany obecnych funkcji. Rzuć na nie okiem w Narzędzia->Dziennik zmian.\n\nTen ekran nie wyświetli się ponownie."
+    "footer_text" : "v{} | {:.1f}GB dostępne"
   },
   "hide": {
     "title": "Ukryj zakładki",
