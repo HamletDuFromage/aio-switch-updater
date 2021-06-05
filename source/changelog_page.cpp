@@ -158,7 +158,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Check available size before downloading and extracting files.\n\uE016 Now displaying a message when the custom payload is running.");
 
     verTitles.push_back("v2.6.0");
-    changes.push_back("\uE016 Added ability to download invidual cheet codes from the GBAtemp.net archive.\n\uE016 Updated Polish translation (credits to github.com/teddy74eva)");
+    changes.push_back("\uE016 Added ability to download individual cheat codes from the GBAtemp.net archive.\n\uE016 Updated Polish translation (credits to github.com/teddy74eva).");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
