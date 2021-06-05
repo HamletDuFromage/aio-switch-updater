@@ -41,6 +41,7 @@ constexpr const char CHEATS_URL_VERSION[] = "https://github.com/HamletDuFromage/
 constexpr const char LOOKUP_TABLE_URL[] =   "https://raw.githubusercontent.com/HamletDuFromage/switch-cheats-db/master/versions.json";
 constexpr const char LOOKUP_TABLE_CBOR[] =  "https://github.com/HamletDuFromage/switch-cheats-db/raw/master/versions.cbor";
 constexpr const char VERSIONS_DIRECTORY[] = "https://raw.githubusercontent.com/HamletDuFromage/switch-cheats-db/master/versions/";
+constexpr const char CHEATS_DIRECTORY[] =   "https://raw.githubusercontent.com/HamletDuFromage/switch-cheats-db/master/cheats/";
 constexpr const char CHEATSLIPS_CHEATS_URL[] ="https://www.cheatslips.com/api/v1/cheats/";
 constexpr const char CHEATSLIPS_TOKEN_URL[] ="https://www.cheatslips.com/api/v1/token";
 constexpr const char TOKEN_PATH[] =         "/config/aio-switch-updater/token.json";

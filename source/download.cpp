@@ -294,8 +294,7 @@ std::vector<std::uint8_t> downloadPageBinary(const std::string& url, std::vector
 }
 
 nlohmann::ordered_json getRequest(const std::string& url, std::vector<std::string> headers, std::string body) {
-    std::string request;
-    request = downloadPage(url, headers, body);
+    std::string request = downloadPage(url, headers, body);
 
     if(json::accept(request))   return nlohmann::ordered_json::parse(request);
     else                        return nlohmann::ordered_json::object();

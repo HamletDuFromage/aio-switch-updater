@@ -1,4 +1,3 @@
-#include <switch.h>
 #include "utils.hpp"
 #include "fs.hpp"
 #include "current_cfw.hpp"
@@ -8,8 +7,10 @@
 #include "main_frame.hpp"
 #include "reboot_payload.h"
 #include "unistd.h"
+#include <switch.h>
 #include <filesystem>
 #include <fstream>
+
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;

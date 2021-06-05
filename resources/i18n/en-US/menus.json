@@ -18,8 +18,10 @@
     "delete_all": "Delete all cheats",
     "deleting": "Deleting...",
     "cheastlips_title": "Cheatslips cheats",
+    "gbatemp_title": "GBAtemp cheats",
+    "get_gbatemp": "Download GBAtemp.net cheat codes",
     "get_cheatslips": "Download CheatSlips.com cheat sheets",
-    "cheatslips_label": "\ue016  Log into CheatSlips.com and download cheat sheets for your games.",
+    "cheats_label": "\ue016  Download individual cheat codes from the GBAtemp.net database or cheat sheets from CheatSlips.com",
     "cheatslips_dl": "Download a selection of cheat sheets from CheatSlips.com.\nThose cheat codes will be added to the end of your existing cheat file.",
     "delete_file": "Delete existing cheat file",
     "cheatslips_error": "Could not fetch selected cheat codes/invalid token.",
@@ -34,7 +36,10 @@
     "exclude_titles": "Exclude titles",
     "exclude_titles_desc": "You can turn off cheat updates with this menu",
     "exclude_titles_save": "Save choice and return",
-    "dl_all": "Download and extract the entire gbatemp cheats archive"
+    "dl_all": "Download and extract the entire gbatemp cheats archive",
+    "gbatemp_dl": "Download cheat codes curated from GBAtemp. Those cheats will be added to the end of your existing cheat file.\n\uE016  Build ID: {}",
+    "gbatemp_dl_cheatcode": "Download cheat code",
+    "gbatemp_dl_successful_dl": "Successfully downloaded the following cheat code:\n{}"
   },
   "common": {
     "downloading": "Downloading...",

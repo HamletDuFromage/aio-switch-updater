@@ -8,10 +8,14 @@ class ListDownloadTab : public brls::List
     private:
         brls::ListItem* listItem;
         brls::ListItem *cheatslipsItem;
+        brls::ListItem *gbatempItem;
         brls::Label *notFound;
         brls::Label *description;
-        brls::Label *cheatSlipLabel;
+        brls::Label *cheatsLabel;
         int size;
+        void createCheatSlipItem();
+        void creategbatempItem();
+
     public:
         ListDownloadTab(const archiveType type);
         brls::View* getDefaultFocus() override;

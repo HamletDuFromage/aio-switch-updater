@@ -32,13 +32,13 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Now displays the latest installed cheat version.\n\uE016 Now warns in the app title if a new update is available.");
 
     verTitles.push_back("v1.2.3");
-    changes.push_back("\uE016 Now multilingual (thanks to 'github.com/tiansongyu').\n\uE016 Chinese and French are currently supported.");
+    changes.push_back("\uE016 Now multilingual (credits to github.com/tiansongyu).\n\uE016 Chinese and French are currently supported.");
 
     verTitles.push_back("v1.2.1");
     changes.push_back("\uE016 Added option to set a payload to /bootloader/update.bin");
 
     verTitles.push_back("v1.2.2");
-    changes.push_back("\uE016 Added japanese localisation (thanks to github.com/yyoossk).");
+    changes.push_back("\uE016 Added japanese localisation (credits to github.com/yyoossk).");
 
     verTitles.push_back("v1.2.4");
     changes.push_back("\uE016 Fixed app self-update");
@@ -47,7 +47,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Improved japanese translation");
 
     verTitles.push_back("v1.2.6");
-    changes.push_back("\uE016 Added spanish translation (thanks to 'https://github.com/sergiou87'");
+    changes.push_back("\uE016 Added spanish translation (credits to github.com/sergiou87");
 
     verTitles.push_back("v1.3.0");
     changes.push_back("\uE016 Added back the ability to update CFWs");
@@ -77,7 +77,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 A few graphical tweaks.");
 
     verTitles.push_back("v1.5.2");
-    changes.push_back("\uE016 Added support for Traditional Chinese (thanks to 'https://github.com/qazrfv1234')");
+    changes.push_back("\uE016 Added support for Traditional Chinese (credits to github.com/qazrfv1234)");
 
     verTitles.push_back("v2.0.0");
     changes.push_back("\uE016 Added ability to download cheatslips cheats.\n\uE016 Added way to toggle out tabs.\n\uE016 Various code improvements.");
@@ -116,7 +116,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Minor fixes, refactored old switch-cheats updater code and changed way to detect CFW");
 
     verTitles.push_back("v2.4.0");
-    changes.push_back("\uE016 Added option to extract the entire gbatemp cheats archive.\n\uE016 Shortened load times.\n\uE016 Added German localisation (thanks to github.com/Slluxx).\n\uE016 Added option to disable sysmodules prior to updating.\n\uE016 Improved Japanese localisation (thanks to github.com/yyoossk).\n\uE016 Added current AMS version display.");
+    changes.push_back("\uE016 Added option to extract the entire gbatemp cheats archive.\n\uE016 Shortened load times.\n\uE016 Added German localisation (credits to github.com/Slluxx).\n\uE016 Added option to disable sysmodules prior to updating.\n\uE016 Improved Japanese localisation (credits to github.com/yyoossk).\n\uE016 Added current AMS version display.");
 
     verTitles.push_back("v2.4.1");
     changes.push_back("\uE016 Added information about download progress.");
@@ -125,10 +125,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Added option to manually change language.\n\uE016 Fixed broken strings.\n\uE016 Few visual tweaks.");
 
     verTitles.push_back("v2.4.3");
-    changes.push_back("\uE016 Added way to select system default in language selection.\n\uE016 Display local IP in internet settings.\n\uE016 Added Polish localisation (thanks to https://github.com/teddy74eva).\n\uE016 Updated Traditional Chinese localisation (thanks to https://github.com/qazrfv1234).\n\uE016 Minor code changes.");
+    changes.push_back("\uE016 Added way to select system default in language selection.\n\uE016 Display local IP in internet settings.\n\uE016 Added Polish localisation (credits to github.com/teddy74eva).\n\uE016 Updated Traditional Chinese localisation (credits to https://github.com/qazrfv1234).\n\uE016 Minor code changes.");
 
     verTitles.push_back("v2.4.4");
-    changes.push_back("\uE016 Significantly reduced time to retrieve build IDs.\n\uE016 Updated Polish localisation (thanks to https://github.com/teddy74eva).");
+    changes.push_back("\uE016 Significantly reduced time to retrieve build IDs.\n\uE016 Updated Polish localisation (credits to github.com/teddy74eva).");
 
     verTitles.push_back("v2.4.5-fix_ams");
     changes.push_back("\uE016 Atmosphère 0.19+ support. Note that this version assumes your switch is running Atmosphère. I should fix this soon, but if you're on SXOS, please stay on 2.4.4.");
@@ -152,10 +152,13 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Fixed bug copying Mariko payloads on Erista.");
 
     verTitles.push_back("v2.5.2");
-    changes.push_back("\uE016 Updated Japanese and Traditional Chinese translations (thanks to yyoossk and  qazrfv1234).\n\uE016 Updated payload so that it doesn't throw errors if the bootloader folder is missing.\n\uE016 Minor code changes that may or may not result in performace improvements.");
+    changes.push_back("\uE016 Updated Japanese and Traditional Chinese translations (credits to github.com/yyoossk and github.com/qazrfv1234).\n\uE016 Updated payload so that it doesn't throw errors if the bootloader folder is missing.\n\uE016 Minor code changes that may or may not result in performace improvements.");
 
     verTitles.push_back("v2.5.3");
     changes.push_back("\uE016 Check available size before downloading and extracting files.\n\uE016 Now displaying a message when the custom payload is running.");
+
+    verTitles.push_back("v2.6.0");
+    changes.push_back("\uE016 Added ability to download invidual cheet codes from the GBAtemp.net archive.\n\uE016 Updated Polish translation (credits to github.com/teddy74eva)");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
