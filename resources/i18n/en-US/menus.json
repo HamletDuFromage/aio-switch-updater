@@ -13,7 +13,7 @@
     "getting_cheats": "Getting cheat codes",
     "menu": "Cheats menu",
     "view": "View installed cheats",
-    "exclude": "Exclude games from recieving cheat updates",
+    "exclude": "Exclude games from receiving cheat updates",
     "delete_existing": "Delete all existing cheat codes",
     "delete_all": "Delete all cheats",
     "deleting": "Deleting...",
@@ -36,7 +36,7 @@
     "exclude_titles": "Exclude titles",
     "exclude_titles_desc": "You can turn off cheat updates with this menu",
     "exclude_titles_save": "Save choice and return",
-    "dl_all": "Download and extract the entire gbatemp cheats archive",
+    "dl_all": "Download and extract the entire GBAtemp cheats archive",
     "gbatemp_dl": "Download cheat codes curated from GBAtemp. Those cheats will be added to the end of your existing cheat file.\n\uE016  Build ID: {}",
     "gbatemp_dl_cheatcode": "Download cheat code",
     "gbatemp_dl_successful_dl": "Successfully downloaded the following cheat code:\n{}"
