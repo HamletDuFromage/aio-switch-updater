@@ -210,16 +210,12 @@ std::vector<std::string> fetchPayloads(){
 }
 
 void shutDown(bool reboot){
-    //sync();
-    bpcInitialize();
-    if(reboot) bpcRebootSystem();
-    else bpcShutdownSystem();
-    bpcExit();
+    spsmInitialize();
+    spsmShutdown(reboot);
 }
 
 void rebootToPayload(const std::string& path) {
-    //sync();
-    reboot_to_payload(path.c_str());
+    reboot_to_payload(path.c_str(), CurrentCfw::running_cfw != CFW::ams);
 }
 
 std::string getLatestTag(const std::string& url){
@@ -247,26 +243,10 @@ std::string readVersion(const std::string& path){
 }
 
 bool isErista() {
-    u64 hwType;
-    Result rc = splGetConfig(SplConfigItem_HardwareType, &hwType);
-
-    if(R_FAILED(rc))
-        return true;
-
-    switch (hwType)
-    {
-        case 0:
-        case 1:
-            return true;
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-            return false;
-        default:
-            return true;
-    }
-};
+    SetSysProductModel model;
+    setsysGetProductModel(&model);
+    return (model == SetSysProductModel_Nx || model == SetSysProductModel_Copper);
+}
 
 void removeSysmodulesFlags(const std::string&  directory) {
     for (const auto & e : std::filesystem::recursive_directory_iterator(directory)) {

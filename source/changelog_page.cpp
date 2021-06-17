@@ -160,6 +160,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.6.0");
     changes.push_back("\uE016 Added ability to download individual cheat codes from the GBAtemp.net archive.\n\uE016 Updated Polish translation (credits to github.com/teddy74eva).");
 
+    verTitles.push_back("v2.6.0");
+    changes.push_back("\uE016 Added safer way to reboot to payload (should prevent corruption on exFAT system, not that should be using exFAT)");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

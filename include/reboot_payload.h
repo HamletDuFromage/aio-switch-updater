@@ -10,7 +10,7 @@ extern "C" {
 #include <stdbool.h>
 #include <switch.h>
 
-int reboot_to_payload(const char* path);
+int reboot_to_payload(const char* path, bool legacy);
 
 #ifdef __cplusplus
 }

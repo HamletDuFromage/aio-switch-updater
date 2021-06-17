@@ -1,4 +1,5 @@
 #include "reboot_payload.h"
+#include "ams_bpc.h"
 
 #define IRAM_PAYLOAD_MAX_SIZE   0x2F000
 #define IRAM_PAYLOAD_BASE       0x40010000
@@ -38,29 +39,36 @@ static void clear_iram(void) {
 }
 
 static void inject_payload(void) {
+    printf("injecting\n");
+    spsmInitialize();
+    smExit();
+    if (R_SUCCEEDED(amsBpcInitialize()) && R_SUCCEEDED(amsBpcSetRebootPayload(g_reboot_payload, 0x24000))) {
+        spsmShutdown(true);
+    }
+}
+
+static void inject_payload_legacy(void) {
+    printf("injecting (legacy)\n");
     clear_iram();
-    
     for (size_t i = 0; i < IRAM_PAYLOAD_MAX_SIZE; i += 0x1000) {
         copy_to_iram(IRAM_PAYLOAD_BASE + i, &g_reboot_payload[i], 0x1000);
     }
-    
     splSetConfig((SplConfigItem)65001, 2);
 }
 
-int reboot_to_payload(const char* path){
+int reboot_to_payload(const char* path, bool legacy){
     bool can_reboot = true;
     FILE *f;
     f = fopen(path, "rb");
     if (f == NULL) can_reboot = false;
     else {
-        printf("Can't open payload");
         fread(g_reboot_payload, 1, sizeof(g_reboot_payload), f);
         fclose(f);
     }
 
     if (can_reboot) {
-        printf("injecting payload");
-        inject_payload();
+        if (legacy) inject_payload_legacy();
+        else inject_payload();
     }
     if (can_reboot)
         splExit();
