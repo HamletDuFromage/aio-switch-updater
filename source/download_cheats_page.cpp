@@ -125,7 +125,15 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid) : Dow
         if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
             for (const auto& p : cheatsInfo["cheats"].items()) {
                 json cheat = p.value();
-                listItem = new::brls::ToggleListItem(GetCheatsTitle(cheat), 0, "", "\uE016", "o");
+                try {
+                    listItem = new::brls::ToggleListItem(GetCheatsTitle(cheat), 0, "", "\uE016", "o");
+                } catch (const std::out_of_range& e) {
+                    //Empty titles
+                    continue;
+                } catch (...) {
+                    //Something else went wrong
+                    continue;
+                }
                 listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, cheat] { 
                     if(cheat.find("titles") != cheat.end()) {
                         ShowCheatsContent(cheat["titles"]);
@@ -135,7 +143,8 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid) : Dow
                 toggles.push_back(std::make_pair(listItem, cheat["id"]));
                 list->addView(listItem);
             }
-            list->addView(new brls::ListItemGroupSpacing(true));
+            if(list->getViewsCount() > 1)
+                list->addView(new brls::ListItemGroupSpacing(true));
         }
     }
 
