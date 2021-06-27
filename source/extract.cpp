@@ -36,7 +36,7 @@ namespace extract {
             if(R_SUCCEEDED(fs::getFreeStorageSD(freeStorage))) {
                 if(uncompressedSize * 1.1 > freeStorage) {
                     unzipper.close();
-                    brls::Application::crash("menus/errors/unsufficient_storage"_i18n);
+                    brls::Application::crash("menus/errors/insufficient_storage"_i18n);
                     usleep(2000000);
                     brls::Application::quit();
                 }
@@ -107,7 +107,6 @@ std::vector<std::string> getInstalledTitlesNs(){
 
     NsApplicationRecord *records = new NsApplicationRecord[MaxTitleCount]();
     NsApplicationControlData *controlData = NULL;
-    NacpLanguageEntry* langEntry = NULL;
 
     s32 recordCount     = 0;
     u64 controlSize     = 0;
@@ -116,25 +115,28 @@ std::vector<std::string> getInstalledTitlesNs(){
         for (s32 i = 0; i < recordCount; i++){
             controlSize = 0;
             controlData = (NsApplicationControlData*)malloc(sizeof(NsApplicationControlData));
-            if(controlData != NULL)
+            if(controlData == NULL) {
+                free(controlData);
+                break;
+            }
+            else {
                 memset(controlData, 0, sizeof(NsApplicationControlData));
+            }
 
             if(R_FAILED(nsGetApplicationControlData(NsApplicationControlSource_Storage, records[i].application_id, controlData, sizeof(NsApplicationControlData), &controlSize))) continue;
 
             if(controlSize < sizeof(controlData->nacp)) continue;
 
-            if(R_FAILED(nacpGetLanguageEntry(&controlData->nacp, &langEntry))) continue;
-
             titles.push_back(util::formatApplicationId(records[i].application_id));
+            free(controlData);
         }
     }
-    free(controlData);
     delete[] records;
     std::sort(titles.begin(), titles.end());
     return titles;
 }
 
-std::vector<std::string> excludeTitles(const std::string& path, std::vector<std::string> listedTitles){
+std::vector<std::string> excludeTitles(const std::string& path, const std::vector<std::string>& listedTitles){
     std::vector<std::string> titles;
     std::ifstream file(path);
     std::string name;
@@ -165,7 +167,7 @@ void extractCheats(const std::string&  zipPath, std::vector<std::string> titles,
     ProgressEvent::instance().reset();
     zipper::Unzipper unzipper(zipPath);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
-    std::set<std::string> extractedTitles;
+    //std::set<std::string> extractedTitles;
     int offset = 0;
     switch(cfw){
         case CFW::ams:
@@ -233,7 +235,7 @@ void extractCheats(const std::string&  zipPath, std::vector<std::string> titles,
                 unzipper.extractEntry(parents[l]);
                 for(auto& e : children[l]){
                     unzipper.extractEntry(e);
-                    extractedTitles.insert(id);
+                    //extractedTitles.insert(id);
                     ProgressEvent::instance().setStep(j);
                     id = e.substr(offset, 16);
                     std::transform(id.begin(), id.end(), id.begin(), ::toupper);
@@ -244,10 +246,8 @@ void extractCheats(const std::string&  zipPath, std::vector<std::string> titles,
         }
     }
     unzipper.close();
-    writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
-    auto cheatsVerVec = download::downloadFile(CHEATS_URL_VERSION);
-    std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
-    util::saveVersion(cheatsVer, CHEATS_VERSION);
+    //writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
+    download::downloadFile(CHEATS_URL_VERSION, CHEATS_VERSION, OFF);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
@@ -284,9 +284,7 @@ void extractAllCheats(const std::string&  zipPath, CFW cfw){
         ProgressEvent::instance().incrementStep(1);
     }
     unzipper.close();
-    auto cheatsVerVec = download::downloadFile(CHEATS_URL_VERSION);
-    std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
-    util::saveVersion(cheatsVer, CHEATS_VERSION);
+    download::downloadFile(CHEATS_URL_VERSION, CHEATS_VERSION, OFF);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
@@ -338,7 +336,7 @@ void removeCheats(CFW cfw){
         }
         ProgressEvent::instance().incrementStep(1);
     }
-    std::filesystem::remove(UPDATED_TITLES_PATH);
+    //std::filesystem::remove(UPDATED_TITLES_PATH);
     std::filesystem::remove(CHEATS_VERSION);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }

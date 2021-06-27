@@ -1,10 +1,11 @@
 #pragma once
 
 #include <borealis.hpp>
+#include <switch.h>
 #include <algorithm>
 #include <set>
 
-typedef struct app App;
+static constexpr uint32_t MaxTitleCount = 64000;
 
 enum class appPageType{
     base,
@@ -15,13 +16,51 @@ enum class appPageType{
 class AppPage : public brls::AppletFrame
 {
     private:
-        brls::List* list;
-        brls::Label* label;
         brls::ListItem* download;
-        brls::ListItem* listItem;
-        std::vector<App*> apps;
         std::set<std::string> titles;
 
+    protected:
+        brls::List* list;
+        brls::Label* label;
+        brls::ListItem* listItem;
+        void CreateDownloadAllButton();
+        uint64_t GetCurrentApplicationId();
+        u32 InitControlData(NsApplicationControlData** controlData);
+        uint32_t GetControlData(u64 tid, NsApplicationControlData* controlData, u64& controlSize, std::string& name);
+        virtual void PopulatePage();
+        virtual void CreateLabel() { };
+        virtual void CreateGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData);
+
     public:
-        AppPage(const appPageType type = appPageType::base);
+        AppPage();
+};
+
+class AppPage_Exclude : public AppPage
+{
+    private:
+        std::set<std::pair<brls::ToggleListItem*, std::string>> items;
+        void PopulatePage() override;
+        void CreateLabel() override;
+    public:
+        AppPage_Exclude();
+};
+
+class AppPage_CheatSlips : public AppPage
+{
+    private:
+        void CreateLabel() override;
+        void CreateGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData) override;
+
+    public:
+        AppPage_CheatSlips();
+};
+
+class AppPage_Gbatemp : public AppPage
+{
+    private:
+        void CreateLabel() override;
+        void CreateGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData) override;
+
+    public:
+        AppPage_Gbatemp();
 };

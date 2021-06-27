@@ -73,7 +73,7 @@
   "joy_con": {
     "title": "Joy-Con 更換顏色工具",
     "desc_1": "你可以透過置換Joy-Cons內的代碼設定，來自訂控制器在系統內被辨識的顏色外觀。請確認Joy-Con已確實安裝到主機。\n顏色代碼檔案才能正確覆蓋取代。'",
-    "desc_2": "'. 前往控制器顏色代碼檔案產生網頁：'http://bit.ly/JC-color' ",
+    "desc_2": "'. 前往控制器顏色代碼檔案產生網頁：'https://git.io/jcpicker' ",
     "desc_3": "製作你專屬的控制器顏色外觀",
     "backup": "備份目前的控制器顏色代碼設定檔案",
     "label": "Joy-Con 更換顏色工具",
@@ -91,7 +91,7 @@
   },
   "main": {
     "getting": "正在擷取 ",
-    "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。你可以透過Daybreak或ChoiDuJour來安裝更新韌體。\n\ue016  目前FW: ",
+    "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。您可以通过 Daybreak 安装和更新固件。\n\ue016  目前FW: ",
     "cheats_text": "\uE016  下載'gbatemp.net'每日更新的金手指檔案到記憶卡時，並不會複製到主機未安裝的遊戲金手指檔案。你可以從設定的 '工具->金手指選單' 內停用金手指更新。\n\uE016  目前金手指資料庫版本: ",
     "get_cheats": "下載GBAtemp.net金手指資料庫(版本 ",
     "sigpatches": "sigpatches",
@@ -114,7 +114,7 @@
     "download_firmware": "下載韌體",
     "download_cheats": "下載金手指",
     "tools": "工具",
-    "launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  請注意，我們不建議在exFAT格式的記憶卡上使用此app (或其他任何第三方自製軟體)，可能會因此產生錯誤或造成損害。\n\n此提醒畫面將不再顯示"
+    "launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  请注意，强烈建议不要在 exFAT SD 卡上使用此应用程序，因为它们可能会损坏。\n\n此提醒畫面將不再顯示"
   },
   "hide": {
     "title": "隱藏分頁",

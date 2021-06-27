@@ -15,6 +15,7 @@ class WorkerPage : public brls::View
     std::string text;
     int progressValue = 0;
     bool workStarted = false;
+    bool draw_page = true;
     std::thread* workerThread;
     worker_func_t workerFunc;
 

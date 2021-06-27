@@ -1,22 +1,23 @@
 #include "download_cheats_page.hpp"
-#include <fstream>
-#include <filesystem>
 #include "constants.hpp"
 #include "download.hpp"
 #include "utils.hpp"
 #include "fs.hpp"
 #include "current_cfw.hpp"
+#include <fstream>
+#include <filesystem>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 using json = nlohmann::json;
 
-DownloadCheatsPage::DownloadCheatsPage(uint64_t tid) : AppletFrame(true, true), tid(tid)
+DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : AppletFrame(true, true), tid(tid)
 {
+    list = new brls::List();
+    this->setTitle(name);
+    this->setFooterText("Game version: v" + std::to_string(this->version / 0x10000));
     GetVersion();
     GetBuildID();
-    this->setTitle("menus/cheats/menu"_i18n);
-    this->setFooterText("Game version: v" + std::to_string(this->version / 0x10000));
 }
 
 void DownloadCheatsPage::GetBuildID() {
@@ -56,7 +57,8 @@ void DownloadCheatsPage::GetVersion() {
 }
 
 void DownloadCheatsPage::GetBuildIDFromFile() {
-    json versions_json = download::getRequest(VERSIONS_DIRECTORY + util::formatApplicationId(this->tid) + ".json");
+    nlohmann::ordered_json versions_json;
+    download::getRequest(VERSIONS_DIRECTORY + util::formatApplicationId(this->tid) + ".json", versions_json);
 
     std::string version_str = std::to_string(this->version);
     if(versions_json.find(version_str) != versions_json.end()) {
@@ -87,9 +89,9 @@ void DownloadCheatsPage::WriteCheats(std::string cheatContent) {
     std::ofstream cheatFile;
     cheatFile.open(path, std::ios::app);
     cheatFile << "\n\n" << cheatContent;
-    std::ofstream updated;
+    /* std::ofstream updated;
     updated.open(UPDATED_TITLES_PATH, std::ios::app);
-    updated << "\n" << tidstr;
+    updated << "\n" << tidstr; */
 }
 
 void DownloadCheatsPage::DeleteCheats() {
@@ -108,10 +110,8 @@ void DownloadCheatsPage::DeleteCheats() {
     std::filesystem::remove(path + util::formatApplicationId(this->tid) + "/cheats/" + this->bid + ".txt");
 }
 
-DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid) : DownloadCheatsPage(tid)
+DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
 {
-    this->setTitle("menus/cheats/menu"_i18n);
-    list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
         "menus/cheats/cheatslips_dl"_i18n + "\n\uE016  Build ID: " + this->bid,
@@ -121,7 +121,8 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid) : Dow
 
     if(this->bid != "") {
         std::vector<std::string> headers = {"accept: application/json"};
-        json cheatsInfo = download::getRequest(CHEATSLIPS_CHEATS_URL + util::formatApplicationId(this->tid) + "/" + this->bid, headers);
+        nlohmann::ordered_json cheatsInfo;
+        download::getRequest(CHEATSLIPS_CHEATS_URL + util::formatApplicationId(this->tid) + "/" + this->bid, cheatsInfo, headers);
         if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
             for (const auto& p : cheatsInfo["cheats"].items()) {
                 json cheat = p.value();
@@ -174,7 +175,8 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid) : Dow
             if(token.find("token") != token.end()) {
                 headers.push_back("X-API-TOKEN: " + token["token"].get<std::string>());
             }
-            nlohmann::ordered_json cheatsInfo = download::getRequest("https://www.cheatslips.com/api/v1/cheats/" + util::formatApplicationId(this->tid) + "/" + this->bid, headers);
+            nlohmann::ordered_json cheatsInfo;
+            download::getRequest("https://www.cheatslips.com/api/v1/cheats/" + util::formatApplicationId(this->tid) + "/" + this->bid, cheatsInfo, headers);
             if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
                 for (const auto& p : cheatsInfo["cheats"].items()) {
                     if(std::find(ids.begin(), ids.end(), p.value()["id"]) != ids.end()) {
@@ -274,9 +276,8 @@ void DownloadCheatsPage_CheatSlips::ShowCheatsContent(nlohmann::ordered_json tit
     brls::PopupFrame::open("menus/cheats/sheet_content"_i18n, appView, "", "");
 }
 
-DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid) : DownloadCheatsPage(tid)
+DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
 {
-    list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
         fmt::format("menus/cheats/gbatemp_dl"_i18n, this->bid),
@@ -285,7 +286,8 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid) : DownloadC
     list->addView(label);
     
     if(this->bid != "") {
-        nlohmann::ordered_json cheatsJson = download::getRequest(CHEATS_DIRECTORY + util::formatApplicationId(this->tid) + ".json");
+        nlohmann::ordered_json cheatsJson;
+        download::getRequest(CHEATS_DIRECTORY + util::formatApplicationId(this->tid) + ".json", cheatsJson);
         if(cheatsJson.find(this->bid) != cheatsJson.end()) {
             for (const auto& p : cheatsJson[this->bid].items()) {
                 json cheat = p.value();

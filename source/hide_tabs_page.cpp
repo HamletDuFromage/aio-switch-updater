@@ -39,7 +39,7 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
     if(hideStatus.find("cfw") != hideStatus.end()) {
         status = hideStatus["cfw"];
     }
-    cfws = new brls::ToggleListItem("menus/main/update_cfw"_i18n, status);
+    cfws = new brls::ToggleListItem("menus/main/update_bootloaders"_i18n, status);
     list->addView(cfws);
 
     status = false;

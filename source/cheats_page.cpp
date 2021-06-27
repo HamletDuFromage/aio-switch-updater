@@ -17,15 +17,15 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
     this->setTitle("menus/cheats/menu"_i18n);
     list = new brls::List();
 
-    view = new brls::ListItem("menus/cheats/view"_i18n);
+    /* view = new brls::ListItem("menus/cheats/view"_i18n);
     view->getClickEvent()->subscribe([&](brls::View* view){
-        brls::Application::pushView(new AppPage());
+        brls::Application::pushView(new AppPage_DownloadedCheats());
     });
-    list->addView(view);
+    list->addView(view); */
 
     exclude = new brls::ListItem("menus/cheats/exclude"_i18n);
     exclude->getClickEvent()->subscribe([&](brls::View* view){
-        brls::Application::pushView(new ExcludePage());
+        brls::Application::pushView(new AppPage_Exclude());
     });
     list->addView(exclude);
  
@@ -43,8 +43,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
     });
     list->addView(deleteCheats);
 
-    auto cheatsVerVec = download::downloadFile(CHEATS_URL_VERSION);
-    std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
+    std::string cheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
     if(cheatsVer != "") {
         dlAll = new brls::ListItem("menus/cheats/dl_all"_i18n);
         dlAll->getClickEvent()->subscribe([&, cheatsVer](brls::View* view) {

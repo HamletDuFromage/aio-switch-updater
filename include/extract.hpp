@@ -25,7 +25,7 @@ namespace extract {
     void extract(const std::string& filename, const std::string& workingPath = ROOT_PATH, int overwriteInis = 1);
     void extract(const std::string&  filename, const std::string& workingPath, const std::string& toExclude);
     std::vector<std::string> getInstalledTitlesNs();
-    std::vector<std::string> excludeTitles(const std::string& path, std::vector<std::string> listedTitles);
+    std::vector<std::string> excludeTitles(const std::string& path, const std::vector<std::string>& listedTitles);
     void writeTitlesToFile(std::set<std::string> titles, const std::string& path);
     void extractCheats(const std::string&  zipPath, std::vector<std::string> titles, CFW cfw, bool credits = false);
     void extractAllCheats(const std::string&  zipPath, CFW cfw);

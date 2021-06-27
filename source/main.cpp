@@ -31,7 +31,8 @@ int main(int argc, char* argv[])
     else
         i18n::loadTranslations();
 
-    
+    //appletInitializeGamePlayRecording();
+
     // Setup verbose logging on PC
 #ifndef __SWITCH__
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
@@ -42,6 +43,8 @@ int main(int argc, char* argv[])
     nsInitialize();
     socketInitializeDefault();
     nxlinkStdio();
+    pmdmntInitialize();
+    pminfoInitialize();
     splInitialize();
     romfsInit();
 
@@ -63,6 +66,8 @@ int main(int argc, char* argv[])
 
     romfsExit();
     splExit();
+    pminfoExit();
+    pmdmntExit();
     socketExit();
     nsExit();
     setsysExit();

@@ -1,7 +1,7 @@
 {
   "about": {
     "title": "Actualizador Todo-en-Uno de Nintendo Switch",
-    "copyright": "AIO-switch-updater tiene licencia GPL-3.0\n© 2020 HamletDuFromage",
+    "copyright": "AIO-switch-updater tiene licencia GPL-3.0\n© 2020-2021 HamletDuFromage",
     "disclaimers": "\ue016  Aparte de trucos obtenidos del hilo principal de Gbatemp, HamletDuFromage no provee nada. Todo el crédito pertenece a sus respectivos dueños.\n\ue016  Los enlaces se actualizan cada tres horas. Si un enlace sigue roto después de 3 horas, por favor abre un issue en Github.\n"
   },
   "cheats": {
@@ -51,7 +51,7 @@
   "joy_con": {
     "title": "Cambiar color de Joy-Con",
     "desc_1": "Puedes cambiar el color interno de tus Joy-Cons. Asegúrate de que están acoplados a la consola.\nLos perfiles de colores se almacenan en '",
-    "desc_2": "'. Ve a 'http://bit.ly/JC-color' ",
+    "desc_2": "'. Ve a 'https://git.io/jcpicker' ",
     "desc_3": "para generar tus propios perfiles.",
     "backup": "Copia de seguridad del perfil de color actual",
     "label": "Cambiar color de Joy-Con",
@@ -61,7 +61,7 @@
   },
   "main": {
     "getting": "Obteniendo ",
-    "firmware_text": "\ue016  Firmwares de 'https://darthsternie.net/switch-firmwares/'. Una vez descargado, será extraído en '/firmware'. Entonces podrás instalar la actualización a través de Daybreak o ChoiDuJour.\n\ue016  FW actual: ",
+    "firmware_text": "\ue016  Firmwares de 'https://darthsternie.net/switch-firmwares/'. Una vez descargado, será extraído en '/firmware'. Entonces podrás instalar la actualización a través de Daybreak.\n\ue016  FW actual: ",
     "cheats_text": "\ue016  Esto descargará un paquete actualizado diario de trucos de 'gbatemp.net'. Los trucos de juegos que no tienes instalados no se extraerán a tu tarjeta SD. Puedes desactivar los trucos actualizados en 'Herramientas->Menú de trucos'.\n\ue016  Versión de trucos actual: ",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\ue016  Los sigpatches permiten a tu Switch instalar y ejecutar archivos NSP no oficiales. Asegúrate de escoger los sigpatches correctos para tu configuración (Atmosphère puro o Hekate+Atmosphère).",

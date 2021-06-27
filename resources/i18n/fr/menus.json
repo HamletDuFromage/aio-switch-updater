@@ -1,7 +1,7 @@
 {
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
-    "copyright": "AIO-switch-updater est distribuée sous la license GPL-3.0\n© 2020 HamletDuFromage",
+    "copyright": "AIO-switch-updater est distribuée sous la license GPL-3.0\n© 2020-2021 HamletDuFromage",
     "disclaimers": "\ue016  A part les cheat codes qui proviennent d'un mirroir d'un topic Gbatemp, HamletDuFromage n'héberge rien. Tous les crédits vont aux propriétaires respectifs\n\ue016  Les liens sont actualisés toutes les 3 heures. Si un lien reste inactif après 3 heures, merci de bien vouloir ouvrir une issue sur Github.\n"
   },
   "cheats": {
@@ -51,7 +51,7 @@
   "joy_con": {
     "title": "Changement de couleur des Joy-Cons",
     "desc_1": "Vous pouvez changer la couleur interne de vos Joy-Cons. Assurez vous qu'ils soient bien ancrés à la Swich.\nLes profils de couleur se trouvent dans '",
-    "desc_2": "'. Visitez 'http://bit.ly/JC-color' ",
+    "desc_2": "'. Visitez 'https://git.io/jcpicker' ",
     "desc_3": "pour générer des profils personalisés.",
     "backup": "Sauvegarde du profil actuel",
     "label": "Échangeur de couleurs des Joy-Con",
@@ -61,7 +61,7 @@
   },
   "main": {
     "getting": "Téléchargement du ",
-    "firmware_text": "\ue016  Firmware depuis 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargés, ils seront dans '/firmware'. Vous pouvez ensuite les installer avec Daybreak ou ChoiDuJour.\n\ue016  FW actuel : ",
+    "firmware_text": "\ue016  Firmware depuis 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargés, ils seront dans '/firmware'. Vous pouvez ensuite les installer avec Daybreak.\n\ue016  FW actuel : ",
     "cheats_text": "\ue016  Archive mise à jour quotidiennement des codes de triche de 'gbatemp.net'. Les codes de triche pour les jeux que vous ne possedez pas ne seront pas extraits sur votre carte SD. Vous pouvez désactiver les mises à jour pour pour une sélection de jeux dans le menu 'Outils->Menu de cheat'.\n\ue016  Version actuelle des cheats : ",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\ue016  Les Sigpatches permettent à votre Switch d'installer et d'exécuter des fichiers NSP non officiels. Assurez-vous de choisir les bons patchs pour votre configuration (Atmosphère seul ou Hekate + Atmosphère).",

@@ -7,11 +7,12 @@ constexpr int OFF =     0;
 
 namespace download {
     
-    std::vector<std::uint8_t> downloadFile(const std::string& url, const char* output = "", int api = OFF);
+    long downloadFile(const std::string& url, std::vector<std::uint8_t>& res, const char* output = "", int api = OFF);
+    long downloadFile(const std::string& url, const char* output = "", int api = OFF);
     std::vector<std::pair<std::string, std::string>> getLinks(const std::string& url);
+    std::vector<std::pair<std::string, std::string>> getLinksFromJson(const nlohmann::ordered_json& json_object);
     std::string fetchTitle(const std::string& url);
-    std::string downloadPage(const std::string& url, std::vector<std::string> headers = {}, std::string body = "");
-    std::vector<std::uint8_t> downloadPageBinary(const std::string& url, std::vector<std::string> headers = {}, std::string body = "");
-    nlohmann::ordered_json getRequest(const std::string& url, std::vector<std::string> headers = {}, std::string body = "");
+    long downloadPage(const std::string& url, std::string& res, const std::vector<std::string>& headers = {}, const std::string& body = "");
+    long getRequest(const std::string& url, nlohmann::ordered_json& res, const std::vector<std::string>& headers = {}, const std::string& body = "");
 
 }

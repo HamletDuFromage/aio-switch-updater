@@ -124,8 +124,8 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
         else {
             strcpy(url, "https://duckduckgo.com");
         }
-        int at = appletGetAppletType();
         std::string error = "";
+        int at = appletGetAppletType();
         if(at == AppletType_Application) { // Running as a title
             WebCommonConfig conf;
             WebCommonReply out;

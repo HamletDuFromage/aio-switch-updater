@@ -1,13 +1,14 @@
 #include "worker_page.hpp"
-#include <string>
-#include <functional>
-
 #include "utils.hpp"
 #include "download.hpp"
 #include "extract.hpp"
 #include "constants.hpp"
 #include "progress_event.hpp"
+#include <string>
+#include <functional>
 
+namespace i18n = brls::i18n;
+using namespace i18n::literals;
 
 WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, worker_func_t worker_func): frame(frame), workerFunc(worker_func), text(text)
 {
@@ -27,28 +28,38 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
 
 void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
 {
-    if (!this->workStarted)
+    if (this->draw_page) 
     {
-        appletSetMediaPlaybackState(true);
-        this->workStarted = true;
-        ProgressEvent::instance().reset();
-        workerThread = new std::thread(&WorkerPage::doWork, this);
-    }
-    else if (ProgressEvent::instance().finished())
-    {
-        brls::Logger::debug("Worker done");
-        appletSetMediaPlaybackState(false);
-        frame->nextStage();
-    }
-    else
-    {
-        this->progressDisp->setProgress(ProgressEvent::instance().getStep(), ProgressEvent::instance().getMax());
-        this->progressDisp->frame(ctx);
-        if(ProgressEvent::instance().getTotal()) {
-            this->label->setText(fmt::format("{0} ({1:.1f} MB of {2:.1f} MB - {3:.1f} MB/s)", text, ProgressEvent::instance().getNow() / 0x100000, ProgressEvent::instance().getTotal() / 0x100000, ProgressEvent::instance().getSpeed() / 0x100000));
-            //this->label->setText(fmt::format("{0} ({1:.1f}MB of {2:.1f}MB - MB/s)", text, ProgressEvent::instance().getNow() / 0x100000, ProgressEvent::instance().getTotal() / 0x100000));
+        if (!this->workStarted)
+        {
+            appletSetMediaPlaybackState(true);
+            this->workStarted = true;
+            ProgressEvent::instance().reset();
+            workerThread = new std::thread(&WorkerPage::doWork, this);
         }
-        this->label->frame(ctx);
+        else if (ProgressEvent::instance().finished())
+        {
+            brls::Logger::debug("Worker done");
+            appletSetMediaPlaybackState(false);
+            if (ProgressEvent::instance().getStatusCode() > 399) {
+                this->draw_page = false;
+                brls::Application::crash(fmt::format("menus/errors/error_message"_i18n, util::getErrorMessage(ProgressEvent::instance().getStatusCode())));
+            } 
+            else{
+                ProgressEvent::instance().setStatusCode(0);
+                frame->nextStage();
+            }
+        }
+        else
+        {
+            this->progressDisp->setProgress(ProgressEvent::instance().getStep(), ProgressEvent::instance().getMax());
+            this->progressDisp->frame(ctx);
+            if(ProgressEvent::instance().getTotal()) {
+                this->label->setText(fmt::format("{0} ({1:.1f} MB of {2:.1f} MB - {3:.1f} MB/s)", text, ProgressEvent::instance().getNow() / 0x100000, ProgressEvent::instance().getTotal() / 0x100000, ProgressEvent::instance().getSpeed() / 0x100000));
+                //this->label->setText(fmt::format("{0} ({1:.1f}MB of {2:.1f}MB - MB/s)", text, ProgressEvent::instance().getNow() / 0x100000, ProgressEvent::instance().getTotal() / 0x100000));
+            }
+            this->label->frame(ctx);
+        }
     }
 }
 

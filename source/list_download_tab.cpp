@@ -17,7 +17,8 @@ using namespace i18n::literals;
 ListDownloadTab::ListDownloadTab(const archiveType type) :
     brls::List()
 {
-    std::vector<std::pair<std::string, std::string>> links, sxoslinks;
+    //std::vector<std::pair<std::string, std::string>> links, sxoslinks;
+    std::vector<std::pair<std::string, std::string>> links;
     std::string operation("menus/main/getting"_i18n);
     std::string firmwareText("menus/main/firmware_text"_i18n);
 
@@ -47,16 +48,16 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
             break;
         case archiveType::cfw:
             links = download::getLinks(CFW_URL);
-            sxoslinks = download::getLinks(SXOS_URL);
-            links.insert(links.end(), sxoslinks.begin(), sxoslinks.end());
+            // sxos is dead anyways
+            /* sxoslinks = download::getLinks(SXOS_URL);
+            links.insert(links.end(), sxoslinks.begin(), sxoslinks.end()); */
             operation += "menus/main/cfw"_i18n;
             this->description->setText(
-                "menus/main/cfw_text"_i18n 
+                "menus/main/bootloaders_text"_i18n 
             );
             break;
         case archiveType::cheats:
-            auto cheatsVerVec = download::downloadFile(CHEATS_URL_VERSION);
-            std::string cheatsVer(cheatsVerVec.begin(), cheatsVerVec.end());
+            std::string cheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
             if(cheatsVer != ""){
                 switch(CurrentCfw::running_cfw){
                     case CFW::sxos:
@@ -112,7 +113,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
 
     else{
         notFound = new brls::Label(
-            brls::LabelStyle::DESCRIPTION,
+            brls::LabelStyle::SMALL,
             "menus/main/links_not_found"_i18n,
             true
         );
@@ -138,7 +139,7 @@ void ListDownloadTab::createCheatSlipItem() {
     cheatslipsItem->setHeight(LISTITEM_HEIGHT);
     cheatslipsItem->getClickEvent()->subscribe([&](brls::View* view) {
         if(std::filesystem::exists(TOKEN_PATH)) {
-            brls::Application::pushView(new AppPage(appPageType::cheatSlips));
+            brls::Application::pushView(new AppPage_CheatSlips());
             return true;
         }
         else {
@@ -163,7 +164,8 @@ void ListDownloadTab::createCheatSlipItem() {
             }
             std::string body =  "{\"email\":\"" + std::string(usr) 
                                 + "\",\"password\":\"" + std::string(pwd) + "\"}";
-            nlohmann::json token = download::getRequest(CHEATSLIPS_TOKEN_URL, 
+            nlohmann::ordered_json token;
+            download::getRequest(CHEATSLIPS_TOKEN_URL, token,
                 {"Accept: application/json", 
                 "Content-Type: application/json", 
                 "charset: utf-8"}, 
@@ -172,7 +174,7 @@ void ListDownloadTab::createCheatSlipItem() {
                 std::ofstream tokenFile(TOKEN_PATH);
                 tokenFile << token.dump();
                 tokenFile.close();
-                brls::Application::pushView(new AppPage(appPageType::cheatSlips));
+                brls::Application::pushView(new AppPage_CheatSlips());
                 return true;
             }
             else {
@@ -196,7 +198,7 @@ void ListDownloadTab::creategbatempItem() {
     gbatempItem = new brls::ListItem("menus/cheats/get_gbatemp"_i18n);
     gbatempItem->setHeight(LISTITEM_HEIGHT);
     gbatempItem->getClickEvent()->subscribe([&](brls::View* view) {
-        brls::Application::pushView(new AppPage(appPageType::gbatempCheats));
+        brls::Application::pushView(new AppPage_Gbatemp());
         return true;
     });
     this->addView(gbatempItem);

@@ -31,7 +31,7 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 - For Atmosphère. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available. After downloading the sigpatches archive, the program will ask you whether you want to override your existing .ini files.
 
 ### ⬦ Download firmwares
-- Download firmare files to `/firmware` that can then be installed using DayBreak or ChoiDuJour.
+- Download firmare files to `/firmware` that can then be installed using DayBreak.
 
 ### ⬦ Download cheats
 - Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you can turn off cheat updates for specific titles in `Tools->Cheat Menu`.

@@ -7,10 +7,10 @@
 #include "main_frame.hpp"
 #include "reboot_payload.h"
 #include "unistd.h"
+#include "progress_event.hpp"
 #include <switch.h>
 #include <filesystem>
 #include <fstream>
-
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -28,34 +28,38 @@ bool isArchive(const std::string&  path){
     return fileContent.find("DOCTYPE") == std::string::npos;
 }
 
-void downloadArchive(std::string url, archiveType type){
+void downloadArchive(std::string url, archiveType type) {
+    long status_code;
+    downloadArchive(url,type, status_code);
+}
+
+void downloadArchive(std::string url, archiveType type, long& status_code) {
     fs::createTree(DOWNLOAD_PATH);
-    AppletType at;
     switch(type){
         case archiveType::sigpatches:
-            download::downloadFile(url, SIGPATCHES_FILENAME, OFF);
+            status_code = download::downloadFile(url, SIGPATCHES_FILENAME, OFF);
             break;
         case archiveType::cheats:
-            download::downloadFile(url, CHEATS_FILENAME, OFF);
+            status_code = download::downloadFile(url, CHEATS_FILENAME, OFF);
             break;
         case archiveType::fw:
-            at = appletGetAppletType();
-            if (at == AppletType_Application || at == AppletType_SystemApplication) {
-                download::downloadFile(url, FIRMWARE_FILENAME, OFF);
+            if (!isApplet()) {
+                status_code = download::downloadFile(url, FIRMWARE_FILENAME, OFF);
             }
             else{
                 brls::Application::crash("menus/utils/fw_warning"_i18n);
             }
             break;
         case archiveType::app:
-            download::downloadFile(url, APP_FILENAME, OFF);
+            status_code = download::downloadFile(url, APP_FILENAME, OFF);
             break;
         case archiveType::cfw:
-            download::downloadFile(url, CFW_FILENAME, OFF);
+            status_code = download::downloadFile(url, CFW_FILENAME, OFF);
             break;
         case archiveType::ams_cfw:
-            download::downloadFile(url, AMS_FILENAME, OFF);
+            status_code = download::downloadFile(url, AMS_FILENAME, OFF);
     }
+    ProgressEvent::instance().setStatusCode(status_code);
 }
 
 int showDialogBox(std::string text, std::string opt){
@@ -107,9 +111,7 @@ void extractArchive(archiveType type, std::string tag){
     switch(type){
         case archiveType::sigpatches:
             if(isArchive(SIGPATCHES_FILENAME)) {
-                /* std::string backup(HEKATE_IPL_PATH);
-                backup += ".old"; */
-                if(std::filesystem::exists(HEKATE_IPL_PATH)){
+                /* if(std::filesystem::exists(HEKATE_IPL_PATH)){
                     overwriteInis = showDialogBox("menus/utils/overwrite"_i18n + std::string(HEKATE_IPL_PATH) +"?", "menus/common/no"_i18n, "menus/common/yes"_i18n);
                     if(overwriteInis == 0){
                         extract::extract(SIGPATCHES_FILENAME, ROOT_PATH, HEKATE_IPL_PATH);
@@ -117,10 +119,10 @@ void extractArchive(archiveType type, std::string tag){
                     else{
                         extract::extract(SIGPATCHES_FILENAME);
                     }
-                }
-                else{
+                } */
+                //else{
                     extract::extract(SIGPATCHES_FILENAME);
-                }
+                //}
             }
             else{
                 brls::Application::crash("menus/utils/wrong_type_sigpatches"_i18n);
@@ -218,12 +220,20 @@ void rebootToPayload(const std::string& path) {
     reboot_to_payload(path.c_str(), CurrentCfw::running_cfw != CFW::ams);
 }
 
-std::string getLatestTag(const std::string& url){
-    nlohmann::json tag = download::getRequest(url, {"accept: application/vnd.github.v3+json"});
+std::string getLatestTag(const std::string& url) {
+    nlohmann::ordered_json tag;
+    download::getRequest(url, tag, {"accept: application/vnd.github.v3+json"});
     if(tag.find("tag_name") != tag.end())
         return tag["tag_name"];
     else
         return "";
+}
+
+std::string downloadFileToString(const std::string& url) {
+    std::vector<uint8_t> bytes;
+    download::downloadFile(url, bytes);
+    std::string str(bytes.begin(), bytes.end());
+    return str;
 }
 
 void saveVersion(std::string version, const std::string& path){
@@ -254,6 +264,35 @@ void removeSysmodulesFlags(const std::string&  directory) {
                 std::filesystem::remove(e.path());
         }
     }
+}
+
+std::string lowerCase(const std::string& str) {
+    std::string res = str;
+    std::for_each(res.begin(), res.end(), [](char & c){
+        c = std::tolower(c);
+    });
+    return res;
+}
+
+std::string getErrorMessage(long status_code) {
+    std::string res;
+    switch(status_code) {
+        case 500:
+            res = fmt::format("{0:}: Internal Server Error", status_code);
+            break;
+        case 503: 
+            res = fmt::format("{0:}: Service Temporarily Unavailable", status_code);
+            break;
+        default:
+            res = fmt::format("error: {0:}", status_code);
+            break;
+    }
+    return res;
+}
+
+bool isApplet() {
+    AppletType at = appletGetAppletType();
+    return at != AppletType_Application && at != AppletType_SystemApplication;
 }
 
 }

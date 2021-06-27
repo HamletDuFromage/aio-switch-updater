@@ -40,7 +40,7 @@ MainFrame::MainFrame() : TabFrame()
         this->addTab("menus/main/update_ams"_i18n, new AmsTab(erista));
 
     if(hideStatus.find("cfw") == hideStatus.end() || !hideStatus["cfw"])
-        this->addTab("menus/main/update_cfw"_i18n, new ListDownloadTab(archiveType::cfw));
+        this->addTab("menus/main/update_bootloaders"_i18n, new ListDownloadTab(archiveType::cfw));
 
     if(hideStatus.find("sigpatches") == hideStatus.end() || !hideStatus["sigpatches"])
         this->addTab("menus/main/update_sigpatches"_i18n, new ListDownloadTab(archiveType::sigpatches));

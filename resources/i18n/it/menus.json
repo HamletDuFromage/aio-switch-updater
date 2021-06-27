@@ -1,7 +1,7 @@
 {
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
-    "copyright": "AIO-switch-updater è distribuito con licenza GPL-3.0\n© 2020 HamletDuFromage",
+    "copyright": "AIO-switch-updater è distribuito con licenza GPL-3.0\n© 2020-2021 HamletDuFromage",
     "disclaimers": "\ue016  Esclusi i cheat che sono presi dal thread principale su Gbatemp, HamletDuFromage non hosta niente. Tutti i crediti vanno ai rispettivi proprietari.\n\ue016  I link vengono aggiornati ognitre ore. Se un link continua a non funzionare dopo che siano passate 3 ore, apri una issue su Github.\n"
   },
   "cheats": {
@@ -51,7 +51,7 @@
   "joy_con": {
     "title": "Cambia il colore dei Joy-Con",
     "desc_1": "You can change the internal color of your Joy-Cons. Make sure they're docked.\nColor profiles are stored in '",
-    "desc_2": "'. Visita 'http://bit.ly/JC-color' ",
+    "desc_2": "'. Visita 'https://git.io/jcpicker' ",
     "desc_3": "per generare i tuoi profili personalizzati.",
     "backup": "Salva il profilo corrente",
     "label": "Cambia il colore dei Joy-Con",
@@ -61,7 +61,7 @@
   },
   "main": {
     "getting": "Ottengo ",
-    "firmware_text": "\ue016  il dump del Firmware da 'https://darthsternie.net/switch-firmwares/'. Una volta scaricato, sarà estratto in '/firmware'. Puoi installare l'aggiornamento tramite Daybreak o ChoiDuJour.\n\ue016  FW attuale: ",
+    "firmware_text": "\ue016  il dump del Firmware da 'https://darthsternie.net/switch-firmwares/'. Una volta scaricato, sarà estratto in '/firmware'. Puoi installare l'aggiornamento tramite Daybreak.\n\ue016  FW attuale: ",
     "cheats_text": "\ue016  Questo scaricherà quotidianamente un archivio di cheat da 'gbatemp.net'. I cheat per i giochi non installati non saranno estratti sulla tua scheda SD. Puoi disabilitare l'aggiornamento dei cheat in 'Tools->Cheat menu'.\n\ue016  Current cheats version: ",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\ue016  Le sigpatches consentono di installare ed eseguire NSP non ufficiali sulla Switch. Assicurati di scegliere le sigpatches corrette per la tua configurazione (solo Atmosphère o Hekate+Atmosphère).",

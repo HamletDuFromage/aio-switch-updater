@@ -14,7 +14,7 @@ class DownloadCheatsPage : public brls::AppletFrame
         std::string bid = "";
         u32 version = 0;
 
-        DownloadCheatsPage(uint64_t tid);
+        DownloadCheatsPage(uint64_t tid, const std::string& name);
         void GetBuildID();
         void GetBuildIDFromDmnt();
         void GetVersion();
@@ -47,7 +47,7 @@ class DownloadCheatsPage_CheatSlips : public DownloadCheatsPage {
         void ShowCheatsContent(nlohmann::ordered_json titles);
 
     public:
-        DownloadCheatsPage_CheatSlips(uint64_t tid);
+        DownloadCheatsPage_CheatSlips(uint64_t tid, const std::string& name);
 };
 
 class DownloadCheatsPage_GbaTemp : public DownloadCheatsPage {
@@ -55,5 +55,5 @@ class DownloadCheatsPage_GbaTemp : public DownloadCheatsPage {
         brls::ListItem* listItem;
 
     public:
-        DownloadCheatsPage_GbaTemp(uint64_t tid);
+        DownloadCheatsPage_GbaTemp(uint64_t tid, const std::string& name);
 };

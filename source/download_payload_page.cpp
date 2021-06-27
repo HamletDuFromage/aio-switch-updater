@@ -33,7 +33,7 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
                     new ConfirmPage(stagedFrame, text)
                 );
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path](){download::downloadFile(url, path.c_str(), OFF);})
+                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path](){ download::downloadFile(url, path.c_str(), OFF); })
                 );
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)
