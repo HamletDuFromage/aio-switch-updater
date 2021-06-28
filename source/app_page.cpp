@@ -30,8 +30,6 @@ void AppPage::PopulatePage()
     u64 controlSize     = 0;
     u64 tid;
 
-    //titles = fs::readLineByLine(UPDATED_TITLES_PATH);
-
     if (!util::isApplet()) {
         if (R_SUCCEEDED(nsListApplicationRecord(records, MaxTitleCount, 0, &recordCount))){
             for (s32 i = 0; i < recordCount; i++){
@@ -43,8 +41,8 @@ void AppPage::PopulatePage()
 
                 if R_FAILED(GetControlData(tid, controlData, controlSize, name)) continue;
 
-                this->CreateGameListItem(name, tid, &controlData);
-                list->addView(listItem);
+                listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
+                this->DeclareGameListItem(name, tid, &controlData);
 
                 free(controlData);
             }
@@ -54,8 +52,7 @@ void AppPage::PopulatePage()
     else {
         tid = GetCurrentApplicationId();
         if (R_SUCCEEDED(InitControlData(&controlData)) && R_SUCCEEDED(GetControlData(tid, controlData, controlSize, name))) {
-            this->CreateGameListItem(name, tid, &controlData);
-            list->addView(listItem);
+            this->DeclareGameListItem(name, tid, &controlData);
         }
         label = new brls::Label(brls::LabelStyle::SMALL, "menus/cheats/applet_mode_not_supported"_i18n, true);
         list->addView(label);
@@ -134,10 +131,10 @@ u32 AppPage::GetControlData(u64 tid, NsApplicationControlData* controlData, u64&
     return 0;
 }
 
-void AppPage::CreateGameListItem(const std::string& name, u64 tid, NsApplicationControlData **controlData)
+void AppPage::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData **controlData)
 {
-    listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
     listItem->setThumbnail((*controlData)->icon, sizeof((*controlData)->icon));
+    list->addView(listItem);
 }
 
 uint64_t AppPage::GetCurrentApplicationId()
@@ -167,10 +164,10 @@ void AppPage_CheatSlips::CreateLabel()
     list->addView(label);
 }
 
-void AppPage_CheatSlips::CreateGameListItem(const std::string& name, u64 tid, NsApplicationControlData **controlData)
+void AppPage_CheatSlips::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData **controlData)
 {
-    AppPage::CreateGameListItem(name, tid, controlData);
     listItem->getClickEvent()->subscribe([&, tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_CheatSlips(tid, name)); });
+    AppPage::DeclareGameListItem(name, tid, controlData);
 }
 
 AppPage_Gbatemp::AppPage_Gbatemp() : AppPage()
@@ -186,10 +183,10 @@ void AppPage_Gbatemp::CreateLabel()
     list->addView(label);
 }
 
-void AppPage_Gbatemp::CreateGameListItem(const std::string& name, u64 tid, NsApplicationControlData **controlData)
+void AppPage_Gbatemp::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData **controlData)
 {
-    AppPage::CreateGameListItem(name, tid, controlData);
     listItem->getClickEvent()->subscribe([&, tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_GbaTemp(tid, name)); });
+    AppPage::DeclareGameListItem(name, tid, controlData);
 }
 
 AppPage_Exclude::AppPage_Exclude() : AppPage()
@@ -263,3 +260,43 @@ void AppPage_Exclude::PopulatePage()
     this->setContentView(list);
 }
 
+AppPage_DownloadedCheats::AppPage_DownloadedCheats() : AppPage()
+{
+    GetExistingCheatsTids();
+    this->PopulatePage();
+}
+
+void AppPage_DownloadedCheats::CreateLabel()
+{
+    this->setTitle("menus/cheats/installed"_i18n);
+    label = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/cheats/label"_i18n, true);
+    list->addView(label);
+}
+
+void AppPage_DownloadedCheats::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData **controlData)
+{
+    if (titles.find(util::formatApplicationId(tid)) != titles.end()) {
+        AppPage::DeclareGameListItem(name, tid, controlData);
+    }
+}
+
+void AppPage_DownloadedCheats::GetExistingCheatsTids() {
+    std::string path;
+    switch(CurrentCfw::running_cfw){
+        case CFW::ams:
+            path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
+            break;
+        case CFW::rnx:
+            path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
+            break;
+        case CFW::sxos:
+            path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
+            break;
+    }
+    for(const auto& entry : std::filesystem::directory_iterator(path)) {
+        std::string cheatsPath =  entry.path().string() + "/cheats";
+        if(std::filesystem::exists(cheatsPath) && !std::filesystem::is_empty(cheatsPath)){
+            titles.insert(util::upperCase(cheatsPath.substr(cheatsPath.length() - 7 - 16, 16)));
+        }
+    }
+}

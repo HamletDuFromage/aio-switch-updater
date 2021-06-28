@@ -29,7 +29,7 @@ class AppPage : public brls::AppletFrame
         uint32_t GetControlData(u64 tid, NsApplicationControlData* controlData, u64& controlSize, std::string& name);
         virtual void PopulatePage();
         virtual void CreateLabel() { };
-        virtual void CreateGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData);
+        virtual void DeclareGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData);
 
     public:
         AppPage();
@@ -49,7 +49,7 @@ class AppPage_CheatSlips : public AppPage
 {
     private:
         void CreateLabel() override;
-        void CreateGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData) override;
+        void DeclareGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData) override;
 
     public:
         AppPage_CheatSlips();
@@ -59,8 +59,20 @@ class AppPage_Gbatemp : public AppPage
 {
     private:
         void CreateLabel() override;
-        void CreateGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData) override;
+        void DeclareGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData) override;
 
     public:
         AppPage_Gbatemp();
+};
+
+class AppPage_DownloadedCheats : public AppPage
+{
+    private:
+        std::set<std::string> titles;
+        void CreateLabel() override;
+        void DeclareGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData) override;
+        void GetExistingCheatsTids();
+
+    public:
+        AppPage_DownloadedCheats();
 };

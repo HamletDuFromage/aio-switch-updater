@@ -17,11 +17,11 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
     this->setTitle("menus/cheats/menu"_i18n);
     list = new brls::List();
 
-    /* view = new brls::ListItem("menus/cheats/view"_i18n);
+    view = new brls::ListItem("menus/cheats/view"_i18n);
     view->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new AppPage_DownloadedCheats());
     });
-    list->addView(view); */
+    list->addView(view);
 
     exclude = new brls::ListItem("menus/cheats/exclude"_i18n);
     exclude->getClickEvent()->subscribe([&](brls::View* view){

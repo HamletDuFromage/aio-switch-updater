@@ -255,6 +255,7 @@ void extractAllCheats(const std::string&  zipPath, CFW cfw){
     ProgressEvent::instance().reset();
     zipper::Unzipper unzipper(zipPath);
     std::vector<zipper::ZipEntry> entries = unzipper.entries();
+    //std::set<std::string> extractedTitles;
     int offset = 0;
     switch(cfw){
         case CFW::ams:
@@ -279,11 +280,13 @@ void extractAllCheats(const std::string&  zipPath, CFW cfw){
     ProgressEvent::instance().setTotalSteps(entries.size());
     for(const auto& entry : entries) {
         if(((int) entry.name.size() == offset + 16 + 4) && (isBID(entry.name.substr(offset, 16)))) {
+            //extractedTitles.insert(util::upperCase(entry.name.substr(offset - 24, 16)));
             unzipper.extractEntry(entry.name);
         }
         ProgressEvent::instance().incrementStep(1);
     }
     unzipper.close();
+    //writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
     download::downloadFile(CHEATS_URL_VERSION, CHEATS_VERSION, OFF);
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
@@ -295,7 +298,7 @@ bool isBID(std::string bid) {
     return true;
 }
 
-void writeTitlesToFile(std::set<std::string> titles, const std::string& path){
+void writeTitlesToFile(const std::set<std::string>& titles, const std::string& path){
     std::ofstream updatedTitlesFile;
     std::set<std::string>::iterator it = titles.begin();
     updatedTitlesFile.open(path, std::ofstream::out | std::ofstream::trunc);
@@ -323,7 +326,7 @@ void removeCheats(CFW cfw){
     }
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setTotalSteps(std::distance(std::filesystem::directory_iterator(path), std::filesystem::directory_iterator()));
-    for (const auto & entry : std::filesystem::directory_iterator(path)){
+    for (const auto& entry : std::filesystem::directory_iterator(path)){
         std::string cheatsPath =  entry.path().string() + "/cheats";
         if(std::filesystem::exists(cheatsPath)){
             for (const auto & cheat : std::filesystem::directory_iterator(cheatsPath)){

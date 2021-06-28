@@ -274,6 +274,14 @@ std::string lowerCase(const std::string& str) {
     return res;
 }
 
+std::string upperCase(const std::string& str) {
+    std::string res = str;
+    std::for_each(res.begin(), res.end(), [](char & c){
+        c = std::toupper(c);
+    });
+    return res;
+}
+
 std::string getErrorMessage(long status_code) {
     std::string res;
     switch(status_code) {
@@ -293,6 +301,29 @@ std::string getErrorMessage(long status_code) {
 bool isApplet() {
     AppletType at = appletGetAppletType();
     return at != AppletType_Application && at != AppletType_SystemApplication;
+}
+
+std::set<std::string> getExistingCheatsTids() {
+    std::string path;
+    std::set<std::string> res;
+    switch(CurrentCfw::running_cfw){
+        case CFW::ams:
+            path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
+            break;
+        case CFW::rnx:
+            path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
+            break;
+        case CFW::sxos:
+            path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
+            break;
+    }
+    for(const auto& entry : std::filesystem::directory_iterator(path)) {
+        std::string cheatsPath =  entry.path().string() + "/cheats";
+        if(std::filesystem::exists(cheatsPath)){
+            res.insert(util::upperCase(cheatsPath.substr(cheatsPath.length() - 7 - 16, 16)));
+        }
+    }
+    return res;
 }
 
 }

@@ -3,6 +3,7 @@
 #include "download.hpp"
 #include "utils.hpp"
 #include "fs.hpp"
+#include "extract.hpp"
 #include "current_cfw.hpp"
 #include <fstream>
 #include <filesystem>
