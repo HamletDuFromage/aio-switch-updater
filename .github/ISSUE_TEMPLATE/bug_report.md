@@ -20,5 +20,8 @@ If applicable, add anything that might help explain your problem. Crash reports 
  - System Firmware: [e.g. 12.0.3]
  - CFW Version [e.g. Atmospshère 0.19.4]
 
+**SD card format**
+FAT32 or exFAT
+
 **Additional context**
 Add any other context about the problem here.
