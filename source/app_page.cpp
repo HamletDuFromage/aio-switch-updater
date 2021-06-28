@@ -9,6 +9,7 @@
 #include <switch.h>
 #include <filesystem>
 #include <fstream>
+#include <regex>
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
@@ -276,6 +277,7 @@ void AppPage_DownloadedCheats::CreateLabel()
 void AppPage_DownloadedCheats::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData **controlData)
 {
     if (titles.find(util::formatApplicationId(tid)) != titles.end()) {
+        listItem->getClickEvent()->subscribe([this, tid, name](brls::View* view) { ShowCheatFiles(tid, name); });
         AppPage::DeclareGameListItem(name, tid, controlData);
     }
 }
@@ -295,8 +297,73 @@ void AppPage_DownloadedCheats::GetExistingCheatsTids() {
     }
     for(const auto& entry : std::filesystem::directory_iterator(path)) {
         std::string cheatsPath =  entry.path().string() + "/cheats";
-        if(std::filesystem::exists(cheatsPath) && !std::filesystem::is_empty(cheatsPath)){
-            titles.insert(util::upperCase(cheatsPath.substr(cheatsPath.length() - 7 - 16, 16)));
+        if(std::filesystem::exists(cheatsPath) && !std::filesystem::is_empty(cheatsPath)) {
+            for(const auto& cheatFile : std::filesystem::directory_iterator(cheatsPath)) {
+                if(extract::isBID(cheatFile.path().filename().stem())) {
+                    titles.insert(util::upperCase(cheatsPath.substr(cheatsPath.length() - 7 - 16, 16)));
+                    break;
+                }
+            }
         }
     }
+}
+
+void AppPage_DownloadedCheats::ShowCheatFiles(u64 tid, const std::string& name) {
+    std::string path;
+    switch(CurrentCfw::running_cfw){
+        case CFW::ams:
+            path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
+            break;
+        case CFW::rnx:
+            path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
+            break;
+        case CFW::sxos:
+            path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
+            break;
+    }
+    path += util::formatApplicationId(tid) + "/cheats/";
+
+    brls::TabFrame* appView = new brls::TabFrame();
+    bool is_populated = false;
+    for(const auto& cheatFile : std::filesystem::directory_iterator(path)){
+        is_populated |= CreateCheatList(cheatFile.path(), &appView);
+    }
+    if(is_populated) {
+        brls::PopupFrame::open(name, appView, "");
+    }
+    else {
+        brls::Dialog* dialog = new brls::Dialog("menus/cheats/not_found"_i18n);
+        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+            dialog->close();
+        };
+        dialog->addButton("menus/common/ok"_i18n, callback);
+        dialog->setCancelable(true);
+        dialog->open();
+    }
+}
+
+bool AppPage_DownloadedCheats::CreateCheatList(const std::filesystem::path& path, brls::TabFrame** appView) {
+    bool res = false;
+    brls::List* cheatsList = new brls::List();
+    if(extract::isBID(path.filename().stem())) {
+        cheatsList->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, fmt::format("menus/cheats/cheatfile_label"_i18n, path.filename().string()), true));
+
+        std::string str;
+        std::regex cheats_expr(R"(\[.+\])");
+        std::ifstream in(path);
+        if(in) {
+            while (std::getline(in, str)) {
+                if(str.size() > 0) {
+                    if(std::regex_search(str, cheats_expr)) {
+                        cheatsList->addView(new brls::ListItem(str));
+                        res = true;
+                    }
+                }
+            }
+        }
+    }
+    if(res) {
+        (*appView)->addTab(path.filename().stem(), cheatsList);
+    }
+    return res;
 }

@@ -166,8 +166,8 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.7.0");
     changes.push_back("\uE016 Fixed Atmosphère updates failing when updating from a system without stratosphere.romfs present on the SD card.\n\uE016 Disabled the option to download individual cheat codes while in applet mode, except for the one game currently running.\n\uE016 UI tweaks.\n\uE016 Prevents crashes when requesting invalid CheatSlips cheat sheets.");
 
-    verTitles.push_back("v2.7.1");
-    changes.push_back("\uE016 Restored and improved \"View installed cheats\" menu.");
+    verTitles.push_back("v2.8.0");
+    changes.push_back("\uE016 Restored and improved \"View installed cheats\" menu. You can now browse the content of your cheatsheets from the app.");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);

@@ -23,7 +23,6 @@ bool isArchive(const std::string&  path){
     if(std::filesystem::exists(path)){
         file.open(path, std::fstream::in);
         file >> fileContent;
-        file.close();
     }
     return fileContent.find("DOCTYPE") == std::string::npos;
 }

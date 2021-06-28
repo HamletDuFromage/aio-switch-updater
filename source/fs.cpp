@@ -42,7 +42,6 @@ namespace fs {
     void writeJsonToFile(nlohmann::json &data, const std::string& path) {
         std::ofstream out(path);
         out << data.dump(4);
-        out.close();
     }
 
     bool copyFile(const std::string& from, const std::string& to){
@@ -88,7 +87,6 @@ namespace fs {
                         
                     }
                 }
-                in.close();
             }
         }
         if(error == "") {
@@ -110,7 +108,6 @@ namespace fs {
                 if(str.size() > 0)
                     titles.insert(str);
             }
-            in.close();
         }
         return titles;
     }

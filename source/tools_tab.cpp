@@ -232,7 +232,6 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
                 updatedLanguage["language"] = l.second;
                 std::ofstream out(LANGUAGE_JSON);
                 out << updatedLanguage.dump();
-                out.close();
                 brls::Application::quit();
                 return true;
             });
@@ -257,12 +256,5 @@ ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
     });
     changelog->setHeight(LISTITEM_HEIGHT);
     this->addView(changelog);
-
-/*     language = new brls::ListItem("menus/Language_Option"_i18n);
-    language->getClickEvent()->subscribe([&](brls::View* view){
-        brls::Application::pushView(new LanguageOptionPage());
-    });
-    language->setHeight(LISTITEM_HEIGHT);
-    this->addView(language); */
 }
 

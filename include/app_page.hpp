@@ -2,6 +2,7 @@
 
 #include <borealis.hpp>
 #include <switch.h>
+#include <filesystem>
 #include <algorithm>
 #include <set>
 
@@ -72,6 +73,8 @@ class AppPage_DownloadedCheats : public AppPage
         void CreateLabel() override;
         void DeclareGameListItem(const std::string& name, uint64_t tid, NsApplicationControlData **controlData) override;
         void GetExistingCheatsTids();
+        void ShowCheatFiles(uint64_t tid, const std::string& name);
+        bool CreateCheatList(const std::filesystem::path& path, brls::TabFrame** appView);
 
     public:
         AppPage_DownloadedCheats();

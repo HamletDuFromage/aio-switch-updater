@@ -152,7 +152,6 @@ std::vector<std::string> excludeTitles(const std::string& path, const std::vecto
                 }
             }
         }
-        file.close();
     }
 
     std::sort(titles.begin(), titles.end());
