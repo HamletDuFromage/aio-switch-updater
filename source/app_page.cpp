@@ -325,8 +325,10 @@ void AppPage_DownloadedCheats::ShowCheatFiles(u64 tid, const std::string& name) 
 
     brls::TabFrame* appView = new brls::TabFrame();
     bool is_populated = false;
-    for(const auto& cheatFile : std::filesystem::directory_iterator(path)){
-        is_populated |= CreateCheatList(cheatFile.path(), &appView);
+    if(std::filesystem::exists(path)) {
+        for(const auto& cheatFile : std::filesystem::directory_iterator(path)){
+            is_populated |= CreateCheatList(cheatFile.path(), &appView);
+        }
     }
     if(is_populated) {
         brls::PopupFrame::open(name, appView, "");

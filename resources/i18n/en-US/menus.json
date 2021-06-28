@@ -42,7 +42,7 @@
     "gbatemp_dl_successful_dl": "Successfully downloaded the following cheat code:\n{}",
     "applet_mode_not_supported": "Due to memory constraints, in applet mode you may only fetch cheat codes for the game you're currently playing. Please launch aio-switch-updater through title redirection to download cheat codes for any game you own.",
     "cheatfile_label": "Here are the cheat codes listed in file {}",
-    "not_found": "Not proper cheat codes could be found for this game"
+    "not_found": "No proper cheat codes could be found for this game"
   },
   "common": {
     "downloading": "Downloading...",
