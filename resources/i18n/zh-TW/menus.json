@@ -1,7 +1,7 @@
 {
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
-    "copyright": "AIO-switch-updater依據GNU公共授權條款GPL 3.0版本開發\n© 2020 HamletDuFromage",
+    "copyright": "AIO-switch-updater依據GNU公共授權條款GPL 3.0版本開發\n© 2020-2021 HamletDuFromage",
     "disclaimers": "\ue016  HamletDuFromage僅鏡像使用Gbatemp論壇的金手指，伺服器沒有儲存或託管任何相關檔案，感謝所有提供金手指的創作者。\n\ue016  程式檔案資料庫會每隔30分鐘自動擷取更新。如果更新連結超過30分鐘仍無法正常使用，請使用Github提出問題來進行回報。\n",
     "donate": "\ue016  喜歡我們開發的app嗎? 歡迎贊助支持我們持續開發維護: 'https://git.io/donate_homlet'"
   },
@@ -9,7 +9,7 @@
     "installed": "已安裝金手指",
     "label": "在本程式安裝時，已經將下列編號的遊戲，更新至資料庫內最新的金手指檔案版本。請留意，儘管已經下載更新金手指，仍有可能無法對應到所有遊戲目前的最新版本。",
     "downloading": "正在下載:\n最新的金手指\n\n來自:\n",
-    "dl_latest": "下載最新的金手指",
+    "dl_latest": "下載最新的金手指壓縮檔",
     "getting_cheats": "正在擷取更新的金手指",
     "menu": "金手指選單",
     "view": "檢視已安裝遊戲的金手指",
@@ -18,9 +18,11 @@
     "delete_all": "刪除所有金手指",
     "deleting": "正在刪除...",
     "cheastlips_title": "Cheatslips金手指",
+    "gbatemp_title": "GBAtemp金手指",
+    "get_gbatemp": "下載GBAtemp.net金手指",
     "get_cheatslips": "下載CheatSlips.com的金手指列表",
-    "cheatslips_label": "\ue016  登入CheatSlips.com並下載遊戲的金手指",
-    "cheatslips_dl": "從CheatSlips.com下載金手指。\n下載的金手指將會放置排列在目前已有的金手指項目末端",
+    "cheats_label": "\ue016  從GBAtemp.net資料庫下載個別遊戲金手指或從CheatSlips.com下載金手指列表",
+    "cheatslips_dl": "準備從CheatSlips.com下載金手指。\n下載的金手指將會放置排列在目前已有的金手指項目之後",
     "delete_file": "刪除目前的金手指",
     "cheatslips_error": "無法取得所選的金手指代碼/無效的token",
     "quota": "已經超過每天免費下載3個檔案的額度!\n請前往 'https://www.cheatslips.com/subscriptions' 瞭解如何提高下載額度",
@@ -30,11 +32,17 @@
     "kb_error": "如果無法顯示虛擬鍵盤，請嘗試在能存取完整記憶體的普通模式下啟動本程式(title重新導向)",
     "cheatslips_see_more": "檢視完整代碼",
     "cheatslips_dl_cheats": "下載金手指後返回",
-    "bid_not_found": "無法取得build ID。當遊戲正在執行時，請嘗試在applet模式內啟動aio-switch-updater",
+    "bid_not_found": "無法取得build ID。當遊戲正在執行時，請嘗試在applet模式內執行aio-switch-updater",
     "exclude_titles": "更新排除名單",
     "exclude_titles_desc": "可以透過變更此設定來排除沒有安裝對應遊戲的金手指更新",
     "exclude_titles_save": "儲存變更並返回",
-	  "dl_all": "下載gbatemp目前全部的金手指並個別解壓縮後歸檔存放"
+    "dl_all": "下載GBAtemp目前全部的金手指並個別解壓縮後歸檔存放",
+    "gbatemp_dl": "準備從GBAtemp下載金手指。下載的金手指將會放置排列在目前已有的金手指項目之後。\n\uE016  Build ID: {}",
+    "gbatemp_dl_cheatcode": "下載金手指",
+    "gbatemp_dl_successful_dl": "下列金手指已下載完成:\n{}",
+    "applet_mode_not_supported": "由於記憶體限制，在applet模式下，只能擷取目前正在玩的遊戲的金手指。請重新執行aio-switch-updater並透過title重新導向來下載其他遊戲的金手指",
+    "cheatfile_label": "列出檔案內的金手指{}",
+    "not_found": "沒有找到符合遊戲版本的金手指"
   },
   "common": {
     "downloading": "正在下載...",
@@ -52,7 +60,10 @@
     "yes": "是",
     "go_back": "返回",
     "confirm": "確認",
-    "cancel": "取消"
+    "cancel": "取消",
+    "off": "關",
+    "selected": "已選擇",
+    "applet_mode_not_supported": "此功能在applet模式內無法使用。請重新執行aio-switch-updater並透過title重新導向來進行存取"
   },
   "changelog": {
     "changelog": "更新履歷"
@@ -91,9 +102,10 @@
   },
   "main": {
     "getting": "正在擷取 ",
-    "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。您可以通过 Daybreak 安装和更新固件。\n\ue016  目前FW: ",
+    "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。你可以透過Daybreak來安裝更新韌體。\n\ue016  目前FW: ",
     "cheats_text": "\uE016  下載'gbatemp.net'每日更新的金手指檔案到記憶卡時，並不會複製到主機未安裝的遊戲金手指檔案。你可以從設定的 '工具->金手指選單' 內停用金手指更新。\n\uE016  目前金手指資料庫版本: ",
     "get_cheats": "下載GBAtemp.net金手指資料庫(版本 ",
+    "get_all_cheats": "下載GBAtemp.net金手指資料庫",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\ue016  Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。請確認你安裝過程中使用合適的sigpatches(Pure Atmosphère或Hekate+Atmosphère)。安裝完成後請重新開機以套用更新",
     "firmware": "韌體",
@@ -102,19 +114,22 @@
     "app": "app",
     "cfw": "CFW",
     "ams": "Atmosphère",
-    "ams_text": "\ue016  請從清單進行選擇更新的項目，你可以選擇包含可執行第三方自製程式韌體的Atmosphère。\n\ue016 DeepSea是由Team Neptune提供的CFW整合套件，包括Atmosphère、hekate與數種第三方自製程式。",
+    "ams_text": "\ue016  請從清單進行選擇更新的項目，你可以選擇包含可執行第三方自製程式韌體的Atmosphère",
     "cfw_text": "\ue016  備用CFWs、引導程序",
+    "bootloaders_text": "\ue016 下載並更新引導程序",
     "cheats": "金手指",
     "links_not_found": "無法使用下載連結，請檢查Switch是否可正常存取網路連線。\n如果網路正常仍無法使用，請使用Github提出問題來進行回報",
     "new_update": " - 有可用的app更新",
     "about": "關於",
     "update_ams": "更新Atmosphère",
     "update_cfw": "更新CFW",
+    "update_bootloaders": "更新引導程序",
     "update_sigpatches": "更新sigpatches",
     "download_firmware": "下載韌體",
     "download_cheats": "下載金手指",
     "tools": "工具",
-    "launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  请注意，强烈建议不要在 exFAT SD 卡上使用此应用程序，因为它们可能会损坏。\n\n此提醒畫面將不再顯示"
+    "launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  請注意，我們非常不建議在exFAT格式的記憶卡上使用此app，可能會因此產生錯誤或執行中斷。\n\n\ue016  程式版本更新時會加入新的功能，也會改善現有的功能。請由選單內的 工具->更新履歷 前往檢視詳細內容。\n\n此提醒畫面將不再顯示。",
+    "footer_text": "v{} | {:.1f}GB 可用"
   },
   "hide": {
     "title": "隱藏分頁",
@@ -140,7 +155,7 @@
     "language": "變更介面語系"
   },
   "utils": {
-    "fw_warning": "由於FW壓縮檔太大，在Applet模式下無法下載韌體。請在能存取完整記憶體的普通模式下執行下載程序",
+    "fw_warning": "由於FW壓縮檔太大，在applet模式下無法下載韌體。請在能存取完整記憶體的普通模式下執行下載程序",
     "overwrite": " 是否要覆蓋現有的檔案 ",
     "wrong_type_sigpatches": "下載的檔案並不是正確的sigpatches壓縮檔。可能是檔案連結發生錯誤。如果下載錯誤持續超過30分鐘，請使用Github提出問題來進行回報",
     "wrong_type_fw": "下載的檔案並不是正確的韌體壓縮檔。可能是檔案連結發生錯誤。如果下載錯誤持續超過30分鐘，請使用Github提出問題來進行回報",
@@ -154,10 +169,24 @@
     "delete_sysmodules_flags": "為了避免現存的sysmodules與最新Atmosphère版本不相容而造成系統崩潰，是否需要將所有自訂自動啟動的sysmodules切換為關閉? 請注意，確認執行後將會關閉所有現有的sysmodules。",
     "current_ams": "\ue016  目前Atmosphère版本: ",
     "erista_rev": "\ue016  Erista revision",
-    "mariko_rev": "\ue016  Mariko revision"
+    "mariko_rev": "\ue016  Mariko revision",
+    "deepsea_builder": "DeepSea組建版本",
+    "show_module_description": "顯示套件備註說明內容",
+    "depends_on": "以下列出的套件將進行安裝:",
+    "download_custom_deepsea": "下載自訂DeepSea安裝包",
+    "get_custom_deepsea": "擷取自訂DeepSea安裝包",
+    "deepsea_label": "\ue016  DeepSea是由Team Neptune提供的CFW整合套件，包括Atmosphère、hekate與數種第三方自製程式",
+    "download_deepsea_package": "編譯與下載",
+    "cant_fetch_deepsea": "無法取得安裝包內容。如果問題持續發生，請使用Github提出問題來進行回報",
+    "build_your_deepsea": "透過個別選取來建立屬於你自己的自訂DeepSea安裝包",
+    "getting_ams": "正在擷取 Atmosphère"
   },
   "net": {
     "title": "網路設定"
+  },
+  "errors": {
+    "insufficient_storage": "記憶卡沒有足夠的可用空間來執行此操作",
+    "error_message": "{}\n請稍後再重新執行一次。如果問題持續發生，請使用Github提出問題來進行回報"
   },
   "language": {
     "system_default": "系統預設",
@@ -172,7 +201,7 @@
     "nl": "荷蘭文 (nl)",
     "pt": "葡萄牙文 (pt)",
     "ru": "俄羅斯文 (ru)",
-	"pl": "波蘭語 (pl)",
+    "pl": "波蘭語 (pl)",
     "zh-TW": "正體中文 (zh-TW)",
     "en-GB": "英式英語 (en-GB)",
     "fr-CA": "加拿大法語 (fr-CA)",
