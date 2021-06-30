@@ -55,7 +55,7 @@ void AppPage::PopulatePage()
         if (R_SUCCEEDED(InitControlData(&controlData)) && R_SUCCEEDED(GetControlData(tid, controlData, controlSize, name))) {
             this->DeclareGameListItem(name, tid, &controlData);
         }
-        label = new brls::Label(brls::LabelStyle::SMALL, "menus/cheats/applet_mode_not_supported"_i18n, true);
+        label = new brls::Label(brls::LabelStyle::SMALL, "menus/common/applet_mode_not_supported"_i18n, true);
         list->addView(label);
     }
 
