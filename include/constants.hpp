@@ -34,6 +34,10 @@ constexpr const char HEKATE_URL[] =         "https://raw.githubusercontent.com/H
 
 constexpr const char PAYLOAD_URL[] =        "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/payloads.json";
 
+constexpr const char DEEPSEA_META_JSON[] =  "https://builder.teamneptune.net/meta.json";
+constexpr const char DEEPSEA_BUILD_URL[] =  "https://builder.teamneptune.net/build/";
+constexpr const char DEEPSEA_PACKAGE_PATH[] = "/config/deepsea/customPackage.json";
+
 constexpr const char CHEATS_RELEASE_URL[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/tag/v1.0";
 constexpr const char CHEATS_URL_TITLES[] =  "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/titles.zip";
 constexpr const char CHEATS_URL_CONTENTS[] ="https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/contents.zip";

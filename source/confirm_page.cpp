@@ -41,7 +41,7 @@ ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool 
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
 
-    if(this->done)
+    if(this->done || this->reboot)
         this->registerAction("", brls::Key::B, [this] { return true; });
 }
 

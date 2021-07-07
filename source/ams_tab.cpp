@@ -29,6 +29,15 @@ AmsTab::AmsTab(const bool erista) : brls::List()
     );
     this->addView(description);
 
+    listItem = new brls::ListItem("menus/ams_update/get_custom_deepsea"_i18n);
+    listItem->setHeight(LISTITEM_HEIGHT);
+    listItem->getClickEvent()->subscribe([&](brls::View* view) {
+        nlohmann::ordered_json modules;
+        download::getRequest(DEEPSEA_META_JSON, modules);
+        ShowCustomDeepseaBuilder(modules);
+    });
+    this->addView(listItem);
+
     CreateDownloadItems("DeepSea", false);
 }
 
@@ -121,6 +130,88 @@ nlohmann::ordered_json AmsTab::SortDeepseaModules(const nlohmann::ordered_json& 
         }
     }
     return sorted_modules;
+}
+
+void AmsTab::ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules)
+{
+    modules = SortDeepseaModules(modules);
+    std::map<std::string, std::string> name_map;
+
+    brls::TabFrame* appView = new brls::TabFrame();
+    appView->setIcon("romfs:/deepsea_icon.png");
+
+    std::vector<brls::List*> lists;
+    std::set<std::string> old_modules = GetLastDownloadedModules(DEEPSEA_PACKAGE_PATH);
+
+    brls::ToggleListItem* deepseaListItem;
+    for (const auto& category : modules.items()) {
+        brls::List* list = new brls::List();
+        
+        for (const auto& module : category.value().items()) {
+            auto module_value = module.value();
+            std::string requirements = "";
+            if(!module_value["requires"].empty()) {
+                requirements = "menus/ams_update/depends_on"_i18n;
+                for (const auto& r : module.value()["requires"]) {
+                    requirements += " " + r.get<std::string>() + ",";
+                }
+                requirements.pop_back();
+            }
+            if(module_value["required"]) {
+                deepseaListItem = new UnTogglableListItem(module_value["displayName"], 1, requirements, "Required", "o");
+            }
+            else {
+                deepseaListItem = new::brls::ToggleListItem(module_value["displayName"],
+                    old_modules.find(module.key()) != old_modules.end() ? 1 : 0,
+                    requirements,
+                    "menus/common/selected"_i18n,
+                    "menus/common/off"_i18n
+                );
+            }
+            name_map.insert(std::pair(module_value["displayName"], module.key()));
+            deepseaListItem->registerAction("menus/ams_update/show_module_description"_i18n, brls::Key::Y, [this, module_value] { 
+                brls::Dialog* dialog;
+                dialog = new brls::Dialog(fmt::format("{}:\n{}", module_value["repo"], module_value["description"]));
+                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+                    dialog->close();
+                };
+                dialog->addButton("menus/common/ok"_i18n, callback);
+                dialog->setCancelable(true);
+                dialog->open();
+                return true;
+            });
+            list->addView(deepseaListItem);
+        }
+        lists.push_back(list);
+        appView->addTab(category.key(), list);
+    }
+
+    appView->registerAction("menus/ams_update/download_deepsea_package"_i18n, brls::Key::X, [this, lists, name_map] { 
+        std::set<std::string> desired_modules;
+        for (const auto& list: lists) {
+            for (size_t i = 0; i < list->getViewsCount(); i++) {
+                if(brls::ToggleListItem* item = dynamic_cast<brls::ToggleListItem*>(list->getChild(i))) {
+                    if (item->getToggleState()) {
+                        desired_modules.insert(name_map.at(item->getLabel()));
+                    }
+                }
+            }
+        }
+
+        std::string request_url = DEEPSEA_BUILD_URL;
+        for(const auto& e : desired_modules) 
+            request_url += e +";";
+
+        CreateStagedFrames("menus/common/download"_i18n + "Custom DeepSea package" + "menus/common/from"_i18n + request_url,
+            request_url,
+            "menus/ams_update/get_custom_deepsea"_i18n,
+            erista
+        );
+        return true;
+    });
+    appView->registerAction("", brls::Key::PLUS, [this] { return true; });
+
+    brls::PopupFrame::open("menus/ams_update/deepsea_builder"_i18n, appView, modules.empty() ? "menus/ams_update/cant_fetch_deepsea"_i18n : "menus/ams_update/build_your_deepsea"_i18n, "");
 }
 
 bool UnTogglableListItem::onClick()

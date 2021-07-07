@@ -17,6 +17,7 @@ class AmsTab : public brls::List
         void CreateStagedFrames(const std::string& text, const std::string& url, const std::string& operation, bool erista, bool hekate = false, const std::string& text_hekate = "", const std::string& hekate_url = "");
         void CreateDownloadItems(const std::string& key, bool hekate = true);
         nlohmann::ordered_json SortDeepseaModules(const nlohmann::ordered_json& modules);
+        void ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules);
 
     public:
         AmsTab(const bool erista = true);

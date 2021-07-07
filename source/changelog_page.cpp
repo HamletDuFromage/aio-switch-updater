@@ -169,6 +169,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.8.0");
     changes.push_back("\uE016 Restored and improved \"View installed cheats\" menu. You can now browse the content of your cheatsheets from the app.");
 
+    verTitles.push_back("v2.9.0");
+    changes.push_back("\uE016 Added support for Team-Neptune's custom pack builder.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
