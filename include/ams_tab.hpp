@@ -15,7 +15,7 @@ class AmsTab : public brls::List
         std::string GetRepoName(const std::string& repo);
         std::set<std::string> GetLastDownloadedModules(const std::string& json_path);
         void CreateStagedFrames(const std::string& text, const std::string& url, const std::string& operation, bool erista, bool hekate = false, const std::string& text_hekate = "", const std::string& hekate_url = "");
-        void CreateDownloadItems(const std::string& key, bool hekate = true);
+        void CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool hekate = true);
         nlohmann::ordered_json SortDeepseaModules(const nlohmann::ordered_json& modules);
         void ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules);
 

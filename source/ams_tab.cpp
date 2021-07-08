@@ -20,7 +20,7 @@ AmsTab::AmsTab(const bool erista) : brls::List()
 
     download::getRequest(AMS_URL, cfws);
 
-    CreateDownloadItems("Atmosphere");
+    CreateDownloadItems(cfws["Atmosphere"]);
 
     description = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
@@ -38,14 +38,26 @@ AmsTab::AmsTab(const bool erista) : brls::List()
     });
     this->addView(listItem);
 
-    CreateDownloadItems("DeepSea", false);
+    CreateDownloadItems(cfws["DeepSea"], false);
+
+    auto custom_pack = fs::parseJsonFile(CUSTOM_PACKS_PATH);
+    if (custom_pack.size() != 0) {
+        description = new brls::Label(
+            brls::LabelStyle::DESCRIPTION,
+            fmt::format("menus/ams_update/custom_packs_label"_i18n, CUSTOM_PACKS_PATH),
+            true
+        );
+        this->addView(description);
+
+        CreateDownloadItems(custom_pack, true);
+    }
 }
 
-void AmsTab::CreateDownloadItems(const std::string& key, bool hekate)
+void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool hekate)
 {
     std::string operation("menus/ams_update/getting_ams"_i18n);
     std::vector<std::pair<std::string, std::string>> links;
-    links = download::getLinksFromJson(cfws[key]);
+    links = download::getLinksFromJson(cfw_links);
     this->size = links.size();
     if(this->size){
         auto hekate_link = download::getLinks(HEKATE_URL);

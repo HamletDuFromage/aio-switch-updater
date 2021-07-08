@@ -179,7 +179,8 @@
     "download_deepsea_package": "Compile and download",
     "cant_fetch_deepsea": "Couldn't fetch packages. Open a Github issue if this persists.",
     "build_your_deepsea": "Build your own custom DeepSea package by selecting packages",
-    "getting_ams": "Getting Atmosphère"
+    "getting_ams": "Getting Atmosphère",
+    "custom_packs_label": "Here are packs listed in the {} file. Be aware that those are not endorsed by aio-switch-updater so make sure you trust their source."
   },
   "net": {
     "title": "Internet settings"
