@@ -172,7 +172,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.9.0");
     changes.push_back("\uE016 Added support for Team-Neptune's custom pack builder.");
 
-    verTitles.push_back("v2.9.0");
+    verTitles.push_back("v2.10.0");
     changes.push_back("\uE016 Added support custom packs through a json file.");
 
     for(int i = verTitles.size() -1 ; i >= 0; i--){
