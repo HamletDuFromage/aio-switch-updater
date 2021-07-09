@@ -20,7 +20,7 @@ AmsTab::AmsTab(const bool erista) : brls::List()
 
     download::getRequest(AMS_URL, cfws);
 
-    CreateDownloadItems(cfws["Atmosphere"]);
+    CreateDownloadItems(cfws.find("Atmosphere") != cfws.end() ? cfws["Atmosphere"] : nlohmann::ordered_json::object());
 
     description = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
@@ -38,18 +38,20 @@ AmsTab::AmsTab(const bool erista) : brls::List()
     });
     this->addView(listItem);
 
-    CreateDownloadItems(cfws["DeepSea"], false);
+    CreateDownloadItems(cfws.find("DeepSea") != cfws.end() ? cfws["DeepSea"] : nlohmann::ordered_json::object());
 
-    auto custom_pack = fs::parseJsonFile(CUSTOM_PACKS_PATH);
-    if (custom_pack.size() != 0) {
-        description = new brls::Label(
-            brls::LabelStyle::DESCRIPTION,
-            fmt::format("menus/ams_update/custom_packs_label"_i18n, CUSTOM_PACKS_PATH),
-            true
-        );
-        this->addView(description);
+    if(cfws.size()) {
+        auto custom_pack = fs::parseJsonFile(CUSTOM_PACKS_PATH);
+        if (custom_pack.size() != 0) {
+            description = new brls::Label(
+                brls::LabelStyle::DESCRIPTION,
+                fmt::format("menus/ams_update/custom_packs_label"_i18n, CUSTOM_PACKS_PATH),
+                true
+            );
+            this->addView(description);
 
-        CreateDownloadItems(custom_pack, true);
+            CreateDownloadItems(custom_pack, true);
+        }
     }
 }
 
