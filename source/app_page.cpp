@@ -228,7 +228,7 @@ void AppPage_Exclude::PopulatePage()
                 if R_FAILED(GetControlData(tid, controlData, controlSize, name)) continue;
 
                 brls::ToggleListItem *listItem;
-                listItem = new brls::ToggleListItem(util::formatListItemTitle(std::string(name)), titles.find(util::formatApplicationId(tid)) != titles.end() ? 0 : 1);
+                listItem = new brls::ToggleListItem(std::string(name), titles.find(util::formatApplicationId(tid)) != titles.end() ? 0 : 1);
 
                 listItem->setThumbnail(controlData->icon, sizeof(controlData->icon));
                 items.insert(std::make_pair(listItem, util::formatApplicationId(tid)));

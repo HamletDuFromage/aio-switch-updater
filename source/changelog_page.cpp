@@ -178,6 +178,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.10.1");
     changes.push_back("\uE016 Fixed crashes in airplane mode introduced in 2.10.0");
 
+    verTitles.push_back("v2.10.2");
+    changes.push_back("\uE016 Borealis changes for visual tweaks (tickering labels, scroll bar etc).");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

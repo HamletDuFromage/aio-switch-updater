@@ -255,10 +255,6 @@ std::string DownloadCheatsPage_CheatSlips::GetCheatsTitle(json cheat) {
             res += "[" + p.get<std::string>() + "]" + " - ";
         }
     }
-    res.erase(res.length() - 3);
-    if(res.size() > 80){
-        res = res.substr(0, 79) + "\u2026";
-    }
     return res;
 }
 

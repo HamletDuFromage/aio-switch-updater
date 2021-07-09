@@ -60,9 +60,9 @@ ExcludePage::ExcludePage() : AppletFrame(true, true)
 
         brls::ToggleListItem *listItem;
         if(titles.find(util::formatApplicationId(tid)) != titles.end())
-            listItem = new brls::ToggleListItem(util::formatListItemTitle(std::string(app->name)), 0);
+            listItem = new brls::ToggleListItem(std::string(app->name), 0);
         else
-            listItem = new brls::ToggleListItem(util::formatListItemTitle(std::string(app->name)), 1);
+            listItem = new brls::ToggleListItem(std::string(app->name), 1);
 
         listItem->setThumbnail(app->icon, sizeof(app->icon));
         items.insert(std::make_pair(listItem, util::formatApplicationId(app->tid)));
