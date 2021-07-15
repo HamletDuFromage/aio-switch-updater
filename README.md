@@ -54,10 +54,10 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 
 ![update_ams](https://user-images.githubusercontent.com/61667930/125843308-94666f64-c538-465f-88b1-10dbc1e2024e.jpg)
 ![deepsea_builder](https://user-images.githubusercontent.com/61667930/125843328-829d9e92-617a-4a92-b85f-2f2abd096f5f.jpg)
-![tools_menu](https://user-images.githubusercontent.com/61667930/125843312-394cc38e-de75-4f71-942d-9d38d3d37b29.jpg)
 ![downloading](https://user-images.githubusercontent.com/61667930/125843333-e18faf45-6034-4dfa-841b-3e20259e4dc9.jpg)
 ![get_cheats](https://user-images.githubusercontent.com/61667930/125843305-4f1b4a91-f182-4e15-9d5b-af0e2ec7fd9e.jpg)
 ![get_individual_cheat](https://user-images.githubusercontent.com/61667930/125843316-0527d3f2-5b6e-42da-83ef-0f8e67646eb3.jpg)
+![tools_menu](https://user-images.githubusercontent.com/61667930/125843312-394cc38e-de75-4f71-942d-9d38d3d37b29.jpg)
 ![joycon_color_swapper](https://user-images.githubusercontent.com/61667930/125843319-c81d372e-58dc-432b-8f8c-828f768ae817.jpg)
 
 </details>
