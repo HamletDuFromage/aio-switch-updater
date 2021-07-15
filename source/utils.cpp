@@ -303,8 +303,19 @@ bool isApplet() {
 }
 
 std::set<std::string> getExistingCheatsTids() {
-    std::string path;
+    std::string path = getContentsPath();
     std::set<std::string> res;
+    for(const auto& entry : std::filesystem::directory_iterator(path)) {
+        std::string cheatsPath =  entry.path().string() + "/cheats";
+        if(std::filesystem::exists(cheatsPath)){
+            res.insert(util::upperCase(cheatsPath.substr(cheatsPath.length() - 7 - 16, 16)));
+        }
+    }
+    return res;
+}
+
+std::string getContentsPath() {
+    std::string path;
     switch(CurrentCfw::running_cfw){
         case CFW::ams:
             path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
@@ -316,13 +327,7 @@ std::set<std::string> getExistingCheatsTids() {
             path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
             break;
     }
-    for(const auto& entry : std::filesystem::directory_iterator(path)) {
-        std::string cheatsPath =  entry.path().string() + "/cheats";
-        if(std::filesystem::exists(cheatsPath)){
-            res.insert(util::upperCase(cheatsPath.substr(cheatsPath.length() - 7 - 16, 16)));
-        }
-    }
-    return res;
+    return path;
 }
 
 }

@@ -98,12 +98,25 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                 stagedFrame->addStage(
                     new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type](){util::extractArchive(type);})
                 );
+                std::string doneMsg = "menus/common/all_done"_i18n;
+                std::string themePath;
+                switch(type){
+                    case archiveType::ams_cfw:
+                    case archiveType::app:
+                    case archiveType::cfw:
+                    case archiveType::cheats:
+                    case archiveType::fw:
+                        themePath = util::getContentsPath() + "0100000000010000";
+                        if(std::filesystem::exists(themePath) && !std::filesystem::is_empty(themePath)) {
+                            doneMsg += "\n" + "menus/main/theme_warning"_i18n;
+                        }
+                        break;
+                    case archiveType::sigpatches:
+                        doneMsg += "\n" + "menus/sigpatches/reboot"_i18n;
+                        break;
+                }
                 stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, 
-                        (type == archiveType::sigpatches) ? 
-                            "menus/common/all_done"_i18n + "\n" + "menus/sigpatches/reboot"_i18n : 
-                            "menus/common/all_done"_i18n,
-                        true)
+                    new ConfirmPage(stagedFrame, doneMsg, true)
                 );
                 brls::Application::pushView(stagedFrame);
             });

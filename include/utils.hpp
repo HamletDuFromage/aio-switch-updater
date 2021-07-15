@@ -41,4 +41,5 @@ namespace util {
     std::string upperCase(const std::string& str);
     std::string getErrorMessage(long status_code);
     bool isApplet();
+    std::string getContentsPath();
 }

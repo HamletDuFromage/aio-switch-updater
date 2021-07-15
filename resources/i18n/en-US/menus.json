@@ -129,7 +129,8 @@
     "download_cheats": "Download cheats",
     "tools": "Tools",
     "launch_warning": "Please pay attention to the following points before using the app:\n\n\ue016  Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\ue016  Please note that using this app on a exFAT SD card is STRONGLY discouraged, as those are likely to corrupt.\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nThis screen won't show again.",
-    "footer_text" : "v{} | {:.1f}GB available"
+    "footer_text" : "v{} | {:.1f}GB available",
+    "theme_warning": "It seems like you have a custom theme installed, this may cause your system to fail to boot after upgrading your firmware.\nPlease consider deleting it before upgrading."
   },
   "hide": {
     "title": "Hide tabs",
@@ -187,7 +188,8 @@
   },
   "errors": {
     "insufficient_storage": "There isn't enough space available on your SD card to perform this operation.",
-    "error_message": "{}\nPlease try again in a little while. If the problem persists, open an issue on Github"
+    "error_message": "{}\nPlease try again in a little while. If the problem persists, open an issue on Github",
+    "mariko_payload_missing": "In order to update Atmosphère on patched Switches, your payload needs to be named \"payload.bin\" and should be at the root of your SD card."
   },
   "language": {
     "system_default": "System default",

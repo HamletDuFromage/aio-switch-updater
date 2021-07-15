@@ -283,18 +283,7 @@ void AppPage_DownloadedCheats::DeclareGameListItem(const std::string& name, u64 
 }
 
 void AppPage_DownloadedCheats::GetExistingCheatsTids() {
-    std::string path;
-    switch(CurrentCfw::running_cfw){
-        case CFW::ams:
-            path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::rnx:
-            path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::sxos:
-            path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
-            break;
-    }
+    std::string path = util::getContentsPath();
     for(const auto& entry : std::filesystem::directory_iterator(path)) {
         std::string cheatsPath =  entry.path().string() + "/cheats";
         if(std::filesystem::exists(cheatsPath) && !std::filesystem::is_empty(cheatsPath)) {
@@ -309,18 +298,7 @@ void AppPage_DownloadedCheats::GetExistingCheatsTids() {
 }
 
 void AppPage_DownloadedCheats::ShowCheatFiles(u64 tid, const std::string& name) {
-    std::string path;
-    switch(CurrentCfw::running_cfw){
-        case CFW::ams:
-            path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::rnx:
-            path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::sxos:
-            path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
-            break;
-    }
+    std::string path = util::getContentsPath();
     path += util::formatApplicationId(tid) + "/cheats/";
 
     brls::TabFrame* appView = new brls::TabFrame();
@@ -365,7 +343,7 @@ bool AppPage_DownloadedCheats::CreateCheatList(const std::filesystem::path& path
         }
     }
     if(res) {
-        (*appView)->addTab(path.filename().stem(), cheatsList);
+        (*appView)->addTab(util::upperCase(path.filename().stem()), cheatsList);
     }
     return res;
 }

@@ -297,7 +297,7 @@ bool isBID(std::string bid) {
     return true;
 }
 
-void writeTitlesToFile(const std::set<std::string>& titles, const std::string& path){
+void writeTitlesToFile(const std::set<std::string>& titles, const std::string& path) {
     std::ofstream updatedTitlesFile;
     std::set<std::string>::iterator it = titles.begin();
     updatedTitlesFile.open(path, std::ofstream::out | std::ofstream::trunc);
@@ -310,19 +310,8 @@ void writeTitlesToFile(const std::set<std::string>& titles, const std::string& p
     }
 }
 
-void removeCheats(CFW cfw){
-    std::string path;
-    switch(cfw){
-        case CFW::ams:
-            path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::rnx:
-            path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::sxos:
-            path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
-            break;
-    }
+void removeCheats() {
+    std::string path = util::getContentsPath();
     ProgressEvent::instance().reset();
     ProgressEvent::instance().setTotalSteps(std::distance(std::filesystem::directory_iterator(path), std::filesystem::directory_iterator()));
     for (const auto& entry : std::filesystem::directory_iterator(path)){

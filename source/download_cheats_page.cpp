@@ -71,19 +71,8 @@ void DownloadCheatsPage::GetBuildIDFromFile() {
 }
 
 void DownloadCheatsPage::WriteCheats(std::string cheatContent) {
-    std::string path;
+    std::string path = util::getContentsPath();
     std::string tidstr = util::formatApplicationId(this->tid);
-    switch(CurrentCfw::running_cfw){
-        case CFW::ams:
-            path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::rnx:
-            path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::sxos:
-            path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
-            break;
-    }
     path += tidstr + "/cheats/";
     fs::createTree(path);
     path += this->bid + ".txt";
@@ -96,19 +85,7 @@ void DownloadCheatsPage::WriteCheats(std::string cheatContent) {
 }
 
 void DownloadCheatsPage::DeleteCheats() {
-    std::string path;
-    switch(CurrentCfw::running_cfw){
-        case CFW::ams:
-            path = std::string(AMS_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::rnx:
-            path = std::string(REINX_PATH) + std::string(CONTENTS_PATH);
-            break;
-        case CFW::sxos:
-            path = std::string(SXOS_PATH) + std::string(TITLES_PATH);
-            break;
-    }
-    std::filesystem::remove(path + util::formatApplicationId(this->tid) + "/cheats/" + this->bid + ".txt");
+    std::filesystem::remove(util::getContentsPath() + util::formatApplicationId(this->tid) + "/cheats/" + this->bid + ".txt");
 }
 
 DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
