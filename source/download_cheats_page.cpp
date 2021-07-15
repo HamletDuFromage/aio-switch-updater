@@ -15,10 +15,10 @@ using json = nlohmann::json;
 DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : AppletFrame(true, true), tid(tid)
 {
     list = new brls::List();
-    this->setTitle(name);
-    this->setFooterText("Game version: v" + std::to_string(this->version / 0x10000));
     GetVersion();
     GetBuildID();
+    this->setTitle(name);
+    this->setFooterText("Game version: v" + std::to_string(this->version / 0x10000));
 }
 
 void DownloadCheatsPage::GetBuildID() {
