@@ -181,6 +181,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.11.0");
     changes.push_back("\uE016 Borealis changes for visual tweaks (tickering labels, scroll bar etc).\n\uE016 When needed, issue a warning about custom themes after downloading a new firmware.\n\uE016 Abort AMS update process for Mariko Switches when payload.bin cannot be found.");
 
+    verTitles.push_back("v2.11.1");
+    changes.push_back("\uE016 Added ability to view existing cheats when downloading cheat codes/sheets.\n\uE016 Fixed wrong tid for theme detection.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

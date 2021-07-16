@@ -99,16 +99,19 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                     new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type](){util::extractArchive(type);})
                 );
                 std::string doneMsg = "menus/common/all_done"_i18n;
-                std::string themePath;
+                std::string contentsPath;
                 switch(type){
                     case archiveType::ams_cfw:
                     case archiveType::app:
                     case archiveType::cfw:
                     case archiveType::cheats:
                     case archiveType::fw:
-                        themePath = util::getContentsPath() + "0100000000010000";
-                        if(std::filesystem::exists(themePath) && !std::filesystem::is_empty(themePath)) {
-                            doneMsg += "\n" + "menus/main/theme_warning"_i18n;
+                        contentsPath = util::getContentsPath();
+                        for (const auto& tid : {"0100000000001000", "0100000000001007", "0100000000001013"}) {
+                            if(std::filesystem::exists(contentsPath + tid) && !std::filesystem::is_empty(contentsPath + tid)) {
+                                doneMsg += "\n" + "menus/main/theme_warning"_i18n;
+                                break;
+                            }
                         }
                         break;
                     case archiveType::sigpatches:

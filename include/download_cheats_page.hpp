@@ -3,6 +3,14 @@
 #include <borealis.hpp>
 #include <switch.h>
 #include <json.hpp>
+#include <filesystem>
+
+namespace show_cheats {
+
+    void ShowCheatFiles(uint64_t tid, const std::string& name);
+    bool CreateCheatList(const std::filesystem::path& path, brls::TabFrame** appView);
+
+}
 
 class DownloadCheatsPage : public brls::AppletFrame
 {
