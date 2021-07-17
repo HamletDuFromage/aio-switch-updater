@@ -128,7 +128,7 @@ void DownloadCheatsPage::GetBuildIDFromFile() {
     }
 }
 
-void DownloadCheatsPage::WriteCheats(std::string cheatContent) {
+void DownloadCheatsPage::WriteCheats(const std::string& cheatContent) {
     std::string path = util::getContentsPath();
     std::string tidstr = util::formatApplicationId(this->tid);
     path += tidstr + "/cheats/";

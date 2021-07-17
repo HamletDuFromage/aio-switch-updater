@@ -11,6 +11,8 @@
 #include <fstream>
 #include <regex>
 
+#include <iostream>
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
@@ -53,6 +55,7 @@ void AppPage::PopulatePage()
     else {
         tid = GetCurrentApplicationId();
         if (R_SUCCEEDED(InitControlData(&controlData)) && R_SUCCEEDED(GetControlData(tid, controlData, controlSize, name))) {
+            listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
             this->DeclareGameListItem(name, tid, &controlData);
         }
         label = new brls::Label(brls::LabelStyle::SMALL, "menus/common/applet_mode_not_supported"_i18n, true);

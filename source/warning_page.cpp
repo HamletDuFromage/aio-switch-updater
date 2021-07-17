@@ -8,7 +8,7 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-WarningPage::WarningPage(std::string text)
+WarningPage::WarningPage(const std::string& text)
 {
     fs::createTree(CONFIG_PATH);
     std::ofstream hiddenFile(HIDDEN_AIO_FILE);

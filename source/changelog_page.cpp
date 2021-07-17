@@ -184,6 +184,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.11.1");
     changes.push_back("\uE016 Added ability to view existing cheats when downloading cheat codes/sheets.\n\uE016 Fixed wrong tid for theme detection.");
 
+    verTitles.push_back("v2.11.2");
+    changes.push_back("\uE016 Fixed crash when downloading cheats in applet mode.\n\uE016 Fixed progress bar percentage not showing past 10%.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

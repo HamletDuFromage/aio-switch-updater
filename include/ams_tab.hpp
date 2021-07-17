@@ -26,6 +26,6 @@ class AmsTab : public brls::List
 class UnTogglableListItem : public brls::ToggleListItem
 {
     public:
-        UnTogglableListItem(std::string label, bool initialValue, std::string description = "", std::string onValue = "On", std::string offValue = "Off") : ToggleListItem(label, initialValue, description, onValue, offValue) {}
+        UnTogglableListItem(const std::string& label, bool initialValue, std::string description = "", std::string onValue = "On", std::string offValue = "Off") : ToggleListItem(label, initialValue, description, onValue, offValue) {}
         virtual bool onClick() override;
 };

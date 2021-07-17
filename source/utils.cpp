@@ -27,12 +27,12 @@ bool isArchive(const std::string&  path){
     return fileContent.find("DOCTYPE") == std::string::npos;
 }
 
-void downloadArchive(std::string url, archiveType type) {
+void downloadArchive(const std::string& url, archiveType type) {
     long status_code;
-    downloadArchive(url,type, status_code);
+    downloadArchive(url, type, status_code);
 }
 
-void downloadArchive(std::string url, archiveType type, long& status_code) {
+void downloadArchive(const std::string& url, archiveType type, long& status_code) {
     fs::createTree(DOWNLOAD_PATH);
     switch(type){
         case archiveType::sigpatches:
@@ -61,7 +61,7 @@ void downloadArchive(std::string url, archiveType type, long& status_code) {
     ProgressEvent::instance().setStatusCode(status_code);
 }
 
-int showDialogBox(std::string text, std::string opt){
+int showDialogBox(const std::string& text, const std::string& opt){
     int dialogResult = -1;
     int result = -1;
     brls::Dialog* dialog = new brls::Dialog(text);
@@ -79,7 +79,7 @@ int showDialogBox(std::string text, std::string opt){
     return result;
 }
 
-int showDialogBox(std::string text, std::string opt1, std::string opt2){
+int showDialogBox(const std::string& text, const std::string& opt1, const std::string& opt2){
     int dialogResult = -1;
     int result = -1;
     brls::Dialog* dialog = new brls::Dialog(text);
@@ -102,7 +102,7 @@ int showDialogBox(std::string text, std::string opt1, std::string opt2){
     return result;
 }
 
-void extractArchive(archiveType type, std::string tag){
+void extractArchive(archiveType type, const std::string& tag){
     int overwriteInis = 0;
     std::vector<std::string> titles;
     std::string nroPath ="sdmc:" + std::string(APP_PATH);
@@ -235,7 +235,7 @@ std::string downloadFileToString(const std::string& url) {
     return str;
 }
 
-void saveVersion(std::string version, const std::string& path){
+void saveVersion(const std::string& version, const std::string& path){
     std::ofstream newVersion(path);
     newVersion << version << std::endl;
 }

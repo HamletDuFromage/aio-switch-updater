@@ -8,7 +8,7 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, std::string text, bool erista) : erista(erista)
+DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, const std::string& text, bool erista) : erista(erista)
 {
     this->button1 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/common/yes"_i18n);
     this->button1->setParent(this);

@@ -27,7 +27,7 @@ class DownloadCheatsPage : public brls::AppletFrame
         void GetBuildIDFromDmnt();
         void GetVersion();
         void GetBuildIDFromFile();
-        void WriteCheats(std::string cheatContent);
+        void WriteCheats(const std::string& cheatContent);
         void DeleteCheats();
 
         typedef struct {

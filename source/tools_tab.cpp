@@ -24,7 +24,7 @@ namespace {
     constexpr const char AppVersion[] = APP_VERSION;
 }
 
-ToolsTab::ToolsTab(std::string tag, bool erista) : brls::List()
+ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
 {
     if(!tag.empty() && tag != AppVersion){
         updateApp = new brls::ListItem("menus/tools/update_app"_i18n + tag +")");

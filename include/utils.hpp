@@ -21,19 +21,19 @@ namespace util {
 
     void clearConsole();
     bool isArchive(const std::string&  path);
-    void downloadArchive(std::string url, archiveType type);
-    void downloadArchive(std::string url, archiveType type, long& status_code);
-    void extractArchive(archiveType type, std::string tag = "0");
+    void downloadArchive(const std::string& url, archiveType type);
+    void downloadArchive(const std::string& url, archiveType type, long& status_code);
+    void extractArchive(archiveType type, const std::string& tag = "0");
     std::string formatListItemTitle(const std::string &str, size_t maxScore = 140);
     std::string formatApplicationId(u64 ApplicationId);
     std::vector<std::string> fetchPayloads();
     void shutDown(bool reboot = false);
     void rebootToPayload(const std::string& path);
-    int showDialogBox(std::string text, std::string opt);
-    int showDialogBox(std::string text, std::string opt1, std::string opt2);
+    int showDialogBox(const std::string& text, const std::string& opt);
+    int showDialogBox(const std::string& text, const std::string& opt1, const std::string& opt2);
     std::string getLatestTag(const std::string& url);
     std::string downloadFileToString(const std::string& url);
-    void saveVersion(std::string version, const std::string& path);
+    void saveVersion(const std::string& version, const std::string& path);
     std::string readVersion(const std::string& path);
     bool isErista();
     void removeSysmodulesFlags(const std::string&  directory);

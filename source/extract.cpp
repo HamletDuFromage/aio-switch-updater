@@ -290,7 +290,7 @@ void extractAllCheats(const std::string&  zipPath, CFW cfw){
     ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
 }
 
-bool isBID(std::string bid) {
+bool isBID(const std::string& bid) {
     for(char const &c : bid){
         if(!isxdigit(c)) return false;
     }

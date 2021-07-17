@@ -15,6 +15,6 @@ class NetPage : public brls::AppletFrame
     public:
         NetPage();
         std::string ipToString(unsigned char* ip);
-        int stringToIp(std::string ip, unsigned char* out);
+        int stringToIp(const std::string& ip, unsigned char* out);
 
 };

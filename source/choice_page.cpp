@@ -2,7 +2,7 @@
  
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
- ChoicePage::ChoicePage(brls::StagedAppletFrame* frame, std::string text)
+ ChoicePage::ChoicePage(brls::StagedAppletFrame* frame, const std::string text)
  {
     this->yes = (new brls::Button(brls::ButtonStyle::BORDERLESS))->setLabel("yes");
     this->yes->setParent(this);

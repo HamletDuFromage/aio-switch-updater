@@ -193,7 +193,7 @@ std::string NetPage::ipToString(u8* ip){
     return res;
 }
 
-int NetPage::stringToIp(std::string ip, u8 *out){
+int NetPage::stringToIp(const std::string& ip, u8 *out){
     size_t start;
     size_t end = 0;
     int i = 0;
