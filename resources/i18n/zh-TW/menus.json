@@ -29,7 +29,7 @@
     "sheet_content": "金手指代碼內容",
     "cheatslips_select": "選擇要下載金手指的遊戲",
     "cheatslips_wrong_id": "無法取得token，請檢查輸入的帳號密碼是否正確",
-    "kb_error": "如果無法顯示虛擬鍵盤，請嘗試在能存取完整記憶體的普通模式下啟動本程式(title重新導向)",
+    "kb_error": "如果無法顯示虛擬鍵盤，請嘗試在能存取完整記憶體的一般模式下啟動本程式(title重新導向)",
     "cheatslips_see_more": "檢視完整代碼",
     "cheatslips_dl_cheats": "下載金手指後返回",
     "bid_not_found": "無法取得build ID。當遊戲正在執行時，請嘗試在applet模式內執行aio-switch-updater",
@@ -42,7 +42,8 @@
     "gbatemp_dl_successful_dl": "下列金手指已下載完成:\n{}",
     "applet_mode_not_supported": "由於記憶體限制，在applet模式下，只能擷取目前正在玩的遊戲的金手指。請重新執行aio-switch-updater並透過title重新導向來下載其他遊戲的金手指",
     "cheatfile_label": "列出檔案內的金手指{}",
-    "not_found": "沒有找到符合遊戲版本的金手指"
+    "not_found": "沒有找到符合遊戲版本的金手指",
+    "show_existing": "顯示目前已有的"
   },
   "common": {
     "downloading": "正在下載...",
@@ -63,7 +64,7 @@
     "cancel": "取消",
     "off": "關",
     "selected": "已選擇",
-    "applet_mode_not_supported": "此功能在applet模式內無法使用。請重新執行aio-switch-updater並透過title重新導向來進行存取"
+    "applet_mode_not_supported": "此功能在applet模式內無法使用。請重新執行aio-switch-updater並透過title重新導向來進行存取",
   },
   "changelog": {
     "changelog": "更新履歷"
@@ -104,7 +105,7 @@
     "getting": "正在擷取 ",
     "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。你可以透過Daybreak來安裝更新韌體。\n\ue016  目前FW: ",
     "cheats_text": "\uE016  下載'gbatemp.net'每日更新的金手指檔案到記憶卡時，並不會複製到主機未安裝的遊戲金手指檔案。你可以從設定的 '工具->金手指選單' 內停用金手指更新。\n\uE016  目前金手指資料庫版本: ",
-    "get_cheats": "下載GBAtemp.net金手指資料庫(版本 ",
+    "get_cheats:": "下載GBAtemp.net金手指資料庫(版本 ",
     "get_all_cheats": "下載GBAtemp.net金手指資料庫",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\ue016  Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。請確認你安裝過程中使用合適的sigpatches(Pure Atmosphère或Hekate+Atmosphère)。安裝完成後請重新開機以套用更新",
@@ -129,7 +130,8 @@
     "download_cheats": "下載金手指",
     "tools": "工具",
     "launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  請注意，我們非常不建議在exFAT格式的記憶卡上使用此app，可能會因此產生錯誤或執行中斷。\n\n\ue016  程式版本更新時會加入新的功能，也會改善現有的功能。請由選單內的 工具->更新履歷 前往檢視詳細內容。\n\n此提醒畫面將不再顯示。",
-    "footer_text": "v{} | {:.1f}GB 可用"
+    "footer_text": "v{} | {:.1f}GB 可用",
+    "theme_warning": "偵測已安裝自訂主題，更新系統韌體版本後，可能無法導致正常開機。\n建議更新系統前移除自訂主題並改回預設。"
   },
   "hide": {
     "title": "隱藏分頁",
@@ -155,7 +157,7 @@
     "language": "變更介面語系"
   },
   "utils": {
-    "fw_warning": "由於FW壓縮檔太大，在applet模式下無法下載韌體。請在能存取完整記憶體的普通模式下執行下載程序",
+    "fw_warning": "由於FW壓縮檔太大，在applet模式下無法下載韌體。請在能存取完整記憶體的一般模式下執行下載程序",
     "overwrite": " 是否要覆蓋現有的檔案 ",
     "wrong_type_sigpatches": "下載的檔案並不是正確的sigpatches壓縮檔。可能是檔案連結發生錯誤。如果下載錯誤持續超過30分鐘，請使用Github提出問題來進行回報",
     "wrong_type_fw": "下載的檔案並不是正確的韌體壓縮檔。可能是檔案連結發生錯誤。如果下載錯誤持續超過30分鐘，請使用Github提出問題來進行回報",
@@ -179,14 +181,16 @@
     "download_deepsea_package": "編譯與下載",
     "cant_fetch_deepsea": "無法取得安裝包內容。如果問題持續發生，請使用Github提出問題來進行回報",
     "build_your_deepsea": "透過個別選取來建立屬於你自己的自訂DeepSea安裝包",
-    "getting_ams": "正在擷取 Atmosphère"
+    "getting_ams": "正在擷取 Atmosphère",
+    "custom_packs_label": "來自 {} 的檔案。請注意，這些列出的檔案均未經過aio-switch-updater驗證，因此安裝前請確保檔案來源為可信任的。"
   },
   "net": {
     "title": "網路設定"
   },
   "errors": {
     "insufficient_storage": "記憶卡沒有足夠的可用空間來執行此操作",
-    "error_message": "{}\n請稍後再重新執行一次。如果問題持續發生，請使用Github提出問題來進行回報"
+    "error_message": "{}\n請稍後再重新執行一次。如果問題持續發生，請使用Github提出問題來進行回報",
+    "mariko_payload_missing": "在Mariko Switch上進行更新大氣層之前，需要將大氣層注入引導的檔案命名為\"payload.bin\"，並置於記憶卡的根目錄下。"
   },
   "language": {
     "system_default": "系統預設",
