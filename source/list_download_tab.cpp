@@ -159,25 +159,10 @@ void ListDownloadTab::createCheatSlipItem() {
             return true;
         }
         else {
-            SwkbdConfig kbd;
-            char usr[0x100] = {0};
-            char pwd[0x100] = {0};
-            Result rc = swkbdCreate(&kbd, 0);
-            if (R_SUCCEEDED(rc)) {
-                swkbdConfigMakePresetDefault(&kbd);
-                swkbdConfigSetOkButtonText(&kbd, "Submit");
-                swkbdConfigSetGuideText(&kbd, "www.cheatslips.com e-mail");
-                swkbdShow(&kbd, usr, sizeof(usr));
-                swkbdClose(&kbd);
-                rc = swkbdCreate(&kbd, 0);
-                if(R_SUCCEEDED(rc)){
-                    swkbdConfigMakePresetPassword(&kbd);
-                    swkbdConfigSetOkButtonText(&kbd, "Submit");
-                    swkbdConfigSetGuideText(&kbd, "www.cheatslips.com password");
-                    swkbdShow(&kbd, pwd, sizeof(pwd));
-                    swkbdClose(&kbd);
-                }
-            }
+            std::string usr, pwd;
+            //Result rc = swkbdCreate(&kbd, 0);
+            brls::Swkbd::openForText([&](std::string text) { usr = text; }, "cheatslips.com e-mail", "", 64, "", 0, "Submit", "cheatslips.com e-mail");
+            brls::Swkbd::openForText([&](std::string text) { pwd = text; }, "cheatslips.com password", "", 64, "", 0, "Submit", "cheatslips.com password", true);
             std::string body =  "{\"email\":\"" + std::string(usr) 
                                 + "\",\"password\":\"" + std::string(pwd) + "\"}";
             nlohmann::ordered_json token;

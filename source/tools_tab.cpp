@@ -111,45 +111,35 @@ ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
 
     browser = new brls::ListItem("menus/tools/browser"_i18n);
     browser->getClickEvent()->subscribe([&](brls::View* view){
-        char url[0xc00] = {0};
-        SwkbdConfig kbd;
-        Result rc = swkbdCreate(&kbd, 0);
-        if (R_SUCCEEDED(rc)) {
-            swkbdConfigMakePresetDefault(&kbd);
-            swkbdConfigSetGuideText(&kbd, "www.cheatslips.com e-mail");
-            swkbdConfigSetInitialText(&kbd, "https://duckduckgo.com");
-            swkbdShow(&kbd, url, sizeof(url));
-            swkbdClose(&kbd);
-        }
-        else {
-            strcpy(url, "https://duckduckgo.com");
-        }
-        std::string error = "";
-        int at = appletGetAppletType();
-        if(at == AppletType_Application) { // Running as a title
-            WebCommonConfig conf;
-            WebCommonReply out;
-            rc = webPageCreate(&conf, url);
-            if (R_FAILED(rc))
-                error += "\uE016 Error starting Browser\n\uE016 Lookup error code for more info " + rc;
-            webConfigSetJsExtension(&conf, true);
-            webConfigSetPageCache(&conf, true);
-            webConfigSetBootLoadingIcon(&conf, true);
-            webConfigSetWhitelist(&conf, ".*");
-            rc = webConfigShow(&conf, &out);
-            if (R_FAILED(rc))
-                error += "\uE016 Error starting Browser\n\uE016 Lookup error code for more info " + rc;
-        } else { // Running under applet
-            error += "\uE016 Running in applet mode/through a forwarder.\n\uE016 Please launch hbmenu by holding [R] on a game";
-        }
-        if(!error.empty()){
-            brls::Dialog* dialog = new brls::Dialog(error);
-            brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                dialog->close();
-            };
-            dialog->addButton("menus/common/ok"_i18n, callback);
-            dialog->setCancelable(true);
-            dialog->open();
+        std::string url;
+        if (brls::Swkbd::openForText([&](std::string text) { url = text; }, "cheatslips.com e-mail", "", 64, "https://duckduckgo.com", 0, "Submit", "https://website.tld")) {
+            std::string error = "";
+            int at = appletGetAppletType();
+            if(at == AppletType_Application) { // Running as a title
+                WebCommonConfig conf;
+                WebCommonReply out;
+                Result rc = webPageCreate(&conf, url.c_str());
+                if (R_FAILED(rc))
+                    error += "\uE016 Error starting Browser\n\uE016 Lookup error code for more info " + rc;
+                webConfigSetJsExtension(&conf, true);
+                webConfigSetPageCache(&conf, true);
+                webConfigSetBootLoadingIcon(&conf, true);
+                webConfigSetWhitelist(&conf, ".*");
+                rc = webConfigShow(&conf, &out);
+                if (R_FAILED(rc))
+                    error += "\uE016 Error starting Browser\n\uE016 Lookup error code for more info " + rc;
+            } else { // Running under applet
+                error += "\uE016 Running in applet mode/through a forwarder.\n\uE016 Please launch hbmenu by holding [R] on a game";
+            }
+            if(!error.empty()){
+                brls::Dialog* dialog = new brls::Dialog(error);
+                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+                    dialog->close();
+                };
+                dialog->addButton("menus/common/ok"_i18n, callback);
+                dialog->setCancelable(true);
+                dialog->open();
+            }
         }
         
     });
