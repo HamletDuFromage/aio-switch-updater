@@ -22,7 +22,8 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
     std::string operation("menus/main/getting"_i18n);
     std::string firmwareText("menus/main/firmware_text"_i18n);
 
-    std::string currentCheatsVer = "menus/main/cheats_text"_i18n;
+    std::string currentCheatsVer = "";
+    std::string newCheatsVer = "";
 
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
@@ -57,23 +58,23 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
             );
             break;
         case archiveType::cheats:
-            std::string cheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
-            if(cheatsVer != ""){
+            newCheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
+            if(newCheatsVer != ""){
                 switch(CurrentCfw::running_cfw){
                     case CFW::sxos:
-                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_TITLES));
+                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + newCheatsVer + ")", CHEATS_URL_TITLES));
                         break;
                     case CFW::ams:
-                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_CONTENTS));
+                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + newCheatsVer + ")", CHEATS_URL_CONTENTS));
                         break;
                     case CFW::rnx:
-                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + cheatsVer + ")", CHEATS_URL_CONTENTS));
+                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + newCheatsVer + ")", CHEATS_URL_CONTENTS));
                         break;
                 }
             }
             operation += "menus/main/cheats"_i18n;
-            currentCheatsVer += util::readVersion(CHEATS_VERSION);
-            this->description->setText(currentCheatsVer);
+            currentCheatsVer = util::readVersion(CHEATS_VERSION);
+            this->description->setText("menus/main/cheats_text"_i18n + currentCheatsVer);
             break;
     }
 
@@ -86,15 +87,17 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([&, text, url, type, operation](brls::View* view) {
+            listItem->getClickEvent()->subscribe([&, text, url, type, operation, newCheatsVer, currentCheatsVer](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(operation);
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, text)
                 );
-                stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, type](){util::downloadArchive(url, type);})
-                );
+                if(type != archiveType::cheats || newCheatsVer != currentCheatsVer || !std::filesystem::exists(CHEATS_ZIP_PATH)) {
+                    stagedFrame->addStage(
+                        new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, type](){util::downloadArchive(url, type);})
+                    );
+                }
                 stagedFrame->addStage(
                     new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type](){util::extractArchive(type);})
                 );
