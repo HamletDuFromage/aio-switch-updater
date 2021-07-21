@@ -48,6 +48,7 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 - Consult installed cheat codes.
 - Launch the Switch's web browser.
 - Edit internet settings (DNS, IP address, MTU, etc). Add you own configs to `config/aio-switch-updater/internet.json`. You can find a template in the root of the repo.
+- Tabs can be hidden through the `Hide tabs` menu, and more entries can be hidden by manually editing [`config/aio-switch-updater/hideTabs.json`](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/hideTabs.json).
 
 ## Screenshots
 <details><summary>Expand to view the screenshots</summary>
