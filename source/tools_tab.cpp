@@ -12,7 +12,6 @@
 #include "utils.hpp"
 #include "fs.hpp"
 #include "hide_tabs_page.hpp"
-#include <json.hpp>
 #include <filesystem>
 #include <fstream>
 
@@ -24,7 +23,7 @@ namespace {
     constexpr const char AppVersion[] = APP_VERSION;
 }
 
-ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
+ToolsTab::ToolsTab(const std::string& tag, bool erista, const nlohmann::json& hideStatus) : brls::List()
 {
     if(!tag.empty() && tag != AppVersion){
         updateApp = new brls::ListItem("menus/tools/update_app"_i18n + tag +")");
@@ -55,37 +54,31 @@ ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
         brls::Application::pushView(new CheatsPage());
     });
     cheats->setHeight(LISTITEM_HEIGHT);
-    this->addView(cheats);
 
     JCcolor = new brls::ListItem("menus/tools/joy_cons"_i18n);
     JCcolor->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new JCPage());
     });
     JCcolor->setHeight(LISTITEM_HEIGHT);
-    this->addView(JCcolor);
 
     PCcolor = new brls::ListItem("menus/tools/pro_cons"_i18n);
     PCcolor->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new PCPage());
     });
     PCcolor->setHeight(LISTITEM_HEIGHT);
-    this->addView(PCcolor);
 
     downloadPayload = new brls::ListItem("menus/tools/dl_payloads"_i18n + std::string(BOOTLOADER_PL_PATH));
     downloadPayload->getClickEvent()->subscribe([&](brls::View* view){
         brls::Application::pushView(new DownloadPayloadPage());
     });
     downloadPayload->setHeight(LISTITEM_HEIGHT);
-    this->addView(downloadPayload);
 
-    if(erista) {
-        rebootPayload = new brls::ListItem("menus/tools/inject_payloads"_i18n);
-        rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
-            brls::Application::pushView(new PayloadPage());
-        });
-        rebootPayload->setHeight(LISTITEM_HEIGHT);
-        this->addView(rebootPayload);
-    }
+    rebootPayload = new brls::ListItem("menus/tools/inject_payloads"_i18n);
+    rebootPayload->getClickEvent()->subscribe([&](brls::View* view){
+        brls::Application::pushView(new PayloadPage());
+    });
+    rebootPayload->setHeight(LISTITEM_HEIGHT);
+
 
     /* ntcp = new brls::ListItem("menus/ntcp"_i18n);
     ntcp->getClickEvent()->subscribe([&](brls::View* view){
@@ -107,7 +100,6 @@ ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
         brls::PopupFrame::open("menus/tools/internet_settings"_i18n, new NetPage(), "", "");
     });
     netSettings->setHeight(LISTITEM_HEIGHT);
-    this->addView(netSettings);
 
     browser = new brls::ListItem("menus/tools/browser"_i18n);
     browser->getClickEvent()->subscribe([&](brls::View* view){
@@ -144,7 +136,6 @@ ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
         
     });
     browser->setHeight(LISTITEM_HEIGHT);
-    this->addView(browser);
 
     move = new brls::ListItem("menus/tools/batch_copy"_i18n);
     move->getClickEvent()->subscribe([&](brls::View* view){
@@ -165,7 +156,6 @@ ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
         dialog->open();
     });
     move->setHeight(LISTITEM_HEIGHT);
-    this->addView(move);
 
     cleanUp = new brls::ListItem("menus/tools/clean_up"_i18n);
     cleanUp->getClickEvent()->subscribe([&](brls::View* view){
@@ -187,7 +177,6 @@ ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
         dialog->open();
     });
     cleanUp->setHeight(LISTITEM_HEIGHT);
-    this->addView(cleanUp);
 
     language = new brls::ListItem("menus/tools/language"_i18n);
     language->getClickEvent()->subscribe([&](brls::View* view){
@@ -231,20 +220,30 @@ ToolsTab::ToolsTab(const std::string& tag, bool erista) : brls::List()
         brls::PopupFrame::open("menus/tools/language"_i18n, appView, "", "");
     });
     language->setHeight(LISTITEM_HEIGHT);
-    this->addView(language);
 
     hideTabs = new brls::ListItem("menus/tools/hide_tabs"_i18n);
     hideTabs->getClickEvent()->subscribe([&](brls::View* view) {
         brls::PopupFrame::open("menus/tools/hide_tabs"_i18n, new HideTabsPage(), "", "");
     });
     hideTabs->setHeight(LISTITEM_HEIGHT);
-    this->addView(hideTabs);
 
     changelog = new brls::ListItem("menus/tools/changelog"_i18n);
     changelog->getClickEvent()->subscribe([&](brls::View* view){
         brls::PopupFrame::open("menus/tools/changelog"_i18n, new ChangelogPage(), "", "");
     });
     changelog->setHeight(LISTITEM_HEIGHT);
+
+    if(!util::getBoolValue(hideStatus, "cheats")) this->addView(cheats);
+    if(!util::getBoolValue(hideStatus, "jccolor")) this->addView(JCcolor);
+    if(!util::getBoolValue(hideStatus, "pccolor")) this->addView(PCcolor);
+    if(!util::getBoolValue(hideStatus, "downloadpayload")) this->addView(downloadPayload);
+    if(erista && !util::getBoolValue(hideStatus, "rebootpayload")) this->addView(rebootPayload);
+    if(!util::getBoolValue(hideStatus, "netsettings")) this->addView(netSettings);
+    if(!util::getBoolValue(hideStatus, "browser")) this->addView(browser);
+    if(!util::getBoolValue(hideStatus, "move")) this->addView(move);
+    if(!util::getBoolValue(hideStatus, "cleanup")) this->addView(cleanUp);
+    if(!util::getBoolValue(hideStatus, "language")) this->addView(language);
+    if(!util::getBoolValue(hideStatus, "hidetabs")) this->addView(hideTabs);
     this->addView(changelog);
 }
 

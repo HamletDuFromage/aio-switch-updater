@@ -330,4 +330,10 @@ std::string getContentsPath() {
     return path;
 }
 
+bool getBoolValue(const nlohmann::json& jsonFile, const std::string& key) {
+    /* try { return jsonFile.at(key); }
+    catch (nlohmann::json::out_of_range& e) { return false; } */
+    return (jsonFile.find(key) != jsonFile.end()) ? jsonFile.at(key).get<bool>() : false;
+}
+
 }

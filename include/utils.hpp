@@ -42,4 +42,5 @@ namespace util {
     std::string getErrorMessage(long status_code);
     bool isApplet();
     std::string getContentsPath();
+    bool getBoolValue(const nlohmann::json& jsonFile, const std::string& key);
 }

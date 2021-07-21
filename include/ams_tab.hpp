@@ -9,9 +9,9 @@ class AmsTab : public brls::List
     private:
         brls::ListItem* listItem;
         brls::Label *description;
-        int size;
+        int size = 0;
         bool erista;
-        nlohmann::ordered_json cfws;
+        nlohmann::ordered_json cfws = {};
         std::string GetRepoName(const std::string& repo);
         std::set<std::string> GetLastDownloadedModules(const std::string& json_path);
         void CreateStagedFrames(const std::string& text, const std::string& url, const std::string& operation, bool erista, bool hekate = false, const std::string& text_hekate = "", const std::string& hekate_url = "");
@@ -20,7 +20,8 @@ class AmsTab : public brls::List
         void ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules);
 
     public:
-        AmsTab(const bool erista = true);
+        AmsTab(const bool erista = true, const bool hideStandardEntries = false);
+        brls::View* getDefaultFocus() override;
 };
 
 class UnTogglableListItem : public brls::ToggleListItem

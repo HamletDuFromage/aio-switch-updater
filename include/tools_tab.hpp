@@ -1,6 +1,7 @@
 #pragma once
 
 #include <borealis.hpp>
+#include <json.hpp>
 //#include "ntcp.hpp"
 
 class ToolsTab : public brls::List
@@ -24,6 +25,6 @@ class ToolsTab : public brls::List
         brls::StagedAppletFrame* stagedFrame;
 
     public:
-    ToolsTab(const std::string& tag, bool erista = true);
+    ToolsTab(const std::string& tag, bool erista = true, const nlohmann::json& hideStatus = {});
 
 };

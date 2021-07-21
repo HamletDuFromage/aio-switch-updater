@@ -12,7 +12,7 @@ class ListDownloadTab : public brls::List
         brls::Label *notFound;
         brls::Label *description;
         brls::Label *cheatsLabel;
-        int size;
+        int size = 0;
         void createCheatSlipItem();
         void creategbatempItem();
 

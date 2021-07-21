@@ -187,6 +187,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.11.2");
     changes.push_back("\uE016 Fixed crash when downloading cheats in applet mode.\n\uE016 Fixed progress bar percentage not showing past 10%.");
 
+    verTitles.push_back("v2.11.3");
+    changes.push_back("\uE016 Don't download the cheat archive when already cached.\n\uE016 Added ability to hide more entries through hideTabs.json.\n\uE016 Better support for non-UTF-8 characters.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

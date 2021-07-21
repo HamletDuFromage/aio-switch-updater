@@ -160,7 +160,7 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
         nlohmann::ordered_json cheatsInfo;
         download::getRequest(CHEATSLIPS_CHEATS_URL + util::formatApplicationId(this->tid) + "/" + this->bid, cheatsInfo, headers);
         if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
-            for (const auto& p : cheatsInfo["cheats"].items()) {
+            for (const auto& p : cheatsInfo.at("cheats").items()) {
                 json cheat = p.value();
                 try {
                     listItem = new::brls::ToggleListItem(GetCheatsTitle(cheat), 0, "", "\uE016", "o");
@@ -173,11 +173,11 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
                 }
                 listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, cheat] { 
                     if(cheat.find("titles") != cheat.end()) {
-                        ShowCheatsContent(cheat["titles"]);
+                        ShowCheatsContent(cheat.at("titles"));
                     }
                     return true;
                 });
-                toggles.push_back(std::make_pair(listItem, cheat["id"]));
+                toggles.push_back(std::make_pair(listItem, cheat.at("id")));
                 list->addView(listItem);
             }
             if(list->getViewsCount() > 1)
@@ -209,18 +209,18 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
             tokenFile.close();
             std::vector<std::string> headers = {"accept: application/json"};
             if(token.find("token") != token.end()) {
-                headers.push_back("X-API-TOKEN: " + token["token"].get<std::string>());
+                headers.push_back("X-API-TOKEN: " + token.at("token").get<std::string>());
             }
             nlohmann::ordered_json cheatsInfo;
             download::getRequest("https://www.cheatslips.com/api/v1/cheats/" + util::formatApplicationId(this->tid) + "/" + this->bid, cheatsInfo, headers);
             if(cheatsInfo.find("cheats") != cheatsInfo.end()) {
-                for (const auto& p : cheatsInfo["cheats"].items()) {
-                    if(std::find(ids.begin(), ids.end(), p.value()["id"]) != ids.end()) {
-                        if(p.value()["content"].get<std::string>() == "Quota exceeded for today !"){
+                for (const auto& p : cheatsInfo.at("cheats").items()) {
+                    if(std::find(ids.begin(), ids.end(), p.value().at("id")) != ids.end()) {
+                        if(p.value().at("content").get<std::string>() == "Quota exceeded for today !"){
                             error = 1;
                         }
                         else {
-                            WriteCheats(p.value()["content"]);
+                            WriteCheats(p.value().at("content"));
                         }
                     }
                 }
@@ -286,8 +286,8 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
 std::string DownloadCheatsPage_CheatSlips::GetCheatsTitle(json cheat) {
     std::string res = "";
     if(cheat.find("titles") != cheat.end()) {
-        for(auto& p : cheat["titles"]){
-            res += "[" + p.get<std::string>() + "]" + " - ";
+        for(auto& p : cheat.at("titles")){
+            res += ".at(" + p.get<std::string>() + ")" + " - ";
         }
     }
     return res;
@@ -323,10 +323,10 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
         if(cheatsJson.find(this->bid) != cheatsJson.end()) {
             for (const auto& p : cheatsJson[this->bid].items()) {
                 json cheat = p.value();
-                listItem = new::brls::ListItem(cheat["title"]);
+                listItem = new::brls::ListItem(cheat.at("title"));
                 listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, cheat] {
-                    WriteCheats(cheat["content"]);
-                    brls::Dialog* dialog = new brls::Dialog(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, cheat["title"]));
+                    WriteCheats(cheat.at("content"));
+                    brls::Dialog* dialog = new brls::Dialog(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, cheat.at("title")));
                     brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                         dialog->close();
                     };
