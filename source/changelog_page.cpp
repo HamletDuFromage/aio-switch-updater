@@ -190,6 +190,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.11.3");
     changes.push_back("\uE016 Don't download the cheat archive when already cached.\n\uE016 Added ability to hide more entries through hide_tabs.json.\n\uE016 Better support for non-UTF-8 characters.");
 
+    verTitles.push_back("v2.11.4");
+    changes.push_back("\uE016 Fix Traditional Chinese strings not showing.\n\uE016 Remove full RAM access check for firmware downloads.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

@@ -42,12 +42,7 @@ void downloadArchive(const std::string& url, archiveType type, long& status_code
             status_code = download::downloadFile(url, CHEATS_FILENAME, OFF);
             break;
         case archiveType::fw:
-            if (!isApplet()) {
-                status_code = download::downloadFile(url, FIRMWARE_FILENAME, OFF);
-            }
-            else{
-                brls::Application::crash("menus/utils/fw_warning"_i18n);
-            }
+            status_code = download::downloadFile(url, FIRMWARE_FILENAME, OFF);
             break;
         case archiveType::app:
             status_code = download::downloadFile(url, APP_FILENAME, OFF);

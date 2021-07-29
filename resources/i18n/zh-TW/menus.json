@@ -64,7 +64,7 @@
     "cancel": "取消",
     "off": "關",
     "selected": "已選擇",
-    "applet_mode_not_supported": "此功能在applet模式內無法使用。請重新執行aio-switch-updater並透過title重新導向來進行存取",
+    "applet_mode_not_supported": "此功能在applet模式內無法使用。請重新執行aio-switch-updater並透過title重新導向來進行存取"
   },
   "changelog": {
     "changelog": "更新履歷"
