@@ -18,6 +18,8 @@
     "delete_all": "すべてのチートを削除",
     "deleting": "削除中...",
     "cheastlips_title": "CheatSlipチート",
+    "gbatemp_title": "GBAtempチート",
+    "get_gbatemp": "GBAtemp.netチートコードをダウンロード",
     "get_cheatslips": "CheatSlips.comのチートシートをダウンロードする",
     "cheatslips_label": "\ue016  CheatSlips.comにログインして、ゲームのチートシートをダウンロードします。",
     "cheatslips_dl": "CheatSlips.comから選択したチートシートをダウンロードします。\nこれらのチートコードは、既存のチートファイルの最後に追加されます。",
@@ -34,7 +36,14 @@
     "exclude_titles": "タイトルを除外する",
     "exclude_titles_desc": "このメニューでチートアップデートをオフにすることができます",
     "exclude_titles_save": "選択を保存して戻る",
-    "dl_all": "gbatempチートアーカイブ全体をダウンロードして抽出します"
+    "dl_all": "gbatempチートアーカイブ全体をダウンロードして抽出します",
+    "gbatemp_dl": "GBAtempからキュレーションされたチートコードをダウンロードする。 それらのチートは、既存のチートファイルの最後に追加されます。\n\uE016  Build ID: {}",
+    "gbatemp_dl_cheatcode": "チートコードをダウンロード",
+    "gbatemp_dl_successful_dl": "次のチートコードを正常にダウンロードしました:\n{}",
+    "applet_mode_not_supported": "メモリの制約により、アプレットモードでは、現在プレイしているゲームのチートコードのみをフェッチできます。所有しているゲームのチートコードをダウンロードするには、タイトルリダイレクトを通じてaio-switch-updaterを起動してください。",
+    "cheatfile_label": "これがファイルにリストされているチートコードです {}",
+    "not_found": "このゲームに適切なチートコードが見つかりませんでした",
+    "show_existing": "既存のものを表示"
   },
   "common": {
     "downloading": "ダウンロード中...",
@@ -53,9 +62,12 @@
     "go_back": "戻る",
     "confirm": "確認",
     "cancel": "キャンセル"
+    "off": "無効",
+    "selected": "選択済み",
+    "applet_mode_not_supported": "この機能はアプレットモードでは使用できません。アクセスするには、タイトルリダイレクトを介してaio-switch-updaterを起動してください。"
   },
   "changelog": {
-    "changelog": "Changelog"
+    "changelog": "更新履歴"
   },
   "sigpatches": {
     "reboot": "変更は、次回の再起動時に有効になります。"
@@ -94,6 +106,7 @@
     "firmware_text": "\ue016  ファームウェアは'https://darthsternie.net/switch-firmwares/'からダンプされます。 ダウンロードすると、「/ firmware」に抽出されます。その後、Daybreakを介してアップデートをインストールできます。\n\ue016  現在のファームウェア: ",
     "cheats_text": "Download GBAtemp.net チートアーカイブ (ver ",
     "get_cheats": "GBAtemp.netチートアーカイブをダウンロード (ver ",
+    "get_all_cheats:": "GBAtemp.netチートアーカイブをダウンロードする",
     "sigpatches": "sigpatch",
     "sigpatches_text": "\ue016  Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。セットアップに適したsigpatchを選択してください（AtmosphereまたはHekate + Atmosphère）。",
     "firmware": "FW",
@@ -104,17 +117,21 @@
     "ams": "Atmosphère",
     "ams_text": "\ue016  このメニューから、自作ソフトウェアの実行に必要なAtmosphèreカスタムファームウェアをダウンロードして更新できます。\n\ue016  DeepSea by Team Neptuneは、Atmosphère、hekate、およびさまざまな自作アプリを含むCFWパックです",
     "cfw_text": "\ue016  AtmosphereをHekateで使用する場合は、Atmosphereをダウンロードしてから、Hekateをダウンロードしてください。",
+    "bootloaders_text": "\ue016 ブートローダーをダウンロードして更新します。",
     "cheats": "チート",
     "links_not_found": "ダウンロードリンクが見つかりませんでした。スイッチがインターネットにアクセスできることを確認してください。\nこの問題が解決しない場合は、Githubで問題を開いてください。",
     "new_update": " - 新しいアプリのアップデートが利用可能",
     "about": "アプリについて",
     "update_ams": "Atmosphèreをアップデート",
     "update_cfw": "CFWをアップデート",
+    "update_bootloaders": "ブートローダーをアップデート",
     "update_sigpatches": "sigpatchをアップデート",
     "download_firmware": "FWをダウンロード",
     "download_cheats": "チートをダウンロード",
     "tools": "ツール",
-    "launch_warning": "アプリを使用する前に、次の点に注意してください:\n\n\ue016  最初にスイッチを手動で更新する方法を読んでください。これにより、アプリをよりよく理解し、問題が発生した場合の対処方法を知ることができます。\n\ue016  exFAT SDカードでこのアプリを使用することはお勧めできません。破損する可能性が高いためです。\n\n\ue016  現在の機能に関するいくつかの新しい機能および変更が導入されている可能性があります。 「ツール」->「変更履歴」からチェックしてください。\n\nこの画面は二度と表示されません。"
+    "launch_warning": "アプリを使用する前に、次の点に注意してください:\n\n\ue016  最初にスイッチを手動で更新する方法を読んでください。これにより、アプリをよりよく理解し、問題が発生した場合の対処方法を知ることができます。\n\ue016  exFAT SDカードでこのアプリを使用することはお勧めできません。破損する可能性が高いためです。\n\n\ue016  現在の機能に関するいくつかの新しい機能および変更が導入されている可能性があります。 「ツール」->「変更履歴」からチェックしてください。\n\nこの画面は二度と表示されません。",
+    "footer_text" : "v{} | {:.1f}GB 利用可能",
+    "theme_warning": "カスタムテーマがインストールされているようです。これにより、ファームウェアのアップグレード後にシステムが起動に失敗する可能性があります。\nアップグレードする前に削除することを検討してください。"
   },
   "hide": {
     "title": "タブを非表示",
@@ -138,7 +155,7 @@
     "batch_copy_not_found": "次のファイルが見つからず、コピーできませんでした:\n",
     "batch_copy_config_not_found": "このツールを使用すると、bootloader/trinketに必要なファイルを他の場所にコピーできます。 'https://git.io/aiosu_copyfiles'でcopy_files.txtを取得し、configフォルダーに追加します。これは、更新後にも実行されます。",
     "language": "アプリの言語を変更する" 
- },
+  },
   "utils": {
     "fw_warning": "FWアーカイブのサイズが大きいため、アプレットモードでのファームウェアのダウンロードはサポートされていません。フルRAMアクセスでアプリを起動してください。",
     "overwrite": " 既存のものを上書きしますか ",
@@ -154,10 +171,26 @@
     "delete_sysmodules_flags": "すべてのカスタムsysmodules起動フラグを削除しますか？これにより、すべてのsysmoduleがオフになり、最新のAtmosphèreをサポートしていないsysmoduleがある場合のクラッシュが防止されます。",
     "current_ams": "\ue016  現在のAtmosphère: ",
     "erista_rev": "\ue016  Erista revision",
-    "mariko_rev": "\ue016  Mariko revision"
+    "mariko_rev": "\ue016  Mariko revision",
+    "deepsea_builder": "DeepSeaビルダー",
+    "show_module_description": "モジュールの説明を表示する",
+    "depends_on": "以下のモジュールもインストールされます:",
+    "download_custom_deepsea": "このカスタムDeepSeaパッケージをダウンロードする",
+    "get_custom_deepsea": "カスタムDeepSeaパッケージを入手",
+    "deepsea_label": "\ue016  Team NeptuneによるDeepSeaは、Atmosphre\u00e8、hekate、およびさまざまな自作アプリを含むCFWパックです。",
+    "download_deepsea_package": "コンパイルしてダウンロードする",
+    "cant_fetch_deepsea": "パッケージをフェッチできませんでした。これが続く場合は、Githubの問題を開きます。",
+    "build_your_deepsea": "パッケージを選択して、独自のカスタムDeepSeaパッケージを作成します",
+    "getting_ams": "Atmosphère取得中",
+    "custom_packs_label": "{} ファイルにリストされているパックは次のとおりです。 それらはaio-switch-updaterによって承認されていないことに注意してください。そのため、それらのソースを信頼していることを確認してください。"
   },
   "net": {
     "title": "インターネット設定"
+  },
+  "errors": {
+    "insufficient_storage": "この操作を実行するのに十分な空き容量がSDカードにありません。",
+    "error_message": "{}\nしばらくしてからもう一度お試しください。問題が解決しない場合は、Githubで問題を開きます",
+    "mariko_payload_missing": "対策機の本体でAtmosphèreを更新するには、ペイロードに \"payload.bin\" という名前を付け、SDカードのルートに配置する必要があります。"
   },
   "language": {
     "system_default": "システムのデフォルト",
