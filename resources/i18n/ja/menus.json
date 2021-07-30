@@ -61,7 +61,7 @@
     "yes": "はい",
     "go_back": "戻る",
     "confirm": "確認",
-    "cancel": "キャンセル"
+    "cancel": "キャンセル",
     "off": "無効",
     "selected": "選択済み",
     "applet_mode_not_supported": "この機能はアプレットモードでは使用できません。アクセスするには、タイトルリダイレクトを介してaio-switch-updaterを起動してください。"
