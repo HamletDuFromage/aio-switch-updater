@@ -27,7 +27,6 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
 
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch(type){
-        case archiveType::ams_cfw:
         case archiveType::sigpatches:
             links = download::getLinks(SIGPATCHES_URL);
             operation += "menus/main/sigpatches"_i18n;
@@ -76,6 +75,8 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
             currentCheatsVer = util::readVersion(CHEATS_VERSION);
             this->description->setText("menus/main/cheats_text"_i18n + currentCheatsVer);
             break;
+        default:
+            break;
     }
 
     this->addView(description);
@@ -102,14 +103,9 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                     new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type](){util::extractArchive(type);})
                 );
                 std::string doneMsg = "menus/common/all_done"_i18n;
-                std::string contentsPath;
                 switch(type){
-                    case archiveType::ams_cfw:
-                    case archiveType::app:
-                    case archiveType::cfw:
-                    case archiveType::cheats:
-                    case archiveType::fw:
-                        contentsPath = util::getContentsPath();
+                    case archiveType::fw: {
+                        std::string contentsPath = util::getContentsPath();
                         for (const auto& tid : {"0100000000001000", "0100000000001007", "0100000000001013"}) {
                             if(std::filesystem::exists(contentsPath + tid) && !std::filesystem::is_empty(contentsPath + tid)) {
                                 doneMsg += "\n" + "menus/main/theme_warning"_i18n;
@@ -117,8 +113,11 @@ ListDownloadTab::ListDownloadTab(const archiveType type) :
                             }
                         }
                         break;
+                    }
                     case archiveType::sigpatches:
                         doneMsg += "\n" + "menus/sigpatches/reboot"_i18n;
+                        break;
+                    default:
                         break;
                 }
                 stagedFrame->addStage(

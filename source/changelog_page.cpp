@@ -193,6 +193,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.11.4");
     changes.push_back("\uE016 Fix Traditional Chinese strings not showing.\n\uE016 Remove full RAM access check for firmware downloads.");
 
+    verTitles.push_back("v2.11.5");
+    changes.push_back("\uE016 Update Japanese translation.\n\uE016 Do not show theme warning when downloading something that is not firmware files.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

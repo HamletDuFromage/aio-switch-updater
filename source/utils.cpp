@@ -99,8 +99,6 @@ int showDialogBox(const std::string& text, const std::string& opt1, const std::s
 
 void extractArchive(archiveType type, const std::string& tag){
     int overwriteInis = 0;
-    std::vector<std::string> titles;
-    std::string nroPath ="sdmc:" + std::string(APP_PATH);
     chdir(ROOT_PATH);
     switch(type){
         case archiveType::sigpatches:
@@ -122,11 +120,12 @@ void extractArchive(archiveType type, const std::string& tag){
                 brls::Application::crash("menus/utils/wrong_type_sigpatches"_i18n);
             }
             break;
-        case archiveType::cheats: 
-            titles = extract::getInstalledTitlesNs();
+        case archiveType::cheats: {
+            std::vector<std::string> titles = extract::getInstalledTitlesNs();
             titles = extract::excludeTitles(CHEATS_EXCLUDE, titles);
             extract::extractCheats(CHEATS_FILENAME, titles, CurrentCfw::running_cfw);
             break;
+        }
         case archiveType::fw:
             if(std::filesystem::file_size(FIRMWARE_FILENAME) < 200000){
                 brls::Application::crash("menus/utils/wrong_type_sigpatches_downloaded"_i18n);
