@@ -29,14 +29,14 @@
     "download": "Archive à télécharger :\n",
     "from": "\n\nLien complet de l'archive :\n",
     "ok": "Ok",
-    "shut_down": "Eteindre",
-    "reboot": "Redemarrer",
+    "shut_down": "Éteindre",
+    "reboot": "Redémarrer",
     "updating": "Mise à jour de l'app",
     "no": "Non",
     "yes": "Oui"
   },
   "changelog": {
-    "changelog": "Changelog"
+    "changelog": "liste des modifications"
   },
   "payloads": {
     "dl_payloads": "Télécharger des payloads",
@@ -72,9 +72,9 @@
     "cfw": "CFW",
     "cfw_text": "\ue016  Principaux CFWs. Si vous souhaitez utiliser Atmosphère avec Hekate, téléchargez Atmosphère, puis Hekate.",
     "cheats": "codes de triche",
-    "links_not_found": "Impossible de trouver un lien de téléchargement, assurez vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur Github.",
+    "links_not_found": "Impossible de trouver un lien de téléchargement, assurez-vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur Github.",
     "new_update": " - Nouvelle MàJ de l'app disponible",
-    "about": "A propos",
+    "about": "À propos",
     "update_cfw": "MAJ des CFW",
     "update_sigpatches": "MAJ des sigpatches",
     "download_firmware": "Téléch. des firmwares",
@@ -88,7 +88,7 @@
     "inject_payloads": "Injecter un payload",
     "update_app": "Mettre à jour l'app (v",
     "dl_app": "Mise à jour de :\nAIO-switch-updater\n\nDepuis :\n",
-    "changelog": "Changelog"
+    "changelog": "Liste des modifications"
   },
   "utils": {
     "fw_warning": "En raison de la taille de l'archive FW, le téléchargement de firmwares en mode Applet n'est pas pris en charge. Veuillez lancer l'application avec un accès total à la RAM.",
