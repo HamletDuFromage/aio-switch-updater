@@ -184,7 +184,7 @@
     "build_your_deepsea": "Build your own custom DeepSea package by selecting packages",
     "getting_ams": "Getting Atmosphère",
     "custom_packs_label": "Here are packs listed in the {} file. Be aware that those are not endorsed by aio-switch-updater so make sure you trust their source.",
-    "update_atm_and_deepsea": "Apdate Atmosph\u00e8re and DeepSea"
+    "update_atm_and_deepsea": "Update Atmosph\u00e8re and DeepSea"
   },
   "net": {
     "title": "Internet settings"
