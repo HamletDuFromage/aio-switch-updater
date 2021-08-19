@@ -123,6 +123,7 @@
     "new_update": " - New app update available",
     "about": "About",
     "update_ams": "Update Atmosph\u00e8re",
+    "update_ams_tab": "Update Atmosph\u00e8re Tab",
     "update_cfw": "Update CFW",
     "update_bootloaders": "Update bootloaders",
     "update_sigpatches": "Update sigpatches",
@@ -182,7 +183,8 @@
     "cant_fetch_deepsea": "Couldn't fetch packages. Open a Github issue if this persists.",
     "build_your_deepsea": "Build your own custom DeepSea package by selecting packages",
     "getting_ams": "Getting Atmosphère",
-    "custom_packs_label": "Here are packs listed in the {} file. Be aware that those are not endorsed by aio-switch-updater so make sure you trust their source."
+    "custom_packs_label": "Here are packs listed in the {} file. Be aware that those are not endorsed by aio-switch-updater so make sure you trust their source.",
+    "update_atm_and_deepsea": "Apdate Atmosph\u00e8re and DeepSea"
   },
   "net": {
     "title": "Internet settings"
