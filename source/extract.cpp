@@ -114,9 +114,9 @@ std::vector<std::string> getInstalledTitlesNs(){
     if (R_SUCCEEDED(nsListApplicationRecord(records, MaxTitleCount, 0, &recordCount))){
         for (s32 i = 0; i < recordCount; i++){
             controlSize = 0;
+            free(controlData);
             controlData = (NsApplicationControlData*)malloc(sizeof(NsApplicationControlData));
             if(controlData == NULL) {
-                free(controlData);
                 break;
             }
             else {
@@ -125,11 +125,13 @@ std::vector<std::string> getInstalledTitlesNs(){
 
             if(R_FAILED(nsGetApplicationControlData(NsApplicationControlSource_Storage, records[i].application_id, controlData, sizeof(NsApplicationControlData), &controlSize))) continue;
 
-            if(controlSize < sizeof(controlData->nacp)) continue;
+            if(controlSize < sizeof(controlData->nacp)) {
+                continue;
+            }
 
             titles.push_back(util::formatApplicationId(records[i].application_id));
-            free(controlData);
         }
+        free(controlData);
     }
     delete[] records;
     std::sort(titles.begin(), titles.end());

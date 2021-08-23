@@ -46,9 +46,8 @@ void AppPage::PopulatePage()
 
                 listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
                 this->DeclareGameListItem(name, tid, &controlData);
-
-                free(controlData);
             }
+            free(controlData);
             delete[] records;
         }
     }
@@ -105,9 +104,9 @@ void AppPage::CreateDownloadAllButton()
 }
 
 u32 AppPage::InitControlData(NsApplicationControlData** controlData) {
+    free(controlData);
     *controlData = (NsApplicationControlData*)malloc(sizeof(NsApplicationControlData));
     if(*controlData == NULL) {
-        free(*controlData);
         return 300;
     }
     else {
