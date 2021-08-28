@@ -7,7 +7,7 @@
   "cheats": {
     "installed": "Cheats codes installés",
     "label": "Les titres suivants ont obtenu des codes de triche lors de la dernière utilisation de l'app. Sachez que même si un jeu a reçu des codes, il se peut que ceux_ci soient incompatibles avec la version actuelle de votre jeu..",
-    "downloading": "Télécharge:\nDerniers codes de cheat\n\nDe:\n",
+    "downloading": "Télécharge :\nDerniers codes de cheat\n\nDe :\n",
     "dl_latest": "Télécharger les derniers codes de triche",
     "getting_cheats": "Obtension des codes de triche",
     "menu": "Menu de cheat",
@@ -22,8 +22,8 @@
   },
   "common": {
     "downloading": "Téléchargement en cours...",
-    "extracting": "Exctraction en cours...",
-    "all_done": " Fini!",
+    "extracting": "Extraction en cours...",
+    "all_done": " Fini !",
     "back": "Retour",
     "continue": "Continuer",
     "download": "Archive à télécharger :\n",
@@ -57,7 +57,7 @@
     "label": "Échangeur de couleurs des Joy-Con",
     "backing_up": "Sauvegarde du profile actuel, assurez vous que les Joy-Cons soient bien ancrés à la Switch.",
     "changing": "Changement de couleur. Assurez vous que les Joy-Cons soient bien ancrés à la Switch.",
-    "all_done": "Fini! Vous devrez peut-être ancrer/détacher votre Joy-Cons pour que le changement prenne effet"
+    "all_done": "Fini ! Vous devrez peut-être ancrer/détacher votre Joy-Cons pour que le changement prenne effet"
   },
   "main": {
     "getting": "Téléchargement du ",
@@ -95,7 +95,7 @@
     "overwrite": " Voulez-vous écraser le fichier l'existant ",
     "wrong_type_sigpatches": "Le fichier téléchargé n'est pas une archive de sigpatches. Cela est probablement dû à un lien brisé. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur Github.",
     "wrong_type_fw": "Le fichier téléchargé n'est pas une archive de firmare. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur Github.",
-    "overwrite_inis": "Voulez-vous écraser les fichiers de configuration .ini déja présents?",
+    "overwrite_inis": "Voulez-vous écraser les fichiers de configuration .ini déja présents ?",
     "wrong_type_cfw": "Le fichier téléchargé n'est pas une archive de CFW. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur Github."
   }
 }
