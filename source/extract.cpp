@@ -62,7 +62,7 @@ void extract(const std::string&  filename, const std::string& workingPath, int o
                 unzipper.extractEntry(entry.name);
             }
         }
-        else if(entry.name == "sept/payload.bin" || entry.name == "atmosphere/fusee-secondary.bin" || entry.name == "atmosphere/stratosphere.romfs"){
+        else if(entry.name == "sept/payload.bin" || entry.name == "atmosphere/fusee-secondary.bin" || entry.name == "atmosphere/stratosphere.romfs" || entry.name == "atmosphere/package3"){
             std::ofstream readonlyFile(entry.name + ".aio");
             unzipper.extractEntryToStream(entry.name, readonlyFile);
         }

@@ -196,6 +196,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.11.5");
     changes.push_back("\uE016 Update Japanese translation.\n\uE016 Do not show theme warning when downloading something that is not firmware files.");
 
+    verTitles.push_back("v2.12.0");
+    changes.push_back("\uE016 Prepare for AMS 1.0.0.\n\uE016 Update Japanese and French Translations.\n\uE016 Small bugfixes.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

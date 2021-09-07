@@ -48,7 +48,6 @@ void AppPage::PopulatePage()
                 this->DeclareGameListItem(name, tid, &controlData);
             }
             free(controlData);
-            delete[] records;
         }
     }
     else {
@@ -60,6 +59,7 @@ void AppPage::PopulatePage()
         label = new brls::Label(brls::LabelStyle::SMALL, "menus/common/applet_mode_not_supported"_i18n, true);
         list->addView(label);
     }
+    delete[] records;
 
     this->CreateDownloadAllButton();
 
@@ -104,7 +104,7 @@ void AppPage::CreateDownloadAllButton()
 }
 
 u32 AppPage::InitControlData(NsApplicationControlData** controlData) {
-    free(controlData);
+    free(*controlData);
     *controlData = (NsApplicationControlData*)malloc(sizeof(NsApplicationControlData));
     if(*controlData == NULL) {
         return 300;
