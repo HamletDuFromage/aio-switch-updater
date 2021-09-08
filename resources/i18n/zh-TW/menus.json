@@ -16,7 +16,7 @@
     "exclude": "設定為排除更新金手指的遊戲",
     "delete_existing": "刪除目前現有的金手指",
     "delete_all": "刪除所有金手指",
-    "deleting": "正在刪除...",
+    "deleting": "正在刪除…",
     "cheastlips_title": "Cheatslips金手指",
     "gbatemp_title": "GBAtemp金手指",
     "get_gbatemp": "下載GBAtemp.net金手指",
@@ -46,8 +46,8 @@
     "show_existing": "顯示目前已有的"
   },
   "common": {
-    "downloading": "正在下載...",
-    "extracting": "正在解壓縮...",
+    "downloading": "正在下載…",
+    "extracting": "正在解壓縮…",
     "all_done": " 全部完成!",
     "back": "返回",
     "continue": "繼續",
