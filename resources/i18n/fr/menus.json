@@ -2,33 +2,33 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-switch-updater est distribuée sous la license GPL-3.0\n© 2020-2021 HamletDuFromage",
-    "disclaimers": "\ue016  A part les cheat codes qui proviennent d'un mirroir d'un topic Gbatemp, HamletDuFromage n'héberge rien. Tous les crédits vont aux propriétaires respectifs\n\ue016  Les liens sont actualisés toutes les 3 heures. Si un lien reste inactif après 3 heures, merci de bien vouloir ouvrir une issue sur Github.\n"
+    "disclaimers": "\ue016  À part les cheat codes qui proviennent d'un mirroir d'un topic Gbatemp, HamletDuFromage n'héberge rien. Tous les crédits vont aux propriétaires respectifs.\n\ue016  Les liens sont actualisés toutes les 3 heures. Si un lien reste inactif après 3 heures, merci de bien vouloir ouvrir une issue sur GitHub.\n"
   },
   "cheats": {
-    "installed": "Cheats codes installés",
-    "label": "Les titres suivants ont obtenu des codes de triche lors de la dernière utilisation de l'app. Sachez que même si un jeu a reçu des codes, il se peut que ceux_ci soient incompatibles avec la version actuelle de votre jeu..",
-    "downloading": "Télécharge :\nDerniers codes de cheat\n\nDe :\n",
+    "installed": "Codes de triche installés",
+    "label": "Les titres suivants ont obtenu des codes de triche lors de la dernière utilisation de l'app. Sachez que même si un jeu a reçu des codes, il se peut que ceux_ci soient incompatibles avec la version actuelle de votre jeu.",
+    "downloading": "Télécharge :\nDerniers codes de triche\n\nDe :\n",
     "dl_latest": "Télécharger les derniers codes de triche",
     "getting_cheats": "Obtension des codes de triche",
-    "menu": "Menu de cheat",
+    "menu": "Menu de triche",
     "view": "Voir les codes de triche installés",
     "exclude": "Exclure l'obtension de codes de triche pour certains jeux",
     "delete_existing": "Supprimer tous les codes présents sur la carte SD",
     "delete_all": "Supprimer tous les codes",
-    "deleting": "Suppression en cours...",
+    "deleting": "Suppression en cours",
     "exclude_titles": "Exclure des titres",
-    "exclude_titles_desc": "Vous pouvez desactiver les mises-à-jour de codes dans ce menu",
+    "exclude_titles_desc": "Vous pouvez desactiver les mises à jour de codes dans ce menu",
     "exclude_titles_save": "Sauvegarde et retour"
   },
   "common": {
-    "downloading": "Téléchargement en cours...",
-    "extracting": "Extraction en cours...",
+    "downloading": "Téléchargement en cours…",
+    "extracting": "Extraction en cours…",
     "all_done": " Fini !",
     "back": "Retour",
     "continue": "Continuer",
     "download": "Archive à télécharger :\n",
     "from": "\n\nLien complet de l'archive :\n",
-    "ok": "Ok",
+    "ok": "OK",
     "shut_down": "Éteindre",
     "reboot": "Redémarrer",
     "updating": "Mise à jour de l'app",
@@ -36,12 +36,12 @@
     "yes": "Oui"
   },
   "changelog": {
-    "changelog": "liste des modifications"
+    "changelog": "Journal des modifications"
   },
   "payloads": {
     "dl_payloads": "Télécharger des payloads",
     "select": "Selectionner un payload à injecter.",
-    "not_found": "Impossible de trouver un lien de téléchargement, assurez vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur Github.",
+    "not_found": "Impossible de trouver un lien de téléchargement, assurez vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur GitHub.",
     "reboot_title": "Menu des payloads",
     "set_reboot_payload": "Déf comme reboot_payload.bin",
     "set_update_bin": "Déf comme bootloader/update.bin",
@@ -50,12 +50,12 @@
   },
   "joy_con": {
     "title": "Changement de couleur des Joy-Cons",
-    "desc_1": "Vous pouvez changer la couleur interne de vos Joy-Cons. Assurez vous qu'ils soient bien ancrés à la Swich.\nLes profils de couleur se trouvent dans '",
+    "desc_1": "Vous pouvez changer la couleur interne de vos Joy-Cons. Assurez vous qu'ils soient bien ancrés à la Switch.\nLes profils de couleur se trouvent dans '",
     "desc_2": "'. Visitez 'https://git.io/jcpicker' ",
     "desc_3": "pour générer des profils personalisés.",
     "backup": "Sauvegarde du profil actuel",
     "label": "Échangeur de couleurs des Joy-Con",
-    "backing_up": "Sauvegarde du profile actuel, assurez vous que les Joy-Cons soient bien ancrés à la Switch.",
+    "backing_up": "Sauvegarde du profil actuel, assurez vous que les Joy-Cons soient bien ancrés à la Switch.",
     "changing": "Changement de couleur. Assurez vous que les Joy-Cons soient bien ancrés à la Switch.",
     "all_done": "Fini ! Vous devrez peut-être ancrer/détacher votre Joy-Cons pour que le changement prenne effet"
   },
@@ -72,11 +72,11 @@
     "cfw": "CFW",
     "cfw_text": "\ue016  Principaux CFWs. Si vous souhaitez utiliser Atmosphère avec Hekate, téléchargez Atmosphère, puis Hekate.",
     "cheats": "codes de triche",
-    "links_not_found": "Impossible de trouver un lien de téléchargement, assurez-vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur Github.",
-    "new_update": " - Nouvelle MàJ de l'app disponible",
+    "links_not_found": "Impossible de trouver un lien de téléchargement, assurez-vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur GitHub.",
+    "new_update": " - Nouvelle MÀJ de l'app disponible",
     "about": "À propos",
-    "update_cfw": "MAJ des CFW",
-    "update_sigpatches": "MAJ des sigpatches",
+    "update_cfw": "MÀJ des CFW",
+    "update_sigpatches": "MÀJ des sigpatches",
     "download_firmware": "Téléch. des firmwares",
     "download_cheats": "Télécharger des cheats",
     "tools": "Outils"
@@ -93,9 +93,9 @@
   "utils": {
     "fw_warning": "En raison de la taille de l'archive FW, le téléchargement de firmwares en mode Applet n'est pas pris en charge. Veuillez lancer l'application avec un accès total à la RAM.",
     "overwrite": " Voulez-vous écraser le fichier l'existant ",
-    "wrong_type_sigpatches": "Le fichier téléchargé n'est pas une archive de sigpatches. Cela est probablement dû à un lien brisé. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur Github.",
-    "wrong_type_fw": "Le fichier téléchargé n'est pas une archive de firmare. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur Github.",
+    "wrong_type_sigpatches": "Le fichier téléchargé n'est pas une archive de sigpatches. Cela est probablement dû à un lien brisé. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub.",
+    "wrong_type_fw": "Le fichier téléchargé n'est pas une archive de firmare. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub.",
     "overwrite_inis": "Voulez-vous écraser les fichiers de configuration .ini déja présents ?",
-    "wrong_type_cfw": "Le fichier téléchargé n'est pas une archive de CFW. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur Github."
+    "wrong_type_cfw": "Le fichier téléchargé n'est pas une archive de CFW. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub."
   }
 }
