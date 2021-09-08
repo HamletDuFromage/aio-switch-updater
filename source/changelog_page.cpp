@@ -199,6 +199,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.12.0");
     changes.push_back("\uE016 Prepare for AMS 1.0.0.\n\uE016 Updated Japanese and French translations.\n\uE016 Small bugfixes.");
 
+    verTitles.push_back("v2.12.1");
+    changes.push_back("\uE016 Fix crashes in exclude page.");
+
     for(int i = verTitles.size() -1 ; i >= 0; i--){
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
