@@ -18,7 +18,7 @@ If applicable, add anything that might help explain your problem. Crash reports 
 
 **System Firmware Version and CFW Version**
  - System Firmware: [e.g. 12.0.3]
- - CFW Version [e.g. Atmospshère 0.19.4]
+ - CFW Version [e.g. Atmosphère 0.19.4]
 
 **SD card format**
 FAT32 or exFAT
