@@ -96,6 +96,7 @@
   "pro_con": {
     "title": "Pro-Con color swapper",
     "desc": "You can change the internal color of your Pro Controller. Make sure it's set to Player 1.",
+    "warning": "Changing the grip color is currently not supported. Use Joy-Con Toolkit instead if you wish to do so.",
     "label": "Pro Controller color swapper",
     "backing_up": "Backing up the color profile",
     "all_done": "All done! You may need to turn your controller on and off for the change to take effect.",

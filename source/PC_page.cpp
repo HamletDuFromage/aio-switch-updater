@@ -10,7 +10,7 @@ PCPage::PCPage() : AppletFrame(true, true)
 {
     this->setTitle("menus/pro_con/title"_i18n);
     list = new brls::List();
-    std::string labelText = "menus/pro_con/desc"_i18n;
+    std::string labelText = fmt::format("{}\n{}", "menus/pro_con/desc"_i18n, "menus/pro_con/warning"_i18n);
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
     list->addView(label);
 

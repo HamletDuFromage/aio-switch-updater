@@ -273,8 +273,8 @@ namespace PC {
         json profilesJson = fs::parseJsonFile(path);
         if(profilesJson.empty()){
             profilesJson = {{
-                {"BTN", "2d2d2d"},
-                {"BODY", "e6e6e6"},
+                {"BTN", "e6e6e6"},
+                {"BODY", "2d2d2d"},
                 {"name", "Default black"}
             }};
         }
