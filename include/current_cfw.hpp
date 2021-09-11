@@ -1,7 +1,8 @@
 #pragma once
 
-#include "constants.hpp"
 #include <string>
+
+#include "constants.hpp"
 
 namespace CurrentCfw {
 
@@ -9,4 +10,4 @@ namespace CurrentCfw {
     std::string getAmsInfo();
     extern CFW running_cfw;
 
-}
+}  // namespace CurrentCfw

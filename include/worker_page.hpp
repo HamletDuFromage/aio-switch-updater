@@ -7,7 +7,7 @@ typedef std::function<void()> worker_func_t;
 
 class WorkerPage : public brls::View
 {
-  private:
+private:
     brls::ProgressDisplay* progressDisp = nullptr;
     brls::StagedAppletFrame* frame;
     brls::Button* button;
@@ -19,7 +19,7 @@ class WorkerPage : public brls::View
     std::thread* workerThread;
     worker_func_t workerFunc;
 
-  public:
+public:
     WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, worker_func_t worker_func);
     ~WorkerPage();
 

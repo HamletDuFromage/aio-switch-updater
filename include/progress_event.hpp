@@ -1,6 +1,7 @@
 #pragma once
 
-class ProgressEvent{
+class ProgressEvent
+{
 private:
     ProgressEvent() {}
     int _current = 0;
@@ -12,16 +13,18 @@ private:
 
 public:
     ProgressEvent(const ProgressEvent&) = delete;
-    ProgressEvent& operator=(const ProgressEvent &) = delete;
-    ProgressEvent(ProgressEvent &&) = delete;
-    ProgressEvent & operator=(ProgressEvent &&) = delete;
+    ProgressEvent& operator=(const ProgressEvent&) = delete;
+    ProgressEvent(ProgressEvent&&) = delete;
+    ProgressEvent& operator=(ProgressEvent&&) = delete;
 
-    static auto& instance(){
+    static auto& instance()
+    {
         static ProgressEvent event;
         return event;
     }
 
-    void reset() {
+    void reset()
+    {
         _current = 0;
         _max = 60;
         _now = 0;
@@ -35,11 +38,11 @@ public:
     inline void setSpeed(double speed) { _speed = speed; }
     inline void setStep(int step) { _current = step; }
     inline void setStatusCode(long status_code) { _status_code = status_code; }
-    inline void incrementStep(int increment) {_current += increment; }
+    inline void incrementStep(int increment) { _current += increment; }
     inline void setNow(double now) { _now = now; }
     inline int getStep() { return _current; }
     inline double getNow() { return _now; }
-    inline bool finished() { return (_current == _max) ; }
+    inline bool finished() { return (_current == _max); }
     inline int getMax() { return _max; }
     inline double getTotal() { return _total; }
     inline double getSpeed() { return _speed; }

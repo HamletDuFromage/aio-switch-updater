@@ -5,9 +5,9 @@
 extern "C" {
 #endif
 
-#include <string.h>
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
 #include <switch.h>
 
 int reboot_to_payload(const char* path, bool legacy);

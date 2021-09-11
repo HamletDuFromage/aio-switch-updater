@@ -1,9 +1,10 @@
 #include "PC_page.hpp"
+
 #include "color_swapper.hpp"
 #include "confirm_page.hpp"
-#include "worker_page.hpp"
 #include "constants.hpp"
- 
+#include "worker_page.hpp"
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 PCPage::PCPage() : AppletFrame(true, true)
@@ -19,12 +20,10 @@ PCPage::PCPage() : AppletFrame(true, true)
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->setTitle("menus/pro_con/label"_i18n);
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/pro_con/backing_up"_i18n, 
-            [](){PC::backupPCColor(PC_COLOR_PATH);})
-        );
+            new WorkerPage(stagedFrame, "menus/pro_con/backing_up"_i18n,
+                           []() { PC::backupPCColor(PC_COLOR_PATH); }));
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true)
-        );
+            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
         brls::Application::pushView(stagedFrame);
     });
     list->addView(backup);
@@ -32,19 +31,17 @@ PCPage::PCPage() : AppletFrame(true, true)
     list->addView(new brls::ListItemGroupSpacing(true));
 
     auto profiles = PC::getProfiles(PC_COLOR_PATH);
-    for (int i = profiles.size() - 1; i >= 0; i--){
+    for (int i = profiles.size() - 1; i >= 0; i--) {
         std::vector<int> value = profiles[i].second;
         listItem = new brls::ListItem(profiles[i].first);
         listItem->getClickEvent()->subscribe([&, value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
             stagedFrame->setTitle("menus/pro_con/label"_i18n);
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/pro_con/changing"_i18n, 
-                [value](){PC::changePCColor(value);})
-            );
+                new WorkerPage(stagedFrame, "menus/pro_con/changing"_i18n,
+                               [value]() { PC::changePCColor(value); }));
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/pro_con/all_done"_i18n, true)
-            );
+                new ConfirmPage(stagedFrame, "menus/pro_con/all_done"_i18n, true));
             brls::Application::pushView(stagedFrame);
         });
         list->addView(listItem);

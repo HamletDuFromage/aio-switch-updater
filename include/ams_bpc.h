@@ -21,10 +21,10 @@ extern "C" {
 #endif
 
 Result amsBpcInitialize();
-void   amsBpcExit();
-Service *amsBpcGetServiceSession(void);
+void amsBpcExit();
+Service* amsBpcGetServiceSession(void);
 
-Result amsBpcSetRebootPayload(const void *src, size_t src_size);
+Result amsBpcSetRebootPayload(const void* src, size_t src_size);
 
 #ifdef __cplusplus
 }

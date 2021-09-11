@@ -4,11 +4,11 @@
 
 class AboutTab : public brls::List
 {
-    public:
-        AboutTab();
+public:
+    AboutTab();
 
-        View* getDefaultFocus() override
-        {
-            return nullptr;
-        }
+    View* getDefaultFocus() override
+    {
+        return nullptr;
+    }
 };

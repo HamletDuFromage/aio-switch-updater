@@ -4,13 +4,13 @@
 
 class PayloadPage : public brls::AppletFrame
 {
-    private:
-        brls::Label* label;
-        brls::List* list;
-        brls::ListItem* listItem;
-        brls::ListItem* reboot;
-        brls::ListItem* shutDown;
+private:
+    brls::Label* label;
+    brls::List* list;
+    brls::ListItem* listItem;
+    brls::ListItem* reboot;
+    brls::ListItem* shutDown;
 
-    public:
-        PayloadPage();
+public:
+    PayloadPage();
 };

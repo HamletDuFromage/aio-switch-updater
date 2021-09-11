@@ -1,5 +1,5 @@
 #include "changelog_page.hpp"
- 
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 ChangelogPage::ChangelogPage() : AppletFrame(true, true)
@@ -25,7 +25,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v1.1.1");
     changes.push_back("\uE016 Added some safety checks before downloading/extracting.\n\uE016 Added the possibility to copy a payload to '/atmosphere/reboot_payload.bin'\n\uE016 Added changelog in 'Tools'\n");
 
-    verTitles.push_back("v1.1.2" );
+    verTitles.push_back("v1.1.2");
     changes.push_back("\uE016 Added GUI to disable cheat updates for specific titles.");
 
     verTitles.push_back("v1.1.3");
@@ -202,10 +202,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.12.1");
     changes.push_back("\uE016 Fix crashes in exclude page.");
 
-    for(int i = verTitles.size() -1 ; i >= 0; i--){
+    for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
-        listItem->getClickEvent()->subscribe([&, change](brls::View* view){
+        listItem->getClickEvent()->subscribe([&, change](brls::View* view) {
             brls::Dialog* dialog = new brls::Dialog(change);
             brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                 dialog->close();
@@ -219,7 +219,8 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     this->setContentView(list);
 }
 
-void ChangelogPage::ShowChangelogContent(const std::string version, const std::string content) {
+void ChangelogPage::ShowChangelogContent(const std::string version, const std::string content)
+{
     listItem = new brls::ListItem(version);
     listItem->getClickEvent()->subscribe([&, content](brls::View* view) {
         brls::AppletFrame* appView = new brls::AppletFrame(true, true);

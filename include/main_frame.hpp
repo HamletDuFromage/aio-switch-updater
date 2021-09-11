@@ -4,9 +4,9 @@
 
 class MainFrame : public brls::TabFrame
 {
-    private:
-        //RefreshTask *refreshTask;
+private:
+    //RefreshTask *refreshTask;
 
-    public:
-        MainFrame();
+public:
+    MainFrame();
 };

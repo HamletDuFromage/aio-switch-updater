@@ -1,6 +1,8 @@
 #include "hide_tabs_page.hpp"
-#include <json.hpp>
+
 #include <fstream>
+#include <json.hpp>
+
 #include "constants.hpp"
 #include "fs.hpp"
 #include "utils.hpp"
@@ -9,14 +11,14 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 using json = nlohmann::json;
 
-HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
+HideTabsPage::HideTabsPage() : AppletFrame(true, true)
+{
     this->setTitle("menus/hide/title"_i18n);
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
         "menus/hide/desc"_i18n,
-        true
-    );
+        true);
     list->addView(label);
 
     json hideStatus = fs::parseJsonFile(HIDE_TABS_JSON);
@@ -39,7 +41,7 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true) {
     cheats = new brls::ToggleListItem("menus/main/download_cheats"_i18n, util::getBoolValue(hideStatus, "cheats"));
     list->addView(cheats);
 
-    list->registerAction("menus/cheats/exclude_titles_save"_i18n, brls::Key::B, [this] { 
+    list->registerAction("menus/cheats/exclude_titles_save"_i18n, brls::Key::B, [this] {
         json updatedStatus = json::object();
         updatedStatus["about"] = about->getToggleState();
         updatedStatus["atmosphere"] = ams->getToggleState();
