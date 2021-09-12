@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <filesystem>
+#include <iostream>
 
 #include "fs.hpp"
 #include "main_frame.hpp"
@@ -10,39 +11,15 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-DialoguePage::DialoguePage(brls::StagedAppletFrame* frame, const std::string& text, bool erista) : erista(erista)
+void DialoguePage::CreateView()
 {
     this->button1 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/common/yes"_i18n);
     this->button1->setParent(this);
     this->button2 = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/common/no"_i18n);
     this->button2->setParent(this);
 
-    this->button1->getClickEvent()->subscribe([frame, this](View* view) {
-        if (!frame->isLastStage())
-            frame->nextStage();
-        else {
-            brls::Application::pushView(new MainFrame());
-        }
-    });
+    this->instantiateButtons();
 
-    this->button2->getClickEvent()->subscribe([frame, this](View* view) {
-        if (this->erista) {
-            util::rebootToPayload(RCM_PAYLOAD_PATH);
-        }
-        else {
-            if (std::filesystem::exists(UPDATE_BIN_PATH)) {
-                fs::copyFile(UPDATE_BIN_PATH, MARIKO_PAYLOAD_PATH_TEMP);
-            }
-            else {
-                fs::copyFile(REBOOT_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH_TEMP);
-            }
-            fs::copyFile(RCM_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH);
-            util::shutDown(true);
-        }
-        brls::Application::popView();
-    });
-
-    this->label = new brls::Label(brls::LabelStyle::DIALOG, "menus/ams_update/install_hekate"_i18n + "\n\n" + text, true);
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
 
@@ -113,4 +90,60 @@ brls::View* DialoguePage::getDefaultFocus()
 brls::View* DialoguePage::getNextFocus(brls::FocusDirection direction, brls::View* currentView)
 {
     return this->navigationMap.getNextFocus(direction, currentView);
+}
+
+void DialoguePage_ams::instantiateButtons()
+{
+    this->button1->getClickEvent()->subscribe([this](View* view) {
+        if (!frame->isLastStage())
+            frame->nextStage();
+        else {
+            brls::Application::pushView(new MainFrame());
+        }
+    });
+
+    this->button2->getClickEvent()->subscribe([this](View* view) {
+        if (this->erista) {
+            util::rebootToPayload(RCM_PAYLOAD_PATH);
+        }
+        else {
+            if (std::filesystem::exists(UPDATE_BIN_PATH)) {
+                fs::copyFile(UPDATE_BIN_PATH, MARIKO_PAYLOAD_PATH_TEMP);
+            }
+            else {
+                fs::copyFile(REBOOT_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH_TEMP);
+            }
+            fs::copyFile(RCM_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH);
+            util::shutDown(true);
+        }
+        brls::Application::popView();
+    });
+
+    this->label = new brls::Label(brls::LabelStyle::DIALOG, "menus/ams_update/install_hekate"_i18n + "\n\n" + this->text, true);
+}
+
+void DialoguePage_fw::instantiateButtons()
+{
+    this->button2->getClickEvent()->subscribe([this](View* view) {
+        if (!frame->isLastStage())
+            frame->nextStage();
+        else {
+            brls::Application::pushView(new MainFrame());
+        }
+    });
+
+    this->button1->getClickEvent()->subscribe([this](View* view) {
+        envSetNextLoad(DAYBREAK_PATH, fmt::format("\"{}\" \"/firmware\"", DAYBREAK_PATH).c_str());
+        romfsExit();
+        brls::Application::quit();
+    });
+
+    this->label = new brls::Label(brls::LabelStyle::DIALOG, fmt::format("{}\n\n{}", this->text, "menus/firmware/launch_daybreak"_i18n), true);
+}
+
+void DialoguePage_fw::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
+{
+    this->label->frame(ctx);
+    this->button1->frame(ctx);
+    this->button2->frame(ctx);
 }

@@ -95,6 +95,8 @@ constexpr const char HOMEBREW[] = "/config/aio-switch-updater/language.json";
 constexpr const char ROMFS_FORWARDER[] = "romfs:/aiosu-forwarder.nro";
 constexpr const char FORWARDER_PATH[] = "/config/aio-switch-updater/aiosu-forwarder.nro";
 
+constexpr const char DAYBREAK_PATH[] = "/switch/daybreak.nro";
+
 constexpr const char HIDDEN_AIO_FILE[] = "/config/aio-switch-updater/.aio-switch-updater";
 
 constexpr const int LISTITEM_HEIGHT = 50;

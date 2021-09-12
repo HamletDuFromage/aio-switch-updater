@@ -7,6 +7,7 @@
 #include "app_page.hpp"
 #include "confirm_page.hpp"
 #include "current_cfw.hpp"
+#include "dialogue_page.hpp"
 #include "download.hpp"
 #include "extract.hpp"
 #include "fs.hpp"
@@ -92,14 +93,11 @@ ListDownloadTab::ListDownloadTab(const archiveType type) : brls::List()
             listItem->getClickEvent()->subscribe([&, text, url, type, operation, newCheatsVer, currentCheatsVer](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(operation);
-                stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, text));
+                stagedFrame->addStage(new ConfirmPage(stagedFrame, text));
                 if (type != archiveType::cheats || newCheatsVer != currentCheatsVer || !std::filesystem::exists(CHEATS_ZIP_PATH)) {
-                    stagedFrame->addStage(
-                        new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, type]() { util::downloadArchive(url, type); }));
+                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, type]() { util::downloadArchive(url, type); }));
                 }
-                stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type]() { util::extractArchive(type); }));
+                stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type]() { util::extractArchive(type); }));
                 std::string doneMsg = "menus/common/all_done"_i18n;
                 switch (type) {
                     case archiveType::fw: {
@@ -110,16 +108,22 @@ ListDownloadTab::ListDownloadTab(const archiveType type) : brls::List()
                                 break;
                             }
                         }
+                        if (std::filesystem::exists(DAYBREAK_PATH)) {
+                            stagedFrame->addStage(new DialoguePage_fw(stagedFrame, doneMsg));
+                        }
+                        else {
+                            stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
+                        }
                         break;
                     }
                     case archiveType::sigpatches:
                         doneMsg += "\n" + "menus/sigpatches/reboot"_i18n;
+                        stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
                         break;
                     default:
+                        stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
                         break;
                 }
-                stagedFrame->addStage(
-                    new ConfirmPage(stagedFrame, doneMsg, true));
                 brls::Application::pushView(stagedFrame);
             });
             this->addView(listItem);

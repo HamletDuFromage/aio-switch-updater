@@ -104,7 +104,7 @@ void AmsTab::CreateStagedFrames(const std::string& text, const std::string& url,
         new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(archiveType::ams_cfw); }));
     if (hekate) {
         stagedFrame->addStage(
-            new DialoguePage(stagedFrame, text_hekate, erista));
+            new DialoguePage_ams(stagedFrame, text_hekate, erista));
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [hekate_url]() { util::downloadArchive(hekate_url, archiveType::cfw); }));
         stagedFrame->addStage(
