@@ -355,4 +355,9 @@ namespace util {
         return (jsonFile.find(key) != jsonFile.end()) ? jsonFile.at(key).get<bool>() : false;
     }
 
+    const nlohmann::ordered_json getValueFromKey(const nlohmann::ordered_json& jsonFile, const std::string& key)
+    {
+        return (jsonFile.find(key) != jsonFile.end()) ? jsonFile.at(key) : nlohmann::ordered_json::object();
+    }
+
 }  // namespace util

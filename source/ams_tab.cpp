@@ -18,13 +18,13 @@ using namespace i18n::literals;
 AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool hideStandardEntries) : brls::List()
 {
     this->erista = erista;
-    this->hekate = nxlinks["hekate"];
-    auto cfws = nxlinks["cfws"];
+    this->hekate = util::getValueFromKey(nxlinks, "hekate");
+    auto cfws = util::getValueFromKey(nxlinks, "cfws");
 
     if (!hideStandardEntries) {
         this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (CurrentCfw::running_cfw == CFW::ams ? "\n" + "menus/ams_update/current_ams"_i18n + CurrentCfw::getAmsInfo() : "") + (erista ? "\n" + "menus/ams_update/erista_rev"_i18n : "\n" + "menus/ams_update/mariko_rev"_i18n), true);
         this->addView(description);
-        CreateDownloadItems(cfws.find("Atmosphere") != cfws.end() ? (nlohmann::ordered_json) cfws.at("Atmosphere") : nlohmann::ordered_json::object());
+        CreateDownloadItems(util::getValueFromKey(cfws, "Atmosphere"));
 
         description = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
@@ -41,7 +41,7 @@ AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool hide
         });
         this->addView(listItem);
 
-        CreateDownloadItems(cfws.find("DeepSea") != cfws.end() ? (nlohmann::ordered_json) cfws.at("DeepSea") : nlohmann::ordered_json::object());
+        CreateDownloadItems(util::getValueFromKey(cfws, "DeepSea"));
     }
 
     auto custom_pack = fs::parseJsonFile(CUSTOM_PACKS_PATH);
