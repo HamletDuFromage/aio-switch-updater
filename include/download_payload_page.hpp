@@ -1,6 +1,7 @@
 #pragma once
 
 #include <borealis.hpp>
+#include <json.hpp>
 
 class DownloadPayloadPage : public brls::AppletFrame
 {
@@ -11,5 +12,5 @@ private:
     brls::ListItem* listItem;
 
 public:
-    DownloadPayloadPage();
+    DownloadPayloadPage(const nlohmann::ordered_json& payloads);
 };

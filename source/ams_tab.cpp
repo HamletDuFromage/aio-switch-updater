@@ -15,15 +15,16 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-AmsTab::AmsTab(const bool erista, const bool hideStandardEntries) : brls::List()
+AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool hideStandardEntries) : brls::List()
 {
     this->erista = erista;
-    download::getRequest(AMS_URL, cfws);
+    this->hekate = nxlinks["hekate"];
+    auto cfws = nxlinks["cfws"];
 
     if (!hideStandardEntries) {
         this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (CurrentCfw::running_cfw == CFW::ams ? "\n" + "menus/ams_update/current_ams"_i18n + CurrentCfw::getAmsInfo() : "") + (erista ? "\n" + "menus/ams_update/erista_rev"_i18n : "\n" + "menus/ams_update/mariko_rev"_i18n), true);
         this->addView(description);
-        CreateDownloadItems(cfws.find("Atmosphere") != cfws.end() ? cfws.at("Atmosphere") : nlohmann::ordered_json::object());
+        CreateDownloadItems(cfws.find("Atmosphere") != cfws.end() ? (nlohmann::ordered_json) cfws.at("Atmosphere") : nlohmann::ordered_json::object());
 
         description = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
@@ -40,7 +41,7 @@ AmsTab::AmsTab(const bool erista, const bool hideStandardEntries) : brls::List()
         });
         this->addView(listItem);
 
-        CreateDownloadItems(cfws.find("DeepSea") != cfws.end() ? cfws.at("DeepSea") : nlohmann::ordered_json::object());
+        CreateDownloadItems(cfws.find("DeepSea") != cfws.end() ? (nlohmann::ordered_json) cfws.at("DeepSea") : nlohmann::ordered_json::object());
     }
 
     auto custom_pack = fs::parseJsonFile(CUSTOM_PACKS_PATH);
@@ -61,7 +62,7 @@ void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool h
     std::vector<std::pair<std::string, std::string>> links;
     links = download::getLinksFromJson(cfw_links);
     if (links.size()) {
-        auto hekate_link = download::getLinks(HEKATE_URL);
+        auto hekate_link = download::getLinksFromJson(this->hekate);
         std::string hekate_url = hekate_link[0].second;
         std::string text_hekate = "menus/common/download"_i18n + hekate_link[0].first;
 
@@ -106,9 +107,9 @@ void AmsTab::CreateStagedFrames(const std::string& text, const std::string& url,
         stagedFrame->addStage(
             new DialoguePage_ams(stagedFrame, text_hekate, erista));
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [hekate_url]() { util::downloadArchive(hekate_url, archiveType::cfw); }));
+            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [hekate_url]() { util::downloadArchive(hekate_url, archiveType::bootloaders); }));
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(archiveType::cfw); }));
+            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(archiveType::bootloaders); }));
     }
     stagedFrame->addStage(
         new ConfirmPage(stagedFrame, "menus/ams_update/reboot_rcm"_i18n, false, true, erista));

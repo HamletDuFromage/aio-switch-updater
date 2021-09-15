@@ -25,7 +25,7 @@ namespace {
     constexpr const char AppVersion[] = APP_VERSION;
 }
 
-ToolsTab::ToolsTab(const std::string& tag, bool erista, const nlohmann::json& hideStatus) : brls::List()
+ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payloads, bool erista, const nlohmann::json& hideStatus) : brls::List()
 {
     if (!tag.empty() && tag != AppVersion) {
         updateApp = new brls::ListItem("menus/tools/update_app"_i18n + tag + ")");
@@ -66,8 +66,8 @@ ToolsTab::ToolsTab(const std::string& tag, bool erista, const nlohmann::json& hi
     PCcolor->setHeight(LISTITEM_HEIGHT);
 
     downloadPayload = new brls::ListItem("menus/tools/dl_payloads"_i18n + std::string(BOOTLOADER_PL_PATH));
-    downloadPayload->getClickEvent()->subscribe([&](brls::View* view) {
-        brls::Application::pushView(new DownloadPayloadPage());
+    downloadPayload->getClickEvent()->subscribe([&, payloads](brls::View* view) {
+        brls::Application::pushView(new DownloadPayloadPage(payloads));
     });
     downloadPayload->setHeight(LISTITEM_HEIGHT);
 

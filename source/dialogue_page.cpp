@@ -2,7 +2,6 @@
 
 #include <algorithm>
 #include <filesystem>
-#include <iostream>
 
 #include "fs.hpp"
 #include "main_frame.hpp"

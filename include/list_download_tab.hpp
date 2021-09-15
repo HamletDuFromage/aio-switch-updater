@@ -1,6 +1,7 @@
 #pragma once
 
 #include <borealis.hpp>
+#include <json.hpp>
 
 #include "constants.hpp"
 
@@ -18,6 +19,6 @@ private:
     void creategbatempItem();
 
 public:
-    ListDownloadTab(const archiveType type);
+    ListDownloadTab(const archiveType type, const nlohmann::ordered_json& nxlinks = nlohmann::ordered_json::object());
     brls::View* getDefaultFocus() override;
 };

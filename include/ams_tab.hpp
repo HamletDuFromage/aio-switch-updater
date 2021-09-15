@@ -11,7 +11,7 @@ private:
     brls::Label* description;
     int size = 0;
     bool erista;
-    nlohmann::ordered_json cfws = {};
+    nlohmann::ordered_json hekate;
     std::string GetRepoName(const std::string& repo);
     std::set<std::string> GetLastDownloadedModules(const std::string& json_path);
     void CreateStagedFrames(const std::string& text, const std::string& url, const std::string& operation, bool erista, bool hekate = false, const std::string& text_hekate = "", const std::string& hekate_url = "");
@@ -20,7 +20,7 @@ private:
     void ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules);
 
 public:
-    AmsTab(const bool erista = true, const bool hideStandardEntries = false);
+    AmsTab(const nlohmann::json& nxlinks, const bool erista = true, const bool hideStandardEntries = false);
     brls::View* getDefaultFocus() override;
 };
 

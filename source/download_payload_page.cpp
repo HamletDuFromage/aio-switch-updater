@@ -8,7 +8,7 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
+DownloadPayloadPage::DownloadPayloadPage(const nlohmann::ordered_json& payloads) : AppletFrame(true, true)
 {
     this->setTitle("menus/payloads/dl_payloads"_i18n);
     list = new brls::List();
@@ -18,7 +18,7 @@ DownloadPayloadPage::DownloadPayloadPage() : AppletFrame(true, true)
         true);
     list->addView(label);
 
-    auto links = download::getLinks(PAYLOAD_URL);
+    auto links = download::getLinksFromJson(payloads);
     if (links.size()) {
         for (const auto& link : links) {
             std::string url = link.second;

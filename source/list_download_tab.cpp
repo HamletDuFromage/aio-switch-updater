@@ -17,10 +17,10 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-ListDownloadTab::ListDownloadTab(const archiveType type) : brls::List()
+ListDownloadTab::ListDownloadTab(const archiveType type, const nlohmann::ordered_json& nxlinks) : brls::List()
 {
     //std::vector<std::pair<std::string, std::string>> links, sxoslinks;
-    std::vector<std::pair<std::string, std::string>> links;
+    std::vector<std::pair<std::string, std::string>> links = download::getLinksFromJson(nxlinks);
     std::string operation("menus/main/getting"_i18n);
     std::string firmwareText("menus/main/firmware_text"_i18n);
 
@@ -30,13 +30,11 @@ ListDownloadTab::ListDownloadTab(const archiveType type) : brls::List()
     this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
     switch (type) {
         case archiveType::sigpatches:
-            links = download::getLinks(SIGPATCHES_URL);
             operation += "menus/main/sigpatches"_i18n;
             this->description->setText(
                 "menus/main/sigpatches_text"_i18n);
             break;
         case archiveType::fw:
-            links = download::getLinks(FIRMWARE_URL);
             operation += "menus/main/firmware"_i18n;
             SetSysFirmwareVersion ver;
             if (R_SUCCEEDED(setsysGetFirmwareVersion(&ver)))
@@ -49,11 +47,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type) : brls::List()
             links.push_back(std::make_pair("menus/main/latest_cheats"_i18n, APP_URL));
             operation += "menus/main/app"_i18n;
             break;
-        case archiveType::cfw:
-            links = download::getLinks(CFW_URL);
-            // sxos is dead anyways
-            /* sxoslinks = download::getLinks(SXOS_URL);
-            links.insert(links.end(), sxoslinks.begin(), sxoslinks.end()); */
+        case archiveType::bootloaders:
             operation += "menus/main/cfw"_i18n;
             this->description->setText(
                 "menus/main/bootloaders_text"_i18n);

@@ -4,7 +4,6 @@
 
 #include <filesystem>
 #include <fstream>
-#include <iostream>
 #include <regex>
 
 #include "confirm_page.hpp"

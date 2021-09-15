@@ -5,6 +5,7 @@
 
 #include "about_tab.hpp"
 #include "ams_tab.hpp"
+#include "download.hpp"
 #include "fs.hpp"
 #include "list_download_tab.hpp"
 #include "tools_tab.hpp"
@@ -31,6 +32,8 @@ MainFrame::MainFrame() : TabFrame()
                                     R_SUCCEEDED(fs::getFreeStorageSD(freeStorage)) ? (float)freeStorage / 0x40000000 : -1));
 
     json hideStatus = fs::parseJsonFile(HIDE_TABS_JSON);
+    nlohmann::ordered_json nxlinks;
+    download::getRequest(NXLINKS_URL, nxlinks);
 
     bool erista = util::isErista();
 
@@ -38,22 +41,22 @@ MainFrame::MainFrame() : TabFrame()
         this->addTab("menus/main/about"_i18n, new AboutTab());
 
     if (!util::getBoolValue(hideStatus, "atmosphere"))
-        this->addTab("menus/main/update_ams"_i18n, new AmsTab(erista, util::getBoolValue(hideStatus, "atmosphereentries")));
+        this->addTab("menus/main/update_ams"_i18n, new AmsTab(nxlinks, erista, util::getBoolValue(hideStatus, "atmosphereentries")));
 
     if (!util::getBoolValue(hideStatus, "cfw"))
-        this->addTab("menus/main/update_bootloaders"_i18n, new ListDownloadTab(archiveType::cfw));
+        this->addTab("menus/main/update_bootloaders"_i18n, new ListDownloadTab(archiveType::bootloaders, nxlinks["bootloaders"]));
 
     if (!util::getBoolValue(hideStatus, "sigpatches"))
-        this->addTab("menus/main/update_sigpatches"_i18n, new ListDownloadTab(archiveType::sigpatches));
+        this->addTab("menus/main/update_sigpatches"_i18n, new ListDownloadTab(archiveType::sigpatches, nxlinks["sigpatches"]));
 
     if (!util::getBoolValue(hideStatus, "firmwares"))
-        this->addTab("menus/main/download_firmware"_i18n, new ListDownloadTab(archiveType::fw));
+        this->addTab("menus/main/download_firmware"_i18n, new ListDownloadTab(archiveType::fw, nxlinks["firmwares"]));
 
     if (!util::getBoolValue(hideStatus, "cheats"))
         this->addTab("menus/main/download_cheats"_i18n, new ListDownloadTab(archiveType::cheats));
 
     if (!util::getBoolValue(hideStatus, "tools"))
-        this->addTab("menus/main/tools"_i18n, new ToolsTab(tag, erista, hideStatus));
+        this->addTab("menus/main/tools"_i18n, new ToolsTab(tag, nxlinks["payloads"], erista, hideStatus));
 
     this->registerAction("", brls::Key::B, [this] { return true; });
 }
