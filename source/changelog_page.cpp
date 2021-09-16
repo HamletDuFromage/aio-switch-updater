@@ -202,6 +202,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.12.1");
     changes.push_back("\uE016 Fix crashes in exclude page.");
 
+    verTitles.push_back("v2.13.0");
+    changes.push_back("\uE016 Add option to launch Daybreak after downloading a sysupdate.\n\uE016 Download all links at once to cut down on boot times.\n\uE016 Randomize IPs for lan-play in the internet settings page.\n\uE016 Fix default color scheme for pro-cons.");
+
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
