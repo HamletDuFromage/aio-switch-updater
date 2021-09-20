@@ -7,8 +7,8 @@ on:
 jobs:
   AIO-switch-updater:
     runs-on: ubuntu-latest
-    container: hamletdufromage/devkita64_devkitarm
-    #container: devkitpro/devkita64_devkitarm
+    #container: hamletdufromage/devkita64_devkitarm
+    container: devkitpro/devkita64_devkitarm
     steps:
     - uses: actions/checkout@v1
 
