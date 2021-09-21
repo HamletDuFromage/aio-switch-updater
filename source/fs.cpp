@@ -24,13 +24,13 @@ namespace {
 
 namespace fs {
 
-    int removeDir(const char* path)
+    bool removeDir(const std::string& path)
     {
         Result ret = 0;
         FsFileSystem* fs = fsdevGetDeviceFileSystem("sdmc");
-        if (R_FAILED(ret = fsFsDeleteDirectoryRecursively(fs, path)))
-            return ret;
-        return 0;
+        if (R_FAILED(ret = fsFsDeleteDirectoryRecursively(fs, path.c_str())))
+            return false;
+        return true;
     }
 
     nlohmann::ordered_json parseJsonFile(const std::string& path)

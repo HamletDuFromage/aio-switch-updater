@@ -41,7 +41,7 @@ AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool hide
         });
         this->addView(listItem);
 
-        CreateDownloadItems(util::getValueFromKey(cfws, "DeepSea"));
+        CreateDownloadItems(util::getValueFromKey(cfws, "DeepSea"), false);
     }
 
     auto custom_pack = fs::parseJsonFile(CUSTOM_PACKS_PATH);

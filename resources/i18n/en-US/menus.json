@@ -43,7 +43,9 @@
     "applet_mode_not_supported": "Due to memory constraints, in applet mode you may only fetch cheat codes for the game you're currently playing. Please launch aio-switch-updater through title redirection to download cheat codes for any game you own.",
     "cheatfile_label": "Here are the cheat codes listed in file {}",
     "not_found": "No proper cheat codes could be found for this game",
-    "show_existing": "Show existing"
+    "show_existing": "Show existing",
+    "delete_cheats": "Delete cheats for this game",
+    "deletion_error": "Couldn't delete the cheat files for game with id:\n{}"
   },
   "common": {
     "downloading": "Downloading…",

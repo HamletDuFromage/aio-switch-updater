@@ -328,21 +328,25 @@ namespace extract {
         ProgressEvent::instance().reset();
         ProgressEvent::instance().setTotalSteps(std::distance(std::filesystem::directory_iterator(path), std::filesystem::directory_iterator()));
         for (const auto& entry : std::filesystem::directory_iterator(path)) {
-            std::string cheatsPath = entry.path().string() + "/cheats";
-            if (std::filesystem::exists(cheatsPath)) {
-                for (const auto& cheat : std::filesystem::directory_iterator(cheatsPath)) {
-                    std::filesystem::remove(cheat);
-                }
-                rmdir(cheatsPath.c_str());
-                if (std::filesystem::is_empty(entry)) {
-                    rmdir(entry.path().string().c_str());
-                }
-            }
+            removeCheatsDirectory(entry.path().string());
             ProgressEvent::instance().incrementStep(1);
         }
-        //std::filesystem::remove(UPDATED_TITLES_PATH);
         std::filesystem::remove(CHEATS_VERSION);
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
+    }
+
+    bool removeCheatsDirectory(const std::string& entry)
+    {
+        bool res = true;
+        std::string cheatsPath = fmt::format("{}/cheats", entry);
+        if (std::filesystem::exists(cheatsPath)) {
+            res &= fs::removeDir(cheatsPath);
+            if (std::filesystem::is_empty(entry)) {
+                res &= fs::removeDir(entry);
+            }
+            return res;
+        }
+        return false;
     }
 
 }  // namespace extract
