@@ -96,6 +96,7 @@
   "pro_con": {
     "title": "Pro-Con 更換顏色工具",
     "desc": "你可以透過置換Pro-Con內的代碼設定，來自訂Pro控制器在系統內被辨識的顏色外觀。請確認Pro-Con已與主機正確連接，以及玩家指示燈顯示為第一位玩家",
+    "warning": "目前尚未支援顯示雙色或多色；如果想要嘗試，或可使用Joy-Con Toolkit",
     "label": "Pro控制器更換顏色工具",
     "backing_up": "正在備份目前的Pro控制器顏色代碼設定檔案",
     "all_done": "完成！你需要關閉Pro控制器的電源，並再次重新開啟Pro控制器的電源，可使用新增控制器等功能來檢視是否已正確套用顏色",
@@ -183,6 +184,9 @@
     "build_your_deepsea": "透過個別選取來建立屬於你自己的自訂DeepSea安裝包",
     "getting_ams": "正在擷取 Atmosphère",
     "custom_packs_label": "來自 {} 的檔案。請注意，這些列出的檔案均未經過aio-switch-updater驗證，因此安裝前請確保檔案來源為可信任的。"
+  },
+  "firmware": {
+    "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的更新系統套件?"
   },
   "net": {
     "title": "網路設定"
