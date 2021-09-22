@@ -10,6 +10,7 @@ private:
     double _total = 0;
     double _speed = 0;
     long _status_code = 0;
+    bool _interupt = false;
 
 public:
     ProgressEvent(const ProgressEvent&) = delete;
@@ -31,6 +32,7 @@ public:
         _total = 0;
         _speed = 0;
         _status_code = 0;
+        _interupt = false;
     }
 
     inline void setTotalSteps(int steps) { _max = steps; }
@@ -47,4 +49,6 @@ public:
     inline double getTotal() { return _total; }
     inline double getSpeed() { return _speed; }
     inline double getStatusCode() { return _status_code; }
+    inline void setInterupt(bool interupt) { _interupt = interupt; }
+    inline bool getInterupt() { return _interupt; }
 };

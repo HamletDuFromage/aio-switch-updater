@@ -155,7 +155,6 @@ namespace JC {
     {
         hiddbgInitialize();
         hidsysInitialize();
-        ProgressEvent::instance().reset();
         ProgressEvent::instance().setStep(1);
         int res = setColor(values);
         if (res != 0) {
@@ -170,7 +169,6 @@ namespace JC {
     {
         hiddbgInitialize();
         hidsysInitialize();
-        ProgressEvent::instance().reset();
         ProgressEvent::instance().setStep(1);
         json backup;
         json profiles;
@@ -306,7 +304,6 @@ namespace PC {
     {
         hiddbgInitialize();
         hidsysInitialize();
-        ProgressEvent::instance().reset();
         ProgressEvent::instance().setStep(1);
         int res = setColor(values);
         if (res != 0) {
@@ -321,7 +318,6 @@ namespace PC {
     {
         hiddbgInitialize();
         hidsysInitialize();
-        ProgressEvent::instance().reset();
         ProgressEvent::instance().setStep(1);
         json backup;
         json profiles;

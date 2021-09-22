@@ -45,6 +45,9 @@ namespace download {
 
         static size_t WriteMemoryCallback(void* contents, size_t size, size_t num_files, void* userp)
         {
+            if (ProgressEvent::instance().getInterupt()) {
+                return 0;
+            }
             ntwrk_struct_t* data_struct = (ntwrk_struct_t*)userp;
             size_t realsize = size * num_files;
 
@@ -132,7 +135,6 @@ namespace download {
 
     long downloadFile(const std::string& url, std::vector<std::uint8_t>& res, const char* output, int api)
     {
-        ProgressEvent::instance().reset();
         CURL* curl = curl_easy_init();
         ntwrk_struct_t chunk = {0};
         long status_code;
