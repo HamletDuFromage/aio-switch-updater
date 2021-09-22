@@ -30,6 +30,7 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
         return true;
     });
     this->registerAction("", brls::Key::A, [this] { return true; });
+    this->registerAction("", brls::Key::PLUS, [this] { return true; });
 }
 
 void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
