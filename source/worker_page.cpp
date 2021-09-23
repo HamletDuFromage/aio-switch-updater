@@ -38,12 +38,13 @@ void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned hei
     if (this->draw_page) {
         if (!this->workStarted) {
             appletSetMediaPlaybackState(true);
-            this->workStarted = true;
+            appletBeginBlockingHomeButton(0);
             ProgressEvent::instance().reset();
+            this->workStarted = true;
             workerThread = new std::thread(&WorkerPage::doWork, this);
         }
         else if (ProgressEvent::instance().finished()) {
-            brls::Logger::debug("Worker done");
+            appletEndBlockingHomeButton();
             appletSetMediaPlaybackState(false);
             if (ProgressEvent::instance().getStatusCode() > 399) {
                 this->draw_page = false;
