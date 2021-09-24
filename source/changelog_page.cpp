@@ -203,6 +203,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Fix crashes in exclude page.");
 
     verTitles.push_back("v2.13.0");
+    changes.push_back("\uE016 Added option to delete all cheat files for a specific game.\n\uE016 Now blocks the home menu during downloads/extraction, and add an option to cancel it.\n\uE016 Updated traditional Chinese translations.");
+
+    verTitles.push_back("v2.14.0");
     changes.push_back("\uE016 Add option to launch Daybreak after downloading a sysupdate.\n\uE016 Download all links at once to cut down on boot times.\n\uE016 Randomize IPs for lan-play in the internet settings page.\n\uE016 Fix default color scheme for pro-cons.");
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {

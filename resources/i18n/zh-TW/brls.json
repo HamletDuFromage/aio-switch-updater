@@ -4,11 +4,9 @@
         "back": "返回",
         "exit": "退出"
     },
-
     "crash_frame": {
         "button": "確定"
     },
-
     "thumbnail_sidebar": {
         "save": "儲存"
     }
