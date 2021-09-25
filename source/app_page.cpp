@@ -53,7 +53,7 @@ void AppPage::PopulatePage()
     }
     else {
         tid = GetCurrentApplicationId();
-        if (R_SUCCEEDED(InitControlData(&controlData)) && R_SUCCEEDED(GetControlData(tid, controlData, controlSize, name))) {
+        if (R_SUCCEEDED(InitControlData(&controlData)) && R_SUCCEEDED(GetControlData(tid & 0xFFFFFFFFFFFFF000, controlData, controlSize, name))) {
             listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
             this->DeclareGameListItem(name, tid, &controlData);
         }

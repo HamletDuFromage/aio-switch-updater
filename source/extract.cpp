@@ -277,6 +277,9 @@ namespace extract {
         std::string path = util::getContentsPath();
         ProgressEvent::instance().setTotalSteps(std::distance(std::filesystem::directory_iterator(path), std::filesystem::directory_iterator()));
         for (const auto& entry : std::filesystem::directory_iterator(path)) {
+            if (ProgressEvent::instance().getInterupt()) {
+                break;
+            }
             removeCheatsDirectory(entry.path().string());
             ProgressEvent::instance().incrementStep(1);
         }

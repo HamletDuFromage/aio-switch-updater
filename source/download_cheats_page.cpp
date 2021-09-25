@@ -50,7 +50,7 @@ namespace show_cheats {
             cheatsList->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, fmt::format("menus/cheats/cheatfile_label"_i18n, path.filename().string()), true));
 
             std::string str;
-            std::regex cheats_expr(R"(\[.+\])");
+            std::regex cheats_expr(R"(\[.+\]|\{.+\})");
             std::ifstream in(path);
             if (in) {
                 while (std::getline(in, str)) {
@@ -100,15 +100,9 @@ void DownloadCheatsPage::GetBuildIDFromDmnt()
     serviceDispatchOut(&g_dmntchtSrv, 65002, metadata);
     serviceClose(&g_dmntchtSrv);
     if (metadata.title_id == this->tid) {
-        u8 buildID[0x20];
-        memcpy(buildID, metadata.main_nso_build_id, 0x20);
-        std::stringstream ss;
-        for (u8 i = 0; i < 8; i++)
-            ss << std::uppercase << std::hex << std::setfill('0') << std::setw(2) << (u16)buildID[i];
-        this->bid = ss.str();
-    }
-    else {
-        this->bid = "";
+        u64 buildID = 0;
+        memcpy(&buildID, metadata.main_nso_build_id, sizeof(u64));
+        this->bid = fmt::format("{:016X}", __builtin_bswap64(buildID));
     }
 }
 
@@ -147,9 +141,6 @@ void DownloadCheatsPage::WriteCheats(const std::string& cheatContent)
     cheatFile.open(path, std::ios::app);
     cheatFile << "\n\n"
               << cheatContent;
-    /* std::ofstream updated;
-    updated.open(UPDATED_TITLES_PATH, std::ios::app);
-    updated << "\n" << tidstr; */
 }
 
 void DownloadCheatsPage::DeleteCheats()
