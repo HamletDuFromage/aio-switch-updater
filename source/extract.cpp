@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iterator>
+#include <ranges>
 #include <set>
 #include <sstream>
 #include <string>
@@ -179,93 +180,51 @@ namespace extract {
         return diff;
     }
 
+    int computeOffset(CFW cfw)
+    {
+        switch (cfw) {
+            case CFW::ams:
+                std::filesystem::create_directory(AMS_PATH);
+                std::filesystem::create_directory(AMS_CONTENTS);
+                chdir(AMS_PATH);
+                return std::string(CONTENTS_PATH).length();
+                break;
+            case CFW::rnx:
+                std::filesystem::create_directory(REINX_PATH);
+                std::filesystem::create_directory(REINX_CONTENTS);
+                chdir(REINX_PATH);
+                return std::string(CONTENTS_PATH).length();
+                break;
+            case CFW::sxos:
+                std::filesystem::create_directory(SXOS_PATH);
+                std::filesystem::create_directory(SXOS_TITLES);
+                chdir(SXOS_PATH);
+                return std::string(TITLES_PATH).length();
+                break;
+        }
+        return 0;
+    }
+
     void extractCheats(const std::string& zipPath, std::vector<std::string> titles, CFW cfw, bool credits)
     {
         zipper::Unzipper unzipper(zipPath);
         std::vector<zipper::ZipEntry> entries = unzipper.entries();
-        //std::set<std::string> extractedTitles;
-        int offset = 0;
-        switch (cfw) {
-            case CFW::ams:
-                offset = std::string(CONTENTS_PATH).length();
-                std::filesystem::create_directory(AMS_PATH);
-                std::filesystem::create_directory(AMS_CONTENTS);
-                chdir(AMS_PATH);
-                break;
-            case CFW::rnx:
-                offset = std::string(CONTENTS_PATH).length();
-                std::filesystem::create_directory(REINX_PATH);
-                std::filesystem::create_directory(REINX_CONTENTS);
-                chdir(REINX_PATH);
-                break;
-            case CFW::sxos:
-                offset = std::string(TITLES_PATH).length();
-                std::filesystem::create_directory(SXOS_PATH);
-                std::filesystem::create_directory(SXOS_TITLES);
-                chdir(SXOS_PATH);
-                break;
-        }
+        int offset = computeOffset(cfw);
 
-        std::vector<std::string> entriesNames;
-        std::vector<int> parentIndexes;
-        for (size_t i = 1; i < entries.size(); i++) {
-            entriesNames.push_back(entries[i].name);
-        }
-
-        std::sort(entriesNames.begin(), entriesNames.end(), caselessCompare);
-
-        std::vector<std::string> parents;
-        std::vector<std::vector<std::string>> children;
-        std::vector<std::string> tempChildren;
-
-        size_t k = 0;
-        while (k < entriesNames.size()) {
-            if (entriesNames[k].length() == (size_t)(offset + 17)) {
-                parents.push_back(entriesNames[k]);
-                k++;
-                while (entriesNames[k].length() != (size_t)(offset + 17) && k < entriesNames.size()) {
-                    if (credits == false) {
-                        if (strcasecmp(entriesNames[k].substr(offset + 16, 7).c_str(), "/cheats") == 0) {
-                            tempChildren.push_back(entriesNames[k]);
-                        }
-                    }
-                    else {
-                        tempChildren.push_back(entriesNames[k]);
-                    }
-                    k++;
-                }
-                children.push_back(tempChildren);
-                tempChildren.clear();
-            }
-            else {
-                k++;
-            }
-        }
-
-        size_t lastL = 0;
-        std::string id;
-        ProgressEvent::instance().setTotalSteps(titles.size());
-        for (size_t j = 0; j < titles.size(); j++) {
+        ProgressEvent::instance().setTotalSteps(titles.size() + 1);
+        for (const auto& title : titles) {
             if (ProgressEvent::instance().getInterupt()) {
                 break;
             }
-            for (size_t l = lastL; l < parents.size(); l++) {
-                if (strcasecmp((titles[j]).c_str(), parents[l].substr(offset, 16).c_str()) == 0) {
-                    unzipper.extractEntry(parents[l]);
-                    for (auto& e : children[l]) {
-                        unzipper.extractEntry(e);
-                        //extractedTitles.insert(id);
-                        ProgressEvent::instance().setStep(j);
-                        id = e.substr(offset, 16);
-                        std::transform(id.begin(), id.end(), id.begin(), ::toupper);
-                    }
-                    lastL = l;
-                    break;
-                }
+            auto matches = entries | std::views::filter([&title, offset](zipper::ZipEntry entry) {
+                               return strcasecmp((title.substr(0, 13)).c_str(), entry.name.substr(offset, 13).c_str()) == 0 && strcasecmp(entry.name.substr(offset + 16, 7).c_str(), "/cheats") == 0;
+                           });
+            for (const auto& match : matches) {
+                unzipper.extractEntry(match.name);
+                ProgressEvent::instance().incrementStep(1);
             }
         }
         unzipper.close();
-        //writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
         download::downloadFile(CHEATS_URL_VERSION, CHEATS_VERSION, OFF);
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
     }
@@ -274,41 +233,19 @@ namespace extract {
     {
         zipper::Unzipper unzipper(zipPath);
         std::vector<zipper::ZipEntry> entries = unzipper.entries();
+        int offset = computeOffset(cfw);
 
-        int offset = 0;
-        switch (cfw) {
-            case CFW::ams:
-                offset = std::string(CONTENTS_PATH).length() + 17 + 7;
-                std::filesystem::create_directory(AMS_PATH);
-                std::filesystem::create_directory(AMS_CONTENTS);
-                chdir(AMS_PATH);
-                break;
-            case CFW::rnx:
-                offset = std::string(CONTENTS_PATH).length() + 17 + 7;
-                std::filesystem::create_directory(REINX_PATH);
-                std::filesystem::create_directory(REINX_CONTENTS);
-                chdir(REINX_PATH);
-                break;
-            case CFW::sxos:
-                offset = std::string(TITLES_PATH).length() + 17 + 7;
-                std::filesystem::create_directory(SXOS_PATH);
-                std::filesystem::create_directory(SXOS_TITLES);
-                chdir(SXOS_PATH);
-                break;
-        }
-        ProgressEvent::instance().setTotalSteps(entries.size());
+        ProgressEvent::instance().setTotalSteps(entries.size() + 1);
         for (const auto& entry : entries) {
             if (ProgressEvent::instance().getInterupt()) {
                 break;
             }
             if (((int)entry.name.size() == offset + 16 + 4) && (isBID(entry.name.substr(offset, 16)))) {
-                //extractedTitles.insert(util::upperCase(entry.name.substr(offset - 24, 16)));
                 unzipper.extractEntry(entry.name);
             }
             ProgressEvent::instance().incrementStep(1);
         }
         unzipper.close();
-        //writeTitlesToFile(extractedTitles, UPDATED_TITLES_PATH);
         download::downloadFile(CHEATS_URL_VERSION, CHEATS_VERSION, OFF);
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
     }
