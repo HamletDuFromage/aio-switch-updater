@@ -16,7 +16,7 @@
     "exclude": "設定為排除更新金手指的遊戲",
     "delete_existing": "刪除目前現有的金手指",
     "delete_all": "刪除所有金手指",
-    "deleting": "正在刪除...",
+    "deleting": "正在刪除…",
     "cheastlips_title": "Cheatslips金手指",
     "gbatemp_title": "GBAtemp金手指",
     "get_gbatemp": "下載GBAtemp.net金手指",
@@ -43,11 +43,13 @@
     "applet_mode_not_supported": "由於記憶體限制，在applet模式下，只能擷取目前正在玩的遊戲的金手指。請重新執行aio-switch-updater並透過title重新導向來下載其他遊戲的金手指",
     "cheatfile_label": "列出檔案內的金手指{}",
     "not_found": "沒有找到符合遊戲版本的金手指",
-    "show_existing": "顯示目前已有的"
+    "show_existing": "顯示目前已有的",
+    "delete_cheats": "刪除此遊戲的金手指",
+    "deletion_error": "無法刪除此遊戲的金手指:\n{}"
   },
   "common": {
-    "downloading": "正在下載...",
-    "extracting": "正在解壓縮...",
+    "downloading": "正在下載…",
+    "extracting": "正在解壓縮…",
     "all_done": " 全部完成!",
     "back": "返回",
     "continue": "繼續",
@@ -96,6 +98,7 @@
   "pro_con": {
     "title": "Pro-Con 更換顏色工具",
     "desc": "你可以透過置換Pro-Con內的代碼設定，來自訂Pro控制器在系統內被辨識的顏色外觀。請確認Pro-Con已與主機正確連接，以及玩家指示燈顯示為第一位玩家",
+    "warning": "目前尚未支援顯示雙色或多色；如果想要嘗試，或可使用Joy-Con Toolkit",
     "label": "Pro控制器更換顏色工具",
     "backing_up": "正在備份目前的Pro控制器顏色代碼設定檔案",
     "all_done": "完成！你需要關閉Pro控制器的電源，並再次重新開啟Pro控制器的電源，可使用新增控制器等功能來檢視是否已正確套用顏色",
@@ -183,6 +186,9 @@
     "build_your_deepsea": "透過個別選取來建立屬於你自己的自訂DeepSea安裝包",
     "getting_ams": "正在擷取 Atmosphère",
     "custom_packs_label": "來自 {} 的檔案。請注意，這些列出的檔案均未經過aio-switch-updater驗證，因此安裝前請確保檔案來源為可信任的。"
+  },
+  "firmware": {
+    "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的更新系統套件?"
   },
   "net": {
     "title": "網路設定"
