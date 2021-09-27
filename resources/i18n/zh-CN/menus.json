@@ -62,7 +62,7 @@
     "all_done": "完成,你可能需要拔插手柄来启动刚才的颜色更新"
   },
   "main": {
-    "getting": "获取 ",
+    "getting": "获取 {}",
     "firmware_text": "\ue016  固件从 'https://darthsternie.net/switch-firmwares/ 下载'. 下载之后,文件会被解压到 '/firmware'. 您可以使用 Daybreak 来安装它 .\n\ue016  当前FW版本: ",
     "cheats_text": "\ue016  这个金手指的下载和更新地址是  'gbatemp.net'. 你的机器中没有的游戏,这些金手指不会解压到你的SD卡中 你可以在'工具->金手指菜单' 关闭金手指更新.\n\ue016  当前金手指版本: ",
     "sigpatches": "数字签名",

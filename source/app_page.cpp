@@ -90,9 +90,9 @@ void AppPage::CreateDownloadAllButton()
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, text));
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url]() { util::downloadArchive(url, archiveType::cheats); }));
+            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url]() { util::downloadArchive(url, contentType::cheats); }));
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(archiveType::cheats); }));
+            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(contentType::cheats); }));
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
         brls::Application::pushView(stagedFrame);

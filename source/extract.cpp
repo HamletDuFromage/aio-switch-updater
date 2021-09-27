@@ -27,7 +27,7 @@ namespace extract {
     namespace {
         bool caselessCompare(const std::string& a, const std::string& b)
         {
-            return strcasecmp(a.c_str(), b.c_str()) < 0;
+            return strcasecmp(a.c_str(), b.c_str()) == 0;
         }
 
         void preWork(zipper::Unzipper& unzipper, const std::string& workingPath, std::vector<zipper::ZipEntry>& entries)
@@ -79,6 +79,7 @@ namespace extract {
                 unzipper.extractEntry(entry.name);
                 if (entry.name.substr(0, 13) == "hekate_ctcaer") {
                     fs::copyFile("/" + entry.name, UPDATE_BIN_PATH);
+                    fs::copyFile("/" + entry.name, REBOOT_PAYLOAD_PATH);
                 }
             }
             ProgressEvent::instance().incrementStep(1);
@@ -217,7 +218,7 @@ namespace extract {
                 break;
             }
             auto matches = entries | std::views::filter([&title, offset](zipper::ZipEntry entry) {
-                               return strcasecmp((title.substr(0, 13)).c_str(), entry.name.substr(offset, 13).c_str()) == 0 && strcasecmp(entry.name.substr(offset + 16, 7).c_str(), "/cheats") == 0;
+                               return caselessCompare((title.substr(0, 13)), entry.name.substr(offset, 13)) && caselessCompare(entry.name.substr(offset + 16, 7), "/cheats");
                            });
             for (const auto& match : matches) {
                 unzipper.extractEntry(match.name);
@@ -275,7 +276,7 @@ namespace extract {
     void removeCheats()
     {
         std::string path = util::getContentsPath();
-        ProgressEvent::instance().setTotalSteps(std::distance(std::filesystem::directory_iterator(path), std::filesystem::directory_iterator()));
+        ProgressEvent::instance().setTotalSteps(std::distance(std::filesystem::directory_iterator(path), std::filesystem::directory_iterator()) + 1);
         for (const auto& entry : std::filesystem::directory_iterator(path)) {
             if (ProgressEvent::instance().getInterupt()) {
                 break;
@@ -291,14 +292,9 @@ namespace extract {
     {
         bool res = true;
         std::string cheatsPath = fmt::format("{}/cheats", entry);
-        if (std::filesystem::exists(cheatsPath)) {
-            res &= fs::removeDir(cheatsPath);
-            if (std::filesystem::is_empty(entry)) {
-                res &= fs::removeDir(entry);
-            }
-            return res;
-        }
-        return false;
+        if (std::filesystem::exists(cheatsPath)) res &= fs::removeDir(cheatsPath);
+        if (std::filesystem::is_empty(entry)) res &= fs::removeDir(entry);
+        return res;
     }
 
 }  // namespace extract

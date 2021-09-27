@@ -60,7 +60,7 @@
     "all_done": "Finalizado! Pode ser necessário desencaixar e encaixar o Joy-Cons para que a alteração tenha efeito."
   },
   "main": {
-    "getting": "Baixando ",
+    "getting": "Baixando {}",
     "firmware_text": "\ue016  Firmwares de 'https://darthsternie.net/switch-firmwares/'. Depois de baixado, ele será extraído para '/firmware'. Você pode então instalar a atualização por meio do Daybreak ou.\n\ue016  FW atual: ",
     "cheats_text": "\ue016  Isso irá baixar um pacote de cheat atualizado diariamente do 'gbatemp.net'. Os cheats do jogo que você não instalou não serão extraídos para o seu cartão SD. Você pode desabilitar cheats atualizados em 'Ferramentas->Trapaças'.\n\ue016  Versão das trapaças atual: ",
     "sigpatches": "sigpatches",

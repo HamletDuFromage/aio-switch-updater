@@ -103,7 +103,7 @@
     "changing": "正在變更控制器顏色，請確認Pro-Con的玩家指示燈顯示為第一位玩家"
   },
   "main": {
-    "getting": "正在擷取 ",
+    "getting": "正在擷取 {}",
     "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。你可以透過Daybreak來安裝更新韌體。\n\ue016  目前FW: ",
     "cheats_text": "\uE016  下載'gbatemp.net'每日更新的金手指檔案到記憶卡時，並不會複製到主機未安裝的遊戲金手指檔案。你可以從設定的 '工具->金手指選單' 內停用金手指更新。\n\uE016  目前金手指資料庫版本: ",
     "get_cheats:": "下載GBAtemp.net金手指資料庫(版本 ",

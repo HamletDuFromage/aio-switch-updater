@@ -103,7 +103,7 @@ constexpr const char HIDDEN_AIO_FILE[] = "/config/aio-switch-updater/.aio-switch
 
 constexpr const int LISTITEM_HEIGHT = 50;
 
-enum class archiveType
+enum class contentType
 {
     sigpatches,
     cheats,
@@ -111,7 +111,10 @@ enum class archiveType
     app,
     bootloaders,
     ams_cfw,
+    payloads,
 };
+
+constexpr std::string_view contentTypeNames[7]{"sigpatches", "cheats", "firmwares", "app", "bootloaders", "cfws", "payloads"};
 
 enum class CFW
 {

@@ -30,33 +30,36 @@ namespace util {
         return fileContent.find("DOCTYPE") == std::string::npos;
     }
 
-    void downloadArchive(const std::string& url, archiveType type)
+    void downloadArchive(const std::string& url, contentType type)
     {
         long status_code;
         downloadArchive(url, type, status_code);
     }
 
-    void downloadArchive(const std::string& url, archiveType type, long& status_code)
+    void downloadArchive(const std::string& url, contentType type, long& status_code)
     {
         fs::createTree(DOWNLOAD_PATH);
         switch (type) {
-            case archiveType::sigpatches:
+            case contentType::sigpatches:
                 status_code = download::downloadFile(url, SIGPATCHES_FILENAME, OFF);
                 break;
-            case archiveType::cheats:
+            case contentType::cheats:
                 status_code = download::downloadFile(url, CHEATS_FILENAME, OFF);
                 break;
-            case archiveType::fw:
+            case contentType::fw:
                 status_code = download::downloadFile(url, FIRMWARE_FILENAME, OFF);
                 break;
-            case archiveType::app:
+            case contentType::app:
                 status_code = download::downloadFile(url, APP_FILENAME, OFF);
                 break;
-            case archiveType::bootloaders:
+            case contentType::bootloaders:
                 status_code = download::downloadFile(url, CFW_FILENAME, OFF);
                 break;
-            case archiveType::ams_cfw:
+            case contentType::ams_cfw:
                 status_code = download::downloadFile(url, AMS_FILENAME, OFF);
+                break;
+            default:
+                break;
         }
         ProgressEvent::instance().setStatusCode(status_code);
     }
@@ -104,12 +107,12 @@ namespace util {
         return result;
     }
 
-    void extractArchive(archiveType type, const std::string& tag)
+    void extractArchive(contentType type, const std::string& tag)
     {
         int overwriteInis = 0;
         chdir(ROOT_PATH);
         switch (type) {
-            case archiveType::sigpatches:
+            case contentType::sigpatches:
                 if (isArchive(SIGPATCHES_FILENAME)) {
                     /* if(std::filesystem::exists(HEKATE_IPL_PATH)){
                     overwriteInis = showDialogBox("menus/utils/overwrite"_i18n + std::string(HEKATE_IPL_PATH) +"?", "menus/common/no"_i18n, "menus/common/yes"_i18n);
@@ -128,13 +131,13 @@ namespace util {
                     brls::Application::crash("menus/utils/wrong_type_sigpatches"_i18n);
                 }
                 break;
-            case archiveType::cheats: {
+            case contentType::cheats: {
                 std::vector<std::string> titles = extract::getInstalledTitlesNs();
                 titles = extract::excludeTitles(CHEATS_EXCLUDE, titles);
                 extract::extractCheats(CHEATS_FILENAME, titles, CurrentCfw::running_cfw);
                 break;
             }
-            case archiveType::fw:
+            case contentType::fw:
                 if (std::filesystem::file_size(FIRMWARE_FILENAME) < 200000) {
                     brls::Application::crash("menus/utils/wrong_type_sigpatches_downloaded"_i18n);
                 }
@@ -144,14 +147,14 @@ namespace util {
                     extract::extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
                 }
                 break;
-            case archiveType::app:
+            case contentType::app:
                 extract::extract(APP_FILENAME, CONFIG_PATH);
                 fs::copyFile(ROMFS_FORWARDER, FORWARDER_PATH);
                 envSetNextLoad(FORWARDER_PATH, fmt::format("\"{}\"", FORWARDER_PATH).c_str());
                 romfsExit();
                 brls::Application::quit();
                 break;
-            case archiveType::bootloaders:
+            case contentType::bootloaders:
                 if (isArchive(CFW_FILENAME)) {
                     overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                     extract::extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
@@ -160,7 +163,7 @@ namespace util {
                     brls::Application::crash("menus/utils/wrong_type_cfw"_i18n);
                 }
                 break;
-            case archiveType::ams_cfw:
+            case contentType::ams_cfw:
                 if (isArchive(AMS_FILENAME)) {
                     overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                     usleep(800000);
@@ -170,8 +173,10 @@ namespace util {
                     extract::extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
                 }
                 break;
+            default:
+                break;
         }
-        if (type == archiveType::ams_cfw || type == archiveType::bootloaders)
+        if (type == contentType::ams_cfw || type == contentType::bootloaders)
             fs::copyFiles(COPY_FILES_TXT);
     }
 

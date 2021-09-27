@@ -17,84 +17,67 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-ListDownloadTab::ListDownloadTab(const archiveType type, const nlohmann::ordered_json& nxlinks) : brls::List()
+ListDownloadTab::ListDownloadTab(const contentType type, const nlohmann::ordered_json& nxlinks) : brls::List(), type(type), nxlinks(nxlinks)
 {
-    //std::vector<std::pair<std::string, std::string>> links, sxoslinks;
-    std::vector<std::pair<std::string, std::string>> links = download::getLinksFromJson(nxlinks);
-    std::string operation("menus/main/getting"_i18n);
-    std::string firmwareText("menus/main/firmware_text"_i18n);
+    this->setDescription();
 
-    std::string currentCheatsVer = "";
-    std::string newCheatsVer = "";
+    this->createList(this->type);
 
-    this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
-    switch (type) {
-        case archiveType::sigpatches:
-            operation += "menus/main/sigpatches"_i18n;
-            this->description->setText(
-                "menus/main/sigpatches_text"_i18n);
-            break;
-        case archiveType::fw:
-            operation += "menus/main/firmware"_i18n;
-            SetSysFirmwareVersion ver;
-            if (R_SUCCEEDED(setsysGetFirmwareVersion(&ver)))
-                firmwareText += ver.display_version;
-            else
-                firmwareText += "menus/main/not_found"_i18n;
-            this->description->setText(firmwareText);
-            break;
-        case archiveType::app:
-            links.push_back(std::make_pair("menus/main/latest_cheats"_i18n, APP_URL));
-            operation += "menus/main/app"_i18n;
-            break;
-        case archiveType::bootloaders:
-            operation += "menus/main/cfw"_i18n;
-            this->description->setText(
-                "menus/main/bootloaders_text"_i18n);
-            break;
-        case archiveType::cheats:
-            newCheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
-            if (newCheatsVer != "") {
-                switch (CurrentCfw::running_cfw) {
-                    case CFW::sxos:
-                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + newCheatsVer + ")", CHEATS_URL_TITLES));
-                        break;
-                    case CFW::ams:
-                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + newCheatsVer + ")", CHEATS_URL_CONTENTS));
-                        break;
-                    case CFW::rnx:
-                        links.push_back(std::make_pair("menus/main/get_cheats"_i18n + newCheatsVer + ")", CHEATS_URL_CONTENTS));
-                        break;
-                }
-            }
-            operation += "menus/main/cheats"_i18n;
-            currentCheatsVer = util::readVersion(CHEATS_VERSION);
-            this->description->setText("menus/main/cheats_text"_i18n + currentCheatsVer);
-            break;
-        default:
-            break;
+    if (this->type == contentType::cheats) {
+        brls::Label* cheatsLabel = new brls::Label(
+            brls::LabelStyle::DESCRIPTION,
+            "menus/cheats/cheats_label"_i18n,
+            true);
+        this->addView(cheatsLabel);
+        creategbatempItem();
+        createCheatSlipItem();
     }
 
-    this->addView(description);
+    if (this->type == contentType::bootloaders) {
+        brls::Label* payloadsLabel = new brls::Label(
+            brls::LabelStyle::DESCRIPTION,
+            "menus/cheats/cheats_label"_i18n,
+            true);
+        this->addView(payloadsLabel);
+        createList(contentType::payloads);
+    }
+}
+
+void ListDownloadTab::createList(contentType type)
+{
+    std::vector<std::pair<std::string, std::string>> links;
+    if (this->type == contentType::cheats && this->newCheatsVer != "")
+        links.push_back(std::make_pair(fmt::format("{}{})", "menus/main/get_cheats"_i18n, this->newCheatsVer), CurrentCfw::running_cfw == CFW::sxos ? CHEATS_URL_TITLES : CHEATS_URL_CONTENTS));
+    else
+        links = download::getLinksFromJson(util::getValueFromKey(this->nxlinks, contentTypeNames[(int)type].data()));
 
     this->size = links.size();
     if (this->size) {
         for (const auto& link : links) {
+            std::string title = link.first;
             std::string url = link.second;
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([&, text, url, type, operation, newCheatsVer, currentCheatsVer](brls::View* view) {
+            listItem->getClickEvent()->subscribe([&, text, url, title, type](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-                stagedFrame->setTitle(operation);
+                stagedFrame->setTitle(fmt::format("menus/main/getting"_i18n, contentTypeNames[(int)type].data()));
                 stagedFrame->addStage(new ConfirmPage(stagedFrame, text));
-                if (type != archiveType::cheats || newCheatsVer != currentCheatsVer || !std::filesystem::exists(CHEATS_ZIP_PATH)) {
-                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, type]() { util::downloadArchive(url, type); }));
+                if (type != contentType::payloads || type != contentType::cheats || this->newCheatsVer != this->currentCheatsVer || !std::filesystem::exists(CHEATS_ZIP_PATH)) {
+                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [type, url]() { util::downloadArchive(url, type); }));
                 }
-                stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type]() { util::extractArchive(type); }));
+                if (type == contentType::payloads) {
+                    fs::createTree(BOOTLOADER_PL_PATH);
+                    std::string path = std::string(BOOTLOADER_PL_PATH) + title;
+                    // TODO figure out why this doesn't work lol
+                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path]() { download::downloadFile(url, path, OFF); }));
+                }
+                else {
+                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type]() { util::extractArchive(type); }));
+                }
                 std::string doneMsg = "menus/common/all_done"_i18n;
                 switch (type) {
-                    case archiveType::fw: {
+                    case contentType::fw: {
                         std::string contentsPath = util::getContentsPath();
                         for (const auto& tid : {"0100000000001000", "0100000000001007", "0100000000001013"}) {
                             if (std::filesystem::exists(contentsPath + tid) && !std::filesystem::is_empty(contentsPath + tid)) {
@@ -110,7 +93,7 @@ ListDownloadTab::ListDownloadTab(const archiveType type, const nlohmann::ordered
                         }
                         break;
                     }
-                    case archiveType::sigpatches:
+                    case contentType::sigpatches:
                         doneMsg += "\n" + "menus/sigpatches/reboot"_i18n;
                         stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
                         break;
@@ -123,25 +106,50 @@ ListDownloadTab::ListDownloadTab(const archiveType type, const nlohmann::ordered
             this->addView(listItem);
         }
     }
-
     else {
-        notFound = new brls::Label(
-            brls::LabelStyle::SMALL,
-            "menus/main/links_not_found"_i18n,
-            true);
-        notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
-        this->addView(notFound);
+        this->displayNotFound();
+    }
+}
+
+void ListDownloadTab::displayNotFound()
+{
+    brls::Label* notFound = new brls::Label(
+        brls::LabelStyle::SMALL,
+        "menus/main/links_not_found"_i18n,
+        true);
+    notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
+    this->addView(notFound);
+}
+
+void ListDownloadTab::setDescription()
+{
+    brls::Label* description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
+
+    switch (this->type) {
+        case contentType::sigpatches:
+            description->setText(
+                "menus/main/sigpatches_text"_i18n);
+            break;
+        case contentType::fw: {
+            SetSysFirmwareVersion ver;
+            description->setText(fmt::format("{}{}", "menus/main/firmware_text"_i18n, R_SUCCEEDED(setsysGetFirmwareVersion(&ver)) ? ver.display_version : "menus/main/not_found"_i18n));
+            break;
+        }
+        case contentType::bootloaders:
+            description->setText(
+                "menus/main/bootloaders_text"_i18n);
+            break;
+        case contentType::cheats:
+
+            this->newCheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
+            this->currentCheatsVer = util::readVersion(CHEATS_VERSION);
+            description->setText("menus/main/cheats_text"_i18n + this->currentCheatsVer);
+            break;
+        default:
+            break;
     }
 
-    if (type == archiveType::cheats) {
-        cheatsLabel = new brls::Label(
-            brls::LabelStyle::DESCRIPTION,
-            "menus/cheats/cheats_label"_i18n,
-            true);
-        this->addView(cheatsLabel);
-        creategbatempItem();
-        createCheatSlipItem();
-    }
+    this->addView(description);
 }
 
 void ListDownloadTab::createCheatSlipItem()

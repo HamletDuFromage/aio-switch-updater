@@ -7,8 +7,8 @@ constexpr int OFF = 0;
 
 namespace download {
 
-    long downloadFile(const std::string& url, std::vector<std::uint8_t>& res, const char* output = "", int api = OFF);
-    long downloadFile(const std::string& url, const char* output = "", int api = OFF);
+    long downloadFile(const std::string& url, std::vector<std::uint8_t>& res, const std::string& output = "", int api = OFF);
+    long downloadFile(const std::string& url, const std::string& output = "", int api = OFF);
     std::vector<std::pair<std::string, std::string>> getLinks(const std::string& url);
     std::vector<std::pair<std::string, std::string>> getLinksFromJson(const nlohmann::ordered_json& json_object);
     std::string fetchTitle(const std::string& url);

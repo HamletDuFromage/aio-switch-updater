@@ -11,14 +11,18 @@ private:
     brls::ListItem* listItem;
     brls::ListItem* cheatslipsItem;
     brls::ListItem* gbatempItem;
-    brls::Label* notFound;
-    brls::Label* description;
-    brls::Label* cheatsLabel;
+    nlohmann::ordered_json nxlinks;
+    std::string currentCheatsVer = "";
+    std::string newCheatsVer = "";
+    contentType type;
     int size = 0;
+    void createList(contentType type);
     void createCheatSlipItem();
     void creategbatempItem();
+    void setDescription();
+    void displayNotFound();
 
 public:
-    ListDownloadTab(const archiveType type, const nlohmann::ordered_json& nxlinks = nlohmann::ordered_json::object());
+    ListDownloadTab(const contentType type, const nlohmann::ordered_json& nxlinks = nlohmann::ordered_json::object());
     brls::View* getDefaultFocus() override;
 };

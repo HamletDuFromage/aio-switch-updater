@@ -102,7 +102,7 @@
     "changing": "色を変える。 プロコントローラーがプレーヤー1に設定されていることを確認してください。"
   },
   "main": {
-    "getting": "取得中 ",
+    "getting": "取得中 {}",
     "firmware_text": "\ue016  ファームウェアは'https://darthsternie.net/switch-firmwares/'からダンプされます。 ダウンロードすると、「/firmware」に抽出されます。その後、Daybreakを介してアップデートをインストールできます。\n\ue016  現在のファームウェア: ",
     "cheats_text": "Download GBAtemp.net チートアーカイブ (ver ",
     "get_cheats": "GBAtemp.netチートアーカイブをダウンロード (ver ",

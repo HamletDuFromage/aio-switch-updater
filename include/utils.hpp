@@ -24,9 +24,9 @@ namespace util {
 
     void clearConsole();
     bool isArchive(const std::string& path);
-    void downloadArchive(const std::string& url, archiveType type);
-    void downloadArchive(const std::string& url, archiveType type, long& status_code);
-    void extractArchive(archiveType type, const std::string& tag = "0");
+    void downloadArchive(const std::string& url, contentType type);
+    void downloadArchive(const std::string& url, contentType type, long& status_code);
+    void extractArchive(contentType type, const std::string& tag = "0");
     std::string formatListItemTitle(const std::string& str, size_t maxScore = 140);
     std::string formatApplicationId(u64 ApplicationId);
     std::vector<std::string> fetchPayloads();

@@ -36,9 +36,9 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, text));
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, []() { util::downloadArchive(APP_URL, archiveType::app); }));
+                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, []() { util::downloadArchive(APP_URL, contentType::app); }));
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [tag]() { util::extractArchive(archiveType::app, tag); }));
+                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [tag]() { util::extractArchive(contentType::app, tag); }));
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
             brls::Application::pushView(stagedFrame);

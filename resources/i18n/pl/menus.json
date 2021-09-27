@@ -90,7 +90,7 @@
     "changing": "Zmieniam kolor. Upewnij się, że kontroler jest podłączony jako Player 1."
   },
   "main": {
-    "getting": "Pobieranie ",
+    "getting": "Pobieranie {}",
     "firmware_text": "\ue016  Oprogramowanie z 'https://darthsternie.net/switch-firmwares/'. Po pobraniu zostanie rozpakowane do '/firmware'. Możesz je później zainstalować korzystając z Daybreak.\n\ue016  Bieżący FW: ",
     "cheats_text": "\uE016  Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia->Menu cheatów'.\n\uE016  Bieżąca wersja cheatów: ",
     "get_cheats": "Pobierz archiwum cheatów GBAtemp.net (wersja ",

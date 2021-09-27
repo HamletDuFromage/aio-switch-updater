@@ -60,7 +60,7 @@
     "all_done": "Fini ! Vous devrez peut-être ancrer/détacher votre Joy-Cons pour que le changement prenne effet"
   },
   "main": {
-    "getting": "Téléchargement du ",
+    "getting": "Téléchargement de {}",
     "firmware_text": "\ue016  Firmware depuis 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargés, ils seront dans '/firmware'. Vous pouvez ensuite les installer avec Daybreak.\n\ue016  FW actuel : ",
     "cheats_text": "\ue016  Archive mise à jour quotidiennement des codes de triche de 'gbatemp.net'. Les codes de triche pour les jeux que vous ne possedez pas ne seront pas extraits sur votre carte SD. Vous pouvez désactiver les mises à jour pour pour une sélection de jeux dans le menu 'Outils->Menu de cheat'.\n\ue016  Version actuelle des cheats : ",
     "sigpatches": "sigpatches",

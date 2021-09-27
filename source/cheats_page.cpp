@@ -63,7 +63,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, text));
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url]() { util::downloadArchive(url, archiveType::cheats); }));
+                new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url]() { util::downloadArchive(url, contentType::cheats); }));
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { extract::extractAllCheats(CHEATS_ZIP_PATH, CurrentCfw::running_cfw); }));
             stagedFrame->addStage(

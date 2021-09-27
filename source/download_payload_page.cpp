@@ -32,7 +32,7 @@ DownloadPayloadPage::DownloadPayloadPage(const nlohmann::ordered_json& payloads)
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, text));
                 stagedFrame->addStage(
-                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path]() { download::downloadFile(url, path.c_str(), OFF); }));
+                    new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path]() { download::downloadFile(url, path, OFF); }));
                 stagedFrame->addStage(
                     new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
                 brls::Application::pushView(stagedFrame);

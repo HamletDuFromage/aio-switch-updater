@@ -127,14 +127,15 @@ namespace download {
         }
     }  // namespace
 
-    long downloadFile(const std::string& url, const char* output, int api)
+    long downloadFile(const std::string& url, const std::string& output, int api)
     {
         std::vector<std::uint8_t> dummy;
         return downloadFile(url, dummy, output, api);
     }
 
-    long downloadFile(const std::string& url, std::vector<std::uint8_t>& res, const char* output, int api)
+    long downloadFile(const std::string& url, std::vector<std::uint8_t>& res, const std::string& output, int api)
     {
+        const char* out = output.c_str();
         CURL* curl = curl_easy_init();
         ntwrk_struct_t chunk = {0};
         long status_code;
@@ -143,13 +144,13 @@ namespace download {
         bool can_download = true;
 
         if (curl) {
-            FILE* fp = fopen(output, "wb");
-            if (fp || *output == 0) {
+            FILE* fp = fopen(out, "wb");
+            if (fp || *out == 0) {
                 chunk.data = static_cast<u_int8_t*>(malloc(_1MiB));
                 chunk.data_size = _1MiB;
                 chunk.out = fp;
 
-                if (*output != 0) {
+                if (*out != 0) {
                     can_download = checkSize(curl, url);
                 }
 
@@ -187,7 +188,7 @@ namespace download {
             res = {};
         }
 
-        if (*output == 0) {
+        if (*out == 0) {
             res.assign(chunk.data, chunk.data + chunk.offset);
         }
 

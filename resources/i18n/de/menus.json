@@ -89,7 +89,7 @@
     "all_done": "Fertig! Du musst dn Pro Controler vielleicht trennen und anschließen um den Effekt zu sehen."
   },
   "main": {
-    "getting": "Herunterladen: ",
+    "getting": "Herunterladen: {}",
     "firmware_text": "\ue016  firmware von: 'https://darthsternie.net/switch-firmwares/'. Sobald runtergeladen, wird sie in '/firmware' entpackt . Danach kannst du das Update mit Daybreak installieren.\n\ue016  Mometnane FW: ",
     "cheats_text": "\uE016  Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen die du nicht besitzt, werden nicht entpackt. Du kannst updates für ausgewählte Spiele unter 'Tools->Cheat menu' deaktivieren.\n\uE016  Momentane Cheatversion: ",
     "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver ",
