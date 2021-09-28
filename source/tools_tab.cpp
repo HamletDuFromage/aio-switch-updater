@@ -239,6 +239,6 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     if (!util::getBoolValue(hideStatus, "move")) this->addView(move);
     if (!util::getBoolValue(hideStatus, "cleanup")) this->addView(cleanUp);
     if (!util::getBoolValue(hideStatus, "language")) this->addView(language);
-    if (!util::getBoolValue(hideStatus, "hidetabs")) this->addView(hideTabs);
+    this->addView(hideTabs);
     this->addView(changelog);
 }

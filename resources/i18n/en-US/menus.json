@@ -139,7 +139,8 @@
   },
   "hide": {
     "title": "Hide tabs",
-    "desc": "Hide tabs from the main menu"
+    "desc": "Hide tabs from the main menu",
+    "update_ams_deepsea": "Atmosphere and DeepSea downloads"
   },
   "tools": {
     "cheats": "Cheats menu",
