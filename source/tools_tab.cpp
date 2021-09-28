@@ -8,7 +8,7 @@
 #include "changelog_page.hpp"
 #include "cheats_page.hpp"
 #include "confirm_page.hpp"
-#include "download_payload_page.hpp"
+/* #include "download_payload_page.hpp" */
 #include "extract.hpp"
 #include "fs.hpp"
 #include "hide_tabs_page.hpp"
@@ -65,11 +65,11 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     });
     PCcolor->setHeight(LISTITEM_HEIGHT);
 
-    downloadPayload = new brls::ListItem("menus/tools/dl_payloads"_i18n + std::string(BOOTLOADER_PL_PATH));
+    /* downloadPayload = new brls::ListItem("menus/tools/dl_payloads"_i18n + std::string(BOOTLOADER_PL_PATH));
     downloadPayload->getClickEvent()->subscribe([&, payloads](brls::View* view) {
         brls::Application::pushView(new DownloadPayloadPage(payloads));
     });
-    downloadPayload->setHeight(LISTITEM_HEIGHT);
+    downloadPayload->setHeight(LISTITEM_HEIGHT); */
 
     rebootPayload = new brls::ListItem("menus/tools/inject_payloads"_i18n);
     rebootPayload->getClickEvent()->subscribe([&](brls::View* view) {
@@ -232,7 +232,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     if (!util::getBoolValue(hideStatus, "cheats")) this->addView(cheats);
     if (!util::getBoolValue(hideStatus, "jccolor")) this->addView(JCcolor);
     if (!util::getBoolValue(hideStatus, "pccolor")) this->addView(PCcolor);
-    if (!util::getBoolValue(hideStatus, "downloadpayload")) this->addView(downloadPayload);
+    /* if (!util::getBoolValue(hideStatus, "downloadpayload")) this->addView(downloadPayload); */
     if (erista && !util::getBoolValue(hideStatus, "rebootpayload")) this->addView(rebootPayload);
     if (!util::getBoolValue(hideStatus, "netsettings")) this->addView(netSettings);
     if (!util::getBoolValue(hideStatus, "browser")) this->addView(browser);
