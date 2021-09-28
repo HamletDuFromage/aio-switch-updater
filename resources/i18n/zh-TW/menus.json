@@ -43,7 +43,9 @@
     "applet_mode_not_supported": "由於記憶體限制，在applet模式下，只能擷取目前正在玩的遊戲的金手指。請重新執行aio-switch-updater並透過title重新導向來下載其他遊戲的金手指",
     "cheatfile_label": "列出檔案內的金手指{}",
     "not_found": "沒有找到符合遊戲版本的金手指",
-    "show_existing": "顯示目前已有的"
+    "show_existing": "顯示目前已有的",
+    "delete_cheats": "刪除此遊戲的金手指",
+    "deletion_error": "無法刪除此遊戲的金手指:\n{}"
   },
   "common": {
     "downloading": "正在下載…",
@@ -184,6 +186,9 @@
     "build_your_deepsea": "透過個別選取來建立屬於你自己的自訂DeepSea安裝包",
     "getting_ams": "正在擷取 Atmosphère",
     "custom_packs_label": "\ue016  來自 {} 的檔案。請注意，這些列出的檔案均未經過aio-switch-updater驗證，因此安裝前請確保檔案來源為可信任的。"
+  },
+  "firmware": {
+    "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的更新系統套件?"
   },
   "firmware": {
     "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的更新系統套件?"
