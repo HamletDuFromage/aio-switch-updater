@@ -37,10 +37,10 @@ void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned hei
 {
     if (this->draw_page) {
         if (!this->workStarted) {
+            this->workStarted = true;
             appletSetMediaPlaybackState(true);
             appletBeginBlockingHomeButton(0);
             ProgressEvent::instance().reset();
-            this->workStarted = true;
             workerThread = new std::thread(&WorkerPage::doWork, this);
         }
         else if (ProgressEvent::instance().finished()) {

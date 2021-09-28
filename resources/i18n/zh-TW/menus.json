@@ -183,7 +183,7 @@
     "cant_fetch_deepsea": "無法取得安裝包內容。如果問題持續發生，請使用Github提出問題來進行回報",
     "build_your_deepsea": "透過個別選取來建立屬於你自己的自訂DeepSea安裝包",
     "getting_ams": "正在擷取 Atmosphère",
-    "custom_packs_label": "來自 {} 的檔案。請注意，這些列出的檔案均未經過aio-switch-updater驗證，因此安裝前請確保檔案來源為可信任的。"
+    "custom_packs_label": "\ue016  來自 {} 的檔案。請注意，這些列出的檔案均未經過aio-switch-updater驗證，因此安裝前請確保檔案來源為可信任的。"
   },
   "firmware": {
     "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的更新系統套件?"

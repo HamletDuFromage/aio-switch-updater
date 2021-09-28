@@ -36,7 +36,7 @@ ListDownloadTab::ListDownloadTab(const contentType type, const nlohmann::ordered
     if (this->type == contentType::bootloaders) {
         brls::Label* payloadsLabel = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
-            "menus/cheats/cheats_label"_i18n,
+            fmt::format("menus/main/payloads_label"_i18n, BOOTLOADER_PL_PATH),
             true);
         this->addView(payloadsLabel);
         createList(contentType::payloads);
@@ -63,18 +63,18 @@ void ListDownloadTab::createList(contentType type)
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(fmt::format("menus/main/getting"_i18n, contentTypeNames[(int)type].data()));
                 stagedFrame->addStage(new ConfirmPage(stagedFrame, text));
-                if (type != contentType::payloads || type != contentType::cheats || this->newCheatsVer != this->currentCheatsVer || !std::filesystem::exists(CHEATS_ZIP_PATH)) {
-                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [type, url]() { util::downloadArchive(url, type); }));
-                }
-                if (type == contentType::payloads) {
-                    fs::createTree(BOOTLOADER_PL_PATH);
-                    std::string path = std::string(BOOTLOADER_PL_PATH) + title;
-                    // TODO figure out why this doesn't work lol
-                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path]() { download::downloadFile(url, path, OFF); }));
-                }
-                else {
+                if (type != contentType::payloads) {
+                    if (type != contentType::cheats || this->newCheatsVer != this->currentCheatsVer || !std::filesystem::exists(CHEATS_ZIP_PATH)) {
+                        stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [type, url]() { util::downloadArchive(url, type); }));
+                    }
                     stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type]() { util::extractArchive(type); }));
                 }
+                else {
+                    fs::createTree(BOOTLOADER_PL_PATH);
+                    std::string path = std::string(BOOTLOADER_PL_PATH) + title;
+                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path]() { download::downloadFile(url, path, OFF); }));
+                }
+
                 std::string doneMsg = "menus/common/all_done"_i18n;
                 switch (type) {
                     case contentType::fw: {
