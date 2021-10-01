@@ -84,7 +84,7 @@ void AppPage::CreateDownloadAllButton()
     }
     text += url;
     download = new brls::ListItem("menus/cheats/dl_latest"_i18n);
-    download->getClickEvent()->subscribe([&, url, text](brls::View* view) {
+    download->getClickEvent()->subscribe([&url, &text](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->setTitle("menus/cheats/getting_cheats"_i18n);
         stagedFrame->addStage(
@@ -167,7 +167,7 @@ void AppPage_CheatSlips::CreateLabel()
 
 void AppPage_CheatSlips::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData** controlData)
 {
-    listItem->getClickEvent()->subscribe([&, tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_CheatSlips(tid, name)); });
+    listItem->getClickEvent()->subscribe([tid, &name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_CheatSlips(tid, name)); });
     AppPage::DeclareGameListItem(name, tid, controlData);
 }
 
@@ -186,7 +186,7 @@ void AppPage_Gbatemp::CreateLabel()
 
 void AppPage_Gbatemp::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData** controlData)
 {
-    listItem->getClickEvent()->subscribe([&, tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_GbaTemp(tid, name)); });
+    listItem->getClickEvent()->subscribe([tid, &name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_GbaTemp(tid, name)); });
     AppPage::DeclareGameListItem(name, tid, controlData);
 }
 
@@ -277,8 +277,8 @@ void AppPage_DownloadedCheats::DeclareGameListItem(const std::string& name, u64 
 {
     auto tid_str = util::formatApplicationId(tid);
     if (titles.find(tid_str) != titles.end()) {
-        listItem->getClickEvent()->subscribe([this, tid, name](brls::View* view) { show_cheats::ShowCheatFiles(tid, name); });
-        listItem->registerAction("menus/cheats/delete_cheats"_i18n, brls::Key::Y, [this, tid_str] {
+        listItem->getClickEvent()->subscribe([tid, &name](brls::View* view) { show_cheats::ShowCheatFiles(tid, name); });
+        listItem->registerAction("menus/cheats/delete_cheats"_i18n, brls::Key::Y, [&tid_str] {
             brls::Dialog* dialog = new brls::Dialog(extract::removeCheatsDirectory(fmt::format("{}{}", util::getContentsPath(), tid_str)) ? "menus/common/all_done"_i18n : fmt::format("menus/cheats/deletion_error"_i18n, tid_str));
             brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                 dialog->close();

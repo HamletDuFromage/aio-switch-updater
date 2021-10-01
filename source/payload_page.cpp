@@ -20,12 +20,12 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
     for (const auto& payload : payloads) {
         std::string payload_path = payload;
         listItem = new brls::ListItem(payload_path);
-        listItem->getClickEvent()->subscribe([&, payload](brls::View* view) {
+        listItem->getClickEvent()->subscribe([&payload](brls::View* view) {
             util::rebootToPayload(payload);
             brls::Application::popView();
         });
         if (CurrentCfw::running_cfw == CFW::ams) {
-            listItem->registerAction("menus/payloads/set_reboot_payload"_i18n, brls::Key::X, [this, payload_path] {
+            listItem->registerAction("menus/payloads/set_reboot_payload"_i18n, brls::Key::X, [&payload_path] {
                 std::string res1;
                 if (fs::copyFile(payload_path, REBOOT_PAYLOAD_PATH)) {
                     res1 += "menus/payloads/copy_success"_i18n + payload_path + "menus/payloads/to"_i18n + std::string(REBOOT_PAYLOAD_PATH) + "'.";
@@ -43,7 +43,7 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
                 return true;
             });
         }
-        listItem->registerAction("menus/payloads/set_update_bin"_i18n, brls::Key::Y, [this, payload] {
+        listItem->registerAction("menus/payloads/set_update_bin"_i18n, brls::Key::Y, [&payload] {
             std::string res2;
             if (fs::copyFile(payload, UPDATE_BIN_PATH)) {
                 res2 += "menus/payloads/copy_success"_i18n + payload + "menus/payloads/to"_i18n + std::string(UPDATE_BIN_PATH) + "'.";

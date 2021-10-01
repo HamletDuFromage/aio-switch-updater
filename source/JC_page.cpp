@@ -17,7 +17,7 @@ JCPage::JCPage() : AppletFrame(true, true)
     list->addView(label);
 
     backup = new brls::ListItem("menus/joy_con/backup"_i18n);
-    backup->getClickEvent()->subscribe([&](brls::View* view) {
+    backup->getClickEvent()->subscribe([](brls::View* view) {
         brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->setTitle("menus/joy_con/label"_i18n);
         stagedFrame->addStage(
@@ -35,7 +35,7 @@ JCPage::JCPage() : AppletFrame(true, true)
     for (int i = profiles.size() - 1; i >= 0; i--) {
         std::vector<int> value = profiles[i].second;
         listItem = new brls::ListItem(profiles[i].first);
-        listItem->getClickEvent()->subscribe([&, value](brls::View* view) {
+        listItem->getClickEvent()->subscribe([&value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
             stagedFrame->setTitle("menus/joy_con/label"_i18n);
             stagedFrame->addStage(

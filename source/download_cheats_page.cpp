@@ -16,6 +16,20 @@ using json = nlohmann::json;
 
 namespace show_cheats {
 
+    void ShowCheatSheet(u64 tid, const std::string& bid, const std::string& name)
+    {
+        std::string path = fmt::format("{}{}/cheats/{}.txt", util::getContentsPath(), util::formatApplicationId(tid), bid);
+        brls::AppletFrame* appView = new brls::AppletFrame(true, true);
+        brls::List* cheatsList = new brls::List();
+        if (std::filesystem::exists(path) && CreateCheatList(path, &cheatsList)) {
+            appView->setContentView(cheatsList);
+            brls::PopupFrame::open(name, appView, "");
+        }
+        else {
+            NoCheatsFoundPopup();
+        }
+    }
+
     void ShowCheatFiles(u64 tid, const std::string& name)
     {
         std::string path = util::getContentsPath();
@@ -25,29 +39,37 @@ namespace show_cheats {
         bool is_populated = false;
         if (std::filesystem::exists(path)) {
             for (const auto& cheatFile : std::filesystem::directory_iterator(path)) {
-                is_populated |= CreateCheatList(cheatFile.path(), &appView);
+                brls::List* cheatsList = new brls::List();
+                is_populated |= CreateCheatList(cheatFile.path(), &cheatsList);
+                if (is_populated) {
+                    appView->addTab(util::upperCase(cheatFile.path().stem()), cheatsList);
+                }
             }
         }
         if (is_populated) {
             brls::PopupFrame::open(name, appView, "");
         }
         else {
-            brls::Dialog* dialog = new brls::Dialog("menus/cheats/not_found"_i18n);
-            brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                dialog->close();
-            };
-            dialog->addButton("menus/common/ok"_i18n, callback);
-            dialog->setCancelable(true);
-            dialog->open();
+            NoCheatsFoundPopup();
         }
     }
 
-    bool CreateCheatList(const std::filesystem::path& path, brls::TabFrame** appView)
+    void NoCheatsFoundPopup()
+    {
+        brls::Dialog* dialog = new brls::Dialog("menus/cheats/not_found"_i18n);
+        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+            dialog->close();
+        };
+        dialog->addButton("menus/common/ok"_i18n, callback);
+        dialog->setCancelable(true);
+        dialog->open();
+    }
+
+    bool CreateCheatList(const std::filesystem::path& path, brls::List** cheatsList)
     {
         bool res = false;
-        brls::List* cheatsList = new brls::List();
         if (extract::isBID(path.filename().stem())) {
-            cheatsList->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, fmt::format("menus/cheats/cheatfile_label"_i18n, path.filename().string()), true));
+            (*cheatsList)->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, fmt::format("menus/cheats/cheatfile_label"_i18n, path.filename().string()), true));
 
             std::string str;
             std::regex cheats_expr(R"(\[.+\]|\{.+\})");
@@ -56,15 +78,12 @@ namespace show_cheats {
                 while (std::getline(in, str)) {
                     if (str.size() > 0) {
                         if (std::regex_search(str, cheats_expr)) {
-                            cheatsList->addView(new brls::ListItem(str));
+                            (*cheatsList)->addView(new brls::ListItem(str));
                             res = true;
                         }
                     }
                 }
             }
-        }
-        if (res) {
-            (*appView)->addTab(util::upperCase(path.filename().stem()), cheatsList);
         }
         return res;
     }
@@ -77,8 +96,8 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : 
     GetBuildID();
     this->setTitle(name);
     this->setFooterText("v" + std::to_string(this->version / 0x10000));
-    this->registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this, tid, name] {
-        show_cheats::ShowCheatFiles(tid, name);
+    this->registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this, &name] {
+        show_cheats::ShowCheatSheet(this->tid, this->bid, name);
         return true;
     });
 }
@@ -172,7 +191,7 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
                     //Something else went wrong
                     continue;
                 }
-                listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, cheat] {
+                listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, &cheat] {
                     if (cheat.find("titles") != cheat.end()) {
                         ShowCheatsContent(cheat.at("titles"));
                     }
@@ -325,7 +344,7 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
             for (const auto& p : cheatsJson[this->bid].items()) {
                 json cheat = p.value();
                 listItem = new ::brls::ListItem(cheat.at("title"));
-                listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, cheat] {
+                listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, &cheat] {
                     WriteCheats(cheat.at("content"));
                     brls::Dialog* dialog = new brls::Dialog(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, cheat.at("title")));
                     brls::GenericEvent::Callback callback = [dialog](brls::View* view) {

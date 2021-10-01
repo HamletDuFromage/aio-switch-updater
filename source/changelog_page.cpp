@@ -214,7 +214,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
-        listItem->getClickEvent()->subscribe([&, change](brls::View* view) {
+        listItem->getClickEvent()->subscribe([&change](brls::View* view) {
             brls::Dialog* dialog = new brls::Dialog(change);
             brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
                 dialog->close();
@@ -231,7 +231,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
 void ChangelogPage::ShowChangelogContent(const std::string version, const std::string content)
 {
     listItem = new brls::ListItem(version);
-    listItem->getClickEvent()->subscribe([&, content](brls::View* view) {
+    listItem->getClickEvent()->subscribe([&version, &content](brls::View* view) {
         brls::AppletFrame* appView = new brls::AppletFrame(true, true);
 
         brls::PopupFrame::open(version, appView, "", "");

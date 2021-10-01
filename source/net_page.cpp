@@ -35,7 +35,7 @@ NetPage::NetPage() : AppletFrame(true, true)
         label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
         list->addView(label);
         cancel = new brls::ListItem("menus/common/go_back"_i18n);
-        cancel->getClickEvent()->subscribe([&](brls::View* view) { brls::Application::pushView(new MainFrame()); });
+        cancel->getClickEvent()->subscribe([](brls::View* view) { brls::Application::pushView(new MainFrame()); });
         list->addView(cancel);
     }
     else {
@@ -118,9 +118,9 @@ NetPage::NetPage() : AppletFrame(true, true)
                 listItem = new brls::ListItem(values["name"]);
             else
                 listItem = new brls::ListItem("Unnamed");
-            listItem->getClickEvent()->subscribe([&, values](brls::View* view) {
+            listItem->getClickEvent()->subscribe([this, &values](brls::View* view) {
                 brls::Dialog* dialog = new brls::Dialog(values.dump(0).substr(1, values.dump(0).size() - 2));
-                brls::GenericEvent::Callback callbackOk = [&, dialog, values](brls::View* view) {
+                brls::GenericEvent::Callback callbackOk = [this, &dialog, &values](brls::View* view) {
                     nifmInitialize(NifmServiceType_Admin);
                     NifmNetworkProfileData profile;
                     nifmGetCurrentNetworkProfile(&profile);

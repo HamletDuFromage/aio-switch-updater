@@ -18,20 +18,20 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
     list = new brls::List();
 
     view = new brls::ListItem("menus/cheats/view"_i18n);
-    view->getClickEvent()->subscribe([&](brls::View* view) {
+    view->getClickEvent()->subscribe([](brls::View* view) {
         brls::Application::pushView(new AppPage_DownloadedCheats());
     });
     list->addView(view);
 
     exclude = new brls::ListItem("menus/cheats/exclude"_i18n);
-    exclude->getClickEvent()->subscribe([&](brls::View* view) {
+    exclude->getClickEvent()->subscribe([](brls::View* view) {
         brls::Application::pushView(new AppPage_Exclude());
     });
     list->addView(exclude);
 
     deleteCheats = new brls::ListItem("menus/cheats/delete_existing"_i18n);
-    deleteCheats->getClickEvent()->subscribe([&](brls::View* view) {
-        stagedFrame = new brls::StagedAppletFrame();
+    deleteCheats->getClickEvent()->subscribe([](brls::View* view) {
+        brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
         stagedFrame->setTitle("menus/cheats/delete_all"_i18n);
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/cheats/deleting"_i18n, []() { extract::removeCheats(); }));
@@ -44,7 +44,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
     std::string cheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
     if (cheatsVer != "") {
         dlAll = new brls::ListItem("menus/cheats/dl_all"_i18n);
-        dlAll->getClickEvent()->subscribe([&, cheatsVer](brls::View* view) {
+        dlAll->getClickEvent()->subscribe([&cheatsVer](brls::View* view) {
             std::string url;
             switch (CurrentCfw::running_cfw) {
                 case CFW::sxos:

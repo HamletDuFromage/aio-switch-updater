@@ -59,7 +59,7 @@ void ListDownloadTab::createList(contentType type)
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([&, text, url, title, type](brls::View* view) {
+            listItem->getClickEvent()->subscribe([this, &text, &url, &title, &type](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(fmt::format("menus/main/getting"_i18n, contentTypeNames[(int)type].data()));
                 stagedFrame->addStage(new ConfirmPage(stagedFrame, text));
@@ -157,7 +157,7 @@ void ListDownloadTab::createCheatSlipItem()
     this->size += 1;
     cheatslipsItem = new brls::ListItem("menus/cheats/get_cheatslips"_i18n);
     cheatslipsItem->setHeight(LISTITEM_HEIGHT);
-    cheatslipsItem->getClickEvent()->subscribe([&](brls::View* view) {
+    cheatslipsItem->getClickEvent()->subscribe([](brls::View* view) {
         if (std::filesystem::exists(TOKEN_PATH)) {
             brls::Application::pushView(new AppPage_CheatSlips());
             return true;
@@ -165,8 +165,8 @@ void ListDownloadTab::createCheatSlipItem()
         else {
             std::string usr, pwd;
             //Result rc = swkbdCreate(&kbd, 0);
-            brls::Swkbd::openForText([&](std::string text) { usr = text; }, "cheatslips.com e-mail", "", 64, "", 0, "Submit", "cheatslips.com e-mail");
-            brls::Swkbd::openForText([&](std::string text) { pwd = text; }, "cheatslips.com password", "", 64, "", 0, "Submit", "cheatslips.com password", true);
+            brls::Swkbd::openForText([&usr](std::string text) { usr = text; }, "cheatslips.com e-mail", "", 64, "", 0, "Submit", "cheatslips.com e-mail");
+            brls::Swkbd::openForText([&pwd](std::string text) { pwd = text; }, "cheatslips.com password", "", 64, "", 0, "Submit", "cheatslips.com password", true);
             std::string body = "{\"email\":\"" + std::string(usr) + "\",\"password\":\"" + std::string(pwd) + "\"}";
             nlohmann::ordered_json token;
             download::getRequest(CHEATSLIPS_TOKEN_URL, token,
@@ -201,7 +201,7 @@ void ListDownloadTab::creategbatempItem()
     this->size += 1;
     gbatempItem = new brls::ListItem("menus/cheats/get_gbatemp"_i18n);
     gbatempItem->setHeight(LISTITEM_HEIGHT);
-    gbatempItem->getClickEvent()->subscribe([&](brls::View* view) {
+    gbatempItem->getClickEvent()->subscribe([](brls::View* view) {
         brls::Application::pushView(new AppPage_Gbatemp());
         return true;
     });

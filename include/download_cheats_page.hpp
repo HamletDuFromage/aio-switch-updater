@@ -9,7 +9,9 @@
 namespace show_cheats {
 
     void ShowCheatFiles(uint64_t tid, const std::string& name);
-    bool CreateCheatList(const std::filesystem::path& path, brls::TabFrame** appView);
+    void ShowCheatSheet(u64 tid, const std::string& bid, const std::string& name);
+    bool CreateCheatList(const std::filesystem::path& path, brls::List** cheatsList);
+    void NoCheatsFoundPopup();
 
 }  // namespace show_cheats
 
