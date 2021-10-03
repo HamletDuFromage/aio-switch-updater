@@ -71,7 +71,7 @@ void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool h
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([this, &text, &text_hekate, &url, &hekate_url, &operation, hekate](brls::View* view) {
+            listItem->getClickEvent()->subscribe([this, text, text_hekate, url, hekate_url, operation, hekate](brls::View* view) {
                 if (!erista && !std::filesystem::exists(MARIKO_PAYLOAD_PATH)) {
                     brls::Application::crash("menus/errors/mariko_payload_missing"_i18n);
                 }
@@ -180,7 +180,7 @@ void AmsTab::ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules)
                                                              "menus/common/off"_i18n);
             }
             name_map.insert(std::pair(module_value.at("displayName"), module.key()));
-            deepseaListItem->registerAction("menus/ams_update/show_module_description"_i18n, brls::Key::Y, [&module_value] {
+            deepseaListItem->registerAction("menus/ams_update/show_module_description"_i18n, brls::Key::Y, [module_value] {
                 brls::Dialog* dialog;
                 dialog = new brls::Dialog(fmt::format("{}:\n{}", module_value.at("repo"), module_value.at("description")));
                 brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
@@ -197,7 +197,7 @@ void AmsTab::ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules)
         appView->addTab(category.key(), list);
     }
 
-    appView->registerAction("menus/ams_update/download_deepsea_package"_i18n, brls::Key::X, [this, &lists, &name_map] {
+    appView->registerAction("menus/ams_update/download_deepsea_package"_i18n, brls::Key::X, [this, lists, name_map] {
         std::set<std::string> desired_modules;
         for (const auto& list : lists) {
             for (size_t i = 0; i < list->getViewsCount(); i++) {
@@ -213,10 +213,10 @@ void AmsTab::ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules)
         for (const auto& e : desired_modules)
             request_url += e + ";";
 
-        CreateStagedFrames("menus/common/download"_i18n + "Custom DeepSea package" + "menus/common/from"_i18n + request_url,
+        this->CreateStagedFrames("menus/common/download"_i18n + "Custom DeepSea package" + "menus/common/from"_i18n + request_url,
                            request_url,
                            "menus/ams_update/get_custom_deepsea"_i18n,
-                           erista);
+                           this->erista);
         return true;
     });
     appView->registerAction("", brls::Key::PLUS, [this] { return true; });

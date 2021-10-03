@@ -44,7 +44,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
     std::string cheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
     if (cheatsVer != "") {
         dlAll = new brls::ListItem("menus/cheats/dl_all"_i18n);
-        dlAll->getClickEvent()->subscribe([&cheatsVer](brls::View* view) {
+        dlAll->getClickEvent()->subscribe([cheatsVer](brls::View* view) {
             std::string url;
             switch (CurrentCfw::running_cfw) {
                 case CFW::sxos:

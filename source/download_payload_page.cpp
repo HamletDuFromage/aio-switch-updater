@@ -25,7 +25,7 @@ DownloadPayloadPage::DownloadPayloadPage(const nlohmann::ordered_json& payloads)
             std::string path = std::string(BOOTLOADER_PL_PATH) + link.first;
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
-            listItem->getClickEvent()->subscribe([&text, &url, &path](brls::View* view) {
+            listItem->getClickEvent()->subscribe([text, url, path](brls::View* view) {
                 fs::createTree(BOOTLOADER_PL_PATH);
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle("menus/tools/getting_payload"_i18n);

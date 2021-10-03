@@ -96,7 +96,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : 
     GetBuildID();
     this->setTitle(name);
     this->setFooterText("v" + std::to_string(this->version / 0x10000));
-    this->registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this, &name] {
+    this->registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this, name] {
         show_cheats::ShowCheatSheet(this->tid, this->bid, name);
         return true;
     });
@@ -191,7 +191,7 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
                     //Something else went wrong
                     continue;
                 }
-                listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, &cheat] {
+                listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, cheat] {
                     if (cheat.find("titles") != cheat.end()) {
                         ShowCheatsContent(cheat.at("titles"));
                     }
@@ -344,7 +344,7 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
             for (const auto& p : cheatsJson[this->bid].items()) {
                 json cheat = p.value();
                 listItem = new ::brls::ListItem(cheat.at("title"));
-                listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, &cheat] {
+                listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, cheat] {
                     WriteCheats(cheat.at("content"));
                     brls::Dialog* dialog = new brls::Dialog(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, cheat.at("title")));
                     brls::GenericEvent::Callback callback = [dialog](brls::View* view) {

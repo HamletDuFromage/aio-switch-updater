@@ -118,9 +118,9 @@ NetPage::NetPage() : AppletFrame(true, true)
                 listItem = new brls::ListItem(values["name"]);
             else
                 listItem = new brls::ListItem("Unnamed");
-            listItem->getClickEvent()->subscribe([this, &values](brls::View* view) {
+            listItem->getClickEvent()->subscribe([this, values](brls::View* view) {
                 brls::Dialog* dialog = new brls::Dialog(values.dump(0).substr(1, values.dump(0).size() - 2));
-                brls::GenericEvent::Callback callbackOk = [this, &dialog, &values](brls::View* view) {
+                brls::GenericEvent::Callback callbackOk = [this, dialog, values](brls::View* view) {
                     nifmInitialize(NifmServiceType_Admin);
                     NifmNetworkProfileData profile;
                     nifmGetCurrentNetworkProfile(&profile);

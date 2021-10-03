@@ -14,7 +14,7 @@ private:
     bool erista = true;
 
 public:
-    ConfirmPage(brls::StagedAppletFrame* frame, std::string text, bool done = false, bool reboot = false, bool erista = true);
+    ConfirmPage(brls::StagedAppletFrame* frame, const std::string& text, bool done = false, bool reboot = false, bool erista = true);
     ~ConfirmPage();
 
     void draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx) override;

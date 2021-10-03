@@ -34,7 +34,7 @@ PCPage::PCPage() : AppletFrame(true, true)
     for (int i = profiles.size() - 1; i >= 0; i--) {
         std::vector<int> value = profiles[i].second;
         listItem = new brls::ListItem(profiles[i].first);
-        listItem->getClickEvent()->subscribe([&value](brls::View* view) {
+        listItem->getClickEvent()->subscribe([value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
             stagedFrame->setTitle("menus/pro_con/label"_i18n);
             stagedFrame->addStage(

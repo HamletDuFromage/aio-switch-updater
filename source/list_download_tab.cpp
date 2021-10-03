@@ -54,12 +54,12 @@ void ListDownloadTab::createList(contentType type)
     this->size = links.size();
     if (this->size) {
         for (const auto& link : links) {
-            std::string title = link.first;
-            std::string url = link.second;
-            std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
+            const std::string title = link.first;
+            const std::string url = link.second;
+            const std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([this, &text, &url, &title, &type](brls::View* view) {
+            listItem->getClickEvent()->subscribe([this, text, url, title, type](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(fmt::format("menus/main/getting"_i18n, contentTypeNames[(int)type].data()));
                 stagedFrame->addStage(new ConfirmPage(stagedFrame, text));

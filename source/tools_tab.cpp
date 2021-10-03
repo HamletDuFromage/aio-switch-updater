@@ -30,7 +30,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     if (!tag.empty() && tag != AppVersion) {
         updateApp = new brls::ListItem("menus/tools/update_app"_i18n + tag + ")");
         std::string text("menus/tools/dl_app"_i18n + std::string(APP_URL));
-        updateApp->getClickEvent()->subscribe([&text, &tag](brls::View* view) {
+        updateApp->getClickEvent()->subscribe([text, tag](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
             stagedFrame->setTitle("menus/common/updating"_i18n);
             stagedFrame->addStage(
@@ -202,7 +202,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
         list->addView(listItem);
         for (auto& language : languages) {
             listItem = new brls::ListItem(language.first);
-            listItem->registerAction("menus/tools/language"_i18n, brls::Key::A, [&language] {
+            listItem->registerAction("menus/tools/language"_i18n, brls::Key::A, [language] {
                 json updatedLanguage = json::object();
                 updatedLanguage["language"] = language.second;
                 std::ofstream out(LANGUAGE_JSON);
