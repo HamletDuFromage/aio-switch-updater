@@ -1,6 +1,6 @@
 # AIO-switch-updater
 ![releases](https://img.shields.io/github/downloads/HamletDuFromage/AIO-switch-updater/total)
-![hbappstore](https://img.shields.io/endpoint?url=https://runkit.io/homlet/hbappstore-shieldsio/branches/master?url=https://api.brewtools.dev/store/Switch/?package=aioswitchupdater)
+![hbappstore](https://img.shields.io/endpoint?url=https://runkit.io/homlet/hbappstore-shieldsio/branches/master?url=https://switchbru.com/appstore/repo.json&name=aioswitchupdater)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/HamletDuFromage/AIO-switch-updater/Build%20AIO-switch-updater)
 ![tag](https://img.shields.io/github/v/release/HamletDuFromage/AIO-switch-updater)
 ![GitHub](https://img.shields.io/github/license/HamletDuFromage/aio-switch-updater)

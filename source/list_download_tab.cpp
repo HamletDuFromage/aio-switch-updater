@@ -51,8 +51,7 @@ void ListDownloadTab::createList(contentType type)
     else
         links = download::getLinksFromJson(util::getValueFromKey(this->nxlinks, contentTypeNames[(int)type].data()));
 
-    this->size = links.size();
-    if (this->size) {
+    if (links.size()) {
         for (const auto& link : links) {
             const std::string title = link.first;
             const std::string url = link.second;
@@ -154,7 +153,6 @@ void ListDownloadTab::setDescription()
 
 void ListDownloadTab::createCheatSlipItem()
 {
-    this->size += 1;
     cheatslipsItem = new brls::ListItem("menus/cheats/get_cheatslips"_i18n);
     cheatslipsItem->setHeight(LISTITEM_HEIGHT);
     cheatslipsItem->getClickEvent()->subscribe([](brls::View* view) {
@@ -198,7 +196,6 @@ void ListDownloadTab::createCheatSlipItem()
 
 void ListDownloadTab::creategbatempItem()
 {
-    this->size += 1;
     gbatempItem = new brls::ListItem("menus/cheats/get_gbatemp"_i18n);
     gbatempItem->setHeight(LISTITEM_HEIGHT);
     gbatempItem->getClickEvent()->subscribe([](brls::View* view) {
@@ -206,12 +203,4 @@ void ListDownloadTab::creategbatempItem()
         return true;
     });
     this->addView(gbatempItem);
-}
-
-brls::View* ListDownloadTab::getDefaultFocus()
-{
-    if (this->size)
-        return this->brls::List::getDefaultFocus();
-    else
-        return nullptr;
 }

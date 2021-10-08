@@ -23,6 +23,17 @@ namespace show_cheats {
         brls::List* cheatsList = new brls::List();
         if (std::filesystem::exists(path) && CreateCheatList(path, &cheatsList)) {
             appView->setContentView(cheatsList);
+            appView->registerAction("menus/cheats/delete_file"_i18n, brls::Key::X, [tid, bid] {
+                DeleteCheats(tid, bid);
+                brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
+                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+                    dialog->close();
+                };
+                dialog->addButton("menus/common/ok"_i18n, callback);
+                dialog->setCancelable(true);
+                dialog->open();
+                return true;
+            });
             brls::PopupFrame::open(name, appView, "");
         }
         else {
@@ -87,27 +98,33 @@ namespace show_cheats {
         }
         return res;
     }
+
+    void DeleteCheats(u64 tid, const std::string& bid)
+    {
+        std::filesystem::remove(fmt::format("{}{:016X}/cheats/{}.txt", util::getContentsPath(), tid, bid));
+    }
 }  // namespace show_cheats
 
 DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : AppletFrame(true, true), tid(tid)
 {
-    list = new brls::List();
-    GetVersion();
-    GetBuildID();
+    this->list = new brls::List();
+    this->GetVersion();
+    this->GetBuildID();
     this->setTitle(name);
     this->setFooterText("v" + std::to_string(this->version / 0x10000));
-    this->registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this, name] {
+    this->registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this, name] {  // TODO: figure out why that doesn't show up for empty lists
         show_cheats::ShowCheatSheet(this->tid, this->bid, name);
         return true;
     });
+    this->rebuildHints();
 }
 
 void DownloadCheatsPage::GetBuildID()
 {
     if (CurrentCfw::running_cfw == CFW::ams)
-        GetBuildIDFromDmnt();
+        this->GetBuildIDFromDmnt();
     if (this->bid == "")
-        GetBuildIDFromFile();
+        this->GetBuildIDFromFile();
 }
 
 void DownloadCheatsPage::GetBuildIDFromDmnt()
@@ -160,11 +177,6 @@ void DownloadCheatsPage::WriteCheats(const std::string& cheatContent)
     cheatFile.open(path, std::ios::app);
     cheatFile << "\n\n"
               << cheatContent;
-}
-
-void DownloadCheatsPage::DeleteCheats()
-{
-    std::filesystem::remove(util::getContentsPath() + util::formatApplicationId(this->tid) + "/cheats/" + this->bid + ".txt");
 }
 
 DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
@@ -287,18 +299,6 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
         return true;
     });
 
-    del = new brls::ListItem("menus/cheats/delete_file"_i18n);
-    del->getClickEvent()->subscribe([this](brls::View* view) {
-        DeleteCheats();
-        brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
-        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-            dialog->close();
-        };
-        dialog->addButton("menus/common/ok"_i18n, callback);
-        dialog->setCancelable(true);
-        dialog->open();
-    });
-    list->addView(del);
     this->setContentView(list);
 }
 
@@ -369,17 +369,5 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
         list->addView(label);
     }
 
-    del = new brls::ListItem("menus/cheats/delete_file"_i18n);
-    del->getClickEvent()->subscribe([this](brls::View* view) {
-        DeleteCheats();
-        brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
-        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-            dialog->close();
-        };
-        dialog->addButton("menus/common/ok"_i18n, callback);
-        dialog->setCancelable(true);
-        dialog->open();
-    });
-    list->addView(del);
     this->setContentView(list);
 }

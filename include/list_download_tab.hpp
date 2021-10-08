@@ -24,5 +24,4 @@ private:
 
 public:
     ListDownloadTab(const contentType type, const nlohmann::ordered_json& nxlinks = nlohmann::ordered_json::object());
-    brls::View* getDefaultFocus() override;
 };

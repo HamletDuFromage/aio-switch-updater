@@ -21,7 +21,6 @@ private:
 
 public:
     AmsTab(const nlohmann::json& nxlinks, const bool erista = true, const bool hideStandardEntries = false);
-    brls::View* getDefaultFocus() override;
 };
 
 class UnTogglableListItem : public brls::ToggleListItem

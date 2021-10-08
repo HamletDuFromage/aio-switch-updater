@@ -12,6 +12,7 @@ namespace show_cheats {
     void ShowCheatSheet(u64 tid, const std::string& bid, const std::string& name);
     bool CreateCheatList(const std::filesystem::path& path, brls::List** cheatsList);
     void NoCheatsFoundPopup();
+    void DeleteCheats(u64 tid, const std::string& bid);
 
 }  // namespace show_cheats
 
@@ -31,7 +32,6 @@ protected:
     void GetVersion();
     void GetBuildIDFromFile();
     void WriteCheats(const std::string& cheatContent);
-    void DeleteCheats();
 
     typedef struct
     {

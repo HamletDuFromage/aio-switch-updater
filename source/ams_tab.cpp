@@ -81,7 +81,6 @@ void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool h
             });
             this->addView(listItem);
         }
-        this->size += 1;
     }
     else {
         description = new brls::Label(
@@ -214,22 +213,14 @@ void AmsTab::ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules)
             request_url += e + ";";
 
         this->CreateStagedFrames("menus/common/download"_i18n + "Custom DeepSea package" + "menus/common/from"_i18n + request_url,
-                           request_url,
-                           "menus/ams_update/get_custom_deepsea"_i18n,
-                           this->erista);
+                                 request_url,
+                                 "menus/ams_update/get_custom_deepsea"_i18n,
+                                 this->erista);
         return true;
     });
     appView->registerAction("", brls::Key::PLUS, [this] { return true; });
 
     brls::PopupFrame::open("menus/ams_update/deepsea_builder"_i18n, appView, modules.empty() ? "menus/ams_update/cant_fetch_deepsea"_i18n : "menus/ams_update/build_your_deepsea"_i18n, "");
-}
-
-brls::View* AmsTab::getDefaultFocus()
-{
-    if (this->size)
-        return this->brls::List::getDefaultFocus();
-    else
-        return nullptr;
 }
 
 bool UnTogglableListItem::onClick()
