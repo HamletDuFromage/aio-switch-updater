@@ -33,6 +33,7 @@ namespace extract {
     void extractCheats(const std::string& zipPath, std::vector<std::string> titles, CFW cfw, bool credits = false);
     void extractAllCheats(const std::string& zipPath, CFW cfw);
     void removeCheats();
+    void removeOrphanedCheats();
     bool removeCheatsDirectory(const std::string& entry);
     bool isBID(const std::string& bid);
 }  // namespace extract

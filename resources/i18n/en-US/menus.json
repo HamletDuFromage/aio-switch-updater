@@ -15,7 +15,7 @@
     "view": "View installed cheats",
     "exclude": "Exclude games from receiving cheat updates",
     "delete_existing": "Delete all existing cheat codes",
-    "delete_all": "Delete all cheats",
+    "delete_orphaned": "Delete orphaned cheat chodes",
     "deleting": "Deleting…",
     "cheastlips_title": "Cheatslips cheats",
     "gbatemp_title": "GBAtemp cheats",
