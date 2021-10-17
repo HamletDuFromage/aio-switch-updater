@@ -15,7 +15,7 @@
     "view": "檢視已安裝遊戲的金手指",
     "exclude": "設定為排除更新金手指的遊戲",
     "delete_existing": "刪除目前現有的金手指",
-    "delete_all": "刪除所有金手指",
+    "delete_orphaned": "刪除未安裝遊戲的金手指",
     "deleting": "正在刪除…",
     "cheastlips_title": "Cheatslips金手指",
     "gbatemp_title": "GBAtemp金手指",
@@ -134,11 +134,13 @@
     "tools": "工具",
     "launch_warning": "在開始使用此app前，請務必注意：\n\n\ue016  請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\ue016  請注意，我們非常不建議在exFAT格式的記憶卡上使用此app，可能會因此產生錯誤或執行中斷。\n\n\ue016  程式版本更新時會加入新的功能，也會改善現有的功能。請由選單內的 工具->更新履歷 前往檢視詳細內容。\n\n此提醒畫面將不再顯示。",
     "footer_text": "v{} | {:.1f}GB 可用",
-    "theme_warning": "偵測已安裝自訂主題，更新系統韌體版本後，可能無法導致正常開機。\n建議更新系統前移除自訂主題並改回預設。"
+    "theme_warning": "偵測已安裝自訂主題，更新系統韌體版本後，可能無法導致正常開機。\n建議更新系統前移除自訂主題並改回預設。",
+    "payloads_label": "\ue016  下載RCM引導程序至 {}"
   },
   "hide": {
     "title": "隱藏分頁",
-    "desc": "隱藏主選單上的分頁標籤"
+    "desc": "隱藏主選單上的分頁標籤",
+    "update_ams_deepsea": "Atmosphere 與 DeepSea 下載列表"
   },
   "tools": {
     "cheats": "金手指選單",
@@ -186,9 +188,6 @@
     "build_your_deepsea": "透過個別選取來建立屬於你自己的自訂DeepSea安裝包",
     "getting_ams": "正在擷取 Atmosphère",
     "custom_packs_label": "\ue016  來自 {} 的檔案。請注意，這些列出的檔案均未經過aio-switch-updater驗證，因此安裝前請確保檔案來源為可信任的。"
-  },
-  "firmware": {
-    "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的更新系統套件?"
   },
   "firmware": {
     "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的更新系統套件?"
