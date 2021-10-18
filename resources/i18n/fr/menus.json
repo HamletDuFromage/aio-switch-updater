@@ -3,7 +3,7 @@
         "title": "All-in-One Nintendo Switch Updater",
         "copyright": "AIO-switch-updater est distribuée sous la license GPL-3.0\n© 2020-2021 HamletDuFromage",
         "disclaimers": "  HamletDuFromage n'héberge rien à l'exception d'une copie des codes de triche du topic principal de GBAtemp. Tous les crédits vont aux propriétaires respectifs.\n  Les liens sont actualisés toutes les 30 minutes. Si un lien reste inactif après 30 minutes, merci de bien vouloir ouvrir une issue sur GitHub.",
-        "donate": ""
+        "donate": " Vous aimez cette app ? Pensez à m'encourager avec un don : 'https://git.io/donate_homlet'"
     },
     "cheats": {
         "installed": "Codes de triche installés",
@@ -19,8 +19,8 @@
         "deleting": "Suppression…",
         "cheastlips_title": "",
         "gbatemp_title": "",
-        "get_gbatemp": "",
-        "get_cheatslips": "",
+        "get_gbatemp": "Télécharger les codes de triche de GBAtemp.net",
+        "get_cheatslips": "Télécharger les codes de triche de CheatSlips.com",
         "cheats_label": "",
         "cheatslips_dl": "",
         "delete_file": "",
