@@ -94,9 +94,7 @@
   "utils": {
     "fw_warning": "En raison de la taille de l'archive FW, le téléchargement de firmwares en mode Applet n'est pas pris en charge. Veuillez lancer l'application avec un accès total à la RAM.",
     "overwrite": " Voulez-vous écraser le fichier l'existant ",
-    "wrong_type_sigpatches": "Le fichier téléchargé n'est pas une archive de sigpatches. Cela est probablement dû à un lien brisé. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub.",
-    "wrong_type_fw": "Le fichier téléchargé n'est pas une archive de firmare. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub.",
-    "overwrite_inis": "Voulez-vous écraser les fichiers de configuration .ini déja présents ?",
-    "wrong_type_cfw": "Le fichier téléchargé n'est pas une archive de CFW. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub."
+    "not_an_archive": "Le fichier téléchargé n'est pas une archive zip. Cela est probablement dû à un lien brisé. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub.",
+    "overwrite_inis": "Voulez-vous écraser les fichiers de configuration .ini déja présents ?"
   }
 }

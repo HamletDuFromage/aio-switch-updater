@@ -43,7 +43,7 @@ void AppPage::PopulatePage()
 
                 tid = records[i].application_id;
 
-                if R_FAILED (GetControlData(tid, controlData, controlSize, name)) continue;
+                if R_FAILED(GetControlData(tid, controlData, controlSize, name)) continue;
 
                 listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
                 this->DeclareGameListItem(name, tid, &controlData);

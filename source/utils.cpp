@@ -21,13 +21,16 @@ namespace util {
 
     bool isArchive(const std::string& path)
     {
-        std::fstream file;
-        std::string fileContent;
         if (std::filesystem::exists(path)) {
-            file.open(path, std::fstream::in);
-            file >> fileContent;
+            std::ifstream is(path, std::ifstream::binary);
+            char zip_signature[4] = {0x50, 0x4B, 0x03, 0x04};  // zip signature header PK\3\4
+            char signature[4];
+            is.read(signature, 4);
+            if (is.good() && std::equal(std::begin(signature), std::end(signature), std::begin(zip_signature), std::end(zip_signature))) {
+                return true;
+            }
         }
-        return fileContent.find("DOCTYPE") == std::string::npos;
+        return false;
     }
 
     void downloadArchive(const std::string& url, contentType type)
@@ -107,29 +110,43 @@ namespace util {
         return result;
     }
 
-    void extractArchive(contentType type, const std::string& tag)
+    void crashIfNotArchive(contentType type)
     {
-        int overwriteInis = 0;
-        chdir(ROOT_PATH);
+        std::string filename;
         switch (type) {
             case contentType::sigpatches:
-                if (isArchive(SIGPATCHES_FILENAME)) {
-                    /* if(std::filesystem::exists(HEKATE_IPL_PATH)){
-                    overwriteInis = showDialogBox("menus/utils/overwrite"_i18n + std::string(HEKATE_IPL_PATH) +"?", "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                    if(overwriteInis == 0){
-                        extract::extract(SIGPATCHES_FILENAME, ROOT_PATH, HEKATE_IPL_PATH);
-                    }
-                    else{
-                        extract::extract(SIGPATCHES_FILENAME);
-                    }
-                } */
-                    //else{
-                    extract::extract(SIGPATCHES_FILENAME);
-                    //}
-                }
-                else {
-                    brls::Application::crash("menus/utils/wrong_type_sigpatches"_i18n);
-                }
+                filename = SIGPATCHES_FILENAME;
+                break;
+            case contentType::cheats:
+                filename = CHEATS_FILENAME;
+                break;
+            case contentType::fw:
+                filename = FIRMWARE_FILENAME;
+                break;
+            case contentType::app:
+                filename = APP_FILENAME;
+                break;
+            case contentType::bootloaders:
+                filename = CFW_FILENAME;
+                break;
+            case contentType::ams_cfw:
+                filename = AMS_FILENAME;
+                break;
+            default:
+                return;
+        }
+        if (!isArchive(filename)) {
+            brls::Application::crash("menus/utils/not_an_archive"_i18n);
+        }
+    }
+
+    void extractArchive(contentType type, const std::string& tag)
+    {
+        chdir(ROOT_PATH);
+        crashIfNotArchive(type);
+        switch (type) {
+            case contentType::sigpatches:
+                extract::extract(SIGPATCHES_FILENAME);
                 break;
             case contentType::cheats: {
                 std::vector<std::string> titles = extract::getInstalledTitlesNs();
@@ -138,14 +155,9 @@ namespace util {
                 break;
             }
             case contentType::fw:
-                if (std::filesystem::file_size(FIRMWARE_FILENAME) < 200000) {
-                    brls::Application::crash("menus/utils/wrong_type_sigpatches_downloaded"_i18n);
-                }
-                else {
-                    if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
-                    fs::createTree(FIRMWARE_PATH);
-                    extract::extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
-                }
+                if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
+                fs::createTree(FIRMWARE_PATH);
+                extract::extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
                 break;
             case contentType::app:
                 extract::extract(APP_FILENAME, CONFIG_PATH);
@@ -154,25 +166,20 @@ namespace util {
                 romfsExit();
                 brls::Application::quit();
                 break;
-            case contentType::bootloaders:
-                if (isArchive(CFW_FILENAME)) {
-                    overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                    extract::extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
-                }
-                else {
-                    brls::Application::crash("menus/utils/wrong_type_cfw"_i18n);
-                }
+            case contentType::bootloaders: {
+                int overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                extract::extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
                 break;
-            case contentType::ams_cfw:
-                if (isArchive(AMS_FILENAME)) {
-                    overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                    usleep(800000);
-                    int deleteContents = showDialogBox("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                    if (deleteContents == 1)
-                        removeSysmodulesFlags(AMS_CONTENTS);
-                    extract::extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
-                }
+            }
+            case contentType::ams_cfw: {
+                int overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                usleep(800000);
+                int deleteContents = showDialogBox("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                if (deleteContents == 1)
+                    removeSysmodulesFlags(AMS_CONTENTS);
+                extract::extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
                 break;
+            }
             default:
                 break;
         }

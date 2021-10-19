@@ -142,10 +142,7 @@
   "utils": {
     "fw_warning": "Z powodu rozmiarów archiwów z firmwarem, ich pobieranie w trybie appletu nie jest wspierane. Uruchom aplikację z pełnym dostępem do pamięci RAM.",
     "overwrite": " Czy chcesz nadpisać istniejący ",
-    "wrong_type_sigpatches": "Pobrany plik nie jest archiwum z sigpatchami. Jest to najprawdopodobniej spowodowane wadliwym linkiem. Jeśli problem nie ustanie po więcej niż 30 minutach, utwórz nowy problem na Githubie.",
-    "wrong_type_fw": "Pobrany plik nie jest archiwum z firmwarem. Jest to najprawdopodobniej spowodowane wadliwym linkiem. Jeśli problem nie ustanie po więcej niż 30 minutach, utwórz nowy problem na Githubie.",
-    "overwrite_inis": "Czy chcesz nadpisać istniejące pliki konfiguracyjne .ini?",
-    "wrong_type_cfw": "Pobrany plik nie jest archiwum z CFW. Jest to najprawdopodobniej spowodowane wadliwym linkiem. Jeśli problem nie ustanie po więcej niż 30 minutach, utwórz nowy problem na Githubie."
+    "overwrite_inis": "Czy chcesz nadpisać istniejące pliki konfiguracyjne .ini?"
   },
   "ams_update": {
     "reboot_rcm": "Switch uruchomi się teraz ponownie do specjalnego payloadu aby ukończyć instalację.",

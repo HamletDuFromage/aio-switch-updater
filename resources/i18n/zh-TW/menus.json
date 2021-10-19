@@ -164,10 +164,7 @@
   "utils": {
     "fw_warning": "由於FW壓縮檔太大，在applet模式下無法下載韌體。請在能存取完整記憶體的一般模式下執行下載程序",
     "overwrite": " 是否要覆蓋現有的檔案 ",
-    "wrong_type_sigpatches": "下載的檔案並不是正確的sigpatches壓縮檔。可能是檔案連結發生錯誤。如果下載錯誤持續超過30分鐘，請使用Github提出問題來進行回報",
-    "wrong_type_fw": "下載的檔案並不是正確的韌體壓縮檔。可能是檔案連結發生錯誤。如果下載錯誤持續超過30分鐘，請使用Github提出問題來進行回報",
-    "overwrite_inis": "是否要覆蓋現有的 .ini 系統配置檔案?",
-    "wrong_type_cfw": "下載的檔案並不是正確的CFW壓縮檔。可能是檔案連結發生錯誤。如果下載錯誤持續超過30分鐘，請使用Github提出問題來進行回報"
+    "overwrite_inis": "是否要覆蓋現有的 .ini 系統配置檔案?"
   },
   "ams_update": {
     "reboot_rcm": "Switch將會重新啟動，並載入特定的注入檔案來完成安裝。",

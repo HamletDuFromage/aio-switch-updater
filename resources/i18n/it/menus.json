@@ -93,9 +93,6 @@
   "utils": {
     "fw_warning": "A causa della dimensione del FW, lo scaricamento dei firmwares in Applet Mode non è supportato. Avvia l'applicazione con pieno accesso alla RAM.",
     "overwrite": " Do you want to overwrite existing ",
-    "wrong_type_sigpatches": "Il file scaricato non è un archivio di sigpatches. Ciò è probabilmente causato da un link non funzionante. Se il problema persiste dopo più di 3 ore, apri una issue su Github.",
-    "wrong_type_fw": "Il file scaricato non è un firmware. Ciò è probabilmente causato da un link non funzionante. Se il problema persiste dopo più di 3 ore, apri una issue su Github.",
-    "overwrite_inis": "Vuoi sovrascrivere i file di configurazione .ini esistenti?",
-    "wrong_type_cfw": "Il file scaricato non è un CFW. Ciò è probabilmente causato da un link non funzionante. Se il problema persiste dopo più di 3 ore, apri una issue su Github."
+    "overwrite_inis": "Vuoi sovrascrivere i file di configurazione .ini esistenti?"
   }
 }
