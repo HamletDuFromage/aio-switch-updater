@@ -95,9 +95,6 @@
   "utils": {
     "fw_warning": "由于 FW archive的文件大小, 仅支持在 Applet Mode 模式下更新固件. (百度查询进入applet Mode模式方法)请让程序在Applet Mode下启动",
     "overwrite": "你想要覆盖已经存在的",
-    "wrong_type_sigpatches": "下载的文件没有数字签名认证. 可能是由于链接出问题了.如果3个小时还有类似的问题, 请到github上给作者提出issue.",
-    "wrong_type_fw": "下载的文件没有数字签名认证. 可能是由于链接出问题了.如果3个小时还有类似的问题, 请到github上给作者提出issue",
-    "overwrite_inis": "你想要覆盖已经存在的.ini 设置文件吗?",
-    "wrong_type_cfw": "下载的文件CFW出现问题. 可能是由于链接出问题了.如果3个小时还有类似的问题,  请到github上给作者提出issue."
+    "overwrite_inis": "你想要覆盖已经存在的.ini 设置文件吗?"
   }
 }
