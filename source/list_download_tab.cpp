@@ -21,7 +21,7 @@ ListDownloadTab::ListDownloadTab(const contentType type, const nlohmann::ordered
 {
     this->setDescription();
 
-    this->createList(this->type);
+    this->createList();
 
     if (this->type == contentType::cheats) {
         brls::Label* cheatsLabel = new brls::Label(
@@ -29,24 +29,24 @@ ListDownloadTab::ListDownloadTab(const contentType type, const nlohmann::ordered
             "menus/cheats/cheats_label"_i18n,
             true);
         this->addView(cheatsLabel);
-        creategbatempItem();
-        createCheatSlipItem();
+        this->creategbatempItem();
+        this->createCheatSlipItem();
     }
 
     if (this->type == contentType::bootloaders) {
-        brls::Label* payloadsLabel = new brls::Label(
-            brls::LabelStyle::DESCRIPTION,
-            fmt::format("menus/main/payloads_label"_i18n, BOOTLOADER_PL_PATH),
-            true);
-        this->addView(payloadsLabel);
-        createList(contentType::payloads);
+        this->setDescription(contentType::payloads);
+        this->createList(contentType::payloads);
     }
+}
+
+void ListDownloadTab::createList() {
+    ListDownloadTab::createList(this->type);
 }
 
 void ListDownloadTab::createList(contentType type)
 {
     std::vector<std::pair<std::string, std::string>> links;
-    if (this->type == contentType::cheats && this->newCheatsVer != "")
+    if (type == contentType::cheats && this->newCheatsVer != "")
         links.push_back(std::make_pair(fmt::format("{}{})", "menus/main/get_cheats"_i18n, this->newCheatsVer), CurrentCfw::running_cfw == CFW::sxos ? CHEATS_URL_TITLES : CHEATS_URL_CONTENTS));
     else
         links = download::getLinksFromJson(util::getValueFromKey(this->nxlinks, contentTypeNames[(int)type].data()));
@@ -58,15 +58,15 @@ void ListDownloadTab::createList(contentType type)
             const std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([this, text, url, title, type](brls::View* view) {
+            listItem->getClickEvent()->subscribe([this, type, text, url, title](brls::View* view) {
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(fmt::format("menus/main/getting"_i18n, contentTypeNames[(int)type].data()));
                 stagedFrame->addStage(new ConfirmPage(stagedFrame, text));
                 if (type != contentType::payloads) {
                     if (type != contentType::cheats || this->newCheatsVer != this->currentCheatsVer || !std::filesystem::exists(CHEATS_ZIP_PATH)) {
-                        stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [type, url]() { util::downloadArchive(url, type); }));
+                        stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [this, type, url]() { util::downloadArchive(url, type); }));
                     }
-                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [type]() { util::extractArchive(type); }));
+                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [this, type]() { util::extractArchive(type); }));
                 }
                 else {
                     fs::createTree(BOOTLOADER_PL_PATH);
@@ -122,12 +122,16 @@ void ListDownloadTab::displayNotFound()
 
 void ListDownloadTab::setDescription()
 {
+    this->setDescription(this->type);
+}
+
+void ListDownloadTab::setDescription(contentType type)
+{
     brls::Label* description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
 
-    switch (this->type) {
+    switch (type) {
         case contentType::sigpatches:
-            description->setText(
-                "menus/main/sigpatches_text"_i18n);
+            description->setText("menus/main/sigpatches_text"_i18n);
             break;
         case contentType::fw: {
             SetSysFirmwareVersion ver;
@@ -139,10 +143,12 @@ void ListDownloadTab::setDescription()
                 "menus/main/bootloaders_text"_i18n);
             break;
         case contentType::cheats:
-
             this->newCheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
             this->currentCheatsVer = util::readVersion(CHEATS_VERSION);
             description->setText("menus/main/cheats_text"_i18n + this->currentCheatsVer);
+            break;
+        case contentType::payloads:
+            description->setText("menus/main/payloads_label"_i18n);
             break;
         default:
             break;
@@ -153,7 +159,7 @@ void ListDownloadTab::setDescription()
 
 void ListDownloadTab::createCheatSlipItem()
 {
-    cheatslipsItem = new brls::ListItem("menus/cheats/get_cheatslips"_i18n);
+    brls::ListItem* cheatslipsItem = new brls::ListItem("menus/cheats/get_cheatslips"_i18n);
     cheatslipsItem->setHeight(LISTITEM_HEIGHT);
     cheatslipsItem->getClickEvent()->subscribe([](brls::View* view) {
         if (std::filesystem::exists(TOKEN_PATH)) {
@@ -196,7 +202,7 @@ void ListDownloadTab::createCheatSlipItem()
 
 void ListDownloadTab::creategbatempItem()
 {
-    gbatempItem = new brls::ListItem("menus/cheats/get_gbatemp"_i18n);
+    brls::ListItem* gbatempItem = new brls::ListItem("menus/cheats/get_gbatemp"_i18n);
     gbatempItem->setHeight(LISTITEM_HEIGHT);
     gbatempItem->getClickEvent()->subscribe([](brls::View* view) {
         brls::Application::pushView(new AppPage_Gbatemp());

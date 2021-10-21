@@ -2,6 +2,7 @@
 
 #include <switch.h>
 
+#include <functional>
 #include <set>
 #include <string>
 #include <vector>
@@ -25,8 +26,8 @@ namespace extract {
         }
     } Title;
 
-    void extract(const std::string& filename, const std::string& workingPath = ROOT_PATH, int overwriteInis = 1);
-    void extract(const std::string& filename, const std::string& workingPath, const std::string& toExclude);
+    void extract(
+        const std::string& filename, const std::string& workingPath = ROOT_PATH, int overwriteInis = 1, std::function<void()> func = []() { return; });
     std::vector<std::string> getInstalledTitlesNs();
     std::vector<std::string> excludeTitles(const std::string& path, const std::vector<std::string>& listedTitles);
     void writeTitlesToFile(const std::set<std::string>& titles, const std::string& path);

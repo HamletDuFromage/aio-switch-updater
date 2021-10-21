@@ -165,7 +165,9 @@
     "fw_warning": "Because of the size of the FW archive, downloading firmwares in Applet Mode is not supported. Please launch the app with full RAM access.",
     "overwrite": " Do you want to overwrite existing ",
     "not_an_archive": "The downloaded file is not a zip archive. This is most likely due to a broken link. If the problem persists after more than 30 minutes, please open an issue on Github.",
-    "overwrite_inis": "Do you want to overwrite existing .ini config files?"
+    "overwrite_inis": "Do you want to overwrite existing .ini config files?",
+    "set_hekate_reboot_payload": "Do you want to copy the Hekate payload `{}` to `{}`?"
+  
   },
   "ams_update": {
     "reboot_rcm": "The Switch will now reboot to a special payload in order to finalise the install.",
