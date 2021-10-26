@@ -76,7 +76,6 @@
     "dl_payloads": "ペイロードをダウンロード",
     "select": " 再起動するペイロードを選択します。",
     "not_found": "ダウンロードリンクが見つかりませんでした。スイッチがインターネットにアクセスできることを確認してください。\nこの問題が解決しない場合は、Githubで問題を開いてください。",
-    "reboot_title": "メニューを再起動",
     "set_reboot_payload": "reboot_payload.binにセットする",
     "set_update_bin": "/bootloader/update.binにセットする",
     "copy_success": "コピー完了 '",

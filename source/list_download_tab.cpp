@@ -148,7 +148,7 @@ void ListDownloadTab::setDescription(contentType type)
             description->setText("menus/main/cheats_text"_i18n + this->currentCheatsVer);
             break;
         case contentType::payloads:
-            description->setText("menus/main/payloads_label"_i18n);
+            description->setText(fmt::format("menus/main/payloads_label"_i18n, BOOTLOADER_PL_PATH));
             break;
         default:
             break;

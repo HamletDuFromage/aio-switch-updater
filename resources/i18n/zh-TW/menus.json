@@ -78,7 +78,6 @@
     "dl_payloads": "下載注入檔案",
     "select": " 選擇重開機時的注入檔案",
     "not_found": "無法使用下載連結，請檢查Switch是否可正常存取網路連線。\n如果網路正常仍無法使用，請使用Github提出問題來進行回報。",
-    "reboot_title": "重開機選單",
     "set_reboot_payload": "設定為 reboot_payload.bin",
     "set_update_bin": "設定為 /bootloader/update.bin",
     "copy_success": "成功複製 '",

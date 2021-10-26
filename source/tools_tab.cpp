@@ -8,7 +8,6 @@
 #include "changelog_page.hpp"
 #include "cheats_page.hpp"
 #include "confirm_page.hpp"
-/* #include "download_payload_page.hpp" */
 #include "extract.hpp"
 #include "fs.hpp"
 #include "hide_tabs_page.hpp"
@@ -65,32 +64,11 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     });
     PCcolor->setHeight(LISTITEM_HEIGHT);
 
-    /* downloadPayload = new brls::ListItem("menus/tools/dl_payloads"_i18n + std::string(BOOTLOADER_PL_PATH));
-    downloadPayload->getClickEvent()->subscribe([&, payloads](brls::View* view) {
-        brls::Application::pushView(new DownloadPayloadPage(payloads));
-    });
-    downloadPayload->setHeight(LISTITEM_HEIGHT); */
-
     rebootPayload = new brls::ListItem("menus/tools/inject_payloads"_i18n);
     rebootPayload->getClickEvent()->subscribe([](brls::View* view) {
-        brls::Application::pushView(new PayloadPage());
+        brls::PopupFrame::open("menus/tools/inject_payloads"_i18n, new PayloadPage(), "", "");
     });
     rebootPayload->setHeight(LISTITEM_HEIGHT);
-
-    /* ntcp = new brls::ListItem("menus/ntcp"_i18n);
-    ntcp->getClickEvent()->subscribe([](brls::View* view){
-        std::string res = syncTime();
-        brls::Dialog* dialog = new brls::Dialog(res);
-        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-            dialog->close();
-        };
-        dialog->addButton("menus/common/ok"_i18n, callback);
-        dialog->setCancelable(true);
-        dialog->open();
-
-    });
-    ntcp->setHeight(LISTITEM_HEIGHT);
-    this->addView(ntcp); */
 
     netSettings = new brls::ListItem("menus/tools/internet_settings"_i18n);
     netSettings->getClickEvent()->subscribe([](brls::View* view) {
@@ -232,7 +210,6 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     if (!util::getBoolValue(hideStatus, "cheats")) this->addView(cheats);
     if (!util::getBoolValue(hideStatus, "jccolor")) this->addView(JCcolor);
     if (!util::getBoolValue(hideStatus, "pccolor")) this->addView(PCcolor);
-    /* if (!util::getBoolValue(hideStatus, "downloadpayload")) this->addView(downloadPayload); */
     if (erista && !util::getBoolValue(hideStatus, "rebootpayload")) this->addView(rebootPayload);
     if (!util::getBoolValue(hideStatus, "netsettings")) this->addView(netSettings);
     if (!util::getBoolValue(hideStatus, "browser")) this->addView(browser);

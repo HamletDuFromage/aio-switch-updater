@@ -42,7 +42,6 @@
     "dl_payloads": "Descargar payloads",
     "select": " Selecciona el payload al que reiniciar.",
     "not_found": "No se pudo encontrar un enlace de descarga, asegúrate de que tu Switch tiene acceso a internet.\nSi el problema persiste, por favor abre un issue en Github.",
-    "reboot_title": "Menú de reinicio",
     "set_reboot_payload": "Poner como reboot_payload.bin",
     "set_update_bin": "Poner como /bootloader/update.bin",
     "copy_success": "Éxito al copiar '",

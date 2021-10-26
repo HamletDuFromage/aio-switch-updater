@@ -24,6 +24,7 @@ protected:
     brls::ListItem* del;
     uint64_t tid = 0;
     std::string bid = "";
+    std::string name;
     u32 version = 0;
 
     DownloadCheatsPage(uint64_t tid, const std::string& name);
@@ -32,6 +33,7 @@ protected:
     void GetVersion();
     void GetBuildIDFromFile();
     void WriteCheats(const std::string& cheatContent);
+    void AddCheatsfileListItem();
 
     typedef struct
     {

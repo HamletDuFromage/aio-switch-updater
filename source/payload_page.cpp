@@ -9,7 +9,9 @@ using namespace i18n::literals;
 
 PayloadPage::PayloadPage() : AppletFrame(true, true)
 {
-    this->setTitle("menus/payloads/reboot_title"_i18n);
+    this->updateActionHint(brls::Key::B, "");
+    this->updateActionHint(brls::Key::PLUS, "");
+
     list = new brls::List();
     label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,

@@ -45,7 +45,8 @@
     "not_found": "No proper cheat codes could be found for this game",
     "show_existing": "Show existing",
     "delete_cheats": "Delete cheats for this game",
-    "deletion_error": "Couldn't delete the cheat files for game with id:\n{}"
+    "deletion_error": "Couldn't delete the cheat files for game with id:\n{}",
+    "show_cheat_files": "Show all cheat files"
   },
   "common": {
     "downloading": "Downloading…",
@@ -78,7 +79,6 @@
     "dl_payloads": "Download payloads",
     "select": " Select a payload to reboot to.",
     "not_found": "Could not find a download link, make sure the Switch has access to the internet.\nIf this problem persists, please open an issue on Github.",
-    "reboot_title": "Reboot menu",
     "set_reboot_payload": "Set as reboot_payload.bin",
     "set_update_bin": "Set as /bootloader/update.bin",
     "copy_success": "Successfully copied '",

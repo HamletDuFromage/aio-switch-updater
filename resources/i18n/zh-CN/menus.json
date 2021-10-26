@@ -44,7 +44,6 @@
     "dl_payloads": "下载注入程序",
     "select": "选择一个注入文件重启.",
     "not_found": "如果点击后界面没有反应,请确认switch是否连接网络\n如果检查后问题依然存在,请到github上给我提交issue",
-    "reboot_title": "重启菜单",
     "set_reboot_payload": "设置 reboot_payload.bin",
     "set_update_bin": "设置 bootloader/update.bin",
     "copy_success": "成功复制 '",
