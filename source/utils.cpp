@@ -214,6 +214,7 @@ namespace util {
         if (std::filesystem::exists(BOOTLOADER_PATH)) payloadPaths.push_back(BOOTLOADER_PATH);
         if (std::filesystem::exists(BOOTLOADER_PL_PATH)) payloadPaths.push_back(BOOTLOADER_PL_PATH);
         if (std::filesystem::exists(SXOS_PATH)) payloadPaths.push_back(SXOS_PATH);
+        if (std::filesystem::exists(ROMFS_PATH)) payloadPaths.push_back(ROMFS_PATH);
         std::vector<std::string> res;
         for (const auto& path : payloadPaths) {
             for (const auto& entry : std::filesystem::directory_iterator(path)) {

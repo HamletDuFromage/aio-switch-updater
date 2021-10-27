@@ -69,7 +69,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
                     url = CHEATS_URL_CONTENTS;
                     break;
             }
-            std::string text("menus/main/get_cheats"_i18n + cheatsVer + ")" + "menus/common/from"_i18n + url);
+            std::string text(fmt::format("menus/main/get_cheats"_i18n, cheatsVer) + "menus/common/from"_i18n + url);
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
             stagedFrame->setTitle("menus/cheats/dl_all"_i18n);
             stagedFrame->addStage(

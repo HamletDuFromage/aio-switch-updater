@@ -27,7 +27,7 @@ namespace {
 ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payloads, bool erista, const nlohmann::json& hideStatus) : brls::List()
 {
     if (!tag.empty() && tag != AppVersion) {
-        updateApp = new brls::ListItem("menus/tools/update_app"_i18n + tag + ")");
+        updateApp = new brls::ListItem(fmt::format("menus/tools/update_app"_i18n, tag));
         std::string text("menus/tools/dl_app"_i18n + std::string(APP_URL));
         updateApp->getClickEvent()->subscribe([text, tag](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();

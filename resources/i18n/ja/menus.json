@@ -46,7 +46,7 @@
     "show_existing": "既存のものを表示",
     "delete_cheats": "このゲームのチートを削除する",
     "deletion_error": "IDのゲームのチートファイルを削除できませんでした:\n{}",
-	"show_cheat_files": "すべてのチートファイルを表示する"
+    "show_cheat_files": "すべてのチートファイルを表示する"
   },
   "common": {
     "downloading": "ダウンロード中...",
@@ -86,9 +86,6 @@
   },
   "joy_con": {
     "title": "ジョイコンの色を変更",
-    "desc_1": "ジョイコンの内部の色を変更できます。それらがドッキングされていることを確認してください。\nカラープロファイルは保存されます '",
-    "desc_2": "'. 'https://git.io/jcpicker'に移動 ",
-    "desc_3": "独自のカスタムプロファイルを生成します。",
     "backup": "現在のカラープロファイルをバックアップする",
     "label": "ジョイコンの色を変更",
     "backing_up": "現在のカラープロファイルをバックアップします。 ジョイコンがドッキングされていることを確認してください。プロセスがハングする場合は、ジョイコンをドッキング/ドッキング解除してみてください",
@@ -108,7 +105,7 @@
     "getting": "取得中 {}",
     "firmware_text": "\ue016  ファームウェアは'https://darthsternie.net/switch-firmwares/'からダンプされます。 ダウンロードすると、「/firmware」に抽出されます。その後、Daybreakを介してアップデートをインストールできます。\n\ue016  現在のファームウェア: ",
     "cheats_text": "\ue016  GBAtemp.net チートアーカイブをダウンロード",
-    "get_cheats": "GBAtemp.net チートアーカイブをダウンロード (ver ",
+    "get_cheats": "GBAtemp.net チートアーカイブをダウンロード (ver {})",
     "get_all_cheats:": "GBAtemp.net チートアーカイブをダウンロードする",
     "sigpatches": "sigpatch",
     "sigpatches_text": "\ue016  Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。セットアップに適したsigpatchを選択してください（AtmosphèreまたはHekate + Atmosphère）。",
@@ -149,7 +146,7 @@
     "dl_payloads": "ペイロードをダウンロード ",
     "inject_payloads": "ペイロード送信",
     "getting_payload": "ペイロードの取得",
-    "update_app": "アプリを更新 (v",
+    "update_app": "アプリを更新 (v{})",
     "dl_app": "ダウンロード中:\nAIO-switch-updater\n\nから:\n",
     "changelog": "更新履歴",
     "clean_up": "ダウンロードしたファイルをクリーンアップする",

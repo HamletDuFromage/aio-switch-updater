@@ -85,9 +85,6 @@
   },
   "joy_con": {
     "title": "Joy-Con 更換顏色工具",
-    "desc_1": "你可以透過置換Joy-Cons內的代碼設定，來自訂控制器在系統內被辨識的顏色外觀。請確認Joy-Con已確實安裝到主機。\n顏色代碼檔案才能正確覆蓋取代。'",
-    "desc_2": "'. 前往控制器顏色代碼檔案產生網頁：'https://git.io/jcpicker' ",
-    "desc_3": "製作你專屬的控制器顏色外觀",
     "backup": "備份目前的控制器顏色代碼設定檔案",
     "label": "Joy-Con 更換顏色工具",
     "backing_up": "正在備份目前的控制器顏色代碼設定檔案，請確認Joy-Con已確實安裝到主機。 如果程序無法繼續進行時，請嘗試將Joy-Con從主機上取下，再重新安裝到主機。",
@@ -148,7 +145,7 @@
     "dl_payloads": "下載注入檔案的儲存位置",
     "inject_payloads": "載入注入檔案",
     "getting_payload": "下載注入檔案",
-    "update_app": "更新app (v",
+    "update_app": "更新app (v{})",
     "dl_app": "正在下載:\nAIO-switch-updater\n\n來源:\n",
     "changelog": "更新履歷",
     "clean_up": "清空下載清單",

@@ -212,7 +212,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Implement cheat codes support for multi-content games.\n\uE016 Move payload downloads to bootloader tab.");
 
     verTitles.push_back("v2.16.0");
-    changes.push_back("\uE016 Ask user about replacing reboot_payload.bin with hekate with updating hekate.\n\uE016 Added option to deleted orphaned cheats.\n\uE016 UX tweaks.");
+    changes.push_back("\uE016 Ask user about replacing reboot_payload.bin with hekate when updating hekate.\n\uE016 Added option to deleted orphaned cheats.\n\uE016 UX tweaks.");
+
+    verTitles.push_back("v2.16.1");
+    changes.push_back("\uE016 Updated Japanese localisation (https://github.com/yyoossk).\n\uE016 Updated German localisation (https://github.com/MSco).\n\uE016 Added ability to manually launch aiosu_rcm.bin.");
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);

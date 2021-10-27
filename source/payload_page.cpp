@@ -12,65 +12,58 @@ PayloadPage::PayloadPage() : AppletFrame(true, true)
     this->updateActionHint(brls::Key::B, "");
     this->updateActionHint(brls::Key::PLUS, "");
 
-    list = new brls::List();
-    label = new brls::Label(
+    this->list = new brls::List();
+    this->label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
         "menus/payloads/select"_i18n,
         true);
-    list->addView(label);
+    this->list->addView(this->label);
     std::vector<std::string> payloads = util::fetchPayloads();
     for (const auto& payload : payloads) {
         std::string payload_path = payload;
-        listItem = new brls::ListItem(payload_path);
-        listItem->getClickEvent()->subscribe([payload](brls::View* view) {
-            util::rebootToPayload(payload);
+        this->listItem = new brls::ListItem(payload_path);
+        this->listItem->getClickEvent()->subscribe([payload_path](brls::View* view) {
+            util::rebootToPayload(payload_path);
             brls::Application::popView();
         });
         if (CurrentCfw::running_cfw == CFW::ams) {
-            listItem->registerAction("menus/payloads/set_reboot_payload"_i18n, brls::Key::X, [payload_path] {
-                std::string res = fs::copyFile(payload_path, REBOOT_PAYLOAD_PATH)
-                                      ? "menus/payloads/copy_success"_i18n + payload_path + "menus/payloads/to"_i18n + std::string(REBOOT_PAYLOAD_PATH) + "'."
-                                      : "Failed.";
-                brls::Dialog* dialog = new brls::Dialog(res);
-                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                    dialog->close();
-                };
-                dialog->addButton("menus/common/ok"_i18n, callback);
-                dialog->setCancelable(true);
-                dialog->open();
-                return true;
-            });
+            this->RegisterCopyAction(brls::Key::X, payload_path, REBOOT_PAYLOAD_PATH, "menus/payloads/set_reboot_payload"_i18n);
         }
-        listItem->registerAction("menus/payloads/set_update_bin"_i18n, brls::Key::Y, [payload] {
-            std::string res = fs::copyFile(payload, UPDATE_BIN_PATH)
-                                  ? "menus/payloads/copy_success"_i18n + payload + "menus/payloads/to"_i18n + std::string(UPDATE_BIN_PATH) + "'."
-                                  : "Failed.";
-            brls::Dialog* dialog = new brls::Dialog(res);
-            brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                dialog->close();
-            };
-            dialog->addButton("menus/common/ok"_i18n, callback);
-            dialog->setCancelable(true);
-            dialog->open();
-            return true;
-        });
-        list->addView(listItem);
+        this->RegisterCopyAction(brls::Key::Y, payload_path, UPDATE_BIN_PATH, "menus/payloads/set_update_bin"_i18n);
+        this->list->addView(this->listItem);
     }
-    list->addView(new brls::ListItemGroupSpacing(true));
+    this->list->addView(new brls::ListItemGroupSpacing(true));
 
-    shutDown = new brls::ListItem("menus/common/shut_down"_i18n);
-    shutDown->getClickEvent()->subscribe([](brls::View* view) {
+    this->listItem = new brls::ListItem("menus/common/shut_down"_i18n);
+    this->listItem->getClickEvent()->subscribe([](brls::View* view) {
         util::shutDown(false);
         brls::Application::popView();
     });
-    list->addView(shutDown);
+    this->list->addView(this->listItem);
 
-    reboot = new brls::ListItem("menus/common/reboot"_i18n);
-    reboot->getClickEvent()->subscribe([](brls::View* view) {
+    this->listItem = new brls::ListItem("menus/common/reboot"_i18n);
+    this->listItem->getClickEvent()->subscribe([](brls::View* view) {
         util::shutDown(true);
         brls::Application::popView();
     });
-    list->addView(reboot);
+    list->addView(this->listItem);
 
     this->setContentView(list);
+}
+
+void PayloadPage::RegisterCopyAction(brls::Key key, const std::string& payload_path, const std::string& payload_dest, const std::string& action_name)
+{
+    this->listItem->registerAction(action_name, key, [payload_path, payload_dest] {
+        std::string res = fs::copyFile(payload_path, payload_dest)
+                              ? fmt::format("menus/payloads/copy_success"_i18n, payload_path, payload_dest)
+                              : "Failed.";
+        brls::Dialog* dialog = new brls::Dialog(res);
+        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+            dialog->close();
+        };
+        dialog->addButton("menus/common/ok"_i18n, callback);
+        dialog->setCancelable(true);
+        dialog->open();
+        return true;
+    });
 }

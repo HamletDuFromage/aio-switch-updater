@@ -49,9 +49,6 @@
   },
   "joy_con": {
     "title": "Cambia il colore dei Joy-Con",
-    "desc_1": "You can change the internal color of your Joy-Cons. Make sure they're docked.\nColor profiles are stored in '",
-    "desc_2": "'. Visita 'https://git.io/jcpicker' ",
-    "desc_3": "per generare i tuoi profili personalizzati.",
     "backup": "Salva il profilo corrente",
     "label": "Cambia il colore dei Joy-Con",
     "backing_up": "Backing up the current color profile. Accertati che i Joy-Con siano collegati. Se il processo si blocca, prova a scollegarli/ricollegarli.",
@@ -85,7 +82,7 @@
     "joy_cons": "Cambia il colore dei Joy-Cons",
     "dl_payloads": "Scarica payloads in ",
     "inject_payloads": "Inietta payload",
-    "update_app": "Aggiorna l'app (v",
+    "update_app": "Aggiorna l'app (v{})",
     "dl_app": "Scarico:\nAIO-switch-updater\n\nDa:\n",
     "changelog": "Changelog"
   },
