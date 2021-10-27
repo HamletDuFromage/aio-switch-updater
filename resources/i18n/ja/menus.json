@@ -45,7 +45,8 @@
     "not_found": "このゲームに適切なチートコードが見つかりませんでした",
     "show_existing": "既存のものを表示",
     "delete_cheats": "このゲームのチートを削除する",
-    "deletion_error": "IDのゲームのチートファイルを削除できませんでした:\n{}"
+    "deletion_error": "IDのゲームのチートファイルを削除できませんでした:\n{}",
+	"show_cheat_files": "すべてのチートファイルを表示する"
   },
   "common": {
     "downloading": "ダウンロード中...",
