@@ -2,7 +2,7 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-switch-updater ist lizensiert unter: GPL-3.0\n© 2020 HamletDuFromage",
-    "disclaimers": "\ue016  Außer cheat-codes die vom haupt GBAtemp thread stammen, hostet HamletDuFromage nichts selber. Alle Anerkennung geht an die jeweiligen Besitzer.\n\ue016  Links werden alle 30 Minuten aktualisiert. Wenn ein Link nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein Github issue.\n",
+    "disclaimers": "\ue016  Außer Cheat-Codes die vom haupt GBAtemp thread stammen, hostet HamletDuFromage nichts selber. Alle Anerkennung geht an die jeweiligen Besitzer.\n\ue016  Links werden alle 30 Minuten aktualisiert. Wenn ein Link nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein Github issue.\n",
     "donate": "\ue016  Gefällt dir die App? Hier kannst du meine Bemühungen unterstützen: 'https://git.io/donate_homlet'"
   },
   "cheats": {
@@ -102,7 +102,7 @@
     "desc": "Du kannst die Farbe deines Pro Controlers ändern. Stelle sicher, dass er als Spieler 1 erkannt wird.",
     "label": "Pro Controller Farbwechsler",
     "backing_up": "Derzeitiges Profil sichern",
-    "all_done": "Fertig! Du musst dn Pro Controler vielleicht trennen und anschließen um den Effekt zu sehen.",
+    "all_done": "Fertig! Du musst den Pro Controler vielleicht trennen und anschließen um den Effekt zu sehen.",
     "warning": "Das Ändern der Joy-Con Farbe wird derzeit nicht unterstützt. Verwende hierfür stattdessen das Joy-Con Toolkit.",
     "changing": "Ändern der Farbe. Stelle sicher, dass der Pro-Con auf Spieler 1 eingestellt ist."
   },
