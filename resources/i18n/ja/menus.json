@@ -15,7 +15,7 @@
     "view": "インストールされたチートコードを確認",
     "exclude": "チートコードのアップデートの受信からゲームを除外",
     "delete_existing": "既存のチートコードをすべて削除",
-    "delete_all": "すべてのチートを削除",
+    "delete_orphaned": "孤立したチートコードを削除する",
     "deleting": "削除中...",
     "cheastlips_title": "CheatSlipチート",
     "gbatemp_title": "GBAtempチート",
