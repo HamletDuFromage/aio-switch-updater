@@ -21,7 +21,7 @@
     "gbatemp_title": "GBAtempチート",
     "get_gbatemp": "GBAtemp.netチートコードをダウンロード",
     "get_cheatslips": "CheatSlips.comのチートシートをダウンロードする",
-    "cheats_label": "\ue016  GBAtemp.netデータベースから個々のチートコードをダウンロードするか、CheatSlips.comからチートシートをダウンロードします",
+    "cheats_label": "\ue016  GBAtemp.netデータベースから個々のチートコードをダウンロードするか、CheatSlips.comからチートシートをダウンロードします。",
     "cheatslips_dl": "CheatSlips.comから選択したチートシートをダウンロードします。\nこれらのチートコードは、既存のチートファイルの最後に追加されます。",
     "delete_file": "既存のチートファイルを削除する",
     "cheatslips_error": "選択したチートコード/無効なトークンをフェッチできませんでした。",
