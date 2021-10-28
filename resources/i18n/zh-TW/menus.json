@@ -45,7 +45,8 @@
     "not_found": "沒有找到符合遊戲版本的金手指",
     "show_existing": "顯示目前已有的",
     "delete_cheats": "刪除此遊戲的金手指",
-    "deletion_error": "無法刪除此遊戲的金手指:\n{}"
+    "deletion_error": "無法刪除此遊戲的金手指:\n{}",
+    "show_cheat_files": "列出所有的金手指"
   },
   "common": {
     "downloading": "正在下載…",
@@ -80,11 +81,11 @@
     "not_found": "無法使用下載連結，請檢查Switch是否可正常存取網路連線。\n如果網路正常仍無法使用，請使用Github提出問題來進行回報。",
     "set_reboot_payload": "設定為 reboot_payload.bin",
     "set_update_bin": "設定為 /bootloader/update.bin",
-    "copy_success": "成功複製 '",
-    "to": "' 到 '"
+    "copy_success": "成功將 `{}` 複製到 `{}`.'"
   },
   "joy_con": {
     "title": "Joy-Con 更換顏色工具",
+    "description": "你可以透過置換Joy-Con內的代碼設定，來自訂系統辨識的顏色外觀。請確認Joy-Con已與主機正確連接.\n控制器顏色配置檔儲存於 `{}`。 請使用'{}' 製作自訂的顏色配置檔。",
     "backup": "備份目前的控制器顏色代碼設定檔案",
     "label": "Joy-Con 更換顏色工具",
     "backing_up": "正在備份目前的控制器顏色代碼設定檔案，請確認Joy-Con已確實安裝到主機。 如果程序無法繼續進行時，請嘗試將Joy-Con從主機上取下，再重新安裝到主機。",
@@ -104,7 +105,7 @@
     "getting": "正在擷取 {}",
     "firmware_text": "\ue016  韌體檔案從'https://darthsternie.net/switch-firmwares/'進行轉存。當下載完成後，檔案會放置於資料夾'/firmware'內。你可以透過Daybreak來安裝更新韌體。\n\ue016  目前FW: ",
     "cheats_text": "\uE016  下載'gbatemp.net'每日更新的金手指檔案到記憶卡時，並不會複製到主機未安裝的遊戲金手指檔案。你可以從設定的 '工具->金手指選單' 內停用金手指更新。\n\uE016  目前金手指資料庫版本: ",
-    "get_cheats:": "下載GBAtemp.net金手指資料庫(版本 ",
+    "get_cheats:": "下載GBAtemp.net金手指資料庫 (版本 {})",
     "get_all_cheats": "下載GBAtemp.net金手指資料庫",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\ue016  Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。請確認你安裝過程中使用合適的sigpatches(Pure Atmosphère或Hekate+Atmosphère)。安裝完成後請重新開機以套用更新",
@@ -160,7 +161,9 @@
   "utils": {
     "fw_warning": "由於FW壓縮檔太大，在applet模式下無法下載韌體。請在能存取完整記憶體的一般模式下執行下載程序",
     "overwrite": " 是否要覆蓋現有的檔案 ",
-    "overwrite_inis": "是否要覆蓋現有的 .ini 系統配置檔案?"
+    "not_an_archive": "下載的檔案並非正確的zip壓縮檔。通常是因為提供下載的連結檔案不完整。如果問題持續發生，超過30分鐘仍無法正常使用，請使用Github提出問題來進行回報。",
+    "overwrite_inis": "是否要覆蓋現有的 .ini 系統配置檔案?",
+    "set_hekate_reboot_payload": "是否要將 Hekate payload 從 `{}` 複製到 `{}`?"
   },
   "ams_update": {
     "reboot_rcm": "Switch將會重新啟動，並載入特定的注入檔案來完成安裝。",
