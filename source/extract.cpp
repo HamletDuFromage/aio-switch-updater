@@ -13,8 +13,8 @@
 #include <string>
 #include <vector>
 
-#include "download.hpp"
 #include "current_cfw.hpp"
+#include "download.hpp"
 #include "fs.hpp"
 #include "main_frame.hpp"
 #include "progress_event.hpp"
@@ -180,49 +180,55 @@ namespace extract {
         return 0;
     }
 
-    void extractCheats(const std::string& zipPath, std::vector<std::string> titles, CFW cfw, bool credits)
+    void extractCheats(const std::string& zipPath, const std::vector<std::string>& titles, CFW cfw, const std::string& version, bool extractAll)
     {
         zipper::Unzipper unzipper(zipPath);
         std::vector<zipper::ZipEntry> entries = unzipper.entries();
         int offset = computeOffset(cfw);
 
-        ProgressEvent::instance().setTotalSteps(titles.size() + 1);
-        for (const auto& title : titles) {
-            if (ProgressEvent::instance().getInterupt()) {
-                break;
+        if (!extractAll) {
+            ProgressEvent::instance().setTotalSteps(titles.size() + 1);
+            for (const auto& title : titles) {
+                if (ProgressEvent::instance().getInterupt()) {
+                    break;
+                }
+                auto matches = entries | std::views::filter([&title, offset](zipper::ZipEntry entry) {
+                                   if ((int)entry.name.size() > offset + 16 + 7) {
+                                       return caselessCompare((title.substr(0, 13)), entry.name.substr(offset, 13)) && caselessCompare(entry.name.substr(offset + 16, 7), "/cheats");
+                                   }
+                                   else {
+                                       return false;
+                                   }
+                               });
+                for (const auto& match : matches) {
+                    unzipper.extractEntry(match.name);
+                }
+                ProgressEvent::instance().incrementStep(1);
             }
-            auto matches = entries | std::views::filter([&title, offset](zipper::ZipEntry entry) {
-                               return caselessCompare((title.substr(0, 13)), entry.name.substr(offset, 13)) && caselessCompare(entry.name.substr(offset + 16, 7), "/cheats");
-                           });
-            for (const auto& match : matches) {
-                unzipper.extractEntry(match.name);
+        }
+        else {
+            ProgressEvent::instance().setTotalSteps(entries.size() + 1);
+            for (const auto& entry : entries) {
+                if (ProgressEvent::instance().getInterupt()) {
+                    break;
+                }
+
+                if ((int)entry.name.size() > offset + 16 + 7 && caselessCompare(entry.name.substr(offset + 16, 7), "/cheats")) {
+                    unzipper.extractEntry(entry.name);
+                }
                 ProgressEvent::instance().incrementStep(1);
             }
         }
         unzipper.close();
-        download::downloadFile(CHEATS_URL_VERSION, CHEATS_VERSION, OFF);
+        if (version != "offline" && version != "") {
+            util::saveToFile(version, CHEATS_VERSION);
+        }
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
     }
 
-    void extractAllCheats(const std::string& zipPath, CFW cfw)
+    void extractAllCheats(const std::string& zipPath, CFW cfw, const std::string& version)
     {
-        zipper::Unzipper unzipper(zipPath);
-        std::vector<zipper::ZipEntry> entries = unzipper.entries();
-        int offset = computeOffset(cfw);
-
-        ProgressEvent::instance().setTotalSteps(entries.size() + 1);
-        for (const auto& entry : entries) {
-            if (ProgressEvent::instance().getInterupt()) {
-                break;
-            }
-            if (((int)entry.name.size() == offset + 16 + 4) && (isBID(entry.name.substr(offset, 16)))) {
-                unzipper.extractEntry(entry.name);
-            }
-            ProgressEvent::instance().incrementStep(1);
-        }
-        unzipper.close();
-        download::downloadFile(CHEATS_URL_VERSION, CHEATS_VERSION, OFF);
-        ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
+        extractCheats(zipPath, {}, cfw, version, true);
     }
 
     bool isBID(const std::string& bid)

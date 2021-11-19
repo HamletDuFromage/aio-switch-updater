@@ -26,7 +26,7 @@ namespace util {
     bool isArchive(const std::string& path);
     void downloadArchive(const std::string& url, contentType type);
     void downloadArchive(const std::string& url, contentType type, long& status_code);
-    void extractArchive(contentType type, const std::string& tag = "0");
+    void extractArchive(contentType type, const std::string& version = "");
     std::string formatListItemTitle(const std::string& str, size_t maxScore = 140);
     std::string formatApplicationId(u64 ApplicationId);
     std::vector<std::string> fetchPayloads();
@@ -36,8 +36,9 @@ namespace util {
     int showDialogBox(const std::string& text, const std::string& opt1, const std::string& opt2);
     std::string getLatestTag(const std::string& url);
     std::string downloadFileToString(const std::string& url);
-    void saveVersion(const std::string& version, const std::string& path);
-    std::string readVersion(const std::string& path);
+    std::string getCheatsVersion();
+    void saveToFile(const std::string& text, const std::string& path);
+    std::string readFile(const std::string& path);
     bool isErista();
     void removeSysmodulesFlags(const std::string& directory);
     std::string lowerCase(const std::string& str);
