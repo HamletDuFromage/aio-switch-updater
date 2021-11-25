@@ -3,7 +3,7 @@
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-switch-updater est distribuée sous la license GPL-3.0\n© 2020-2021 HamletDuFromage",
     "disclaimers": "  HamletDuFromage n'héberge rien à l'exception d'une copie des codes de triche du topic principal de GBAtemp. Tous les crédits vont aux propriétaires respectifs.\n  Les liens sont actualisés toutes les 30 minutes. Si un lien reste inactif après 30 minutes, merci de bien vouloir ouvrir une issue sur GitHub.",
-    "donate": " Vous aimez cette app ? Pensez à m'encourager avec un don : 'https://git.io/donate_homlet'"
+    "donate": " Vous aimez cette app ? Faites un don pour soutenir son développement : 'https://git.io/donate_homlet'"
   },
   "cheats": {
     "installed": "Codes de triche installés",
@@ -23,19 +23,19 @@
     "get_cheatslips": "Télécharger les codes de triche de CheatSlips.com",
     "cheats_label": "",
     "cheatslips_dl": "",
-    "delete_file": "",
+    "delete_file": "Supprimer le fichier de triche existant",
     "cheatslips_error": "",
     "quota": "",
     "sheet_content": "",
     "cheatslips_select": "",
     "cheatslips_wrong_id": "",
     "kb_error": "",
-    "cheatslips_see_more": "",
+    "cheatslips_see_more": "Voir plus",
     "cheatslips_dl_cheats": "",
     "bid_not_found": "",
     "exclude_titles": "Exclure des titres",
     "exclude_titles_desc": "Vous pouvez desactiver les mises à jour de codes dans ce menu",
-    "exclude_titles_save": "Sauvegarde et retour",
+    "exclude_titles_save": "Enregistrer et retour",
     "dl_all": "",
     "gbatemp_dl": "",
     "gbatemp_dl_cheatcode": "",
@@ -46,55 +46,54 @@
     "show_existing": "",
     "delete_cheats": "",
     "deletion_error": "",
-    "delete_all": "Supprimer tous les codes"
   },
   "common": {
     "downloading": "Téléchargement en cours…",
     "extracting": "Extraction en cours…",
-    "all_done": " Fini !",
+    "all_done": " Terminé !",
     "back": "Retour",
     "continue": "Continuer",
     "download": "Archive à télécharger :\n",
-    "from": "\n\nLien complet de l'archive :\n",
+    "from": "\n\nLien complet :\n",
     "ok": "OK",
     "shut_down": "Éteindre",
     "reboot": "Redémarrer",
     "updating": "Mise à jour de l'app",
     "no": "Non",
     "yes": "Oui",
-    "go_back": "",
-    "confirm": "",
-    "cancel": "",
-    "off": "",
-    "selected": "",
+    "go_back": "Retour",
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "off": "Non",
+    "selected": "Sélectionné",
     "applet_mode_not_supported": ""
   },
   "changelog": {
     "changelog": "Journal des modifications"
   },
   "sigpatches": {
-    "reboot": ""
+    "reboot": "Les changements prendront effet au prochain démarrage."
   },
   "payloads": {
     "dl_payloads": "Télécharger des payloads",
-    "select": "Selectionner un payload à injecter.",
+    "select": "Selectionner un payload vers lequel redémarrer.",
     "not_found": "Impossible de trouver un lien de téléchargement, assurez vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur GitHub.",
     "reboot_title": "Menu des payloads",
-    "set_reboot_payload": "Déf comme reboot_payload.bin",
-    "set_update_bin": "Déf comme bootloader/update.bin",
-    "copy_success": "Copié avec succès '",
+    "set_reboot_payload": "Déf. comme reboot_payload.bin",
+    "set_update_bin": "Déf. comme /bootloader/update.bin",
+    "copy_success": "' copié avec succès",
     "to": "' vers '"
   },
   "joy_con": {
     "title": "Changement de couleur des Joy-Cons",
-    "desc_1": "Vous pouvez changer la couleur interne de vos Joy-Cons. Assurez vous qu'ils soient bien ancrés à la Switch.\nLes profils de couleur se trouvent dans '",
+    "desc_1": "Vous pouvez changer la couleur interne de vos Joy-Cons. Assurez vous qu'ils soient bien attachés à la Switch.\nLes profils de couleur se trouvent dans '",
     "desc_2": "'. Visitez 'https://git.io/jcpicker' ",
     "desc_3": "pour générer des profils personalisés.",
     "backup": "Sauvegarde du profil actuel",
     "label": "Échangeur de couleurs des Joy-Con",
-    "backing_up": "Sauvegarde du profil actuel, assurez vous que les Joy-Cons soient bien ancrés à la Switch.",
-    "changing": "Changement de couleur. Assurez vous que les Joy-Cons soient bien ancrés à la Switch.",
-    "all_done": "Fini ! Vous devrez peut-être ancrer/détacher votre Joy-Cons pour que le changement prenne effet"
+    "backing_up": "Sauvegarde du profil actuel. Assurez vous que les Joy-Cons soient bien attachés à la Switch.",
+    "changing": "Changement de couleur. Assurez vous que les Joy-Cons soient bien attachés à la Switch.",
+    "all_done": "Terminé ! Vous devrez peut-être attacher/détacher votre Joy-Cons pour que le changement prenne effet"
   },
   "pro_con": {
     "title": "",
@@ -118,30 +117,30 @@
     "latest_cheats": "Dernière version",
     "app": "app",
     "cfw": "CFW",
-    "ams": "",
+    "ams": "Atmosphère",
     "ams_text": "",
-    "cfw_text": "  Principaux CFWs. Si vous souhaitez utiliser Atmosphère avec Hekate, téléchargez Atmosphère, puis Hekate.",
-    "bootloaders_text": "",
+    "cfw_text": "  CFWs et bootloaders alternatifs.",
+    "bootloaders_text": "  Télécharger et mettre à jour les bootloaders.",
     "cheats": "codes de triche",
     "links_not_found": "Impossible de trouver un lien de téléchargement, assurez-vous que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur GitHub.",
     "new_update": " - Nouvelle MÀJ de l'app disponible",
     "about": "À propos",
-    "update_ams": "",
-    "update_cfw": "MÀJ des CFW",
+    "update_ams": "MÀJ Atmosphère",
+    "update_cfw": "MÀJ les CFW",
     "update_bootloaders": "",
-    "update_sigpatches": "MÀJ des sigpatches",
+    "update_sigpatches": "MÀJ les sigpatches",
     "download_firmware": "Téléch. des firmwares",
-    "download_cheats": "Télécharger des cheats",
+    "download_cheats": "Téléch. des codes de triche",
     "tools": "Outils",
     "launch_warning": "",
-    "footer_text": "",
+    "footer_text": "v{} | {:.1f}Go disponibles",
     "theme_warning": "",
-    "payloads_label": ""
+    "payloads_label": "  Télécharger les payloads RCM dans {}"
   },
   "hide": {
     "title": "Masquer des onglets",
     "desc": "Masquer des onglets dans le menu principal",
-    "update_ams_deepsea": ""
+    "update_ams_deepsea": "Téléchargements d'Atmosphère et DeepSea"
   },
   "tools": {
     "cheats": "Menu de triche",
@@ -160,12 +159,12 @@
     "batch_copy": "",
     "batch_copy_not_found": "",
     "batch_copy_config_not_found": "",
-    "language": ""
+    "language": "Changer la langue de l'app"
   },
   "utils": {
     "fw_warning": "En raison de la taille de l'archive FW, le téléchargement de firmwares en mode Applet n'est pas pris en charge. Veuillez lancer l'application avec un accès total à la RAM.",
     "overwrite": " Voulez-vous écraser le fichier l'existant ",
-    "not_an_archive": "Le fichier téléchargé n'est pas une archive zip. Cela est probablement dû à un lien brisé. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub.",
+    "not_an_archive": "Le fichier téléchargé n'est pas une archive zip. Cela est probablement dû à un lien brisé. Si le problème persiste après plus de 30 minutes, veuillez ouvrir une issue sur GitHub.",
     "overwrite_inis": "Voulez-vous écraser les fichiers de configuration .ini déja présents ?",
   },
   "ams_update": {
@@ -199,7 +198,4 @@
     "error_message": "",
     "mariko_payload_missing": ""
   },
-    "not_an_archive": "Le fichier téléchargé n'est pas une archive zip. Cela est probablement dû à un lien brisé. Si le problème persiste après plus de 3 heures, veuillez ouvrir une issue sur GitHub.",
-    "overwrite_inis": "Voulez-vous écraser les fichiers de configuration .ini déja présents ?"
-  }
 }

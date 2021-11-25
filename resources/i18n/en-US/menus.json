@@ -46,7 +46,6 @@
     "show_existing": "Show existing",
     "delete_cheats": "Delete cheats for this game",
     "deletion_error": "Couldn't delete the cheat files for game with id:\n{}",
-    "delete_all": ""
   },
   "common": {
     "downloading": "Downloading…",
@@ -56,7 +55,7 @@
     "continue": "Continue",
     "download": "Downloading:\n",
     "from": "\n\nFrom:\n",
-    "ok": "Ok",
+    "ok": "OK",
     "shut_down": "Shut Down",
     "reboot": "Reboot",
     "updating": "Updating app",
@@ -141,7 +140,7 @@
   "hide": {
     "title": "Hide tabs",
     "desc": "Hide tabs from the main menu",
-    "update_ams_deepsea": "Atmosphere and DeepSea downloads"
+    "update_ams_deepsea": "Atmosphère and DeepSea downloads"
   },
   "tools": {
     "cheats": "Cheats menu",
@@ -206,7 +205,7 @@
     "fr": "Français (fr)",
     "de": "Deutsch (de)",
     "it": "Italian (it)",
-    "es": "Spanish (es)",
+    "es": "Español (es)",
     "zh-CN": "Simplified Chinese (zh-CN)",
     "ko": "Korean (ko)",
     "nl": "Dutch (nl)",
