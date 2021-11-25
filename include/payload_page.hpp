@@ -10,6 +10,7 @@ private:
     brls::ListItem* listItem;
     brls::ListItem* reboot;
     brls::ListItem* shutDown;
+    void RegisterCopyAction(brls::Key key, const std::string& payload_path, const std::string& payload_dest, const std::string& action_name);
 
 public:
     PayloadPage();

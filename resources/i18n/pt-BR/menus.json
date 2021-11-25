@@ -42,7 +42,6 @@
     "dl_payloads": "Baixar payloads",
     "select": " Selecione a payload que deseja.",
     "not_found": "Não foi possível encontrar um link de download, certifique-se de que seu Switch tenha acesso à Internet.\nSe o problema persistir, abra um 'issue' no Github.",
-    "reboot_title": "Menu de reinicio",
     "set_reboot_payload": "Colocar como reboot_payload.bin",
     "set_update_bin": "Colocar como /bootloader/update.bin",
     "copy_success": "Cópia realizada '",
@@ -50,9 +49,6 @@
   },
   "joy_con": {
     "title": "Mudar a cor dos Joy-Cons",
-    "desc_1": "Você pode alterar a cor interna dos Joy-Cons. Certifique-se de que eles estejam encaixados no console.\nPerfis de cores são armazenados em '",
-    "desc_2": "'. Vamos a 'https://git.io/jcpicker' ",
-    "desc_3": "para gerar seus próprios perfis.",
     "backup": "Fazer backup do perfil de cor atual",
     "label": "Mudar a cor dos Joy-Cons",
     "backing_up": "Fazendo backup do perfil de cor atual. Certifique-se de que o Joy-Con esteja encaixado no console. Se o processo travar, tente desencaixar e encaixar o Joy-Cons.",
@@ -86,7 +82,7 @@
     "joy_cons": "Mudar a cor do Joy-Cons",
     "dl_payloads": "Baixar payloads em a ",
     "inject_payloads": "Injetar payload",
-    "update_app": "Atualizar o aplicativo (v",
+    "update_app": "Atualizar o aplicativo (v{})",
     "dl_app": "Baixando:\nAIO-switch-updater\n\nDesde:\n",
     "changelog": "Alterações"
   },

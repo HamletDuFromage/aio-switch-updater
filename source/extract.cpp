@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "download.hpp"
+#include "current_cfw.hpp"
 #include "fs.hpp"
 #include "main_frame.hpp"
 #include "progress_event.hpp"
@@ -47,12 +48,12 @@ namespace extract {
                     brls::Application::quit();
                 }
             }
-            ProgressEvent::instance().setStep(1);
             ProgressEvent::instance().setTotalSteps(entries.size() + 1);
+            ProgressEvent::instance().setStep(0);
         }
     }  // namespace
 
-    void extract(const std::string& filename, const std::string& workingPath, int overwriteInis)
+    void extract(const std::string& filename, const std::string& workingPath, int overwriteInis, std::function<void()> func)
     {
         zipper::Unzipper unzipper(filename);
         std::vector<zipper::ZipEntry> entries;
@@ -71,7 +72,7 @@ namespace extract {
                     unzipper.extractEntry(entry.name);
                 }
             }
-            else if (entry.name == "sept/payload.bin" || entry.name == "atmosphere/fusee-secondary.bin" || entry.name == "atmosphere/stratosphere.romfs" || entry.name == "atmosphere/package3") {
+            else if (entry.name == "atmosphere/stratosphere.romfs" || entry.name == "atmosphere/package3") {
                 std::ofstream readonlyFile(entry.name + ".aio");
                 unzipper.extractEntryToStream(entry.name, readonlyFile);
             }
@@ -79,37 +80,10 @@ namespace extract {
                 unzipper.extractEntry(entry.name);
                 if (entry.name.substr(0, 13) == "hekate_ctcaer") {
                     fs::copyFile("/" + entry.name, UPDATE_BIN_PATH);
-                    fs::copyFile("/" + entry.name, REBOOT_PAYLOAD_PATH);
+                    if (CurrentCfw::running_cfw == CFW::ams && util::showDialogBox(fmt::format("menus/utils/set_hekate_reboot_payload"_i18n, UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH), "menus/common/yes"_i18n, "menus/common/no"_i18n) == 0) {
+                        fs::copyFile(UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH);
+                    }
                 }
-            }
-            ProgressEvent::instance().incrementStep(1);
-        }
-        unzipper.close();
-        ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
-    }
-
-    void extract(const std::string& filename, const std::string& workingPath, const std::string& toExclude)
-    {
-        zipper::Unzipper unzipper(filename);
-        std::vector<zipper::ZipEntry> entries;
-        preWork(unzipper, workingPath, entries);
-
-        std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
-        ignoreList.insert(toExclude);
-
-        for (const auto& entry : entries) {
-            if (ProgressEvent::instance().getInterupt()) {
-                break;
-            }
-            if (find_if(ignoreList.begin(), ignoreList.end(), [&entry](std::string ignored) {
-                                                            u8 res = ("/" + entry.name).find(ignored);
-                                                            return (res == 0 || res == 1); }) != ignoreList.end()) {
-                if (!std::filesystem::exists("/" + entry.name)) {
-                    unzipper.extractEntry(entry.name);
-                }
-            }
-            else {
-                unzipper.extractEntry(entry.name);
             }
             ProgressEvent::instance().incrementStep(1);
         }

@@ -11,9 +11,7 @@ JCPage::JCPage() : AppletFrame(true, true)
 {
     this->setTitle("menus/joy_con/title"_i18n);
     list = new brls::List();
-    std::string labelText = "menus/joy_con/desc_1"_i18n + std::string(COLOR_PROFILES_PATH) + "menus/joy_con/desc_2"_i18n +
-                            "menus/joy_con/desc_3"_i18n;
-    label = new brls::Label(brls::LabelStyle::DESCRIPTION, labelText, true);
+    label = new brls::Label(brls::LabelStyle::DESCRIPTION, fmt::format("menus/joy_con/description"_i18n, COLOR_PROFILES_PATH, COLOR_PICKER_URL), true);
     list->addView(label);
 
     backup = new brls::ListItem("menus/joy_con/backup"_i18n);

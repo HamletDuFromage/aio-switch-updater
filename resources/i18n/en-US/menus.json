@@ -46,6 +46,7 @@
     "show_existing": "Show existing",
     "delete_cheats": "Delete cheats for this game",
     "deletion_error": "Couldn't delete the cheat files for game with id:\n{}",
+    "show_cheat_files": "Show all cheat files"
   },
   "common": {
     "downloading": "Downloading…",
@@ -78,17 +79,13 @@
     "dl_payloads": "Download payloads",
     "select": " Select a payload to reboot to.",
     "not_found": "Could not find a download link, make sure the Switch has access to the internet.\nIf this problem persists, please open an issue on Github.",
-    "reboot_title": "Reboot menu",
     "set_reboot_payload": "Set as reboot_payload.bin",
     "set_update_bin": "Set as /bootloader/update.bin",
-    "copy_success": "Successfully copied '",
-    "to": "' to '"
+    "copy_success": "Successfully copied `{}` to `{}`."
   },
   "joy_con": {
     "title": "Joy-Con color swapper",
-    "desc_1": "You can change the internal color of your Joy-Cons. Make sure they're docked.\nColor profiles are stored in '",
-    "desc_2": "'. Go to 'https://git.io/jcpicker' ",
-    "desc_3": "to generate your own custom profiles.",
+    "description": "You can change the internal color of your Joy-Cons. Make sure they're docked.\nColor profiles are stored in `{}`. Go to '{}' to generate your own custom profiles.",
     "backup": "Backup current color profile",
     "label": "Joy-Con color swapper",
     "backing_up": "Backing up the current color profile. Make sure the Joy-Con are docked. If the process hangs, try docking/undocking the JCs.",
@@ -106,9 +103,9 @@
   },
   "main": {
     "getting": "Getting {}",
-    "firmware_text": "  Firmware dumps from 'https://darthsternie.net/switch-firmwares/'. Once downloaded, it will be extracted in '/firmware'. You can then install the update through Daybreak.\n  Current FW: ",
-    "cheats_text": "  This will download a daily updated archive of cheat codes from 'gbatemp.net'. Cheat codes for games you don't have installed won't be extracted to your SD card. You can turn off cheat updates for specific games in 'Tools->Cheat menu'.\n  Current cheats version: ",
-    "get_cheats": "Download GBAtemp.net cheat archive (ver ",
+    "firmware_text": "\ue016  Firmware dumps from 'https://darthsternie.net/switch-firmwares/'. Once downloaded, it will be extracted in '/firmware'. You can then install the update through Daybreak.\n\ue016  Current FW: ",
+    "cheats_text": "\uE016  This will download a daily updated archive of cheat codes from 'gbatemp.net'. Cheat codes for games you don't have installed won't be extracted to your SD card. You can turn off cheat updates for specific games in 'Tools->Cheat menu'.\n\uE016  Current cheats version: ",
+    "get_cheats": "Download GBAtemp.net cheat archive (ver {})",
     "get_all_cheats:": "Download GBAtemp.net cheat archive",
     "sigpatches": "sigpatches",
     "sigpatches_text": "  Sigpatches allow your Switch to install and run unofficial NSP files. Make sure you pick the correct sigpatches for your setup (pure Atmosphère or Hekate+Atmosphère). Reboot the console to apply patches.",
@@ -132,7 +129,7 @@
     "download_firmware": "Download firmwares",
     "download_cheats": "Download cheats",
     "tools": "Tools",
-    "launch_warning": "Please pay attention to the following points before using the app:\n\n  Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n  Please note that using this app on a exFAT SD card is STRONGLY discouraged, as those are likely to corrupt.\n\n  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nThis screen won't show again.",
+    "launch_warning": "Please pay attention to the following points before using the app:\n\n\ue016  Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\ue016  Please note that using this app on an exFAT SD card is STRONGLY discouraged, as those are likely to corrupt.\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nThis screen won't show again.",
     "footer_text": "v{} | {:.1f}GB available",
     "theme_warning": "It seems like you have a custom theme installed, this may cause your system to fail to boot after upgrading your firmware.\nPlease consider deleting it before upgrading.",
     "payloads_label": "  Download RCM payloads to {}"
@@ -149,7 +146,7 @@
     "dl_payloads": "Download payloads to ",
     "inject_payloads": "Inject payload",
     "getting_payload": "Getting payload",
-    "update_app": "Update the app (v",
+    "update_app": "Update the app (v{})",
     "dl_app": "Downloading:\nAIO-switch-updater\n\nFrom:\n",
     "changelog": "Changelog",
     "clean_up": "Clean up downloaded files",
@@ -165,7 +162,8 @@
     "fw_warning": "Because of the size of the FW archive, downloading firmwares in Applet Mode is not supported. Please launch the app with full RAM access.",
     "overwrite": " Do you want to overwrite existing ",
     "not_an_archive": "The downloaded file is not a zip archive. This is most likely due to a broken link. If the problem persists after more than 30 minutes, please open an issue on Github.",
-    "overwrite_inis": "Do you want to overwrite existing .ini config files?"
+    "overwrite_inis": "Do you want to overwrite existing .ini config files?",
+    "set_hekate_reboot_payload": "Do you want to copy the Hekate payload `{}` to `{}`?"
   },
   "ams_update": {
     "reboot_rcm": "The Switch will now reboot to a special payload in order to finalise the install.",

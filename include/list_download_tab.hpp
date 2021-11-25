@@ -9,17 +9,17 @@ class ListDownloadTab : public brls::List
 {
 private:
     brls::ListItem* listItem;
-    brls::ListItem* cheatslipsItem;
-    brls::ListItem* gbatempItem;
     nlohmann::ordered_json nxlinks;
     std::string currentCheatsVer = "";
     std::string newCheatsVer = "";
     contentType type;
     int size = 0;
+    void createList();
     void createList(contentType type);
     void createCheatSlipItem();
     void creategbatempItem();
     void setDescription();
+    void setDescription(contentType type);
     void displayNotFound();
 
 public:

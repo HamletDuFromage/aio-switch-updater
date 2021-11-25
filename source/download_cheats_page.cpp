@@ -105,15 +105,15 @@ namespace show_cheats {
     }
 }  // namespace show_cheats
 
-DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : AppletFrame(true, true), tid(tid)
+DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : AppletFrame(true, true), tid(tid), name(name)
 {
     this->list = new brls::List();
     this->GetVersion();
     this->GetBuildID();
-    this->setTitle(name);
+    this->setTitle(this->name);
     this->setFooterText("v" + std::to_string(this->version / 0x10000));
-    this->registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this, name] {  // TODO: figure out why that doesn't show up for empty lists
-        show_cheats::ShowCheatSheet(this->tid, this->bid, name);
+    this->brls::AppletFrame::registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this] {
+        show_cheats::ShowCheatSheet(this->tid, this->bid, this->name);
         return true;
     });
     this->rebuildHints();
@@ -168,24 +168,29 @@ void DownloadCheatsPage::GetBuildIDFromFile()
 
 void DownloadCheatsPage::WriteCheats(const std::string& cheatContent)
 {
-    std::string path = util::getContentsPath();
-    std::string tidstr = util::formatApplicationId(this->tid);
-    path += tidstr + "/cheats/";
+    std::string path = util::getContentsPath() + util::formatApplicationId(this->tid) + "/cheats/";
     fs::createTree(path);
-    path += this->bid + ".txt";
-    std::ofstream cheatFile;
-    cheatFile.open(path, std::ios::app);
+    std::ofstream cheatFile(path + this->bid + ".txt", std::ios::app);
     cheatFile << "\n\n"
               << cheatContent;
 }
 
+void DownloadCheatsPage::AddCheatsfileListItem()
+{
+    brls::ListItem* item = new brls::ListItem("menus/cheats/show_cheat_files"_i18n);
+    item->getClickEvent()->subscribe([this](brls::View* view) {
+        show_cheats::ShowCheatFiles(this->tid, this->name);
+    });
+    this->list->addView(item);
+}
+
 DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
 {
-    label = new brls::Label(
+    this->label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
         "menus/cheats/cheatslips_dl"_i18n + "\n\uE016  Build ID: " + this->bid,
         true);
-    list->addView(label);
+    this->list->addView(this->label);
 
     if (this->bid != "") {
         std::vector<std::string> headers = {"accept: application/json"};
@@ -194,38 +199,30 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
         if (cheatsInfo.find("cheats") != cheatsInfo.end()) {
             for (const auto& p : cheatsInfo.at("cheats").items()) {
                 json cheat = p.value();
-                try {
-                    listItem = new ::brls::ToggleListItem(GetCheatsTitle(cheat), 0, "", "\uE016", "o");
-                } catch (const std::out_of_range& e) {
-                    //Empty titles
-                    continue;
-                } catch (...) {
-                    //Something else went wrong
-                    continue;
-                }
-                listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, cheat] {
+                listItem = new brls::ToggleListItem(GetCheatsTitle(cheat), 0, "", "\uE016", "o");
+                this->listItem->registerAction("menus/cheats/cheatslips_see_more"_i18n, brls::Key::Y, [this, cheat] {
                     if (cheat.find("titles") != cheat.end()) {
                         ShowCheatsContent(cheat.at("titles"));
                     }
                     return true;
                 });
-                toggles.push_back(std::make_pair(listItem, cheat.at("id")));
+                this->toggles.push_back(std::make_pair(listItem, cheat.at("id")));
                 list->addView(listItem);
             }
-            if (list->getViewsCount() > 1)
-                list->addView(new brls::ListItemGroupSpacing(true));
+            if (this->list->getViewsCount() > 1)
+                this->list->addView(new brls::ListItemGroupSpacing(true));
         }
     }
 
     else {
-        label = new brls::Label(
+        this->label = new brls::Label(
             brls::LabelStyle::REGULAR,
             "menus/cheats/bid_not_found"_i18n,
             true);
-        list->addView(label);
+        this->list->addView(label);
     }
 
-    list->registerAction((this->bid != "") ? "menus/cheats/cheatslips_dl_cheats"_i18n : "brls/hints/back"_i18n, brls::Key::B, [this] {
+    this->list->registerAction((this->bid != "") ? "menus/cheats/cheatslips_dl_cheats"_i18n : "brls/hints/back"_i18n, brls::Key::B, [this] {
         std::vector<int> ids;
         for (auto& e : toggles) {
             if (e.first->getToggleState()) {
@@ -298,7 +295,7 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
         }
         return true;
     });
-
+    this->AddCheatsfileListItem();
     this->setContentView(list);
 }
 
@@ -307,7 +304,7 @@ std::string DownloadCheatsPage_CheatSlips::GetCheatsTitle(json cheat)
     std::string res = "";
     if (cheat.find("titles") != cheat.end()) {
         for (auto& p : cheat.at("titles")) {
-            res += ".at(" + p.get<std::string>() + ")" + " - ";
+            res += "[" + p.get<std::string>() + "]" + " - ";
         }
     }
     return res;
@@ -317,13 +314,13 @@ void DownloadCheatsPage_CheatSlips::ShowCheatsContent(nlohmann::ordered_json tit
 {
     brls::AppletFrame* appView = new brls::AppletFrame(true, true);
     brls::List* list = new brls::List();
-    brls::ListItem* listItem;
+    brls::ListItem* titlesItem;
     for (auto& p : titles) {
-        listItem = new brls::ListItem(p.get<std::string>());
-        listItem->registerAction("", brls::Key::A, [this] {
+        titlesItem = new brls::ListItem(p.get<std::string>());
+        titlesItem->registerAction("", brls::Key::A, [this] {
             return true;
         });
-        list->addView(listItem);
+        list->addView(titlesItem);
     }
     appView->setContentView(list);
     brls::PopupFrame::open("menus/cheats/sheet_content"_i18n, appView, "", "");
@@ -331,11 +328,11 @@ void DownloadCheatsPage_CheatSlips::ShowCheatsContent(nlohmann::ordered_json tit
 
 DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
 {
-    label = new brls::Label(
+    this->label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
         fmt::format("menus/cheats/gbatemp_dl"_i18n, this->bid),
         true);
-    list->addView(label);
+    this->list->addView(label);
 
     if (this->bid != "") {
         nlohmann::ordered_json cheatsJson;
@@ -343,7 +340,7 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
         if (cheatsJson.find(this->bid) != cheatsJson.end()) {
             for (const auto& p : cheatsJson[this->bid].items()) {
                 json cheat = p.value();
-                listItem = new ::brls::ListItem(cheat.at("title"));
+                this->listItem = new brls::ListItem(cheat.at("title"));
                 listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, cheat] {
                     WriteCheats(cheat.at("content"));
                     brls::Dialog* dialog = new brls::Dialog(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, cheat.at("title")));
@@ -355,9 +352,9 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
                     dialog->open();
                     return true;
                 });
-                list->addView(listItem);
+                this->list->addView(listItem);
             }
-            list->addView(new brls::ListItemGroupSpacing(true));
+            this->list->addView(new brls::ListItemGroupSpacing(true));
         }
     }
 
@@ -368,6 +365,6 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
             true);
         list->addView(label);
     }
-
-    this->setContentView(list);
+    this->AddCheatsfileListItem();
+    this->setContentView(this->list);
 }

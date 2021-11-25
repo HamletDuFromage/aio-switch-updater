@@ -42,10 +42,9 @@ constexpr const char DEEPSEA_PACKAGE_PATH[] = "/config/deepsea/customPackage.jso
 
 constexpr const char CUSTOM_PACKS_PATH[] = "/config/aio-switch-updater/customPacks.json";
 
-constexpr const char CHEATS_RELEASE_URL[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/tag/v1.0";
-constexpr const char CHEATS_URL_TITLES[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/titles.zip";
-constexpr const char CHEATS_URL_CONTENTS[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/contents.zip";
-constexpr const char CHEATS_URL_VERSION[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/v1.0/VERSION";
+constexpr const char CHEATS_URL_TITLES[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/latest/download/titles.zip";
+constexpr const char CHEATS_URL_CONTENTS[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/latest/download/contents.zip";
+constexpr const char CHEATS_URL_VERSION[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/latest/download/VERSION";
 constexpr const char LOOKUP_TABLE_URL[] = "https://raw.githubusercontent.com/HamletDuFromage/switch-cheats-db/master/versions.json";
 constexpr const char LOOKUP_TABLE_CBOR[] = "https://github.com/HamletDuFromage/switch-cheats-db/raw/master/versions.cbor";
 constexpr const char VERSIONS_DIRECTORY[] = "https://raw.githubusercontent.com/HamletDuFromage/switch-cheats-db/master/versions/";
@@ -68,6 +67,7 @@ constexpr const char REINX_PATH[] = "/ReiNX/";
 constexpr const char CONTENTS_PATH[] = "contents/";
 constexpr const char TITLES_PATH[] = "titles/";
 
+constexpr const char COLOR_PICKER_URL[] = "https://git.io/jcpicker";
 constexpr const char COLOR_PROFILES_PATH[] = "/config/aio-switch-updater/jc_profiles.json";
 constexpr const char PC_COLOR_PATH[] = "/config/aio-switch-updater/pc_profiles.json";
 
@@ -94,6 +94,7 @@ constexpr const char COPY_FILES_TXT[] = "/config/aio-switch-updater/copy_files.t
 constexpr const char LANGUAGE_JSON[] = "/config/aio-switch-updater/language.json";
 constexpr const char HOMEBREW[] = "/config/aio-switch-updater/language.json";
 
+constexpr const char ROMFS_PATH[] = "romfs:/";
 constexpr const char ROMFS_FORWARDER[] = "romfs:/aiosu-forwarder.nro";
 constexpr const char FORWARDER_PATH[] = "/config/aio-switch-updater/aiosu-forwarder.nro";
 

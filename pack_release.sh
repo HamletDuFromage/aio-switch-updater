@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cp aio-switch-updater.elf release-aio-switch-updater.elf
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR
 rm -r switch/aio-switch-updater/

@@ -1,8 +1,8 @@
 {
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
-    "copyright": "AIO-switch-updater ist lizensiert unter: GPL-3.0\n\u00a9 2020 HamletDuFromage",
-    "disclaimers": "\ue016  Außer cheat-codes die vom haupt GBAtemp thread stammen, hostet HamletDuFromage nichts selber. Alle Anerkennung geht an die jeweiligen Besitzer.\n\ue016  Links werden alle 30 Minuten aktualisiert. Wenn ein Link nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein Github issue.\n",
+    "copyright": "AIO-switch-updater ist lizensiert unter: GPL-3.0\n© 2020 HamletDuFromage",
+    "disclaimers": "\ue016  Außer Cheat-Codes die vom haupt GBAtemp thread stammen, hostet HamletDuFromage nichts selber. Alle Anerkennung geht an die jeweiligen Besitzer.\n\ue016  Links werden alle 30 Minuten aktualisiert. Wenn ein Link nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein Github issue.\n",
     "donate": "\ue016  Gefällt dir die App? Hier kannst du meine Bemühungen unterstützen: 'https://git.io/donate_homlet'"
   },
   "cheats": {
@@ -34,7 +34,21 @@
     "exclude_titles": "Spiele ausschließen",
     "exclude_titles_desc": "Mit diesem Menü kannst du cheat-updates ausstellen",
     "exclude_titles_save": "Auswahl speichern und zurück",
-    "dl_all": "Das gesammte GBAtemp Cheat-archiv herunterladen und enptacken"
+    "dl_all": "Das gesammte GBAtemp Cheat-archiv herunterladen und enptacken",
+    "delete_orphaned": "Verwaiste Cheat-Codes löschen",
+    "get_gbatemp": "GBAtemp.net Cheat-Codes herunterladen",
+    "cheats_label": "\ue016  Lade einzelne Cheat-Codes aus der GBAtemp.net-Datenbank oder Cheat-Sheets von CheatSlips.com herunter",
+    "gbatemp_dl": "Lade von GBAtemp verwaltete Cheat-Codes herunter. Diese Cheats werden am Ende deiner bestehenden Cheat-Datei hinzugefügt.\\n\ue016 Build ID: {}",
+    "gbatemp_dl_cheatcode": "Cheat-Code herunterladen",
+    "gbatemp_dl_successful_dl": "Folgender Cheat-Code wurde erfolgreich heruntergeladen:\\n{}",
+    "applet_mode_not_supported": "Aufgrund von Speicherbeschränkungen können im Applet-Modus nur Cheat-Codes für das Spiel abgerufen werden, das gerade gespielt wird. Bitte starte den aio-switch-updater über die Title Redirection, um Cheat-Codes für alle verfügbaren Spiele herunterzuladen.",
+    "cheatfile_label": "Hier sind die Cheat-Codes, die in der Datei {} aufgelistet sind",
+    "not_found": "Es konnten keine geeigneten Cheat-Codes für dieses Spiel gefunden werden",
+    "show_existing": "Verfügbares anzeigen",
+    "delete_cheats": "Cheats für dieses Spiel löschen",
+    "deletion_error": "Konnte die Cheat-Dateien für das Spiel mit der ID:\\n{} nicht löschen",
+    "show_cheat_files": "Alle Cheat-Dateien anzeigen",
+    "gbatemp_title": "GBAtemp cheats"
   },
   "common": {
     "downloading": "Wird heruntergeladen...",
@@ -52,7 +66,10 @@
     "yes": "Ja",
     "go_back": "Zurück",
     "confirm": "Bestätigen",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "off": "Ausschalten",
+    "selected": "Ausgewählt",
+    "applet_mode_not_supported": "Diese Funktion ist im Applet-Modus nicht verfügbar. Bitte starte den aio-switch-updater über die Title Redirection, um darauf zuzugreifen."
   },
   "changelog": {
     "changelog": "Changelog"
@@ -64,7 +81,6 @@
     "dl_payloads": "Payloads herunterladen",
     "select": " Wähle ein Payload zum neustarten aus.",
     "not_found": "Konnte keinen Downloadlink finden. Stelle sicher, dass deine Switch Internetzugriff hat.\nWenn das Problem bestehen bleibt, öffne bitte ein issue auf Github.",
-    "reboot_title": "Neustart Menü",
     "set_reboot_payload": "Setze als reboot_payload.bin",
     "set_update_bin": "Setze als /bootloader/update.bin",
     "copy_success": "Erfolgreich kopiert '",
@@ -72,9 +88,6 @@
   },
   "joy_con": {
     "title": "Joy-Con Farbwechseler",
-    "desc_1": "Du kannst die Farbe deiner Joy-Cons ändern. Stell sicher, dass die Joy-Cons angeschlossen sind.\nFarbprofile werden gespeichert in: '",
-    "desc_2": "'. Gehe auf 'https://git.io/jcpicker' ",
-    "desc_3": "um deine eigenen benutzerdefinierten Profile zu erstellen.",
     "backup": "Derzeitiges Profil sichern",
     "label": "Joy-Con Farbwechseler",
     "backing_up": "Sichern des momentanen Farbprofils. Stell sicher, dass die Joy-Cons angeschlossen sind. Wenn der Prozess hängt, versuche die JC's ab- und anzuschließen.",
@@ -86,37 +99,47 @@
     "desc": "Du kannst die Farbe deines Pro Controlers ändern. Stelle sicher, dass er als Spieler 1 erkannt wird.",
     "label": "Pro Controller Farbwechsler",
     "backing_up": "Derzeitiges Profil sichern",
-    "all_done": "Fertig! Du musst dn Pro Controler vielleicht trennen und anschließen um den Effekt zu sehen."
+    "all_done": "Fertig! Du musst den Pro Controler vielleicht trennen und anschließen um den Effekt zu sehen.",
+    "warning": "Das Ändern der Joy-Con Farbe wird derzeit nicht unterstützt. Verwende hierfür stattdessen das Joy-Con Toolkit.",
+    "changing": "Ändern der Farbe. Stelle sicher, dass der Pro-Con auf Spieler 1 eingestellt ist."
   },
   "main": {
     "getting": "Herunterladen: {}",
     "firmware_text": "\ue016  firmware von: 'https://darthsternie.net/switch-firmwares/'. Sobald runtergeladen, wird sie in '/firmware' entpackt . Danach kannst du das Update mit Daybreak installieren.\n\ue016  Mometnane FW: ",
-    "cheats_text": "\uE016  Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen die du nicht besitzt, werden nicht entpackt. Du kannst updates für ausgewählte Spiele unter 'Tools->Cheat menu' deaktivieren.\n\uE016  Momentane Cheatversion: ",
-    "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver ",
+    "cheats_text": "\ue016  Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen die du nicht besitzt, werden nicht entpackt. Du kannst updates für ausgewählte Spiele unter 'Tools->Cheat menu' deaktivieren.\n\ue016  Momentane Cheatversion: ",
+    "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver {})",
     "sigpatches": "Sigpatches",
-    "sigpatches_text": "\ue016  Sigpatches erlauben dir inoffizielle NSPs zu installieren und starten. Stell sicher, dass du die korrekten patches für dein Setup auswählst(reines Atmosph\u00e8re or Hekate+Atmosph\u00e8re). Starte die Konsole neu um die Patches zu aktivieren.",
+    "sigpatches_text": "\ue016  Sigpatches erlauben dir inoffizielle NSPs zu installieren und starten. Stell sicher, dass du die korrekten patches für dein Setup auswählst(reines Atmosphère or Hekate+Atmosphère). Starte die Konsole neu um die Patches zu aktivieren.",
     "firmware": "Firmware",
     "not_found": "nicht gefunden",
     "latest_cheats": "Neueste Version",
     "app": "App",
     "cfw": "CFW",
-    "ams_text": "\ue016  Aus diesem Menü kannst du die Atmosph\u00e8re custom firmware runterladen und updaten.\n\ue016  DeepSea von Team Neptune ist ein CFW Paket, dass Atmosph\u00e8re, Hekate and andere nützliche Homebrews enthält.",
+    "ams_text": "\ue016  Aus diesem Menü kannst du die Atmosphère custom firmware runterladen und updaten.\n\ue016  DeepSea von Team Neptune ist ein CFW Paket, dass Atmosphère, Hekate and andere nützliche Homebrews enthält.",
     "cfw_text": "\ue016  Alternative CFWs, Bootloaders.",
     "cheats": "Cheats",
     "links_not_found": "Konnte keinen Downloadlink finden. Stelle sicher, dass deine Switch Internetzugriff hat.\nWenn das Problem bestehen bleibt, öffne bitte ein issue auf Github.",
     "new_update": " - Neues App update verfügbar",
     "about": "Über",
-    "update_ams": "Update Atmosph\u00e8re",
+    "update_ams": "Update Atmosphère",
     "update_cfw": "Update CFW",
     "update_sigpatches": "Update Sigpatches",
     "download_firmware": "Firmwares runterladen",
     "download_cheats": "Cheats runterladen",
     "tools": "Werkzeuge",
-    "launch_warning": "Bitte beachten Sie die folgenden Punkte, bevor Sie die App verwenden:\n\n\ue016  Lesen Sie zuerst, wie Sie Ihren Switch manuell aktualisieren. Auf diese Weise können Sie die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachten Sie, dass von der Verwendung dieser App auf einer exFAT-SD-Karte DRINGEND abgeraten wird, da diese höchstwahrscheinlich im laufe der Zeit ihre Daten beschädigen wird.\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nDieser Bildschirm wird nicht mehr angezeigt."
+    "launch_warning": "Bitte beachten Sie die folgenden Punkte, bevor Sie die App verwenden:\n\n\ue016  Lesen Sie zuerst, wie Sie Ihren Switch manuell aktualisieren. Auf diese Weise können Sie die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachten Sie, dass von der Verwendung dieser App auf einer exFAT-SD-Karte DRINGEND abgeraten wird, da diese höchstwahrscheinlich im laufe der Zeit ihre Daten beschädigen wird.\n\n\ue016  Some new features and/or changes regarding current features may have been introduced. Please check them out via the Tools->Changelog menu.\n\nDieser Bildschirm wird nicht mehr angezeigt.",
+    "get_all_cheats:": "GBAtemp.net Cheat-Archiv herunterladen",
+    "ams": "Atmosphère",
+    "bootloaders_text": "\ue016 Bootloader herunterladen und aktualisieren.",
+    "update_bootloaders": "Bootloader aktualisieren",
+    "footer_text": "v{} | {:.1f}GB verfügbar",
+    "theme_warning": "Es scheint, dass ein benutzerdefiniertes Theme installiert ist, das dazu führen kann, dass das System nach dem Upgrade der Firmware nicht mehr startet. Bitte lösche das Theme vor dem Upgrade.",
+    "payloads_label": "\ue016 Herunterladen von RCM-Payloads auf {}"
   },
   "hide": {
     "title": "Tabs verstecken",
-    "desc": "Verstecke Tabs aus dem Hauptmenü"
+    "desc": "Verstecke Tabs aus dem Hauptmenü",
+    "update_ams_deepsea": "Atmosphere und DeepSea Downloads"
   },
   "tools": {
     "cheats": "Cheats Menü",
@@ -124,7 +147,7 @@
     "pro_cons": "Ändere die farbe deines Pro Controlers",
     "dl_payloads": "Lade Payloads hierhin runter: ",
     "inject_payloads": "Injiziere Payload",
-    "update_app": "Update die App (v",
+    "update_app": "Update die App (v{})",
     "dl_app": "Lade herunter:\nAIO-switch-updater\n\nVon:\n",
     "changelog": "Changelog",
     "clean_up": "Lösche übrig gebliebende Dateien",
@@ -133,21 +156,67 @@
     "browser": "Web Browser",
     "batch_copy": "Massen Datei kopieren",
     "batch_copy_not_found": "Die folgenden Dateien wurden nicht gefunden und konnten nicht kopiert werden:\n",
-    "batch_copy_config_not_found": "Dieses Tool erlaubt dir Dateien zu anderen Orten zu kopieren, was vielleicht für bootloader/trinket gebraucht wird. Lade copy_files.txt von 'https://git.io/aiosu_copyfiles' runter und pack es in deinen config Ordner. Wird auch nach Updates ausgeführt."
+    "batch_copy_config_not_found": "Dieses Tool erlaubt dir Dateien zu anderen Orten zu kopieren, was vielleicht für bootloader/trinket gebraucht wird. Lade copy_files.txt von 'https://git.io/aiosu_copyfiles' runter und pack es in deinen config Ordner. Wird auch nach Updates ausgeführt.",
+    "getting_payload": "Payload herunterladen",
+    "language": "Sprache der Anwendung ändern"
   },
   "utils": {
     "fw_warning": "Wegen der größe der Firmwarearchive werden downloads im Applet Mode nicht unterstützt. Bitte öffne die App mit vollem RAM Zugriff.",
     "overwrite": " Möchtest du folgende Datei überschreiben: ",
-    "overwrite_inis": "Möchtestet du vorhandene .ini Konfigurationsdateien überschreiben?"
+    "overwrite_inis": "Möchtestet du vorhandene .ini Konfigurationsdateien überschreiben?",
+    "not_an_archive": "Bei der heruntergeladenen Datei handelt es sich nicht um ein Zip-Archiv. Dies ist höchstwahrscheinlich auf einen defekten Link zurückzuführen. Wenn das Problem nach mehr als 30 Minuten immer noch besteht, erstelle bitte einen Issue auf Github.",
+    "set_hekate_reboot_payload": "Soll der Hekate-Payload `{}` nach `{}` kopiert werden?"
   },
   "ams_update": {
     "reboot_rcm": "Die switch wird nun zu einem Speziellem Payload rebooten um den Installationsprozess ab zu schließen.",
     "install_hekate": "Möchtest du auch Hekate herunterladen?\nFalls nein, wird die Switch nun zu einem Speziellem Payload rebooten um den Installationsprozess ab zu schließen.",
-    "delete_contents": "Möchtest du den existierenden '/atmosphere/contents/' Ordner löschen? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosph\u00e8re version nicht unterstützt. Bedenke dass dies all deine Sysmodule, Mods und Cheats löscht!",
-    "delete_sysmodules_flags": "Möchtest du den Autostart von allen Sysmodules verhindern? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosph\u00e8re version nicht unterstützt.",
-    "current_ams": "\ue016  Momentane Atmosphère version: "
+    "delete_contents": "Möchtest du den existierenden '/atmosphere/contents/' Ordner löschen? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosphère version nicht unterstützt. Bedenke dass dies all deine Sysmodule, Mods und Cheats löscht!",
+    "delete_sysmodules_flags": "Möchtest du den Autostart von allen Sysmodules verhindern? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosphère version nicht unterstützt.",
+    "current_ams": "\ue016  Momentane Atmosphère version: ",
+    "erista_rev": "\ue016  Erista revision",
+    "mariko_rev": "\ue016  Mariko revision",
+    "deepsea_builder": "DeepSea builder",
+    "show_module_description": "Beschreibung des Moduls anzeigen",
+    "depends_on": "Die folgenden Module werden ebenfalls installiert",
+    "download_custom_deepsea": "Dieses benutzerdefinierte DeepSea-Paket herunterladen",
+    "get_custom_deepsea": "Benutzerdefiniertes DeepSea-Paket erhalten",
+    "deepsea_label": "\ue016 DeepSea von Team Neptune ist ein CFW-Paket, das Atmosphère, hekate und verschiedene Homebrew-Anwendungen enthält.",
+    "download_deepsea_package": "Kompilieren und herunterladen",
+    "cant_fetch_deepsea": "Es konnten keine Pakete geholt werden. Öffne einen Github-Issue, wenn dieses Problem weiterhin besteht.",
+    "build_your_deepsea": "Baue dein eigenes DeepSea-Paket durch Auswählen von Paketen",
+    "getting_ams": "Atmosphere herunterladen",
+    "custom_packs_label": "\ue016 Hier sind die in der {}-Datei aufgelisteten Pakete. Bitte beachte, dass diese nicht von aio-switch-updater überprüft werden, also stelle sicher, dass diese Quelle vertrauenswürdig ist."
   },
   "net": {
     "title": "Interneteinstellungen"
+  },
+  "firmware": {
+    "launch_daybreak": "Soll Daybreak gestartet werden, um das heruntergeladene Firmware-Update zu installieren?"
+  },
+  "errors": {
+    "insufficient_storage": "Auf der SD-Karte ist nicht genügend Speicherplatz vorhanden, um diesen Vorgang durchzuführen.",
+    "error_message": "{}\\nBitte versuche es in Kürze erneut. Wenn das Problem weiterhin besteht, öffnen Sie einen Issue auf Github",
+    "mariko_payload_missing": "Um Atmosphère auf gepatchten Switches zu aktualisieren, muss der Payload \"payload.bin\" genannt werden und sollte sich im Root-Verzeichnis der SD-Karte befinden."
+  },
+  "language": {
+    "system_default": "Systemvoreinstellung",
+    "en-US": "Amerikanisches Englisch (en-US)",
+    "ja": "Japanisch (ja)",
+    "fr": "Französisch (fr)",
+    "de": "Deutsch (de)",
+    "it": "Italienisch (it)",
+    "es": "Spanisch (es)",
+    "zh-CN": "Vereinfachtes Chinesisch (zh-CN)",
+    "ko": "Koreanisch (ko)",
+    "nl": "Niederländisch (nl)",
+    "pt": "Portugiesisch (pt)",
+    "ru": "Russisch (ru)",
+    "pl": "Polnisch (pl)",
+    "zh-TW": "Traditionelles Chinesisch (zh-TW)",
+    "en-GB": "Britisches Englisch (en-GB)",
+    "fr-CA": "Kanadisches Französisch (fr-CA)",
+    "es-419": "Latein-Amerikanisches Spanisch (es-419)",
+    "zh-Hant": "Traditionelles Chinesisch (zh-Hant)",
+    "zh-Hans": "Vereinfachtes Chinesisch (zh-Hans)"
   }
 }
