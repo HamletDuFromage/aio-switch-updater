@@ -17,7 +17,7 @@
 
 A Nintendo Switch homebrew app to download and update CFWs, sigpatches, FWs and cheat codes. Supports Atmosphère, ReiNX and SXOS.
 
-Works on **unpatched**(Erista) and **patched**(v2/Mariko) Switches.
+Works on **unpatched** (Erista) and **patched** (v2/Mariko) Switches.
 
 ## How to install
 Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
@@ -37,8 +37,8 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 
 ### ⬦ Download cheats
 - Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you can turn off cheat updates for specific titles in `Tools->Cheat Menu`.
-- Since v2.0.0, AIO-Switch-Updater can also download cheat sheets from [`CheatSlips.com`](https://www.cheatslips.com/). 
-- Since v2.6.0, AIO-Switch-Updater can also download individual cheat codes from the GBAtemp database.
+- Since v2.0.0, AIO-Switch-Updater can also download cheat sheets from [Cheat Slips](https://www.cheatslips.com/). 
+- Since v2.6.0, AIO-Switch-Updater can also download individual cheat codes from the `GBAtemp.net` database.
 
 ## Extras (in the `Tools` tab)
 - Reboot to specific payload.
@@ -115,7 +115,7 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 - [qazrfv1234](https://github.com/qazrfv1234) for the Traditional Chinese locale.
 - [Team Neptune](https://github.com/Team-Neptune) whose rcm code I used.
 - [fennectech](https://github.com/fennectech) for helping test the app and providing suggestions.
-- Iliak for cheatslips.com.
+- Iliak for [Cheat Slips](https://www.cheatslips.com/).
 
 ### Like the app?
 - Liberapay : <a href="https://liberapay.com/HamletDuFromage/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
