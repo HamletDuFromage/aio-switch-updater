@@ -217,6 +217,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.16.1");
     changes.push_back("\uE016 Updated Japanese localisation (https://github.com/yyoossk).\n\uE016 Updated German localisation (https://github.com/MSco).\n\uE016 Added ability to manually launch aiosu_rcm.bin.");
 
+    verTitles.push_back("v2.16.2");
+    changes.push_back("\uE016 Allow offline extraction of cheats.\n\uE016 Fixed extraction of the the complete cheat archive.\n\uE016 Fixed display bug for cheats extraction.");
+
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

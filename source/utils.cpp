@@ -140,7 +140,7 @@ namespace util {
         }
     }
 
-    void extractArchive(contentType type, const std::string& tag)
+    void extractArchive(contentType type, const std::string& version)
     {
         chdir(ROOT_PATH);
         crashIfNotArchive(type);
@@ -151,7 +151,7 @@ namespace util {
             case contentType::cheats: {
                 std::vector<std::string> titles = extract::getInstalledTitlesNs();
                 titles = extract::excludeTitles(CHEATS_EXCLUDE, titles);
-                extract::extractCheats(CHEATS_FILENAME, titles, CurrentCfw::running_cfw);
+                extract::extractCheats(CHEATS_FILENAME, titles, CurrentCfw::running_cfw, version);
                 break;
             }
             case contentType::fw:
@@ -256,22 +256,30 @@ namespace util {
         return str;
     }
 
-    void saveVersion(const std::string& version, const std::string& path)
+    std::string getCheatsVersion()
     {
-        std::ofstream newVersion(path);
-        newVersion << version << std::endl;
+        std::string res = util::downloadFileToString(CHEATS_URL_VERSION);
+        if (res == "" && isArchive(CHEATS_ZIP_PATH)) {
+            res = "offline";
+        }
+        return res;
     }
 
-    std::string readVersion(const std::string& path)
+    void saveToFile(const std::string& text, const std::string& path)
     {
-        std::fstream versionFile;
-        std::string version = "0";
-        if (std::filesystem::exists(path)) {
-            versionFile.open(path, std::fstream::in);
-            versionFile >> version;
-            versionFile.close();
+        std::ofstream file(path);
+        file << text << std::endl;
+    }
+
+    std::string readFile(const std::string& path)
+    {
+        
+        std::string text = "";
+        std::ifstream file(path);
+        if (file.good()) {
+            file >> text;
         }
-        return version;
+        return text;
     }
 
     bool isErista()

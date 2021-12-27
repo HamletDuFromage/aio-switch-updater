@@ -63,10 +63,10 @@ void ListDownloadTab::createList(contentType type)
                 stagedFrame->setTitle(fmt::format("menus/main/getting"_i18n, contentTypeNames[(int)type].data()));
                 stagedFrame->addStage(new ConfirmPage(stagedFrame, text));
                 if (type != contentType::payloads) {
-                    if (type != contentType::cheats || this->newCheatsVer != this->currentCheatsVer || !std::filesystem::exists(CHEATS_ZIP_PATH)) {
+                    if (type != contentType::cheats || (this->newCheatsVer != this->currentCheatsVer && this->newCheatsVer != "offline")) {
                         stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [this, type, url]() { util::downloadArchive(url, type); }));
                     }
-                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [this, type]() { util::extractArchive(type); }));
+                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [this, type]() { util::extractArchive(type, this->newCheatsVer); }));
                 }
                 else {
                     fs::createTree(BOOTLOADER_PL_PATH);
@@ -143,8 +143,8 @@ void ListDownloadTab::setDescription(contentType type)
                 "menus/main/bootloaders_text"_i18n);
             break;
         case contentType::cheats:
-            this->newCheatsVer = util::downloadFileToString(CHEATS_URL_VERSION);
-            this->currentCheatsVer = util::readVersion(CHEATS_VERSION);
+            this->newCheatsVer = util::getCheatsVersion();
+            this->currentCheatsVer = util::readFile(CHEATS_VERSION);
             description->setText("menus/main/cheats_text"_i18n + this->currentCheatsVer);
             break;
         case contentType::payloads:

@@ -37,7 +37,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, []() { util::downloadArchive(APP_URL, contentType::app); }));
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [tag]() { util::extractArchive(contentType::app, tag); }));
+                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [tag]() { util::extractArchive(contentType::app); }));
             stagedFrame->addStage(
                 new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
             brls::Application::pushView(stagedFrame);
@@ -48,7 +48,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
 
     cheats = new brls::ListItem("menus/tools/cheats"_i18n);
     cheats->getClickEvent()->subscribe([](brls::View* view) {
-        brls::Application::pushView(new CheatsPage());
+        brls::PopupFrame::open("menus/cheats/menu"_i18n, new CheatsPage(), "", "");
     });
     cheats->setHeight(LISTITEM_HEIGHT);
 
@@ -139,6 +139,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
         std::filesystem::remove(CFW_ZIP_PATH);
         std::filesystem::remove(FW_ZIP_PATH);
         std::filesystem::remove(CHEATS_ZIP_PATH);
+        std::filesystem::remove(CHEATS_VERSION);
         std::filesystem::remove(SIGPATCHES_ZIP_PATH);
         fs::removeDir(AMS_DIRECTORY_PATH);
         fs::removeDir(SEPT_DIRECTORY_PATH);
