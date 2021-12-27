@@ -2,7 +2,7 @@
   "about": {
     "title": "Actualizador Todo-en-Uno de Nintendo Switch",
     "copyright": "AIO-switch-updater tiene licencia GPL-3.0\n© 2020-2021 HamletDuFromage",
-    "disclaimers": "\ue016  Aparte de trucos obtenidos del hilo principal de Gbatemp, HamletDuFromage no provee nada. Todo el crédito pertenece a sus respectivos dueños.\n\ue016  Los enlaces se actualizan cada tres horas. Si un enlace sigue roto después de 3 horas, por favor abre un issue en Github.\n"
+    "disclaimers": "\ue016 Aparte de trucos obtenidos del hilo principal de GBAtemp.net, HamletDuFromage no provee nada. Todo el crédito pertenece a sus respectivos dueños.\n\ue016 Los enlaces se actualizan cada tres horas. Si un enlace sigue roto después de 3 horas, por favor abre un issue en GitHub.\n"
   },
   "cheats": {
     "installed": "Trucos instalados",
@@ -15,14 +15,14 @@
     "exclude": "Excluir juegos de recibir actualizaciones de trucos",
     "delete_existing": "Borrar todos los trucos existentes",
     "delete_all": "Borrar todos los trucos",
-    "deleting": "Borrando...",
+    "deleting": "Borrando…",
     "exclude_titles": "Excluir títulos",
     "exclude_titles_desc": "Puedes desactivar las actualizaciones de trucos con este menú",
     "exclude_titles_save": "Guardar elección y volver"
   },
   "common": {
-    "downloading": "Descargando...",
-    "extracting": "Extrayendo...",
+    "downloading": "Descargando…",
+    "extracting": "Extrayendo…",
     "all_done": " ¡Finalizado!",
     "back": "Atrás",
     "continue": "Continuar",
@@ -41,7 +41,7 @@
   "payloads": {
     "dl_payloads": "Descargar payloads",
     "select": " Selecciona el payload al que reiniciar.",
-    "not_found": "No se pudo encontrar un enlace de descarga, asegúrate de que tu Switch tiene acceso a internet.\nSi el problema persiste, por favor abre un issue en Github.",
+    "not_found": "No se pudo encontrar un enlace de descarga, asegúrate de que tu Switch tiene acceso a internet.\nSi el problema persiste, por favor abre un issue en GitHub.",
     "set_reboot_payload": "Poner como reboot_payload.bin",
     "set_update_bin": "Poner como /bootloader/update.bin",
     "copy_success": "Éxito al copiar '",
@@ -57,18 +57,18 @@
   },
   "main": {
     "getting": "Obteniendo {}",
-    "firmware_text": "\ue016  Firmwares de 'https://darthsternie.net/switch-firmwares/'. Una vez descargado, será extraído en '/firmware'. Entonces podrás instalar la actualización a través de Daybreak.\n\ue016  FW actual: ",
-    "cheats_text": "\ue016  Esto descargará un paquete actualizado diario de trucos de 'gbatemp.net'. Los trucos de juegos que no tienes instalados no se extraerán a tu tarjeta SD. Puedes desactivar los trucos actualizados en 'Herramientas->Menú de trucos'.\n\ue016  Versión de trucos actual: ",
+    "firmware_text": "\ue016 Firmwares de 'https://darthsternie.net/switch-firmwares/'. Una vez descargado, será extraído en '/firmware'. Entonces podrás instalar la actualización a través de Daybreak.\n\ue016 FW actual: ",
+    "cheats_text": "\ue016 Esto descargará un paquete actualizado diario de trucos de 'gbatemp.net'. Los trucos de juegos que no tienes instalados no se extraerán a tu tarjeta SD. Puedes desactivar los trucos actualizados en 'Herramientas->Menú de trucos'.\n\ue016 Versión de trucos actual: ",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "\ue016  Los sigpatches permiten a tu Switch instalar y ejecutar archivos NSP no oficiales. Asegúrate de escoger los sigpatches correctos para tu configuración (Atmosphère puro o Hekate+Atmosphère).",
+    "sigpatches_text": "\ue016 Los sigpatches permiten a tu Switch instalar y ejecutar archivos NSP no oficiales. Asegúrate de escoger los sigpatches correctos para tu configuración (Atmosphère puro o Hekate+Atmosphère).",
     "firmware": "firmware",
     "not_found": "no encontrado",
     "latest_cheats": "Última versión",
     "app": "app",
     "cfw": "CFW",
-    "cfw_text": "\ue016  Switch CFWs principales. Si quieres usar Atmosphère con Hekate, descarga Atmosphère, y después Hekate.",
+    "cfw_text": "\ue016 Switch CFWs principales. Si quieres usar Atmosphère con Hekate, descarga Atmosphère, y después Hekate.",
     "cheats": "trucos",
-    "links_not_found": "No se pudo encontrar un enlace de descarga, asegúrate de que tu Switch tiene acceso a internet.\nSi el problema persiste, por favor abre un issue en Github.",
+    "links_not_found": "No se pudo encontrar un enlace de descarga, asegúrate de que tu Switch tiene acceso a internet.\nSi el problema persiste, por favor abre un issue en GitHub.",
     "new_update": " - Nueva actualización de la app disponible",
     "about": "Acerca de",
     "update_cfw": "Actualizar CFW",

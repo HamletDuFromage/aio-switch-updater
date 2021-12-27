@@ -2,8 +2,8 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-switch-updater jest zgodny z licencją GPL-3.0\n\u00a9 2020-2021 HamletDuFromage",
-    "disclaimers": "\ue016  Oprócz cheatów które są lustrzaną kopią tych z wątku na Gbatemp, HamletDuFromage nie hostuje żadnych innych plików. Podziękowania za nie należy kierować do ich twórców.\n\ue016  Linki są odświeżane co 30 minut. Jeśli po 30 minutach link nadal nie działa, utwórz nowy problem na Githubie.\n",
-    "donate": "\ue016  Podoba ci się apka? Rozważ datek na wsparcie moich starań: 'https://git.io/donate_homlet'"
+    "disclaimers": "\ue016 Oprócz cheatów które są lustrzaną kopią tych z wątku na GBAtemp.net, HamletDuFromage nie hostuje żadnych innych plików. Podziękowania za nie należy kierować do ich twórców.\n\ue016 Linki są odświeżane co 30 minut. Jeśli po 30 minutach link nadal nie działa, utwórz nowy problem na GitHubie.\n",
+    "donate": "\ue016 Podoba ci się apka? Rozważ datek na wsparcie moich starań: 'https://git.io/donate_homlet'"
   },
   "cheats": {
     "installed": "Zainstalowane cheaty",
@@ -16,11 +16,11 @@
     "exclude": "Wyklucz gry z aktualizacji cheatów",
     "delete_existing": "Usuń wszystkie istniejące cheaty",
     "delete_all": "Usuń wszystkie cheaty",
-    "deleting": "Usuwanie...",
-    "cheastlips_title": "Cheaty Cheatslips",
-    "get_cheatslips": "Pobierz arkusze cheatów z CheatSlips.com",
-    "cheatslips_label": "\ue016  Zaloguj się na CheatSlips.com i pobierz arkusze cheatów dla swoich gier.",
-    "cheatslips_dl": "Pobierz wybrane arkusze cheatów z CheatSlips.com.\nPobrane cheaty zostaną dopisane na końcu twojego pliku z cheatami.",
+    "deleting": "Usuwanie…",
+    "cheastlips_title": "Cheaty Cheat Slips",
+    "get_cheatslips": "Pobierz arkusze cheatów z Cheat Slips",
+    "cheatslips_label": "\ue016 Zaloguj się na Cheat Slips i pobierz arkusze cheatów dla swoich gier.",
+    "cheatslips_dl": "Pobierz wybrane arkusze cheatów z Cheat Slips.\nPobrane cheaty zostaną dopisane na końcu twojego pliku z cheatami.",
     "delete_file": "Usuń istniejący plik z cheatami",
     "cheatslips_error": "Nie można było pobrać wybranych cheatów/nieprawidłowy token.",
     "quota": "Przekroczono dzienny limit pobrań!\nWejdź na 'https://www.cheatslips.com/subscriptions' aby dowiedzieć się, jak go zwiększyć.",
@@ -30,15 +30,15 @@
     "kb_error": "Jeśli klawiatura nie pokazała się, spróbuj uruchomić aplikację z pełnym dostępem do pamięci RAM (title redirection)",
     "cheatslips_see_more": "Zobacz więcej",
     "cheatslips_dl_cheats": "Pobierz cheaty i wróć",
-    "bid_not_found": "Nie można było uzyskać ID kompilacji. Spróbuj uruchomić aio-switch-updater w trybie appletu gdy gra jest uruchomiona.",
+    "bid_not_found": "Nie można było uzyskać ID kompilacji. Spróbuj uruchomić AIO-switch-updater w trybie appletu gdy gra jest uruchomiona.",
     "exclude_titles": "Wyklucz tytuły",
     "exclude_titles_desc": "W tym menu możesz wyłączyć aktualizacje cheatów",
     "exclude_titles_save": "Zapisz wybór i wróć",
-    "dl_all": "Pobierz i wypakuj pełne archiwum cheatów z gbatemp"
+    "dl_all": "Pobierz i wypakuj pełne archiwum cheatów z GBAtemp.net"
   },
   "common": {
-    "downloading": "Pobieranie...",
-    "extracting": "Rozpakowywanie...",
+    "downloading": "Pobieranie…",
+    "extracting": "Rozpakowywanie…",
     "all_done": " Zrobione!",
     "back": "Wstecz",
     "continue": "Dalej",
@@ -63,7 +63,7 @@
   "payloads": {
     "dl_payloads": "Pobierz payloady",
     "select": " Wybierz payload do ponownego uruchomienia.",
-    "not_found": "Nie można było uzyskać linku pobierania. Upewnij się, że Switch ma połączenie z internetem.\nJeśli problem nie ustąpi, utwórz nowy problem na Githubie.",
+    "not_found": "Nie można było uzyskać linku pobierania. Upewnij się, że Switch ma połączenie z internetem.\nJeśli problem nie ustąpi, utwórz nowy problem na GitHubie.",
     "set_reboot_payload": "Ustaw jako reboot_payload.bin",
     "set_update_bin": "Ustaw jako /bootloader/update.bin",
     "copy_success": "Skopiowano pomyślnie '",
@@ -87,21 +87,21 @@
   },
   "main": {
     "getting": "Pobieranie {}",
-    "firmware_text": "\ue016  Oprogramowanie z 'https://darthsternie.net/switch-firmwares/'. Po pobraniu zostanie rozpakowane do '/firmware'. Możesz je później zainstalować korzystając z Daybreak.\n\ue016  Bieżący FW: ",
-    "cheats_text": "\uE016  Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia->Menu cheatów'.\n\uE016  Bieżąca wersja cheatów: ",
+    "firmware_text": "\ue016 Oprogramowanie z 'https://darthsternie.net/switch-firmwares/'. Po pobraniu zostanie rozpakowane do '/firmware'. Możesz je później zainstalować korzystając z Daybreak.\n\ue016 Bieżący FW: ",
+    "cheats_text": "\ue016 Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia->Menu cheatów'.\n\ue016 Bieżąca wersja cheatów: ",
     "get_cheats": "Pobierz archiwum cheatów GBAtemp.net (wersja {})",
     "sigpatches": "sigpatche",
-    "sigpatches_text": "\ue016  Sigpatche umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Upewnij się, że wybierasz sigpatche zgodne z twoim setupem (czysty Atmosph\u00e8re lub Hekate+Atmosph\u00e8re). Uruchom konsolę ponownie aby zastosować zmiany.",
+    "sigpatches_text": "\ue016 Sigpatche umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Upewnij się, że wybierasz sigpatche zgodne z twoim setupem (czysty Atmosph\u00e8re lub Hekate+Atmosph\u00e8re). Uruchom konsolę ponownie aby zastosować zmiany.",
     "firmware": "firmware",
     "not_found": "nie znaleziono",
     "latest_cheats": "Najnowsza wersja",
     "app": "aplikacja",
     "cfw": "CFW",
     "ams": "Atmosphère",
-    "ams_text": "\ue016  Z poziomu tego menu możesz pobrać i zaktualizować modyfikację oprogramowania Atmosph\u00e8re potrzebną do uruchamiania aplikacji homebrew.\n\ue016  DeepSea od Team Neptune to paczka z CFW zawierająca Atmosph\u00e8re, hekate i różne aplikacje homebrew.",
-    "cfw_text": "\ue016  Alternatywne CFW, bootloadery.",
+    "ams_text": "\ue016 Z poziomu tego menu możesz pobrać i zaktualizować modyfikację oprogramowania Atmosph\u00e8re potrzebną do uruchamiania aplikacji homebrew.\n\ue016 DeepSea od Team Neptune to paczka z CFW zawierająca Atmosph\u00e8re, hekate i różne aplikacje homebrew.",
+    "cfw_text": "\ue016 Alternatywne CFW, bootloadery.",
     "cheats": "cheaty",
-    "links_not_found": "Nie można było uzyskać linku pobierania. Upewnij się, że Switch ma połączenie z internetem.\nJeśli problem nie ustąpi, utwórz nowy problem na Githubie.",
+    "links_not_found": "Nie można było uzyskać linku pobierania. Upewnij się, że Switch ma połączenie z internetem.\nJeśli problem nie ustąpi, utwórz nowy problem na GitHubie.",
     "new_update": " - Dostępna aktualizacja aplikacji",
     "about": "O aplikacji",
     "update_ams": "Zaktualizuj Atmosph\u00e8re",
@@ -110,7 +110,7 @@
     "download_firmware": "Pobierz firmware",
     "download_cheats": "Pobierz cheaty",
     "tools": "Narzędzia",
-    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\ue016  Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\ue016  Należy pamiętać, że korzystanie z tej aplikacji na karcie SD z systemem plików exFAT jest SILNIE odradzane, ponieważ ich zawartość jest bardziej podatna na uszkodzenia.\n\n\ue016  Mogły zostać wprowadzone nowe funkcje i/lub zmiany obecnych funkcji. Rzuć na nie okiem w Narzędzia->Dziennik zmian.\n\nTen ekran nie wyświetli się ponownie.",
+    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\ue016 Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\ue016 Należy pamiętać, że korzystanie z tej aplikacji na karcie SD z systemem plików exFAT jest SILNIE odradzane, ponieważ ich zawartość jest bardziej podatna na uszkodzenia.\n\n\ue016 Mogły zostać wprowadzone nowe funkcje i/lub zmiany obecnych funkcji. Rzuć na nie okiem w Narzędzia->Dziennik zmian.\n\nTen ekran nie wyświetli się ponownie.",
     "footer_text": "v{} | {:.1f}GB dostępne"
   },
   "hide": {
@@ -145,7 +145,7 @@
     "install_hekate": "Czy chcesz również pobrać Hekate?\nJeżeli nie, Switch uruchomi się teraz ponownie do specjalnego payloadu aby ukończyć instalację.",
     "delete_contents": "Czy chcesz usunąć istniejącą zawartość ścieżki '/atmosphere/contents/'? Zapobiegnie to błędom jeśli posiadasz sysmoduły niekompatybilne z nowym Atmosph\u00e8re. Pamiętaj, że spowoduje to usunięcie wszystkich twoich sysmodułów, modów i cheatów.",
     "delete_sysmodules_flags": "Czy chcesz usunąć flagi uruchamiania dodatkowych sysmodułów? Spowoduje to wyłączenie wszystkich twoich sysmodułów i zapobiegnie błędom jeśli posiadasz sysmoduły niekompatybilne z nowym Atmosphère.",
-    "current_ams": "\ue016  Bieżące Atmosphère: "
+    "current_ams": "\ue016 Bieżące Atmosphère: "
   },
   "net": {
     "title": "Ustawienia internetowe"
