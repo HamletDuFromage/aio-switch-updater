@@ -1,4 +1,4 @@
-# AIO-switch-updater
+# AIO-Switch-Updater
 ![releases](https://img.shields.io/github/downloads/HamletDuFromage/AIO-switch-updater/total)
 ![hbappstore](https://img.shields.io/endpoint?url=https%3A%2F%2Frunkit.io%2Fhomlet%2Fhbappstore-shieldsio%2Fbranches%2Fmaster%3Furl%3Dhttps%3A%2F%2Fswitchbru.com%2Fappstore%2Frepo.json%26name%3Daioswitchupdater)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/HamletDuFromage/AIO-switch-updater/Build%20AIO-switch-updater)
@@ -27,7 +27,7 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 - Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files. 
   - If you would like to preserve additional files or directories, write their path (one line each) in `/config/aio-switch-updater/preserve.txt` and they won't be overwritten when updating.
   - Place [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/copy_files.txt) in `/config/aio-switch-updater/copy_files.txt` in order to have specific copy operations performed after each download. This is mainly meant for users with trinkets who want payloads automatically copied to a directory.
-  - A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/customPacks.json) and it will show on the `Update Atmopshère` menu. This can be used to support third-party packs through aio-switch-updater
+  - A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/customPacks.json) and it will show on the `Update Atmopshère` menu. This can be used to support third-party packs through AIO-Switch-Updater
 
 ### ⬦ Update Sigpatches
 - For Atmosphère. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available.
@@ -37,8 +37,8 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 
 ### ⬦ Download cheats
 - Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you can turn off cheat updates for specific titles in `Tools->Cheat Menu`.
-- Since v2.0.0, aio-switch-updater can also download cheat sheets from [`CheatSlips.com`](https://www.cheatslips.com/). 
-- Since v2.6.0, aio-switch-updater can also download individual cheat codes from the GBAtemp database.
+- Since v2.0.0, AIO-Switch-Updater can also download cheat sheets from [`CheatSlips.com`](https://www.cheatslips.com/). 
+- Since v2.6.0, AIO-Switch-Updater can also download individual cheat codes from the GBAtemp database.
 
 ## Extras (in the `Tools` tab)
 - Reboot to specific payload.

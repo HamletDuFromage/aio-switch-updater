@@ -1,7 +1,7 @@
 {
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
-    "copyright": "AIO-switch-updaterはGPL-3.0の下でライセンスされています\n© 2020-2021 HamletDuFromage",
+    "copyright": "AIO-Switch-UpdaterはGPL-3.0の下でライセンスされています\n© 2020-2021 HamletDuFromage",
     "disclaimers": "\ue016 メインのGbatempスレッドからミラーリングされたチートコードを除いて、HamletDuFromageは何もホストしていません。すべてのクレジットはそれぞれの所有者に送られます。\n\ue016 リンクは3時間ごとに更新されます。 3時間経過してもリンクが壊れたままの場合は、GitHubの問題を開いてください。\n",
     "donate": "\ue016 アプリが好きですか？私の努力を支援するために寄付することを検討してください: 'https://git.io/donate_homlet'"
   },
@@ -32,7 +32,7 @@
     "kb_error": "キーボードが表示されない場合は、フルRAMアクセス（タイトルリダイレクト）でアプリを実行してみてください",
     "cheatslips_see_more": "続きを見る",
     "cheatslips_dl_cheats": "チートをダウンロードして戻る",
-    "bid_not_found": "ビルドIDを取得できませんでした。ゲームの実行中にアプレットモードでAIO-switch-updaterを起動してみてください",
+    "bid_not_found": "ビルドIDを取得できませんでした。ゲームの実行中にアプレットモードでAIO-Switch-Updaterを起動してみてください",
     "exclude_titles": "タイトルを除外する",
     "exclude_titles_desc": "このメニューでチートアップデートをオフにすることができます",
     "exclude_titles_save": "選択を保存して戻る",
@@ -40,7 +40,7 @@
     "gbatemp_dl": "GBAtemp.netからキュレーションされたチートコードをダウンロードする。 それらのチートは、既存のチートファイルの最後に追加されます。\n\ue016 Build ID: {}",
     "gbatemp_dl_cheatcode": "チートコードをダウンロード",
     "gbatemp_dl_successful_dl": "次のチートコードを正常にダウンロードしました:\n{}",
-    "applet_mode_not_supported": "メモリの制約により、アプレットモードでは、現在プレイしているゲームのチートコードのみをフェッチできます。所有しているゲームのチートコードをダウンロードするには、タイトルリダイレクトを通じてAIO-switch-updaterを起動してください。",
+    "applet_mode_not_supported": "メモリの制約により、アプレットモードでは、現在プレイしているゲームのチートコードのみをフェッチできます。所有しているゲームのチートコードをダウンロードするには、タイトルリダイレクトを通じてAIO-Switch-Updaterを起動してください。",
     "cheatfile_label": "これがファイルにリストされているチートコードです {}",
     "not_found": "このゲームに適切なチートコードが見つかりませんでした",
     "show_existing": "既存のものを表示",
@@ -67,7 +67,7 @@
     "cancel": "キャンセル",
     "off": "無効",
     "selected": "選択済み",
-    "applet_mode_not_supported": "この機能はアプレットモードでは使用できません。アクセスするには、タイトルリダイレクトを介してAIO-switch-updaterを起動してください。"
+    "applet_mode_not_supported": "この機能はアプレットモードでは使用できません。アクセスするには、タイトルリダイレクトを介してAIO-Switch-Updaterを起動してください。"
   },
   "changelog": {
     "changelog": "更新履歴"
@@ -147,7 +147,7 @@
     "inject_payloads": "ペイロード送信",
     "getting_payload": "ペイロードの取得",
     "update_app": "アプリを更新 (v{})",
-    "dl_app": "ダウンロード中:\nAIO-switch-updater\n\nから:\n",
+    "dl_app": "ダウンロード中:\nAIO-Switch-Updater\n\nから:\n",
     "changelog": "更新履歴",
     "clean_up": "ダウンロードしたファイルをクリーンアップする",
     "hide_tabs": "タブを非表示",
@@ -183,7 +183,7 @@
     "cant_fetch_deepsea": "パッケージをフェッチできませんでした。これが続く場合は、GitHubの問題を開きます。",
     "build_your_deepsea": "パッケージを選択して、独自のカスタムDeepSeaパッケージを作成します",
     "getting_ams": "Atmosphère取得中",
-    "custom_packs_label": "\ue016 {} ファイルにリストされているパックは次のとおりです。 それらはAIO-switch-updaterによって承認されていないことに注意してください。そのため、それらのソースを信頼していることを確認してください。"
+    "custom_packs_label": "\ue016 {} ファイルにリストされているパックは次のとおりです。 それらはAIO-Switch-Updaterによって承認されていないことに注意してください。そのため、それらのソースを信頼していることを確認してください。"
   },
   "firmware": {
     "launch_daybreak": "ダウンロードしたsysupdateをインストールするためにDaybreakを起動しますか?"

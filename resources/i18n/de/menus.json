@@ -2,7 +2,7 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-Switch-Updater ist lizensiert unter: GPL-3.0\n© 2020 HamletDuFromage",
-    "disclaimers": "\ue016 Außer Cheat-Codes, die vom Haupt-GBAtemp.net-Thread stammen, hostet HamletDuFromage nichts selber. Alle Anerkennung geht an die jeweiligen Besitzer.\n\ue016  Links werden alle 30 Minuten aktualisiert. Wenn ein Link nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein GitHub-Issue.\n",
+    "disclaimers": "\ue016 Außer Cheat-Codes, die vom Haupt-GBAtemp.net-Thread stammen, hostet HamletDuFromage nichts selber. Alle Anerkennung geht an die jeweiligen Besitzer.\n\ue016 Links werden alle 30 Minuten aktualisiert. Wenn ein Link nach 30 Minuten weiterhin nicht funktioniert, eröffne bitte ein GitHub-Issue.\n",
     "donate": "\ue016 Gefällt dir die App? Hier kannst du meine Bemühungen unterstützen: 'https://git.io/donate_homlet'"
   },
   "cheats": {
@@ -105,8 +105,8 @@
   },
   "main": {
     "getting": "Herunterladen: {}",
-    "firmware_text": "\ue016 Firmware von: 'https://darthsternie.net/switch-firmwares/'. Sobald hehruntergeladen, wird sie in '/firmware' entpackt. Danach kannst du das Update mit Daybreak installieren.\n\ue016  Momentane FW: ",
-    "cheats_text": "\ue016 Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen, die du nicht besitzt, werden nicht entpackt. Du kannst Updates für ausgewählte Spiele unter 'Tools->Cheat Menü' deaktivieren.\n\ue016  Momentane Cheatversion: ",
+    "firmware_text": "\ue016 Firmware von: 'https://darthsternie.net/switch-firmwares/'. Sobald hehruntergeladen, wird sie in '/firmware' entpackt. Danach kannst du das Update mit Daybreak installieren.\n\ue016 Momentane FW: ",
+    "cheats_text": "\ue016 Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen, die du nicht besitzt, werden nicht entpackt. Du kannst Updates für ausgewählte Spiele unter 'Tools->Cheat Menü' deaktivieren.\n\ue016 Momentane Cheatversion: ",
     "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver {})",
     "sigpatches": "Sigpatches",
     "sigpatches_text": "\ue016 Sigpatches erlauben dir, inoffizielle NSPs zu installieren und starten. Stelle sicher, dass du die korrekten Patches für dein Setup auswählst (reines Atmosphère or Atmosphère+Hekate). Starte die Konsole neu, um die Patches zu aktivieren.",
@@ -115,10 +115,10 @@
     "latest_cheats": "Neueste Version",
     "app": "App",
     "cfw": "CFW",
-    "ams_text": "\ue016 In diesem Menü kannst du die Atmosphère Custom Firmware herunterladen und updaten.\n\ue016  DeepSea von Team Neptune ist ein CFW Paket, dass Atmosphère, Hekate and andere nützliche Homebrews enthält.",
+    "ams_text": "\ue016 In diesem Menü kannst du die Atmosphère Custom Firmware herunterladen und updaten.\n\ue016 DeepSea von Team Neptune ist ein CFW Paket, dass Atmosphère, Hekate and andere nützliche Homebrews enthält.",
     "cfw_text": "\ue016 Alternative CFWs, Bootloaders.",
     "cheats": "Cheats",
-    "links_not_found": "Konnte keinen Downloadlink finden. Stelle sicher, dass deine Switch Internetzugriff hat.\nWenn das Problem bestehen bleibt, öffne bitte ein Issue auf Github.",
+    "links_not_found": "Konnte keinen Downloadlink finden. Stelle sicher, dass deine Switch Internetzugriff hat.\nWenn das Problem bestehen bleibt, öffne bitte ein Issue auf GitHub.",
     "new_update": " - Neues App-Update verfügbar",
     "about": "Über",
     "update_ams": "Update Atmosphère",
@@ -127,7 +127,7 @@
     "download_firmware": "Firmwares herunterladen",
     "download_cheats": "Cheats herunterladen",
     "tools": "Werkzeuge",
-    "launch_warning": "Bitte beachte die folgenden Punkte, bevor du die App verwendest:\n\n\ue016 Lese zuerst, wie du deine Switch manuell aktualisierst. Auf diese Weise kannst du die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachte, dass von der Verwendung dieser App auf einer exFAT-SD-Karte DRINGEND abgeraten wird, da diese höchstwahrscheinlich im Laufe der Zeit deine Daten beschädigen wird.\n\n\ue016  Möglicherweise wurden einige Änderungen bezüglich der aktuellen Funktionen eingeführt. Sieh sie dir über das Menü Tools->Changelog an.\n\nDieser Bildschirm wird nicht mehr angezeigt.",
+    "launch_warning": "Bitte beachte die folgenden Punkte, bevor du die App verwendest:\n\n\ue016 Lese zuerst, wie du deine Switch manuell aktualisierst. Auf diese Weise kannst du die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\ue016 Bitte beachte, dass von der Verwendung dieser App auf einer exFAT-SD-Karte DRINGEND abgeraten wird, da diese höchstwahrscheinlich im Laufe der Zeit deine Daten beschädigen wird.\n\n\ue016 Möglicherweise wurden einige Änderungen bezüglich der aktuellen Funktionen eingeführt. Sieh sie dir über das Menü Tools->Changelog an.\n\nDieser Bildschirm wird nicht mehr angezeigt.",
     "get_all_cheats:": "GBAtemp.net Cheat-Archiv herunterladen",
     "ams": "Atmosphère",
     "bootloaders_text": "\ue016 Bootloader herunterladen und aktualisieren.",

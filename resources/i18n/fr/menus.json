@@ -1,7 +1,7 @@
 {
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
-    "copyright": "AIO-switch-updater est publié sous la license GPL-3.0\n© 2020-2021 HamletDuFromage",
+    "copyright": "AIO-Switch-Updater est publié sous la license GPL-3.0\n© 2020-2021 HamletDuFromage",
     "disclaimers": "\u25c6 HamletDuFromage n'héberge rien à l'exception d'une copie des codes de triche du topic principal de GBAtemp. Ils sont attribués à leurs propriétaires respectifs.\n Les liens sont actualisés toutes les 30 minutes. Si un lien reste inactif après 30 minutes, merci de bien vouloir ouvrir une issue sur GitHub.",
     "donate": "\u25c6 Vous aimez cette application\u00a0? Faites un don pour soutenir son développement\u00a0: 'https://git.io/donate_homlet'"
   },
@@ -32,7 +32,7 @@
     "kb_error": "Si le clavier n'apparaît pas, esayez de lancer l'application avec un accès complet à la RAM (redirection d'application)",
     "cheatslips_see_more": "Voir plus",
     "cheatslips_dl_cheats": "Téléchargement des codes de triche et retour",
-    "bid_not_found": "Impossible d'obtenir l'ID de version. Essayez de lancer AIO-switch-updater en mode applet quand le jeu est en cours d'exécution.",
+    "bid_not_found": "Impossible d'obtenir l'ID de version. Essayez de lancer AIO-Switch-Updater en mode applet quand le jeu est en cours d'exécution.",
     "exclude_titles": "Exclure des titres",
     "exclude_titles_desc": "Vous pouvez desactiver les mises à jour des codes de triche dans ce menu",
     "exclude_titles_save": "Enregistrer et retour",
@@ -40,7 +40,7 @@
     "gbatemp_dl": "Télécharger les codes de triche archivés par GBAtemp.net. Ces codes seront ajoutés à la fin du fichier de triche existant.\n ID de version\u00a0: {}",
     "gbatemp_dl_cheatcode": "Télécharger un code de triche",
     "gbatemp_dl_successful_dl": "Téléchargement du code de triche réussi\u00a0:\n{}",
-    "applet_mode_not_supported": "À cause de contraintes de mémoire du mode applet, vous ne pouvez récupérer que les codes de triche pour le jeu auquel vous être en train de jouer. Pour télécharger les codes de triche de tout autre jeu installé, veuillez lancer AIO-switch-updater via la redirection d'application.",
+    "applet_mode_not_supported": "À cause de contraintes de mémoire du mode applet, vous ne pouvez récupérer que les codes de triche pour le jeu auquel vous être en train de jouer. Pour télécharger les codes de triche de tout autre jeu installé, veuillez lancer AIO-Switch-Updater via la redirection d'application.",
     "cheatfile_label": "Voici les codes de triche listés dans le fichier {}",
     "not_found": "Aucun code de triche valide n'a été trouvé pour ce jeu",
     "show_existing": "Montrer les codes de triche existants",
@@ -67,7 +67,7 @@
     "cancel": "Annuler",
     "off": "Non",
     "selected": "Sélectionné",
-    "applet_mode_not_supported": "Cette fonctionnalité n'est pas disponible en mode applet. Veuillez lancer AIO-switch-updater via la redirection d'application pour l'utiliser."
+    "applet_mode_not_supported": "Cette fonctionnalité n'est pas disponible en mode applet. Veuillez lancer AIO-Switch-Updater via la redirection d'application pour l'utiliser."
   },
   "changelog": {
     "changelog": "Journal des modifications"
@@ -95,7 +95,7 @@
   "pro_con": {
     "title": "Modification de la couleur de la manette Pro",
     "desc": "Vous pouvez changer la couleur interne de la manette Pro. Vérifiez qu'elle soit réglée sur joueur 1.",
-    "warning": "AIO-switch-updater ne permet pas encore de changer la couleur des poignées des manettes pro. Utilisez plutôt Joy-Con Toolkit sur PC.",
+    "warning": "AIO-Switch-Updater ne permet pas encore de changer la couleur des poignées des manettes pro. Utilisez plutôt Joy-Con Toolkit sur PC.",
     "label": "Modification de la couleur de la manette Pro",
     "backing_up": "Sauvegarde du profil de couleur. ",
     "all_done": "Terminé\u00a0! Vous devrez peut-être éteindre et redémarrer la manette pour que les changements prennent effet.",
@@ -184,7 +184,7 @@
     "cant_fetch_deepsea": "Impossible de récupérer les paquets. Ouvrez une issue GitHub si le problème persiste.",
     "build_your_deepsea": "Personnalisez l'installation de DeepSea en sélectionnant les paquets à inclure",
     "getting_ams": "Installer Atmopshère",
-    "custom_packs_label": "\u25c6 Voici les paquets listés dans le fichier {}. Assurez-vous de la fiabilité de leur source car il ne bénéficient d'aucun support de la part d'AIO-switch-updater."   
+    "custom_packs_label": "\u25c6 Voici les paquets listés dans le fichier {}. Assurez-vous de la fiabilité de leur source car il ne bénéficient d'aucun support de la part d'AIO-Switch-Updater."   
   },
   "firmware": {
     "launch_daybreak": "Voulez-vous lancer Daybreak pour installer la mise à jour système téléchargée\u00a0?"

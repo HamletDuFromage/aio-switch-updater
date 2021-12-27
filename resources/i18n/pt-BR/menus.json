@@ -1,7 +1,7 @@
 {
   "about": {
     "title": "Atualizador tudo em um Nintendo Switch",
-    "copyright": "AIO-switch-updater usa a licença GPL-3.0\n© 2020-2021 HamletDuFromage",
+    "copyright": "AIO-Switch-Updater usa a licença GPL-3.0\n© 2020-2021 HamletDuFromage",
     "disclaimers": "\ue016 Além de trapaças obtidas no tópico principal do Gbatemp, o HamletDuFromage não fornece nada. Todo o crédito pertence aos seus respectivos proprietários.\n\ue016 Os links são atualizados a cada três horas. Se um link ainda estiver quebrado após 3 horas, abra um 'issue' no GitHub.\n"
   },
   "cheats": {
@@ -83,7 +83,7 @@
     "dl_payloads": "Baixar payloads em a ",
     "inject_payloads": "Injetar payload",
     "update_app": "Atualizar o aplicativo (v{})",
-    "dl_app": "Baixando:\nAIO-switch-updater\n\nDesde:\n",
+    "dl_app": "Baixando:\nAIO-Switch-Updater\n\nDesde:\n",
     "changelog": "Alterações"
   },
   "utils": {
