@@ -127,7 +127,7 @@
     "update_bootloaders": "MÀJ des bootloaders",
     "update_sigpatches": "MÀJ des sigpatches",
     "download_firmware": "Téléch. des firmwares",
-    "download_cheats": "Téléch. des codes de triche",
+    "download_cheats": "Téléch. de cheats codes",
     "tools": "Outils",
     "launch_warning": "Veuillez prendre connaissance des points suivants avant d'utiliser cette application\u00a0:\n\n Renseignez-vous d'abord sur le processus de mise à jour manuel de la Switch. Cela vous aidera à mieux comprendre le fonctionnement de l'application et savoir quoi faire en cas de problème.\n Afin d'éviter tout risque de corruption de données, l'utilisation de cette application avec une carte SD formatée en exFAT est FORTEMENT déconseillé.\n\n Les dernières informations à propos des fonctionnalités ajoutées et/ou modifiées sont disponibles dans le menu Outils->Journal des modifications.\n\nCet écran ne sera pas réaffiché.",
     "footer_text": "v{} | {:.1f}Go disponibles",
