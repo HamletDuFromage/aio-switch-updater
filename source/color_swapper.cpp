@@ -288,33 +288,34 @@ namespace PC {
         std::fstream profilesFile;
         nlohmann::ordered_json profilesJson;
         download::getRequest(PC_COLOR_URL, profilesJson);
-        profilesJson += fs::parseJsonFile(path);
         if (profilesJson.empty()) {
             profilesJson = {{{"BTN", "e6e6e6"},
                              {"BODY", "2d2d2d"},
                              {"name", "Default black"}}};
         }
-        for (const auto& x : profilesJson.items()) {
-            std::string name = x.value()["name"];
-            std::vector<std::string> values = {
-                std::string(x.value()["BODY"]),
-                std::string(x.value()["BTN"])};
-            properData = true;
-            for (auto& str : values) {
-                if (!isHexaAnd3Bytes(str)) {
-                    properData = false;
+        for (const auto& profiles : {fs::parseJsonFile(path), profilesJson}) {
+            for (const auto& x : profiles.items()) {
+                std::string name = x.value()["name"];
+                std::vector<std::string> values = {
+                    std::string(x.value()["BODY"]),
+                    std::string(x.value()["BTN"])};
+                properData = true;
+                for (auto& str : values) {
+                    if (!isHexaAnd3Bytes(str)) {
+                        properData = false;
+                    }
                 }
-            }
-            if (properData) {
-                if (name == "") name = "Unamed";
-                auto profile = std::make_pair(name, (std::vector<int>){
-                                                        hexToBGR(values[0]),
-                                                        hexToBGR(values[1])});
-                if (name == BACKUP) {
-                    res.push_front(profile);
-                }
-                else {
-                    res.push_back(profile);
+                if (properData) {
+                    if (name == "") name = "Unamed";
+                    auto profile = std::make_pair(name, (std::vector<int>){
+                                                            hexToBGR(values[0]),
+                                                            hexToBGR(values[1])});
+                    if (name == BACKUP) {
+                        res.push_front(profile);
+                    }
+                    else {
+                        res.push_back(profile);
+                    }
                 }
             }
         }
