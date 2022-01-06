@@ -68,7 +68,9 @@ constexpr const char CONTENTS_PATH[] = "contents/";
 constexpr const char TITLES_PATH[] = "titles/";
 
 constexpr const char COLOR_PICKER_URL[] = "https://git.io/jcpicker";
-constexpr const char COLOR_PROFILES_PATH[] = "/config/aio-switch-updater/jc_profiles.json";
+constexpr const char JC_COLOR_URL[] = "https://raw.githubusercontent.com/HamletDuFromage/aio-switch-updater/master/jc_profiles.json";
+constexpr const char JC_COLOR_PATH[] = "/config/aio-switch-updater/jc_profiles.json";
+constexpr const char PC_COLOR_URL[] = "https://raw.githubusercontent.com/HamletDuFromage/aio-switch-updater/master/pc_profiles.json";
 constexpr const char PC_COLOR_PATH[] = "/config/aio-switch-updater/pc_profiles.json";
 
 constexpr const char PAYLOAD_PATH[] = "/payloads/";

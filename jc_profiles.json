@@ -1,143 +1,31 @@
 [
     {
-        "L_BTN": "1E0F46",
-        "L_JC": "2D50F0",
-        "R_BTN": "00051E",
-        "R_JC": "500FC8",
-        "name": "The Legend of Zelda: Skyward Sword HD"
+        "L_BTN": "0F0F0F",
+        "L_JC": "828282",
+        "R_BTN": "0F0F0F",
+        "R_JC": "828282",
+        "name": "Gray"
+    },
+    {
+        "L_BTN": "323232",
+        "L_JC": "E6E6E6",
+        "R_BTN": "323232",
+        "R_JC": "E6E6E6",
+        "name": "White"
     },
     {
         "L_BTN": "0F0F0F",
-        "L_JC": "818282",
+        "L_JC": "313131",
         "R_BTN": "0F0F0F",
-        "R_JC": "818282",
-        "name": "Monster Hunter Rise Edition Gray"
-    },
-    {
-        "L_BTN": "140014",
-        "L_JC": "B400E6",
-        "R_BTN": "28001E",
-        "R_JC": "FF3278",
-        "name": "Disney Tsum Tsum Festival"
-    },
-    {
-        "L_BTN": "00000F",
-        "L_JC": "1473FA",
-        "R_BTN": "00000F",
-        "R_JC": "1473FA",
-        "name": "Dragon Quest XI S Lotto Edition Royal-Blue"
-    },
-    {
-        "L_BTN": "0A1E0A",
-        "L_JC": "82FF96",
-        "R_BTN": "0A1E28",
-        "R_JC": "96F5F5",
-        "name": "Animal Crossing: New Horizons"
-    },
-    {
-        "L_BTN": "1E1914",
-        "L_JC": "D7AA73",
-        "R_BTN": "1E1914",
-        "R_JC": "D7AA73",
-        "name": "Nintendo Labo Creators Contest Edition"
-    },
-    {
-        "L_BTN": "281900",
-        "L_JC": "C88C32",
-        "R_BTN": "322800",
-        "R_JC": "FFDC00",
-        "name": "Pokemon Let's Go! Eevee and Pikachu"
-    },
-    {
-        "L_BTN": "1E1914",
-        "L_JC": "F04614",
-        "R_BTN": "1E1914",
-        "R_JC": "F04614",
-        "name": "Mario Red & Blue"
-    },
-    {
-        "L_BTN": "000F1E",
-        "L_JC": "0084FF",
-        "R_BTN": "1A1100",
-        "R_JC": "FFCC00",
-        "name": "Fortnite Fleet Force"
-    },
-    {
-        "L_BTN": "1A1100",
-        "L_JC": "FFCC00",
-        "R_BTN": "000F1E",
-        "R_JC": "0084FF",
-        "name": "Fortnite Wildcat"
-    },
-    {
-        "L_BTN": "002800",
-        "L_JC": "1EDC00",
-        "R_BTN": "28001E",
-        "R_JC": "FF3278",
-        "name": "Splatoon 2 Neon Green & Neon Pink"
-    },
-    {
-        "L_BTN": "00000A",
-        "L_JC": "4655F5",
-        "R_BTN": "00000A",
-        "R_JC": "4655F5",
-        "name": "Blue"
-    },
-    {
-        "L_BTN": "280A0A",
-        "L_JC": "E10F00",
-        "R_BTN": "280A0A",
-        "R_JC": "E10F00",
-        "name": "Red"
-    },
-    {
-        "L_BTN": "0F0A00",
-        "L_JC": "FAA005",
-        "R_BTN": "0F0A00",
-        "R_JC": "FAA005",
-        "name": "Neon Orange"
-    },
-    {
-        "L_BTN": "140014",
-        "L_JC": "B400E6",
-        "R_BTN": "140014",
-        "R_JC": "B400E6",
-        "name": "Neon Purple"
-    },
-    {
-        "L_BTN": "002800",
-        "L_JC": "1EDC00",
-        "R_BTN": "002800",
-        "R_JC": "1EDC00",
-        "name": "Neon Green"
-    },
-    {
-        "L_BTN": "28001E",
-        "L_JC": "FF3278",
-        "R_BTN": "28001E",
-        "R_JC": "FF3278",
-        "name": "Neon Pink"
-    },
-    {
-        "L_BTN": "142800",
-        "L_JC": "E6FF00",
-        "R_BTN": "142800",
-        "R_JC": "E6FF00",
-        "name": "Neon Yellow"
-    },
-    {
-        "L_BTN": "1E0A0A",
-        "L_JC": "FF3C28",
-        "R_BTN": "1E0A0A",
-        "R_JC": "FF3C28",
-        "name": "Neon Red"
+        "R_JC": "313131",
+        "name": "Black (devkit)"
     },
     {
         "L_BTN": "001E1E",
         "L_JC": "0AB9E6",
-        "R_BTN": "001E1E",
-        "R_JC": "0AB9E6",
-        "name": "Neon Blue"
+        "R_BTN": "1E0A0A",
+        "R_JC": "FF3C28",
+        "name": "Neon Blue (L) & Neon Red (R)"
     },
     {
         "L_BTN": "1E0A0A",
@@ -149,29 +37,141 @@
     {
         "L_BTN": "001E1E",
         "L_JC": "0AB9E6",
+        "R_BTN": "001E1E",
+        "R_JC": "0AB9E6",
+        "name": "Neon Blue"
+    },
+    {
+        "L_BTN": "1E0A0A",
+        "L_JC": "FF3C28",
         "R_BTN": "1E0A0A",
         "R_JC": "FF3C28",
-        "name": "Neon Blue (L) & Neon Red (R)"
+        "name": "Neon Red"
+    },
+    {
+        "L_BTN": "142800",
+        "L_JC": "E6FF00",
+        "R_BTN": "142800",
+        "R_JC": "E6FF00",
+        "name": "Neon Yellow"
+    },
+    {
+        "L_BTN": "28001E",
+        "L_JC": "FF3278",
+        "R_BTN": "28001E",
+        "R_JC": "FF3278",
+        "name": "Neon Pink"
+    },
+    {
+        "L_BTN": "002800",
+        "L_JC": "1EDC00",
+        "R_BTN": "002800",
+        "R_JC": "1EDC00",
+        "name": "Neon Green"
+    },
+    {
+        "L_BTN": "140014",
+        "L_JC": "B400E6",
+        "R_BTN": "140014",
+        "R_JC": "B400E6",
+        "name": "Neon Purple"
+    },
+    {
+        "L_BTN": "0F0A00",
+        "L_JC": "FAA005",
+        "R_BTN": "0F0A00",
+        "R_JC": "FAA005",
+        "name": "Neon Orange"
+    },
+    {
+        "L_BTN": "280A0A",
+        "L_JC": "E10F00",
+        "R_BTN": "280A0A",
+        "R_JC": "E10F00",
+        "name": "Red"
+    },
+    {
+        "L_BTN": "00000A",
+        "L_JC": "4655F5",
+        "R_BTN": "00000A",
+        "R_JC": "4655F5",
+        "name": "Blue"
+    },
+    {
+        "L_BTN": "002800",
+        "L_JC": "1EDC00",
+        "R_BTN": "28001E",
+        "R_JC": "FF3278",
+        "name": "Splatoon 2 Neon Green & Neon Pink"
+    },
+    {
+        "L_BTN": "1A1100",
+        "L_JC": "FFCC00",
+        "R_BTN": "000F1E",
+        "R_JC": "0084FF",
+        "name": "Fortnite Wildcat"
+    },
+    {
+        "L_BTN": "000F1E",
+        "L_JC": "0084FF",
+        "R_BTN": "1A1100",
+        "R_JC": "FFCC00",
+        "name": "Fortnite Fleet Force"
+    },
+    {
+        "L_BTN": "1E1914",
+        "L_JC": "F04614",
+        "R_BTN": "1E1914",
+        "R_JC": "F04614",
+        "name": "Mario Red & Blue"
+    },
+    {
+        "L_BTN": "281900",
+        "L_JC": "C88C32",
+        "R_BTN": "322800",
+        "R_JC": "FFDC00",
+        "name": "Pokemon Let's Go! Eevee and Pikachu"
+    },
+    {
+        "L_BTN": "1E1914",
+        "L_JC": "D7AA73",
+        "R_BTN": "1E1914",
+        "R_JC": "D7AA73",
+        "name": "Nintendo Labo Creators Contest Edition"
+    },
+    {
+        "L_BTN": "0A1E0A",
+        "L_JC": "82FF96",
+        "R_BTN": "0A1E28",
+        "R_JC": "96F5F5",
+        "name": "Animal Crossing: New Horizons"
+    },
+    {
+        "L_BTN": "00000F",
+        "L_JC": "1473FA",
+        "R_BTN": "00000F",
+        "R_JC": "1473FA",
+        "name": "Dragon Quest XI S Lotto Edition Royal-Blue"
+    },
+    {
+        "L_BTN": "140014",
+        "L_JC": "B400E6",
+        "R_BTN": "28001E",
+        "R_JC": "FF3278",
+        "name": "Disney Tsum Tsum Festival"
     },
     {
         "L_BTN": "0F0F0F",
-        "L_JC": "313131",
+        "L_JC": "818282",
         "R_BTN": "0F0F0F",
-        "R_JC": "313131",
-        "name": "Black (devkit)"
+        "R_JC": "818282",
+        "name": "Monster Hunter Rise Edition Gray"
     },
     {
-        "L_BTN": "323232",
-        "L_JC": "E6E6E6",
-        "R_BTN": "323232",
-        "R_JC": "E6E6E6",
-        "name": "White"
-    },
-    {
-        "L_BTN": "0F0F0F",
-        "L_JC": "828282",
-        "R_BTN": "0F0F0F",
-        "R_JC": "828282",
-        "name": "Gray"
+        "L_BTN": "1E0F46",
+        "L_JC": "2D50F0",
+        "R_BTN": "00051E",
+        "R_JC": "500FC8",
+        "name": "The Legend of Zelda: Skyward Sword HD"
     }
 ]

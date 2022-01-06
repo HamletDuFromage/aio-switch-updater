@@ -7,13 +7,16 @@
 #include <string>
 
 #include "constants.hpp"
+#include "download.hpp"
 #include "fs.hpp"
 #include "progress_event.hpp"
 #include "utils.hpp"
 
 using json = nlohmann::json;
 
-namespace ColorSwapper {
+namespace {
+
+    constexpr const char BACKUP[] = "_backup";
 
     int hexToBGR(const std::string& hex)
     {
@@ -40,7 +43,7 @@ namespace ColorSwapper {
         return true;
     }
 
-}  // namespace ColorSwapper
+}  // namespace
 
 namespace JC {
 
@@ -73,7 +76,7 @@ namespace JC {
         if (R_SUCCEEDED(res)) {
             int i = 0;
             for (const auto& x : profiles.items()) {
-                if (x.value()["name"] == "_backup") {
+                if (x.value()["name"] == BACKUP) {
                     oldBackups.push_back(i);
                 }
                 i++;
@@ -82,11 +85,11 @@ namespace JC {
                 profiles.erase(profiles.begin() + k);
             }
             json newBackup = json::object(
-                {{"name", "_backup"},
-                 {"L_JC", ColorSwapper::BGRToHex(color_left.main)},
-                 {"L_BTN", ColorSwapper::BGRToHex(color_left.sub)},
-                 {"R_JC", ColorSwapper::BGRToHex(color_right.main)},
-                 {"R_BTN", ColorSwapper::BGRToHex(color_right.sub)}});
+                {{"name", BACKUP},
+                 {"L_JC", BGRToHex(color_left.main)},
+                 {"L_BTN", BGRToHex(color_left.sub)},
+                 {"R_JC", BGRToHex(color_right.main)},
+                 {"R_BTN", BGRToHex(color_right.sub)}});
             profiles.push_back(newBackup);
             fs::writeJsonToFile(profiles, path);
             return 0;
@@ -104,21 +107,22 @@ namespace JC {
         Result res = hidGetNpadControllerColorSplit(HidNpadIdType_Handheld, &color_left, &color_right);
         if (R_SUCCEEDED(res)) {
             newBackup = json::object(
-                {{"name", "_backup"},
-                 {"L_JC", ColorSwapper::BGRToHex(color_left.main)},
-                 {"L_BTN", ColorSwapper::BGRToHex(color_left.sub)},
-                 {"R_JC", ColorSwapper::BGRToHex(color_right.main)},
-                 {"R_BTN", ColorSwapper::BGRToHex(color_right.sub)}});
+                {{"name", BACKUP},
+                 {"L_JC", BGRToHex(color_left.main)},
+                 {"L_BTN", BGRToHex(color_left.sub)},
+                 {"R_JC", BGRToHex(color_right.main)},
+                 {"R_BTN", BGRToHex(color_right.sub)}});
         }
         return newBackup;
     }
 
-    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path)
+    std::deque<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path)
     {
-        std::vector<std::pair<std::string, std::vector<int>>> res;
+        std::deque<std::pair<std::string, std::vector<int>>> res;
         bool properData;
         std::fstream profilesFile;
-        json profilesJson = fs::parseJsonFile(path);
+        nlohmann::ordered_json profilesJson;
+        download::getRequest(JC_COLOR_URL, profilesJson);
         if (profilesJson.empty()) {
             profilesJson = {{{"L_BTN", "0A1E0A"},
                              {"L_JC", "82FF96"},
@@ -126,26 +130,35 @@ namespace JC {
                              {"R_JC", "96F5F5"},
                              {"name", "Animal Crossing: New Horizons"}}};
         }
-        for (const auto& x : profilesJson.items()) {
-            std::string name = x.value()["name"];
-            std::vector<std::string> values = {
-                std::string(x.value()["L_JC"]),
-                std::string(x.value()["L_BTN"]),
-                std::string(x.value()["R_JC"]),
-                std::string(x.value()["R_BTN"])};
-            properData = true;
-            for (auto& str : values) {
-                if (!ColorSwapper::isHexaAnd3Bytes(str)) {
-                    properData = false;
+        for (const auto& profiles : {fs::parseJsonFile(path), profilesJson}) {
+            for (const auto& x : profiles.items()) {
+                std::string name = x.value()["name"];
+                brls::Logger::warning(name);
+                std::vector<std::string> values = {
+                    std::string(x.value()["L_JC"]),
+                    std::string(x.value()["L_BTN"]),
+                    std::string(x.value()["R_JC"]),
+                    std::string(x.value()["R_BTN"])};
+                properData = true;
+                for (auto& str : values) {
+                    if (!isHexaAnd3Bytes(str)) {
+                        properData = false;
+                    }
                 }
-            }
-            if (properData) {
-                if (name == "") name = "Unamed";
-                res.push_back(std::make_pair(name, (std::vector<int>){
-                                                       ColorSwapper::hexToBGR(values[0]),
-                                                       ColorSwapper::hexToBGR(values[1]),
-                                                       ColorSwapper::hexToBGR(values[2]),
-                                                       ColorSwapper::hexToBGR(values[3])}));
+                if (properData) {
+                    if (name == "") name = "Unamed";
+                    auto profile = std::make_pair(name, (std::vector<int>){
+                                                            hexToBGR(values[0]),
+                                                            hexToBGR(values[1]),
+                                                            hexToBGR(values[2]),
+                                                            hexToBGR(values[3])});
+                    if (name == BACKUP) {
+                        res.push_front(profile);
+                    }
+                    else {
+                        res.push_back(profile);
+                    }
+                }
             }
         }
         return res;
@@ -182,7 +195,7 @@ namespace JC {
         std::vector<int> oldBackups;
         int i = 0;
         for (const auto& x : profiles.items()) {
-            if (x.value()["name"] == "_backup") {
+            if (x.value()["name"] == BACKUP) {
                 oldBackups.push_back(i);
             }
             i++;
@@ -233,7 +246,7 @@ namespace PC {
         if (R_SUCCEEDED(res)) {
             int i = 0;
             for (const auto& x : profiles.items()) {
-                if (x.value()["name"] == "_backup") {
+                if (x.value()["name"] == BACKUP) {
                     oldBackups.push_back(i);
                 }
                 i++;
@@ -242,9 +255,9 @@ namespace PC {
                 profiles.erase(profiles.begin() + k);
             }
             json newBackup = json::object(
-                {{"name", "_backup"},
-                 {"BODY", ColorSwapper::BGRToHex(color.main)},
-                 {"BTN", ColorSwapper::BGRToHex(color.sub)}});
+                {{"name", BACKUP},
+                 {"BODY", BGRToHex(color.main)},
+                 {"BTN", BGRToHex(color.sub)}});
             profiles.push_back(newBackup);
             fs::writeJsonToFile(profiles, path);
             return 0;
@@ -261,19 +274,21 @@ namespace PC {
         Result res = hidGetNpadControllerColorSingle(HidNpadIdType_No1, &color);
         if (R_SUCCEEDED(res)) {
             newBackup = json::object(
-                {{"name", "_backup"},
-                 {"BODY", ColorSwapper::BGRToHex(color.main)},
-                 {"BTN", ColorSwapper::BGRToHex(color.sub)}});
+                {{"name", BACKUP},
+                 {"BODY", BGRToHex(color.main)},
+                 {"BTN", BGRToHex(color.sub)}});
         }
         return newBackup;
     }
 
-    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path)
+    std::deque<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path)
     {
-        std::vector<std::pair<std::string, std::vector<int>>> res;
+        std::deque<std::pair<std::string, std::vector<int>>> res;
         bool properData;
         std::fstream profilesFile;
-        json profilesJson = fs::parseJsonFile(path);
+        nlohmann::ordered_json profilesJson;
+        download::getRequest(PC_COLOR_URL, profilesJson);
+        profilesJson += fs::parseJsonFile(path);
         if (profilesJson.empty()) {
             profilesJson = {{{"BTN", "e6e6e6"},
                              {"BODY", "2d2d2d"},
@@ -286,15 +301,21 @@ namespace PC {
                 std::string(x.value()["BTN"])};
             properData = true;
             for (auto& str : values) {
-                if (!ColorSwapper::isHexaAnd3Bytes(str)) {
+                if (!isHexaAnd3Bytes(str)) {
                     properData = false;
                 }
             }
             if (properData) {
                 if (name == "") name = "Unamed";
-                res.push_back(std::make_pair(name, (std::vector<int>){
-                                                       ColorSwapper::hexToBGR(values[0]),
-                                                       ColorSwapper::hexToBGR(values[1])}));
+                auto profile = std::make_pair(name, (std::vector<int>){
+                                                        hexToBGR(values[0]),
+                                                        hexToBGR(values[1])});
+                if (name == BACKUP) {
+                    res.push_front(profile);
+                }
+                else {
+                    res.push_back(profile);
+                }
             }
         }
         return res;
@@ -331,7 +352,7 @@ namespace PC {
         std::vector<int> oldBackups;
         int i = 0;
         for (const auto& x : profiles.items()) {
-            if (x.value()["name"] == "_backup") {
+            if (x.value()["name"] == BACKUP) {
                 oldBackups.push_back(i);
             }
             i++;

@@ -11,7 +11,7 @@ JCPage::JCPage() : AppletFrame(true, true)
 {
     this->setTitle("menus/joy_con/title"_i18n);
     list = new brls::List();
-    label = new brls::Label(brls::LabelStyle::DESCRIPTION, fmt::format("menus/joy_con/description"_i18n, COLOR_PROFILES_PATH, COLOR_PICKER_URL), true);
+    label = new brls::Label(brls::LabelStyle::DESCRIPTION, fmt::format("menus/joy_con/description"_i18n, JC_COLOR_PATH, COLOR_PICKER_URL), true);
     list->addView(label);
 
     backup = new brls::ListItem("menus/joy_con/backup"_i18n);
@@ -20,7 +20,7 @@ JCPage::JCPage() : AppletFrame(true, true)
         stagedFrame->setTitle("menus/joy_con/label"_i18n);
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/joy_con/backing_up"_i18n,
-                           []() { JC::backupJCColor(COLOR_PROFILES_PATH); }));
+                           []() { JC::backupJCColor(JC_COLOR_PATH); }));
         stagedFrame->addStage(
             new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
         brls::Application::pushView(stagedFrame);
@@ -29,10 +29,10 @@ JCPage::JCPage() : AppletFrame(true, true)
 
     list->addView(new brls::ListItemGroupSpacing(true));
 
-    auto profiles = JC::getProfiles(COLOR_PROFILES_PATH);
-    for (int i = profiles.size() - 1; i >= 0; i--) {
-        std::vector<int> value = profiles[i].second;
-        listItem = new brls::ListItem(profiles[i].first);
+    auto profiles = JC::getProfiles(JC_COLOR_PATH);
+    for (const auto& profile : profiles) {
+        std::vector<int> value = profile.second;
+        listItem = new brls::ListItem(profile.first);
         listItem->getClickEvent()->subscribe([value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
             stagedFrame->setTitle("menus/joy_con/label"_i18n);

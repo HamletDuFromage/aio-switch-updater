@@ -31,9 +31,9 @@ PCPage::PCPage() : AppletFrame(true, true)
     list->addView(new brls::ListItemGroupSpacing(true));
 
     auto profiles = PC::getProfiles(PC_COLOR_PATH);
-    for (int i = profiles.size() - 1; i >= 0; i--) {
-        std::vector<int> value = profiles[i].second;
-        listItem = new brls::ListItem(profiles[i].first);
+    for (const auto& profile : profiles) {
+        std::vector<int> value = profile.second;
+        listItem = new brls::ListItem(profile.first);
         listItem->getClickEvent()->subscribe([value](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
             stagedFrame->setTitle("menus/pro_con/label"_i18n);

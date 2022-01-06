@@ -1,12 +1,13 @@
 #pragma once
 
 #include <json.hpp>
+#include <deque>
 
 namespace JC {
 
     int setColor(const std::vector<int>& colors);
     int backupToJSON(nlohmann::json& profiles, const std::string& path);
-    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path);
+    std::deque<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path);
     void changeJCColor(const std::vector<int>& values);
     nlohmann::json backupProfile();
     void backupJCColor(const std::string& path);
@@ -17,7 +18,7 @@ namespace PC {
 
     int setColor(const std::vector<int>& colors);
     int backupToJSON(nlohmann::json& profiles, const std::string& path);
-    std::vector<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path);
+    std::deque<std::pair<std::string, std::vector<int>>> getProfiles(const std::string& path);
     void changePCColor(const std::vector<int>& values);
     nlohmann::json backupProfile();
     void backupPCColor(const std::string& path);
