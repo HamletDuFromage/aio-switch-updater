@@ -108,7 +108,7 @@
     "get_cheats": "GBAtemp.net チートアーカイブをダウンロード (ver {})",
     "get_all_cheats:": "GBAtemp.net チートアーカイブをダウンロードする",
     "sigpatches": "sigpatch",
-    "sigpatches_text": "\ue016 Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。\nセットアップに適したsigpatchを選択してください（AtmosphèreまたはHekate + Atmosphère）。",
+    "sigpatches_text": "\ue016 Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。",
     "firmware": "FW",
     "not_found": "見つかりませんでした",
     "latest_cheats": "最新バージョン",

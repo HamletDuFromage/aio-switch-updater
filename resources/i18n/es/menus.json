@@ -60,7 +60,7 @@
     "firmware_text": "\ue016 Firmwares de 'https://darthsternie.net/switch-firmwares/'. Una vez descargado, será extraído en '/firmware'. Entonces podrás instalar la actualización a través de Daybreak.\n\ue016 FW actual: ",
     "cheats_text": "\ue016 Esto descargará un paquete actualizado diario de trucos de 'gbatemp.net'. Los trucos de juegos que no tienes instalados no se extraerán a tu tarjeta SD. Puedes desactivar los trucos actualizados en 'Herramientas->Menú de trucos'.\n\ue016 Versión de trucos actual: ",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "\ue016 Los sigpatches permiten a tu Switch instalar y ejecutar archivos NSP no oficiales. Asegúrate de escoger los sigpatches correctos para tu configuración (Atmosphère puro o Hekate+Atmosphère).",
+    "sigpatches_text": "\ue016 Los sigpatches permiten a tu Switch instalar y ejecutar archivos NSP no oficiales. Reiniciar para aplicar los cambios.",
     "firmware": "firmware",
     "not_found": "no encontrado",
     "latest_cheats": "Última versión",

@@ -34,6 +34,8 @@ protected:
     void GetBuildIDFromFile();
     void WriteCheats(const std::string& cheatContent);
     void AddCheatsfileListItem();
+    void ShowBidNotFound();
+    void ShowCheatsNotFound();
 
     typedef struct
     {

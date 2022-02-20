@@ -109,7 +109,7 @@
     "cheats_text": "\ue016 Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen, die du nicht besitzt, werden nicht entpackt. Du kannst Updates für ausgewählte Spiele unter 'Tools->Cheat Menü' deaktivieren.\n\ue016 Momentane Cheatversion: ",
     "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver {})",
     "sigpatches": "Sigpatches",
-    "sigpatches_text": "\ue016 Sigpatches erlauben dir, inoffizielle NSPs zu installieren und starten. Stelle sicher, dass du die korrekten Patches für dein Setup auswählst (reines Atmosphère or Atmosphère+Hekate). Starte die Konsole neu, um die Patches zu aktivieren.",
+    "sigpatches_text": "\ue016 Sigpatches erlauben dir, inoffizielle NSPs zu installieren und starten. Starte die Konsole neu, um die Patches zu aktivieren.",
     "firmware": "Firmware",
     "not_found": "Nicht gefunden",
     "latest_cheats": "Neueste Version",

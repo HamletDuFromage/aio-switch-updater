@@ -91,7 +91,7 @@
     "cheats_text": "\ue016 Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia->Menu cheatów'.\n\ue016 Bieżąca wersja cheatów: ",
     "get_cheats": "Pobierz archiwum cheatów GBAtemp.net (wersja {})",
     "sigpatches": "sigpatche",
-    "sigpatches_text": "\ue016 Sigpatche umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Upewnij się, że wybierasz sigpatche zgodne z twoim setupem (czysty Atmosph\u00e8re lub Hekate+Atmosph\u00e8re). Uruchom konsolę ponownie aby zastosować zmiany.",
+    "sigpatches_text": "\ue016 Sigpatche umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Uruchom konsolę ponownie aby zastosować zmiany.",
     "firmware": "firmware",
     "not_found": "nie znaleziono",
     "latest_cheats": "Najnowsza wersja",

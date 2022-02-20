@@ -60,7 +60,7 @@
     "firmware_text": "\ue016 il dump del Firmware da 'https://darthsternie.net/switch-firmwares/'. Una volta scaricato, sarà estratto in '/firmware'. Puoi installare l'aggiornamento tramite Daybreak.\n\ue016 FW attuale: ",
     "cheats_text": "\ue016 Questo scaricherà quotidianamente un archivio di cheat da 'gbatemp.net'. I cheat per i giochi non installati non saranno estratti sulla tua scheda SD. Puoi disabilitare l'aggiornamento dei cheat in 'Tools->Cheat menu'.\n\ue016 Current cheats version: ",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "\ue016 Le sigpatches consentono di installare ed eseguire NSP non ufficiali sulla Switch. Assicurati di scegliere le sigpatches corrette per la tua configurazione (solo Atmosphère o Hekate+Atmosphère).",
+    "sigpatches_text": "\ue016 Le sigpatches consentono di installare ed eseguire NSP non ufficiali sulla Switch.",
     "firmware": "firmware",
     "not_found": "non trovato",
     "latest_cheats": "Ultima versione",

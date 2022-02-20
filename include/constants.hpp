@@ -115,9 +115,10 @@ enum class contentType
     bootloaders,
     ams_cfw,
     payloads,
+    hekate_ipl,
 };
 
-constexpr std::string_view contentTypeNames[7]{"sigpatches", "cheats", "firmwares", "app", "bootloaders", "cfws", "payloads"};
+constexpr std::string_view contentTypeNames[8]{"sigpatches", "cheats", "firmwares", "app", "bootloaders", "cfws", "payloads", "hekate_ipl"};
 
 enum class CFW
 {

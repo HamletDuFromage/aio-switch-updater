@@ -223,6 +223,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.16.3");
     changes.push_back("\uE016 Fetch default profiles online for joy-con and pro-con color swaps.\n\uE016 Updated french localization (https://github.com/NotaInutilis).");
 
+    verTitles.push_back("v2.17.0");
+    changes.push_back("\uE016 Add ability to download a basic hekate_ipl file.\n\uE016 Add error messages when cheats are not found for a game.");
+
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

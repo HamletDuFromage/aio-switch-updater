@@ -37,9 +37,15 @@ ListDownloadTab::ListDownloadTab(const contentType type, const nlohmann::ordered
         this->setDescription(contentType::payloads);
         this->createList(contentType::payloads);
     }
+
+    if (this->type == contentType::sigpatches) {
+        this->setDescription(contentType::hekate_ipl);
+        this->createList(contentType::hekate_ipl);
+    }
 }
 
-void ListDownloadTab::createList() {
+void ListDownloadTab::createList()
+{
     ListDownloadTab::createList(this->type);
 }
 
@@ -62,15 +68,20 @@ void ListDownloadTab::createList(contentType type)
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(fmt::format("menus/main/getting"_i18n, contentTypeNames[(int)type].data()));
                 stagedFrame->addStage(new ConfirmPage(stagedFrame, text));
-                if (type != contentType::payloads) {
+                if (type != contentType::payloads && type != contentType::hekate_ipl) {
                     if (type != contentType::cheats || (this->newCheatsVer != this->currentCheatsVer && this->newCheatsVer != "offline")) {
                         stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [this, type, url]() { util::downloadArchive(url, type); }));
                     }
                     stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [this, type]() { util::extractArchive(type, this->newCheatsVer); }));
                 }
-                else {
+                else if (type == contentType::payloads) {
                     fs::createTree(BOOTLOADER_PL_PATH);
                     std::string path = std::string(BOOTLOADER_PL_PATH) + title;
+                    stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path]() { download::downloadFile(url, path, OFF); }));
+                }
+                else if (type == contentType::hekate_ipl) {
+                    fs::createTree(BOOTLOADER_PATH);
+                    std::string path = std::string(BOOTLOADER_PATH) + title;
                     stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url, path]() { download::downloadFile(url, path, OFF); }));
                 }
 
@@ -149,6 +160,9 @@ void ListDownloadTab::setDescription(contentType type)
             break;
         case contentType::payloads:
             description->setText(fmt::format("menus/main/payloads_label"_i18n, BOOTLOADER_PL_PATH));
+            break;
+        case contentType::hekate_ipl:
+            description->setText("menus/main/hekate_ipl_label"_i18n);
             break;
         default:
             break;

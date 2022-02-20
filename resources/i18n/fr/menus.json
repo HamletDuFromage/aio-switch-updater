@@ -108,7 +108,7 @@
     "get_cheats": "Télécharger l'archive de codes de triche de GBAtemp.net (ver {})",
     "get_all_cheats:": "Télécharger l'archive de codes de triche de GBAtemp.net",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "\u25c6 Les sigpatches permettent à la Switch d'installer et d'exécuter des fichiers NSP non officiels. Assurez-vous de choisir les bons sigpatches pour votre configuration (Atmosphère seul ou Hekate+Atmosphère). Redémarrez la console pour appliquer les patches.",
+    "sigpatches_text": "\u25c6 Les sigpatches permettent à la Switch d'installer et d'exécuter des fichiers NSP non officiels. Redémarrez la console pour appliquer les patches.",
     "firmware": "firmware",
     "not_found": "non trouvé",
     "latest_cheats": "Dernière version",

@@ -103,6 +103,7 @@ namespace show_cheats {
     {
         std::filesystem::remove(fmt::format("{}{:016X}/cheats/{}.txt", util::getContentsPath(), tid, bid));
     }
+
 }  // namespace show_cheats
 
 DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : AppletFrame(true, true), tid(tid), name(name)
@@ -184,6 +185,24 @@ void DownloadCheatsPage::AddCheatsfileListItem()
     this->list->addView(item);
 }
 
+void DownloadCheatsPage::ShowBidNotFound()
+{
+    brls::Label* label = new brls::Label(
+        brls::LabelStyle::REGULAR,
+        "menus/cheats/bid_not_found"_i18n,
+        true);
+    this->list->addView(label);
+}
+
+void DownloadCheatsPage::ShowCheatsNotFound()
+{
+    brls::Label* label = new brls::Label(
+        brls::LabelStyle::REGULAR,
+        "menus/cheats/cheats_not_found"_i18n,
+        true);
+    this->list->addView(label);
+}
+
 DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
 {
     this->label = new brls::Label(
@@ -212,14 +231,13 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
             if (this->list->getViewsCount() > 1)
                 this->list->addView(new brls::ListItemGroupSpacing(true));
         }
+        else {
+            ShowCheatsNotFound();
+        }
     }
 
     else {
-        this->label = new brls::Label(
-            brls::LabelStyle::REGULAR,
-            "menus/cheats/bid_not_found"_i18n,
-            true);
-        this->list->addView(label);
+        ShowBidNotFound();
     }
 
     this->list->registerAction((this->bid != "") ? "menus/cheats/cheatslips_dl_cheats"_i18n : "brls/hints/back"_i18n, brls::Key::B, [this] {
@@ -356,14 +374,13 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
             }
             this->list->addView(new brls::ListItemGroupSpacing(true));
         }
+        else {
+            ShowCheatsNotFound();
+        }
     }
 
     else {
-        label = new brls::Label(
-            brls::LabelStyle::REGULAR,
-            "menus/cheats/bid_not_found"_i18n,
-            true);
-        list->addView(label);
+        ShowBidNotFound();
     }
     this->AddCheatsfileListItem();
     this->setContentView(this->list);

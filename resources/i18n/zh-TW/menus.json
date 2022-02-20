@@ -108,7 +108,7 @@
     "get_cheats:": "下載GBAtemp.net金手指資料庫 (版本 {})",
     "get_all_cheats": "下載GBAtemp.net金手指資料庫",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "\ue016 Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。請確認你安裝過程中使用合適的sigpatches(Pure Atmosphère或Hekate+Atmosphère)。安裝完成後請重新開機以套用更新",
+    "sigpatches_text": "\ue016 Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。安裝完成後請重新開機以套用更新",
     "firmware": "韌體",
     "not_found": "沒有符合的項目",
     "latest_cheats": "最新版本",

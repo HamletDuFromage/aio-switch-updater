@@ -46,7 +46,8 @@
     "show_existing": "Show existing",
     "delete_cheats": "Delete cheats for this game",
     "deletion_error": "Couldn't delete the cheat files for game with ID:\n{}",
-    "show_cheat_files": "Show all cheat files"
+    "show_cheat_files": "Show all cheat files",
+    "cheats_not_found": "Couldn't find cheat codes matching this build ID."
   },
   "common": {
     "downloading": "Downloading…",
@@ -108,7 +109,7 @@
     "get_cheats": "Download GBAtemp.net cheat archive (ver {})",
     "get_all_cheats:": "Download GBAtemp.net cheat archive",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "\ue016 Sigpatches allow your Switch to install and run unofficial NSP files. Make sure you pick the correct sigpatches for your setup (Atmosphère only or Hekate+Atmosphère). Reboot the console to apply patches.",
+    "sigpatches_text": "\ue016 Sigpatches allow your Switch to install and run unofficial NSP files. Reboot the console to apply patches.",
     "firmware": "firmware",
     "not_found": "not found",
     "latest_cheats": "Latest version",
@@ -132,7 +133,8 @@
     "launch_warning": "Please pay attention to the following points before using the app:\n\n\ue016 Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\ue016 In order to avoid any risk of data corruption, using this app on an exFAT SD card is STRONGLY discouraged.\n\n\ue016 The latest information about features that have been introduced and/or changed is available in the  Tools->Changelog menu.\n\nThis screen won't show again.",
     "footer_text": "v{} | {:.1f}GB available",
     "theme_warning": "It seems like you have a custom theme installed, this may cause your system to fail to boot after upgrading your firmware.\nPlease consider deleting it before upgrading.",
-    "payloads_label": "\ue016 Download RCM payloads to {}"
+    "payloads_label": "\ue016 Download RCM payloads to {}",
+    "hekate_ipl_label": "\ue016 Download a stripped down, sigpatches compatibles, \"just works\" hekate_ipl.ini config file. This will overwrite your current hekate_ipl.ini."
   },
   "hide": {
     "title": "Hide tabs",

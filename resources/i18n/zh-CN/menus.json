@@ -68,7 +68,7 @@
     "latest_cheats": "最新版本",
     "app": "应用",
     "cfw": "自制系统",
-    "cfw_text": "\ue016 主要 Switch 破解系统. 如果你使用 Atmosphère with Hekate, 下载 Atmosphère, 然后 Hekate.",
+    "cfw_text": "\ue016 主要 Switch 破解系统.",
     "cheats": "金手指",
     "links_not_found": "如果点击功能后，界面没有反应,确保switch已经连接互联网\n如果问题依然存在\n请到GitHub(https://github.com/HamletDuFromage/AIO-switch-updater)上为作者提交issue.",
     "new_update": " - 最版本可用,请更新最新版本",
