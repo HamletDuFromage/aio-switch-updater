@@ -2,7 +2,7 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-Switch-Updater è distribuito con licenza GPL-3.0",
-    "disclaimers": "\ue016 Esclusi i cheat che sono presi dal thread principale su GBAtemp.net, HamletDuFromage non hosta niente. Tutti i crediti vanno ai rispettivi proprietari.\n\ue016 I link vengono aggiornati ognitre ore. Se un link continua a non funzionare dopo che siano passate 3 ore, apri una issue su GitHub.\n"
+    "disclaimers": "\u25c6 Esclusi i cheat che sono presi dal thread principale su GBAtemp.net, HamletDuFromage non hosta niente. Tutti i crediti vanno ai rispettivi proprietari.\n\u25c6 I link vengono aggiornati ognitre ore. Se un link continua a non funzionare dopo che siano passate 3 ore, apri una issue su GitHub.\n"
   },
   "cheats": {
     "installed": "Cheats installati",
@@ -57,16 +57,16 @@
   },
   "main": {
     "getting": "Ottengo {}",
-    "firmware_text": "\ue016 il dump del Firmware da 'https://darthsternie.net/switch-firmwares/'. Una volta scaricato, sarà estratto in '/firmware'. Puoi installare l'aggiornamento tramite Daybreak.\n\ue016 FW attuale: ",
-    "cheats_text": "\ue016 Questo scaricherà quotidianamente un archivio di cheat da 'gbatemp.net'. I cheat per i giochi non installati non saranno estratti sulla tua scheda SD. Puoi disabilitare l'aggiornamento dei cheat in 'Tools->Cheat menu'.\n\ue016 Current cheats version: ",
+    "firmware_text": "\u25c6 il dump del Firmware da 'https://darthsternie.net/switch-firmwares/'. Una volta scaricato, sarà estratto in '/firmware'. Puoi installare l'aggiornamento tramite Daybreak.\n\u25c6 FW attuale: ",
+    "cheats_text": "\u25c6 Questo scaricherà quotidianamente un archivio di cheat da 'gbatemp.net'. I cheat per i giochi non installati non saranno estratti sulla tua scheda SD. Puoi disabilitare l'aggiornamento dei cheat in 'Tools->Cheat menu'.\n\u25c6 Current cheats version: ",
     "sigpatches": "sigpatches",
-    "sigpatches_text": "\ue016 Le sigpatches consentono di installare ed eseguire NSP non ufficiali sulla Switch.",
+    "sigpatches_text": "\u25c6 Le sigpatches consentono di installare ed eseguire NSP non ufficiali sulla Switch.",
     "firmware": "firmware",
     "not_found": "non trovato",
     "latest_cheats": "Ultima versione",
     "app": "app",
     "cfw": "CFW",
-    "cfw_text": "\ue016 Main Switch CFWs. Se vuoi usare Atmosphère con Hekate, scarica Atmosphère, poi Hekate.",
+    "cfw_text": "\u25c6 Main Switch CFWs. Se vuoi usare Atmosphère con Hekate, scarica Atmosphère, poi Hekate.",
     "cheats": "cheats",
     "links_not_found": "Non riesco a trova un link di download, accertati che la Switch abbia accesso a internet.\nSe il problema persiste, apri una issue su GitHub.",
     "new_update": " - Nuovo aggiornamento disponibile",
