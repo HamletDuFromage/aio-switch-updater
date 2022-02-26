@@ -113,6 +113,7 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 - [pedruhb](https://github.com/pedruhb) for the Brazilian locale.
 - [AD2076](https://github.com/AD2076) for the Italian locale.
 - [qazrfv1234](https://github.com/qazrfv1234) for the Traditional Chinese locale.
+- [Nota Inutilis](https://github.com/NotaInutilis/) for the French locale.
 - [Team Neptune](https://github.com/Team-Neptune) whose rcm code I used.
 - [fennectech](https://github.com/fennectech) for helping test the app and providing suggestions.
 - Iliak for [Cheat Slips](https://www.cheatslips.com/).
