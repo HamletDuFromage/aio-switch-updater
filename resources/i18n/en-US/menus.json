@@ -47,7 +47,8 @@
     "delete_cheats": "Delete cheats for this game",
     "deletion_error": "Couldn't delete the cheat files for game with ID:\n{}",
     "show_cheat_files": "Show all cheat files",
-    "cheats_not_found": "Couldn't find cheat codes matching this build ID."
+    "cheats_not_found": "Couldn't find cheat codes matching this build ID.",
+    "old_cheats_found": "Cheat codes matching BID(s) [ {}] exist."
   },
   "common": {
     "downloading": "Downloading…",

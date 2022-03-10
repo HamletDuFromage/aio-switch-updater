@@ -35,7 +35,7 @@ protected:
     void WriteCheats(const std::string& cheatContent);
     void AddCheatsfileListItem();
     void ShowBidNotFound();
-    void ShowCheatsNotFound();
+    void ShowCheatsNotFound(const std::string& versionsWithCheats = "");
 
     typedef struct
     {
