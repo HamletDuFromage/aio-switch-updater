@@ -194,11 +194,11 @@ void DownloadCheatsPage::ShowBidNotFound()
     this->list->addView(label);
 }
 
-void DownloadCheatsPage::ShowCheatsNotFound()
+void DownloadCheatsPage::ShowCheatsNotFound(const std::string& versionsWithCheats)
 {
     brls::Label* label = new brls::Label(
         brls::LabelStyle::REGULAR,
-        "menus/cheats/cheats_not_found"_i18n,
+        "menus/cheats/cheats_not_found"_i18n + (!versionsWithCheats.empty() ? "\n" + fmt::format("menus/cheats/old_cheats_found"_i18n, versionsWithCheats) : ""),
         true);
     this->list->addView(label);
 }
@@ -375,7 +375,11 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
             this->list->addView(new brls::ListItemGroupSpacing(true));
         }
         else {
-            ShowCheatsNotFound();
+            std::string versionsWithCheats;
+            for (auto& [key, val] : cheatsJson.items()) {
+                versionsWithCheats += key + " ";
+            }
+            ShowCheatsNotFound(versionsWithCheats);
         }
     }
 
