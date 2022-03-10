@@ -2,7 +2,7 @@
   "about": {
     "title": "多工具合一任天堂Switch更新器",
     "copyright": "多工具合一任天堂Switch更新器遵循 GPL-3.0 协议",
-    "disclaimers": "\ue016 除了从主Gbatemp线程镜像的金手指外,本软件作者不拥有任何金手指。所有的信用归于各自的所有者\n\ue016 链接每三个小时刷新一次. 如果链接在3小时后仍然有问题，请到GitHub给作者 issue.\n"
+    "disclaimers": "\u25c6 除了从主Gbatemp线程镜像的金手指外,本软件作者不拥有任何金手指。所有的信用归于各自的所有者\n\u25c6 链接每三个小时刷新一次. 如果链接在3小时后仍然有问题，请到GitHub给作者 issue.\n"
   },
   "cheats": {
     "installed": "安装金手指",
@@ -59,16 +59,16 @@
   },
   "main": {
     "getting": "获取 {}",
-    "firmware_text": "\ue016 固件从 'https://darthsternie.net/switch-firmwares/ 下载'. 下载之后,文件会被解压到 '/firmware'. 您可以使用 Daybreak 来安装它 .\n\ue016 当前FW版本: ",
-    "cheats_text": "\ue016 这个金手指的下载和更新地址是  'gbatemp.net'. 你的机器中没有的游戏,这些金手指不会解压到你的SD卡中 你可以在'工具->金手指菜单' 关闭金手指更新.\n\ue016 当前金手指版本: ",
+    "firmware_text": "\u25c6 固件从 'https://darthsternie.net/switch-firmwares/ 下载'. 下载之后,文件会被解压到 '/firmware'. 您可以使用 Daybreak 来安装它 .\n\u25c6 当前FW版本: ",
+    "cheats_text": "\u25c6 这个金手指的下载和更新地址是  'gbatemp.net'. 你的机器中没有的游戏,这些金手指不会解压到你的SD卡中 你可以在'工具->金手指菜单' 关闭金手指更新.\n\u25c6 当前金手指版本: ",
     "sigpatches": "数字签名",
-    "sigpatches_text": "\ue016 数字签名允许你运行没被任天堂收录的nsp文件. 确保为您的设置选择了正确的签名 (pure Atmosphère (大气层)or Hekate+Atmosphère).",
+    "sigpatches_text": "\u25c6 数字签名允许你运行没被任天堂收录的nsp文件. 确保为您的设置选择了正确的签名 (pure Atmosphère (大气层)or Hekate+Atmosphère).",
     "firmware": "固件",
     "not_found": "没有找到",
     "latest_cheats": "最新版本",
     "app": "应用",
     "cfw": "自制系统",
-    "cfw_text": "\ue016 主要 Switch 破解系统.",
+    "cfw_text": "\u25c6 主要 Switch 破解系统.",
     "cheats": "金手指",
     "links_not_found": "如果点击功能后，界面没有反应,确保switch已经连接互联网\n如果问题依然存在\n请到GitHub(https://github.com/HamletDuFromage/AIO-switch-updater)上为作者提交issue.",
     "new_update": " - 最版本可用,请更新最新版本",
