@@ -47,6 +47,8 @@
     "delete_cheats": "このゲームのチートを削除する",
     "deletion_error": "IDのゲームのチートファイルを削除できませんでした:\n{}",
     "show_cheat_files": "すべてのチートファイルを表示する"
+    "cheats_not_found": "このビルドIDに一致するチートコードが見つかりませんでした。",
+    "old_cheats_found": "BID(s) [ {}] に一致するチートコードが存在します。"
   },
   "common": {
     "downloading": "ダウンロード中…",
@@ -133,6 +135,7 @@
     "footer_text": "v{} | {:.1f}GB 利用可能",
     "theme_warning": "カスタムテーマがインストールされているようです。これにより、ファームウェアのアップグレード後にシステムが起動に失敗する可能性があります。\nアップグレードする前に削除することを検討してください。",
     "payloads_label": "\u25c6 RCMペイロードを{}にダウンロードします。"
+	"hekate_ipl_label": "\u25c6 sigpath互換のhekate_ipl.iniの設定ファイルをダウンロード。 これにより、現在のhekate_ipl.iniが上書きされます。"
   },
   "hide": {
     "title": "タブを非表示",
