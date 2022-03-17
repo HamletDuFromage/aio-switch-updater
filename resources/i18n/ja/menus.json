@@ -46,7 +46,7 @@
     "show_existing": "既存のものを表示",
     "delete_cheats": "このゲームのチートを削除する",
     "deletion_error": "IDのゲームのチートファイルを削除できませんでした:\n{}",
-    "show_cheat_files": "すべてのチートファイルを表示する"
+    "show_cheat_files": "すべてのチートファイルを表示する",
     "cheats_not_found": "このビルドIDに一致するチートコードが見つかりませんでした。",
     "old_cheats_found": "BID(s) [ {}] に一致するチートコードが存在します。"
   },
