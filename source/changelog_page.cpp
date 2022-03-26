@@ -226,6 +226,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.17.0");
     changes.push_back("\uE016 Add ability to download a basic hekate_ipl file.\n\uE016 Add error messages when cheats are not found for a game.");
 
+    verTitles.push_back("v2.17.1");
+    changes.push_back("\uE016 Add disclaimer when cheat codes are found for a different game version.\n\uE016 Improve French and Japanese localization.");
+
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

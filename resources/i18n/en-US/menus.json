@@ -122,7 +122,7 @@
     "bootloaders_text": "\u25c6 Download and update bootloaders.",
     "cheats": "cheats",
     "links_not_found": "Could not find a download link, make sure the Switch has access to the internet.\nIf this problem persists, please open an issue on Github.",
-    "new_update": "- New app update available",
+    "new_update": " - New app update available",
     "about": "About",
     "update_ams": "Update Atmosphère",
     "update_cfw": "Update CFW",
