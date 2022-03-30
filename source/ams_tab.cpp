@@ -180,14 +180,7 @@ void AmsTab::ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules)
             }
             name_map.insert(std::pair(module_value.at("displayName"), module.key()));
             deepseaListItem->registerAction("menus/ams_update/show_module_description"_i18n, brls::Key::Y, [module_value] {
-                brls::Dialog* dialog;
-                dialog = new brls::Dialog(fmt::format("{}:\n{}", module_value.at("repo"), module_value.at("description")));
-                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                    dialog->close();
-                };
-                dialog->addButton("menus/common/ok"_i18n, callback);
-                dialog->setCancelable(true);
-                dialog->open();
+                util::showDialogBoxInfo(fmt::format("{}:\n{}", module_value.at("repo"), module_value.at("description")));
                 return true;
             });
             list->addView(deepseaListItem);

@@ -80,7 +80,7 @@ namespace extract {
                 unzipper.extractEntry(entry.name);
                 if (entry.name.substr(0, 13) == "hekate_ctcaer") {
                     fs::copyFile("/" + entry.name, UPDATE_BIN_PATH);
-                    if (CurrentCfw::running_cfw == CFW::ams && util::showDialogBox(fmt::format("menus/utils/set_hekate_reboot_payload"_i18n, UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH), "menus/common/yes"_i18n, "menus/common/no"_i18n) == 0) {
+                    if (CurrentCfw::running_cfw == CFW::ams && util::showDialogBoxBlocking(fmt::format("menus/utils/set_hekate_reboot_payload"_i18n, UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH), "menus/common/yes"_i18n, "menus/common/no"_i18n) == 0) {
                         fs::copyFile(UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH);
                     }
                 }

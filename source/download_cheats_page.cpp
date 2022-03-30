@@ -25,19 +25,13 @@ namespace show_cheats {
             appView->setContentView(cheatsList);
             appView->registerAction("menus/cheats/delete_file"_i18n, brls::Key::X, [tid, bid] {
                 DeleteCheats(tid, bid);
-                brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
-                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                    dialog->close();
-                };
-                dialog->addButton("menus/common/ok"_i18n, callback);
-                dialog->setCancelable(true);
-                dialog->open();
+                util::showDialogBoxInfo("menus/common/all_done"_i18n);
                 return true;
             });
             brls::PopupFrame::open(name, appView, "");
         }
         else {
-            NoCheatsFoundPopup();
+            util::showDialogBoxInfo("menus/cheats/not_found"_i18n);
         }
     }
 
@@ -61,19 +55,8 @@ namespace show_cheats {
             brls::PopupFrame::open(name, appView, "");
         }
         else {
-            NoCheatsFoundPopup();
+            util::showDialogBoxInfo("menus/cheats/not_found"_i18n);
         }
-    }
-
-    void NoCheatsFoundPopup()
-    {
-        brls::Dialog* dialog = new brls::Dialog("menus/cheats/not_found"_i18n);
-        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-            dialog->close();
-        };
-        dialog->addButton("menus/common/ok"_i18n, callback);
-        dialog->setCancelable(true);
-        dialog->open();
     }
 
     bool CreateCheatList(const std::filesystem::path& path, brls::List** cheatsList)
@@ -276,21 +259,16 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
             }
 
             if (error != 0) {
-                brls::Dialog* dialog;
+                std::string error_message;
                 switch (error) {
                     case 1:
-                        dialog = new brls::Dialog("menus/cheats/quota"_i18n);
+                        error_message = "menus/cheats/quota"_i18n;
                         break;
                     case 2:
-                        dialog = new brls::Dialog("menus/cheats/cheatslips_error"_i18n);
+                        error_message = "menus/cheats/cheatslips_error"_i18n;
                         break;
                 }
-                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                    dialog->close();
-                };
-                dialog->addButton("menus/common/ok"_i18n, callback);
-                dialog->setCancelable(true);
-                dialog->open();
+                util::showDialogBoxInfo(error_message);
             }
         }
         if (error == 0) {
@@ -361,13 +339,7 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
                 this->listItem = new brls::ListItem(cheat.at("title"));
                 listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, cheat] {
                     WriteCheats(cheat.at("content"));
-                    brls::Dialog* dialog = new brls::Dialog(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, cheat.at("title")));
-                    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                        dialog->close();
-                    };
-                    dialog->addButton("menus/common/ok"_i18n, callback);
-                    dialog->setCancelable(true);
-                    dialog->open();
+                    util::showDialogBoxInfo(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, cheat.at("title")));
                     return true;
                 });
                 this->list->addView(listItem);

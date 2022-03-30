@@ -32,8 +32,9 @@ namespace util {
     std::vector<std::string> fetchPayloads();
     void shutDown(bool reboot = false);
     void rebootToPayload(const std::string& path);
-    int showDialogBox(const std::string& text, const std::string& opt);
-    int showDialogBox(const std::string& text, const std::string& opt1, const std::string& opt2);
+    void showDialogBoxInfo(const std::string& text);
+    int showDialogBoxBlocking(const std::string& text, const std::string& opt);
+    int showDialogBoxBlocking(const std::string& text, const std::string& opt1, const std::string& opt2);
     std::string getLatestTag(const std::string& url);
     std::string downloadFileToString(const std::string& url);
     std::string getCheatsVersion();

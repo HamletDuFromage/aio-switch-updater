@@ -279,13 +279,7 @@ void AppPage_DownloadedCheats::DeclareGameListItem(const std::string& name, u64 
     if (titles.find(tid_str) != titles.end()) {
         listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { show_cheats::ShowCheatFiles(tid, name); });
         listItem->registerAction("menus/cheats/delete_cheats"_i18n, brls::Key::Y, [tid_str] {
-            brls::Dialog* dialog = new brls::Dialog(extract::removeCheatsDirectory(fmt::format("{}{}", util::getContentsPath(), tid_str)) ? "menus/common/all_done"_i18n : fmt::format("menus/cheats/deletion_error"_i18n, tid_str));
-            brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                dialog->close();
-            };
-            dialog->addButton("menus/common/ok"_i18n, callback);
-            dialog->setCancelable(true);
-            dialog->open();
+            util::showDialogBoxInfo(extract::removeCheatsDirectory(fmt::format("{}{}", util::getContentsPath(), tid_str)) ? "menus/common/all_done"_i18n : fmt::format("menus/cheats/deletion_error"_i18n, tid_str));
             return true;
         });
         AppPage::DeclareGameListItem(name, tid, controlData);

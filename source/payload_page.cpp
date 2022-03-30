@@ -57,13 +57,7 @@ void PayloadPage::RegisterCopyAction(brls::Key key, const std::string& payload_p
         std::string res = fs::copyFile(payload_path, payload_dest)
                               ? fmt::format("menus/payloads/copy_success"_i18n, payload_path, payload_dest)
                               : "Failed.";
-        brls::Dialog* dialog = new brls::Dialog(res);
-        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-            dialog->close();
-        };
-        dialog->addButton("menus/common/ok"_i18n, callback);
-        dialog->setCancelable(true);
-        dialog->open();
+        util::showDialogBoxInfo(res);
         return true;
     });
 }

@@ -100,13 +100,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
                 error += "\uE016 Running in applet mode/through a forwarder.\n\uE016 Please launch hbmenu by holding [R] on a game";
             }
             if (!error.empty()) {
-                brls::Dialog* dialog = new brls::Dialog(error);
-                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                    dialog->close();
-                };
-                dialog->addButton("menus/common/ok"_i18n, callback);
-                dialog->setCancelable(true);
-                dialog->open();
+                util::showDialogBoxInfo(error);
             }
         }
     });
@@ -122,13 +116,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
         else {
             error = "menus/tools/batch_copy_config_not_found"_i18n;
         }
-        brls::Dialog* dialog = new brls::Dialog(error);
-        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-            dialog->close();
-        };
-        dialog->addButton("menus/common/ok"_i18n, callback);
-        dialog->setCancelable(true);
-        dialog->open();
+        util::showDialogBoxInfo(error);
     });
     move->setHeight(LISTITEM_HEIGHT);
 
@@ -144,13 +132,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
         fs::removeDir(AMS_DIRECTORY_PATH);
         fs::removeDir(SEPT_DIRECTORY_PATH);
         fs::removeDir(FW_DIRECTORY_PATH);
-        brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
-        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-            dialog->close();
-        };
-        dialog->addButton("menus/common/ok"_i18n, callback);
-        dialog->setCancelable(true);
-        dialog->open();
+        util::showDialogBoxInfo("menus/common/all_done"_i18n);
     });
     cleanUp->setHeight(LISTITEM_HEIGHT);
 

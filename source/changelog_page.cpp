@@ -1,5 +1,7 @@
 #include "changelog_page.hpp"
 
+#include "utils.hpp"
+
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 ChangelogPage::ChangelogPage() : AppletFrame(true, true)
@@ -233,13 +235,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
         listItem->getClickEvent()->subscribe([change](brls::View* view) {
-            brls::Dialog* dialog = new brls::Dialog(change);
-            brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                dialog->close();
-            };
-            dialog->addButton("menus/common/ok"_i18n, callback);
-            dialog->setCancelable(true);
-            dialog->open();
+            util::showDialogBoxInfo(change);
         });
         list->addView(listItem);
     }

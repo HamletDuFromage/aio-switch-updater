@@ -67,7 +67,19 @@ namespace util {
         ProgressEvent::instance().setStatusCode(status_code);
     }
 
-    int showDialogBox(const std::string& text, const std::string& opt)
+    void showDialogBoxInfo(const std::string& text)
+    {
+        brls::Dialog* dialog;
+        dialog = new brls::Dialog(text);
+        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+            dialog->close();
+        };
+        dialog->addButton("menus/common/ok"_i18n, callback);
+        dialog->setCancelable(true);
+        dialog->open();
+    }
+
+    int showDialogBoxBlocking(const std::string& text, const std::string& opt)
     {
         int dialogResult = -1;
         int result = -1;
@@ -86,7 +98,7 @@ namespace util {
         return result;
     }
 
-    int showDialogBox(const std::string& text, const std::string& opt1, const std::string& opt2)
+    int showDialogBoxBlocking(const std::string& text, const std::string& opt1, const std::string& opt2)
     {
         int dialogResult = -1;
         int result = -1;
@@ -167,14 +179,14 @@ namespace util {
                 brls::Application::quit();
                 break;
             case contentType::bootloaders: {
-                int overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 extract::extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
                 break;
             }
             case contentType::ams_cfw: {
-                int overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 usleep(800000);
-                int deleteContents = showDialogBox("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                int deleteContents = showDialogBoxBlocking("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 if (deleteContents == 1)
                     removeSysmodulesFlags(AMS_CONTENTS);
                 extract::extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
@@ -273,7 +285,6 @@ namespace util {
 
     std::string readFile(const std::string& path)
     {
-        
         std::string text = "";
         std::ifstream file(path);
         if (file.good()) {
