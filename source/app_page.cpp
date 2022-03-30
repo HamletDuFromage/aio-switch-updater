@@ -43,7 +43,7 @@ void AppPage::PopulatePage()
 
                 tid = records[i].application_id;
 
-                if R_FAILED(GetControlData(tid, controlData, controlSize, name)) continue;
+                if R_FAILED (GetControlData(tid, controlData, controlSize, name)) continue;
 
                 listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
                 this->DeclareGameListItem(name, tid, &controlData);
@@ -154,11 +154,15 @@ uint64_t AppPage::GetCurrentApplicationId()
 AppPage_CheatSlips::AppPage_CheatSlips() : AppPage()
 {
     this->PopulatePage();
+    this->registerAction("menus/cheats/cheatslips_logout"_i18n, brls::Key::X, [this] {
+        std::filesystem::remove(TOKEN_PATH);
+        return true;
+    });
 }
 
 void AppPage_CheatSlips::CreateLabel()
 {
-    this->setTitle("menus/cheats/cheastlips_title"_i18n);
+    this->setTitle("menus/cheats/cheatslips_title"_i18n);
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/cheats/cheatslips_select"_i18n, true);
     list->addView(label);
 }

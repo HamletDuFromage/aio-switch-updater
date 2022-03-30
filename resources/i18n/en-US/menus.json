@@ -17,7 +17,7 @@
     "delete_existing": "Delete all existing cheat codes",
     "delete_orphaned": "Delete orphaned cheat codes",
     "deleting": "Deleting…",
-    "cheastlips_title": "Cheat Slips cheats",
+    "cheatslips_title": "Cheat Slips cheats",
     "gbatemp_title": "GBAtemp.net cheats",
     "get_gbatemp": "Download GBAtemp.net cheat codes",
     "get_cheatslips": "Download Cheat Slips cheat sheets",
@@ -48,7 +48,8 @@
     "deletion_error": "Couldn't delete the cheat files for game with ID:\n{}",
     "show_cheat_files": "Show all cheat files",
     "cheats_not_found": "Couldn't find cheat codes matching this build ID.",
-    "old_cheats_found": "Cheat codes matching BID(s) [ {}] exist."
+    "old_cheats_found": "Cheat codes matching BID(s) [ {}] exist.",
+    "cheatslips_logout": "Log out"
   },
   "common": {
     "downloading": "Downloading…",
