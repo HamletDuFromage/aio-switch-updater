@@ -178,7 +178,6 @@ void ListDownloadTab::createCheatSlipItem()
     cheatslipsItem->getClickEvent()->subscribe([](brls::View* view) {
         if (std::filesystem::exists(TOKEN_PATH)) {
             brls::Application::pushView(new AppPage_CheatSlips());
-            return true;
         }
         else {
             std::string usr, pwd;
@@ -197,13 +196,12 @@ void ListDownloadTab::createCheatSlipItem()
                 tokenFile << token.dump();
                 tokenFile.close();
                 brls::Application::pushView(new AppPage_CheatSlips());
-                return true;
             }
             else {
                 util::showDialogBoxInfo("menus/cheats/cheatslips_wrong_id"_i18n + "\n" + "menus/cheats/kb_error"_i18n);
-                return true;
             }
         }
+        return true;
     });
     this->addView(cheatslipsItem);
 }
