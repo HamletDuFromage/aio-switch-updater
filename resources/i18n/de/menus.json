@@ -161,7 +161,6 @@
     "language": "Sprache der Anwendung ändern"
   },
   "utils": {
-
     "fw_warning": "Wegen der Größe der Firmwarearchive werden Downloads im Applet Mode nicht unterstützt. Bitte öffne die App mit vollem RAM Zugriff (Title Redirection).",
     "overwrite": " Möchtest du die folgende Datei überschreiben: ",
     "overwrite_inis": "Möchtest du die vorhandene .ini Konfigurationsdateien überschreiben?",
@@ -198,26 +197,5 @@
     "insufficient_storage": "Auf der SD-Karte ist nicht genügend Speicherplatz vorhanden, um diesen Vorgang durchzuführen.",
     "error_message": "{}\\nBitte versuche es in Kürze erneut. Wenn das Problem weiterhin besteht, öffne ein Issue auf GitHub",
     "mariko_payload_missing": "Um Atmosphère auf gepatchten Switches zu aktualisieren, muss der Payload \"payload.bin\" genannt werden und sollte sich im Root-Verzeichnis der SD-Karte befinden."
-  },
-  "language": {
-    "system_default": "Systemvoreinstellung",
-    "en-US": "American English (en-US)",
-    "ja": "日本語 (ja)",
-    "fr": "Français (fr)",
-    "de": "Deutsch (de)",
-    "it": "Italiano (it)",
-    "es": "Español (es)",
-    "zh-CN": "简体中文 (zh-CN)",
-    "ko": "한국어 (ko)",
-    "nl": "Nederlands (nl)",
-    "pt": "Português (pt)",
-    "ru": "Русский (ru)",
-    "pl": "Polski (pl)",
-    "zh-TW": "繁體中文 (zh-TW)",
-    "en-GB": "English (Great Britain) (en-GB)",
-    "fr-CA": "Français (Canada) (fr-CA)",
-    "es-419": "Español (Latinoamérica) (es-419)",
-    "zh-Hant": "Traditionelles Chinesisch (zh-Hant)",
-    "zh-Hans": "Vereinfachtes Chinesisch (zh-Hans)"
   }
 }

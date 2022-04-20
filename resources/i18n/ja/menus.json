@@ -198,26 +198,5 @@
     "insufficient_storage": "この操作を実行するのに十分な空き容量がSDカードにありません。",
     "error_message": "{}\nしばらくしてからもう一度お試しください。問題が解決しない場合は、GitHubで問題を開きます",
     "mariko_payload_missing": "対策機の本体でAtmosphèreを更新するには、ペイロードに \"payload.bin\" という名前を付け、SDカードのルートに配置する必要があります。"
-  },
-  "language": {
-    "system_default": "システムのデフォルト",
-    "en-US": "American English (en-US)",
-    "ja": "日本語 (ja)",
-    "fr": "Français (fr)",
-    "de": "Deutsch (de)",
-    "it": "Italiano (it)",
-    "es": "Español (es)",
-    "zh-CN": "简体中文 (zh-CN)",
-    "ko": "한국어 (ko)",
-    "nl": "Nederlands (nl)",
-    "pt": "Português (pt)",
-    "ru": "Русский (ru)",
-    "pl": "Polski (pl)",
-    "zh-TW": "繁體中文 (zh-TW)",
-    "en-GB": "English (Great Britain) (en-GB)",
-    "fr-CA": "Français (Canada) (fr-CA)",
-    "es-419": "Español (Latinoamérica) (es-419)",
-    "zh-Hant": "Traditional Chinese (zh-Hant)",
-    "zh-Hans": "Simplified Chinese (zh-Hans)"
   }
 }

@@ -199,26 +199,5 @@
     "insufficient_storage": "There isn't enough space available on your SD card to perform this operation.",
     "error_message": "{}\nPlease try again in a little while. If the problem persists, open an issue on GitHub.",
     "mariko_payload_missing": "In order to update Atmosphère on patched Switches, your payload needs to be named \"payload.bin\" and should be at the root of your SD card."
-  },
-  "language": {
-    "system_default": "System default",
-    "en-US": "American English (en-US)",
-    "ja": "日本語 (ja)",
-    "fr": "Français (fr)",
-    "de": "Deutsch (de)",
-    "it": "Italiano (it)",
-    "es": "Español (es)",
-    "zh-CN": "简体中文 (zh-CN)",
-    "ko": "한국어 (ko)",
-    "nl": "Nederlands (nl)",
-    "pt": "Português (pt)",
-    "ru": "Русский (ru)",
-    "pl": "Polski (pl)",
-    "zh-TW": "繁體中文 (zh-TW)",
-    "en-GB": "English (Great Britain) (en-GB)",
-    "fr-CA": "Français (Canada) (fr-CA)",
-    "es-419": "Español (Latinoamérica) (es-419)",
-    "zh-Hant": "Traditional Chinese (zh-Hant)",
-    "zh-Hans": "Simplified Chinese (zh-Hans)"
   }
 }

@@ -139,22 +139,29 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     language = new brls::ListItem("menus/tools/language"_i18n);
     language->getClickEvent()->subscribe([](brls::View* view) {
         std::vector<std::pair<std::string, std::string>> languages{
-            std::make_pair("menus/language/en-US"_i18n, "en-US"),
-            std::make_pair("menus/language/ja"_i18n, "ja"),
-            std::make_pair("menus/language/fr"_i18n, "fr"),
-            std::make_pair("menus/language/de"_i18n, "de"),
-            std::make_pair("menus/language/it"_i18n, "it"),
-            std::make_pair("menus/language/es"_i18n, "es"),
-            std::make_pair("menus/language/pl"_i18n, "pl"),
-            std::make_pair("menus/language/zh-CN"_i18n, "zh-CN"),
-            std::make_pair("menus/language/zh-TW"_i18n, "zh-TW"),
-            std::make_pair("menus/language/es-419"_i18n, "es-419"),
-            std::make_pair("menus/language/zh-Hant"_i18n, "zh-Hant"),
-            std::make_pair("menus/language/zh-Hans"_i18n, "zh-Hans")};
+            std::make_pair("American English ({})", "en-US"),
+            std::make_pair("日本語 ({})", "ja"),
+            std::make_pair("Français ({})", "fr"),
+            std::make_pair("Deutsch ({})", "de"),
+            std::make_pair("Italiano ({})", "it"),
+            std::make_pair("Español ({})", "es"),
+            std::make_pair("Português ({})", "pt"),
+            std::make_pair("Nederlands ({})", "nl"),
+            std::make_pair("Русский ({})", "ru"),
+            std::make_pair("한국어 ({})", "ko"),
+            std::make_pair("Polski ({})", "pl"),
+            std::make_pair("简体中文 ({})", "zh-CN"),
+            std::make_pair("繁體中文 ({})", "zh-TW"),
+            std::make_pair("English (Great Britain) ({})", "en-GB"),
+            std::make_pair("Français (Canada) ({})", "fr-CA"),
+            std::make_pair("Español (Latinoamérica) ({})", "es-419"),
+            std::make_pair("Português brasileiro ({})", "pt-BR"),
+            std::make_pair("Traditional Chinese ({})", "zh-Hant"),
+            std::make_pair("Simplified Chinese ({})", "zh-Hans")};
         brls::AppletFrame* appView = new brls::AppletFrame(true, true);
         brls::List* list = new brls::List();
         brls::ListItem* listItem;
-        listItem = new brls::ListItem(fmt::format("{} ({})", "menus/language/system_default"_i18n, i18n::getCurrentLocale()));
+        listItem = new brls::ListItem(fmt::format("System Default ({})", i18n::getCurrentLocale()));
         listItem->registerAction("menus/tools/language"_i18n, brls::Key::A, [] {
             std::filesystem::remove(LANGUAGE_JSON);
             brls::Application::quit();
@@ -162,16 +169,18 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
         });
         list->addView(listItem);
         for (auto& language : languages) {
-            listItem = new brls::ListItem(language.first);
-            listItem->registerAction("menus/tools/language"_i18n, brls::Key::A, [language] {
-                json updatedLanguage = json::object();
-                updatedLanguage["language"] = language.second;
-                std::ofstream out(LANGUAGE_JSON);
-                out << updatedLanguage.dump();
-                brls::Application::quit();
-                return true;
-            });
-            list->addView(listItem);
+            if (std::filesystem::exists(fmt::format(LOCALISATION_FILE, language.second))) {
+                listItem = new brls::ListItem(fmt::format(language.first, language.second));
+                listItem->registerAction("menus/tools/language"_i18n, brls::Key::A, [language] {
+                    json updatedLanguage = json::object();
+                    updatedLanguage["language"] = language.second;
+                    std::ofstream out(LANGUAGE_JSON);
+                    out << updatedLanguage.dump();
+                    brls::Application::quit();
+                    return true;
+                });
+                list->addView(listItem);
+            }
         }
         appView->setContentView(list);
         brls::PopupFrame::open("menus/tools/language"_i18n, appView, "", "");

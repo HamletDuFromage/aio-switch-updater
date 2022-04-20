@@ -185,7 +185,7 @@
     "cant_fetch_deepsea": "Impossible de récupérer les paquets. Ouvrez une issue GitHub si le problème persiste.",
     "build_your_deepsea": "Personnalisez l'installation de DeepSea en sélectionnant les paquets à inclure",
     "getting_ams": "Installer Atmopshère",
-    "custom_packs_label": "\u25c6 Voici les paquets listés dans le fichier {}. Assurez-vous de la fiabilité de leur source car il ne bénéficient d'aucun support de la part d'AIO-Switch-Updater."   
+    "custom_packs_label": "\u25c6 Voici les paquets listés dans le fichier {}. Assurez-vous de la fiabilité de leur source car il ne bénéficient d'aucun support de la part d'AIO-Switch-Updater."
   },
   "firmware": {
     "launch_daybreak": "Voulez-vous lancer Daybreak pour installer la mise à jour système téléchargée\u00a0?"
@@ -197,26 +197,5 @@
     "insufficient_storage": "Il n'y a pas assez d'espace disponible sur la carte SD pour effectuer cette opération.",
     "error_message": "{}\nVeuillez réessayer un peu plus tard. Si le problème persiste, ouvrez une issue sur GitHub",
     "mariko_payload_missing": "Pour mettre à jour Atmopshère sur une Switch patchée, le payload doit être nommé \"payload.bin\" et être placé à la racine de votre carte SD."
-  },
-  "language": {
-    "system_default": "Langue du système",
-    "en-US": "American English (en-US)",
-    "ja": "日本語 (ja)",
-    "fr": "Français (fr)",
-    "de": "Deutsch (de)",
-    "it": "Italiano (it)",
-    "es": "Español (es)",
-    "zh-CN": "简体中文 (zh-CN)",
-    "ko": "한국어 (ko)",
-    "nl": "Nederlands (nl)",
-    "pt": "Português (pt)",
-    "ru": "Русский (ru)",
-    "pl": "Polski (pl)",
-    "zh-TW": "繁體中文 (zh-TW)",
-    "en-GB": "English (Great Britain) (en-GB)",
-    "fr-CA": "Français (Canada) (fr-CA)",
-    "es-419": "Español (Latinoamérica) (es-419)",
-    "zh-Hant": "Chinois traditionnel (zh-Hant)",
-    "zh-Hans": "Chinois simplifié (zh-Hans)"
   }
 }
