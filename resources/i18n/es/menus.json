@@ -3,6 +3,7 @@
     "title": "Actualizador Todo-en-Uno de Nintendo Switch",
     "copyright": "AIO-Switch-Updater tiene licencia GPL-3.0",
     "disclaimers": "\u25c6 Aparte de trucos obtenidos del hilo principal de GBAtemp.net, HamletDuFromage no provee nada. Todo el crédito pertenece a sus respectivos dueños.\n\u25c6 Los enlaces se actualizan cada tres horas. Si un enlace sigue roto después de 3 horas, por favor abre un issue en GitHub.\n"
+    "donate": "\u25c6 ¿Te gusta la app? Considera hacer una donación para apoyar mi trabajo: 'https://git.io/donate_homlet'"
   },
   "cheats": {
     "installed": "Trucos instalados",
@@ -16,9 +17,39 @@
     "delete_existing": "Borrar todos los trucos existentes",
     "delete_all": "Borrar todos los trucos",
     "deleting": "Borrando…",
+    "cheatslips_title": "Trucos de Cheat Slips",
+    "gbatemp_title": "Trucos de GBAtemp.net",
+    "get_gbatemp": "Descargar trucos de GBAtemp.net",
+    "get_cheatslips": "Descargar trucos de Cheat Slips",
+    "cheats_label": "\u25c6 Descarga trucos individuales desde la base de datos de GBAtemp.net o trucos desde Cheat Slips",
+    "cheatslips_dl": "Descarga una selección de trucos desde Cheat Slips.\nEstos trucos seran añadidos al final del archivo de trucos actual.",
+    "delete_file": "Borrar el fichero de trucos existente",
+    "cheatslips_error": "No se pudo obtener los trucos seleccionados/token inválido.",
+    "quota": "¡Cuota excedida por hoy!\nDirígete a 'https://www.cheatslips.com/subscriptions' para saber cómo aumentarla.",
+    "sheet_content": "Lista de trucos",
+    "cheatslips_select": "Selecciona el juego para descargar sus trucos.",
+    "cheatslips_wrong_id": "No se puede obtener el token, Asegurate de ingresar el nombre de usuario correctamente.",
+    "kb_error": "Si el teclado no se muestra, Pruebe ejecutando la app con acceso completo a la RAM (Desde un juego)",
+    "cheatslips_see_more": "Ver mas",
+    "cheatslips_dl_cheats": "Descargar trucos y volver",
+    "bid_not_found": "No podemos obtener el build ID. Prueba a ejecutar AIO-Switch-Updater en 'applet mode' minestras el juego se está ejecutando.",
     "exclude_titles": "Excluir títulos",
     "exclude_titles_desc": "Puedes desactivar las actualizaciones de trucos con este menú",
     "exclude_titles_save": "Guardar elección y volver"
+    "dl_all": "Descarga y extrae al completo los todos los trucos de GBAtemp.net",
+    "gbatemp_dl": "Descarga los trucos desde GBAtemp.net. Estos trucos seran añadidos al final del archivo de trucos actual.\n\u25c6 Build ID: {}",
+    "gbatemp_dl_cheatcode": "Descargar trucos",
+    "gbatemp_dl_successful_dl": "Se ha descargado exitosamente el siguiente truco:\n{}",
+    "applet_mode_not_supported": "Debido a limitaciones de memoria, en 'applet mode' solo puedes obtener trucos para el juego que estás jugando actualmente. Por favor ejecuta AIO-Switch-Updater a travez de un juego para descargar trucos para cualquier juego que tengas.",
+    "cheatfile_label": "Aquí están los trucos listados en el archivo {}",
+    "not_found": "No se pudieron encontrar trucos para este juego.",
+    "show_existing": "Mostrar existente",
+    "delete_cheats": "Borrar trucos para esre juego",
+    "deletion_error": "No se pudieron borrar los trucos para el juego con ID:\n{}",
+    "show_cheat_files": "Mostrar todos los trucos",
+    "cheats_not_found": "No se pudieron encontrar trucos que concuerden con esta build ID.",
+    "old_cheats_found": "Trucos que coincidan con BID(s) [ {}].",
+    "cheatslips_logout": "Cerrar Sesión"
   },
   "common": {
     "downloading": "Descargando…",
@@ -34,9 +65,18 @@
     "updating": "Actualizando app",
     "no": "No",
     "yes": "Sí"
+    "go_back": "Volver",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "off": "Apagado",
+    "selected": "Seleccionado",
+    "applet_mode_not_supported": "Esta característica no está disponible en 'applet mode'. Por favor ejecuta AIO-Switch-Updater a travez de un juego para acceder a él."
   },
   "changelog": {
     "changelog": "Cambios"
+  },
+  "sigpatches": {
+    "reboot": "Los cambios tendrán efectos en el siguiente inicio del sistema."
   },
   "payloads": {
     "dl_payloads": "Descargar payloads",
@@ -44,16 +84,25 @@
     "not_found": "No se pudo encontrar un enlace de descarga, asegúrate de que tu Switch tiene acceso a internet.\nSi el problema persiste, por favor abre un issue en GitHub.",
     "set_reboot_payload": "Poner como reboot_payload.bin",
     "set_update_bin": "Poner como /bootloader/update.bin",
-    "copy_success": "Éxito al copiar '",
-    "to": "' a '"
+    "copy_success": "Copiado correctamente `{}` a `{}`."
   },
   "joy_con": {
     "title": "Cambiar color de Joy-Con",
+    "description": "Puedes cambiar de manera interna el color de tus Joy-Cons. Asegurate que estan anclados.\nEl perfil de color sera guardado en `{}`. vete a '{}' para generar tu propio perfil personalizado.",
     "backup": "Copia de seguridad del perfil de color actual",
     "label": "Cambiar color de Joy-Con",
     "backing_up": "Haciendo copia de seguridad del perfil de color actual. Asegúrate de que los Joy-Con están acoplados a la consola. Si el proceso se cuelga, prueba desacoplar y acoplar los Joy-Cons.",
     "changing": "Cambiando color. Asegúrate de que los Joy-Con están acoplados a la consola. Si el proceso se cuelga, prueba a desacoplar y acoplar los Joy-Cons.",
     "all_done": "¡Finalizado! Puede que necesites desacoplar y acoplar tus Joy-Cons para que el cambio surta efecto."
+  },
+  "pro_con": {
+    "title": "Intercambiador de color del Pro controller",
+    "desc": "Puedes cambiar de manera interna el color de tu Pro controller. Asegurate de estar asigando al Jugador 1.",
+    "warning": "AIO-Switch-Updater actualmente no admite el cambio de color del grip del Pro controller. Usa el Joy-Con Toolkit en PC.",
+    "label": "Intercambiador de color del Pro controller",
+    "backing_up": "Creadno copia del perfil de color.",
+    "all_done": "¡Finalizado! Puede que necesites apagar y encender el pro controller para que el cambio surta efecto.",
+    "changing": "Cambiando el color. Asegurate que el Pro controller está asignado al jugador 1."
   },
   "main": {
     "getting": "Obteniendo {}",
@@ -66,29 +115,108 @@
     "latest_cheats": "Última versión",
     "app": "app",
     "cfw": "CFW",
-    "cfw_text": "\u25c6 Switch CFWs principales. Si quieres usar Atmosphère con Hekate, descarga Atmosphère, y después Hekate.",
+    "ams": "Atmosphère",
+    "ams_text": "\u25c6 Desde este menú, Puedes descargar y actualizar el custom Firmware Atmosphère necesario para ejecutar homebrew.",
+    "cfw_text": "\u25c6 CFWs Alternativos, bootloaders.",
+    "bootloaders_text": "\u25c6 Descarga y actualiza el bootloader.",
     "cheats": "trucos",
     "links_not_found": "No se pudo encontrar un enlace de descarga, asegúrate de que tu Switch tiene acceso a internet.\nSi el problema persiste, por favor abre un issue en GitHub.",
     "new_update": " - Nueva actualización de la app disponible",
     "about": "Acerca de",
+    "update_ams": "Actualizar Atmosphère",
     "update_cfw": "Actualizar CFW",
+    "update_bootloaders": "Actualizar bootloader",
     "update_sigpatches": "Actualizar sigpatches",
     "download_firmware": "Descargar firmwares",
     "download_cheats": "Descargar trucos",
     "tools": "Herramientas"
+    "launch_warning": "Por favor preste atencion a los siguientes puntos antes de usar la app:\n\n\u25c6 Lea primero como actualizar manualmente su switch. Esto le ayudará a entender mejor lo que hace esta app y sabrás que hacer en caso de que algo salga mal.\n\u25c6 Para evitar cualquier riesgo de corrupción de datos, se desaconseja encarecidamente utilizar esta aplicación en una tarjeta SD exFAT.\n\n\u25c6 La última información sobre las características introducidas y/o cambios está disponible en el menú Herramientas->Cambios.\n\nEsta pantalla no se mostrará de nuevo.",
+    "footer_text": "v{} | {:.1f}GB Disponibles",
+    "theme_warning": "Parece que tiene instalado un tema personalizado, Esto puede causar que el sistema falle al inciar tras actualizar el firmware.\nPor favor considere borrar el tema antes de actualizar.",
+    "payloads_label": "\u25c6 Descarga 'RCM payloads' a {}",
+    "hekate_ipl_label": "\u25c6 Descarga un hekate_ipl.ini básico, compatible con sigpatches, \"Funcional\". Esto sobrescribira tu hekate_ipl.ini actual."
+  },
+  "hide": {
+    "title": "Pestañas ocultas",
+    "desc": "Pestañas ocultas del menú principal",
+    "update_ams_deepsea": "Descargas de Atmosphère y DeepSea"
   },
   "tools": {
     "cheats": "Menú de trucos",
     "joy_cons": "Cambiar color de los Joy-Cons",
+    "pro_cons": "Cambiar color del Pro Controller",
     "dl_payloads": "Descargar payloads a ",
     "inject_payloads": "Inyectar payload",
+    "getting_payload": "Obteniendo payload",
     "update_app": "Actualizar la aplicación (v{})",
     "dl_app": "Descargando:\nAIO-switch-updater\n\nDesde:\n",
     "changelog": "Cambios"
+    "clean_up": "Limpiar Archivos descargados",
+    "hide_tabs": "Pestañas ocultas",
+    "internet_settings": "Editar configuración de Internet",
+    "browser": "Navegador Web",
+    "batch_copy": "Copiar archivos batch",
+    "batch_copy_not_found": "No se encuentran los siguientes ficheros y no se pudieron copiar:\n",
+    "batch_copy_config_not_found": "Esta herramienta te permite automaticamernte copiar ficheros a una direccion específica. Esto podria ser de ayuda dependiendo de tu bootloader. Coge el copy_files.txt en 'https://git.io/aiosu_copyfiles', editalo y añadelo a la carpeta config. Esto se mantendrá despues de las actualizaciones.",
+    "language": "Cambiar idioma de la app"
   },
   "utils": {
     "fw_warning": "Debido al tamaño de los FW, descargar firmwares en modo Applet no está soportado. Por favor, ejecuta la aplicación con acceso a toda la RAM.",
     "overwrite": " ¿Quieres sobrescribir el fichero existente ",
+    "not_an_archive": "El archivo descargado no es un archivo .zip. Lo más probable es que se deba a un enlace roto. Si el problema persiste mas de 30 minutos, por favor abre una incidencia en Github.",
     "overwrite_inis": "¿Quieres sobrescribir los ficheros de configuración .ini existentes?"
+    "set_hekate_reboot_payload": "Quieres copiar el payload Hetake `{}` a `{}`?"
+  }
+    "ams_update": {
+    "reboot_rcm": "La Switch se reiniciará y arrancará un payload especial para finalizar la instalación.",
+    "install_hekate": "¿Quieres descargar tambien hekate?\nSi no, la Switch se reiniciará y arrancará un payload especial para finalizar la instalación.",
+    "delete_contents": "¿Quieres borrar la carpeta '/atmosphere/contents/'? Esto puede evitar crasheos si tienes sysmodules que no funcionan en la ultima version de Atmosphère. Por favor atento ya que esto eliminará todos tus sysmodules, mods y trucos.",
+    "delete_sysmodules_flags": "Would you like to delete all the custom sysmodules startup flags? This will turn off all your sysmodules and prevent crashes if you have sysmodules that do not support the latest Atmosphère.",
+    "current_ams": "\u25c6 Current Atmosphère:",
+    "erista_rev": "\u25c6 Erista revision",
+    "mariko_rev": "\u25c6 Mariko revision",
+    "deepsea_builder": "DeepSea builder",
+    "show_module_description": "Show module's description",
+    "depends_on": "The following modules will also be installed:",
+    "download_custom_deepsea": "Download this custom DeepSea package",
+    "get_custom_deepsea": "Get custom DeepSea package",
+    "deepsea_label": "\u25c6 DeepSea by Team Neptune is a CFW pack that includes Atmosphère, hekate, and various homebrew apps.",
+    "download_deepsea_package": "Compile and download",
+    "cant_fetch_deepsea": "Couldn't fetch packages. Open a Github issue if this persists.",
+    "build_your_deepsea": "Build your own custom DeepSea package by selecting packages",
+    "getting_ams": "Getting Atmosphère",
+    "custom_packs_label": "\u25c6 Here are packs listed in the {} file. Be aware that those are not endorsed by AIO-Switch-Updater so make sure you trust their source."
+  },
+  "firmware": {
+    "launch_daybreak": "Do you want to launch Daybreak to install the downloaded sysupdate?"
+  },
+  "net": {
+    "title": "Internet settings"
+  },
+  "errors": {
+    "insufficient_storage": "There isn't enough space available on your SD card to perform this operation.",
+    "error_message": "{}\nPlease try again in a little while. If the problem persists, open an issue on GitHub.",
+    "mariko_payload_missing": "In order to update Atmosphère on patched Switches, your payload needs to be named \"payload.bin\" and should be at the root of your SD card."
+  },
+  "language": {
+    "system_default": "System default",
+    "en-US": "American English (en-US)",
+    "ja": "日本語 (ja)",
+    "fr": "Français (fr)",
+    "de": "Deutsch (de)",
+    "it": "Italiano (it)",
+    "es-ES": "Español (es-ES)",
+    "zh-CN": "简体中文 (zh-CN)",
+    "ko": "한국어 (ko)",
+    "nl": "Nederlands (nl)",
+    "pt": "Português (pt)",
+    "ru": "Русский (ru)",
+    "pl": "Polski (pl)",
+    "zh-TW": "繁體中文 (zh-TW)",
+    "en-GB": "English (Great Britain) (en-GB)",
+    "fr-CA": "Français (Canada) (fr-CA)",
+    "es-419": "Español (Latinoamérica) (es-419)",
+    "zh-Hant": "Traditional Chinese (zh-Hant)",
+    "zh-Hans": "Simplified Chinese (zh-Hans)"
   }
 }
