@@ -171,32 +171,32 @@
     "reboot_rcm": "La Switch se reiniciará y arrancará un payload especial para finalizar la instalación.",
     "install_hekate": "¿Quieres descargar tambien hekate?\nSi no, la Switch se reiniciará y arrancará un payload especial para finalizar la instalación.",
     "delete_contents": "¿Quieres borrar la carpeta '/atmosphere/contents/'? Esto puede evitar crasheos si tienes sysmodules que no funcionan en la ultima version de Atmosphère. Por favor atento ya que esto eliminará todos tus sysmodules, mods y trucos.",
-    "delete_sysmodules_flags": "Would you like to delete all the custom sysmodules startup flags? This will turn off all your sysmodules and prevent crashes if you have sysmodules that do not support the latest Atmosphère.",
-    "current_ams": "\u25c6 Current Atmosphère:",
-    "erista_rev": "\u25c6 Erista revision",
-    "mariko_rev": "\u25c6 Mariko revision",
-    "deepsea_builder": "DeepSea builder",
-    "show_module_description": "Show module's description",
-    "depends_on": "The following modules will also be installed:",
-    "download_custom_deepsea": "Download this custom DeepSea package",
-    "get_custom_deepsea": "Get custom DeepSea package",
-    "deepsea_label": "\u25c6 DeepSea by Team Neptune is a CFW pack that includes Atmosphère, hekate, and various homebrew apps.",
-    "download_deepsea_package": "Compile and download",
-    "cant_fetch_deepsea": "Couldn't fetch packages. Open a Github issue if this persists.",
-    "build_your_deepsea": "Build your own custom DeepSea package by selecting packages",
-    "getting_ams": "Getting Atmosphère",
-    "custom_packs_label": "\u25c6 Here are packs listed in the {} file. Be aware that those are not endorsed by AIO-Switch-Updater so make sure you trust their source."
+    "delete_sysmodules_flags": "¿Le gustaría desactivar el inicio de los sysmodules? Esto desactivará todos los sysmodules y previene crasheos si estos no funionan en nuevas versiones de Atmosphère.",
+    "current_ams": "\u25c6 Atmosphère actual:",
+    "erista_rev": "\u25c6 Revisión Erista",
+    "mariko_rev": "\u25c6 Revisión Mariko",
+    "deepsea_builder": "Constructor DeepSea",
+    "show_module_description": "Muestra la descripcion de modulos",
+    "depends_on": "Los siguientes modulos han sido instalados:",
+    "download_custom_deepsea": "Descarga este paquete personalizado de DeepSea",
+    "get_custom_deepsea": "Obtener Paquete personalizado de DeepSea",
+    "deepsea_label": "\u25c6 DeepSea del Team Neptune es un pack de CFW que incluye Atmosphère, hekate, y varios homebrews.",
+    "download_deepsea_package": "Compila y descarga",
+    "cant_fetch_deepsea": "No se pudieron obtener los paquetes. Abre una incidencia en GitHub si el problema persiste.",
+    "build_your_deepsea": "Contruye tu propia version de DeepSea seleccionando paquetes",
+    "getting_ams": "Obteniendo Atmosphère",
+    "custom_packs_label": "\u25c6 Aquí estan los paquetes {}. Tenga en cuenta que no están respaldados por AIO-Switch-Updater así que asegurate de que confias en la fuente."
   },
   "firmware": {
-    "launch_daybreak": "Do you want to launch Daybreak to install the downloaded sysupdate?"
+    "launch_daybreak": "Quieres ejecutar Daybreak para instalar la actualizacion de firmware descargada?"
   },
   "net": {
-    "title": "Internet settings"
+    "title": "Configuración de Internet"
   },
   "errors": {
-    "insufficient_storage": "There isn't enough space available on your SD card to perform this operation.",
-    "error_message": "{}\nPlease try again in a little while. If the problem persists, open an issue on GitHub.",
-    "mariko_payload_missing": "In order to update Atmosphère on patched Switches, your payload needs to be named \"payload.bin\" and should be at the root of your SD card."
+    "insufficient_storage": "No hay sificiente espacio disponible en tu tarjeta SD para realizar esta operación.",
+    "error_message": "{}\nPor favor vuelve a intentarlo dentro de un rato. Si el problema persiste, Abre una incidencia en GitHub.",
+    "mariko_payload_missing": "Para actualizar Atmosphère en Switch parcheadas, tu payload debe llamarse \"payload.bin\" y debe estar en la raíz de tu tarjeta SD."
   },
   "language": {
     "system_default": "System default",
