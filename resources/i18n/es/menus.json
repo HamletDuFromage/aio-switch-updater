@@ -2,7 +2,7 @@
   "about": {
     "title": "Actualizador Todo-en-Uno de Nintendo Switch",
     "copyright": "AIO-Switch-Updater tiene licencia GPL-3.0",
-    "disclaimers": "\u25c6 Aparte de trucos obtenidos del hilo principal de GBAtemp.net, HamletDuFromage no provee nada. Todo el crédito pertenece a sus respectivos dueños.\n\u25c6 Los enlaces se actualizan cada tres horas. Si un enlace sigue roto después de 3 horas, por favor abre un issue en GitHub.\n"
+    "disclaimers": "\u25c6 Aparte de trucos obtenidos del hilo principal de GBAtemp.net, HamletDuFromage no provee nada. Todo el crédito pertenece a sus respectivos dueños.\n\u25c6 Los enlaces se actualizan cada tres horas. Si un enlace sigue roto después de 3 horas, por favor abre un issue en GitHub.\n",
     "donate": "\u25c6 ¿Te gusta la app? Considera hacer una donación para apoyar mi trabajo: 'https://git.io/donate_homlet'"
   },
   "cheats": {
@@ -35,7 +35,7 @@
     "bid_not_found": "No podemos obtener el build ID. Prueba a ejecutar AIO-Switch-Updater en 'applet mode' minestras el juego se está ejecutando.",
     "exclude_titles": "Excluir títulos",
     "exclude_titles_desc": "Puedes desactivar las actualizaciones de trucos con este menú",
-    "exclude_titles_save": "Guardar elección y volver"
+    "exclude_titles_save": "Guardar elección y volver",
     "dl_all": "Descarga y extrae al completo los todos los trucos de GBAtemp.net",
     "gbatemp_dl": "Descarga los trucos desde GBAtemp.net. Estos trucos seran añadidos al final del archivo de trucos actual.\n\u25c6 Build ID: {}",
     "gbatemp_dl_cheatcode": "Descargar trucos",
@@ -64,7 +64,7 @@
     "reboot": "Reiniciar",
     "updating": "Actualizando app",
     "no": "No",
-    "yes": "Sí"
+    "yes": "Sí",
     "go_back": "Volver",
     "confirm": "Confirmar",
     "cancel": "Cancelar",
@@ -129,7 +129,7 @@
     "update_sigpatches": "Actualizar sigpatches",
     "download_firmware": "Descargar firmwares",
     "download_cheats": "Descargar trucos",
-    "tools": "Herramientas"
+    "tools": "Herramientas",
     "launch_warning": "Por favor preste atencion a los siguientes puntos antes de usar la app:\n\n\u25c6 Lea primero como actualizar manualmente su switch. Esto le ayudará a entender mejor lo que hace esta app y sabrás que hacer en caso de que algo salga mal.\n\u25c6 Para evitar cualquier riesgo de corrupción de datos, se desaconseja encarecidamente utilizar esta aplicación en una tarjeta SD exFAT.\n\n\u25c6 La última información sobre las características introducidas y/o cambios está disponible en el menú Herramientas->Cambios.\n\nEsta pantalla no se mostrará de nuevo.",
     "footer_text": "v{} | {:.1f}GB Disponibles",
     "theme_warning": "Parece que tiene instalado un tema personalizado, Esto puede causar que el sistema falle al inciar tras actualizar el firmware.\nPor favor considere borrar el tema antes de actualizar.",
@@ -150,7 +150,7 @@
     "getting_payload": "Obteniendo payload",
     "update_app": "Actualizar la aplicación (v{})",
     "dl_app": "Descargando:\nAIO-switch-updater\n\nDesde:\n",
-    "changelog": "Cambios"
+    "changelog": "Cambios",
     "clean_up": "Limpiar Archivos descargados",
     "hide_tabs": "Pestañas ocultas",
     "internet_settings": "Editar configuración de Internet",
@@ -164,10 +164,10 @@
     "fw_warning": "Debido al tamaño de los FW, descargar firmwares en modo Applet no está soportado. Por favor, ejecuta la aplicación con acceso a toda la RAM.",
     "overwrite": " ¿Quieres sobrescribir el fichero existente ",
     "not_an_archive": "El archivo descargado no es un archivo .zip. Lo más probable es que se deba a un enlace roto. Si el problema persiste mas de 30 minutos, por favor abre una incidencia en Github.",
-    "overwrite_inis": "¿Quieres sobrescribir los ficheros de configuración .ini existentes?"
+    "overwrite_inis": "¿Quieres sobrescribir los ficheros de configuración .ini existentes?",
     "set_hekate_reboot_payload": "Quieres copiar el payload Hetake `{}` a `{}`?"
-  }
-    "ams_update": {
+  },
+  "ams_update": {
     "reboot_rcm": "La Switch se reiniciará y arrancará un payload especial para finalizar la instalación.",
     "install_hekate": "¿Quieres descargar tambien hekate?\nSi no, la Switch se reiniciará y arrancará un payload especial para finalizar la instalación.",
     "delete_contents": "¿Quieres borrar la carpeta '/atmosphere/contents/'? Esto puede evitar crasheos si tienes sysmodules que no funcionan en la ultima version de Atmosphère. Por favor atento ya que esto eliminará todos tus sysmodules, mods y trucos.",
