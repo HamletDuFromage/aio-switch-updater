@@ -104,7 +104,7 @@ constexpr const char DAYBREAK_PATH[] = "/switch/daybreak.nro";
 
 constexpr const char HIDDEN_AIO_FILE[] = "/config/aio-switch-updater/.aio-switch-updater";
 
-constexpr const char LOCALISATION_FILE[] = "romds:/i18n/{}/menus.json";
+constexpr const char LOCALISATION_FILE[] = "romfs:/i18n/{}/menus.json";
 
 constexpr const int LISTITEM_HEIGHT = 50;
 
