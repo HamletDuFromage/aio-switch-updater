@@ -7,3 +7,6 @@
 [submodule "aiosu-rcm"]
 	path = aiosu-rcm
 	url = https://github.com/HamletDuFromage/aiosu-rcm
+[submodule "lib/megadl"]
+	path = lib/megadl
+	url = https://github.com/aedalzotto/megadl.git
