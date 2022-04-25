@@ -52,10 +52,13 @@ void ListDownloadTab::createList()
 void ListDownloadTab::createList(contentType type)
 {
     std::vector<std::pair<std::string, std::string>> links;
-    if (type == contentType::cheats && this->newCheatsVer != "")
+    if (type == contentType::cheats && this->newCheatsVer != "") {
         links.push_back(std::make_pair(fmt::format("menus/main/get_cheats"_i18n, this->newCheatsVer), CurrentCfw::running_cfw == CFW::sxos ? CHEATS_URL_TITLES : CHEATS_URL_CONTENTS));
-    else
+    } else {
         links = download::getLinksFromJson(util::getValueFromKey(this->nxlinks, contentTypeNames[(int)type].data()));
+        if(links.empty() && type == contentType::megafw)
+            links = download::getLinksFromJson(util::getValueFromKey(this->nxlinks, contentTypeNames[(int)contentType::fw].data()));
+    }
 
     if (links.size()) {
         for (const auto& link : links) {
