@@ -50,7 +50,7 @@ MainFrame::MainFrame() : TabFrame()
         this->addTab("menus/main/update_sigpatches"_i18n, new ListDownloadTab(contentType::sigpatches, nxlinks));
 
     if (!util::getBoolValue(hideStatus, "firmwares"))
-        this->addTab("menus/main/download_firmware"_i18n, new ListDownloadTab(contentType::megafw, nxlinks));
+        this->addTab("menus/main/download_firmware"_i18n, new ListDownloadTab(contentType::fw, nxlinks));
 
     if (!util::getBoolValue(hideStatus, "cheats"))
         this->addTab("menus/main/download_cheats"_i18n, new ListDownloadTab(contentType::cheats));

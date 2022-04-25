@@ -90,7 +90,6 @@ void ListDownloadTab::createList(contentType type)
 
                 std::string doneMsg = "menus/common/all_done"_i18n;
                 switch (type) {
-                    case contentType::megafw:
                     case contentType::fw: {
                         std::string contentsPath = util::getContentsPath();
                         for (const auto& tid : {"0100000000001000", "0100000000001007", "0100000000001013"}) {
@@ -148,7 +147,6 @@ void ListDownloadTab::setDescription(contentType type)
         case contentType::sigpatches:
             description->setText("menus/main/sigpatches_text"_i18n);
             break;
-        case contentType::megafw:
         case contentType::fw: {
             SetSysFirmwareVersion ver;
             description->setText(fmt::format("{}{}", "menus/main/firmware_text"_i18n, R_SUCCEEDED(setsysGetFirmwareVersion(&ver)) ? ver.display_version : "menus/main/not_found"_i18n));
