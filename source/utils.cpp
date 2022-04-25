@@ -49,6 +49,7 @@ namespace util {
             case contentType::cheats:
                 status_code = download::downloadFile(url, CHEATS_FILENAME, OFF);
                 break;
+            case contentType::megafw:
             case contentType::fw:
                 status_code = download::downloadFile(url, FIRMWARE_FILENAME, OFF);
                 break;
@@ -132,6 +133,7 @@ namespace util {
             case contentType::cheats:
                 filename = CHEATS_FILENAME;
                 break;
+            case contentType::megafw:
             case contentType::fw:
                 filename = FIRMWARE_FILENAME;
                 break;
@@ -166,6 +168,7 @@ namespace util {
                 extract::extractCheats(CHEATS_FILENAME, titles, CurrentCfw::running_cfw, version);
                 break;
             }
+            case contentType::megafw:
             case contentType::fw:
                 if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
                 fs::createTree(FIRMWARE_PATH);
