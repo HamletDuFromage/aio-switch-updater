@@ -2,8 +2,10 @@
 
 #include <switch.h>
 
+#include <chrono>
 #include <filesystem>
 #include <fstream>
+#include <thread>
 
 #include "current_cfw.hpp"
 #include "download.hpp"
@@ -81,34 +83,32 @@ namespace util {
 
     int showDialogBoxBlocking(const std::string& text, const std::string& opt)
     {
-        int dialogResult = -1;
         int result = -1;
         brls::Dialog* dialog = new brls::Dialog(text);
-        brls::GenericEvent::Callback callback = [dialog, &dialogResult](brls::View* view) {
-            dialogResult = 0;
+        brls::GenericEvent::Callback callback = [dialog, &result](brls::View* view) {
+            result = 0;
             dialog->close();
         };
         dialog->addButton(opt, callback);
         dialog->setCancelable(false);
         dialog->open();
         while (result == -1) {
-            usleep(1);
-            result = dialogResult;
+            std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
+        std::this_thread::sleep_for(std::chrono::microseconds(800000));
         return result;
     }
 
     int showDialogBoxBlocking(const std::string& text, const std::string& opt1, const std::string& opt2)
     {
-        int dialogResult = -1;
         int result = -1;
         brls::Dialog* dialog = new brls::Dialog(text);
-        brls::GenericEvent::Callback callback1 = [dialog, &dialogResult](brls::View* view) {
-            dialogResult = 0;
+        brls::GenericEvent::Callback callback1 = [dialog, &result](brls::View* view) {
+            result = 0;
             dialog->close();
         };
-        brls::GenericEvent::Callback callback2 = [dialog, &dialogResult](brls::View* view) {
-            dialogResult = 1;
+        brls::GenericEvent::Callback callback2 = [dialog, &result](brls::View* view) {
+            result = 1;
             dialog->close();
         };
         dialog->addButton(opt1, callback1);
@@ -116,9 +116,9 @@ namespace util {
         dialog->setCancelable(false);
         dialog->open();
         while (result == -1) {
-            usleep(1);
-            result = dialogResult;
+            std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
+        std::this_thread::sleep_for(std::chrono::microseconds(800000));
         return result;
     }
 
@@ -185,7 +185,6 @@ namespace util {
             }
             case contentType::ams_cfw: {
                 int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                usleep(1000000);
                 int deleteContents = showDialogBoxBlocking("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 if (deleteContents == 1)
                     removeSysmodulesFlags(AMS_CONTENTS);

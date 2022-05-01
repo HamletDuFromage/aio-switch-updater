@@ -234,6 +234,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.18.0");
     changes.push_back("\uE016 Add mega.nz support (https://github.com/aedalzotto).\n\uE016 Add Korean localization (https://github.com/DDinghoya).\n\uE016 Improve Spanish localization (https://github.com/Armi-Heavy).");
 
+    verTitles.push_back("v2.18.1");
+    changes.push_back("\uE016 Fix some pop-up related bugs.");
+
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
