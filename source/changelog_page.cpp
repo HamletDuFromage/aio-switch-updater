@@ -231,6 +231,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.17.1");
     changes.push_back("\uE016 Add disclaimer when cheat codes are found for a different game version.\n\uE016 Improve French and Japanese localization.");
 
+    verTitles.push_back("v2.18.0");
+    changes.push_back("\uE016 Add mega.nz support (https://github.com/aedalzotto).\n\uE016 Add Korean localization (https://github.com/DDinghoya).\n\uE016 Improve Spanish localization (https://github.com/Armi-Heavy).");
+
+
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
