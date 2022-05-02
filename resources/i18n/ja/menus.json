@@ -48,7 +48,8 @@
     "deletion_error": "IDのゲームのチートファイルを削除できませんでした:\n{}",
     "show_cheat_files": "すべてのチートファイルを表示する",
     "cheats_not_found": "このビルドIDに一致するチートコードが見つかりませんでした。",
-    "old_cheats_found": "BID(s) [ {}] に一致するチートコードが存在します。"
+    "old_cheats_found": "BID(s) [ {}] に一致するチートコードが存在します。",
+    "cheatslips_logout": "ログアウト"
   },
   "common": {
     "downloading": "ダウンロード中…",
