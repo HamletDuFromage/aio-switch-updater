@@ -160,7 +160,10 @@
     "batch_copy": "Batch copy files",
     "batch_copy_not_found": "The following files were not found and couldn't be copied:\n",
     "batch_copy_config_not_found": "This tool allows you to automatically copy files to specific locations. This might be useful depending on your bootloader/trinket. Grab copy_files.txt at 'https://git.io/aiosu_copyfiles', edit it and add it to your config folder. This will also be performed after updates.",
-    "language": "Change app language"
+    "language": "Change app language",
+    "outdated_titles": "Missing updates",
+    "latest_version_not_found": "Couldn't find updates info",
+    "outdated_titles_desc": "The following titles have available updates:"
   },
   "utils": {
     "fw_warning": "Because of the size of FW archives, downloading firmwares in Applet Mode is not supported. Please launch the app with full RAM access.",

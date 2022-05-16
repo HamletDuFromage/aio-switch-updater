@@ -5,6 +5,7 @@
 
 #include "JC_page.hpp"
 #include "PC_page.hpp"
+#include "app_page.hpp"
 #include "changelog_page.hpp"
 #include "cheats_page.hpp"
 #include "confirm_page.hpp"
@@ -27,7 +28,7 @@ namespace {
 ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payloads, bool erista, const nlohmann::json& hideStatus) : brls::List()
 {
     if (!tag.empty() && tag != AppVersion) {
-        updateApp = new brls::ListItem(fmt::format("menus/tools/update_app"_i18n, tag));
+        brls::ListItem* updateApp = new brls::ListItem(fmt::format("menus/tools/update_app"_i18n, tag));
         std::string text("menus/tools/dl_app"_i18n + std::string(APP_URL));
         updateApp->getClickEvent()->subscribe([text, tag](brls::View* view) {
             brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
@@ -46,37 +47,43 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
         this->addView(updateApp);
     }
 
-    cheats = new brls::ListItem("menus/tools/cheats"_i18n);
+    brls::ListItem* cheats = new brls::ListItem("menus/tools/cheats"_i18n);
     cheats->getClickEvent()->subscribe([](brls::View* view) {
         brls::PopupFrame::open("menus/cheats/menu"_i18n, new CheatsPage(), "", "");
     });
     cheats->setHeight(LISTITEM_HEIGHT);
 
-    JCcolor = new brls::ListItem("menus/tools/joy_cons"_i18n);
+    brls::ListItem* outdatedTitles = new brls::ListItem("menus/tools/outdated_titles"_i18n);
+    outdatedTitles->getClickEvent()->subscribe([](brls::View* view) {
+        brls::PopupFrame::open("menus/tools/outdated_titles"_i18n, new AppPage_OutdatedTitles(), "menus/tools/outdated_titles_desc"_i18n, "");
+    });
+    outdatedTitles->setHeight(LISTITEM_HEIGHT);
+
+    brls::ListItem* JCcolor = new brls::ListItem("menus/tools/joy_cons"_i18n);
     JCcolor->getClickEvent()->subscribe([](brls::View* view) {
         brls::Application::pushView(new JCPage());
     });
     JCcolor->setHeight(LISTITEM_HEIGHT);
 
-    PCcolor = new brls::ListItem("menus/tools/pro_cons"_i18n);
+    brls::ListItem* PCcolor = new brls::ListItem("menus/tools/pro_cons"_i18n);
     PCcolor->getClickEvent()->subscribe([](brls::View* view) {
         brls::Application::pushView(new PCPage());
     });
     PCcolor->setHeight(LISTITEM_HEIGHT);
 
-    rebootPayload = new brls::ListItem("menus/tools/inject_payloads"_i18n);
+    brls::ListItem* rebootPayload = new brls::ListItem("menus/tools/inject_payloads"_i18n);
     rebootPayload->getClickEvent()->subscribe([](brls::View* view) {
         brls::PopupFrame::open("menus/tools/inject_payloads"_i18n, new PayloadPage(), "", "");
     });
     rebootPayload->setHeight(LISTITEM_HEIGHT);
 
-    netSettings = new brls::ListItem("menus/tools/internet_settings"_i18n);
+    brls::ListItem* netSettings = new brls::ListItem("menus/tools/internet_settings"_i18n);
     netSettings->getClickEvent()->subscribe([](brls::View* view) {
         brls::PopupFrame::open("menus/tools/internet_settings"_i18n, new NetPage(), "", "");
     });
     netSettings->setHeight(LISTITEM_HEIGHT);
 
-    browser = new brls::ListItem("menus/tools/browser"_i18n);
+    brls::ListItem* browser = new brls::ListItem("menus/tools/browser"_i18n);
     browser->getClickEvent()->subscribe([](brls::View* view) {
         std::string url;
         if (brls::Swkbd::openForText([&url](std::string text) { url = text; }, "cheatslips.com e-mail", "", 64, "https://duckduckgo.com", 0, "Submit", "https://website.tld")) {
@@ -106,7 +113,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     });
     browser->setHeight(LISTITEM_HEIGHT);
 
-    move = new brls::ListItem("menus/tools/batch_copy"_i18n);
+    brls::ListItem* move = new brls::ListItem("menus/tools/batch_copy"_i18n);
     move->getClickEvent()->subscribe([](brls::View* view) {
         chdir("/");
         std::string error = "";
@@ -120,7 +127,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     });
     move->setHeight(LISTITEM_HEIGHT);
 
-    cleanUp = new brls::ListItem("menus/tools/clean_up"_i18n);
+    brls::ListItem* cleanUp = new brls::ListItem("menus/tools/clean_up"_i18n);
     cleanUp->getClickEvent()->subscribe([](brls::View* view) {
         std::filesystem::remove(AMS_ZIP_PATH);
         std::filesystem::remove(APP_ZIP_PATH);
@@ -136,7 +143,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     });
     cleanUp->setHeight(LISTITEM_HEIGHT);
 
-    language = new brls::ListItem("menus/tools/language"_i18n);
+    brls::ListItem* language = new brls::ListItem("menus/tools/language"_i18n);
     language->getClickEvent()->subscribe([](brls::View* view) {
         std::vector<std::pair<std::string, std::string>> languages{
             std::make_pair("American English ({})", "en-US"),
@@ -187,19 +194,20 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     });
     language->setHeight(LISTITEM_HEIGHT);
 
-    hideTabs = new brls::ListItem("menus/tools/hide_tabs"_i18n);
+    brls::ListItem* hideTabs = new brls::ListItem("menus/tools/hide_tabs"_i18n);
     hideTabs->getClickEvent()->subscribe([](brls::View* view) {
         brls::PopupFrame::open("menus/tools/hide_tabs"_i18n, new HideTabsPage(), "", "");
     });
     hideTabs->setHeight(LISTITEM_HEIGHT);
 
-    changelog = new brls::ListItem("menus/tools/changelog"_i18n);
+    brls::ListItem* changelog = new brls::ListItem("menus/tools/changelog"_i18n);
     changelog->getClickEvent()->subscribe([](brls::View* view) {
         brls::PopupFrame::open("menus/tools/changelog"_i18n, new ChangelogPage(), "", "");
     });
     changelog->setHeight(LISTITEM_HEIGHT);
 
     if (!util::getBoolValue(hideStatus, "cheats")) this->addView(cheats);
+    if (!util::getBoolValue(hideStatus, "outdatedtitles")) this->addView(outdatedTitles);
     if (!util::getBoolValue(hideStatus, "jccolor")) this->addView(JCcolor);
     if (!util::getBoolValue(hideStatus, "pccolor")) this->addView(PCcolor);
     if (erista && !util::getBoolValue(hideStatus, "rebootpayload")) this->addView(rebootPayload);

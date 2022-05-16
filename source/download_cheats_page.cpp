@@ -14,7 +14,18 @@ namespace i18n = brls::i18n;
 using namespace i18n::literals;
 using json = nlohmann::json;
 
-namespace show_cheats {
+namespace cheats_util {
+    u32 GetVersion(uint64_t title_id)
+    {
+        u32 res = 0;
+        NsApplicationContentMetaStatus* MetaSatus = new NsApplicationContentMetaStatus[100U];
+        s32 out;
+        nsListApplicationContentMetaStatus(title_id, 0, MetaSatus, 100, &out);
+        for (int i = 0; i < out; i++) {
+            if (res < MetaSatus[i].version) res = MetaSatus[i].version;
+        }
+        return res;
+    }
 
     void ShowCheatSheet(u64 tid, const std::string& bid, const std::string& name)
     {
@@ -87,17 +98,17 @@ namespace show_cheats {
         std::filesystem::remove(fmt::format("{}{:016X}/cheats/{}.txt", util::getContentsPath(), tid, bid));
     }
 
-}  // namespace show_cheats
+}  // namespace cheats_util
 
 DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : AppletFrame(true, true), tid(tid), name(name)
 {
     this->list = new brls::List();
-    this->GetVersion();
+    this->version = cheats_util::GetVersion(this->tid);
     this->GetBuildID();
     this->setTitle(this->name);
     this->setFooterText("v" + std::to_string(this->version / 0x10000));
     this->brls::AppletFrame::registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this] {
-        show_cheats::ShowCheatSheet(this->tid, this->bid, this->name);
+        cheats_util::ShowCheatSheet(this->tid, this->bid, this->name);
         return true;
     });
     this->rebuildHints();
@@ -123,16 +134,6 @@ void DownloadCheatsPage::GetBuildIDFromDmnt()
         u64 buildID = 0;
         memcpy(&buildID, metadata.main_nso_build_id, sizeof(u64));
         this->bid = fmt::format("{:016X}", __builtin_bswap64(buildID));
-    }
-}
-
-void DownloadCheatsPage::GetVersion()
-{
-    NsApplicationContentMetaStatus* MetaSatus = new NsApplicationContentMetaStatus[100U];
-    s32 out;
-    nsListApplicationContentMetaStatus(this->tid, 0, MetaSatus, 100, &out);
-    for (int i = 0; i < out; i++) {
-        if (version < MetaSatus[i].version) this->version = MetaSatus[i].version;
     }
 }
 
@@ -163,7 +164,7 @@ void DownloadCheatsPage::AddCheatsfileListItem()
 {
     brls::ListItem* item = new brls::ListItem("menus/cheats/show_cheat_files"_i18n);
     item->getClickEvent()->subscribe([this](brls::View* view) {
-        show_cheats::ShowCheatFiles(this->tid, this->name);
+        cheats_util::ShowCheatFiles(this->tid, this->name);
     });
     this->list->addView(item);
 }

@@ -14,6 +14,7 @@ private:
     brls::ToggleListItem* sigpatches;
     brls::ToggleListItem* fws;
     brls::ToggleListItem* cheats;
+    brls::ToggleListItem* outdatedTitles;
     brls::ToggleListItem* jccolor;
     brls::ToggleListItem* pccolor;
     brls::ToggleListItem* downloadpayload;

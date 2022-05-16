@@ -41,6 +41,9 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true)
     cheats = new brls::ToggleListItem("menus/main/download_cheats"_i18n, util::getBoolValue(hideStatus, "cheats"));
     list->addView(cheats);
 
+    outdatedTitles = new brls::ToggleListItem("menus/main/download_cheats"_i18n, util::getBoolValue(hideStatus, "outdatedtitles"));
+    list->addView(outdatedTitles);
+
     jccolor = new brls::ToggleListItem("menus/tools/joy_cons"_i18n, util::getBoolValue(hideStatus, "jccolor"));
     list->addView(jccolor);
 

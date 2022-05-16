@@ -40,13 +40,13 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Added option to set a payload to /bootloader/update.bin");
 
     verTitles.push_back("v1.2.2");
-    changes.push_back("\uE016 Added japanese localisation (credits to github.com/yyoossk).");
+    changes.push_back("\uE016 Added Japanese localisation (credits to github.com/yyoossk).");
 
     verTitles.push_back("v1.2.4");
     changes.push_back("\uE016 Fixed app self-update");
 
     verTitles.push_back("v1.2.5");
-    changes.push_back("\uE016 Improved japanese translation");
+    changes.push_back("\uE016 Improved Japanese translation");
 
     verTitles.push_back("v1.2.6");
     changes.push_back("\uE016 Added spanish translation (credits to github.com/sergiou87");
@@ -223,7 +223,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Allow offline extraction of cheats.\n\uE016 Fixed extraction of the the complete cheat archive.\n\uE016 Fixed display bug for cheats extraction.");
 
     verTitles.push_back("v2.16.3");
-    changes.push_back("\uE016 Fetch default profiles online for joy-con and pro-con color swaps.\n\uE016 Updated french localization (https://github.com/NotaInutilis).");
+    changes.push_back("\uE016 Fetch default profiles online for joy-con and pro-con color swaps.\n\uE016 Updated French localization (https://github.com/NotaInutilis).");
 
     verTitles.push_back("v2.17.0");
     changes.push_back("\uE016 Add ability to download a basic hekate_ipl file.\n\uE016 Add error messages when cheats are not found for a game.");
@@ -236,6 +236,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
 
     verTitles.push_back("v2.18.1");
     changes.push_back("\uE016 Fix some pop-up related bugs.");
+
+    verTitles.push_back("v2.19.0");
+    changes.push_back("\uE016 Added ability to view games with missing updates.\n\uE016 Updated Japanese localisation (https://github.com/yyoossk).\n\uE016 Updated Chinese localisation (https://github.com/Physton).");
 
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {

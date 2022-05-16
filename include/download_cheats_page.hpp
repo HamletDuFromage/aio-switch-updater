@@ -6,14 +6,13 @@
 #include <filesystem>
 #include <json.hpp>
 
-namespace show_cheats {
-
+namespace cheats_util {
+    u32 GetVersion(uint64_t title_id);
     void ShowCheatFiles(uint64_t tid, const std::string& name);
     void ShowCheatSheet(u64 tid, const std::string& bid, const std::string& name);
     bool CreateCheatList(const std::filesystem::path& path, brls::List** cheatsList);
     void DeleteCheats(u64 tid, const std::string& bid);
-
-}  // namespace show_cheats
+}  // namespace cheats_util
 
 class DownloadCheatsPage : public brls::AppletFrame
 {
@@ -29,7 +28,6 @@ protected:
     DownloadCheatsPage(uint64_t tid, const std::string& name);
     void GetBuildID();
     void GetBuildIDFromDmnt();
-    void GetVersion();
     void GetBuildIDFromFile();
     void WriteCheats(const std::string& cheatContent);
     void AddCheatsfileListItem();
