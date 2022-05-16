@@ -64,6 +64,12 @@ void AppPage::PopulatePage()
     }
     delete[] records;
 
+    brls::Logger::debug("count {}", list->getViewsCount());
+
+    if(!list->getViewsCount()) {
+        list->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/common/nothing_to_see"_i18n, true));
+    }
+
     this->setContentView(list);
 }
 

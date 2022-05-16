@@ -70,7 +70,8 @@
     "cancel": "Cancel",
     "off": "Off",
     "selected": "Selected",
-    "applet_mode_not_supported": "This feature isn't available in applet mode. Please launch AIO-Switch-Updater through title redirection to access it."
+    "applet_mode_not_supported": "This feature isn't available in applet mode. Please launch AIO-Switch-Updater through title redirection to access it.",
+    "nothing_to_see": "Nothing to see here!"
   },
   "changelog": {
     "changelog": "Changelog"

@@ -45,6 +45,7 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 
 ## Extras (in the `Tools` tab)
 - Reboot to specific payload.
+- Consult games with missing updates.
 - Change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`. Use [this webpage](https://hamletdufromage.github.io/JC-color-picker/JCpicker.html) to generate your own profiles.
 - Change software color scheme of Pro Controllers (has to be paired as Player 1). Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/pc_profiles.json`.
 - Consult installed cheat codes.
