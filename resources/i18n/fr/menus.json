@@ -105,7 +105,7 @@
   "main": {
     "getting": "Téléchargement de {}",
     "firmware_text": "\u25c6 Firmware archivé sur 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargé, ils sera extrait dans '/firmware'. Vous pouvez ensuite installer la mise à jour avec Daybreak.\n FW installé\u00a0: ",
-    "cheats_text": "\u25c6 Ceci téléchargera une archive de codes de triche mise à jour quotidiennement depuis 'gbatemp.net'. Les codes de triche pour les jeux non installés pas ne seront pas extraits sur la carte SD. Vous pouvez désactiver la mises à jour des codes de triche pour les jeux de votre choix dans le menu 'Outils->Menu de triche'.\n Version des codes de triche installés\u00a0: ",
+    "cheats_text": "\u25c6 Ceci téléchargera une archive de codes de triche mise à jour quotidiennement depuis 'gbatemp.net'. Les codes de triche pour les jeux non installés pas ne seront pas extraits sur la carte SD. Vous pouvez désactiver la mises à jour des codes de triche pour les jeux de votre choix dans le menu 'Outils→Menu de triche'.\n Version des codes de triche installés\u00a0: ",
     "get_cheats": "Télécharger l'archive de codes de triche de GBAtemp.net (ver {})",
     "get_all_cheats:": "Télécharger l'archive de codes de triche de GBAtemp.net",
     "sigpatches": "sigpatches",
@@ -130,7 +130,7 @@
     "download_firmware": "Téléch. des firmwares",
     "download_cheats": "Téléch. de cheat codes",
     "tools": "Outils",
-    "launch_warning": "Veuillez prendre connaissance des points suivants avant d'utiliser cette application\u00a0:\n\n Renseignez-vous d'abord sur le processus de mise à jour manuel de la Switch. Cela vous aidera à mieux comprendre le fonctionnement de l'application et savoir quoi faire en cas de problème.\n Afin d'éviter tout risque de corruption de données, l'utilisation de cette application avec une carte SD formatée en exFAT est FORTEMENT déconseillé.\n\n Les dernières informations à propos des fonctionnalités ajoutées et/ou modifiées sont disponibles dans le menu Outils->Journal des modifications.\n\nCet écran ne sera pas réaffiché.",
+    "launch_warning": "Veuillez prendre connaissance des points suivants avant d'utiliser cette application\u00a0:\n\n Renseignez-vous d'abord sur le processus de mise à jour manuel de la Switch. Cela vous aidera à mieux comprendre le fonctionnement de l'application et savoir quoi faire en cas de problème.\n Afin d'éviter tout risque de corruption de données, l'utilisation de cette application avec une carte SD formatée en exFAT est FORTEMENT déconseillé.\n\n Les dernières informations à propos des fonctionnalités ajoutées et/ou modifiées sont disponibles dans le menu Outils→Journal des modifications.\n\nCet écran ne sera pas réaffiché.",
     "footer_text": "v{} | {:.1f}Go disponibles",
     "theme_warning": "Il semblerait que vous avez installé un thème personnalisé, cela pourrait empêcher le système de démarrer après la mise à jour de votre firmware.\nIl est conseillé de le supprimer avant d'effectuer la mise à jour.",
     "payloads_label": "\u25c6 Enregistrer les payloads RCM sous {}",

@@ -88,7 +88,7 @@
   "main": {
     "getting": "Pobieranie {}",
     "firmware_text": "\u25c6 Oprogramowanie z 'https://darthsternie.net/switch-firmwares/'. Po pobraniu zostanie rozpakowane do '/firmware'. Możesz je później zainstalować korzystając z Daybreak.\n\u25c6 Bieżący FW: ",
-    "cheats_text": "\u25c6 Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia->Menu cheatów'.\n\u25c6 Bieżąca wersja cheatów: ",
+    "cheats_text": "\u25c6 Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia→Menu cheatów'.\n\u25c6 Bieżąca wersja cheatów: ",
     "get_cheats": "Pobierz archiwum cheatów GBAtemp.net (wersja {})",
     "sigpatches": "sigpatche",
     "sigpatches_text": "\u25c6 Sigpatche umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Uruchom konsolę ponownie aby zastosować zmiany.",
@@ -110,7 +110,7 @@
     "download_firmware": "Pobierz firmware",
     "download_cheats": "Pobierz cheaty",
     "tools": "Narzędzia",
-    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\u25c6 Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\u25c6 Należy pamiętać, że korzystanie z tej aplikacji na karcie SD z systemem plików exFAT jest SILNIE odradzane, ponieważ ich zawartość jest bardziej podatna na uszkodzenia.\n\n\u25c6 Mogły zostać wprowadzone nowe funkcje i/lub zmiany obecnych funkcji. Rzuć na nie okiem w Narzędzia->Dziennik zmian.\n\nTen ekran nie wyświetli się ponownie.",
+    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\u25c6 Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\u25c6 Należy pamiętać, że korzystanie z tej aplikacji na karcie SD z systemem plików exFAT jest SILNIE odradzane, ponieważ ich zawartość jest bardziej podatna na uszkodzenia.\n\n\u25c6 Mogły zostać wprowadzone nowe funkcje i/lub zmiany obecnych funkcji. Rzuć na nie okiem w Narzędzia→Dziennik zmian.\n\nTen ekran nie wyświetli się ponownie.",
     "footer_text": "v{} | {:.1f}GB dostępne"
   },
   "hide": {

@@ -106,7 +106,7 @@
   "main": {
     "getting": "Herunterladen: {}",
     "firmware_text": "\u25c6 Firmware von: 'https://darthsternie.net/switch-firmwares/'. Sobald hehruntergeladen, wird sie in '/firmware' entpackt. Danach kannst du das Update mit Daybreak installieren.\n\u25c6 Momentane FW: ",
-    "cheats_text": "\u25c6 Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen, die du nicht besitzt, werden nicht entpackt. Du kannst Updates für ausgewählte Spiele unter 'Tools->Cheat Menü' deaktivieren.\n\u25c6 Momentane Cheatversion: ",
+    "cheats_text": "\u25c6 Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen, die du nicht besitzt, werden nicht entpackt. Du kannst Updates für ausgewählte Spiele unter 'Tools→Cheat Menü' deaktivieren.\n\u25c6 Momentane Cheatversion: ",
     "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver {})",
     "sigpatches": "Sigpatches",
     "sigpatches_text": "\u25c6 Sigpatches erlauben dir, inoffizielle NSPs zu installieren und starten. Starte die Konsole neu, um die Patches zu aktivieren.",
@@ -127,7 +127,7 @@
     "download_firmware": "Firmwares herunterladen",
     "download_cheats": "Cheats herunterladen",
     "tools": "Werkzeuge",
-    "launch_warning": "Bitte beachte die folgenden Punkte, bevor du die App verwendest:\n\n\u25c6 Lese zuerst, wie du deine Switch manuell aktualisierst. Auf diese Weise kannst du die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\u25c6 Bitte beachte, dass von der Verwendung dieser App auf einer exFAT-SD-Karte DRINGEND abgeraten wird, da diese höchstwahrscheinlich im Laufe der Zeit deine Daten beschädigen wird.\n\n\u25c6 Möglicherweise wurden einige Änderungen bezüglich der aktuellen Funktionen eingeführt. Sieh sie dir über das Menü Tools->Changelog an.\n\nDieser Bildschirm wird nicht mehr angezeigt.",
+    "launch_warning": "Bitte beachte die folgenden Punkte, bevor du die App verwendest:\n\n\u25c6 Lese zuerst, wie du deine Switch manuell aktualisierst. Auf diese Weise kannst du die App besser verstehen und wissen, was zu tun ist, wenn etwas schief geht. \n\u25c6 Bitte beachte, dass von der Verwendung dieser App auf einer exFAT-SD-Karte DRINGEND abgeraten wird, da diese höchstwahrscheinlich im Laufe der Zeit deine Daten beschädigen wird.\n\n\u25c6 Möglicherweise wurden einige Änderungen bezüglich der aktuellen Funktionen eingeführt. Sieh sie dir über das Menü Tools→Changelog an.\n\nDieser Bildschirm wird nicht mehr angezeigt.",
     "get_all_cheats:": "GBAtemp.net Cheat-Archiv herunterladen",
     "ams": "Atmosphère",
     "bootloaders_text": "\u25c6 Bootloader herunterladen und aktualisieren.",

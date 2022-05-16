@@ -107,7 +107,7 @@
   "main": {
     "getting": "獲取 {}",
     "firmware_text": "\u25c6 Firmware固件來自'https://darthsternie.net/switch-firmwares/'。下載完成后，它將被解壓縮到'/firmware'中。然后您可以通過Daybreak安裝更新。\n\u25c6 當前FW版本: ",
-    "cheats_text": "\u25c6 這將從'gbatemp.net'下載每日更新的金手指文件。你沒有安裝的游戲的金手指不會被解壓到你的SD卡中。你可以在'工具->金手指菜單'中關閉特定游戲的金手指更新。\n\u25c6 當前的金手指版本: ",
+    "cheats_text": "\u25c6 這將從'gbatemp.net'下載每日更新的金手指文件。你沒有安裝的游戲的金手指不會被解壓到你的SD卡中。你可以在'工具→金手指菜單'中關閉特定游戲的金手指更新。\n\u25c6 當前的金手指版本: ",
     "get_cheats": "下載GBAtemp.net金手指壓縮包 (版本 {})",
     "get_all_cheats:": "下載GBAtemp.net金手指壓縮包",
     "sigpatches": "Sigpatches",
@@ -132,7 +132,7 @@
     "download_firmware": "下載firmwares",
     "download_cheats": "下載金手指",
     "tools": "工具",
-    "launch_warning": "使用此程序前請注意以下几點:\n\n\u25c6 首先閱讀如何手動更新您的Switch。這將有助于你更好地理解此程序，你將知道在出現問題時該怎么做。\n\u25c6 為了避免任何數據損壞的風險，強烈建議在exFAT格式的SD卡上使用此程序.\n\n\u25c6 有關已支持和已更改的功能的最新更新可在 工具->更新日志 菜單中查看.\n\n該說明下次將不再顯示。",
+    "launch_warning": "使用此程序前請注意以下几點:\n\n\u25c6 首先閱讀如何手動更新您的Switch。這將有助于你更好地理解此程序，你將知道在出現問題時該怎么做。\n\u25c6 為了避免任何數據損壞的風險，強烈建議在exFAT格式的SD卡上使用此程序.\n\n\u25c6 有關已支持和已更改的功能的最新更新可在 工具→更新日志 菜單中查看.\n\n該說明下次將不再顯示。",
     "footer_text": "v{} | {:.1f}GB 可用",
     "theme_warning": "您似乎安裝了一個自定義主題，這可能會導致您的系統在升級固件后無法啟動。\n請考慮在升級之前將其刪除。",
     "payloads_label": "\u25c6 下載RCM payloads到 {}",

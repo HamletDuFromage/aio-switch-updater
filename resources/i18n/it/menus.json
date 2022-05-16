@@ -58,7 +58,7 @@
   "main": {
     "getting": "Ottengo {}",
     "firmware_text": "\u25c6 il dump del Firmware da 'https://darthsternie.net/switch-firmwares/'. Una volta scaricato, sarà estratto in '/firmware'. Puoi installare l'aggiornamento tramite Daybreak.\n\u25c6 FW attuale: ",
-    "cheats_text": "\u25c6 Questo scaricherà quotidianamente un archivio di cheat da 'gbatemp.net'. I cheat per i giochi non installati non saranno estratti sulla tua scheda SD. Puoi disabilitare l'aggiornamento dei cheat in 'Tools->Cheat menu'.\n\u25c6 Current cheats version: ",
+    "cheats_text": "\u25c6 Questo scaricherà quotidianamente un archivio di cheat da 'gbatemp.net'. I cheat per i giochi non installati non saranno estratti sulla tua scheda SD. Puoi disabilitare l'aggiornamento dei cheat in 'Tools→Cheat menu'.\n\u25c6 Current cheats version: ",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\u25c6 Le sigpatches consentono di installare ed eseguire NSP non ufficiali sulla Switch.",
     "firmware": "firmware",

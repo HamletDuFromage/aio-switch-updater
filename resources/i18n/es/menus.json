@@ -107,7 +107,7 @@
   "main": {
     "getting": "Obteniendo {}",
     "firmware_text": "\u25c6 Firmwares de 'https://darthsternie.net/switch-firmwares/'. Una vez descargado, será extraído en '/firmware'. Entonces podrás instalar la actualización a través de Daybreak.\n\u25c6 FW actual: ",
-    "cheats_text": "\u25c6 Esto descargará un paquete actualizado diario de trucos de 'gbatemp.net'. Los trucos de juegos que no tienes instalados no se extraerán a tu tarjeta SD. Puedes desactivar los trucos actualizados en 'Herramientas->Menú de trucos'.\n\u25c6 Versión de trucos actual: ",
+    "cheats_text": "\u25c6 Esto descargará un paquete actualizado diario de trucos de 'gbatemp.net'. Los trucos de juegos que no tienes instalados no se extraerán a tu tarjeta SD. Puedes desactivar los trucos actualizados en 'Herramientas→Menú de trucos'.\n\u25c6 Versión de trucos actual: ",
     "sigpatches": "sigpatches",
     "sigpatches_text": "\u25c6 Los sigpatches permiten a tu Switch instalar y ejecutar archivos NSP no oficiales. Reiniciar para aplicar los cambios.",
     "firmware": "firmware",
@@ -130,7 +130,7 @@
     "download_firmware": "Descargar firmwares",
     "download_cheats": "Descargar trucos",
     "tools": "Herramientas",
-    "launch_warning": "Por favor preste atencion a los siguientes puntos antes de usar la app:\n\n\u25c6 Lea primero como actualizar manualmente su switch. Esto le ayudará a entender mejor lo que hace esta app y sabrás que hacer en caso de que algo salga mal.\n\u25c6 Para evitar cualquier riesgo de corrupción de datos, se desaconseja encarecidamente utilizar esta aplicación en una tarjeta SD exFAT.\n\n\u25c6 La última información sobre las características introducidas y/o cambios está disponible en el menú Herramientas->Cambios.\n\nEsta pantalla no se mostrará de nuevo.",
+    "launch_warning": "Por favor preste atencion a los siguientes puntos antes de usar la app:\n\n\u25c6 Lea primero como actualizar manualmente su switch. Esto le ayudará a entender mejor lo que hace esta app y sabrás que hacer en caso de que algo salga mal.\n\u25c6 Para evitar cualquier riesgo de corrupción de datos, se desaconseja encarecidamente utilizar esta aplicación en una tarjeta SD exFAT.\n\n\u25c6 La última información sobre las características introducidas y/o cambios está disponible en el menú Herramientas→Cambios.\n\nEsta pantalla no se mostrará de nuevo.",
     "footer_text": "v{} | {:.1f}GB Disponibles",
     "theme_warning": "Parece que tiene instalado un tema personalizado, Esto puede causar que el sistema falle al inciar tras actualizar el firmware.\nPor favor considere borrar el tema antes de actualizar.",
     "payloads_label": "\u25c6 Descarga 'RCM payloads' a {}",

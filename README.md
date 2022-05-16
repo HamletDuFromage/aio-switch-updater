@@ -39,7 +39,7 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 - Download firmware files to `/firmware` that can then be installed using DayBreak.
 
 ### ⬦ Download cheats
-- Download and extract daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you can turn off cheat updates for specific titles in `Tools->Cheat Menu`.
+- Download and extract daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you can turn off cheat updates for specific titles in `Tools→Cheat Menu`.
 - Download cheat sheets from [Cheat Slips](https://www.cheatslips.com/). 
 - Download individual cheat codes from the `GBAtemp.net` database.
 
