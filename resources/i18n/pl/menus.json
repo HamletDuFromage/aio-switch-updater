@@ -63,7 +63,6 @@
   "payloads": {
     "dl_payloads": "Pobierz payloady",
     "select": " Wybierz payload do ponownego uruchomienia.",
-    "not_found": "Nie można było uzyskać linku pobierania. Upewnij się, że Switch ma połączenie z internetem.\nJeśli problem nie ustąpi, utwórz nowy problem na GitHubie.",
     "set_reboot_payload": "Ustaw jako reboot_payload.bin",
     "set_update_bin": "Ustaw jako /bootloader/update.bin",
     "copy_success": "Skopiowano pomyślnie '",

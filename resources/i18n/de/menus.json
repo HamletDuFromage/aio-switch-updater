@@ -80,7 +80,6 @@
   "payloads": {
     "dl_payloads": "Payloads herunterladen",
     "select": " Wähle ein Payload zum neustarten aus.",
-    "not_found": "Konnte keinen Downloadlink finden. Stelle sicher, dass deine Switch Internetzugriff hat.\nWenn das Problem bestehen bleibt, öffne bitte ein Issue auf GitHub.",
     "set_reboot_payload": "Setze als reboot_payload.bin",
     "set_update_bin": "Setze als /bootloader/update.bin",
     "copy_success": "Erfolgreich kopiert '",

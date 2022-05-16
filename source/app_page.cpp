@@ -313,7 +313,14 @@ void AppPage_DownloadedCheats::GetExistingCheatsTids()
 AppPage_OutdatedTitles::AppPage_OutdatedTitles() : AppPage()
 {
     download::getRequest(LOOKUP_TABLE_URL, versions);
-    this->PopulatePage();
+    if(versions.empty())
+    {
+        list->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/links_not_found"_i18n, true));
+        this->setContentView(list);
+    }
+    else {
+        this->PopulatePage();
+    }
 }
 
 void AppPage_OutdatedTitles::AddListItem(const std::string& name, u64 tid)

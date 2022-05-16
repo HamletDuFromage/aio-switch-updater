@@ -43,7 +43,7 @@ DownloadPayloadPage::DownloadPayloadPage(const nlohmann::ordered_json& payloads)
     else {
         notFound = new brls::Label(
             brls::LabelStyle::DESCRIPTION,
-            "menus/payloads/not_found"_i18n,
+            "menus/main/links_not_found"_i18n,
             true);
         notFound->setHorizontalAlign(NVG_ALIGN_CENTER);
         list->addView(notFound);
