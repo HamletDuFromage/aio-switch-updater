@@ -71,7 +71,7 @@
     "off": "無効",
     "selected": "選択済み",
     "applet_mode_not_supported": "この機能はアプレットモードでは使用できません。アクセスするには、タイトルリダイレクトを介してAIO-Switch-Updaterを起動してください。"
-	"nothing_to_see": "特に見るべきものはありません!"
+    "nothing_to_see": "特に見るべきものはありません!"
   },
   "changelog": {
     "changelog": "更新履歴"
@@ -162,9 +162,9 @@
     "batch_copy_not_found": "次のファイルが見つからず、コピーできませんでした:\n",
     "batch_copy_config_not_found": "このツールを使用すると、bootloader/trinketに必要なファイルを他の場所にコピーできます。 'https://git.io/aiosu_copyfiles'でcopy_files.txtを取得し、configフォルダーに追加します。これは、更新後にも実行されます。",
     "language": "アプリの言語を変更する"
-	"outdated_titles": "消えたアップデート",
-	"latest_version_not_found": "更新情報を見つけられませんでした",
-	"outdated_titles_desc": "以下のタイトルでアップデートが可能です:"
+    "outdated_titles": "消えたアップデート",
+    "latest_version_not_found": "更新情報を見つけられませんでした",
+    "outdated_titles_desc": "以下のタイトルでアップデートが可能です:"
   },
   "utils": {
     "fw_warning": "FWアーカイブのサイズが大きいため、アプレットモードでのファームウェアのダウンロードはサポートされていません。フルRAMアクセスでアプリを起動してください。",
