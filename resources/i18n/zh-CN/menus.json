@@ -13,7 +13,7 @@
     "getting_cheats": "获取金手指",
     "menu": "金手指菜单",
     "view": "查看已安装金手指",
-    "exclude": "排除游戏接金手指更新",
+    "exclude": "排除游戏接收金手指更新",
     "delete_existing": "删除所有现有的金手指",
     "delete_orphaned": "删除未使用的金手指",
     "deleting": "删除中…",
@@ -70,7 +70,8 @@
     "cancel": "取消",
     "off": "关闭",
     "selected": "已选择",
-    "applet_mode_not_supported": "此功能在applet模式下不可用。请通过游戏重定向启动AIO-Switch-Updater以访问它。"
+    "applet_mode_not_supported": "此功能在applet模式下不可用。请通过游戏重定向启动AIO-Switch-Updater以访问它。",
+    "nothing_to_see": "这里没什么可看的！"
   },
   "changelog": {
     "changelog": "更新日志"
@@ -160,7 +161,10 @@
     "batch_copy": "批量复制文件",
     "batch_copy_not_found": "找不到以下文件，因此无法复制:\n",
     "batch_copy_config_not_found": "此工具允许您自动将文件复制到特定位置。这可能很有用，具体取决于你的bootloader/trinket。 获取copy_files.txt从'https://git.io/aiosu_copyfiles'，编辑它并将其添加到您的config文件夹中。这也将在更新后执行。",
-    "language": "更改程序语言"
+    "language": "更改程序语言",
+    "outdated_titles": "游戏最新版本检测",
+    "latest_version_not_found": "找不到更新信息",
+    "outdated_titles_desc": "以下游戏有可用的更新:"
   },
   "utils": {
     "fw_warning": "由于FW压缩包大小的原因，不支持在Applet模式下下载firmwares。请尝试以完全RAM访问权限运行此程序。",
