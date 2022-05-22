@@ -240,6 +240,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.19.0");
     changes.push_back("\uE016 Added ability to view games with missing updates.\n\uE016 Updated Japanese localisation (https://github.com/yyoossk).\n\uE016 Updated Chinese localisation (https://github.com/Physton).");
 
+    verTitles.push_back("v2.19.1");
+    changes.push_back("\uE016 Fixed crash when trying to download cheats in applet mode.\n\uE016 Updated Japanese localisation (https://github.com/yyoossk).\n\uE016 Updated Chinese localisation (https://github.com/qazrfv1234).");
+
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);

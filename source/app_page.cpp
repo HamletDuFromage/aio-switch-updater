@@ -57,6 +57,8 @@ void AppPage::PopulatePage()
     else {
         tid = GetCurrentApplicationId();
         if (R_SUCCEEDED(InitControlData(&controlData)) && R_SUCCEEDED(GetControlData(tid & 0xFFFFFFFFFFFFF000, controlData, controlSize, name))) {
+            listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
+            listItem->setThumbnail(controlData->icon, sizeof(controlData->icon));
             this->AddListItem(name, tid);
         }
         label = new brls::Label(brls::LabelStyle::SMALL, "menus/common/applet_mode_not_supported"_i18n, true);
