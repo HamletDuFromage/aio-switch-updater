@@ -26,14 +26,14 @@
     "cheatslips_dl": "Scarica una selezione di cheat-sheet da Cheat Slips.\nSaranno aggiunti al termine del file di cheat presente sul tuo sistema.",
     "delete_file": "Elimina i file di cheat esistenti",
     "cheatslips_error": "Impossibile ottenere i cheat selezionati/token non valido.",
-    "quota": "Limite giornaliero raggiunto!\nVisita 'https://www.cheatslips.com/subscriptions' per maggiori informazioni su come aggirarlo.",
+    "quota": "Limite giornaliero raggiunto!\nVisita 'https://www.cheatslips.com/subscriptions' per maggiori informazioni su come scaricare di più.",
     "sheet_content": "Contenuto del cheat-sheet",
     "cheatslips_select": "Seleziona un gioco per scaricarne i cheat.",
     "cheatslips_wrong_id": "Impossibile ottenere il token, assicurati di aver inserito le credenziali corrette.",
     "kb_error": "Se la tastiera non appare, prova ad avviare l'app con pieno accesso alla RAM (come applicazione).",
     "cheatslips_see_more": "Altro",
     "cheatslips_dl_cheats": "Scarica cheat e torna indietro",
-    "bid_not_found": "Impossibile ottenere l'ID della build. Try launching AIO-Switch-Updater in applet mode while the game is running.",
+    "bid_not_found": "Impossibile ottenere l'ID della build. Prova ad avviare AIO-Switch-Updater in Modalità Applet mentre il gioco è in esecuzione.",
     "exclude_titles": "Escludi titoli",
     "exclude_titles_desc": "Con questo menu puoi disattivare l'aggiornamento dei cheat per i singoli titoli",
     "exclude_titles_save": "Salva ed esci",
@@ -72,7 +72,7 @@
     "off": "Off",
     "selected": "Selezionato",
     "applet_mode_not_supported": "Questa funzionalità non è disponibile in Modalità Applet. Per poterne usufruire, avvia AIO-Switch-Updater come applicazione.",
-    "nothing_to_see": "Nessuna informazione disponibile."
+    "nothing_to_see": "Qui non c'è nulla!"
   },
   "changelog": {
     "changelog": "Cronologia aggiornamenti"
@@ -90,12 +90,12 @@
   },
   "joy_con": {
     "title": "Cambia il colore dei Joy-Con",
-    "description": "Qui puoi cambiare il colore riportato dai tuoi Joy-Con. Assicurati che siano collegati direttamente alla console.\nI profili si trovano in `{}`. Visita '{}' per generare i tuoi profili personalizzati.",
+    "description": "Qui puoi cambiare il colore riportato dai tuoi Joy-Con. Assicurati che siano collegati direttamente alla console.\nI profili si trovano in `{}`. Visita '{}' per generare profili personalizzati.",
     "backup": "Salva il profilo corrente",
     "label": "Cambia il colore dei Joy-Con",
     "backing_up": "Salvataggio del profilo corrente in corso. Assicurati che i Joy-Con siano collegati. Se il processo si blocca, prova a scollegarli/ricollegarli.",
     "changing": "Scrittura colori in corso. Assicurati che i Joy-Con siano collegati. Se il processo si blocca, prova a scollegarli/ricollegarli.",
-    "all_done": "Finito! Potrebbe essere necessario scollegare/collegare i Joy-Cons perché i cambiamenti abbiano effetto."
+    "all_done": "Finito! Potrebbe essere necessario scollegare/collegare i Joy-Con perché i cambiamenti abbiano effetto."
   },
   "pro_con": {
     "title": "Cambia il colore del Pro Controller",
