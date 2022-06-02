@@ -30,7 +30,7 @@
     "sheet_content": "Cheatsheet content",
     "cheatslips_select": "Select a game to download cheats for.",
     "cheatslips_wrong_id": "Couldn't retrieve token, make sure you enter your login properly",
-    "kb_error": "If they keyboard did not show up, try running the app with full RAM access (title redirection)",
+    "kb_error": "If they keyboard did not show up, try running the app with full RAM access (title override)",
     "cheatslips_see_more": "See more",
     "cheatslips_dl_cheats": "Download cheats and go back",
     "bid_not_found": "Couldn't obtain build ID. Try launching AIO-Switch-Updater in applet mode while the game is running.",
@@ -41,7 +41,7 @@
     "gbatemp_dl": "Download cheat codes curated from GBAtemp.net. Those cheats will be added to the end of your existing cheat file.\n\u25c6 Build ID: {}",
     "gbatemp_dl_cheatcode": "Download cheat code",
     "gbatemp_dl_successful_dl": "Successfully downloaded the following cheat code:\n{}",
-    "applet_mode_not_supported": "Due to memory constraints, in applet mode you may only fetch cheat codes for the game you're currently playing. Please launch AIO-Switch-Updater through title redirection to download cheat codes for any game you own.",
+    "applet_mode_not_supported": "Due to memory constraints, in applet mode you may only fetch cheat codes for the game you're currently playing. Please launch AIO-Switch-Updater through title override to download cheat codes for any game you own.",
     "cheatfile_label": "Here are the cheat codes listed in file {}",
     "not_found": "No proper cheat codes could be found for this game",
     "show_existing": "Show existing",
@@ -71,7 +71,7 @@
     "cancel": "Cancel",
     "off": "Off",
     "selected": "Selected",
-    "applet_mode_not_supported": "This feature isn't available in applet mode. Please launch AIO-Switch-Updater through title redirection to access it.",
+    "applet_mode_not_supported": "This feature isn't available in applet mode. Please launch AIO-Switch-Updater through title override to access it.",
     "nothing_to_see": "Nothing to see here!"
   },
   "changelog": {

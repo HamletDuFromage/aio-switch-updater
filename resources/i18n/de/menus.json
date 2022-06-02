@@ -27,7 +27,7 @@
     "sheet_content": "Cheat-Datei Inhalt",
     "cheatslips_select": "Wähle ein Spiel aus, um cheats herunter zu laden.",
     "cheatslips_wrong_id": "Token konnte nicht abgerufen werden. Stelle sicher, dass die Logindaten richtig sind.",
-    "kb_error": "Wenn die Tastatur nicht auftaucht, starte die App mit vollem RAM-Zugriff. (Title Redirection)",
+    "kb_error": "Wenn die Tastatur nicht auftaucht, starte die App mit vollem RAM-Zugriff. (Title Override)",
     "cheatslips_see_more": "Weiteres",
     "cheatslips_dl_cheats": "Lade Cheats & gehe zurück",
     "bid_not_found": "ID konnte nicht abgerufen werden. Versuche, AIO-Switch-Updater im Applet-Modus zu starten, während das Spiel läuft.",
@@ -41,7 +41,7 @@
     "gbatemp_dl": "Lade von GBAtemp.net verwaltete Cheat-Codes herunter. Diese Cheats werden am Ende deiner bestehenden Cheat-Datei hinzugefügt.\\n\u25c6 Build ID: {}",
     "gbatemp_dl_cheatcode": "Cheat-Code herunterladen",
     "gbatemp_dl_successful_dl": "Folgender Cheat-Code wurde erfolgreich heruntergeladen:\\n{}",
-    "applet_mode_not_supported": "Aufgrund von Speicherbeschränkungen können im Applet-Modus nur Cheat-Codes für das Spiel abgerufen werden, das gerade gespielt wird. Bitte starte den AIO-Switch-Updater über die Title Redirection, um Cheat-Codes für alle verfügbaren Spiele herunterzuladen.",
+    "applet_mode_not_supported": "Aufgrund von Speicherbeschränkungen können im Applet-Modus nur Cheat-Codes für das Spiel abgerufen werden, das gerade gespielt wird. Bitte starte den AIO-Switch-Updater über die Title Override, um Cheat-Codes für alle verfügbaren Spiele herunterzuladen.",
     "cheatfile_label": "Hier sind die Cheat-Codes, die in der Datei {} aufgelistet sind",
     "not_found": "Es konnten keine geeigneten Cheat-Codes für dieses Spiel gefunden werden",
     "show_existing": "Verfügbares anzeigen",
@@ -69,7 +69,7 @@
     "cancel": "Abbrechen",
     "off": "Ausschalten",
     "selected": "Ausgewählt",
-    "applet_mode_not_supported": "Diese Funktion ist im Applet-Modus nicht verfügbar. Bitte starte den AIO-Switch-Updater über die Title Redirection, um darauf zuzugreifen."
+    "applet_mode_not_supported": "Diese Funktion ist im Applet-Modus nicht verfügbar. Bitte starte den AIO-Switch-Updater über die Title Override, um darauf zuzugreifen."
   },
   "changelog": {
     "changelog": "Changelog"
@@ -160,7 +160,7 @@
     "language": "Sprache der Anwendung ändern"
   },
   "utils": {
-    "fw_warning": "Wegen der Größe der Firmwarearchive werden Downloads im Applet Mode nicht unterstützt. Bitte öffne die App mit vollem RAM Zugriff (Title Redirection).",
+    "fw_warning": "Wegen der Größe der Firmwarearchive werden Downloads im Applet Mode nicht unterstützt. Bitte öffne die App mit vollem RAM Zugriff (Title Override).",
     "overwrite": " Möchtest du die folgende Datei überschreiben: ",
     "overwrite_inis": "Möchtest du die vorhandene .ini Konfigurationsdateien überschreiben?",
     "not_an_archive": "Bei der heruntergeladenen Datei handelt es sich nicht um ein Zip-Archiv. Dies ist höchstwahrscheinlich auf einen defekten Link zurückzuführen. Wenn das Problem nach mehr als 30 Minuten immer noch besteht, erstelle bitte ein Issue auf GitHub.",

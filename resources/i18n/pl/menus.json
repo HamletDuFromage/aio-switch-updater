@@ -27,7 +27,7 @@
     "sheet_content": "Zawartość arkusza z cheatami",
     "cheatslips_select": "Wybierz grę, dla której chcesz pobrać cheaty.",
     "cheatslips_wrong_id": "Nie można było uzyskać tokenu, sprawdź poprawność wpisanego loginu",
-    "kb_error": "Jeśli klawiatura nie pokazała się, spróbuj uruchomić aplikację z pełnym dostępem do pamięci RAM (title redirection)",
+    "kb_error": "Jeśli klawiatura nie pokazała się, spróbuj uruchomić aplikację z pełnym dostępem do pamięci RAM (title override)",
     "cheatslips_see_more": "Zobacz więcej",
     "cheatslips_dl_cheats": "Pobierz cheaty i wróć",
     "bid_not_found": "Nie można było uzyskać ID kompilacji. Spróbuj uruchomić AIO-Switch-Updater w trybie appletu gdy gra jest uruchomiona.",
