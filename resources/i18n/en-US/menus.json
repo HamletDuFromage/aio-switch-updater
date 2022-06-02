@@ -2,6 +2,7 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-Switch-Updater is licensed under GPL-3.0",
+    "disclaimers_title": "Disclaimers",
     "disclaimers": "\u25c6 Aside from cheat codes that are mirrored from the main GBAtemp thread, HamletDuFromage isn't hosting anything. All credits go to respective owners.\n\u25c6 Links are refreshed every 30 minutes. If a link remains broken after 30 minutes have passed, please open a Github issue.",
     "donate": "\u25c6 Like the app? Consider donating to support my efforts: 'https://git.io/donate_homlet'"
   },
