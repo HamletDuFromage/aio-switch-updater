@@ -244,7 +244,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Fixed crash when trying to download cheats in applet mode.\n\uE016 Updated Japanese localisation (https://github.com/yyoossk).\n\uE016 Updated Chinese localisation (https://github.com/qazrfv1234).");
 
     verTitles.push_back("v2.19.2");
-    changes.push_back("\uE016 Fixed japanese locale.");
+    changes.push_back("\uE016 Fixed Japanese locale.");
+
+    verTitles.push_back("v2.19.3");
+    changes.push_back("\uE016 Fix wrong bid for titles overriden by HBL.\n\uE016 Improve Korean localisation (https://github.com/DDinghoya).\n\uE016 Improve Italian localisation (https://github.com/clamintus).");
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
