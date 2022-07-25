@@ -38,7 +38,7 @@
     "delete_orphaned": "Verwaiste Cheat-Codes löschen",
     "get_gbatemp": "GBAtemp.net Cheat-Codes herunterladen",
     "cheats_label": "\u25c6 Lade einzelne Cheat-Codes aus der GBAtemp.net-Datenbank oder Cheat-Sheets von Cheat Slips herunter",
-    "gbatemp_dl": "Lade von GBAtemp.net verwaltete Cheat-Codes herunter. Diese Cheats werden am Ende deiner bestehenden Cheat-Datei hinzugefügt.\\n\u25c6 Build ID: {}",
+    "gbatemp_dl": "Lade von GBAtemp.net verwaltete Cheat-Codes herunter. Diese Cheats werden am Ende deiner bestehenden Cheat-Datei hinzugefügt.",
     "gbatemp_dl_cheatcode": "Cheat-Code herunterladen",
     "gbatemp_dl_successful_dl": "Folgender Cheat-Code wurde erfolgreich heruntergeladen:\\n{}",
     "applet_mode_not_supported": "Aufgrund von Speicherbeschränkungen können im Applet-Modus nur Cheat-Codes für das Spiel abgerufen werden, das gerade gespielt wird. Bitte starte den AIO-Switch-Updater über die Title Override, um Cheat-Codes für alle verfügbaren Spiele herunterzuladen.",

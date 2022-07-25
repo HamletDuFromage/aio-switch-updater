@@ -116,7 +116,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : 
 
 void DownloadCheatsPage::GetBuildID()
 {
-    if (CurrentCfw::running_cfw == CFW::ams)
+    if (util::isApplet() && CurrentCfw::running_cfw == CFW::ams)
         this->GetBuildIDFromDmnt();
     if (this->bid == "")
         this->GetBuildIDFromFile();
@@ -191,7 +191,9 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
 {
     this->label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/cheats/cheatslips_dl"_i18n + "\n\uE016  Build ID: " + this->bid,
+        "menus/cheats/cheatslips_dl"_i18n +
+            "\n\uE016 Title ID: " + util::formatApplicationId(this->tid) +
+            "\n\uE016 Build ID: " + this->bid,
         true);
     this->list->addView(this->label);
 
@@ -301,9 +303,10 @@ std::string DownloadCheatsPage_CheatSlips::GetCheatsTitle(json cheat)
     std::string res = "";
     if (cheat.find("titles") != cheat.end()) {
         for (auto& p : cheat.at("titles")) {
-            res += "[" + p.get<std::string>() + "]" + " - ";
+            res += fmt::format("[{}] - ", p.get<std::string>());
         }
     }
+    if (res != "") res = res.substr(0, res.size() - 3);
     return res;
 }
 
@@ -327,7 +330,9 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
 {
     this->label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        fmt::format("menus/cheats/gbatemp_dl"_i18n, this->bid),
+        "menus/cheats/gbatemp_dl"_i18n +
+            "\n\uE016 Title ID: " + util::formatApplicationId(this->tid) +
+            "\n\uE016 Build ID: " + this->bid,
         true);
     this->list->addView(label);
 

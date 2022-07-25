@@ -38,7 +38,7 @@
     "exclude_titles_desc": "You can turn off cheat updates with this menu",
     "exclude_titles_save": "Save choice and return",
     "dl_all": "Download and extract the entire GBAtemp.net cheats archive",
-    "gbatemp_dl": "Download cheat codes curated from GBAtemp.net. Those cheats will be added to the end of your existing cheat file.\n\u25c6 Build ID: {}",
+    "gbatemp_dl": "Download cheat codes curated from GBAtemp.net. Those cheats will be added to the end of your existing cheat file.",
     "gbatemp_dl_cheatcode": "Download cheat code",
     "gbatemp_dl_successful_dl": "Successfully downloaded the following cheat code:\n{}",
     "applet_mode_not_supported": "Due to memory constraints, in applet mode you may only fetch cheat codes for the game you're currently playing. Please launch AIO-Switch-Updater through title override to download cheat codes for any game you own.",

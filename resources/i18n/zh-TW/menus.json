@@ -37,7 +37,7 @@
     "exclude_titles_desc": "可以透過變更此設定來排除沒有安裝對應遊戲的金手指更新",
     "exclude_titles_save": "儲存變更並返回",
     "dl_all": "下載GBAtemp.net目前全部的金手指並個別解壓縮後歸檔存放",
-    "gbatemp_dl": "準備從GBAtemp.net下載金手指。下載的金手指將會放置排列在目前已有的金手指項目之後。\n\u25c6 Build ID: {}",
+    "gbatemp_dl": "準備從GBAtemp.net下載金手指。下載的金手指將會放置排列在目前已有的金手指項目之後。",
     "gbatemp_dl_cheatcode": "下載金手指",
     "gbatemp_dl_successful_dl": "下列金手指已下載完成:\n{}",
     "applet_mode_not_supported": "由於記憶體限制，在applet模式下，只能擷取目前正在玩的遊戲的金手指。請重新執行AIO-Switch-Updater並透過title重新導向來下載其他遊戲的金手指",
