@@ -33,7 +33,7 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 - Download and update Hekate, as well as a selection of RCM payloads
 
 ### ⬦ Update Sigpatches
-- Dowload sigpatches, which are patches required to launch unofficial .NSPs on the Atmosphère CFW.
+- Dowload sigpatches, which are patches required to launch homebrew .NSPs on the Atmosphère CFW.
 
 ### ⬦ Download firmwares
 - Download firmware files to `/firmware` that can then be installed using DayBreak.
