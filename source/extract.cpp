@@ -27,7 +27,7 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-constexpr size_t WRITE_BUFFER_SIZE = 0x100000;
+constexpr size_t WRITE_BUFFER_SIZE = 0x10000;
 
 namespace extract {
 
@@ -76,7 +76,7 @@ namespace extract {
         std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
 
 
-        for (int i = 0; i < gi.number_entry; ++i) {
+        for (uLong i = 0; i < gi.number_entry; ++i) {
             char filename_inzip[0x301] = {0};
             unz_file_info file_info = {0};
             unzOpenCurrentFile(zfile);
@@ -86,6 +86,11 @@ namespace extract {
 
             if (filename_inzip[strlen(filename_inzip) - 1] == '/') {
                 DIR *dir = opendir(filename_inzip);
+                if(dir) closedir(dir);
+                else{
+                    std::cout << "\rCreation du repertoir : " << filename_inzip;
+                    mkdir(filename_inzip, 0777);
+                }
             }
 
             if ((overwriteInis == 0 && filename_inzip_s.substr(filename_inzip_s.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename_inzip_s](std::string ignored){
@@ -123,6 +128,7 @@ namespace extract {
                 }
 
                 for (int j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE); j > 0; j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE)) {
+                    std::cout << outfile << std::endl;
                     fwrite(buf, 1, j, outfile);
                 }
     
