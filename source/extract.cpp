@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iterator>
+#include <iostream>
 #include <ranges>
 #include <set>
 #include <sstream>
@@ -26,7 +27,7 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-constexpr size_t WRITE_BUFFER_SIZE = 0x1000000;
+constexpr size_t WRITE_BUFFER_SIZE = 0x100000;
 
 namespace extract {
 
@@ -81,10 +82,27 @@ namespace extract {
             unzOpenCurrentFile(zfile);
             unzGetCurrentFileInfo(zfile, &file_info, filename_inzip, sizeof(filename_inzip), NULL, 0, NULL, 0);
             std::string filename_inzip_s = filename_inzip;
+            std::cout << filename_inzip_s << std::endl;
 
             if (filename_inzip[strlen(filename_inzip) - 1] == '/') {
                 DIR *dir = opendir(filename_inzip);
             }
+
+            if ((overwriteInis == 0 && filename_inzip_s.substr(filename_inzip_s.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename_inzip_s](std::string ignored){
+                                                                                                                    u8 res = ("/" + filename_inzip_s).find(ignored);                                                                                             return (res == 0 || res == 1); }) != ignoreList.end()) {
+                if (!std::filesystem::exists("/" + filename_inzip_s)) {
+                    void *buf = malloc(WRITE_BUFFER_SIZE);
+                    FILE *outfile;
+                    outfile = fopen((filename_inzip_s + ".aio").c_str(), "wb");
+                    for (int j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE); j > 0; j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE)) {
+                        fwrite(buf, 1, j, outfile);
+                    }
+                    free(buf);
+                    fclose(outfile);
+                }
+                    
+            }
+            
 
             else {
                 FILE *outfile;
@@ -92,14 +110,6 @@ namespace extract {
 
                 if ((filename_inzip_s == "atmosphere/package3") || (filename_inzip_s == "atmosphere/stratosphere.romfs")) {
                     outfile = fopen((filename_inzip_s + ".aio").c_str(), "wb");
-                }
-
-                if ((overwriteInis == 0 && filename_inzip_s.substr(filename_inzip_s.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename_inzip_s](std::string ignored){
-                                                                                                                    u8 res = ("/" + filename_inzip_s).find(ignored);
-                                                                                                                    return (res == 0 || res == 1); }) != ignoreList.end()) {
-                    if (!std::filesystem::exists("/" + filename_inzip_s)) {
-                        outfile = fopen((filename_inzip_s + ".aio").c_str(), "wb");
-                    } 
                 }
 
                 else {
@@ -171,6 +181,7 @@ namespace extract {
         std::vector<std::string> titles;
         std::ifstream file(path);
         std::string name;
+
 
         if (file.is_open()) {
             std::string line;
