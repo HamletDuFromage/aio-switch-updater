@@ -4,10 +4,12 @@
         "back": "Retour",
         "exit": "Quitter"
     },
+
     "crash_frame": {
         "button": "OK"
     },
+
     "thumbnail_sidebar": {
-        "save": "Enregistrer"
+        "save": "Sauvegarder"
     }
 }

@@ -24,6 +24,7 @@ namespace util {
 
     void clearConsole();
     bool isArchive(const std::string& path);
+    s64 getArchiveSize(const std::string& path);
     void downloadArchive(const std::string& url, contentType type);
     void downloadArchive(const std::string& url, contentType type, long& status_code);
     void extractArchive(contentType type, const std::string& version = "");

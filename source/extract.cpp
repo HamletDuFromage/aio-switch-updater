@@ -1,21 +1,21 @@
 #include "extract.hpp"
 
+#include <dirent.h>
 #include <minizip/unzip.h>
+#include <unzipper.h>
 
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
-#include <iterator>
 #include <iostream>
+#include <iterator>
 #include <ranges>
 #include <set>
 #include <sstream>
 #include <string>
 #include <thread>
 #include <vector>
-#include <dirent.h>
-#include <unzipper.h>
 
 #include "current_cfw.hpp"
 #include "download.hpp"
@@ -37,36 +37,44 @@ namespace extract {
             return strcasecmp(a.c_str(), b.c_str()) == 0;
         }
 
-        void preWork(zipper::Unzipper& unzipper, const std::string& workingPath, std::vector<zipper::ZipEntry>& entries)
+        void preWork(const std::string& archivePath, const std::string& workingPath)
         {
             chdir(workingPath.c_str());
-            entries = unzipper.entries();
-            s64 uncompressedSize = 0;
+            s64 uncompressedSize = util::getArchiveSize(archivePath);
             s64 freeStorage;
-            for (const auto& entry : entries)
-                uncompressedSize += entry.uncompressedSize;
 
             if (R_SUCCEEDED(fs::getFreeStorageSD(freeStorage))) {
+                brls::Logger::info("Uncompressed size of archive {}: {}. Available: {}", archivePath, uncompressedSize, freeStorage);
                 if (uncompressedSize * 1.1 > freeStorage) {
-                    unzipper.close();
                     brls::Application::crash("menus/errors/insufficient_storage"_i18n);
                     std::this_thread::sleep_for(std::chrono::microseconds(2000000));
                     brls::Application::quit();
                 }
             }
         }
+
+        void extractFile(std::string filename, unzFile& zfile)
+        {
+            if (filename.back() == '/') {
+                fs::createTree(filename);
+                return;
+            }
+            void* buf = malloc(WRITE_BUFFER_SIZE);
+            FILE* outfile;
+            outfile = fopen(filename.c_str(), "wb");
+            for (int j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE); j > 0; j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE)) {
+                fwrite(buf, 1, j, outfile);
+            }
+            free(buf);
+            fclose(outfile);
+        }
     }  // namespace
 
-    void extract(const std::string& filename, const std::string& workingPath, int overwriteInis, std::function<void()> func)
+    void extract(const std::string& archivePath, const std::string& workingPath, int overwriteInis, std::function<void()> func)
     {
-        zipper::Unzipper unzipper(filename);
-        std::vector<zipper::ZipEntry> entries;
+        preWork(archivePath, workingPath);
 
-        preWork(unzipper, workingPath, entries);
-        unzipper.close();
-
-        chdir(workingPath.c_str());
-        unzFile zfile = unzOpen(filename.c_str());
+        unzFile zfile = unzOpen(archivePath.c_str());
         unz_global_info gi = {0};
         unzGetGlobalInfo(zfile, &gi);
 
@@ -75,72 +83,45 @@ namespace extract {
 
         std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
 
-
         for (uLong i = 0; i < gi.number_entry; ++i) {
             char filename_inzip[0x301] = {0};
-            unz_file_info file_info = {0};
             unzOpenCurrentFile(zfile);
-            unzGetCurrentFileInfo(zfile, &file_info, filename_inzip, sizeof(filename_inzip), NULL, 0, NULL, 0);
-            std::string filename_inzip_s = filename_inzip;
-            std::cout << filename_inzip_s << std::endl;
+            unzGetCurrentFileInfo(zfile, {0}, filename_inzip, sizeof(filename_inzip), NULL, 0, NULL, 0);
+            std::string filename = filename_inzip;
+            // brls::Logger::debug("Going over {} in {}", filename, archivePath);
 
-            if (filename_inzip[strlen(filename_inzip) - 1] == '/') {
-                DIR *dir = opendir(filename_inzip);
-                if(dir) closedir(dir);
-                else{
-                    std::cout << "\rCreation du repertoir : " << filename_inzip;
-                    mkdir(filename_inzip, 0777);
-                }
+            if (ProgressEvent::instance().getInterupt()) {
+                unzCloseCurrentFile(zfile);
+                break;
             }
 
-            if ((overwriteInis == 0 && filename_inzip_s.substr(filename_inzip_s.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename_inzip_s](std::string ignored){
-                                                                                                                    u8 res = ("/" + filename_inzip_s).find(ignored);                                                                                             return (res == 0 || res == 1); }) != ignoreList.end()) {
-                if (!std::filesystem::exists("/" + filename_inzip_s)) {
-                    void *buf = malloc(WRITE_BUFFER_SIZE);
-                    FILE *outfile;
-                    outfile = fopen((filename_inzip_s + ".aio").c_str(), "wb");
-                    for (int j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE); j > 0; j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE)) {
-                        fwrite(buf, 1, j, outfile);
-                    }
-                    free(buf);
-                    fclose(outfile);
+            if ((overwriteInis == 0 && filename.substr(filename.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename](std::string ignored) {
+                                                                                                                    u8 res = ("/" + filename).find(ignored);
+                                                                                                                    return (res == 0 || res == 1); }) != ignoreList.end()) {
+                if (!std::filesystem::exists("/" + filename)) {
+                    extractFile(filename, zfile);
                 }
-                    
             }
-            
-
             else {
-                FILE *outfile;
-                void *buf = malloc(WRITE_BUFFER_SIZE);
-
-                if ((filename_inzip_s == "atmosphere/package3") || (filename_inzip_s == "atmosphere/stratosphere.romfs")) {
-                    outfile = fopen((filename_inzip_s + ".aio").c_str(), "wb");
+                if ((filename == "atmosphere/package3") || (filename == "atmosphere/stratosphere.romfs")) {
+                    extractFile(filename += ".aio", zfile);
                 }
-
                 else {
-                    outfile = fopen(filename_inzip, "wb");
-                    if (filename_inzip_s.substr(0, 13) == "hekate_ctcaer") {
-                        fs::copyFile("/" + filename_inzip_s, UPDATE_BIN_PATH);
+                    extractFile(filename, zfile);
+                    if (filename.substr(0, 13) == "hekate_ctcaer") {
+                        fs::copyFile("/" + filename, UPDATE_BIN_PATH);
                         if (CurrentCfw::running_cfw == CFW::ams && util::showDialogBoxBlocking(fmt::format("menus/utils/set_hekate_reboot_payload"_i18n, UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH), "menus/common/yes"_i18n, "menus/common/no"_i18n) == 0) {
                             fs::copyFile(UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH);
                         }
-                    }   
+                    }
                 }
-
-                for (int j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE); j > 0; j = unzReadCurrentFile(zfile, buf, WRITE_BUFFER_SIZE)) {
-                    std::cout << outfile << std::endl;
-                    fwrite(buf, 1, j, outfile);
-                }
-    
-                fclose(outfile);
-                free(buf);
             }
 
-            ProgressEvent::instance().incrementStep(1);
+            ProgressEvent::instance().setStep(i);
             unzCloseCurrentFile(zfile);
             unzGoToNextFile(zfile);
         }
-        
+
         unzClose(zfile);
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
     }
@@ -188,7 +169,6 @@ namespace extract {
         std::ifstream file(path);
         std::string name;
 
-
         if (file.is_open()) {
             std::string line;
             while (std::getline(file, line)) {
@@ -235,9 +215,9 @@ namespace extract {
         return 0;
     }
 
-    void extractCheats(const std::string& zipPath, const std::vector<std::string>& titles, CFW cfw, const std::string& version, bool extractAll)
+    void extractCheats(const std::string& archivePath, const std::vector<std::string>& titles, CFW cfw, const std::string& version, bool extractAll)
     {
-        zipper::Unzipper unzipper(zipPath);
+        zipper::Unzipper unzipper(archivePath);
         std::vector<zipper::ZipEntry> entries = unzipper.entries();
         int offset = computeOffset(cfw);
 
@@ -281,9 +261,9 @@ namespace extract {
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
     }
 
-    void extractAllCheats(const std::string& zipPath, CFW cfw, const std::string& version)
+    void extractAllCheats(const std::string& archivePath, CFW cfw, const std::string& version)
     {
-        extractCheats(zipPath, {}, cfw, version, true);
+        extractCheats(archivePath, {}, cfw, version, true);
     }
 
     bool isBID(const std::string& bid)

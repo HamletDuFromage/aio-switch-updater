@@ -41,6 +41,22 @@ namespace util {
         downloadArchive(url, type, status_code);
     }
 
+    s64 getArchiveSize(const std::string& path) //Seems like not all zip files follow the header specifications, or the code is wrong
+    {
+        s64 res = 0;
+        if (std::filesystem::exists(path)) {
+            std::ifstream is(path, std::ifstream::binary);
+            char headers[26];
+            is.read(headers, 26);
+            if (is.good()) {
+                for (int i = 0; i < 4; i++) {
+                    res += headers[25 - i] * std::pow(256, i);
+                }
+            }
+        }
+        return res != 0xFFFFFFFF ? res : 0;
+    }
+
     void downloadArchive(const std::string& url, contentType type, long& status_code)
     {
         fs::createTree(DOWNLOAD_PATH);
@@ -58,7 +74,7 @@ namespace util {
                 status_code = download::downloadFile(url, APP_FILENAME, OFF);
                 break;
             case contentType::bootloaders:
-                status_code = download::downloadFile(url, CFW_FILENAME, OFF);
+                status_code = download::downloadFile(url, BOOTLOADER_FILENAME, OFF);
                 break;
             case contentType::ams_cfw:
                 status_code = download::downloadFile(url, AMS_FILENAME, OFF);
@@ -139,7 +155,7 @@ namespace util {
                 filename = APP_FILENAME;
                 break;
             case contentType::bootloaders:
-                filename = CFW_FILENAME;
+                filename = BOOTLOADER_FILENAME;
                 break;
             case contentType::ams_cfw:
                 filename = AMS_FILENAME;
@@ -180,7 +196,7 @@ namespace util {
                 break;
             case contentType::bootloaders: {
                 int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                extract::extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
+                extract::extract(BOOTLOADER_FILENAME, ROOT_PATH, overwriteInis);
                 break;
             }
             case contentType::ams_cfw: {
