@@ -7,7 +7,6 @@
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
-#include <iostream>
 #include <iterator>
 #include <ranges>
 #include <set>
@@ -265,7 +264,7 @@ namespace extract {
                     if (std::find_if(titles.begin(), titles.end(), [&filename, offset](std::string title) {
                             return caselessCompare((title.substr(0, 13)), filename.substr(offset, 13));
                         }) != titles.end()) {
-                        extractEntry(filename, zfile, true);
+                        extractEntry(filename, zfile);
                     }
                 }
             }
