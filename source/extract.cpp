@@ -37,10 +37,28 @@ namespace extract {
             return strcasecmp(a.c_str(), b.c_str()) == 0;
         }
 
+        s64 getArchiveSize(const std::string& archivePath)
+        {
+            s64 size = 0;
+            unzFile zfile = unzOpen(archivePath.c_str());
+            unz_global_info gi;
+            unzGetGlobalInfo(zfile, &gi);
+            for (uLong i = 0; i < gi.number_entry; ++i) {
+                unz_file_info fi;
+                unzOpenCurrentFile(zfile);
+                unzGetCurrentFileInfo(zfile, &fi, NULL, 0, NULL, 0, NULL, 0);
+                size += fi.uncompressed_size;
+                unzCloseCurrentFile(zfile);
+                unzGoToNextFile(zfile);
+            }
+            unzClose(zfile);
+            return size * 1024;
+        }
+
         void preWork(const std::string& archivePath, const std::string& workingPath)
         {
             chdir(workingPath.c_str());
-            s64 uncompressedSize = util::getArchiveSize(archivePath);
+            s64 uncompressedSize = getArchiveSize(archivePath);
             s64 freeStorage;
 
             if (R_SUCCEEDED(fs::getFreeStorageSD(freeStorage))) {
@@ -75,7 +93,7 @@ namespace extract {
         preWork(archivePath, workingPath);
 
         unzFile zfile = unzOpen(archivePath.c_str());
-        unz_global_info gi = {0};
+        unz_global_info gi;
         unzGetGlobalInfo(zfile, &gi);
 
         ProgressEvent::instance().setTotalSteps(gi.number_entry);
@@ -84,9 +102,9 @@ namespace extract {
         std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
 
         for (uLong i = 0; i < gi.number_entry; ++i) {
-            char filename_inzip[0x301] = {0};
+            char filename_inzip[0x301] = "";
             unzOpenCurrentFile(zfile);
-            unzGetCurrentFileInfo(zfile, {0}, filename_inzip, sizeof(filename_inzip), NULL, 0, NULL, 0);
+            unzGetCurrentFileInfo(zfile, NULL, filename_inzip, sizeof(filename_inzip), NULL, 0, NULL, 0);
             std::string filename = filename_inzip;
             // brls::Logger::debug("Going over {} in {}", filename, archivePath);
 
@@ -116,12 +134,10 @@ namespace extract {
                     }
                 }
             }
-
             ProgressEvent::instance().setStep(i);
             unzCloseCurrentFile(zfile);
             unzGoToNextFile(zfile);
         }
-
         unzClose(zfile);
         ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
     }

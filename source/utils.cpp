@@ -41,22 +41,6 @@ namespace util {
         downloadArchive(url, type, status_code);
     }
 
-    s64 getArchiveSize(const std::string& path) //Seems like not all zip files follow the header specifications, or the code is wrong
-    {
-        s64 res = 0;
-        if (std::filesystem::exists(path)) {
-            std::ifstream is(path, std::ifstream::binary);
-            char headers[26];
-            is.read(headers, 26);
-            if (is.good()) {
-                for (int i = 0; i < 4; i++) {
-                    res += headers[25 - i] * std::pow(256, i);
-                }
-            }
-        }
-        return res != 0xFFFFFFFF ? res : 0;
-    }
-
     void downloadArchive(const std::string& url, contentType type, long& status_code)
     {
         fs::createTree(DOWNLOAD_PATH);
