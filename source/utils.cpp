@@ -58,7 +58,7 @@ namespace util {
                 status_code = download::downloadFile(url, APP_FILENAME, OFF);
                 break;
             case contentType::bootloaders:
-                status_code = download::downloadFile(url, CFW_FILENAME, OFF);
+                status_code = download::downloadFile(url, BOOTLOADER_FILENAME, OFF);
                 break;
             case contentType::ams_cfw:
                 status_code = download::downloadFile(url, AMS_FILENAME, OFF);
@@ -139,7 +139,7 @@ namespace util {
                 filename = APP_FILENAME;
                 break;
             case contentType::bootloaders:
-                filename = CFW_FILENAME;
+                filename = BOOTLOADER_FILENAME;
                 break;
             case contentType::ams_cfw:
                 filename = AMS_FILENAME;
@@ -180,7 +180,7 @@ namespace util {
                 break;
             case contentType::bootloaders: {
                 int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                extract::extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
+                extract::extract(BOOTLOADER_FILENAME, ROOT_PATH, overwriteInis);
                 break;
             }
             case contentType::ams_cfw: {

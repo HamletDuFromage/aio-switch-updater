@@ -26,7 +26,7 @@ constexpr const char FIRMWARE_FILENAME[] = "/config/aio-switch-updater/firmware.
 constexpr const char FIRMWARE_PATH[] = "/firmware/";
 
 constexpr const char CFW_URL[] = "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/bootloaders.json";
-constexpr const char CFW_FILENAME[] = "/config/aio-switch-updater/cfw.zip";
+constexpr const char BOOTLOADER_FILENAME[] = "/config/aio-switch-updater/bootloader.zip";
 
 constexpr const char AMS_URL[] = "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/cfws.json";
 constexpr const char SXOS_URL[] = "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/sxos.json";
