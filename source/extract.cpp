@@ -2,7 +2,6 @@
 
 #include <dirent.h>
 #include <minizip/unzip.h>
-#include <unzipper.h>
 
 #include <algorithm>
 #include <filesystem>
@@ -37,7 +36,7 @@ namespace extract {
             return strcasecmp(a.c_str(), b.c_str()) == 0;
         }
 
-        s64 getArchiveSize(const std::string& archivePath)
+        s64 getUncompressedSize(const std::string& archivePath)
         {
             s64 size = 0;
             unzFile zfile = unzOpen(archivePath.c_str());
@@ -52,13 +51,13 @@ namespace extract {
                 unzGoToNextFile(zfile);
             }
             unzClose(zfile);
-            return size * 1024;
+            return size;  // in B
         }
 
         void preWork(const std::string& archivePath, const std::string& workingPath)
         {
             chdir(workingPath.c_str());
-            s64 uncompressedSize = getArchiveSize(archivePath);
+            s64 uncompressedSize = getUncompressedSize(archivePath);
             s64 freeStorage;
 
             if (R_SUCCEEDED(fs::getFreeStorageSD(freeStorage))) {
@@ -71,11 +70,14 @@ namespace extract {
             }
         }
 
-        void extractFile(std::string filename, unzFile& zfile)
+        void extractEntry(std::string filename, unzFile& zfile, bool forceCreateTree = false)
         {
             if (filename.back() == '/') {
                 fs::createTree(filename);
                 return;
+            }
+            if (forceCreateTree) {
+                fs::createTree(filename);
             }
             void* buf = malloc(WRITE_BUFFER_SIZE);
             FILE* outfile;
@@ -102,10 +104,10 @@ namespace extract {
         std::set<std::string> ignoreList = fs::readLineByLine(FILES_IGNORE);
 
         for (uLong i = 0; i < gi.number_entry; ++i) {
-            char filename_inzip[0x301] = "";
+            char szFilename[0x301] = "";
             unzOpenCurrentFile(zfile);
-            unzGetCurrentFileInfo(zfile, NULL, filename_inzip, sizeof(filename_inzip), NULL, 0, NULL, 0);
-            std::string filename = filename_inzip;
+            unzGetCurrentFileInfo(zfile, NULL, szFilename, sizeof(szFilename), NULL, 0, NULL, 0);
+            std::string filename = szFilename;
             // brls::Logger::debug("Going over {} in {}", filename, archivePath);
 
             if (ProgressEvent::instance().getInterupt()) {
@@ -117,15 +119,15 @@ namespace extract {
                                                                                                                     u8 res = ("/" + filename).find(ignored);
                                                                                                                     return (res == 0 || res == 1); }) != ignoreList.end()) {
                 if (!std::filesystem::exists("/" + filename)) {
-                    extractFile(filename, zfile);
+                    extractEntry(filename, zfile);
                 }
             }
             else {
                 if ((filename == "atmosphere/package3") || (filename == "atmosphere/stratosphere.romfs")) {
-                    extractFile(filename += ".aio", zfile);
+                    extractEntry(filename += ".aio", zfile);
                 }
                 else {
-                    extractFile(filename, zfile);
+                    extractEntry(filename, zfile);
                     if (filename.substr(0, 13) == "hekate_ctcaer") {
                         fs::copyFile("/" + filename, UPDATE_BIN_PATH);
                         if (CurrentCfw::running_cfw == CFW::ams && util::showDialogBoxBlocking(fmt::format("menus/utils/set_hekate_reboot_payload"_i18n, UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH), "menus/common/yes"_i18n, "menus/common/no"_i18n) == 0) {
@@ -233,44 +235,46 @@ namespace extract {
 
     void extractCheats(const std::string& archivePath, const std::vector<std::string>& titles, CFW cfw, const std::string& version, bool extractAll)
     {
-        zipper::Unzipper unzipper(archivePath);
-        std::vector<zipper::ZipEntry> entries = unzipper.entries();
+        preWork(archivePath, "/");
+
+        unzFile zfile = unzOpen(archivePath.c_str());
+        unz_global_info gi;
+        unzGetGlobalInfo(zfile, &gi);
+
+        ProgressEvent::instance().setTotalSteps(gi.number_entry);
+        ProgressEvent::instance().setStep(0);
+
         int offset = computeOffset(cfw);
 
-        if (!extractAll) {
-            ProgressEvent::instance().setTotalSteps(titles.size() + 1);
-            for (const auto& title : titles) {
-                if (ProgressEvent::instance().getInterupt()) {
-                    break;
-                }
-                auto matches = entries | std::views::filter([&title, offset](zipper::ZipEntry entry) {
-                                   if ((int)entry.name.size() > offset + 16 + 7) {
-                                       return caselessCompare((title.substr(0, 13)), entry.name.substr(offset, 13)) && caselessCompare(entry.name.substr(offset + 16, 7), "/cheats");
-                                   }
-                                   else {
-                                       return false;
-                                   }
-                               });
-                for (const auto& match : matches) {
-                    unzipper.extractEntry(match.name);
-                }
-                ProgressEvent::instance().incrementStep(1);
-            }
-        }
-        else {
-            ProgressEvent::instance().setTotalSteps(entries.size() + 1);
-            for (const auto& entry : entries) {
-                if (ProgressEvent::instance().getInterupt()) {
-                    break;
-                }
+        for (uLong i = 0; i < gi.number_entry; ++i) {
+            char szFilename[0x301] = "";
+            unzOpenCurrentFile(zfile);
+            unzGetCurrentFileInfo(zfile, NULL, szFilename, sizeof(szFilename), NULL, 0, NULL, 0);
+            std::string filename = szFilename;
 
-                if ((int)entry.name.size() > offset + 16 + 7 && caselessCompare(entry.name.substr(offset + 16, 7), "/cheats")) {
-                    unzipper.extractEntry(entry.name);
-                }
-                ProgressEvent::instance().incrementStep(1);
+            if (ProgressEvent::instance().getInterupt()) {
+                unzCloseCurrentFile(zfile);
+                break;
             }
+
+            if ((int)filename.size() > offset + 16 + 7 && caselessCompare(filename.substr(offset + 16, 7), "/cheats")) {
+                if (extractAll) {
+                    extractEntry(filename, zfile);
+                }
+                else {
+                    if (std::find_if(titles.begin(), titles.end(), [&filename, offset](std::string title) {
+                            return caselessCompare((title.substr(0, 13)), filename.substr(offset, 13));
+                        }) != titles.end()) {
+                        extractEntry(filename, zfile, true);
+                    }
+                }
+            }
+
+            ProgressEvent::instance().setStep(i);
+            unzCloseCurrentFile(zfile);
+            unzGoToNextFile(zfile);
         }
-        unzipper.close();
+        unzClose(zfile);
         if (version != "offline" && version != "") {
             util::saveToFile(version, CHEATS_VERSION);
         }
