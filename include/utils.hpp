@@ -40,6 +40,7 @@ namespace util {
     std::string getCheatsVersion();
     void saveToFile(const std::string& text, const std::string& path);
     std::string readFile(const std::string& path);
+    std::string getAppPath();
     bool isErista();
     void removeSysmodulesFlags(const std::string& directory);
     std::string lowerCase(const std::string& str);

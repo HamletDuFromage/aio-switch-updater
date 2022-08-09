@@ -9,7 +9,7 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-namespace {
+namespace fs {
     std::vector<std::string> splitString(const std::string& s, char delimiter)
     {
         std::vector<std::string> tokens;
@@ -20,9 +20,6 @@ namespace {
         }
         return tokens;
     }
-}  // namespace
-
-namespace fs {
 
     bool removeDir(const std::string& path)
     {

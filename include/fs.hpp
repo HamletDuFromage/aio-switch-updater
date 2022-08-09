@@ -6,6 +6,7 @@
 #include <set>
 
 namespace fs {
+    std::vector<std::string> splitString(const std::string& s, char delimiter);
     bool removeDir(const std::string& path);
     nlohmann::ordered_json parseJsonFile(const std::string& path);
     void writeJsonToFile(nlohmann::json& data, const std::string& path);
