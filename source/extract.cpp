@@ -114,21 +114,21 @@ namespace extract {
                 break;
             }
             if (appPath != workingPath + filename) {
-                if ((overwriteInis == 0 && filename.substr(filename.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename](std::string ignored) {
-                                                                                                                    u8 res = ("/" + filename).find(ignored);
+                if ((overwriteInis == 0 && filename.substr(filename.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename, &workingPath](std::string ignored) {
+                                                                                                                    u8 res = (workingPath + filename).find(ignored);
                                                                                                                     return (res == 0 || res == 1); }) != ignoreList.end()) {
-                    if (!std::filesystem::exists("/" + filename)) {
+                    if (!std::filesystem::exists(workingPath + filename)) {
                         extractEntry(filename, zfile);
                     }
                 }
                 else {
                     if ((filename == "atmosphere/package3") || (filename == "atmosphere/stratosphere.romfs")) {
-                        extractEntry(filename += ".aio", zfile);
+                        extractEntry(filename + ".aio", zfile);
                     }
                     else {
                         extractEntry(filename, zfile);
                         if (filename.substr(0, 13) == "hekate_ctcaer") {
-                            fs::copyFile("/" + filename, UPDATE_BIN_PATH);
+                            fs::copyFile(workingPath + filename, UPDATE_BIN_PATH);
                             if (CurrentCfw::running_cfw == CFW::ams && util::showDialogBoxBlocking(fmt::format("menus/utils/set_hekate_reboot_payload"_i18n, UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH), "menus/common/yes"_i18n, "menus/common/no"_i18n) == 0) {
                                 fs::copyFile(UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH);
                             }
