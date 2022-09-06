@@ -18,7 +18,6 @@ constexpr const char APP_FILENAME[] = "/config/aio-switch-updater/app.zip";
 
 constexpr const char NXLINKS_URL[] = "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/nx-links.json";
 
-constexpr const char SIGPATCHES_URL[] = "https://raw.githubusercontent.com/HamletDuFromage/nx-links/master/sigpatches.json";
 constexpr const char SIGPATCHES_FILENAME[] = "/config/aio-switch-updater/sigpatches.zip";
 constexpr const char HEKATE_IPL_PATH[] = "/bootloader/hekate_ipl.ini";
 
@@ -41,7 +40,7 @@ constexpr const char DEEPSEA_META_JSON[] = "https://builder.teamneptune.net/meta
 constexpr const char DEEPSEA_BUILD_URL[] = "https://builder.teamneptune.net/build/";
 constexpr const char DEEPSEA_PACKAGE_PATH[] = "/config/deepsea/customPackage.json";
 
-constexpr const char CUSTOM_PACKS_PATH[] = "/config/aio-switch-updater/customPacks.json";
+constexpr const char CUSTOM_PACKS_PATH[] = "/config/aio-switch-updater/custom_packs.json";
 
 constexpr const char CHEATS_URL_TITLES[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/latest/download/titles.zip";
 constexpr const char CHEATS_URL_CONTENTS[] = "https://github.com/HamletDuFromage/switch-cheats-db/releases/latest/download/contents.zip";

@@ -15,7 +15,7 @@
 <img src = "https://user-images.githubusercontent.com/61667930/93691188-7833f000-fad1-11ea-866d-42e19be54425.jpg"\><br>
 </p>
 
-A Nintendo Switch homebrew app to download and update CFWs, sigpatches, FWs and cheat codes. Supports Atmosphère, ReiNX and SXOS.
+A Nintendo Switch homebrew app to download and update CFWs, FWs and cheat codes. Supports Atmosphère, ReiNX and SXOS.
 
 Works on **unpatched** (Erista) and **patched** (v2/Mariko) Switches.
 
@@ -27,13 +27,12 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 - Update the Atmosphère Switch Custom Firmware. AIO-Switch-Updater uses a custom RCM payload to finalise the install as it can't be performed while HOS is running.
   - If you would like to preserve additional files or directories, write their path (one line each) in `/config/aio-switch-updater/preserve.txt` and they won't be overwritten when updating.
   - Place [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/copy_files.txt) in `/config/aio-switch-updater/copy_files.txt` in order to have specific copy operations performed after each download. This is mainly meant for users with trinkets who want payloads automatically copied to a directory.
-  - A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/customPacks.json). Once moved to `/config/aio-switch-updater/customPacks.json`, it will show on the `Update Atmopshère` menu. This can be used to support third-party packs through AIO-Switch-Updater
 
 ### ⬦ Update Hekate/Payload
 - Download and update Hekate, as well as a selection of RCM payloads
 
-### ⬦ Update Sigpatches
-- Dowload sigpatches, which are patches required to launch homebrew .NSPs on the Atmosphère CFW.
+### ⬦ Custom Downloads
+- A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/custom_packs.json). Once moved to `/config/aio-switch-updater/custom_packs.json`, it will show on the `Custom Download` menu. This can be used to support third-party packs through AIO-Switch-Updater. Non-Atmosphère downloads can also be added in the `misc` category.
 
 ### ⬦ Download firmwares
 - Download firmware files to `/firmware` that can then be installed using DayBreak.

@@ -13,7 +13,6 @@ private:
     std::string currentCheatsVer = "";
     std::string newCheatsVer = "";
     contentType type;
-    int size = 0;
     void createList();
     void createList(contentType type);
     void createCheatSlipItem();

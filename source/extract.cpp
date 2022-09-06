@@ -53,9 +53,8 @@ namespace extract {
             return size;  // in B
         }
 
-        void preWork(const std::string& archivePath, const std::string& workingPath)
+        void ensureAvailableStorage(const std::string& archivePath)
         {
-            chdir(workingPath.c_str());
             s64 uncompressedSize = getUncompressedSize(archivePath);
             s64 freeStorage;
 
@@ -91,7 +90,7 @@ namespace extract {
 
     void extract(const std::string& archivePath, const std::string& workingPath, int overwriteInis, std::function<void()> func)
     {
-        preWork(archivePath, workingPath);
+        ensureAvailableStorage(archivePath);
 
         unzFile zfile = unzOpen(archivePath.c_str());
         unz_global_info gi;
@@ -107,28 +106,28 @@ namespace extract {
             char szFilename[0x301] = "";
             unzOpenCurrentFile(zfile);
             unzGetCurrentFileInfo(zfile, NULL, szFilename, sizeof(szFilename), NULL, 0, NULL, 0);
-            std::string filename = szFilename;
+            std::string filename = workingPath + szFilename;
 
             if (ProgressEvent::instance().getInterupt()) {
                 unzCloseCurrentFile(zfile);
                 break;
             }
-            if (appPath != workingPath + filename) {
-                if ((overwriteInis == 0 && filename.substr(filename.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename, &workingPath](std::string ignored) {
-                                                                                                                    u8 res = (workingPath + filename).find(ignored);
+            if (appPath != filename) {
+                if ((overwriteInis == 0 && filename.substr(filename.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename](std::string ignored) {
+                                                                                                                    u8 res = (filename).find(ignored);
                                                                                                                     return (res == 0 || res == 1); }) != ignoreList.end()) {
-                    if (!std::filesystem::exists(workingPath + filename)) {
+                    if (!std::filesystem::exists(filename)) {
                         extractEntry(filename, zfile);
                     }
                 }
                 else {
-                    if ((filename == "atmosphere/package3") || (filename == "atmosphere/stratosphere.romfs")) {
+                    if ((filename == "/atmosphere/package3") || (filename == "/atmosphere/stratosphere.romfs")) {
                         extractEntry(filename + ".aio", zfile);
                     }
                     else {
                         extractEntry(filename, zfile);
                         if (filename.substr(0, 13) == "hekate_ctcaer") {
-                            fs::copyFile(workingPath + filename, UPDATE_BIN_PATH);
+                            fs::copyFile(filename, UPDATE_BIN_PATH);
                             if (CurrentCfw::running_cfw == CFW::ams && util::showDialogBoxBlocking(fmt::format("menus/utils/set_hekate_reboot_payload"_i18n, UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH), "menus/common/yes"_i18n, "menus/common/no"_i18n) == 0) {
                                 fs::copyFile(UPDATE_BIN_PATH, REBOOT_PAYLOAD_PATH);
                             }
@@ -235,7 +234,7 @@ namespace extract {
 
     void extractCheats(const std::string& archivePath, const std::vector<std::string>& titles, CFW cfw, const std::string& version, bool extractAll)
     {
-        preWork(archivePath, "/");
+        ensureAvailableStorage(archivePath);
 
         unzFile zfile = unzOpen(archivePath.c_str());
         unz_global_info gi;

@@ -249,6 +249,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.19.3");
     changes.push_back("\uE016 Fix wrong bid for titles overriden by HBL.\n\uE016 Improve Korean localisation (https://github.com/DDinghoya).\n\uE016 Improve Italian localisation (https://github.com/clamintus).");
 
+    verTitles.push_back("v2.20.0");
+    changes.push_back("\uE016 Significantly increase extraction speed (https://github.com/PoloNX).\n\uE016 Create a \"Custom Downloads\" tab that supports user-provided links for Atmosphère packs as well as regular downloads.");
+
+
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];

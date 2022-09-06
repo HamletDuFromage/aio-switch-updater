@@ -15,22 +15,22 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool hideStandardEntries) : brls::List()
+AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool custom) : brls::List()
 {
     this->erista = erista;
     this->hekate = util::getValueFromKey(nxlinks, "hekate");
-    auto cfws = util::getValueFromKey(nxlinks, "cfws");
 
-    if (!hideStandardEntries) {
-        this->description = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (CurrentCfw::running_cfw == CFW::ams ? "\n" + "menus/ams_update/current_ams"_i18n + CurrentCfw::getAmsInfo() : "") + (erista ? "\n" + "menus/ams_update/erista_rev"_i18n : "\n" + "menus/ams_update/mariko_rev"_i18n), true);
-        this->addView(description);
+    if (!custom) {
+        this->type = contentType::ams_cfw;
+        auto cfws = util::getValueFromKey(nxlinks, "cfws");
+
+        this->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/ams_text"_i18n + (CurrentCfw::running_cfw == CFW::ams ? "\n" + "menus/ams_update/current_ams"_i18n + CurrentCfw::getAmsInfo() : "") + (erista ? "\n" + "menus/ams_update/erista_rev"_i18n : "\n" + "menus/ams_update/mariko_rev"_i18n), true));
         CreateDownloadItems(util::getValueFromKey(cfws, "Atmosphere"));
 
-        description = new brls::Label(
+        this->addView(new brls::Label(
             brls::LabelStyle::DESCRIPTION,
             "menus/ams_update/deepsea_label"_i18n,
-            true);
-        this->addView(description);
+            true));
 
         listItem = new brls::ListItem("menus/ams_update/get_custom_deepsea"_i18n);
         listItem->setHeight(LISTITEM_HEIGHT);
@@ -40,25 +40,36 @@ AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool hide
             this->ShowCustomDeepseaBuilder(modules);
         });
         this->addView(listItem);
-
         CreateDownloadItems(util::getValueFromKey(cfws, "DeepSea"), false);
     }
 
-    auto custom_pack = fs::parseJsonFile(CUSTOM_PACKS_PATH);
-    if (custom_pack.size() != 0) {
-        description = new brls::Label(
+    else {
+        auto custom_pack = fs::parseJsonFile(CUSTOM_PACKS_PATH);
+        this->addView(new brls::Label(
             brls::LabelStyle::DESCRIPTION,
             fmt::format("menus/ams_update/custom_packs_label"_i18n, CUSTOM_PACKS_PATH),
-            true);
-        this->addView(description);
-
-        CreateDownloadItems(cfws.size() ? custom_pack : nlohmann::ordered_json::object(), true);  // TODO: better way to check for availability of the links
+            true));
+        if (custom_pack.contains("ams") && custom_pack["ams"].size() != 0) {
+            this->type = contentType::ams_cfw;
+            this->addView(new brls::Label(
+                brls::LabelStyle::DESCRIPTION,
+                "menus/ams_update/custom_packs_ams"_i18n,
+                true));
+            CreateDownloadItems(custom_pack["ams"], true);  // TODO: check for internet
+        }
+        if (custom_pack.contains("misc") && custom_pack["misc"].size() != 0) {
+            this->type = contentType::bootloaders;
+            this->addView(new brls::Label(
+                brls::LabelStyle::DESCRIPTION,
+                "menus/ams_update/custom_packs_misc"_i18n,
+                true));
+            CreateDownloadItems(custom_pack["misc"], false, false);
+        }
     }
 }
 
-void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool hekate)
+void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool hekate, bool ams)
 {
-    std::string operation("menus/ams_update/getting_ams"_i18n);
     std::vector<std::pair<std::string, std::string>> links;
     links = download::getLinksFromJson(cfw_links);
     if (links.size()) {
@@ -71,19 +82,19 @@ void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool h
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([this, text, text_hekate, url, hekate_url, operation, hekate](brls::View* view) {
+            listItem->getClickEvent()->subscribe([this, text, text_hekate, url, hekate_url, hekate, ams](brls::View* view) {
                 if (!erista && !std::filesystem::exists(MARIKO_PAYLOAD_PATH)) {
                     brls::Application::crash("menus/errors/mariko_payload_missing"_i18n);
                 }
                 else {
-                    CreateStagedFrames(text, url, operation, erista, hekate, text_hekate, hekate_url);
+                    CreateStagedFrames(text, url, erista, ams, hekate, text_hekate, hekate_url);
                 }
             });
             this->addView(listItem);
         }
     }
     else {
-        description = new brls::Label(
+        brls::Label* description = new brls::Label(
             brls::LabelStyle::SMALL,
             "menus/main/links_not_found"_i18n,
             true);
@@ -92,16 +103,16 @@ void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool h
     }
 }
 
-void AmsTab::CreateStagedFrames(const std::string& text, const std::string& url, const std::string& operation, bool erista, bool hekate, const std::string& text_hekate, const std::string& hekate_url)
+void AmsTab::CreateStagedFrames(const std::string& text, const std::string& url, bool erista, bool ams, bool hekate, const std::string& text_hekate, const std::string& hekate_url)
 {
     brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
-    stagedFrame->setTitle(operation);
+    stagedFrame->setTitle(this->type == contentType::ams_cfw ? "menus/ams_update/getting_ams"_i18n : "menus/ams_update/custom_download"_i18n);
     stagedFrame->addStage(
         new ConfirmPage(stagedFrame, text));
     stagedFrame->addStage(
-        new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url]() { util::downloadArchive(url, contentType::ams_cfw); }));
+        new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [&, url]() { util::downloadArchive(url, this->type); }));
     stagedFrame->addStage(
-        new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(contentType::ams_cfw); }));
+        new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [&]() { util::extractArchive(this->type); }));
     if (hekate) {
         stagedFrame->addStage(
             new DialoguePage_ams(stagedFrame, text_hekate, erista));
@@ -110,8 +121,10 @@ void AmsTab::CreateStagedFrames(const std::string& text, const std::string& url,
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(contentType::bootloaders); }));
     }
-    stagedFrame->addStage(
-        new ConfirmPage(stagedFrame, "menus/ams_update/reboot_rcm"_i18n, false, true, erista));
+    if (ams)
+        stagedFrame->addStage(new ConfirmPage(stagedFrame, "menus/ams_update/reboot_rcm"_i18n, false, true, erista));
+    else
+        stagedFrame->addStage(new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
     brls::Application::pushView(stagedFrame);
 }
 
@@ -207,7 +220,6 @@ void AmsTab::ShowCustomDeepseaBuilder(nlohmann::ordered_json& modules)
 
         this->CreateStagedFrames("menus/common/download"_i18n + "Custom DeepSea package" + "menus/common/from"_i18n + request_url,
                                  request_url,
-                                 "menus/ams_update/get_custom_deepsea"_i18n,
                                  this->erista);
         return true;
     });

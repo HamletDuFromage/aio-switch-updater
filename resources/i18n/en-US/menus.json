@@ -127,6 +127,7 @@
     "new_update": " - New app update available",
     "about": "About",
     "update_ams": "Update Atmosphère",
+    "custom_downloads": "Custom Downloads",
     "update_cfw": "Update CFW",
     "update_bootloaders": "Update bootloaders",
     "update_sigpatches": "Update sigpatches",
@@ -191,7 +192,10 @@
     "cant_fetch_deepsea": "Couldn't fetch packages. Open a Github issue if this persists.",
     "build_your_deepsea": "Build your own custom DeepSea package by selecting packages",
     "getting_ams": "Getting Atmosphère",
-    "custom_packs_label": "\u25c6 Here are packs listed in the {} file. Be aware that those are not endorsed by AIO-Switch-Updater so make sure you trust their source."
+    "custom_packs_label": "\u25c6 Here are packs listed in the {} file. Be aware that those are not endorsed by AIO-Switch-Updater so make sure you trust their source.",
+    "custom_packs_ams": "\u25c6 Downloads containing the Atmosphère custom firmware.",
+    "custom_packs_misc": "\u25c6 Downloads containing homebrew and tools.",
+    "custom_download" : "Custom Download"
   },
   "firmware": {
     "launch_daybreak": "Do you want to launch Daybreak to install the downloaded sysupdate?"

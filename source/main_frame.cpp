@@ -41,19 +41,19 @@ MainFrame::MainFrame() : TabFrame()
         this->addTab("menus/main/about"_i18n, new AboutTab());
 
     if (!util::getBoolValue(hideStatus, "atmosphere"))
-        this->addTab("menus/main/update_ams"_i18n, new AmsTab(nxlinks, erista, util::getBoolValue(hideStatus, "atmosphereentries")));
+        this->addTab("menus/main/update_ams"_i18n, new AmsTab(nxlinks, erista, false));
 
     if (!util::getBoolValue(hideStatus, "cfw"))
         this->addTab("menus/main/update_bootloaders"_i18n, new ListDownloadTab(contentType::bootloaders, nxlinks));
-
-    if (!util::getBoolValue(hideStatus, "sigpatches"))
-        this->addTab("menus/main/update_sigpatches"_i18n, new ListDownloadTab(contentType::sigpatches, nxlinks));
 
     if (!util::getBoolValue(hideStatus, "firmwares"))
         this->addTab("menus/main/download_firmware"_i18n, new ListDownloadTab(contentType::fw, nxlinks));
 
     if (!util::getBoolValue(hideStatus, "cheats"))
         this->addTab("menus/main/download_cheats"_i18n, new ListDownloadTab(contentType::cheats));
+
+    if (!util::getBoolValue(hideStatus, "custom"))
+        this->addTab("menus/main/custom_downloads"_i18n, new AmsTab(nxlinks, erista, true));
 
     if (!util::getBoolValue(hideStatus, "tools"))
         this->addTab("menus/main/tools"_i18n, new ToolsTab(tag, util::getValueFromKey(nxlinks, "payloads"), erista, hideStatus));
