@@ -34,13 +34,10 @@ ListDownloadTab::ListDownloadTab(const contentType type, const nlohmann::ordered
     }
 
     if (this->type == contentType::bootloaders) {
-        this->setDescription(contentType::payloads);
-        this->createList(contentType::payloads);
-    }
-
-    if (this->type == contentType::sigpatches) {
         this->setDescription(contentType::hekate_ipl);
         this->createList(contentType::hekate_ipl);
+        this->setDescription(contentType::payloads);
+        this->createList(contentType::payloads);
     }
 }
 
