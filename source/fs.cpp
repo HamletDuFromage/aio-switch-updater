@@ -106,16 +106,19 @@ namespace fs {
 
     std::set<std::string> readLineByLine(const std::string& path)
     {
-        std::set<std::string> titles;
-        std::string str;
-        std::ifstream in(path);
-        if (in) {
-            while (std::getline(in, str)) {
-                if (str.size() > 0)
-                    titles.insert(str);
+        std::set<std::string> res;
+        std::ifstream lines(path);
+        std::string line;
+        if (lines) {
+            while (std::getline(lines, line)) {
+                if (line.size() > 0) {
+                    if (line.back() == '\r')
+                        line.pop_back();
+                    res.insert(line);
+                }
             }
         }
-        return titles;
+        return res;
     }
 
     Result getFreeStorageSD(s64& free)

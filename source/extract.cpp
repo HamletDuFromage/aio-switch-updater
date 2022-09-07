@@ -114,7 +114,7 @@ namespace extract {
             }
             if (appPath != filename) {
                 if ((overwriteInis == 0 && filename.substr(filename.length() - 4) == ".ini") || std::find_if(ignoreList.begin(), ignoreList.end(), [&filename](std::string ignored) {
-                                                                                                                    u8 res = (filename).find(ignored);
+                                                                                                                    u8 res = filename.find(ignored);
                                                                                                                     return (res == 0 || res == 1); }) != ignoreList.end()) {
                     if (!std::filesystem::exists(filename)) {
                         extractEntry(filename, zfile);
