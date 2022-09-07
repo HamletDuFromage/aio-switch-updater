@@ -86,9 +86,9 @@ void ListDownloadTab::createList(contentType type)
                 switch (type) {
                     case contentType::fw: {
                         std::string contentsPath = util::getContentsPath();
-                        for (const auto& tid : {"0100000000001000", "0100000000001007", "0100000000001013"}) {
+                        for (const auto& tid : {"0100000000001000/romfs/lyt", "0100000000001007/romfs/lyt", "0100000000001013/romfs/lyt"}) {
                             if (std::filesystem::exists(contentsPath + tid) && !std::filesystem::is_empty(contentsPath + tid)) {
-                                doneMsg += "\n" + "menus/main/theme_warning"_i18n;
+                                stagedFrame->addStage(new DialoguePage_theme(stagedFrame, (doneMsg + "menu/main/theme_warning"_i18n)));
                                 break;
                             }
                         }

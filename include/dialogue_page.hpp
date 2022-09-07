@@ -37,6 +37,18 @@ public:
     void draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx) override;
 };
 
+class DialoguePage_theme : public DialoguePage
+{
+private:
+    void instantiateButtons() override;
+    std::string text;
+    brls::StagedAppletFrame* frame;
+
+public:
+    DialoguePage_theme(brls::StagedAppletFrame* frame, const std::string& text) : DialoguePage(), text(text), frame(frame) { CreateView(); }
+    void draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx) override;
+};
+
 class DialoguePage_ams : public DialoguePage
 {
 private:

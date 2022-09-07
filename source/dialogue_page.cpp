@@ -146,3 +146,37 @@ void DialoguePage_fw::draw(NVGcontext* vg, int x, int y, unsigned width, unsigne
     this->button1->frame(ctx);
     this->button2->frame(ctx);
 }
+
+void DialoguePage_theme::instantiateButtons()
+{
+    this->button2->getClickEvent()->subscribe([this](View* view) {
+        if (!frame->isLastStage())
+            frame->nextStage();
+        else {
+            brls::Application::pushView(new MainFrame());
+        }
+    });
+
+    this->button1->getClickEvent()->subscribe([this](View* view) {
+        if (util::deleteTheme()){
+            brls::Application::notify("menu/firmware/theme_deleted"_i18n);
+        }
+        else {
+            brls::Application::notify("menu/firmware/theme_not_deleted"_i18n);
+        }
+        if (!frame->isLastStage())
+            frame->nextStage();
+        else {
+            brls::Application::pushView(new MainFrame());
+        }
+    });
+
+    this->label = new brls::Label(brls::LabelStyle::DIALOG, fmt::format("{}\n\n{}", this->text, "menus/firmware/delete_theme"_i18n), true);
+}
+
+void DialoguePage_theme::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
+{
+    this->label->frame(ctx);
+    this->button1->frame(ctx);
+    this->button2->frame(ctx);
+}

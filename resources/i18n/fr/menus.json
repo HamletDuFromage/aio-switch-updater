@@ -187,6 +187,9 @@
     "custom_packs_label": "\u25c6 Voici les paquets listés dans le fichier {}. Assurez-vous de la fiabilité de leur source car il ne bénéficient d'aucun support de la part d'AIO-Switch-Updater."
   },
   "firmware": {
+    "theme_deleted": "Suppression du thème réalisée avec succès.",
+    "theme_not_deleted": "Impossible de supprimer le thème.",
+    "delete_theme": "Un thème personnalisé à été détecté, cela peut causer des problèmes avce la mise à jour, souhaitez vous le supprimer ?",
     "launch_daybreak": "Voulez-vous lancer Daybreak pour installer la mise à jour système téléchargée\u00a0?"
   },
   "net": {

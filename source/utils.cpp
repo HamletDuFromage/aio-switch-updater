@@ -400,4 +400,22 @@ namespace util {
         return (jsonFile.find(key) != jsonFile.end()) ? jsonFile.at(key) : nlohmann::ordered_json::object();
     }
 
+    bool deleteTheme() {
+        std::string contentsPath = util::getContentsPath();
+        bool themeDeleted = false;
+        for (const auto& tid : {"0100000000001000/romfs/lyt", "0100000000001007/romfs/lyt", "0100000000001013/romfs/lyt"}) {
+            if (std::filesystem::exists(contentsPath + tid) && !std::filesystem::is_empty(contentsPath + tid)) {
+                themeDeleted = true;
+            }
+        }
+        if (themeDeleted){
+            std::filesystem::remove_all("atmosphere/contents/0100000000001000/romfs/lyt");
+            std::filesystem::remove_all("atmosphere/contents/0100000000001007/romfs/lyt");
+            std::filesystem::remove_all("atmosphere/contents/0100000000001013/romfs/lyt");
+            return true;
+        }
+        else    
+            return false;
+    }
+
 }  // namespace util

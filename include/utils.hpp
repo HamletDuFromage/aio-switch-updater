@@ -50,4 +50,5 @@ namespace util {
     std::string getContentsPath();
     bool getBoolValue(const nlohmann::json& jsonFile, const std::string& key);
     const nlohmann::ordered_json getValueFromKey(const nlohmann::ordered_json& jsonFile, const std::string& key);
+    bool deleteTheme();
 }  // namespace util
