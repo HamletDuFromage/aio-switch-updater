@@ -55,7 +55,7 @@ AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool cust
                 brls::LabelStyle::DESCRIPTION,
                 "menus/ams_update/custom_packs_ams"_i18n,
                 true));
-            CreateDownloadItems(custom_pack["ams"], true);  // TODO: check for internet
+            CreateDownloadItems(custom_pack["ams"], true);
         }
         if (custom_pack.contains("misc") && custom_pack["misc"].size() != 0) {
             this->type = contentType::bootloaders;
@@ -72,7 +72,7 @@ void AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool h
 {
     std::vector<std::pair<std::string, std::string>> links;
     links = download::getLinksFromJson(cfw_links);
-    if (links.size()) {
+    if (links.size() && !this->hekate.empty()) { // non-empty this->hekate indicates internet connection
         auto hekate_link = download::getLinksFromJson(this->hekate);
         std::string hekate_url = hekate_link[0].second;
         std::string text_hekate = "menus/common/download"_i18n + hekate_link[0].first;
