@@ -40,7 +40,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(contentType::app); }));
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
+                new ConfirmPage_AppUpdate(stagedFrame, "menus/common/all_done"_i18n));
             brls::Application::pushView(stagedFrame);
         });
         updateApp->setHeight(LISTITEM_HEIGHT);

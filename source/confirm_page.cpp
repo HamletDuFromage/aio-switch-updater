@@ -10,41 +10,57 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, const std::string& text, bool done, bool reboot, bool erista) : done(done), reboot(reboot), erista(erista)
+ConfirmPage::ConfirmPage(brls::StagedAppletFrame* frame, const std::string& text)
 {
-    this->button = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel(done ? "menus/common/back"_i18n : "menus/common/continue"_i18n);
+    this->button = (new brls::Button(brls::ButtonStyle::REGULAR))->setLabel("menus/common/back"_i18n);
     this->button->setParent(this);
     this->button->getClickEvent()->subscribe([frame, this](View* view) {
-        if (!frame->isLastStage()) {
+        if (!frame->isLastStage())
             frame->nextStage();
-        }
-        else if (this->done) {
+        else
             brls::Application::pushView(new MainFrame());
-        }
-        else if (this->reboot) {
-            if (this->erista) {
-                util::rebootToPayload(RCM_PAYLOAD_PATH);
-            }
-            else {
-                if (std::filesystem::exists(UPDATE_BIN_PATH)) {
-                    fs::copyFile(UPDATE_BIN_PATH, MARIKO_PAYLOAD_PATH_TEMP);
-                }
-                else {
-                    fs::copyFile(REBOOT_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH_TEMP);
-                }
-                fs::copyFile(RCM_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH);
-                util::shutDown(true);
-            }
-        }
     });
 
     this->label = new brls::Label(brls::LabelStyle::DIALOG, text, true);
     this->label->setHorizontalAlign(NVG_ALIGN_CENTER);
     this->label->setParent(this);
-
-    if (this->done || this->reboot)
-        this->registerAction("", brls::Key::B, [this] { return true; });
 }
+
+ConfirmPage_Done::ConfirmPage_Done(brls::StagedAppletFrame* frame, const std::string& text) : ConfirmPage(frame, text)
+{
+    this->button->setLabel("menus/common/back"_i18n);
+    this->done = true;
+}
+
+ConfirmPage_AppUpdate::ConfirmPage_AppUpdate(brls::StagedAppletFrame* frame, const std::string& text) : ConfirmPage_Done(frame, text)
+{
+    this->button->getClickEvent()->subscribe([](View* view) {
+        envSetNextLoad(FORWARDER_PATH, fmt::format("\"{}\"", FORWARDER_PATH).c_str());
+        romfsExit();
+        brls::Application::quit();
+    });
+    this->registerAction("", brls::Key::B, [this] { return true; });
+}
+
+ConfirmPage_AmsUpdate::ConfirmPage_AmsUpdate(brls::StagedAppletFrame* frame, const std::string& text, bool erista) : ConfirmPage_Done(frame, text)
+{
+    this->button->getClickEvent()->subscribe([this, erista](View* view) {
+        if (erista) {
+            util::rebootToPayload(RCM_PAYLOAD_PATH);
+        }
+        else {
+            if (std::filesystem::exists(UPDATE_BIN_PATH)) {
+                fs::copyFile(UPDATE_BIN_PATH, MARIKO_PAYLOAD_PATH_TEMP);
+            }
+            else {
+                fs::copyFile(REBOOT_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH_TEMP);
+            }
+            fs::copyFile(RCM_PAYLOAD_PATH, MARIKO_PAYLOAD_PATH);
+            util::shutDown(true);
+        }
+    });
+    this->registerAction("", brls::Key::B, [this] { return true; });
+};
 
 void ConfirmPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
 {
@@ -53,7 +69,7 @@ void ConfirmPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned he
         auto missing = std::max(1l - std::chrono::duration_cast<std::chrono::seconds>(end - start).count(), 0l);
         auto text = std::string("menus/common/continue"_i18n);
         if (missing > 0) {
-            this->button->setLabel(text + " (" + std::to_string(missing) + ")");
+            this->button->setLabel(fmt::format("{} ({})", text, missing));
             this->button->setState(brls::ButtonState::DISABLED);
         }
         else {

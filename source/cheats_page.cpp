@@ -36,7 +36,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/cheats/deleting"_i18n, []() { extract::removeCheats(); }));
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
+            new ConfirmPage_Done(stagedFrame, "menus/common/all_done"_i18n));
         brls::Application::pushView(stagedFrame);
     });
     list->addView(item);
@@ -48,7 +48,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/cheats/deleting"_i18n, []() { extract::removeOrphanedCheats(); }));
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
+            new ConfirmPage_Done(stagedFrame, "menus/common/all_done"_i18n));
         brls::Application::pushView(stagedFrame);
     });
     list->addView(item);
@@ -70,7 +70,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
             stagedFrame->addStage(
                 new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [cheatsVer]() { extract::extractAllCheats(CHEATS_ZIP_PATH, CurrentCfw::running_cfw, cheatsVer); }));
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
+                new ConfirmPage_Done(stagedFrame, "menus/common/all_done"_i18n));
             brls::Application::pushView(stagedFrame);
         });
         list->addView(item);

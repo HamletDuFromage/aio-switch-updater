@@ -23,7 +23,7 @@ PCPage::PCPage() : AppletFrame(true, true)
             new WorkerPage(stagedFrame, "menus/pro_con/backing_up"_i18n,
                            []() { PC::backupPCColor(PC_COLOR_PATH); }));
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
+            new ConfirmPage_Done(stagedFrame, "menus/common/all_done"_i18n));
         brls::Application::pushView(stagedFrame);
     });
     list->addView(backup);
@@ -41,7 +41,7 @@ PCPage::PCPage() : AppletFrame(true, true)
                 new WorkerPage(stagedFrame, "menus/pro_con/changing"_i18n,
                                [value]() { PC::changePCColor(value); }));
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/pro_con/all_done"_i18n, true));
+                new ConfirmPage_Done(stagedFrame, "menus/pro_con/all_done"_i18n));
             brls::Application::pushView(stagedFrame);
         });
         list->addView(listItem);

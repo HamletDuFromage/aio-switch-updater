@@ -96,16 +96,16 @@ void ListDownloadTab::createList(contentType type)
                             stagedFrame->addStage(new DialoguePage_fw(stagedFrame, doneMsg));
                         }
                         else {
-                            stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
+                            stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
                         }
                         break;
                     }
                     case contentType::sigpatches:
                         doneMsg += "\n" + "menus/sigpatches/reboot"_i18n;
-                        stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
+                        stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
                         break;
                     default:
-                        stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
+                        stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
                         break;
                 }
                 brls::Application::pushView(stagedFrame);

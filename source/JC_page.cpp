@@ -22,7 +22,7 @@ JCPage::JCPage() : AppletFrame(true, true)
             new WorkerPage(stagedFrame, "menus/joy_con/backing_up"_i18n,
                            []() { JC::backupJCColor(JC_COLOR_PATH); }));
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
+            new ConfirmPage_Done(stagedFrame, "menus/common/all_done"_i18n));
         brls::Application::pushView(stagedFrame);
     });
     list->addView(backup);
@@ -40,7 +40,7 @@ JCPage::JCPage() : AppletFrame(true, true)
                 new WorkerPage(stagedFrame, "menus/joy_con/changing"_i18n,
                                [value]() { JC::changeJCColor(value); }));
             stagedFrame->addStage(
-                new ConfirmPage(stagedFrame, "menus/joy_con/all_done"_i18n, true));
+                new ConfirmPage_Done(stagedFrame, "menus/joy_con/all_done"_i18n));
             brls::Application::pushView(stagedFrame);
         });
         list->addView(listItem);
