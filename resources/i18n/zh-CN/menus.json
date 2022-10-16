@@ -76,9 +76,6 @@
   "changelog": {
     "changelog": "更新日志"
   },
-  "sigpatches": {
-    "reboot": "这些更改将在下次启动时生效。"
-  },
   "payloads": {
     "dl_payloads": "下载payloads",
     "select": " 选择一个payload文件并重启。",
@@ -111,8 +108,6 @@
     "cheats_text": "\u25c6 这将从'gbatemp.net'下载每日更新的金手指文件。你没有安装的游戏的金手指不会被解压到你的SD卡中。你可以在'工具→金手指菜单'中关闭特定游戏的金手指更新。\n\u25c6 当前的金手指版本: ",
     "get_cheats": "下载GBAtemp.net金手指压缩包 (版本 {})",
     "get_all_cheats:": "下载GBAtemp.net金手指压缩包",
-    "sigpatches": "Sigpatches",
-    "sigpatches_text": "\u25c6 Sigpatches允许你的Switch安装和运行非官方的NSP文件。重新启动控制台以应用补丁程序。",
     "firmware": "firmware",
     "not_found": "没有找到",
     "latest_cheats": "最新版本",
@@ -129,7 +124,6 @@
     "update_ams": "更新Atmosphère",
     "update_cfw": "更新CFW",
     "update_bootloaders": "更新bootloaders",
-    "update_sigpatches": "更新sigpatches",
     "download_firmware": "下载firmwares",
     "download_cheats": "下载金手指",
     "tools": "工具",
@@ -137,7 +131,7 @@
     "footer_text": "v{} | {:.1f}GB 可用",
     "theme_warning": "您似乎安装了一个自定义主题，这可能会导致您的系统在升级固件后无法启动。\n请考虑在升级之前将其删除。",
     "payloads_label": "\u25c6 下载RCM payloads到 {}",
-    "hekate_ipl_label": "\u25c6 下载一个精简的、兼容sigpatches的、\"刚好管用\"的hekate_ipl.ini配置文件。这将覆盖您当前的hekate_ipl.ini。"
+    "hekate_ipl_label": "\u25c6 下载一个精简的 \"刚好管用\"的hekate_ipl.ini配置文件。这将覆盖您当前的hekate_ipl.ini。"
   },
   "hide": {
     "title": "隐藏选项卡",

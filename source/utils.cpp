@@ -45,8 +45,8 @@ namespace util {
     {
         fs::createTree(DOWNLOAD_PATH);
         switch (type) {
-            case contentType::sigpatches:
-                status_code = download::downloadFile(url, SIGPATCHES_FILENAME, OFF);
+            case contentType::custom:
+                status_code = download::downloadFile(url, CUSTOM_FILENAME, OFF);
                 break;
             case contentType::cheats:
                 status_code = download::downloadFile(url, CHEATS_FILENAME, OFF);
@@ -126,8 +126,8 @@ namespace util {
     {
         std::string filename;
         switch (type) {
-            case contentType::sigpatches:
-                filename = SIGPATCHES_FILENAME;
+            case contentType::custom:
+                filename = CUSTOM_FILENAME;
                 break;
             case contentType::cheats:
                 filename = CHEATS_FILENAME;
@@ -157,9 +157,6 @@ namespace util {
         chdir(ROOT_PATH);
         crashIfNotArchive(type);
         switch (type) {
-            case contentType::sigpatches:
-                extract::extract(SIGPATCHES_FILENAME);
-                break;
             case contentType::cheats: {
                 std::vector<std::string> titles = extract::getInstalledTitlesNs();
                 titles = extract::excludeTitles(CHEATS_EXCLUDE, titles);
@@ -175,6 +172,11 @@ namespace util {
                 extract::extract(APP_FILENAME, CONFIG_PATH);
                 fs::copyFile(ROMFS_FORWARDER, FORWARDER_PATH);
                 break;
+            case contentType::custom: {
+                int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                extract::extract(CUSTOM_FILENAME, ROOT_PATH, overwriteInis);
+                break;
+            }
             case contentType::bootloaders: {
                 int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 extract::extract(BOOTLOADER_FILENAME, ROOT_PATH, overwriteInis);
@@ -191,7 +193,7 @@ namespace util {
             default:
                 break;
         }
-        if (type == contentType::ams_cfw || type == contentType::bootloaders)
+        if (type == contentType::ams_cfw || type == contentType::bootloaders || type == contentType::custom)
             fs::copyFiles(COPY_FILES_TXT);
     }
 
@@ -267,7 +269,7 @@ namespace util {
     std::string getCheatsVersion()
     {
         std::string res = util::downloadFileToString(CHEATS_URL_VERSION);
-        if (res == "" && isArchive(CHEATS_ZIP_PATH)) {
+        if (res == "" && isArchive(CHEATS_FILENAME)) {
             res = "offline";
         }
         return res;

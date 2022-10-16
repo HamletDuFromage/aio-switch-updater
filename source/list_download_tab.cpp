@@ -100,10 +100,6 @@ void ListDownloadTab::createList(contentType type)
                         }
                         break;
                     }
-                    case contentType::sigpatches:
-                        doneMsg += "\n" + "menus/sigpatches/reboot"_i18n;
-                        stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
-                        break;
                     default:
                         stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
                         break;
@@ -138,9 +134,6 @@ void ListDownloadTab::setDescription(contentType type)
     brls::Label* description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
 
     switch (type) {
-        case contentType::sigpatches:
-            description->setText("menus/main/sigpatches_text"_i18n);
-            break;
         case contentType::fw: {
             SetSysFirmwareVersion ver;
             description->setText(fmt::format("{}{}", "menus/main/firmware_text"_i18n, R_SUCCEEDED(setsysGetFirmwareVersion(&ver)) ? ver.display_version : "menus/main/not_found"_i18n));

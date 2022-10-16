@@ -77,9 +77,6 @@
   "changelog": {
     "changelog": "Cronologia aggiornamenti"
   },
-  "sigpatches": {
-    "reboot": "I cambiamenti saranno effettivi al prossimo riavvio."
-  },
   "payloads": {
     "dl_payloads": "Scarica payload",
     "select": " Seleziona un payload da avviare.",
@@ -112,8 +109,6 @@
     "cheats_text": "\u25c6 Questo scaricherà quotidianamente un archivio di cheat da 'gbatemp.net'. I cheat per i giochi non installati non saranno estratti sulla tua scheda SD. Puoi disabilitare l'aggiornamento dei cheat in 'Strumenti→Menu cheat'.\n\u25c6 Versione cheat corrente: ",
     "get_cheats": "Scarica cheat da GBAtemp.net (ver {})",
     "get_all_cheats:": "Scarica cheat da GBAtemp.net",
-    "sigpatches": "sigpatches",
-    "sigpatches_text": "\u25c6 Le sigpatches consentono di installare ed eseguire NSP non ufficiali sulla Switch.",
     "firmware": "firmware",
     "not_found": "non trovato",
     "latest_cheats": "Ultima versione",
@@ -130,7 +125,6 @@
     "update_ams": "Aggiorna Atmosphère",
     "update_cfw": "Aggiorna CFW",
     "update_bootloaders": "Aggiorna bootloader",
-    "update_sigpatches": "Aggiorna sigpatches",
     "download_firmware": "Scarica firmware",
     "download_cheats": "Scarica cheats",
     "tools": "Strumenti",
@@ -138,7 +132,7 @@
     "footer_text": "v{} | {:.1f}GB disponibili",
     "theme_warning": "Sembra che tu stia usando un custom theme: tieni conto che potrebbe impedire l'avvio del sistema dopo l'aggiornamento del firmware.\nValuta se cancellarlo o meno prima di effettuare l'aggiornamento.",
     "payloads_label": "\u25c6 Scarica ed aggiorna i payload RCM in {}",
-    "hekate_ipl_label": "\u25c6 Scarica una configurazione di base di hekate_ipl.ini per il supporto alle sigpatch. Sovrascriverà l'attuale configurazione presente in hekate_ipl.ini."
+    "hekate_ipl_label": "\u25c6 Scarica una configurazione di base di hekate_ipl.ini. Sovrascriverà l'attuale configurazione presente in hekate_ipl.ini."
   },
   "hide": {
     "title": "Nascondi schede",

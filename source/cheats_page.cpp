@@ -68,7 +68,7 @@ CheatsPage::CheatsPage() : AppletFrame(true, true)
                     new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [url]() { util::downloadArchive(url, contentType::cheats); }));
             }
             stagedFrame->addStage(
-                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [cheatsVer]() { extract::extractAllCheats(CHEATS_ZIP_PATH, CurrentCfw::running_cfw, cheatsVer); }));
+                new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, [cheatsVer]() { extract::extractAllCheats(CHEATS_FILENAME, CurrentCfw::running_cfw, cheatsVer); }));
             stagedFrame->addStage(
                 new ConfirmPage_Done(stagedFrame, "menus/common/all_done"_i18n));
             brls::Application::pushView(stagedFrame);

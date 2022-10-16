@@ -75,9 +75,6 @@
   "changelog": {
     "changelog": "변경기록"
   },
-  "sigpatches": {
-    "reboot": "변경 사항은 다음 부팅 시 적용됩니다."
-  },
   "payloads": {
     "dl_payloads": "페이로드 다운로드",
     "select": " 재부팅할 페이로드를 선택하세요.",
@@ -110,8 +107,6 @@
     "cheats_text": "\u25c6 'gbatemp.net'에서 매일 업데이트되는 치트 코드 아카이브를 다운로드합니다. 설치하지 않은 게임의 치트 코드는 SD 카드에 추출되지 않습니다. '도구→치트 메뉴'에서 특정 게임에 대한 치트 업데이트를 끌 수 있습니다.\n\u25c6 현재 치트 버전: ",
     "get_cheats": "GBAtemp.net 치트 아카이브 (ver {}) 다운로드",
     "get_all_cheats:": "GBAtemp.net 치트 아카이브 다운로드",
-    "sigpatches": "시그패치",
-    "sigpatches_text": "\u25c6 시그패치를 사용하면 스위치에서 비공식 NSP 파일을 설치하고 실행할 수 있습니다. 콘솔을 재부팅하여 패치를 적용하세요.",
     "firmware": "펌웨어",
     "not_found": "찾을 수 없음",
     "latest_cheats": "최신 버전",
@@ -128,7 +123,6 @@
     "update_ams": "Atmosphère 업데이트",
     "update_cfw": "커스텀 펌웨어 업데이트",
     "update_bootloaders": "부트로더 업데이트",
-    "update_sigpatches": "시그패치 업데이트",
     "download_firmware": "펌웨어 다운로드",
     "download_cheats": "치트 다운로드",
     "tools": "도구",

@@ -76,9 +76,6 @@
   "changelog": {
     "changelog": "更新履歴"
   },
-  "sigpatches": {
-    "reboot": "変更は、次回の再起動時に有効になります。"
-  },
   "payloads": {
     "dl_payloads": "ペイロードをダウンロード",
     "select": " 再起動するペイロードを選択します。",
@@ -110,8 +107,6 @@
     "cheats_text": "\u25c6 これにより、毎日更新されるチートコードのアーカイブが「gbatemp.net」からダウンロードされます。インストールしていないゲームのチートコードはSDカードに抽出されません。「ツール→チートメニュー」で特定のゲームのチートアップデートをオフにすることができます。\n\u25c6 現在のチートバージョン: ",
     "get_cheats": "GBAtemp.net チートアーカイブをダウンロード (ver {})",
     "get_all_cheats:": "GBAtemp.net チートアーカイブをダウンロードする",
-    "sigpatches": "sigpatch",
-    "sigpatches_text": "\u25c6 Sigpatchを使用すると、スイッチで非公式のNSPファイルをインストールして実行できます。",
     "firmware": "FW",
     "not_found": "見つかりませんでした",
     "latest_cheats": "最新バージョン",
@@ -128,7 +123,6 @@
     "update_ams": "Atmosphèreをアップデート",
     "update_cfw": "CFWをアップデート",
     "update_bootloaders": "ブートローダーをアップデート",
-    "update_sigpatches": "sigpatchをアップデート",
     "download_firmware": "FWをダウンロード",
     "download_cheats": "チートをダウンロード",
     "tools": "ツール",
@@ -136,7 +130,7 @@
     "footer_text": "v{} | {:.1f}GB 利用可能",
     "theme_warning": "カスタムテーマがインストールされているようです。これにより、ファームウェアのアップグレード後にシステムが起動に失敗する可能性があります。\nアップグレードする前に削除することを検討してください。",
     "payloads_label": "\u25c6 RCMペイロードを{}にダウンロードします。",
-    "hekate_ipl_label": "\u25c6 sigpath互換のhekate_ipl.iniの設定ファイルをダウンロード。 これにより、現在のhekate_ipl.iniが上書きされます。"
+    "hekate_ipl_label": "\u25c6 換のhekate_ipl.iniの設定ファイルをダウンロード。 これにより、現在のhekate_ipl.iniが上書きされます。"
   },
   "hide": {
     "title": "タブを非表示",

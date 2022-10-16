@@ -58,7 +58,7 @@ AmsTab::AmsTab(const nlohmann::json& nxlinks, const bool erista, const bool cust
             CreateDownloadItems(custom_pack["ams"], true);
         }
         if (custom_pack.contains("misc") && custom_pack["misc"].size() != 0) {
-            this->type = contentType::bootloaders;
+            this->type = contentType::custom;
             this->addView(new brls::Label(
                 brls::LabelStyle::DESCRIPTION,
                 "menus/ams_update/custom_packs_misc"_i18n,
@@ -117,9 +117,9 @@ void AmsTab::CreateStagedFrames(const std::string& text, const std::string& url,
         stagedFrame->addStage(
             new DialoguePage_ams(stagedFrame, text_hekate, erista));
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [hekate_url]() { util::downloadArchive(hekate_url, contentType::bootloaders); }));
+            new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [hekate_url]() { util::downloadArchive(hekate_url, contentType::custom); }));
         stagedFrame->addStage(
-            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(contentType::bootloaders); }));
+            new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(contentType::custom); }));
     }
     if (ams)
         stagedFrame->addStage(new ConfirmPage_AmsUpdate(stagedFrame, "menus/ams_update/reboot_rcm"_i18n, erista));

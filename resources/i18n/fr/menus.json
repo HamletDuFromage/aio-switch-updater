@@ -73,9 +73,6 @@
   "changelog": {
     "changelog": "Journal des modifications"
   },
-  "sigpatches": {
-    "reboot": "Les changements prendront effet au prochain démarrage."
-  },
   "payloads": {
     "dl_payloads": "Téléchargement des payloads",
     "select": "Selectionner un payload vers lequel redémarrer.",
@@ -107,8 +104,6 @@
     "cheats_text": "\u25c6 Ceci téléchargera une archive de codes de triche mise à jour quotidiennement depuis 'gbatemp.net'. Les codes de triche pour les jeux non installés pas ne seront pas extraits sur la carte SD. Vous pouvez désactiver la mises à jour des codes de triche pour les jeux de votre choix dans le menu 'Outils→Menu de triche'.\n Version des codes de triche installés\u00a0: ",
     "get_cheats": "Télécharger l'archive de codes de triche de GBAtemp.net (ver {})",
     "get_all_cheats:": "Télécharger l'archive de codes de triche de GBAtemp.net",
-    "sigpatches": "sigpatches",
-    "sigpatches_text": "\u25c6 Les sigpatches permettent à la Switch d'installer et d'exécuter des fichiers NSP non officiels. Redémarrez la console pour appliquer les patches.",
     "firmware": "firmware",
     "not_found": "non trouvé",
     "latest_cheats": "Dernière version",
@@ -125,7 +120,6 @@
     "update_ams": "MÀJ d'Atmosphère",
     "update_cfw": "MÀJ des CFW",
     "update_bootloaders": "MÀJ des bootloaders",
-    "update_sigpatches": "MÀJ des sigpatches",
     "download_firmware": "Téléch. des firmwares",
     "download_cheats": "Téléch. de cheat codes",
     "tools": "Outils",
@@ -133,7 +127,7 @@
     "footer_text": "v{} | {:.1f}Go disponibles",
     "theme_warning": "Il semblerait que vous avez installé un thème personnalisé, cela pourrait empêcher le système de démarrer après la mise à jour de votre firmware.\nIl est conseillé de le supprimer avant d'effectuer la mise à jour.",
     "payloads_label": "\u25c6 Enregistrer les payloads RCM sous {}",
-    "hekate_ipl_label": "\u25c6 Télécharger une version minimale et prête à l'emploi du fichier de configuration hekate_ipl.ini compatible avec les sigpatches. Le fichier hekate_ipl.ini déjà présent sera écrasé."
+    "hekate_ipl_label": "\u25c6 Télécharger une version minimale et prête à l'emploi du fichier de configuration hekate_ipl.ini. Le fichier hekate_ipl.ini déjà présent sera écrasé."
   },
   "hide": {
     "title": "Masquer des onglets",

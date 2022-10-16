@@ -76,9 +76,6 @@
   "changelog": {
     "changelog": "更新履歷"
   },
-  "sigpatches": {
-    "reboot": "安裝完成後請重新開機以套用更新"
-  },
   "payloads": {
     "dl_payloads": "下載注入檔案",
     "select": " 選擇重開機時的注入檔案",
@@ -111,8 +108,6 @@
     "cheats_text": "\u25c6 下載'gbatemp.net'每日更新的金手指檔案到記憶卡時，並不會複製到主機未安裝的遊戲金手指檔案。你可以從設定的 '工具→金手指選單' 內停用金手指更新。\n\u25c6 目前金手指資料庫版本: ",
     "get_cheats:": "下載GBAtemp.net金手指資料庫 (版本 {})",
     "get_all_cheats": "下載GBAtemp.net金手指資料庫",
-    "sigpatches": "sigpatches",
-    "sigpatches_text": "\u25c6 Sigpatches可讓你的Switch安裝並執行非官方的NSP檔案。安裝完成後請重新開機以套用更新",
     "firmware": "韌體",
     "not_found": "沒有符合的項目",
     "latest_cheats": "最新版本",
@@ -129,7 +124,6 @@
     "update_ams": "更新Atmosphère",
     "update_cfw": "更新CFW",
     "update_bootloaders": "更新引導程序",
-    "update_sigpatches": "更新sigpatches",
     "download_firmware": "下載韌體",
     "download_cheats": "下載金手指",
     "tools": "工具",

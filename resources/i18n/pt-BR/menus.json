@@ -58,8 +58,6 @@
     "getting": "Baixando {}",
     "firmware_text": "\u25c6 Firmwares de 'https://darthsternie.net/switch-firmwares/'. Depois de baixado, ele será extraído para '/firmware'. Você pode então instalar a atualização por meio do Daybreak ou.\n\u25c6 FW atual: ",
     "cheats_text": "\u25c6 Isso irá baixar um pacote de cheat atualizado diariamente do 'gbatemp.net'. Os cheats do jogo que você não instalou não serão extraídos para o seu cartão SD. Você pode desabilitar cheats atualizados em 'Ferramentas→Trapaças'.\n\u25c6 Versão das trapaças atual: ",
-    "sigpatches": "sigpatches",
-    "sigpatches_text": "\u25c6 Os Sigpatches permitem que o Switch instale e execute arquivos NSP não oficiais.",
     "firmware": "firmware",
     "not_found": "não encontrado",
     "latest_cheats": "Última versão",
@@ -71,7 +69,6 @@
     "new_update": " - Nova atualização de aplicativo disponível",
     "about": "Informações",
     "update_cfw": "Atualizar CFW",
-    "update_sigpatches": "Atualizar sigpatches",
     "download_firmware": "Baixar firmwares",
     "download_cheats": "Baixar trapaças",
     "tools": "Ferramentas"

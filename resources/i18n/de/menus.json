@@ -74,9 +74,6 @@
   "changelog": {
     "changelog": "Changelog"
   },
-  "sigpatches": {
-    "reboot": "Änderung werden nach dem nächsten Neustart wirksam."
-  },
   "payloads": {
     "dl_payloads": "Payloads herunterladen",
     "select": " Wähle ein Payload zum neustarten aus.",
@@ -107,8 +104,6 @@
     "firmware_text": "\u25c6 Firmware von: 'https://darthsternie.net/switch-firmwares/'. Sobald hehruntergeladen, wird sie in '/firmware' entpackt. Danach kannst du das Update mit Daybreak installieren.\n\u25c6 Momentane FW: ",
     "cheats_text": "\u25c6 Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen, die du nicht besitzt, werden nicht entpackt. Du kannst Updates für ausgewählte Spiele unter 'Tools→Cheat Menü' deaktivieren.\n\u25c6 Momentane Cheatversion: ",
     "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver {})",
-    "sigpatches": "Sigpatches",
-    "sigpatches_text": "\u25c6 Sigpatches erlauben dir, inoffizielle NSPs zu installieren und starten. Starte die Konsole neu, um die Patches zu aktivieren.",
     "firmware": "Firmware",
     "not_found": "Nicht gefunden",
     "latest_cheats": "Neueste Version",
@@ -122,7 +117,6 @@
     "about": "Über",
     "update_ams": "Update Atmosphère",
     "update_cfw": "Update CFW",
-    "update_sigpatches": "Update Sigpatches",
     "download_firmware": "Firmwares herunterladen",
     "download_cheats": "Cheats herunterladen",
     "tools": "Werkzeuge",

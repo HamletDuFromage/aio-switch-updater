@@ -129,13 +129,13 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
 
     brls::ListItem* cleanUp = new brls::ListItem("menus/tools/clean_up"_i18n);
     cleanUp->getClickEvent()->subscribe([](brls::View* view) {
-        std::filesystem::remove(AMS_ZIP_PATH);
-        std::filesystem::remove(APP_ZIP_PATH);
-        std::filesystem::remove(CFW_ZIP_PATH);
-        std::filesystem::remove(FW_ZIP_PATH);
-        std::filesystem::remove(CHEATS_ZIP_PATH);
+        std::filesystem::remove(AMS_FILENAME);
+        std::filesystem::remove(APP_FILENAME);
+        std::filesystem::remove(FIRMWARE_FILENAME);
+        std::filesystem::remove(CHEATS_FILENAME);
+        std::filesystem::remove(BOOTLOADER_FILENAME);
         std::filesystem::remove(CHEATS_VERSION);
-        std::filesystem::remove(SIGPATCHES_ZIP_PATH);
+        std::filesystem::remove(CUSTOM_FILENAME);
         fs::removeDir(AMS_DIRECTORY_PATH);
         fs::removeDir(SEPT_DIRECTORY_PATH);
         fs::removeDir(FW_DIRECTORY_PATH);

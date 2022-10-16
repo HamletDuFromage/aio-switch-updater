@@ -16,7 +16,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Added dialogue box asking about ini files.\n\uE016 Fixed update app link when not connected to the internet.\n\uE016 Minor fixes here and there.");
 
     verTitles.push_back("v1.0.2");
-    changes.push_back("\uE016 Fixed .ini files being handled poorly when installing sigpatches. Now prompts the user if they want to replace hetake_ipl.ini.");
+    changes.push_back("Now prompts the user if they want to replace hetake_ipl.ini.");
 
     verTitles.push_back("v1.0.3");
     changes.push_back("\uE016 Fixed progress bar sometimes being stuck when extracting.");
@@ -91,7 +91,7 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Switched to a better way to get links.");
 
     verTitles.push_back("v2.1.1");
-    changes.push_back("\uE016 Added a friendly reminder to reboot for new sigpatches to apply.\n\uE016 Changed the cheatslips cheatsheet view.");
+    changes.push_back("\uE016 Changed the cheatslips cheatsheet view.");
 
     verTitles.push_back("v2.1.2");
     changes.push_back("\uE016 Fixed wronge hekate link.");

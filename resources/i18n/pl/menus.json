@@ -57,9 +57,6 @@
   "changelog": {
     "changelog": "Dziennik zmian"
   },
-  "sigpatches": {
-    "reboot": "Zmiany zostaną zastosowane po restarcie."
-  },
   "payloads": {
     "dl_payloads": "Pobierz payloady",
     "select": " Wybierz payload do ponownego uruchomienia.",
@@ -89,8 +86,6 @@
     "firmware_text": "\u25c6 Oprogramowanie z 'https://darthsternie.net/switch-firmwares/'. Po pobraniu zostanie rozpakowane do '/firmware'. Możesz je później zainstalować korzystając z Daybreak.\n\u25c6 Bieżący FW: ",
     "cheats_text": "\u25c6 Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia→Menu cheatów'.\n\u25c6 Bieżąca wersja cheatów: ",
     "get_cheats": "Pobierz archiwum cheatów GBAtemp.net (wersja {})",
-    "sigpatches": "sigpatche",
-    "sigpatches_text": "\u25c6 Sigpatche umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Uruchom konsolę ponownie aby zastosować zmiany.",
     "firmware": "firmware",
     "not_found": "nie znaleziono",
     "latest_cheats": "Najnowsza wersja",
@@ -105,7 +100,6 @@
     "about": "O aplikacji",
     "update_ams": "Zaktualizuj Atmosph\u00e8re",
     "update_cfw": "Zaktualizuj CFW",
-    "update_sigpatches": "Zaktualizuj sigpatche",
     "download_firmware": "Pobierz firmware",
     "download_cheats": "Pobierz cheaty",
     "tools": "Narzędzia",
