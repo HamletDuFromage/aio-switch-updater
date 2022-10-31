@@ -269,10 +269,8 @@ void AppPage_Exclude::PopulatePage()
 
     this->registerAction("menus/cheats/exclude_all"_i18n, brls::Key::X, [this] {
         std::set<std::string> exclude;
-        if (true) {
-            for (const auto& item : items) {
-                exclude.insert(item.second);
-            }
+        for (const auto& item : items) {
+            exclude.insert(item.second);
         }
         extract::writeTitlesToFile(exclude, CHEATS_EXCLUDE);
         brls::Application::popView();
