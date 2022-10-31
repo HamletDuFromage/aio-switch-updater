@@ -37,6 +37,8 @@
     "exclude_titles": "Exclude titles",
     "exclude_titles_desc": "You can turn off cheat updates with this menu",
     "exclude_titles_save": "Save choice and return",
+    "exclude_all": "Exclude all",
+    "exclude_none": "Exclude none",
     "dl_all": "Download and extract the entire GBAtemp.net cheats archive",
     "gbatemp_dl": "Download cheat codes curated from GBAtemp.net. Those cheats will be added to the end of your existing cheat file.",
     "gbatemp_dl_cheatcode": "Download cheat code",
