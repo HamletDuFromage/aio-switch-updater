@@ -41,6 +41,6 @@ int main(int argc, char* argv[])
 
     std::filesystem::remove(FORWARDER_PATH);
 
-    envSetNextLoad(FULL_PATH, ("\"" + std::string(FULL_PATH) + "\"").c_str());
+    envSetNextLoad(FULL_PATH, FULL_PATH);
     return 0;
 }

@@ -22,7 +22,7 @@ using namespace i18n::literals;
 constexpr const char API_AGENT[] = "HamletDuFromage";
 constexpr int _1MiB = 0x100000;
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 namespace download {
 

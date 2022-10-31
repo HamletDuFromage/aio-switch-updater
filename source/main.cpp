@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    nlohmann::json languageFile = fs::parseJsonFile(LANGUAGE_JSON);
+    nlohmann::ordered_json languageFile = fs::parseJsonFile(LANGUAGE_JSON);
     if (languageFile.find("language") != languageFile.end())
         i18n::loadTranslations(languageFile["language"]);
     else

@@ -189,7 +189,9 @@
     "custom_packs_label": "\u25c6 Here are packs listed in the {} file. Be aware that those are not endorsed by AIO-Switch-Updater so make sure you trust their source.",
     "custom_packs_ams": "\u25c6 Downloads containing the Atmosphère custom firmware.",
     "custom_packs_misc": "\u25c6 Downloads containing homebrew and tools.",
-    "custom_download" : "Custom download"
+    "custom_download" : "Custom download",
+    "add_custom_link": "Add a custom link",
+    "delete_custom_link": "Delete"
   },
   "firmware": {
     "launch_daybreak": "Do you want to launch Daybreak to install the downloaded sysupdate?"

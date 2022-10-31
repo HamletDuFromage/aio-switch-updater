@@ -3,6 +3,7 @@
 constexpr const char ROOT_PATH[] = "/";
 constexpr const char APP_PATH[] = "/switch/aio-switch-updater/";
 constexpr const char NRO_PATH[] = "/switch/aio-switch-updater/aio-switch-updater.nro";
+constexpr const char NRO_PATH_REGEX[] = ".*(/switch/.*aio-switch-updater.nro).*";
 constexpr const char DOWNLOAD_PATH[] = "/config/aio-switch-updater/";
 constexpr const char CONFIG_PATH[] = "/config/aio-switch-updater/";
 constexpr const char CONFIG_FILE[] = "/config/aio-switch-updater/config.json";

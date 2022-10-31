@@ -9,7 +9,7 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 HideTabsPage::HideTabsPage() : AppletFrame(true, true)
 {

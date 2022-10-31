@@ -43,7 +43,7 @@ namespace fs {
             return nlohmann::ordered_json::object();
     }
 
-    void writeJsonToFile(nlohmann::json& data, const std::string& path)
+    void writeJsonToFile(nlohmann::ordered_json& data, const std::string& path)
     {
         std::ofstream out(path);
         out << data.dump(4);

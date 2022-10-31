@@ -41,6 +41,7 @@ namespace util {
     void saveToFile(const std::string& text, const std::string& path);
     std::string readFile(const std::string& path);
     std::string getAppPath();
+    void restartApp();
     bool isErista();
     void removeSysmodulesFlags(const std::string& directory);
     std::string lowerCase(const std::string& str);
@@ -48,6 +49,6 @@ namespace util {
     std::string getErrorMessage(long status_code);
     bool isApplet();
     std::string getContentsPath();
-    bool getBoolValue(const nlohmann::json& jsonFile, const std::string& key);
+    bool getBoolValue(const nlohmann::ordered_json& jsonFile, const std::string& key);
     const nlohmann::ordered_json getValueFromKey(const nlohmann::ordered_json& jsonFile, const std::string& key);
 }  // namespace util

@@ -35,7 +35,7 @@ ConfirmPage_Done::ConfirmPage_Done(brls::StagedAppletFrame* frame, const std::st
 ConfirmPage_AppUpdate::ConfirmPage_AppUpdate(brls::StagedAppletFrame* frame, const std::string& text) : ConfirmPage_Done(frame, text)
 {
     this->button->getClickEvent()->subscribe([](View* view) {
-        envSetNextLoad(FORWARDER_PATH, fmt::format("\"{}\"", FORWARDER_PATH).c_str());
+        envSetNextLoad(FORWARDER_PATH, FORWARDER_PATH);
         romfsExit();
         brls::Application::quit();
     });

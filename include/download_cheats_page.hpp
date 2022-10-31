@@ -57,7 +57,7 @@ class DownloadCheatsPage_CheatSlips : public DownloadCheatsPage
 private:
     brls::ToggleListItem* listItem;
     std::vector<std::pair<brls::ToggleListItem*, int>> toggles;
-    std::string GetCheatsTitle(nlohmann::json cheat);
+    std::string GetCheatsTitle(nlohmann::ordered_json cheat);
     void ShowCheatsContent(nlohmann::ordered_json titles);
 
 public:

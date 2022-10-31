@@ -12,7 +12,7 @@
 #include "progress_event.hpp"
 #include "utils.hpp"
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 namespace {
 

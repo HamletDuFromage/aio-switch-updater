@@ -19,13 +19,13 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 namespace {
     constexpr const char AppVersion[] = APP_VERSION;
 }
 
-ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payloads, bool erista, const nlohmann::json& hideStatus) : brls::List()
+ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payloads, bool erista, const nlohmann::ordered_json& hideStatus) : brls::List()
 {
     if (!tag.empty() && tag != AppVersion) {
         brls::ListItem* updateApp = new brls::ListItem(fmt::format("menus/tools/update_app"_i18n, tag));

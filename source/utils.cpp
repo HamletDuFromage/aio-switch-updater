@@ -294,10 +294,24 @@ namespace util {
     std::string getAppPath()
     {
         if (envHasArgv()) {
+            std::smatch match;
             std::string argv = (char*)envGetArgv();
-            return fs::splitString(argv, '\"')[1].substr(5);
+            if (std::regex_match(argv, match, std::regex(NRO_PATH_REGEX))) {
+                if (match.size() >= 2) {
+                    return match[1].str();
+                }
+            }
         }
         return NRO_PATH;
+    }
+
+    void restartApp()
+    {
+        std::string path = "sdmc:" + getAppPath();
+        std::string argv = "\"" + path + "\"";
+        envSetNextLoad(path.c_str(), argv.c_str());
+        romfsExit();
+        brls::Application::quit();
     }
 
     bool isErista()
@@ -387,10 +401,8 @@ namespace util {
         return path;
     }
 
-    bool getBoolValue(const nlohmann::json& jsonFile, const std::string& key)
+    bool getBoolValue(const nlohmann::ordered_json& jsonFile, const std::string& key)
     {
-        /* try { return jsonFile.at(key); }
-    catch (nlohmann::json::out_of_range& e) { return false; } */
         return (jsonFile.find(key) != jsonFile.end()) ? jsonFile.at(key).get<bool>() : false;
     }
 

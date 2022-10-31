@@ -12,7 +12,7 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 namespace cheats_util {
     u32 GetVersion(uint64_t title_id)
