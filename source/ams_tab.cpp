@@ -35,7 +35,7 @@ bool AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool h
 
         for (const auto& link : links) {
             std::string url = link.second;
-            std::string text("menus/common/download"_i18n + link.second + "menus/common/from"_i18n + url);
+            std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
             listItem->getClickEvent()->subscribe([this, text, text_hekate, url, hekate_url, hekate, ams](brls::View* view) {
@@ -274,8 +274,6 @@ void AmsTab_Custom::RegisterListItemAction(brls::ListItem* listItem)
     std::string label = listItem->getLabel();
     std::string category = this->type == contentType::ams_cfw ? "ams" : "misc";
     listItem->registerAction("menus/ams_update/delete_custom_link"_i18n, brls::Key::X, [this, label, category] {
-        brls::Logger::info(label);
-        brls::Logger::info(category);
         auto& links = this->custom_packs.at(category);
         links.erase(label);
         fs::writeJsonToFile(this->custom_packs, CUSTOM_PACKS_PATH);
