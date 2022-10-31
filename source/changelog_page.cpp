@@ -253,8 +253,10 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     changes.push_back("\uE016 Significantly increase extraction speed (https://github.com/PoloNX).\n\uE016 Create a \"Custom Downloads\" tab that supports user-provided links for Atmosphère packs as well as regular downloads.");
 
     verTitles.push_back("v2.20.1");
-    changes.push_back("\uE016 Fix crashed on plane mode.\n\uE016 Account for carriage returns in preserve.txt.");
+    changes.push_back("\uE016 Fix crashes on plane mode.\n\uE016 Account for carriage returns in preserve.txt.");
 
+    verTitles.push_back("v2.21.0");
+    changes.push_back("\uE016 Managing custom download links is now possible directly from the app.\n\uE016 Toggle/untoggle all games in cheats menu->exclude games from receiving cheat updates.");
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
