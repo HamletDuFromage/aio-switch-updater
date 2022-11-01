@@ -2,6 +2,7 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-Switch-Updater依據GNU公共授權條款GPL 3.0版本開發",
+    "disclaimers_title": "版權宣告",
     "disclaimers": "\u25c6 HamletDuFromage僅鏡像使用Gbatemp.net論壇的金手指，伺服器沒有儲存或託管任何相關檔案，感謝所有提供金手指的創作者。\n\u25c6 程式檔案資料庫會每隔30分鐘自動擷取更新。如果更新連結超過30分鐘仍無法正常使用，請使用GitHub提出問題來進行回報。\n",
     "donate": "\u25c6 喜歡我們開發的app嗎? 歡迎贊助支持我們持續開發維護: 'https://git.io/donate_homlet'"
   },
@@ -36,6 +37,8 @@
     "exclude_titles": "更新排除名單",
     "exclude_titles_desc": "可以透過變更此設定來排除沒有安裝對應遊戲的金手指更新",
     "exclude_titles_save": "儲存變更並返回",
+    "exclude_all": "排除所有項目",
+    "exclude_none": "不進行排除",
     "dl_all": "下載GBAtemp.net目前全部的金手指並個別解壓縮後歸檔存放",
     "gbatemp_dl": "準備從GBAtemp.net下載金手指。下載的金手指將會放置排列在目前已有的金手指項目之後。",
     "gbatemp_dl_cheatcode": "下載金手指",
@@ -79,7 +82,6 @@
   "payloads": {
     "dl_payloads": "下載注入檔案",
     "select": " 選擇重開機時的注入檔案",
-    "not_found": "無法使用下載連結，請檢查Switch是否可正常存取網路連線。\n如果網路正常仍無法使用，請使用GitHub提出問題來進行回報。",
     "set_reboot_payload": "設定為 reboot_payload.bin",
     "set_update_bin": "設定為 /bootloader/update.bin",
     "copy_success": "成功將 `{}` 複製到 `{}`.'"
@@ -122,6 +124,7 @@
     "new_update": " - 有可用的app更新",
     "about": "關於",
     "update_ams": "更新Atmosphère",
+    "custom_downloads": "自訂下載項目",
     "update_cfw": "更新CFW",
     "update_bootloaders": "更新引導程序",
     "download_firmware": "下載韌體",
@@ -130,7 +133,8 @@
     "launch_warning": "在開始使用此app前，請務必注意：\n\n\u25c6 請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\u25c6 請注意，我們非常不建議在exFAT格式的記憶卡上使用此app，可能會因此產生錯誤或執行中斷。\n\n\u25c6 程式版本更新時會加入新的功能，也會改善現有的功能。請由選單內的 工具→更新履歷 前往檢視詳細內容。\n\n此提醒畫面將不再顯示。",
     "footer_text": "v{} | {:.1f}GB 可用",
     "theme_warning": "偵測已安裝自訂主題，更新系統韌體版本後，可能無法導致正常開機。\n建議更新系統前移除自訂主題並改回預設。",
-    "payloads_label": "\u25c6 下載RCM引導程序至 {}"
+    "payloads_label": "\u25c6 下載RCM引導程序至 {}",
+    "hekate_ipl_label": "\u25c6 下載精簡且 \"可正常使用\" 的hekate_ipl.ini 配置檔案。此操作將會覆蓋系統目前使用的hekate_ipl.ini檔案。"
   },
   "hide": {
     "title": "隱藏分頁",
@@ -184,10 +188,15 @@
     "cant_fetch_deepsea": "無法取得安裝包內容。如果問題持續發生，請使用GitHub提出問題來進行回報",
     "build_your_deepsea": "透過個別選取來建立屬於你自己的自訂DeepSea安裝包",
     "getting_ams": "正在擷取 Atmosphère",
-    "custom_packs_label": "\u25c6 來自 {} 的檔案。請注意，這些列出的檔案均未經過AIO-Switch-Updater驗證，因此安裝前請確保檔案來源為可信任的。"
+    "custom_packs_label": "\u25c6 來自 {} 的檔案。請注意，這些列出的檔案均未經過AIO-Switch-Updater驗證，因此安裝前請確保檔案來源為可信任的。",
+    "custom_packs_ams": "\u25c6 下載項目包含Atmosphère與韌體整合套件",
+    "custom_packs_misc": "\u25c6 下載項目包含第三方自製程式與工具",
+    "custom_download" : "自訂下載",
+    "add_custom_link": "新增自訂連結",
+    "delete_custom_link": "刪除"
   },
   "firmware": {
-    "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的更新系統套件?"
+    "launch_daybreak": "請問是否要執行Daybreak來安裝已下載的系統更新韌體?"
   },
   "net": {
     "title": "網路設定"
