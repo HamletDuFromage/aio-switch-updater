@@ -173,21 +173,21 @@ namespace util {
                 fs::copyFile(ROMFS_FORWARDER, FORWARDER_PATH);
                 break;
             case contentType::custom: {
-                int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                extract::extract(CUSTOM_FILENAME, ROOT_PATH, overwriteInis);
+                int preserveInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/yes"_i18n, "menus/common/no"_i18n);
+                extract::extract(CUSTOM_FILENAME, ROOT_PATH, preserveInis);
                 break;
             }
             case contentType::bootloaders: {
-                int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                extract::extract(BOOTLOADER_FILENAME, ROOT_PATH, overwriteInis);
+                int preserveInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/yes"_i18n, "menus/common/no"_i18n);
+                extract::extract(BOOTLOADER_FILENAME, ROOT_PATH, preserveInis);
                 break;
             }
             case contentType::ams_cfw: {
-                int overwriteInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                int preserveInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/yes"_i18n, "menus/common/no"_i18n);
                 int deleteContents = showDialogBoxBlocking("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 if (deleteContents == 1)
                     removeSysmodulesFlags(AMS_CONTENTS);
-                extract::extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
+                extract::extract(AMS_FILENAME, ROOT_PATH, preserveInis);
                 break;
             }
             default:

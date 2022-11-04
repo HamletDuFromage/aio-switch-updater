@@ -258,6 +258,9 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.21.0");
     changes.push_back("\uE016 Managing custom download links is now possible directly from the app.\n\uE016 Toggle/untoggle all games in cheats menu->exclude games from receiving cheat updates.");
 
+    verTitles.push_back("v2.21.0");
+    changes.push_back("\uE016 Dialogs now default to not overwriting .ini files");
+
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);
         change = changes[i];
