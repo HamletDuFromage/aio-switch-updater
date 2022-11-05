@@ -164,7 +164,7 @@ namespace util {
                 break;
             }
             case contentType::fw:
-                if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
+                fs::removeDir(FIRMWARE_PATH);
                 fs::createTree(FIRMWARE_PATH);
                 extract::extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
                 break;
