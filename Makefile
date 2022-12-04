@@ -22,7 +22,7 @@ DATA		:=	data
 INCLUDES	:=	include /lib/borealis/library/include/borealis/extern/nlohmann
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=	2.21.1
+APP_VERSION :=	2.21.2
 TARGET		:=	$(notdir $(CURDIR))
 
 ROMFS				:=	resources

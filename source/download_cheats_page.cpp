@@ -355,7 +355,8 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
         else {
             std::string versionsWithCheats;
             for (auto& [key, val] : cheatsJson.items()) {
-                versionsWithCheats += key + " ";
+                if (key != "attribution")
+                    versionsWithCheats += key + " ";
             }
             ShowCheatsNotFound(versionsWithCheats);
         }
