@@ -19,7 +19,6 @@
     "deleting": "削除中…",
     "cheatslips_title": "Cheat Slipsチート",
     "gbatemp_title": "GBAtemp.netチート",
-    "get_gbatemp": "GBAtemp.netチートコードをダウンロード",
     "get_cheatslips": "Cheat Slipsのチートシートをダウンロードする",
     "cheats_label": "\u25c6 GBAtemp.netデータベースから個々のチートコードをダウンロードするか、Cheat Slipsからチートシートをダウンロードします。",
     "cheatslips_dl": "Cheat Slipsから選択したチートシートをダウンロードします。\nこれらのチートコードは、既存のチートファイルの最後に追加されます。",

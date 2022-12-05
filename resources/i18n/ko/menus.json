@@ -20,7 +20,6 @@
     "deleting": "삭제 중…",
     "cheatslips_title": "Cheat Slips 치트",
     "gbatemp_title": "GBAtemp.net 치트",
-    "get_gbatemp": "GBAtemp.net 치트 코드 다운로드",
     "get_cheatslips": "Cheat Slips 치트 시트 다운로드",
     "cheats_label": "\u25c6 GBAtemp.net 데이터베이스에서 개별 치트 코드를 다운로드하거나 Cheat Slips에서 치트 시트를 다운로드하세요.",
     "cheatslips_dl": "Cheat Slips에서 일부 치트 시트를 다운로드합니다.\n해당 치트 코드는 기존 치트 파일의 끝에 추가됩니다.",
@@ -73,7 +72,7 @@
     "cancel": "취소",
     "off": "사용 안 함",
     "selected": "선택됨",
-    "applet_mode_not_supported": "이 기능은 애플릿 모드에서 사용할 수 없습니다. 접속하려면 타이틀 오버라이드를 통해 일체형-스위치-업데이터를 시작하세요."
+    "applet_mode_not_supported": "이 기능은 애플릿 모드에서 사용할 수 없습니다. 접속하려면 타이틀 오버라이드를 통해 일체형-스위치-업데이터를 시작하세요.",
     "nothing_to_see": "여기는 볼게 없습니다!"
   },
   "changelog": {
@@ -158,7 +157,7 @@
     "batch_copy": "파일 일괄 복사",
     "batch_copy_not_found": "다음 파일을 찾을 수 없으며 복사할 수 없습니다:\n",
     "batch_copy_config_not_found": "이 도구를 사용하면 파일을 특정 위치에 자동으로 복사할 수 있습니다. 이것은 부트로더/트린켓에 따라 유용할 수 있습니다. 'https://git.io/aiosu_copyfiles' 에서 copy_files.txt를 가져와서 편집하고 구성 폴더에 추가합니다. 이것은 업데이트 후에도 수행됩니다.",
-    "language": "앱 언어 변경"
+    "language": "앱 언어 변경",
     "outdated_titles": "업데이트 누락",
     "latest_version_not_found": "업데이트 정보를 찾을 수 없음",
     "outdated_titles_desc": "다음 타이틀에 사용 가능한 업데이트가 있습니다:"
@@ -188,7 +187,7 @@
     "cant_fetch_deepsea": "패키지를 가져올 수 없습니다. 이 문제가 지속되면 Github에 등록하세요.",
     "build_your_deepsea": "패키지를 선택하여 커스텀 DeepSea 패키지를 빌드하세요.",
     "getting_ams": "Atmosphère 가져오기",
-    "custom_packs_label": "\u25c6 다음은 {} 파일에 나열된 팩입니다. 일체형-스위치-업데이터에서 승인하지 않았으므로 해당 출처를 신뢰해야 합니다."
+    "custom_packs_label": "\u25c6 다음은 {} 파일에 나열된 팩입니다. 일체형-스위치-업데이터에서 승인하지 않았으므로 해당 출처를 신뢰해야 합니다.",
     "custom_packs_ams": "\u25c6 Atmosphère 맞춤형 펌웨어가 포함된 다운로드입니다.",
     "custom_packs_misc": "\u25c6 홈브류와 도구가 포함된 다운로드입니다.",
     "custom_download" : "커스텀 다운로드",

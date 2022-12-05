@@ -261,8 +261,12 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.21.0");
     changes.push_back("\uE016 Dialogs now default to not overwriting .ini files");
 
-    verTitles.push_back("v2.22.0");
-    changes.push_back("\uE016 Improved Korean translation.\n\uE016 Be more conversative when checking available space before a download.\n\uE016 Minor fixes.");
+    verTitles.push_back("v2.21.2");
+    changes.push_back("\uE016 Improved Korean translation.\n\uE016 Be more conservative when checking available space before a download.\n\uE016 Minor fixes.");
+
+    verTitles.push_back("v2.21.3");
+    changes.push_back("\uE016 Added download link for graphic enhancing codes.");
+
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);

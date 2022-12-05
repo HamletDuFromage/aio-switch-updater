@@ -49,8 +49,10 @@ void ListDownloadTab::createList()
 void ListDownloadTab::createList(contentType type)
 {
     std::vector<std::pair<std::string, std::string>> links;
-    if (type == contentType::cheats && this->newCheatsVer != "")
+    if (type == contentType::cheats && this->newCheatsVer != "") {
         links.push_back(std::make_pair(fmt::format("menus/main/get_cheats"_i18n, this->newCheatsVer), CurrentCfw::running_cfw == CFW::sxos ? CHEATS_URL_TITLES : CHEATS_URL_CONTENTS));
+        links.push_back(std::make_pair("menus/main/get_cheats_gfx"_i18n, CurrentCfw::running_cfw == CFW::sxos ? GFX_CHEATS_URL_TITLES : GFX_CHEATS_URL_CONTENTS));
+    }
     else
         links = download::getLinksFromJson(util::getValueFromKey(this->nxlinks, contentTypeNames[(int)type].data()));
 
@@ -171,7 +173,7 @@ void ListDownloadTab::createCheatSlipItem()
         }
         else {
             std::string usr, pwd;
-            //Result rc = swkbdCreate(&kbd, 0);
+            // Result rc = swkbdCreate(&kbd, 0);
             brls::Swkbd::openForText([&usr](std::string text) { usr = text; }, "cheatslips.com e-mail", "", 64, "", 0, "Submit", "cheatslips.com e-mail");
             brls::Swkbd::openForText([&pwd](std::string text) { pwd = text; }, "cheatslips.com password", "", 64, "", 0, "Submit", "cheatslips.com password", true);
             std::string body = "{\"email\":\"" + std::string(usr) + "\",\"password\":\"" + std::string(pwd) + "\"}";

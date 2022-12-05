@@ -269,9 +269,9 @@ namespace util {
     std::string getCheatsVersion()
     {
         std::string res = util::downloadFileToString(CHEATS_URL_VERSION);
-        if (res == "" && isArchive(CHEATS_FILENAME)) {
+        /* if (res == "" && isArchive(CHEATS_FILENAME)) {
             res = "offline";
-        }
+        } */
         return res;
     }
 
