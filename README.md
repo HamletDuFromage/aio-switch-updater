@@ -76,6 +76,7 @@ $ sudo (dkp-)pacman -Sy
 ```bash
 $ sudo (dkp-)pacman -S  switch-glfw \
                         switch-curl \
+                        switch-glad \
                         switch-glm \
                         switch-mbedtls \
                         switch-zlib
