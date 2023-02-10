@@ -43,7 +43,7 @@
     "cheatfile_label": "Aquí están los trucos listados en el archivo {}",
     "not_found": "No se pudieron encontrar trucos para este juego.",
     "show_existing": "Mostrar existente",
-    "delete_cheats": "Borrar trucos para esre juego",
+    "delete_cheats": "Borrar trucos para este juego",
     "deletion_error": "No se pudieron borrar los trucos para el juego con ID:\n{}",
     "show_cheat_files": "Mostrar todos los trucos",
     "cheats_not_found": "No se pudieron encontrar trucos que concuerden con esta build ID.",
