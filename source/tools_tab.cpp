@@ -86,7 +86,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     brls::ListItem* browser = new brls::ListItem("menus/tools/browser"_i18n);
     browser->getClickEvent()->subscribe([](brls::View* view) {
         std::string url;
-        if (brls::Swkbd::openForText([&url](std::string text) { url = text; }, "cheatslips.com e-mail", "", 64, "https://duckduckgo.com", 0, "Submit", "https://website.tld")) {
+        if (brls::Swkbd::openForText([&url](std::string text) { url = text; }, "cheatslips.com e-mail", "", 256, "https://duckduckgo.com", 0, "Submit", "https://website.tld")) {
             std::string error = "";
             int at = appletGetAppletType();
             if (at == AppletType_Application) {  // Running as a title
