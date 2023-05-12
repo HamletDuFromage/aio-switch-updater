@@ -267,6 +267,8 @@ ChangelogPage::ChangelogPage() : AppletFrame(true, true)
     verTitles.push_back("v2.21.3");
     changes.push_back("\uE016 Added download link for graphic enhancing codes.");
 
+    verTitles.push_back("v2.21.4");
+    changes.push_back("\uE016 Fixed prompt asking to copy the hekate payload to reboot_payload.bin not showing.\n\uE016 Improved German localisatino (github.com/TTghostsemir).");
 
     for (int i = verTitles.size() - 1; i >= 0; i--) {
         listItem = new brls::ListItem(verTitles[i]);

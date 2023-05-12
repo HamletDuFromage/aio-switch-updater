@@ -258,8 +258,8 @@ void AmsTab_Custom::AddLinkCreator()
     listItem->setHeight(LISTITEM_HEIGHT);
     listItem->getClickEvent()->subscribe([this, category](brls::View* view) {
         std::string title, link;
-        brls::Swkbd::openForText([&title](std::string text) { title = text; }, "Enter title", "", 64, "", 0, "Submit", "Title");
-        brls::Swkbd::openForText([&link](std::string text) { link = text; }, "Enter direct link", "", 64, "", 0, "Submit", "https://site/download.zip");
+        brls::Swkbd::openForText([&title](std::string text) { title = text; }, "Enter title", "", 256, "", 0, "Submit", "Title");
+        brls::Swkbd::openForText([&link](std::string text) { link = text; }, "Enter direct link", "", 256, "", 0, "Submit", "https://site/download.zip");
         auto links = util::getValueFromKey(this->custom_packs, category);
         links[title] = link;
         this->custom_packs[category] = links;
