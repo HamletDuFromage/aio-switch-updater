@@ -6,7 +6,6 @@
 #include "JC_page.hpp"
 #include "PC_page.hpp"
 #include "app_page.hpp"
-#include "changelog_page.hpp"
 #include "cheats_page.hpp"
 #include "confirm_page.hpp"
 #include "extract.hpp"
@@ -87,28 +86,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
     browser->getClickEvent()->subscribe([](brls::View* view) {
         std::string url;
         if (brls::Swkbd::openForText([&url](std::string text) { url = text; }, "cheatslips.com e-mail", "", 256, "https://duckduckgo.com", 0, "Submit", "https://website.tld")) {
-            std::string error = "";
-            int at = appletGetAppletType();
-            if (at == AppletType_Application) {  // Running as a title
-                WebCommonConfig conf;
-                WebCommonReply out;
-                Result rc = webPageCreate(&conf, url.c_str());
-                if (R_FAILED(rc))
-                    error += "\uE016 Error starting Browser\n\uE016 Lookup error code for more info " + rc;
-                webConfigSetJsExtension(&conf, true);
-                webConfigSetPageCache(&conf, true);
-                webConfigSetBootLoadingIcon(&conf, true);
-                webConfigSetWhitelist(&conf, ".*");
-                rc = webConfigShow(&conf, &out);
-                if (R_FAILED(rc))
-                    error += "\uE016 Error starting Browser\n\uE016 Lookup error code for more info " + rc;
-            }
-            else {  // Running under applet
-                error += "\uE016 Running in applet mode/through a forwarder.\n\uE016 Please launch hbmenu by holding [R] on a game";
-            }
-            if (!error.empty()) {
-                util::showDialogBoxInfo(error);
-            }
+            util::openWebBrowser(url);
         }
     });
     browser->setHeight(LISTITEM_HEIGHT);
@@ -202,7 +180,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
 
     brls::ListItem* changelog = new brls::ListItem("menus/tools/changelog"_i18n);
     changelog->getClickEvent()->subscribe([](brls::View* view) {
-        brls::PopupFrame::open("menus/tools/changelog"_i18n, new ChangelogPage(), "", "");
+        util::openWebBrowser(CHANGELOG_URL);
     });
     changelog->setHeight(LISTITEM_HEIGHT);
 

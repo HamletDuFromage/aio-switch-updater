@@ -13,6 +13,8 @@ constexpr const char RCM_PAYLOAD_PATH[] = "romfs:/aio_rcm.bin";
 constexpr const char MARIKO_PAYLOAD_PATH[] = "/payload.bin";
 constexpr const char MARIKO_PAYLOAD_PATH_TEMP[] = "/payload.bin.aio";
 
+constexpr const char CHANGELOG_URL[] = "https://github.com/HamletDuFromage/aio-switch-updater/releases";
+
 constexpr const char APP_URL[] = "https://github.com/HamletDuFromage/aio-switch-updater/releases/latest/download/aio-switch-updater.zip";
 constexpr const char TAGS_INFO[] = "https://api.github.com/repos/HamletDuFromage/aio-switch-updater/releases/latest";
 constexpr const char APP_FILENAME[] = "/config/aio-switch-updater/app.zip";
