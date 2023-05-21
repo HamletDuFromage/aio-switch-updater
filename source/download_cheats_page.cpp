@@ -144,7 +144,7 @@ void DownloadCheatsPage::GetBuildIDFromFile()
 
     std::string version_str = std::to_string(this->version);
     if (versions_json.find(version_str) != versions_json.end()) {
-        this->bid = versions_json[version_str];
+        this->bid = versions_json.at(version_str).get<std::string>();
     }
     else {
         this->bid = "";
