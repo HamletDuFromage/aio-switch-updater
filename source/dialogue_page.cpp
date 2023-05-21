@@ -117,7 +117,8 @@ void DialoguePage_ams::instantiateButtons()
         }
         brls::Application::popView();
     });
-    
+
+    this->label = new brls::Label(brls::LabelStyle::DIALOG, "menus/ams_update/install_hekate"_i18n + "\n\n" + this->text, true);
 }
 
 void DialoguePage_fw::instantiateButtons()
