@@ -14,6 +14,9 @@ jobs:
 
     - name: update repo
       run: |
+        git config --global --add safe.directory /__w/aio-switch-updater/aio-switch-updater/lib/borealis
+        git config --global --add safe.directory /__w/aio-switch-updater/aio-switch-updater
+        git config --global --add safe.directory /__w/aio-switch-updater/aio-switch-updater/aiosu-rcm
         git submodule update --init --recursive
         
     - name: Building aio-switch-updater
