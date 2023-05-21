@@ -34,16 +34,17 @@ bool AmsTab::CreateDownloadItems(const nlohmann::ordered_json& cfw_links, bool h
         std::string text_hekate = "menus/common/download"_i18n + hekate_link[0].first;
 
         for (const auto& link : links) {
+            bool pack = link.first.contains("[PACK]");
             std::string url = link.second;
             std::string text("menus/common/download"_i18n + link.first + "menus/common/from"_i18n + url);
             listItem = new brls::ListItem(link.first);
             listItem->setHeight(LISTITEM_HEIGHT);
-            listItem->getClickEvent()->subscribe([this, text, text_hekate, url, hekate_url, hekate, ams](brls::View* view) {
+            listItem->getClickEvent()->subscribe([this, text, text_hekate, url, hekate_url, hekate, pack, ams](brls::View* view) {
                 if (!erista && !std::filesystem::exists(MARIKO_PAYLOAD_PATH)) {
                     brls::Application::crash("menus/errors/mariko_payload_missing"_i18n);
                 }
                 else {
-                    CreateStagedFrames(text, url, erista, ams, hekate, text_hekate, hekate_url);
+                    CreateStagedFrames(text, url, erista, ams, hekate && !pack, text_hekate, hekate_url);
                 }
             });
             this->RegisterListItemAction(listItem);

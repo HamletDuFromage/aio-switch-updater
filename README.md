@@ -33,7 +33,8 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 - Download and update Hekate, as well as a selection of RCM payloads
 
 ### ⬦ Custom Downloads
-- A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/custom_packs.json). Once moved to `/config/aio-switch-updater/custom_packs.json`, it will show on the `Custom Download` menu. This can be used to support third-party packs through AIO-Switch-Updater. Non-Atmosphère downloads can also be added in the `misc` category.
+- A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/custom_packs.json). Once moved to `/config/aio-switch-updater/custom_packs.json`, it will show on the `Custom Download` menu. This can be used to support third-party packs through AIO-Switch-Updater. Packs whose name starts by `[PACK]` won't prompt for a Hekate download.
+- Non-Atmosphère downloads can also be added in the `misc` category.
 
 ### ⬦ Download firmwares
 - Download firmware files to `/firmware` that can then be installed using DayBreak.
