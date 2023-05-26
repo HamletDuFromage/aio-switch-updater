@@ -16,7 +16,8 @@ private:
     void createList();
     void createList(contentType type);
     void createCheatSlipItem();
-    void creategbatempItem();
+    void createGbatempItem();
+    void createGfxItem();
     void setDescription();
     void setDescription(contentType type);
     void displayNotFound();

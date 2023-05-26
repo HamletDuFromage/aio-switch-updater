@@ -40,9 +40,9 @@
     "exclude_all": "Exclude all",
     "exclude_none": "Exclude none",
     "dl_all": "Download and extract the entire GBAtemp.net cheats archive",
-    "gbatemp_dl": "Download cheat codes curated from GBAtemp.net. Those cheats will be added to the end of your existing cheat file.",
-    "gbatemp_dl_cheatcode": "Download cheat code",
-    "gbatemp_dl_successful_dl": "Successfully downloaded the following cheat code:\n{}",
+    "bid_tid_info": "Those cheats will be added to the end of your existing cheat file.",
+    "dl_cheatcodes": "Download cheat code",
+    "dl_successful": "Successfully downloaded the following cheat code:\n{}",
     "applet_mode_not_supported": "Due to memory constraints, in applet mode you may only fetch cheat codes for the game you're currently playing. Please launch AIO-Switch-Updater through title override to download cheat codes for any game you own.",
     "cheatfile_label": "Here are the cheat codes listed in file {}",
     "not_found": "No proper cheat codes could be found for this game",
@@ -52,7 +52,9 @@
     "show_cheat_files": "Show all cheat files",
     "cheats_not_found": "Couldn't find cheat codes matching this build ID.",
     "old_cheats_found": "Cheat codes matching BID(s) [ {}] exist.",
-    "cheatslips_logout": "Log out"
+    "cheatslips_logout": "Log out",
+    "gfx_title": "Graphics enhancing cheats",
+    "get_gfx": "Download individual graphics enhancing cheat codes"
   },
   "common": {
     "downloading": "Downloading…",

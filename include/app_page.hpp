@@ -70,6 +70,16 @@ public:
     AppPage_Gbatemp();
 };
 
+class AppPage_Gfx : public AppPage
+{
+private:
+    void CreateLabel() override;
+    void AddListItem(const std::string& name, uint64_t tid) override;
+
+public:
+    AppPage_Gfx();
+};
+
 class AppPage_DownloadedCheats : public AppPage
 {
 private:

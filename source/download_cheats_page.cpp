@@ -326,11 +326,15 @@ void DownloadCheatsPage_CheatSlips::ShowCheatsContent(nlohmann::ordered_json tit
     brls::PopupFrame::open("menus/cheats/sheet_content"_i18n, appView, "", "");
 }
 
-DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
+DownloadCheatsPage_Github::DownloadCheatsPage_Github(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
+{
+}
+
+void DownloadCheatsPage_Github::PopulateList(uint64_t tid, const std::string& name)
 {
     this->label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/cheats/gbatemp_dl"_i18n +
+        "menus/cheats/bid_tid_info"_i18n +
             "\n\uE016 Title ID: " + util::formatApplicationId(this->tid) +
             "\n\uE016 Build ID: " + this->bid,
         true);
@@ -338,15 +342,15 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
 
     if (this->bid != "") {
         nlohmann::ordered_json cheatsJson;
-        download::getRequest(CHEATS_DIRECTORY + util::formatApplicationId(this->tid) + ".json", cheatsJson);
+        download::getRequest(this->get_url() + util::formatApplicationId(this->tid) + ".json", cheatsJson);
         if (cheatsJson.find(this->bid) != cheatsJson.end()) {
             for (auto& [key, val] : cheatsJson[this->bid].items()) {
                 auto title = key;
                 auto content = val;
                 this->listItem = new brls::ListItem(title);
-                listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, content, title] {
+                listItem->registerAction("menus/cheats/dl_cheatcodes"_i18n, brls::Key::A, [this, content, title] {
                     WriteCheats(content);
-                    util::showDialogBoxInfo(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, title));
+                    util::showDialogBoxInfo(fmt::format("menus/cheats/dl_successful"_i18n, title));
                     return true;
                 });
                 this->list->addView(listItem);
@@ -368,4 +372,14 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
     }
     this->AddCheatsfileListItem();
     this->setContentView(this->list);
+}
+
+DownloadCheatsPage_Gbatemp::DownloadCheatsPage_Gbatemp(uint64_t tid, const std::string& name) : DownloadCheatsPage_Github(tid, name)
+{
+    this->PopulateList(tid, name);
+}
+
+DownloadCheatsPage_Gfx::DownloadCheatsPage_Gfx(uint64_t tid, const std::string& name) : DownloadCheatsPage_Github(tid, name)
+{
+    this->PopulateList(tid, name);
 }
