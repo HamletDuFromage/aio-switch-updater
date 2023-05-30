@@ -53,6 +53,8 @@
     "cheats_not_found": "이 빌드 ID와 일치하는 치트 코드를 찾을 수 없습니다.",
     "old_cheats_found": "[ {}] BID(s)와 일치하는 치트 코드가 있습니다.",
     "cheatslips_logout": "로그 아웃"
+	"gfx_title": "치트를 향상시키는 그래픽",
+	"get_gfx": "치트 코드를 향상시키는 개별 그래픽 다운로드"
   },
   "common": {
     "downloading": "다운로드 중…",
@@ -170,6 +172,7 @@
     "not_an_archive": "다운로드한 파일은 zip 파일이 아닙니다. 링크가 끊어졌을 가능성이 큽니다. 30분이 지나도 문제가 지속된다면 Github에 등록해 주세요.",
     "overwrite_inis": "기존 .ini 구성 파일을 덮어쓰겠습니까?",
     "set_hekate_reboot_payload": "Hekate 페이로드 `{}`를 `{}`에 복사하겠습니까?"
+																															
   },
   "ams_update": {
     "reboot_rcm": "이제 설치를 완료하기 위해 스위치가 특수 페이로드로 재부팅됩니다.",
