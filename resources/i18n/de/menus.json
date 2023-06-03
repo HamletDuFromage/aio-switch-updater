@@ -104,7 +104,7 @@
     "cheats_text": "\u25c6 Lade ein täglich geupdatetes Archiv von 'gbatemp.net' runter. Cheats von Spielen, die du nicht besitzt, werden nicht entpackt. Du kannst Updates für ausgewählte Spiele unter 'Tools→Cheat Menü' deaktivieren.\n\u25c6 Momentane Cheatversion: ",
     "get_cheats": "Lade GBAtemp.net Cheatarchiv herunter (ver {})",
     "firmware": "Firmware",
-    "not_found": "Nicht gefunden",
+    "not_found": "Nicht gefunden!",
     "latest_cheats": "Neueste Version",
     "app": "App",
     "cfw": "CFW",
@@ -152,7 +152,7 @@
     "batch_copy_config_not_found": "Dieses Tool erlaubt dir, Dateien zu anderen Orten zu kopieren, was vielleicht für bootloader/trinket gebraucht wird. Lade copy_files.txt von 'https://git.io/aiosu_copyfiles' herunter und entpacke es in deinen config Ordner. Wird auch nach Updates ausgeführt.",
     "getting_payload": "Payload herunterladen",
     "language": "Sprache der Anwendung ändern",
-    "outdated_titles": "Fehlende Aktualisierungen für Spiel",
+    "outdated_titles": "Fehlende Aktualisierungen für Spiele",
     "latest_version_not_found": "Konnte keine Aktualisierungsinformationen finden",
     "outdated_titles_desc": "Die folgende Spiele haben verfügbare Aktualisierungen:"
   },
@@ -169,8 +169,8 @@
     "delete_contents": "Möchtest du den bestehenden '/atmosphere/contents/' Ordner löschen? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosphère Version nicht unterstützt. Bedenke, dass dies all deine Sysmodules, Mods und Cheats löscht!",
     "delete_sysmodules_flags": "Möchtest du den Autostart von allen Sysmodules verhindern? Dies wird Crashes vorbeugen, falls ein Sysmodul die neueste Atmosphère Version nicht unterstützt.",
     "current_ams": "\u25c6 Momentane Atmosphère Version: ",
-    "erista_rev": "\u25c6 Erista (V1) Konsole",
-    "mariko_rev": "\u25c6 Mariko (V2 / LITE / OLED) Konsole",
+    "erista_rev": "\u25c6 Erista Revision",
+    "mariko_rev": "\u25c6 Mariko Revision",
     "deepsea_builder": "DeepSea Builder",
     "show_module_description": "Beschreibung des Moduls anzeigen",
     "depends_on": "Die folgenden Module werden ebenfalls installiert",
@@ -182,11 +182,11 @@
     "build_your_deepsea": "Baue dein eigenes DeepSea Paket durch Auswählen von Paketen",
     "getting_ams": "Atmosphère herunterladen",
     "custom_packs_label": "\u25c6 Hier sind die in der {}-Datei aufgelisteten Pakete. Bitte beachte, dass diese nicht von AIO-Switch-Updater überprüft werden, also stelle sicher, dass diese Quelle vertrauenswürdig ist!",
-    "custom_packs_ams": "\u25c6 Alternatives benutzerdefinierte Firmware laden",
+    "custom_packs_ams": "\u25c6 Alternative benutzerdefinierte Firmware laden",
     "custom_packs_misc": "\u25c6 Homebrew und Tools laden",
     "custom_download" : "Custom downloads",
-    "add_custom_link": "Ein benutzerdefiniertes Link hinzufügen",
-    "delete_custom_link": "Löschen"
+    "add_custom_link": "Ein benutzerdefinierten Link hinzufügen",
+    "delete_custom_link": "Link Löschen"
   },
   "net": {
     "title": "Internet einstellungen"
