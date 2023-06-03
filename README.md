@@ -1,7 +1,7 @@
 # AIO-Switch-Updater
 ![hbappstore](https://img.shields.io/endpoint?url=https%3A%2F%2Frunkit.io%2Fhomlet%2Fhbappstore-shieldsio%2Fbranches%2Fmaster%3Furl%3Dhttps%3A%2F%2Fswitchbru.com%2Fappstore%2Frepo.json%26name%3Daio-switch-updater)
 ![releases](https://img.shields.io/github/downloads/HamletDuFromage/AIO-switch-updater/total)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/HamletDuFromage/AIO-switch-updater/Build%20AIO-switch-updater)
+[![Build AIO-switch-updater](https://github.com/HamletDuFromage/aio-switch-updater/actions/workflows/main.yml/badge.svg)](https://github.com/HamletDuFromage/aio-switch-updater/actions/workflows/main.yml)
 ![tag](https://img.shields.io/github/v/release/HamletDuFromage/AIO-switch-updater)
 ![GitHub](https://img.shields.io/github/license/HamletDuFromage/aio-switch-updater)
 
@@ -33,7 +33,8 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 - Download and update Hekate, as well as a selection of RCM payloads
 
 ### ⬦ Custom Downloads
-- A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/custom_packs.json). Once moved to `/config/aio-switch-updater/custom_packs.json`, it will show on the `Custom Download` menu. This can be used to support third-party packs through AIO-Switch-Updater. Non-Atmosphère downloads can also be added in the `misc` category.
+- A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/custom_packs.json). Once moved to `/config/aio-switch-updater/custom_packs.json`, it will show on the `Custom Download` menu. This can be used to support third-party packs through AIO-Switch-Updater. Packs whose name starts by `[PACK]` won't prompt for a Hekate download.
+- Non-Atmosphère downloads can also be added in the `misc` category.
 
 ### ⬦ Download firmwares
 - Download firmware files to `/firmware` that can then be installed using DayBreak.

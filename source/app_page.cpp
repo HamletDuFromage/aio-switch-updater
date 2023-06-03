@@ -197,9 +197,28 @@ void AppPage_Gbatemp::CreateLabel()
 
 void AppPage_Gbatemp::AddListItem(const std::string& name, u64 tid)
 {
-    listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_GbaTemp(tid, name)); });
+    listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_Gbatemp(tid, name)); });
     list->addView(listItem);
 }
+
+AppPage_Gfx::AppPage_Gfx() : AppPage()
+{
+    this->PopulatePage();
+}
+
+void AppPage_Gfx::CreateLabel()
+{
+    this->setTitle("menus/cheats/gfx_title"_i18n);
+    label = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/cheats/cheatslips_select"_i18n, true);
+    list->addView(label);
+}
+
+void AppPage_Gfx::AddListItem(const std::string& name, u64 tid)
+{
+    listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_Gfx(tid, name)); });
+    list->addView(listItem);
+}
+
 
 AppPage_Exclude::AppPage_Exclude() : AppPage()
 {

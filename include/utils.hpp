@@ -51,4 +51,5 @@ namespace util {
     std::string getContentsPath();
     bool getBoolValue(const nlohmann::ordered_json& jsonFile, const std::string& key);
     const nlohmann::ordered_json getValueFromKey(const nlohmann::ordered_json& jsonFile, const std::string& key);
+    int openWebBrowser(const std::string url);
 }  // namespace util

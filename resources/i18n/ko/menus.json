@@ -40,9 +40,9 @@
     "exclude_all": "모두 제외",
     "exclude_none": "제외 없음",
     "dl_all": "전체 GBAtemp.net 치트 아카이브 다운로드 및 추출",
-    "gbatemp_dl": "GBAtemp.net에서 엄선된 치트 코드를 다운로드하세요. 해당 치트는 기존 치트 파일 끝에 추가됩니다.",
-    "gbatemp_dl_cheatcode": "치트 코드 다운로드",
-    "gbatemp_dl_successful_dl": "다음 치트 코드를 성공적으로 다운로드했습니다:\n{}",
+    "bid_tid_info": "해당 치트는 기존 치트 파일 끝에 추가됩니다.",
+    "dl_cheatcodes": "치트 코드 다운로드",
+    "dl_successful": "다음 치트 코드를 성공적으로 다운로드했습니다:\n{}",
     "applet_mode_not_supported": "메모리 제약으로 인해 애플릿 모드에서는 현재 플레이 중인 게임의 치트 코드만 가져올 수 있습니다. 보유한 게임에 대한 치트 코드를 다운로드하려면 타이틀 리디렉션을 통해 일체형-스위치-업데이터를 실행하세요.",
     "cheatfile_label": "다음은 {} 파일에 나열된 치트 코드입니다.",
     "not_found": "이 게임에 대한 적절한 치트 코드를 찾을 수 없습니다.",
@@ -53,6 +53,8 @@
     "cheats_not_found": "이 빌드 ID와 일치하는 치트 코드를 찾을 수 없습니다.",
     "old_cheats_found": "[ {}] BID(s)와 일치하는 치트 코드가 있습니다.",
     "cheatslips_logout": "로그 아웃"
+	"gfx_title": "치트를 향상시키는 그래픽",
+	"get_gfx": "치트 코드를 향상시키는 개별 그래픽 다운로드"
   },
   "common": {
     "downloading": "다운로드 중…",
@@ -170,6 +172,7 @@
     "not_an_archive": "다운로드한 파일은 zip 파일이 아닙니다. 링크가 끊어졌을 가능성이 큽니다. 30분이 지나도 문제가 지속된다면 Github에 등록해 주세요.",
     "overwrite_inis": "기존 .ini 구성 파일을 덮어쓰겠습니까?",
     "set_hekate_reboot_payload": "Hekate 페이로드 `{}`를 `{}`에 복사하겠습니까?"
+																															
   },
   "ams_update": {
     "reboot_rcm": "이제 설치를 완료하기 위해 스위치가 특수 페이로드로 재부팅됩니다.",

@@ -411,4 +411,28 @@ namespace util {
         return (jsonFile.find(key) != jsonFile.end()) ? jsonFile.at(key) : nlohmann::ordered_json::object();
     }
 
+    int openWebBrowser(const std::string url)
+    {
+        Result rc = 0;
+        int at = appletGetAppletType();
+        if (at == AppletType_Application) {  // Running as a title
+            WebCommonConfig conf;
+            WebCommonReply out;
+            rc = webPageCreate(&conf, url.c_str());
+            if (R_FAILED(rc))
+                return rc;
+            webConfigSetJsExtension(&conf, true);
+            webConfigSetPageCache(&conf, true);
+            webConfigSetBootLoadingIcon(&conf, true);
+            webConfigSetWhitelist(&conf, ".*");
+            rc = webConfigShow(&conf, &out);
+            if (R_FAILED(rc))
+                return rc;
+        }
+        else {  // Running under applet
+            showDialogBoxInfo("menus/utils/applet_webbrowser"_i18n);
+        }
+        return rc;
+    }
+
 }  // namespace util
