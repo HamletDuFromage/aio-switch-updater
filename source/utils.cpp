@@ -148,7 +148,8 @@ namespace util {
                 return;
         }
         if (!isArchive(filename)) {
-            brls::Application::crash("menus/utils/not_an_archive"_i18n);
+            ProgressEvent::instance().setStatusCode(406);
+            ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
         }
     }
 
