@@ -33,6 +33,31 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
     this->registerAction("", brls::Key::PLUS, [this] { return true; });
 }
 
+std::string formatLabelText( double speed, double fileSizeCurrent, double fileSizeFinal)
+{
+    double fileSizeCurrentMB = fileSizeCurrent / 0x100000;
+    double fileSizeFinalMB = fileSizeFinal / 0x100000;
+    double speedMB = speed / 0x100000;
+
+    // Calcul du temps restant
+    double timeRemaining = (fileSizeFinal - fileSizeCurrent) / speed;
+    int hours = static_cast<int>(timeRemaining / 3600);
+    int minutes = static_cast<int>((timeRemaining - hours * 3600) / 60);
+    int seconds = static_cast<int>(timeRemaining - hours * 3600 - minutes * 60);
+
+    std::string labelText = fmt::format("({:.1f} MB {} {:.1f} MB - {:.1f} MB/s) - {}: ", 
+                                        fileSizeCurrentMB, "menus/worker/of"_i18n, fileSizeFinalMB, speedMB, "menus/worker/remaining"_i18n);
+
+    if (hours > 0)
+        labelText += fmt::format("{}h ", hours);
+    if (minutes > 0)
+        labelText += fmt::format("{}m ", minutes);
+
+    labelText += fmt::format("{}s", seconds);
+
+    return labelText;
+}
+
 void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
 {
     if (this->draw_page) {
@@ -62,7 +87,7 @@ void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned hei
             this->progressDisp->setProgress(ProgressEvent::instance().getStep(), ProgressEvent::instance().getMax());
             this->progressDisp->frame(ctx);
             if (ProgressEvent::instance().getTotal()) {
-                this->label->setText(fmt::format("{0} ({1:.1f} MB of {2:.1f} MB - {3:.1f} MB/s)", text, ProgressEvent::instance().getNow() / 0x100000, ProgressEvent::instance().getTotal() / 0x100000, ProgressEvent::instance().getSpeed() / 0x100000));
+                this->label->setText(formatLabelText(ProgressEvent::instance().getSpeed(), ProgressEvent::instance().getNow(), ProgressEvent::instance().getTotal()));
             }
             this->label->frame(ctx);
         }
