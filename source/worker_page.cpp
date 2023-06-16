@@ -49,11 +49,11 @@ std::string formatLabelText( double speed, double fileSizeCurrent, double fileSi
                                         fileSizeCurrentMB, "menus/worker/of"_i18n, fileSizeFinalMB, speedMB, "menus/worker/remaining"_i18n);
 
     if (hours > 0)
-        labelText += fmt::format("{}h ", hours);
+        labelText += fmt::format("{}{} ", hours, "menus/worker/hours"_i18n);
     if (minutes > 0)
-        labelText += fmt::format("{}m ", minutes);
+        labelText += fmt::format("{}{} ", minutes, "menus/worker/minutes"_i18n);
 
-    labelText += fmt::format("{}s", seconds);
+    labelText += fmt::format("{}{}", seconds, "menus/worker/seconds"_i18n);
 
     return labelText;
 }
@@ -100,7 +100,7 @@ void WorkerPage::layout(NVGcontext* vg, brls::Style* style, brls::FontStash* sta
 
     this->label->setBoundaries(
         this->x + this->width / 2 - this->label->getWidth() / 2,
-        this->y + (this->height - style->AppletFrame.footerHeight) / 2,
+        this->y + (this->height - style->AppletFrame.footerHeight) / 2 - 30,
         this->label->getWidth(),
         this->label->getHeight());
 

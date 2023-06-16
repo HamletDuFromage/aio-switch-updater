@@ -212,6 +212,9 @@
   },
   "worker": {
     "of": "of",
-    "remaining": "Time remaining"
+    "remaining": "Time remaining",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds"
   }
 }
