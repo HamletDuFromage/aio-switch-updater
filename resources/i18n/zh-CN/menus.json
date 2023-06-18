@@ -195,7 +195,7 @@
     "custom_packs_label": "\u25c6 以下是 {} 这个文件中列出的包。请注意，AIO-Switch-Updater并未认可这些内容，因此请确保您信任它们的来源。",
     "custom_packs_ams": "\u25c6 含第三方大气层固件的包",
     "custom_packs_misc": "\u25c6 含软件和工具的包",
-    "custom_download" : "自定义下载",
+    "custom_download": "自定义下载",
     "add_custom_link": "添加自定义的下载链接",
     "delete_custom_link": "删除"
   },
