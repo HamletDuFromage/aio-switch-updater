@@ -2,6 +2,7 @@
   "about": {
     "title": "多工具合一任天堂Switch更新器",
     "copyright": "多工具合一任天堂Switch更新器遵循 GPL-3.0 协议",
+    "disclaimers_title": "声明",
     "disclaimers": "\u25c6 除了从主Gbatemp线程镜像的金手指外，本软件作者不拥有任何金手指。所有的功劳归于各自的所有者。\n\u25c6 链接每30分钟刷新一次. 如果链接在30分钟后仍然有问题，请到GitHub给作者issue。",
     "donate": "\u25c6 喜欢这个程序？考虑捐赠以支持我的努力: 'https://git.io/donate_homlet'"
   },
@@ -19,6 +20,7 @@
     "deleting": "删除中…",
     "cheatslips_title": "Cheat Slips金手指",
     "gbatemp_title": "GBAtemp.net金手指",
+    "get_gbatemp": "下载独立的金手指",
     "get_cheatslips": "下载Cheat Slips金手指表",
     "cheats_label": "\u25c6 从GBAtemp.net数据库下载单独的金手指，或从Cheat Slips下载金手指表",
     "cheatslips_dl": "从Cheat Slips下载精选的金手指表。\n这些金手指代码将被添加到您现有的金手指文件的末尾。",
@@ -35,6 +37,8 @@
     "exclude_titles": "不包括的游戏",
     "exclude_titles_desc": "你可以用这个菜单关闭金手指更新",
     "exclude_titles_save": "保存选择并返回",
+    "exclude_all": "排除全部",
+    "exclude_none": "包括全部",
     "dl_all": "下载并解压整个GBAtemp.net金手指压缩包文件",
     "bid_tid_info": "这些金手指代码将被添加到您现有的金手指文件的末尾。\n\u25c6 版本号: {}",
     "dl_cheatcodes": "下载金手指",
@@ -48,7 +52,9 @@
     "show_cheat_files": "显示所有金手指文件",
     "cheats_not_found": "找不到匹配此版本号的金手指。",
     "old_cheats_found": "存在匹配BID(s) [ {}]的金手指.",
-    "cheatslips_logout": "注销"
+    "cheatslips_logout": "注销",
+    "gfx_title": "图形增强金手指",
+    "get_gfx": "下载独立的图形增强金手指"
   },
   "common": {
     "downloading": "下载中…",
@@ -78,7 +84,6 @@
   "payloads": {
     "dl_payloads": "下载payloads",
     "select": " 选择一个payload文件并重启。",
-    "not_found": "找不到下载链接，请确保Switch可以访问互联网。\n如果问题仍然存在，请到GitHub上提交issue。",
     "set_reboot_payload": "设置为reboot_payload.bin",
     "set_update_bin": "这是为/bootloader/update.bin",
     "copy_success": "已成功复制 `{}` 到 `{}`。"
@@ -106,8 +111,9 @@
     "firmware_text": "\u25c6 Firmware固件来自'https://darthsternie.net/switch-firmwares/'。下载完成后，它将被解压缩到'/firmware'中。然后您可以通过Daybreak安装更新。\n\u25c6 当前FW版本: ",
     "cheats_text": "\u25c6 这将从'gbatemp.net'下载每日更新的金手指文件。你没有安装的游戏的金手指不会被解压到你的SD卡中。你可以在'工具→金手指菜单'中关闭特定游戏的金手指更新。\n\u25c6 当前的金手指版本: ",
     "get_cheats": "下载GBAtemp.net金手指压缩包 (版本 {})",
+    "get_cheats_gfx": "下载图形增强金手指",
     "get_all_cheats:": "下载GBAtemp.net金手指压缩包",
-    "firmware": "firmware",
+    "firmware": "固件",
     "not_found": "没有找到",
     "latest_cheats": "最新版本",
     "app": "app",
@@ -121,6 +127,7 @@
     "new_update": " - 新的程序更新可用",
     "about": "介绍",
     "update_ams": "更新Atmosphère",
+    "custom_downloads": "第三方下载",
     "update_cfw": "更新CFW",
     "update_bootloaders": "更新bootloaders",
     "download_firmware": "下载firmwares",
@@ -164,7 +171,8 @@
     "overwrite": " 是否要覆盖现有的 ",
     "not_an_archive": "下载的文件不是zip压缩包。这很可能是由于网络链接中断所导致。如果问题在30分钟后仍然存在，请到GitHub上提交issue。",
     "overwrite_inis": "是否要覆盖现有的.ini配置文件？",
-    "set_hekate_reboot_payload": "是否将 Hekate payload `{}` 复制到 `{}`?"
+    "set_hekate_reboot_payload": "是否将 Hekate payload `{}` 复制到 `{}`?",
+    "applet_webbrowser": "当前处于 applet 模式。\n\uE016 请通过按住 [R] 键启动游戏来启动 hbmenu"
   },
   "ams_update": {
     "reboot_rcm": "Switch现在将重新启动到一个特殊的payload，以便完成安装。",
@@ -184,7 +192,12 @@
     "cant_fetch_deepsea": "不能fetch包文件。请到GitHub上提交issue。",
     "build_your_deepsea": "通过选择软件包，构建自定义的DeepSea包",
     "getting_ams": "获取Atmosphère",
-    "custom_packs_label": "\u25c6 以下是 {} 这个文件中列出的包。请注意，AIO-Switch-Updater并未认可这些内容，因此请确保您信任它们的来源。"
+    "custom_packs_label": "\u25c6 以下是 {} 这个文件中列出的包。请注意，AIO-Switch-Updater并未认可这些内容，因此请确保您信任它们的来源。",
+    "custom_packs_ams": "\u25c6 含第三方大气层固件的包",
+    "custom_packs_misc": "\u25c6 含软件和工具的包",
+    "custom_download" : "自定义下载",
+    "add_custom_link": "添加自定义的下载链接",
+    "delete_custom_link": "删除"
   },
   "firmware": {
     "launch_daybreak": "是否要启动Daybreak以安装下载的系统更新？"
