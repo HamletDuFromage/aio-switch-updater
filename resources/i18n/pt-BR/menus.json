@@ -207,6 +207,6 @@
   "errors": {
     "insufficient_storage": "Não há espaço suficiente disponível no seu cartão SD para realizar esta operação.",
     "error_message": "{}\nPor favor, tente novamente em breve. Se o problema persistir, abra uma issue no GitHub.",
-    "mariko_payload_missing": "Para atualizar o Atmosphère em Switches modificados, o seu payload precisa ter o nome de "payload.bin" e deve estar na raiz do seu cartão SD."
+    "mariko_payload_missing": "Para atualizar o Atmosphère em Switches modificados, o seu payload precisa ter o nome de \"payload.bin\" e deve estar na raiz do seu cartão SD."
   }
 }
