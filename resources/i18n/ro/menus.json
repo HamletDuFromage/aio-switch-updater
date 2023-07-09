@@ -4,7 +4,7 @@
     "copyright": "AIO-Switch-Updater este licențiat conform GPL-3.0",
     "disclaimers_title": "Declinări de răspundere",
     "disclaimers": "\u25c6 În afară de codurile de înșelăciune care sunt reflectate din firul principal GBAtemp, HamletDuFromage nu găzduiește nimic. Toate creditele revin proprietarilor respectivi.\n\u25c6 Linkurile sunt reîmprospătate la fiecare 30 de minute. Dacă un link rămâne întrerupt. după ce au trecut 30 de minute, vă rugăm să deschideți o problemă Github.",
-    "donate": "\u25c6 Îți place aplicația? Luați în considerare donarea pentru a-mi sprijini eforturile: "https://git.io/donate_homlet""
+    "donate": "\u25c6 Îți place aplicația? Luați în considerare donarea pentru a-mi sprijini eforturile: 'https://git.io/donate_homlet'"
   },
   "cheats": {
     "installed": "Trucuri instalate",
@@ -26,7 +26,7 @@
     "cheatslips_dl": "Descărcați o selecție de fișe de cheat din Cheat Slips.\nAceste coduri de cheat vor fi adăugate la sfârșitul fișierului de cheat existent.",
     "delete_file": "Ștergeți fișierul cheat existent",
     "cheatslips_error": "Nu s-au putut prelua codurile de cheat selectate/indicativul nevalid.",
-    "quota": "Cota a fost depășită pentru astăzi!\nAccesați "https://www.cheatslips.com/subscriptions" pentru a vedea cum să o creșteți.",
+    "quota": "Cota a fost depășită pentru astăzi!\nAccesați 'https://www.cheatslips.com/subscriptions' pentru a vedea cum să o creșteți.",
     "sheet_content": "Conținut cheatsheet",
     "cheatslips_select": "Selectați un joc pentru care să descărcați trucuri.",
     "cheatslips_wrong_id": "Nu s-a putut prelua simbolul, asigurați-vă că ați introdus corect datele de conectare",
@@ -90,7 +90,7 @@
   },
   "joy_con":{
     "title": "Schimbator de culori Joy-Con",
-    "description": "Puteți schimba culoarea internă a Joy-Cons. Asigurați-vă că sunt andocate.\nProfilurile de culoare sunt stocate în "{}“. Accesați "{}" pentru a vă genera propriile profiluri personalizate.",
+    "description": "Puteți schimba culoarea internă a Joy-Cons. Asigurați-vă că sunt andocate.\nProfilurile de culoare sunt stocate în '{}'. Accesați '{}' pentru a vă genera propriile profiluri personalizate.",
     "backup": "Fă backup profilului de culoare curent",
     "label": "Schimbator de culori Joy-Con",
     "backing_up": "Se realizează o copie de rezervă a profilului de culoare curent. Asigurați-vă că Joy-Con-urile sunt andocate. Dacă procesul se blochează, încercați să andocați/dezactivați Joy-Con-urile.",
@@ -108,8 +108,8 @@
   },
   "main": {
     "getting": "Se obține {}",
-    "firmware_text": "\u25c6 Firmware-ul descarcă de la "https://darthsternie.net/switch-firmwares/". Odată descărcat, acesta va fi extras în "/firmware". Apoi puteți instala actualizarea prin Daybreak.\n\ u25c6 FW curent: ",
-    "cheats_text": "\u25c6 Aceasta va descărca o arhivă actualizată zilnic de coduri de cheat de pe "gbatemp.net". Codurile de cheat pentru jocurile pe care nu le-ați instalat nu vor fi extrase pe cardul SD. Puteți dezactiva actualizările de cheat. pentru anumite jocuri în "Instrumente→Meniul cheat".\n\u25c6 Versiunea actuală a cheaturilor: ",
+    "firmware_text": "\u25c6 Firmware-ul descarcă de la 'https://darthsternie.net/switch-firmwares/'. Odată descărcat, acesta va fi extras în '/firmware'. Apoi puteți instala actualizarea prin Daybreak.\n\ u25c6 FW curent: ",
+    "cheats_text": "\u25c6 Aceasta va descărca o arhivă actualizată zilnic de coduri de cheat de pe 'gbatemp.net'. Codurile de cheat pentru jocurile pe care nu le-ați instalat nu vor fi extrase pe cardul SD. Puteți dezactiva actualizările de cheat. pentru anumite jocuri în 'Instrumente→>Meniul cheat'.\n\u25c6 Versiunea actuală a cheaturilor: ",
     "get_cheats": "Descărcați arhiva cheat GBAtemp.net (ver {})",
     "get_cheats_gfx": "Descărcați trucuri de îmbunătățire a graficelor",
     "get_all_cheats:": "Descărcați arhiva cheat GBAtemp.net",
@@ -160,7 +160,7 @@
     "browser": "browser web",
     "batch_copy": "Fișiere copiate în lot",
     "batch_copy_not_found": "Următoarele fișiere nu au fost găsite și nu au putut fi copiate:\n",
-    "batch_copy_config_not_found": "Acest instrument vă permite să copiați automat fișiere în anumite locații. Acest lucru poate fi util în funcție de bootloader/trinket. Luați copy_files.txt la "https://git.io/aiosu_copyfiles", editați-l și adăugați-l în folderul de configurare. Acest lucru va fi efectuat și după actualizări.",
+    "batch_copy_config_not_found": "Acest instrument vă permite să copiați automat fișiere în anumite locații. Acest lucru poate fi util în funcție de bootloader/trinket. Luați copy_files.txt la 'https://git.io/aiosu_copyfiles', editați-l și adăugați-l în folderul de configurare. Acest lucru va fi efectuat și după actualizări.",
     "language": "Schimbați limba aplicației",
     "outdated_titles": "Actualizări lipsesc",
     "latest_version_not_found": "Nu s-au putut găsi informații despre actualizări",
@@ -177,7 +177,7 @@
   "ams_update": {
     "reboot_rcm": "Switch-ul va reporni acum la o sarcină utilă specială pentru a finaliza instalarea.",
     "install_hekate": "Doriți să descărcați și Hekate?\nDacă nu, Switch-ul va reporni acum la o sarcină utilă specială pentru a finaliza instalarea.",
-    "delete_contents": "Doriți să eliminați directorul "/atmosphere/contents/" existent? Acest lucru va preveni blocările dacă aveți sysmodules care nu acceptă cel mai recent Atmosphère. Vă rugăm să rețineți că va șterge toate sysmodules, modurile și trucuri.",
+    "delete_contents": "Doriți să eliminați directorul '/atmosphere/contents/' existent? Acest lucru va preveni blocările dacă aveți sysmodules care nu acceptă cel mai recent Atmosphère. Vă rugăm să rețineți că va șterge toate sysmodules, modurile și trucuri.",
     "delete_sysmodules_flags": "Doriți să ștergeți toate semnalizatoarele personalizate de pornire sysmodules? Acest lucru va dezactiva toate sysmodules și va preveni blocările dacă aveți sysmodules care nu acceptă cel mai recent Atmosphère.",
     "current_ams": "\u25c6 Atmosfera actuală:",
     "erista_rev": "\u25c6 Revizuire Erista",
