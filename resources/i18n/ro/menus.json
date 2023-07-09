@@ -108,7 +108,7 @@
   },
   "main": {
     "getting": "Se obține {}",
-    "firmware_text": "\u25c6 Firmware-ul descarcă de la 'https://darthsternie.net/switch-firmwares/'. Odată descărcat, acesta va fi extras în '/firmware'. Apoi puteți instala actualizarea prin Daybreak.\n\ u25c6 FW curent: ",
+    "firmware_text": "\u25c6 Firmware-ul descarcă de la 'https://darthsternie.net/switch-firmwares/'. Odată descărcat, acesta va fi extras în '/firmware'. Apoi puteți instala actualizarea prin Daybreak.\n\u25c6 FW curent: ",
     "cheats_text": "\u25c6 Aceasta va descărca o arhivă actualizată zilnic de coduri de cheat de pe 'gbatemp.net'. Codurile de cheat pentru jocurile pe care nu le-ați instalat nu vor fi extrase pe cardul SD. Puteți dezactiva actualizările de cheat. pentru anumite jocuri în 'Instrumente→>Meniul cheat'.\n\u25c6 Versiunea actuală a cheaturilor: ",
     "get_cheats": "Descărcați arhiva cheat GBAtemp.net (ver {})",
     "get_cheats_gfx": "Descărcați trucuri de îmbunătățire a graficelor",
