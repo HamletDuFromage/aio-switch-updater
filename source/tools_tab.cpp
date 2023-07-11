@@ -133,6 +133,7 @@ ToolsTab::ToolsTab(const std::string& tag, const nlohmann::ordered_json& payload
             std::make_pair("Português ({})", "pt"),
             std::make_pair("Nederlands ({})", "nl"),
             std::make_pair("Русский ({})", "ru"),
+            std::make_pair("Română ({})", "ro"),
             std::make_pair("한국어 ({})", "ko"),
             std::make_pair("Polski ({})", "pl"),
             std::make_pair("简体中文 ({})", "zh-CN"),
