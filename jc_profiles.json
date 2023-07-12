@@ -187,5 +187,12 @@
         "R_BTN": "140014",
         "R_JC": "B400E6",
         "name": "Pokémon: Scarlet × Violet"
+    },
+    {
+        "L_BTN": "32322D",
+        "L_JC": "D2BE69",
+        "R_BTN": "32322D",
+        "R_JC": "D2BE69",
+        "name": "Legend of Zelda: Tears of the Kingdom Edition Gold Joy-Con"
     }
 ]
