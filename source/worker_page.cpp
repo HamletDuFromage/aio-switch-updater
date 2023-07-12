@@ -33,27 +33,28 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
     this->registerAction("", brls::Key::PLUS, [this] { return true; });
 }
 
-std::string formatLabelText( double speed, double fileSizeCurrent, double fileSizeFinal)
+std::string formatLabelText(double speed, double fileSizeCurrent, double fileSizeFinal)
 {
     double fileSizeCurrentMB = fileSizeCurrent / 0x100000;
     double fileSizeFinalMB = fileSizeFinal / 0x100000;
     double speedMB = speed / 0x100000;
 
-    // Calcul du temps restant
     double timeRemaining = (fileSizeFinal - fileSizeCurrent) / speed;
     int hours = static_cast<int>(timeRemaining / 3600);
     int minutes = static_cast<int>((timeRemaining - hours * 3600) / 60);
     int seconds = static_cast<int>(timeRemaining - hours * 3600 - minutes * 60);
 
-    std::string labelText = fmt::format("({:.1f} MB {} {:.1f} MB - {:.1f} MB/s) - {}: ", 
-                                        fileSizeCurrentMB, "menus/worker/of"_i18n, fileSizeFinalMB, speedMB, "menus/worker/remaining"_i18n);
+    std::string labelText = fmt::format("menus/worker/download_progress"_i18n, fileSizeCurrentMB, fileSizeFinalMB, speedMB);
+    if (speedMB > 0) {
+        std::string eta;
+        if (hours > 0)
+            eta += fmt::format("{}h ", hours);
+        if (minutes > 0)
+            eta += fmt::format("{}m ", minutes);
 
-    if (hours > 0)
-        labelText += fmt::format("{}{} ", hours, "menus/worker/hours"_i18n);
-    if (minutes > 0)
-        labelText += fmt::format("{}{} ", minutes, "menus/worker/minutes"_i18n);
-
-    labelText += fmt::format("{}{}", seconds, "menus/worker/seconds"_i18n);
+        eta += fmt::format("{}s", seconds);
+        labelText += "\n" + fmt::format("menus/worker/time_left"_i18n, eta);
+    }
 
     return labelText;
 }

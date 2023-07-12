@@ -212,9 +212,7 @@
   },
   "worker": {
     "of": "of",
-    "remaining": "Time remaining",
-    "hours": "hours",
-    "minutes": "minutes",
-    "seconds": "seconds"
+    "download_progress": "({:.1f} MB of {:.1f} MB - {:.1f} MB/s)",
+    "time_left": "({} left)"
   }
 }
