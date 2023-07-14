@@ -17,9 +17,9 @@
     "delete_existing": "Supprimer tous les codes de triche",
     "delete_orphaned": "Supprimer les codes de triche orphelins",
     "deleting": "Suppression…",
-    "cheastlips_title": "Codes de triche de Cheat Slips",
+    "cheatslips_title": "Codes de triche de Cheat Slips",
     "gbatemp_title": "Codes de triche de GBAtemp.net",
-    "get_gbatemp": "Télécharger les codes de triche de GBAtemp.net",
+    "get_gbatemp": "Télécharger les codes de triche individuellement",
     "get_cheatslips": "Télécharger les codes de triche de Cheat Slips",
     "cheats_label": "\u25c6 Télécharger des codes de triches individuels depuis la base de données de GBAtemp.net ou des listes de codes depuis Cheat Slips",
     "cheatslips_dl": "Télécharger une sélection de listes de codes de Cheat Slips.\nCes codes de triche seront ajoutés à la fin de du fichier de triche existant.",
@@ -37,9 +37,9 @@
     "exclude_titles_desc": "Vous pouvez desactiver les mises à jour des codes de triche dans ce menu",
     "exclude_titles_save": "Enregistrer et retour",
     "dl_all": "Télécharger et extraire toute l'archive de triche de GBAtemp.net",
-    "gbatemp_dl": "Télécharger les codes de triche archivés par GBAtemp.net. Ces codes seront ajoutés à la fin du fichier de triche existant.\n ID de version\u00a0: {}",
-    "gbatemp_dl_cheatcode": "Télécharger un code de triche",
-    "gbatemp_dl_successful_dl": "Téléchargement du code de triche réussi\u00a0:\n{}",
+    "bid_tid_info": "Ces codes seront ajoutés à la fin du fichier de triche existant.",
+    "dl_cheatcodes": "Télécharger un code de triche",
+    "dl_successful": "Téléchargement du code de triche réussi\u00a0:\n{}",
     "applet_mode_not_supported": "À cause de contraintes de mémoire du mode applet, vous ne pouvez récupérer que les codes de triche pour le jeu auquel vous être en train de jouer. Pour télécharger les codes de triche de tout autre jeu installé, veuillez lancer AIO-Switch-Updater via la redirection d'application.",
     "cheatfile_label": "Voici les codes de triche listés dans le fichier {}",
     "not_found": "Aucun code de triche valide n'a été trouvé pour ce jeu",
@@ -73,13 +73,9 @@
   "changelog": {
     "changelog": "Journal des modifications"
   },
-  "sigpatches": {
-    "reboot": "Les changements prendront effet au prochain démarrage."
-  },
   "payloads": {
     "dl_payloads": "Téléchargement des payloads",
     "select": "Selectionner un payload vers lequel redémarrer.",
-    "not_found": "Impossible de trouver un lien de téléchargement, vérifiez que la Switch soit connectée à internet.\nSi ce problème persiste, veuillez ouvrir une issue sur GitHub.",
     "set_reboot_payload": "Choisir comme reboot_payload.bin",
     "set_update_bin": "Choisir comme /bootloader/update.bin",
     "copy_success": "Copie de `{}` à `{}` réussie."
@@ -105,11 +101,9 @@
   "main": {
     "getting": "Téléchargement de {}",
     "firmware_text": "\u25c6 Firmware archivé sur 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargé, ils sera extrait dans '/firmware'. Vous pouvez ensuite installer la mise à jour avec Daybreak.\n FW installé\u00a0: ",
-    "cheats_text": "\u25c6 Ceci téléchargera une archive de codes de triche mise à jour quotidiennement depuis 'gbatemp.net'. Les codes de triche pour les jeux non installés pas ne seront pas extraits sur la carte SD. Vous pouvez désactiver la mises à jour des codes de triche pour les jeux de votre choix dans le menu 'Outils->Menu de triche'.\n Version des codes de triche installés\u00a0: ",
+    "cheats_text": "\u25c6 Ceci téléchargera une archive de codes de triche mise à jour quotidiennement depuis 'gbatemp.net'. Les codes de triche pour les jeux non installés pas ne seront pas extraits sur la carte SD. Vous pouvez désactiver la mises à jour des codes de triche pour les jeux de votre choix dans le menu 'Outils→Menu de triche'.\n Version des codes de triche installés\u00a0: ",
     "get_cheats": "Télécharger l'archive de codes de triche de GBAtemp.net (ver {})",
     "get_all_cheats:": "Télécharger l'archive de codes de triche de GBAtemp.net",
-    "sigpatches": "sigpatches",
-    "sigpatches_text": "\u25c6 Les sigpatches permettent à la Switch d'installer et d'exécuter des fichiers NSP non officiels. Redémarrez la console pour appliquer les patches.",
     "firmware": "firmware",
     "not_found": "non trouvé",
     "latest_cheats": "Dernière version",
@@ -126,15 +120,14 @@
     "update_ams": "MÀJ d'Atmosphère",
     "update_cfw": "MÀJ des CFW",
     "update_bootloaders": "MÀJ des bootloaders",
-    "update_sigpatches": "MÀJ des sigpatches",
     "download_firmware": "Téléch. des firmwares",
     "download_cheats": "Téléch. de cheat codes",
     "tools": "Outils",
-    "launch_warning": "Veuillez prendre connaissance des points suivants avant d'utiliser cette application\u00a0:\n\n Renseignez-vous d'abord sur le processus de mise à jour manuel de la Switch. Cela vous aidera à mieux comprendre le fonctionnement de l'application et savoir quoi faire en cas de problème.\n Afin d'éviter tout risque de corruption de données, l'utilisation de cette application avec une carte SD formatée en exFAT est FORTEMENT déconseillé.\n\n Les dernières informations à propos des fonctionnalités ajoutées et/ou modifiées sont disponibles dans le menu Outils->Journal des modifications.\n\nCet écran ne sera pas réaffiché.",
+    "launch_warning": "Veuillez prendre connaissance des points suivants avant d'utiliser cette application\u00a0:\n\n Renseignez-vous d'abord sur le processus de mise à jour manuel de la Switch. Cela vous aidera à mieux comprendre le fonctionnement de l'application et savoir quoi faire en cas de problème.\n Afin d'éviter tout risque de corruption de données, l'utilisation de cette application avec une carte SD formatée en exFAT est FORTEMENT déconseillé.\n\n Les dernières informations à propos des fonctionnalités ajoutées et/ou modifiées sont disponibles dans le menu Outils→Journal des modifications.\n\nCet écran ne sera pas réaffiché.",
     "footer_text": "v{} | {:.1f}Go disponibles",
     "theme_warning": "Il semblerait que vous avez installé un thème personnalisé, cela pourrait empêcher le système de démarrer après la mise à jour de votre firmware.\nIl est conseillé de le supprimer avant d'effectuer la mise à jour.",
     "payloads_label": "\u25c6 Enregistrer les payloads RCM sous {}",
-    "hekate_ipl_label": "\u25c6 Télécharger une version minimale et prête à l'emploi du fichier de configuration hekate_ipl.ini compatible avec les sigpatches. Le fichier hekate_ipl.ini déjà présent sera écrasé."
+    "hekate_ipl_label": "\u25c6 Télécharger une version minimale et prête à l'emploi du fichier de configuration hekate_ipl.ini. Le fichier hekate_ipl.ini déjà présent sera écrasé."
   },
   "hide": {
     "title": "Masquer des onglets",
@@ -185,7 +178,7 @@
     "cant_fetch_deepsea": "Impossible de récupérer les paquets. Ouvrez une issue GitHub si le problème persiste.",
     "build_your_deepsea": "Personnalisez l'installation de DeepSea en sélectionnant les paquets à inclure",
     "getting_ams": "Installer Atmopshère",
-    "custom_packs_label": "\u25c6 Voici les paquets listés dans le fichier {}. Assurez-vous de la fiabilité de leur source car il ne bénéficient d'aucun support de la part d'AIO-Switch-Updater."   
+    "custom_packs_label": "\u25c6 Voici les paquets listés dans le fichier {}. Assurez-vous de la fiabilité de leur source car il ne bénéficient d'aucun support de la part d'AIO-Switch-Updater."
   },
   "firmware": {
     "launch_daybreak": "Voulez-vous lancer Daybreak pour installer la mise à jour système téléchargée\u00a0?"
@@ -197,26 +190,5 @@
     "insufficient_storage": "Il n'y a pas assez d'espace disponible sur la carte SD pour effectuer cette opération.",
     "error_message": "{}\nVeuillez réessayer un peu plus tard. Si le problème persiste, ouvrez une issue sur GitHub",
     "mariko_payload_missing": "Pour mettre à jour Atmopshère sur une Switch patchée, le payload doit être nommé \"payload.bin\" et être placé à la racine de votre carte SD."
-  },
-  "language": {
-    "system_default": "Langue du système",
-    "en-US": "American English (en-US)",
-    "ja": "日本語 (ja)",
-    "fr": "Français (fr)",
-    "de": "Deutsch (de)",
-    "it": "Italiano (it)",
-    "es": "Español (es)",
-    "zh-CN": "简体中文 (zh-CN)",
-    "ko": "한국어 (ko)",
-    "nl": "Nederlands (nl)",
-    "pt": "Português (pt)",
-    "ru": "Русский (ru)",
-    "pl": "Polski (pl)",
-    "zh-TW": "繁體中文 (zh-TW)",
-    "en-GB": "English (Great Britain) (en-GB)",
-    "fr-CA": "Français (Canada) (fr-CA)",
-    "es-419": "Español (Latinoamérica) (es-419)",
-    "zh-Hant": "Chinois traditionnel (zh-Hant)",
-    "zh-Hans": "Chinois simplifié (zh-Hans)"
   }
 }

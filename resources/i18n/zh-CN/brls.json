@@ -1,10 +1,13 @@
 {
     "hints": {
-        "ok": "OK",
-        "back": "Back",
-        "exit": "Exit"
+        "ok": "确定",
+        "back": "返回",
+        "exit": "退出"
     },
     "crash_frame": {
-        "button": "OK"
+        "button": "确定"
+    },
+    "thumbnail_sidebar": {
+        "save": "保存"
     }
 }

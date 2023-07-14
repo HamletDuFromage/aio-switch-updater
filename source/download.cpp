@@ -2,6 +2,7 @@
 
 #include <curl/curl.h>
 #include <math.h>
+#include <mbedtls/base64.h>
 #include <switch.h>
 #include <time.h>
 
@@ -9,6 +10,7 @@
 #include <chrono>
 #include <regex>
 #include <string>
+#include <thread>
 
 #include "fs.hpp"
 #include "progress_event.hpp"
@@ -20,7 +22,7 @@ using namespace i18n::literals;
 constexpr const char API_AGENT[] = "HamletDuFromage";
 constexpr int _1MiB = 0x100000;
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 namespace download {
 
@@ -41,6 +43,7 @@ namespace download {
             size_t data_size;
             u_int64_t offset;
             FILE* out;
+            Aes128CtrContext* aes;
         } ntwrk_struct_t;
 
         static size_t WriteMemoryCallback(void* contents, size_t size, size_t num_files, void* userp)
@@ -56,7 +59,11 @@ namespace download {
                 data_struct->offset = 0;
             }
 
-            memcpy(&data_struct->data[data_struct->offset], contents, realsize);
+            if (data_struct->aes)
+                aes128CtrCrypt(data_struct->aes, &data_struct->data[data_struct->offset], contents, realsize);
+            else
+                memcpy(&data_struct->data[data_struct->offset], contents, realsize);
+
             data_struct->offset += realsize;
             data_struct->data[data_struct->offset] = 0;
             return realsize;
@@ -119,11 +126,156 @@ namespace download {
             auto res = curl_easy_getinfo(curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD_T, &dl);
             if (!res) {
                 s64 freeStorage;
-                if (R_SUCCEEDED(fs::getFreeStorageSD(freeStorage)) && dl * 1.1 > freeStorage) {
+                if (R_SUCCEEDED(fs::getFreeStorageSD(freeStorage)) && dl * 2.5 > freeStorage) {
                     return false;
                 }
             }
             return true;
+        }
+
+        std::string mega_id(std::string url)
+        {
+            auto len = url.length();
+
+            if (len < 52)
+                throw std::invalid_argument("Invalid URL.");
+
+            bool old_link = url.find("#!") < len;
+
+            /* Start from the last '/' and add 2 characters if old link format starting with '#!' */
+            auto init_pos = url.find_last_of('/') + (old_link ? 2 : 0) + 1;
+
+            /* End with the last '#' or "!" if its the old link format */
+            auto end_pos = url.find_last_of(old_link ? '!' : '#');
+
+            /* Finally crop the url */
+            std::string id = url.substr(init_pos, end_pos - init_pos);
+
+            if (id.length() != 8)
+                throw std::invalid_argument("Invalid URL ID.");
+
+            return id;
+        }
+
+        std::string mega_url(std::string url)
+        {
+            std::string id = mega_id(url);
+
+            json request = json::array({{
+                {"a", "g"},
+                {"g", 1},
+                {"p", id},
+            }});
+
+            std::string body = request.dump();
+            std::string output;
+
+            auto curl = curl_easy_init();
+            curl_easy_setopt(curl, CURLOPT_URL, "https://g.api.mega.co.nz/cs");
+            curl_easy_setopt(curl, CURLOPT_POST, 1L);
+            curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
+            curl_easy_setopt(curl, CURLOPT_WRITEDATA, &output);
+            curl_easy_setopt(curl, CURLOPT_USERAGENT, API_AGENT);
+            curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+            curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+            curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+            curl_easy_setopt(
+                curl,
+                CURLOPT_WRITEFUNCTION,
+                +[](void* buffer, size_t size, size_t nmemb, void* userp) -> size_t {
+                    std::string* output = reinterpret_cast<std::string*>(userp);
+                    size_t actual_size = size * nmemb;
+                    output->append(reinterpret_cast<char*>(buffer), actual_size);
+                    return actual_size;
+                });
+
+            curl_easy_perform(curl);
+
+            json response = json::parse(output);
+
+            curl_easy_cleanup(curl);
+
+            s64 freeStorage;
+            s64 fileSize = response[0]["s"];
+            if (R_SUCCEEDED(fs::getFreeStorageSD(freeStorage)) && fileSize * 2.5 > freeStorage)
+                return "";
+
+            return response[0]["g"];
+        }
+
+        std::string mega_node_key(std::string url)
+        {
+            /* Check if old link format */
+            auto len = url.length();
+
+            if (len < 52)
+                throw std::invalid_argument("Invalid URL.");
+
+            bool old_link = url.find("#!") < len;
+
+            /* End with the last '#' or "!" if its the old link format */
+            auto end_pos = url.find_last_of(old_link ? '!' : '#') + 1;
+
+            /* Crop the URL to get the file key */
+            std::string key = url.substr(end_pos, len - end_pos);
+
+            /* Replace URL characters with B64 characters */
+            std::replace(key.begin(), key.end(), '_', '/');
+            std::replace(key.begin(), key.end(), '-', '+');
+
+            /* Add padding */
+            auto key_len = key.length();
+            unsigned pad = 4 - key_len % 4;
+            key.append(pad, '=');
+
+            /* The encoded key should have 44 characters to produce a 32 byte node key */
+            if (key.length() != 44)
+                throw std::invalid_argument("Invalid URL key.");
+
+            std::string decoded(key.size() * 3 / 4, 0);
+            size_t olen = 0;
+
+            mbedtls_base64_decode(
+                reinterpret_cast<unsigned char*>(decoded.data()),
+                decoded.size(),
+                &olen,
+                reinterpret_cast<const unsigned char*>(key.c_str()),
+                key.size());
+
+            /**
+             * The encoded base64 is (usually?) 43 characters long. With padding it goes
+             * to 44. When we calculate the decoded size, we need to allocate 33 bytes.
+             * But the last encoded character is padding, and combined with the last 
+             * valid character, it should produce a 32 byte node key.
+             */
+            decoded.resize(olen);
+            if (decoded.size() != 32)
+                throw std::invalid_argument("Invalid node key.");
+
+            return decoded;
+        }
+
+        std::string mega_key(const std::string& node_key)
+        {
+            std::string key(16, 0);
+
+            reinterpret_cast<uint64_t*>(key.data())[0] =
+                reinterpret_cast<const uint64_t*>(node_key.data())[0] ^
+                reinterpret_cast<const uint64_t*>(node_key.data())[2];
+            reinterpret_cast<uint64_t*>(key.data())[1] =
+                reinterpret_cast<const uint64_t*>(node_key.data())[1] ^
+                reinterpret_cast<const uint64_t*>(node_key.data())[3];
+
+            return key;
+        }
+
+        std::string mega_iv(const std::string& node_key)
+        {
+            std::string iv(16, 0);
+            reinterpret_cast<uint64_t*>(iv.data())[0] =
+                reinterpret_cast<const uint64_t*>(node_key.data())[2];
+
+            return iv;
         }
     }  // namespace
 
@@ -142,6 +294,17 @@ namespace download {
         time_old = std::chrono::steady_clock::now();
         dlold = 0.0f;
         bool can_download = true;
+        bool is_mega = (url.find("mega.nz") != std::string::npos);
+        std::string real_url = is_mega ? mega_url(url) : url;
+
+        if (is_mega) {
+            std::string node_key = mega_node_key(url);
+            std::string key = mega_key(node_key);
+            std::string iv = mega_iv(node_key);
+
+            chunk.aes = static_cast<Aes128CtrContext*>(malloc(sizeof(Aes128CtrContext)));
+            aes128CtrContextCreate(chunk.aes, key.c_str(), iv.c_str());
+        }
 
         if (curl) {
             FILE* fp = fopen(out, "wb");
@@ -151,11 +314,11 @@ namespace download {
                 chunk.out = fp;
 
                 if (*out != 0) {
-                    can_download = checkSize(curl, url);
+                    can_download = is_mega ? !real_url.empty() : checkSize(curl, url);
                 }
 
                 if (can_download) {
-                    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+                    curl_easy_setopt(curl, CURLOPT_URL, real_url.c_str());
                     curl_easy_setopt(curl, CURLOPT_USERAGENT, API_AGENT);
                     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
                     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
@@ -183,7 +346,7 @@ namespace download {
         fclose(chunk.out);
         if (!can_download) {
             brls::Application::crash("menus/errors/insufficient_storage"_i18n);
-            usleep(2000000);
+            std::this_thread::sleep_for(std::chrono::microseconds(2000000));
             brls::Application::quit();
             res = {};
         }
@@ -193,6 +356,7 @@ namespace download {
         }
 
         free(chunk.data);
+        free(chunk.aes);
 
         return status_code;
     }

@@ -16,13 +16,13 @@ include $(DEVKITPRO)/libnx/switch_rules
 # DATA is a list of directories containing data files
 # INCLUDES is a list of directories containing header files
 BUILD		:=	build
-SOURCES		:=	source lib/zipper/source
+SOURCES		:=	source
 RESOURCES	:=	resources
 DATA		:=	data
-INCLUDES	:=	include lib/zipper/include /lib/borealis/library/include/borealis/extern/nlohmann
+INCLUDES	:=	include /lib/borealis/library/include/borealis/extern/nlohmann
 APP_TITLE	:=	All-in-One Switch Updater
 APP_AUTHOR	:=	HamletDuFromage
-APP_VERSION :=  2.17.0
+APP_VERSION :=	2.23.1
 TARGET		:=	$(notdir $(CURDIR))
 
 ROMFS				:=	resources
@@ -50,12 +50,12 @@ CFLAGS	+=	$(INCLUDE) -D__SWITCH__ \
 			-DAPP_TITLE="\"$(APP_TITLE)\"" -DAPP_TITLE_LOWER="\"$(TARGET)\""
 
 
-CXXFLAGS	:= $(CFLAGS) -std=gnu++20 -fexceptions -Wno-reorder
+CXXFLAGS	:= $(CFLAGS) -std=gnu++23 -fexceptions -Wno-reorder
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS	:= -lm -lcurl -lnx -lz -lmbedtls -lmbedx509 -lmbedcrypto -lstdc++fs
+LIBS	:= -lm -lcurl -lnx -lz -lminizip -lmbedtls -lmbedx509 -lmbedcrypto -lstdc++fs
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
@@ -159,11 +159,8 @@ all: $(BUILD)
 
 $(ROMFS):
 	@[ -d $@ ] || mkdir -p $@
-	@echo Merging ROMFS...
-	@cp -ruf $(CURDIR)/$(BOREALIS_PATH)/resources/i18n/. $(CURDIR)/$(ROMFS)/i18n/
-	@cp -ruf $(CURDIR)/$(ROMFS)/i18n/zh-CN/. $(CURDIR)/$(ROMFS)/i18n/zh-Hans/
-	@cp -ruf $(CURDIR)/$(ROMFS)/i18n/zh-TW/. $(CURDIR)/$(ROMFS)/i18n/zh-Hant/
-	@rm -rf $(CURDIR)/$(ROMFS)/i18n/*/installer.json $(CURDIR)/$(ROMFS)/i18n/*/main.json $(CURDIR)/$(ROMFS)/i18n/*/popup.json $(CURDIR)/$(ROMFS)/i18n/*/custom_layout.json
+	@cp -rf $(CURDIR)/$(ROMFS)/i18n/zh-CN/. $(CURDIR)/$(ROMFS)/i18n/zh-Hans/
+	@cp -rf $(CURDIR)/$(ROMFS)/i18n/zh-TW/. $(CURDIR)/$(ROMFS)/i18n/zh-Hant/
 	@$(MAKE) -C $(CURDIR)/aiosu-rcm -f $(CURDIR)/aiosu-rcm/Makefile
 	@cp $(CURDIR)/aiosu-rcm/output/aio_rcm.bin $(CURDIR)/$(ROMFS)/aio_rcm.bin
 # @$(MAKE) -C $(CURDIR)/aiosu-forwarder -f $(CURDIR)/aiosu-forwarder/Makefile

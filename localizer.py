@@ -29,9 +29,9 @@ class Localizer:
         self.init_dicts()
 
     def init_dicts(self):
-        with open(self.reference_path) as reference_file:
+        with open(self.reference_path, encoding="utf8") as reference_file:
             self.reference_dict = json.load(reference_file)
-        with open(self.working_path) as working_file:
+        with open(self.working_path, encoding="utf8") as working_file:
             self.working_dict = json.load(working_file)
 
     def get_new_dict(self):
@@ -50,7 +50,7 @@ class Localizer:
                     value, working_dict[key])
             elif key not in working_dict:
                 working_val = input(
-                    f"Translation for key: [{key}] was not found.\nType in the translation in the field below.\nType \"_exit\" to save & quit and \"_skip\" to go to skip to the next key.\n<<< {colors.color_string(repr(value)[1:-1])}\n>>> ")
+                    f"Translation for key: [{key}] was not found.\nType in the translation in the field below.\nType \"_exit\" to save & quit and \"_skip\" to skip to the next key.\n<<< {colors.color_string(repr(value)[1:-1])}\n>>> ")
                 if working_val == "_exit":
                     return (working_dict, True)
                 elif working_val == "_skip":

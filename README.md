@@ -1,48 +1,52 @@
 # AIO-Switch-Updater
+![hbappstore](https://img.shields.io/endpoint?url=https%3A%2F%2Frunkit.io%2Fhomlet%2Fhbappstore-shieldsio%2Fbranches%2Fmaster%3Furl%3Dhttps%3A%2F%2Fswitchbru.com%2Fappstore%2Frepo.json%26name%3Daio-switch-updater)
 ![releases](https://img.shields.io/github/downloads/HamletDuFromage/AIO-switch-updater/total)
-![hbappstore](https://img.shields.io/endpoint?url=https%3A%2F%2Frunkit.io%2Fhomlet%2Fhbappstore-shieldsio%2Fbranches%2Fmaster%3Furl%3Dhttps%3A%2F%2Fswitchbru.com%2Fappstore%2Frepo.json%26name%3Daioswitchupdater)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/HamletDuFromage/AIO-switch-updater/Build%20AIO-switch-updater)
+[![Build AIO-switch-updater](https://github.com/HamletDuFromage/aio-switch-updater/actions/workflows/main.yml/badge.svg)](https://github.com/HamletDuFromage/aio-switch-updater/actions/workflows/main.yml)
 ![tag](https://img.shields.io/github/v/release/HamletDuFromage/AIO-switch-updater)
 ![GitHub](https://img.shields.io/github/license/HamletDuFromage/aio-switch-updater)
 
 <a href="https://liberapay.com/HamletDuFromage/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
-[![btc](https://img.shields.io/badge/BTC-1CoFc1bY5AHLP6Noe1zmqnJnp7ZWBxyo79-yellow)](https://github.com/HamletDuFromage/aio-switch-updater#like-the-app)
-[![eth](https://img.shields.io/badge/ETH-0xf68f568e21a15934e0e9a6949288c3ca009140ba-purple)](https://github.com/HamletDuFromage/aio-switch-updater#like-the-app)
+[![btc](https://img.shields.io/badge/BTC-1CoFc1bY5AHLP6Noe1zmqnJnp7ZWBxyo79-yellow?logo=bitcoin)](https://github.com/HamletDuFromage/aio-switch-updater#like-the-app)
+[![eth](https://img.shields.io/badge/ETH-0xf68f568e21a15934e0e9a6949288c3ca009140ba-purple?logo=ethereum)](https://github.com/HamletDuFromage/aio-switch-updater#like-the-app)
+[![xmr](https://img.shields.io/badge/XMR-88wjCuhHX3oNhVpEdYeUx3LvrkdTvcTHx7v7L5fQpjCg7QiAReJUVR4LPase5Byj2UhdVdLtvysJaXTFKq2EnuvuLjvQMGL-orange?logo=monero)](https://github.com/HamletDuFromage/aio-switch-updater#like-the-app)
 
-[//]: ([![ko-fi](https://img.shields.io/badge/ko--fi-buy%20me%20a%20coffee-ff69b4)](https://ko-fi.com/hamletdufromage))
+<!-- ([![ko-fi](https://img.shields.io/badge/ko--fi-buy%20me%20a%20coffee-ff69b4)](https://ko-fi.com/hamletdufromage)) -->
 
 <p align="center">
 <img src = "https://user-images.githubusercontent.com/61667930/93691188-7833f000-fad1-11ea-866d-42e19be54425.jpg"\><br>
 </p>
 
-A Nintendo Switch homebrew app to download and update CFWs, sigpatches, FWs and cheat codes. Supports Atmosphère, ReiNX and SXOS.
+A Nintendo Switch homebrew app to download and update CFWs, FWs and cheat codes. Supports Atmosphère, ReiNX and SXOS.
 
 Works on **unpatched** (Erista) and **patched** (v2/Mariko) Switches.
 
 ## How to install
 Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 
-## Description of the features
+## Features
 ### ⬦ Update CFW
-- Download the most popular Switch CFWs. After downloading the CFW archive, the program will ask you whether you want to override your existing .ini files. 
+- Update the Atmosphère Switch Custom Firmware. AIO-Switch-Updater uses a custom RCM payload to finalise the install as it can't be performed while HOS is running.
   - If you would like to preserve additional files or directories, write their path (one line each) in `/config/aio-switch-updater/preserve.txt` and they won't be overwritten when updating.
   - Place [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/copy_files.txt) in `/config/aio-switch-updater/copy_files.txt` in order to have specific copy operations performed after each download. This is mainly meant for users with trinkets who want payloads automatically copied to a directory.
-  - A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/customPacks.json) and it will show on the `Update Atmopshère` menu. This can be used to support third-party packs through AIO-Switch-Updater
 
-### ⬦ Update Sigpatches
-- For Atmosphère. Downloads sigpatches, which are patches required for launching unofficial .NSPs. Both AMS and Hekate+AMS sigpatches are available.
+### ⬦ Update Hekate/Payload
+- Download and update Hekate, as well as a selection of RCM payloads
+
+### ⬦ Custom Downloads
+- A custom Atmosphère url can be entered in [this file](https://github.com/HamletDuFromage/aio-switch-updater/blob/master/custom_packs.json). Once moved to `/config/aio-switch-updater/custom_packs.json`, it will show on the `Custom Download` menu. This can be used to support third-party packs through AIO-Switch-Updater. Packs whose name starts by `[PACK]` won't prompt for a Hekate download.
+- Non-Atmosphère downloads can also be added in the `misc` category.
 
 ### ⬦ Download firmwares
 - Download firmware files to `/firmware` that can then be installed using DayBreak.
 
 ### ⬦ Download cheats
-- Downloads and extracts daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you can turn off cheat updates for specific titles in `Tools->Cheat Menu`.
-- Since v2.0.0, AIO-Switch-Updater can also download cheat sheets from [Cheat Slips](https://www.cheatslips.com/). 
-- Since v2.6.0, AIO-Switch-Updater can also download individual cheat codes from the `GBAtemp.net` database.
+- Download and extract daily-updated cheat code. The program will only extract cheat codes for the games you own. By default, this homebrew will overwrite the existing cheats. If you have your own cheat files that you'd like to keep as is, you can turn off cheat updates for specific titles in `Tools→Cheat Menu`.
+- Download cheat sheets from [Cheat Slips](https://www.cheatslips.com/). 
+- Download individual cheat codes from the `GBAtemp.net` database.
 
 ## Extras (in the `Tools` tab)
 - Reboot to specific payload.
-- Download payloads to `/bootloader/payloads`.
+- Consult games with missing updates.
 - Change software color scheme of Joy-Cons. Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/jc_profiles.json`. Use [this webpage](https://hamletdufromage.github.io/JC-color-picker/JCpicker.html) to generate your own profiles.
 - Change software color scheme of Pro Controllers (has to be paired as Player 1). Additional color profiles can be found in the releases and should be copied to `config/aio-switch-updater/pc_profiles.json`.
 - Consult installed cheat codes.
@@ -53,13 +57,10 @@ Copy the `aio-switch-updater/` directory to `/switch/` on your sdcard.
 ## Screenshots
 <details><summary>Expand to view the screenshots</summary>
 
-![update_ams](https://user-images.githubusercontent.com/61667930/125843308-94666f64-c538-465f-88b1-10dbc1e2024e.jpg)
-![deepsea_builder](https://user-images.githubusercontent.com/61667930/125843328-829d9e92-617a-4a92-b85f-2f2abd096f5f.jpg)
-![downloading](https://user-images.githubusercontent.com/61667930/125843333-e18faf45-6034-4dfa-841b-3e20259e4dc9.jpg)
-![get_cheats](https://user-images.githubusercontent.com/61667930/125843305-4f1b4a91-f182-4e15-9d5b-af0e2ec7fd9e.jpg)
-![get_individual_cheat](https://user-images.githubusercontent.com/61667930/125843316-0527d3f2-5b6e-42da-83ef-0f8e67646eb3.jpg)
-![tools_menu](https://user-images.githubusercontent.com/61667930/125843312-394cc38e-de75-4f71-942d-9d38d3d37b29.jpg)
-![joycon_color_swapper](https://user-images.githubusercontent.com/61667930/125843319-c81d372e-58dc-432b-8f8c-828f768ae817.jpg)
+![ams_tab](https://user-images.githubusercontent.com/61667930/193625554-ad9a8a5a-72ad-462e-95d9-94979c9750ac.jpg)
+![cheats_tab](https://user-images.githubusercontent.com/61667930/193625551-9912210a-c99c-434f-ab5e-b468a698ddcf.jpg)
+![individual_cheats](https://user-images.githubusercontent.com/61667930/193625547-18bff50c-1985-4ce5-aadf-2394fa5d29ca.jpg)
+![tools_tab](https://user-images.githubusercontent.com/61667930/193625542-4722690a-a86f-48d1-8935-367b16f355f8.jpg)
 
 </details>
 
@@ -76,6 +77,7 @@ $ sudo (dkp-)pacman -Sy
 ```bash
 $ sudo (dkp-)pacman -S  switch-glfw \
                         switch-curl \
+                        switch-glad \
                         switch-glm \
                         switch-mbedtls \
                         switch-zlib
@@ -122,4 +124,4 @@ I do not own, host nor distribute any of the files that can be downloaded with t
 - Liberapay : <a href="https://liberapay.com/HamletDuFromage/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
 - BTC: 1CoFc1bY5AHLP6Noe1zmqnJnp7ZWBxyo79
 - ETH: 0xf68f568e21a15934e0e9a6949288c3ca009140ba
-- CHAINLINK: 0xf68f568e21a15934e0e9a6949288c3ca009140ba
+- Monero (XMR): 88wjCuhHX3oNhVpEdYeUx3LvrkdTvcTHx7v7L5fQpjCg7QiAReJUVR4LPase5Byj2UhdVdLtvysJaXTFKq2EnuvuLjvQMGL

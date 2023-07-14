@@ -29,18 +29,16 @@ ListDownloadTab::ListDownloadTab(const contentType type, const nlohmann::ordered
             "menus/cheats/cheats_label"_i18n,
             true);
         this->addView(cheatsLabel);
-        this->creategbatempItem();
+        this->createGbatempItem();
+        this->createGfxItem();
         this->createCheatSlipItem();
     }
 
     if (this->type == contentType::bootloaders) {
-        this->setDescription(contentType::payloads);
-        this->createList(contentType::payloads);
-    }
-
-    if (this->type == contentType::sigpatches) {
         this->setDescription(contentType::hekate_ipl);
         this->createList(contentType::hekate_ipl);
+        this->setDescription(contentType::payloads);
+        this->createList(contentType::payloads);
     }
 }
 
@@ -52,8 +50,10 @@ void ListDownloadTab::createList()
 void ListDownloadTab::createList(contentType type)
 {
     std::vector<std::pair<std::string, std::string>> links;
-    if (type == contentType::cheats && this->newCheatsVer != "")
+    if (type == contentType::cheats && this->newCheatsVer != "") {
         links.push_back(std::make_pair(fmt::format("menus/main/get_cheats"_i18n, this->newCheatsVer), CurrentCfw::running_cfw == CFW::sxos ? CHEATS_URL_TITLES : CHEATS_URL_CONTENTS));
+        links.push_back(std::make_pair("menus/main/get_cheats_gfx"_i18n, CurrentCfw::running_cfw == CFW::sxos ? GFX_CHEATS_URL_TITLES : GFX_CHEATS_URL_CONTENTS));
+    }
     else
         links = download::getLinksFromJson(util::getValueFromKey(this->nxlinks, contentTypeNames[(int)type].data()));
 
@@ -99,16 +99,12 @@ void ListDownloadTab::createList(contentType type)
                             stagedFrame->addStage(new DialoguePage_fw(stagedFrame, doneMsg));
                         }
                         else {
-                            stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
+                            stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
                         }
                         break;
                     }
-                    case contentType::sigpatches:
-                        doneMsg += "\n" + "menus/sigpatches/reboot"_i18n;
-                        stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
-                        break;
                     default:
-                        stagedFrame->addStage(new ConfirmPage(stagedFrame, doneMsg, true));
+                        stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
                         break;
                 }
                 brls::Application::pushView(stagedFrame);
@@ -141,9 +137,6 @@ void ListDownloadTab::setDescription(contentType type)
     brls::Label* description = new brls::Label(brls::LabelStyle::DESCRIPTION, "", true);
 
     switch (type) {
-        case contentType::sigpatches:
-            description->setText("menus/main/sigpatches_text"_i18n);
-            break;
         case contentType::fw: {
             SetSysFirmwareVersion ver;
             description->setText(fmt::format("{}{}", "menus/main/firmware_text"_i18n, R_SUCCEEDED(setsysGetFirmwareVersion(&ver)) ? ver.display_version : "menus/main/not_found"_i18n));
@@ -178,11 +171,10 @@ void ListDownloadTab::createCheatSlipItem()
     cheatslipsItem->getClickEvent()->subscribe([](brls::View* view) {
         if (std::filesystem::exists(TOKEN_PATH)) {
             brls::Application::pushView(new AppPage_CheatSlips());
-            return true;
         }
         else {
             std::string usr, pwd;
-            //Result rc = swkbdCreate(&kbd, 0);
+            // Result rc = swkbdCreate(&kbd, 0);
             brls::Swkbd::openForText([&usr](std::string text) { usr = text; }, "cheatslips.com e-mail", "", 64, "", 0, "Submit", "cheatslips.com e-mail");
             brls::Swkbd::openForText([&pwd](std::string text) { pwd = text; }, "cheatslips.com password", "", 64, "", 0, "Submit", "cheatslips.com password", true);
             std::string body = "{\"email\":\"" + std::string(usr) + "\",\"password\":\"" + std::string(pwd) + "\"}";
@@ -197,24 +189,17 @@ void ListDownloadTab::createCheatSlipItem()
                 tokenFile << token.dump();
                 tokenFile.close();
                 brls::Application::pushView(new AppPage_CheatSlips());
-                return true;
             }
             else {
-                brls::Dialog* dialog = new brls::Dialog("menus/cheats/cheatslips_wrong_id"_i18n + "\n" + "menus/cheats/kb_error"_i18n);
-                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                    dialog->close();
-                };
-                dialog->addButton("menus/common/ok"_i18n, callback);
-                dialog->setCancelable(true);
-                dialog->open();
-                return true;
+                util::showDialogBoxInfo("menus/cheats/cheatslips_wrong_id"_i18n + "\n" + "menus/cheats/kb_error"_i18n);
             }
         }
+        return true;
     });
     this->addView(cheatslipsItem);
 }
 
-void ListDownloadTab::creategbatempItem()
+void ListDownloadTab::createGbatempItem()
 {
     brls::ListItem* gbatempItem = new brls::ListItem("menus/cheats/get_gbatemp"_i18n);
     gbatempItem->setHeight(LISTITEM_HEIGHT);
@@ -223,4 +208,15 @@ void ListDownloadTab::creategbatempItem()
         return true;
     });
     this->addView(gbatempItem);
+}
+
+void ListDownloadTab::createGfxItem()
+{
+    brls::ListItem* gfxItem = new brls::ListItem("menus/cheats/get_gfx"_i18n);
+    gfxItem->setHeight(LISTITEM_HEIGHT);
+    gfxItem->getClickEvent()->subscribe([](brls::View* view) {
+        brls::Application::pushView(new AppPage_Gfx());
+        return true;
+    });
+    this->addView(gfxItem);
 }

@@ -8,6 +8,7 @@
 
 #include "confirm_page.hpp"
 #include "current_cfw.hpp"
+#include "download.hpp"
 #include "download_cheats_page.hpp"
 #include "extract.hpp"
 #include "fs.hpp"
@@ -43,10 +44,12 @@ void AppPage::PopulatePage()
 
                 tid = records[i].application_id;
 
-                if R_FAILED(GetControlData(tid, controlData, controlSize, name)) continue;
+                if (R_FAILED(GetControlData(tid, controlData, controlSize, name)))
+                    continue;
 
                 listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
-                this->DeclareGameListItem(name, tid, &controlData);
+                listItem->setThumbnail(controlData->icon, sizeof(controlData->icon));
+                this->AddListItem(name, tid);
             }
             free(controlData);
         }
@@ -55,12 +58,19 @@ void AppPage::PopulatePage()
         tid = GetCurrentApplicationId();
         if (R_SUCCEEDED(InitControlData(&controlData)) && R_SUCCEEDED(GetControlData(tid & 0xFFFFFFFFFFFFF000, controlData, controlSize, name))) {
             listItem = new brls::ListItem(name, "", util::formatApplicationId(tid));
-            this->DeclareGameListItem(name, tid, &controlData);
+            listItem->setThumbnail(controlData->icon, sizeof(controlData->icon));
+            this->AddListItem(name, tid);
         }
         label = new brls::Label(brls::LabelStyle::SMALL, "menus/common/applet_mode_not_supported"_i18n, true);
         list->addView(label);
     }
     delete[] records;
+
+    brls::Logger::debug("count {}", list->getViewsCount());
+
+    if (!list->getViewsCount()) {
+        list->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/common/nothing_to_see"_i18n, true));
+    }
 
     this->setContentView(list);
 }
@@ -92,7 +102,7 @@ void AppPage::CreateDownloadAllButton()
         stagedFrame->addStage(
             new WorkerPage(stagedFrame, "menus/common/extracting"_i18n, []() { util::extractArchive(contentType::cheats); }));
         stagedFrame->addStage(
-            new ConfirmPage(stagedFrame, "menus/common/all_done"_i18n, true));
+            new ConfirmPage_Done(stagedFrame, "menus/common/all_done"_i18n));
         brls::Application::pushView(stagedFrame);
     });
     list->addView(download);
@@ -130,9 +140,8 @@ u32 AppPage::GetControlData(u64 tid, NsApplicationControlData* controlData, u64&
     return 0;
 }
 
-void AppPage::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData** controlData)
+void AppPage::AddListItem(const std::string& name, u64 tid)
 {
-    listItem->setThumbnail((*controlData)->icon, sizeof((*controlData)->icon));
     list->addView(listItem);
 }
 
@@ -154,19 +163,23 @@ uint64_t AppPage::GetCurrentApplicationId()
 AppPage_CheatSlips::AppPage_CheatSlips() : AppPage()
 {
     this->PopulatePage();
+    this->registerAction("menus/cheats/cheatslips_logout"_i18n, brls::Key::X, [this] {
+        std::filesystem::remove(TOKEN_PATH);
+        return true;
+    });
 }
 
 void AppPage_CheatSlips::CreateLabel()
 {
-    this->setTitle("menus/cheats/cheastlips_title"_i18n);
+    this->setTitle("menus/cheats/cheatslips_title"_i18n);
     label = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/cheats/cheatslips_select"_i18n, true);
     list->addView(label);
 }
 
-void AppPage_CheatSlips::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData** controlData)
+void AppPage_CheatSlips::AddListItem(const std::string& name, u64 tid)
 {
     listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_CheatSlips(tid, name)); });
-    AppPage::DeclareGameListItem(name, tid, controlData);
+    list->addView(listItem);
 }
 
 AppPage_Gbatemp::AppPage_Gbatemp() : AppPage()
@@ -182,11 +195,30 @@ void AppPage_Gbatemp::CreateLabel()
     list->addView(label);
 }
 
-void AppPage_Gbatemp::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData** controlData)
+void AppPage_Gbatemp::AddListItem(const std::string& name, u64 tid)
 {
-    listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_GbaTemp(tid, name)); });
-    AppPage::DeclareGameListItem(name, tid, controlData);
+    listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_Gbatemp(tid, name)); });
+    list->addView(listItem);
 }
+
+AppPage_Gfx::AppPage_Gfx() : AppPage()
+{
+    this->PopulatePage();
+}
+
+void AppPage_Gfx::CreateLabel()
+{
+    this->setTitle("menus/cheats/gfx_title"_i18n);
+    label = new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/cheats/cheatslips_select"_i18n, true);
+    list->addView(label);
+}
+
+void AppPage_Gfx::AddListItem(const std::string& name, u64 tid)
+{
+    listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { brls::Application::pushView(new DownloadCheatsPage_Gfx(tid, name)); });
+    list->addView(listItem);
+}
+
 
 AppPage_Exclude::AppPage_Exclude() : AppPage()
 {
@@ -223,7 +255,8 @@ void AppPage_Exclude::PopulatePage()
 
                 tid = records[i].application_id;
 
-                if R_FAILED (GetControlData(tid, controlData, controlSize, name)) continue;
+                if (R_FAILED(GetControlData(tid, controlData, controlSize, name)))
+                    continue;
 
                 brls::ToggleListItem* listItem;
                 listItem = new brls::ToggleListItem(std::string(name), titles.find(util::formatApplicationId(tid)) != titles.end() ? 0 : 1);
@@ -253,6 +286,22 @@ void AppPage_Exclude::PopulatePage()
         return true;
     });
 
+    this->registerAction("menus/cheats/exclude_all"_i18n, brls::Key::X, [this] {
+        std::set<std::string> exclude;
+        for (const auto& item : items) {
+            exclude.insert(item.second);
+        }
+        extract::writeTitlesToFile(exclude, CHEATS_EXCLUDE);
+        brls::Application::popView();
+        return true;
+    });
+
+    this->registerAction("menus/cheats/exclude_none"_i18n, brls::Key::Y, [this] {
+        extract::writeTitlesToFile({}, CHEATS_EXCLUDE);
+        brls::Application::popView();
+        return true;
+    });
+
     this->setContentView(list);
 }
 
@@ -269,22 +318,16 @@ void AppPage_DownloadedCheats::CreateLabel()
     list->addView(label);
 }
 
-void AppPage_DownloadedCheats::DeclareGameListItem(const std::string& name, u64 tid, NsApplicationControlData** controlData)
+void AppPage_DownloadedCheats::AddListItem(const std::string& name, u64 tid)
 {
     auto tid_str = util::formatApplicationId(tid);
     if (titles.find(tid_str) != titles.end()) {
-        listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { show_cheats::ShowCheatFiles(tid, name); });
+        listItem->getClickEvent()->subscribe([tid, name](brls::View* view) { cheats_util::ShowCheatFiles(tid, name); });
         listItem->registerAction("menus/cheats/delete_cheats"_i18n, brls::Key::Y, [tid_str] {
-            brls::Dialog* dialog = new brls::Dialog(extract::removeCheatsDirectory(fmt::format("{}{}", util::getContentsPath(), tid_str)) ? "menus/common/all_done"_i18n : fmt::format("menus/cheats/deletion_error"_i18n, tid_str));
-            brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                dialog->close();
-            };
-            dialog->addButton("menus/common/ok"_i18n, callback);
-            dialog->setCancelable(true);
-            dialog->open();
+            util::showDialogBoxInfo(extract::removeCheatsDirectory(fmt::format("{}{}", util::getContentsPath(), tid_str)) ? "menus/common/all_done"_i18n : fmt::format("menus/cheats/deletion_error"_i18n, tid_str));
             return true;
         });
-        AppPage::DeclareGameListItem(name, tid, controlData);
+        list->addView(listItem);
     }
 }
 
@@ -302,4 +345,33 @@ void AppPage_DownloadedCheats::GetExistingCheatsTids()
             }
         }
     }
+}
+
+AppPage_OutdatedTitles::AppPage_OutdatedTitles() : AppPage()
+{
+    download::getRequest(LOOKUP_TABLE_URL, versions);
+    if (versions.empty()) {
+        list->addView(new brls::Label(brls::LabelStyle::DESCRIPTION, "menus/main/links_not_found"_i18n, true));
+        this->setContentView(list);
+    }
+    else {
+        this->PopulatePage();
+    }
+}
+
+void AppPage_OutdatedTitles::AddListItem(const std::string& name, u64 tid)
+{
+    u32 version = cheats_util::GetVersion(tid);
+    std::string tid_string = util::formatApplicationId(tid);
+    if (versions.find(tid_string) != versions.end()) {
+        u32 latest = versions.at(tid_string).at("latest");
+        if (version < latest) {
+            listItem->setSubLabel(fmt::format("{}\t|\t v{} (local) → v{} (latest)", tid_string, version, latest));
+            list->addView(listItem);
+        }
+    }
+    /* else {
+        listItem->setSubLabel(fmt::format("{}\t|\t {}", tid_string, "menus/tools/latest_version_not_found"_i18n));
+        list->addView(listItem);
+    } */
 }

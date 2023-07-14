@@ -2,6 +2,7 @@
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
     "copyright": "AIO-Switch-Updater is licensed under GPL-3.0",
+    "disclaimers_title": "Disclaimers",
     "disclaimers": "\u25c6 Aside from cheat codes that are mirrored from the main GBAtemp thread, HamletDuFromage isn't hosting anything. All credits go to respective owners.\n\u25c6 Links are refreshed every 30 minutes. If a link remains broken after 30 minutes have passed, please open a Github issue.",
     "donate": "\u25c6 Like the app? Consider donating to support my efforts: 'https://git.io/donate_homlet'"
   },
@@ -17,9 +18,9 @@
     "delete_existing": "Delete all existing cheat codes",
     "delete_orphaned": "Delete orphaned cheat codes",
     "deleting": "Deleting…",
-    "cheastlips_title": "Cheat Slips cheats",
+    "cheatslips_title": "Cheat Slips cheats",
     "gbatemp_title": "GBAtemp.net cheats",
-    "get_gbatemp": "Download GBAtemp.net cheat codes",
+    "get_gbatemp": "Download individual cheat codes",
     "get_cheatslips": "Download Cheat Slips cheat sheets",
     "cheats_label": "\u25c6 Download individual cheat codes from the GBAtemp.net database or cheat sheets from Cheat Slips",
     "cheatslips_dl": "Download a selection of cheat sheets from Cheat Slips.\nThose cheat codes will be added to the end of your existing cheat file.",
@@ -29,18 +30,20 @@
     "sheet_content": "Cheatsheet content",
     "cheatslips_select": "Select a game to download cheats for.",
     "cheatslips_wrong_id": "Couldn't retrieve token, make sure you enter your login properly",
-    "kb_error": "If they keyboard did not show up, try running the app with full RAM access (title redirection)",
+    "kb_error": "If they keyboard did not show up, try running the app with full RAM access (title override)",
     "cheatslips_see_more": "See more",
     "cheatslips_dl_cheats": "Download cheats and go back",
     "bid_not_found": "Couldn't obtain build ID. Try launching AIO-Switch-Updater in applet mode while the game is running.",
     "exclude_titles": "Exclude titles",
     "exclude_titles_desc": "You can turn off cheat updates with this menu",
     "exclude_titles_save": "Save choice and return",
+    "exclude_all": "Exclude all",
+    "exclude_none": "Exclude none",
     "dl_all": "Download and extract the entire GBAtemp.net cheats archive",
-    "gbatemp_dl": "Download cheat codes curated from GBAtemp.net. Those cheats will be added to the end of your existing cheat file.\n\u25c6 Build ID: {}",
-    "gbatemp_dl_cheatcode": "Download cheat code",
-    "gbatemp_dl_successful_dl": "Successfully downloaded the following cheat code:\n{}",
-    "applet_mode_not_supported": "Due to memory constraints, in applet mode you may only fetch cheat codes for the game you're currently playing. Please launch AIO-Switch-Updater through title redirection to download cheat codes for any game you own.",
+    "bid_tid_info": "Those cheats will be added to the end of your existing cheat file.",
+    "dl_cheatcodes": "Download cheat code",
+    "dl_successful": "Successfully downloaded the following cheat code:\n{}",
+    "applet_mode_not_supported": "Due to memory constraints, in applet mode you may only fetch cheat codes for the game you're currently playing. Please launch AIO-Switch-Updater through title override to download cheat codes for any game you own.",
     "cheatfile_label": "Here are the cheat codes listed in file {}",
     "not_found": "No proper cheat codes could be found for this game",
     "show_existing": "Show existing",
@@ -48,7 +51,10 @@
     "deletion_error": "Couldn't delete the cheat files for game with ID:\n{}",
     "show_cheat_files": "Show all cheat files",
     "cheats_not_found": "Couldn't find cheat codes matching this build ID.",
-    "old_cheats_found": "Cheat codes matching BID(s) [ {}] exist."
+    "old_cheats_found": "Cheat codes matching BID(s) [ {}] exist.",
+    "cheatslips_logout": "Log out",
+    "gfx_title": "Graphics enhancing cheats",
+    "get_gfx": "Download individual graphics enhancing cheat codes"
   },
   "common": {
     "downloading": "Downloading…",
@@ -69,18 +75,15 @@
     "cancel": "Cancel",
     "off": "Off",
     "selected": "Selected",
-    "applet_mode_not_supported": "This feature isn't available in applet mode. Please launch AIO-Switch-Updater through title redirection to access it."
+    "applet_mode_not_supported": "This feature isn't available in applet mode. Please launch AIO-Switch-Updater through title override to access it.",
+    "nothing_to_see": "Nothing to see here!"
   },
   "changelog": {
     "changelog": "Changelog"
   },
-  "sigpatches": {
-    "reboot": "The changes will take effect at the next boot."
-  },
   "payloads": {
     "dl_payloads": "Download payloads",
     "select": " Select a payload to reboot to.",
-    "not_found": "Could not find a download link, make sure the Switch has access to the internet.\nIf this problem persists, please open an issue on Github.",
     "set_reboot_payload": "Set as reboot_payload.bin",
     "set_update_bin": "Set as /bootloader/update.bin",
     "copy_success": "Successfully copied `{}` to `{}`."
@@ -106,11 +109,10 @@
   "main": {
     "getting": "Getting {}",
     "firmware_text": "\u25c6 Firmware dumps from 'https://darthsternie.net/switch-firmwares/'. Once downloaded, it will be extracted in '/firmware'. You can then install the update through Daybreak.\n\u25c6 Current FW: ",
-    "cheats_text": "\u25c6 This will download a daily updated archive of cheat codes from 'gbatemp.net'. Cheat codes for games you don't have installed won't be extracted to your SD card. You can turn off cheat updates for specific games in 'Tools->Cheat menu'.\n\u25c6 Current cheats version: ",
+    "cheats_text": "\u25c6 This will download a daily updated archive of cheat codes from 'gbatemp.net'. Cheat codes for games you don't have installed won't be extracted to your SD card. You can turn off cheat updates for specific games in 'Tools→Cheat menu'.\n\u25c6 Current cheats version: ",
     "get_cheats": "Download GBAtemp.net cheat archive (ver {})",
+    "get_cheats_gfx": "Download graphics enhancing cheats",
     "get_all_cheats:": "Download GBAtemp.net cheat archive",
-    "sigpatches": "sigpatches",
-    "sigpatches_text": "\u25c6 Sigpatches allow your Switch to install and run unofficial NSP files. Reboot the console to apply patches.",
     "firmware": "firmware",
     "not_found": "not found",
     "latest_cheats": "Latest version",
@@ -122,20 +124,20 @@
     "bootloaders_text": "\u25c6 Download and update bootloaders.",
     "cheats": "cheats",
     "links_not_found": "Could not find a download link, make sure the Switch has access to the internet.\nIf this problem persists, please open an issue on Github.",
-    "new_update": "- New app update available",
+    "new_update": " - New app update available",
     "about": "About",
     "update_ams": "Update Atmosphère",
+    "custom_downloads": "Custom downloads",
     "update_cfw": "Update CFW",
     "update_bootloaders": "Update bootloaders",
-    "update_sigpatches": "Update sigpatches",
     "download_firmware": "Download firmwares",
     "download_cheats": "Download cheats",
     "tools": "Tools",
-    "launch_warning": "Please pay attention to the following points before using the app:\n\n\u25c6 Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\u25c6 In order to avoid any risk of data corruption, using this app on an exFAT SD card is STRONGLY discouraged.\n\n\u25c6 The latest information about features that have been introduced and/or changed is available in the  Tools->Changelog menu.\n\nThis screen won't show again.",
+    "launch_warning": "Please pay attention to the following points before using the app:\n\n\u25c6 Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\u25c6 In order to avoid any risk of data corruption, using this app on an exFAT SD card is STRONGLY discouraged.\n\n\u25c6 The latest information about features that have been introduced and/or changed is available in the  Tools→Changelog menu.\n\nThis screen won't show again.",
     "footer_text": "v{} | {:.1f}GB available",
     "theme_warning": "It seems like you have a custom theme installed, this may cause your system to fail to boot after upgrading your firmware.\nPlease consider deleting it before upgrading.",
     "payloads_label": "\u25c6 Download RCM payloads to {}",
-    "hekate_ipl_label": "\u25c6 Download a stripped down, sigpatches compatibles, \"just works\" hekate_ipl.ini config file. This will overwrite your current hekate_ipl.ini."
+    "hekate_ipl_label": "\u25c6 Download a stripped down \"just works\" hekate_ipl.ini config file. This will overwrite your current hekate_ipl.ini."
   },
   "hide": {
     "title": "Hide tabs",
@@ -159,14 +161,18 @@
     "batch_copy": "Batch copy files",
     "batch_copy_not_found": "The following files were not found and couldn't be copied:\n",
     "batch_copy_config_not_found": "This tool allows you to automatically copy files to specific locations. This might be useful depending on your bootloader/trinket. Grab copy_files.txt at 'https://git.io/aiosu_copyfiles', edit it and add it to your config folder. This will also be performed after updates.",
-    "language": "Change app language"
+    "language": "Change app language",
+    "outdated_titles": "Missing updates",
+    "latest_version_not_found": "Couldn't find updates info",
+    "outdated_titles_desc": "The following titles have available updates:"
   },
   "utils": {
     "fw_warning": "Because of the size of FW archives, downloading firmwares in Applet Mode is not supported. Please launch the app with full RAM access.",
     "overwrite": " Do you want to overwrite existing ",
     "not_an_archive": "The downloaded file is not a zip archive. This is most likely due to a broken link. If the problem persists after more than 30 minutes, please open an issue on Github.",
     "overwrite_inis": "Do you want to overwrite existing .ini config files?",
-    "set_hekate_reboot_payload": "Do you want to copy the Hekate payload `{}` to `{}`?"
+    "set_hekate_reboot_payload": "Do you want to copy the Hekate payload `{}` to `{}`?",
+    "applet_webbrowser": "Running in applet mode/through a forwarder.\n\uE016 Please launch hbmenu by holding [R] on a game"
   },
   "ams_update": {
     "reboot_rcm": "The Switch will now reboot to a special payload in order to finalise the install.",
@@ -186,7 +192,12 @@
     "cant_fetch_deepsea": "Couldn't fetch packages. Open a Github issue if this persists.",
     "build_your_deepsea": "Build your own custom DeepSea package by selecting packages",
     "getting_ams": "Getting Atmosphère",
-    "custom_packs_label": "\u25c6 Here are packs listed in the {} file. Be aware that those are not endorsed by AIO-Switch-Updater so make sure you trust their source."
+    "custom_packs_label": "\u25c6 Here are packs listed in the {} file. Be aware that those are not endorsed by AIO-Switch-Updater so make sure you trust their source.",
+    "custom_packs_ams": "\u25c6 Downloads containing the Atmosphère custom firmware.",
+    "custom_packs_misc": "\u25c6 Downloads containing homebrew and tools.",
+    "custom_download": "Custom download",
+    "add_custom_link": "Add a custom link",
+    "delete_custom_link": "Delete"
   },
   "firmware": {
     "launch_daybreak": "Do you want to launch Daybreak to install the downloaded sysupdate?"
@@ -199,25 +210,9 @@
     "error_message": "{}\nPlease try again in a little while. If the problem persists, open an issue on GitHub.",
     "mariko_payload_missing": "In order to update Atmosphère on patched Switches, your payload needs to be named \"payload.bin\" and should be at the root of your SD card."
   },
-  "language": {
-    "system_default": "System default",
-    "en-US": "American English (en-US)",
-    "ja": "日本語 (ja)",
-    "fr": "Français (fr)",
-    "de": "Deutsch (de)",
-    "it": "Italiano (it)",
-    "es": "Español (es)",
-    "zh-CN": "简体中文 (zh-CN)",
-    "ko": "한국어 (ko)",
-    "nl": "Nederlands (nl)",
-    "pt": "Português (pt)",
-    "ru": "Русский (ru)",
-    "pl": "Polski (pl)",
-    "zh-TW": "繁體中文 (zh-TW)",
-    "en-GB": "English (Great Britain) (en-GB)",
-    "fr-CA": "Français (Canada) (fr-CA)",
-    "es-419": "Español (Latinoamérica) (es-419)",
-    "zh-Hant": "Traditional Chinese (zh-Hant)",
-    "zh-Hans": "Simplified Chinese (zh-Hans)"
+  "worker": {
+    "of": "of",
+    "download_progress": "({:.1f} MB of {:.1f} MB - {:.1f} MB/s)",
+    "time_left": "({} left)"
   }
 }

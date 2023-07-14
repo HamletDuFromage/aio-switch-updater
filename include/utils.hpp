@@ -32,13 +32,16 @@ namespace util {
     std::vector<std::string> fetchPayloads();
     void shutDown(bool reboot = false);
     void rebootToPayload(const std::string& path);
-    int showDialogBox(const std::string& text, const std::string& opt);
-    int showDialogBox(const std::string& text, const std::string& opt1, const std::string& opt2);
+    void showDialogBoxInfo(const std::string& text);
+    int showDialogBoxBlocking(const std::string& text, const std::string& opt);
+    int showDialogBoxBlocking(const std::string& text, const std::string& opt1, const std::string& opt2);
     std::string getLatestTag(const std::string& url);
     std::string downloadFileToString(const std::string& url);
     std::string getCheatsVersion();
     void saveToFile(const std::string& text, const std::string& path);
     std::string readFile(const std::string& path);
+    std::string getAppPath();
+    void restartApp();
     bool isErista();
     void removeSysmodulesFlags(const std::string& directory);
     std::string lowerCase(const std::string& str);
@@ -46,6 +49,7 @@ namespace util {
     std::string getErrorMessage(long status_code);
     bool isApplet();
     std::string getContentsPath();
-    bool getBoolValue(const nlohmann::json& jsonFile, const std::string& key);
+    bool getBoolValue(const nlohmann::ordered_json& jsonFile, const std::string& key);
     const nlohmann::ordered_json getValueFromKey(const nlohmann::ordered_json& jsonFile, const std::string& key);
+    int openWebBrowser(const std::string url);
 }  // namespace util

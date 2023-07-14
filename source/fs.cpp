@@ -9,7 +9,7 @@
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
 
-namespace {
+namespace fs {
     std::vector<std::string> splitString(const std::string& s, char delimiter)
     {
         std::vector<std::string> tokens;
@@ -20,9 +20,6 @@ namespace {
         }
         return tokens;
     }
-}  // namespace
-
-namespace fs {
 
     bool removeDir(const std::string& path)
     {
@@ -46,7 +43,7 @@ namespace fs {
             return nlohmann::ordered_json::object();
     }
 
-    void writeJsonToFile(nlohmann::json& data, const std::string& path)
+    void writeJsonToFile(nlohmann::ordered_json& data, const std::string& path)
     {
         std::ofstream out(path);
         out << data.dump(4);
@@ -109,16 +106,19 @@ namespace fs {
 
     std::set<std::string> readLineByLine(const std::string& path)
     {
-        std::set<std::string> titles;
-        std::string str;
-        std::ifstream in(path);
-        if (in) {
-            while (std::getline(in, str)) {
-                if (str.size() > 0)
-                    titles.insert(str);
+        std::set<std::string> res;
+        std::ifstream lines(path);
+        std::string line;
+        if (lines) {
+            while (std::getline(lines, line)) {
+                if (line.size() > 0) {
+                    if (line.back() == '\r')
+                        line.pop_back();
+                    res.insert(line);
+                }
             }
         }
-        return titles;
+        return res;
     }
 
     Result getFreeStorageSD(s64& free)

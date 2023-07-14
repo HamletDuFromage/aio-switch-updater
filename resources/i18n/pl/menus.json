@@ -17,7 +17,7 @@
     "delete_existing": "Usuń wszystkie istniejące cheaty",
     "delete_all": "Usuń wszystkie cheaty",
     "deleting": "Usuwanie…",
-    "cheastlips_title": "Cheaty Cheat Slips",
+    "cheatslips_title": "Cheaty Cheat Slips",
     "get_cheatslips": "Pobierz arkusze cheatów z Cheat Slips",
     "cheatslips_label": "\u25c6 Zaloguj się na Cheat Slips i pobierz arkusze cheatów dla swoich gier.",
     "cheatslips_dl": "Pobierz wybrane arkusze cheatów z Cheat Slips.\nPobrane cheaty zostaną dopisane na końcu twojego pliku z cheatami.",
@@ -27,7 +27,7 @@
     "sheet_content": "Zawartość arkusza z cheatami",
     "cheatslips_select": "Wybierz grę, dla której chcesz pobrać cheaty.",
     "cheatslips_wrong_id": "Nie można było uzyskać tokenu, sprawdź poprawność wpisanego loginu",
-    "kb_error": "Jeśli klawiatura nie pokazała się, spróbuj uruchomić aplikację z pełnym dostępem do pamięci RAM (title redirection)",
+    "kb_error": "Jeśli klawiatura nie pokazała się, spróbuj uruchomić aplikację z pełnym dostępem do pamięci RAM (title override)",
     "cheatslips_see_more": "Zobacz więcej",
     "cheatslips_dl_cheats": "Pobierz cheaty i wróć",
     "bid_not_found": "Nie można było uzyskać ID kompilacji. Spróbuj uruchomić AIO-Switch-Updater w trybie appletu gdy gra jest uruchomiona.",
@@ -57,13 +57,9 @@
   "changelog": {
     "changelog": "Dziennik zmian"
   },
-  "sigpatches": {
-    "reboot": "Zmiany zostaną zastosowane po restarcie."
-  },
   "payloads": {
     "dl_payloads": "Pobierz payloady",
     "select": " Wybierz payload do ponownego uruchomienia.",
-    "not_found": "Nie można było uzyskać linku pobierania. Upewnij się, że Switch ma połączenie z internetem.\nJeśli problem nie ustąpi, utwórz nowy problem na GitHubie.",
     "set_reboot_payload": "Ustaw jako reboot_payload.bin",
     "set_update_bin": "Ustaw jako /bootloader/update.bin",
     "copy_success": "Skopiowano pomyślnie '",
@@ -88,10 +84,8 @@
   "main": {
     "getting": "Pobieranie {}",
     "firmware_text": "\u25c6 Oprogramowanie z 'https://darthsternie.net/switch-firmwares/'. Po pobraniu zostanie rozpakowane do '/firmware'. Możesz je później zainstalować korzystając z Daybreak.\n\u25c6 Bieżący FW: ",
-    "cheats_text": "\u25c6 Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia->Menu cheatów'.\n\u25c6 Bieżąca wersja cheatów: ",
+    "cheats_text": "\u25c6 Pobierze aktualizowaną codziennie paczkę cheatów z 'gbatemp.net'. Cheaty dla gier których nie masz zainstalowanych nie zostaną wypakowane na twoją kartę SD. Możesz wyłączyć aktualizację cheatów dla poszczególnych gier w 'Narzędzia→Menu cheatów'.\n\u25c6 Bieżąca wersja cheatów: ",
     "get_cheats": "Pobierz archiwum cheatów GBAtemp.net (wersja {})",
-    "sigpatches": "sigpatche",
-    "sigpatches_text": "\u25c6 Sigpatche umożliwiają twojemu Switchowi instalowanie i uruchamianie nieoficjalnych plików NSP. Uruchom konsolę ponownie aby zastosować zmiany.",
     "firmware": "firmware",
     "not_found": "nie znaleziono",
     "latest_cheats": "Najnowsza wersja",
@@ -106,11 +100,10 @@
     "about": "O aplikacji",
     "update_ams": "Zaktualizuj Atmosph\u00e8re",
     "update_cfw": "Zaktualizuj CFW",
-    "update_sigpatches": "Zaktualizuj sigpatche",
     "download_firmware": "Pobierz firmware",
     "download_cheats": "Pobierz cheaty",
     "tools": "Narzędzia",
-    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\u25c6 Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\u25c6 Należy pamiętać, że korzystanie z tej aplikacji na karcie SD z systemem plików exFAT jest SILNIE odradzane, ponieważ ich zawartość jest bardziej podatna na uszkodzenia.\n\n\u25c6 Mogły zostać wprowadzone nowe funkcje i/lub zmiany obecnych funkcji. Rzuć na nie okiem w Narzędzia->Dziennik zmian.\n\nTen ekran nie wyświetli się ponownie.",
+    "launch_warning": "Zwróć uwagę na następujące punkty zanim skorzystasz z aplikacji:\n\n\u25c6 Dowiedz się najpierw, jak ręcznie zaktualizować twojego Switcha. Pomoże ci to lepiej zrozumieć działanie aplikacji i będziesz wiedział co zrobić gdy coś pójdzie nie tak.\n\u25c6 Należy pamiętać, że korzystanie z tej aplikacji na karcie SD z systemem plików exFAT jest SILNIE odradzane, ponieważ ich zawartość jest bardziej podatna na uszkodzenia.\n\n\u25c6 Mogły zostać wprowadzone nowe funkcje i/lub zmiany obecnych funkcji. Rzuć na nie okiem w Narzędzia→Dziennik zmian.\n\nTen ekran nie wyświetli się ponownie.",
     "footer_text": "v{} | {:.1f}GB dostępne"
   },
   "hide": {

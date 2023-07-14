@@ -12,9 +12,20 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
-namespace show_cheats {
+namespace cheats_util {
+    u32 GetVersion(uint64_t title_id)
+    {
+        u32 res = 0;
+        NsApplicationContentMetaStatus* MetaSatus = new NsApplicationContentMetaStatus[100U];
+        s32 out;
+        nsListApplicationContentMetaStatus(title_id, 0, MetaSatus, 100, &out);
+        for (int i = 0; i < out; i++) {
+            if (res < MetaSatus[i].version) res = MetaSatus[i].version;
+        }
+        return res;
+    }
 
     void ShowCheatSheet(u64 tid, const std::string& bid, const std::string& name)
     {
@@ -25,19 +36,13 @@ namespace show_cheats {
             appView->setContentView(cheatsList);
             appView->registerAction("menus/cheats/delete_file"_i18n, brls::Key::X, [tid, bid] {
                 DeleteCheats(tid, bid);
-                brls::Dialog* dialog = new brls::Dialog("menus/common/all_done"_i18n);
-                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                    dialog->close();
-                };
-                dialog->addButton("menus/common/ok"_i18n, callback);
-                dialog->setCancelable(true);
-                dialog->open();
+                util::showDialogBoxInfo("menus/common/all_done"_i18n);
                 return true;
             });
             brls::PopupFrame::open(name, appView, "");
         }
         else {
-            NoCheatsFoundPopup();
+            util::showDialogBoxInfo("menus/cheats/not_found"_i18n);
         }
     }
 
@@ -61,19 +66,8 @@ namespace show_cheats {
             brls::PopupFrame::open(name, appView, "");
         }
         else {
-            NoCheatsFoundPopup();
+            util::showDialogBoxInfo("menus/cheats/not_found"_i18n);
         }
-    }
-
-    void NoCheatsFoundPopup()
-    {
-        brls::Dialog* dialog = new brls::Dialog("menus/cheats/not_found"_i18n);
-        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-            dialog->close();
-        };
-        dialog->addButton("menus/common/ok"_i18n, callback);
-        dialog->setCancelable(true);
-        dialog->open();
     }
 
     bool CreateCheatList(const std::filesystem::path& path, brls::List** cheatsList)
@@ -104,17 +98,17 @@ namespace show_cheats {
         std::filesystem::remove(fmt::format("{}{:016X}/cheats/{}.txt", util::getContentsPath(), tid, bid));
     }
 
-}  // namespace show_cheats
+}  // namespace cheats_util
 
 DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : AppletFrame(true, true), tid(tid), name(name)
 {
     this->list = new brls::List();
-    this->GetVersion();
+    this->version = cheats_util::GetVersion(this->tid);
     this->GetBuildID();
     this->setTitle(this->name);
     this->setFooterText("v" + std::to_string(this->version / 0x10000));
     this->brls::AppletFrame::registerAction("menus/cheats/show_existing"_i18n, brls::Key::X, [this] {
-        show_cheats::ShowCheatSheet(this->tid, this->bid, this->name);
+        cheats_util::ShowCheatSheet(this->tid, this->bid, this->name);
         return true;
     });
     this->rebuildHints();
@@ -122,7 +116,7 @@ DownloadCheatsPage::DownloadCheatsPage(uint64_t tid, const std::string& name) : 
 
 void DownloadCheatsPage::GetBuildID()
 {
-    if (CurrentCfw::running_cfw == CFW::ams)
+    if (util::isApplet() && CurrentCfw::running_cfw == CFW::ams)
         this->GetBuildIDFromDmnt();
     if (this->bid == "")
         this->GetBuildIDFromFile();
@@ -143,16 +137,6 @@ void DownloadCheatsPage::GetBuildIDFromDmnt()
     }
 }
 
-void DownloadCheatsPage::GetVersion()
-{
-    NsApplicationContentMetaStatus* MetaSatus = new NsApplicationContentMetaStatus[100U];
-    s32 out;
-    nsListApplicationContentMetaStatus(this->tid, 0, MetaSatus, 100, &out);
-    for (int i = 0; i < out; i++) {
-        if (version < MetaSatus[i].version) this->version = MetaSatus[i].version;
-    }
-}
-
 void DownloadCheatsPage::GetBuildIDFromFile()
 {
     nlohmann::ordered_json versions_json;
@@ -160,7 +144,7 @@ void DownloadCheatsPage::GetBuildIDFromFile()
 
     std::string version_str = std::to_string(this->version);
     if (versions_json.find(version_str) != versions_json.end()) {
-        this->bid = versions_json[version_str];
+        this->bid = versions_json.at(version_str).get<std::string>();
     }
     else {
         this->bid = "";
@@ -180,7 +164,7 @@ void DownloadCheatsPage::AddCheatsfileListItem()
 {
     brls::ListItem* item = new brls::ListItem("menus/cheats/show_cheat_files"_i18n);
     item->getClickEvent()->subscribe([this](brls::View* view) {
-        show_cheats::ShowCheatFiles(this->tid, this->name);
+        cheats_util::ShowCheatFiles(this->tid, this->name);
     });
     this->list->addView(item);
 }
@@ -207,7 +191,9 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
 {
     this->label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        "menus/cheats/cheatslips_dl"_i18n + "\n\uE016  Build ID: " + this->bid,
+        "menus/cheats/cheatslips_dl"_i18n +
+            "\n\uE016 Title ID: " + util::formatApplicationId(this->tid) +
+            "\n\uE016 Build ID: " + this->bid,
         true);
     this->list->addView(this->label);
 
@@ -276,21 +262,16 @@ DownloadCheatsPage_CheatSlips::DownloadCheatsPage_CheatSlips(uint64_t tid, const
             }
 
             if (error != 0) {
-                brls::Dialog* dialog;
+                std::string error_message;
                 switch (error) {
                     case 1:
-                        dialog = new brls::Dialog("menus/cheats/quota"_i18n);
+                        error_message = "menus/cheats/quota"_i18n;
                         break;
                     case 2:
-                        dialog = new brls::Dialog("menus/cheats/cheatslips_error"_i18n);
+                        error_message = "menus/cheats/cheatslips_error"_i18n;
                         break;
                 }
-                brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                    dialog->close();
-                };
-                dialog->addButton("menus/common/ok"_i18n, callback);
-                dialog->setCancelable(true);
-                dialog->open();
+                util::showDialogBoxInfo(error_message);
             }
         }
         if (error == 0) {
@@ -322,9 +303,10 @@ std::string DownloadCheatsPage_CheatSlips::GetCheatsTitle(json cheat)
     std::string res = "";
     if (cheat.find("titles") != cheat.end()) {
         for (auto& p : cheat.at("titles")) {
-            res += "[" + p.get<std::string>() + "]" + " - ";
+            res += fmt::format("[{}] - ", p.get<std::string>());
         }
     }
+    if (res != "") res = res.substr(0, res.size() - 3);
     return res;
 }
 
@@ -344,30 +326,31 @@ void DownloadCheatsPage_CheatSlips::ShowCheatsContent(nlohmann::ordered_json tit
     brls::PopupFrame::open("menus/cheats/sheet_content"_i18n, appView, "", "");
 }
 
-DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
+DownloadCheatsPage_Github::DownloadCheatsPage_Github(uint64_t tid, const std::string& name) : DownloadCheatsPage(tid, name)
+{
+}
+
+void DownloadCheatsPage_Github::PopulateList(uint64_t tid, const std::string& name)
 {
     this->label = new brls::Label(
         brls::LabelStyle::DESCRIPTION,
-        fmt::format("menus/cheats/gbatemp_dl"_i18n, this->bid),
+        "menus/cheats/bid_tid_info"_i18n +
+            "\n\uE016 Title ID: " + util::formatApplicationId(this->tid) +
+            "\n\uE016 Build ID: " + this->bid,
         true);
     this->list->addView(label);
 
     if (this->bid != "") {
         nlohmann::ordered_json cheatsJson;
-        download::getRequest(CHEATS_DIRECTORY + util::formatApplicationId(this->tid) + ".json", cheatsJson);
+        download::getRequest(this->get_url() + util::formatApplicationId(this->tid) + ".json", cheatsJson);
         if (cheatsJson.find(this->bid) != cheatsJson.end()) {
-            for (const auto& p : cheatsJson[this->bid].items()) {
-                json cheat = p.value();
-                this->listItem = new brls::ListItem(cheat.at("title"));
-                listItem->registerAction("menus/cheats/gbatemp_dl_cheatcode"_i18n, brls::Key::A, [this, cheat] {
-                    WriteCheats(cheat.at("content"));
-                    brls::Dialog* dialog = new brls::Dialog(fmt::format("menus/cheats/gbatemp_dl_successful_dl"_i18n, cheat.at("title")));
-                    brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
-                        dialog->close();
-                    };
-                    dialog->addButton("menus/common/ok"_i18n, callback);
-                    dialog->setCancelable(true);
-                    dialog->open();
+            for (auto& [key, val] : cheatsJson[this->bid].items()) {
+                auto title = key;
+                auto content = val;
+                this->listItem = new brls::ListItem(title);
+                listItem->registerAction("menus/cheats/dl_cheatcodes"_i18n, brls::Key::A, [this, content, title] {
+                    WriteCheats(content);
+                    util::showDialogBoxInfo(fmt::format("menus/cheats/dl_successful"_i18n, title));
                     return true;
                 });
                 this->list->addView(listItem);
@@ -377,7 +360,8 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
         else {
             std::string versionsWithCheats;
             for (auto& [key, val] : cheatsJson.items()) {
-                versionsWithCheats += key + " ";
+                if (key != "attribution")
+                    versionsWithCheats += key + " ";
             }
             ShowCheatsNotFound(versionsWithCheats);
         }
@@ -388,4 +372,14 @@ DownloadCheatsPage_GbaTemp::DownloadCheatsPage_GbaTemp(uint64_t tid, const std::
     }
     this->AddCheatsfileListItem();
     this->setContentView(this->list);
+}
+
+DownloadCheatsPage_Gbatemp::DownloadCheatsPage_Gbatemp(uint64_t tid, const std::string& name) : DownloadCheatsPage_Github(tid, name)
+{
+    this->PopulateList(tid, name);
+}
+
+DownloadCheatsPage_Gfx::DownloadCheatsPage_Gfx(uint64_t tid, const std::string& name) : DownloadCheatsPage_Github(tid, name)
+{
+    this->PopulateList(tid, name);
 }

@@ -6,15 +6,15 @@
 #include <filesystem>
 #include <json.hpp>
 
-namespace show_cheats {
+#include "constants.hpp"
 
+namespace cheats_util {
+    u32 GetVersion(uint64_t title_id);
     void ShowCheatFiles(uint64_t tid, const std::string& name);
     void ShowCheatSheet(u64 tid, const std::string& bid, const std::string& name);
     bool CreateCheatList(const std::filesystem::path& path, brls::List** cheatsList);
-    void NoCheatsFoundPopup();
     void DeleteCheats(u64 tid, const std::string& bid);
-
-}  // namespace show_cheats
+}  // namespace cheats_util
 
 class DownloadCheatsPage : public brls::AppletFrame
 {
@@ -30,7 +30,6 @@ protected:
     DownloadCheatsPage(uint64_t tid, const std::string& name);
     void GetBuildID();
     void GetBuildIDFromDmnt();
-    void GetVersion();
     void GetBuildIDFromFile();
     void WriteCheats(const std::string& cheatContent);
     void AddCheatsfileListItem();
@@ -60,18 +59,40 @@ class DownloadCheatsPage_CheatSlips : public DownloadCheatsPage
 private:
     brls::ToggleListItem* listItem;
     std::vector<std::pair<brls::ToggleListItem*, int>> toggles;
-    std::string GetCheatsTitle(nlohmann::json cheat);
+    std::string GetCheatsTitle(nlohmann::ordered_json cheat);
     void ShowCheatsContent(nlohmann::ordered_json titles);
 
 public:
     DownloadCheatsPage_CheatSlips(uint64_t tid, const std::string& name);
 };
 
-class DownloadCheatsPage_GbaTemp : public DownloadCheatsPage
+class DownloadCheatsPage_Github : public DownloadCheatsPage
 {
 private:
     brls::ListItem* listItem;
 
 public:
-    DownloadCheatsPage_GbaTemp(uint64_t tid, const std::string& name);
+    DownloadCheatsPage_Github(uint64_t tid, const std::string& name);
+    void PopulateList(uint64_t tid, const std::string& name);
+
+protected:
+    virtual std::string get_url() { return CHEATS_DIRECTORY; }
+};
+
+class DownloadCheatsPage_Gbatemp : public DownloadCheatsPage_Github
+{
+public:
+    DownloadCheatsPage_Gbatemp(uint64_t tid, const std::string& name);
+
+private:
+    std::string get_url() override { return CHEATS_DIRECTORY_GBATEMP; }
+};
+
+class DownloadCheatsPage_Gfx : public DownloadCheatsPage_Github
+{
+public:
+    DownloadCheatsPage_Gfx(uint64_t tid, const std::string& name);
+
+private:
+    std::string get_url() override { return CHEATS_DIRECTORY_GFX; }
 };

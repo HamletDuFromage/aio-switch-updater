@@ -1,0 +1,13 @@
+{
+  "crash_frame": {
+    "button": "OK"
+  },
+  "hints": {
+    "back": "Назад",
+    "exit": "Выход",
+    "ok": "OK"
+  },
+  "thumbnail_sidebar": {
+    "save": "Сохранить"
+  }
+}

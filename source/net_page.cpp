@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
+#include <thread>
 #include <json.hpp>
 
 #include "constants.hpp"
@@ -166,7 +167,7 @@ NetPage::NetPage() : AppletFrame(true, true)
                     nifmSetNetworkProfile(&profile, &profile.uuid);
                     nifmSetWirelessCommunicationEnabled(true);
                     nifmExit();
-                    usleep(2500000);  //Wait to avoid crashes when leaving too fast
+                    std::this_thread::sleep_for(std::chrono::microseconds(2500000));  //Wait to avoid crashes when leaving too fast
                     dialog->close();
                 };
                 brls::GenericEvent::Callback callbackNo = [dialog](brls::View* view) {

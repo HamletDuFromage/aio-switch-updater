@@ -1,8 +1,8 @@
 {
     "hints": {
         "ok": "OK",
-        "back": "Back",
-        "exit": "Exit"
+        "back": "Inapoi",
+        "exit": "Iesire"
     },
 
     "crash_frame": {
@@ -10,6 +10,6 @@
     },
 
     "thumbnail_sidebar": {
-        "save": "Save"
+        "save": "Salveaza"
     }
 }

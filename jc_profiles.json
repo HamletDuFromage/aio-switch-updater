@@ -11,7 +11,7 @@
         "L_JC": "E6E6E6",
         "R_BTN": "323232",
         "R_JC": "E6E6E6",
-        "name": "White"
+        "name": "White (OLED)"
     },
     {
         "L_BTN": "0F0F0F",
@@ -173,5 +173,26 @@
         "R_BTN": "00051E",
         "R_JC": "500FC8",
         "name": "The Legend of Zelda: Skyward Sword HD"
+    },
+    {
+        "L_BTN": "28282D",
+        "L_JC": "6455F5",
+        "R_BTN": "1E1E28",
+        "R_JC": "C3FA05",
+        "name": "Splatoon 3 OLED Edition"
+    },
+    {
+        "L_BTN": "1E1914",
+        "L_JC": "F04614",
+        "R_BTN": "140014",
+        "R_JC": "B400E6",
+        "name": "Pokémon: Scarlet × Violet"
+    },
+    {
+        "L_BTN": "32322D",
+        "L_JC": "D2BE69",
+        "R_BTN": "32322D",
+        "R_JC": "D2BE69",
+        "name": "Legend of Zelda: Tears of the Kingdom Edition Gold Joy-Con"
     }
 ]

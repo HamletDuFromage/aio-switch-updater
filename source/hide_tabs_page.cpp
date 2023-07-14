@@ -9,7 +9,7 @@
 
 namespace i18n = brls::i18n;
 using namespace i18n::literals;
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 HideTabsPage::HideTabsPage() : AppletFrame(true, true)
 {
@@ -32,14 +32,17 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true)
     cfws = new brls::ToggleListItem("menus/main/update_bootloaders"_i18n, util::getBoolValue(hideStatus, "cfw"));
     list->addView(cfws);
 
-    sigpatches = new brls::ToggleListItem("menus/main/update_sigpatches"_i18n, util::getBoolValue(hideStatus, "sigpatches"));
-    list->addView(sigpatches);
-
     fws = new brls::ToggleListItem("menus/main/download_firmware"_i18n, util::getBoolValue(hideStatus, "firmwares"));
     list->addView(fws);
 
     cheats = new brls::ToggleListItem("menus/main/download_cheats"_i18n, util::getBoolValue(hideStatus, "cheats"));
     list->addView(cheats);
+	
+    custom = new brls::ToggleListItem("menus/main/custom_downloads"_i18n, util::getBoolValue(hideStatus, "custom"));
+    list->addView(custom);
+
+    outdatedTitles = new brls::ToggleListItem("menus/tools/outdated_titles"_i18n, util::getBoolValue(hideStatus, "outdatedtitles"));
+    list->addView(outdatedTitles);
 
     jccolor = new brls::ToggleListItem("menus/tools/joy_cons"_i18n, util::getBoolValue(hideStatus, "jccolor"));
     list->addView(jccolor);
@@ -68,18 +71,15 @@ HideTabsPage::HideTabsPage() : AppletFrame(true, true)
     language = new brls::ToggleListItem("menus/tools/language"_i18n, util::getBoolValue(hideStatus, "language"));
     list->addView(language);
 
-    atmosphereentries = new brls::ToggleListItem("menus/hide/update_ams_deepsea"_i18n, util::getBoolValue(hideStatus, "atmosphereentries"));
-    list->addView(atmosphereentries);
-
     list->registerAction("menus/cheats/exclude_titles_save"_i18n, brls::Key::B, [this] {
         json updatedStatus = json::object();
         updatedStatus["about"] = about->getToggleState();
-        updatedStatus["atmosphere"] = ams->getToggleState();
-        updatedStatus["atmosphereentries"] = atmosphereentries->getToggleState();
+        updatedStatus["atmosphere"] = ams->getToggleState();											 
         updatedStatus["cfw"] = cfws->getToggleState();
-        updatedStatus["sigpatches"] = sigpatches->getToggleState();
         updatedStatus["firmwares"] = fws->getToggleState();
         updatedStatus["cheats"] = cheats->getToggleState();
+        updatedStatus["custom"] = custom->getToggleState();	
+        updatedStatus["outdatedtitles"] = outdatedTitles->getToggleState();	
         updatedStatus["jccolor"] = jccolor->getToggleState();
         updatedStatus["pccolor"] = pccolor->getToggleState();
         updatedStatus["downloadpayload"] = downloadpayload->getToggleState();

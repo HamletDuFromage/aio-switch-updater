@@ -13,11 +13,11 @@ private:
     std::string currentCheatsVer = "";
     std::string newCheatsVer = "";
     contentType type;
-    int size = 0;
     void createList();
     void createList(contentType type);
     void createCheatSlipItem();
-    void creategbatempItem();
+    void createGbatempItem();
+    void createGfxItem();
     void setDescription();
     void setDescription(contentType type);
     void displayNotFound();

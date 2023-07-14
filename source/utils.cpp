@@ -2,8 +2,10 @@
 
 #include <switch.h>
 
+#include <chrono>
 #include <filesystem>
 #include <fstream>
+#include <thread>
 
 #include "current_cfw.hpp"
 #include "download.hpp"
@@ -43,8 +45,8 @@ namespace util {
     {
         fs::createTree(DOWNLOAD_PATH);
         switch (type) {
-            case contentType::sigpatches:
-                status_code = download::downloadFile(url, SIGPATCHES_FILENAME, OFF);
+            case contentType::custom:
+                status_code = download::downloadFile(url, CUSTOM_FILENAME, OFF);
                 break;
             case contentType::cheats:
                 status_code = download::downloadFile(url, CHEATS_FILENAME, OFF);
@@ -56,7 +58,7 @@ namespace util {
                 status_code = download::downloadFile(url, APP_FILENAME, OFF);
                 break;
             case contentType::bootloaders:
-                status_code = download::downloadFile(url, CFW_FILENAME, OFF);
+                status_code = download::downloadFile(url, BOOTLOADER_FILENAME, OFF);
                 break;
             case contentType::ams_cfw:
                 status_code = download::downloadFile(url, AMS_FILENAME, OFF);
@@ -67,36 +69,46 @@ namespace util {
         ProgressEvent::instance().setStatusCode(status_code);
     }
 
-    int showDialogBox(const std::string& text, const std::string& opt)
+    void showDialogBoxInfo(const std::string& text)
     {
-        int dialogResult = -1;
+        brls::Dialog* dialog;
+        dialog = new brls::Dialog(text);
+        brls::GenericEvent::Callback callback = [dialog](brls::View* view) {
+            dialog->close();
+        };
+        dialog->addButton("menus/common/ok"_i18n, callback);
+        dialog->setCancelable(true);
+        dialog->open();
+    }
+
+    int showDialogBoxBlocking(const std::string& text, const std::string& opt)
+    {
         int result = -1;
         brls::Dialog* dialog = new brls::Dialog(text);
-        brls::GenericEvent::Callback callback = [dialog, &dialogResult](brls::View* view) {
-            dialogResult = 0;
+        brls::GenericEvent::Callback callback = [dialog, &result](brls::View* view) {
+            result = 0;
             dialog->close();
         };
         dialog->addButton(opt, callback);
         dialog->setCancelable(false);
         dialog->open();
         while (result == -1) {
-            usleep(1);
-            result = dialogResult;
+            std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
+        std::this_thread::sleep_for(std::chrono::microseconds(800000));
         return result;
     }
 
-    int showDialogBox(const std::string& text, const std::string& opt1, const std::string& opt2)
+    int showDialogBoxBlocking(const std::string& text, const std::string& opt1, const std::string& opt2)
     {
-        int dialogResult = -1;
         int result = -1;
         brls::Dialog* dialog = new brls::Dialog(text);
-        brls::GenericEvent::Callback callback1 = [dialog, &dialogResult](brls::View* view) {
-            dialogResult = 0;
+        brls::GenericEvent::Callback callback1 = [dialog, &result](brls::View* view) {
+            result = 0;
             dialog->close();
         };
-        brls::GenericEvent::Callback callback2 = [dialog, &dialogResult](brls::View* view) {
-            dialogResult = 1;
+        brls::GenericEvent::Callback callback2 = [dialog, &result](brls::View* view) {
+            result = 1;
             dialog->close();
         };
         dialog->addButton(opt1, callback1);
@@ -104,9 +116,9 @@ namespace util {
         dialog->setCancelable(false);
         dialog->open();
         while (result == -1) {
-            usleep(1);
-            result = dialogResult;
+            std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
+        std::this_thread::sleep_for(std::chrono::microseconds(800000));
         return result;
     }
 
@@ -114,8 +126,8 @@ namespace util {
     {
         std::string filename;
         switch (type) {
-            case contentType::sigpatches:
-                filename = SIGPATCHES_FILENAME;
+            case contentType::custom:
+                filename = CUSTOM_FILENAME;
                 break;
             case contentType::cheats:
                 filename = CHEATS_FILENAME;
@@ -127,7 +139,7 @@ namespace util {
                 filename = APP_FILENAME;
                 break;
             case contentType::bootloaders:
-                filename = CFW_FILENAME;
+                filename = BOOTLOADER_FILENAME;
                 break;
             case contentType::ams_cfw:
                 filename = AMS_FILENAME;
@@ -136,7 +148,8 @@ namespace util {
                 return;
         }
         if (!isArchive(filename)) {
-            brls::Application::crash("menus/utils/not_an_archive"_i18n);
+            ProgressEvent::instance().setStatusCode(406);
+            ProgressEvent::instance().setStep(ProgressEvent::instance().getMax());
         }
     }
 
@@ -145,9 +158,6 @@ namespace util {
         chdir(ROOT_PATH);
         crashIfNotArchive(type);
         switch (type) {
-            case contentType::sigpatches:
-                extract::extract(SIGPATCHES_FILENAME);
-                break;
             case contentType::cheats: {
                 std::vector<std::string> titles = extract::getInstalledTitlesNs();
                 titles = extract::excludeTitles(CHEATS_EXCLUDE, titles);
@@ -155,35 +165,36 @@ namespace util {
                 break;
             }
             case contentType::fw:
-                if (std::filesystem::exists(FIRMWARE_PATH)) std::filesystem::remove_all(FIRMWARE_PATH);
+                fs::removeDir(FIRMWARE_PATH);
                 fs::createTree(FIRMWARE_PATH);
                 extract::extract(FIRMWARE_FILENAME, FIRMWARE_PATH);
                 break;
             case contentType::app:
                 extract::extract(APP_FILENAME, CONFIG_PATH);
                 fs::copyFile(ROMFS_FORWARDER, FORWARDER_PATH);
-                envSetNextLoad(FORWARDER_PATH, fmt::format("\"{}\"", FORWARDER_PATH).c_str());
-                romfsExit();
-                brls::Application::quit();
                 break;
+            case contentType::custom: {
+                int preserveInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/yes"_i18n, "menus/common/no"_i18n);
+                extract::extract(CUSTOM_FILENAME, ROOT_PATH, preserveInis);
+                break;
+            }
             case contentType::bootloaders: {
-                int overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                extract::extract(CFW_FILENAME, ROOT_PATH, overwriteInis);
+                int preserveInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/yes"_i18n, "menus/common/no"_i18n);
+                extract::extract(BOOTLOADER_FILENAME, ROOT_PATH, preserveInis);
                 break;
             }
             case contentType::ams_cfw: {
-                int overwriteInis = showDialogBox("menus/utils/overwrite_inis"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
-                usleep(800000);
-                int deleteContents = showDialogBox("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
+                int preserveInis = showDialogBoxBlocking("menus/utils/overwrite_inis"_i18n, "menus/common/yes"_i18n, "menus/common/no"_i18n);
+                int deleteContents = showDialogBoxBlocking("menus/ams_update/delete_sysmodules_flags"_i18n, "menus/common/no"_i18n, "menus/common/yes"_i18n);
                 if (deleteContents == 1)
                     removeSysmodulesFlags(AMS_CONTENTS);
-                extract::extract(AMS_FILENAME, ROOT_PATH, overwriteInis);
+                extract::extract(AMS_FILENAME, ROOT_PATH, preserveInis);
                 break;
             }
             default:
                 break;
         }
-        if (type == contentType::ams_cfw || type == contentType::bootloaders)
+        if (type == contentType::ams_cfw || type == contentType::bootloaders || type == contentType::custom)
             fs::copyFiles(COPY_FILES_TXT);
     }
 
@@ -259,9 +270,9 @@ namespace util {
     std::string getCheatsVersion()
     {
         std::string res = util::downloadFileToString(CHEATS_URL_VERSION);
-        if (res == "" && isArchive(CHEATS_ZIP_PATH)) {
+        /* if (res == "" && isArchive(CHEATS_FILENAME)) {
             res = "offline";
-        }
+        } */
         return res;
     }
 
@@ -273,13 +284,35 @@ namespace util {
 
     std::string readFile(const std::string& path)
     {
-        
         std::string text = "";
         std::ifstream file(path);
         if (file.good()) {
             file >> text;
         }
         return text;
+    }
+
+    std::string getAppPath()
+    {
+        if (envHasArgv()) {
+            std::smatch match;
+            std::string argv = (char*)envGetArgv();
+            if (std::regex_match(argv, match, std::regex(NRO_PATH_REGEX))) {
+                if (match.size() >= 2) {
+                    return match[1].str();
+                }
+            }
+        }
+        return NRO_PATH;
+    }
+
+    void restartApp()
+    {
+        std::string path = "sdmc:" + getAppPath();
+        std::string argv = "\"" + path + "\"";
+        envSetNextLoad(path.c_str(), argv.c_str());
+        romfsExit();
+        brls::Application::quit();
     }
 
     bool isErista()
@@ -369,16 +402,38 @@ namespace util {
         return path;
     }
 
-    bool getBoolValue(const nlohmann::json& jsonFile, const std::string& key)
+    bool getBoolValue(const nlohmann::ordered_json& jsonFile, const std::string& key)
     {
-        /* try { return jsonFile.at(key); }
-    catch (nlohmann::json::out_of_range& e) { return false; } */
         return (jsonFile.find(key) != jsonFile.end()) ? jsonFile.at(key).get<bool>() : false;
     }
 
     const nlohmann::ordered_json getValueFromKey(const nlohmann::ordered_json& jsonFile, const std::string& key)
     {
         return (jsonFile.find(key) != jsonFile.end()) ? jsonFile.at(key) : nlohmann::ordered_json::object();
+    }
+
+    int openWebBrowser(const std::string url)
+    {
+        Result rc = 0;
+        int at = appletGetAppletType();
+        if (at == AppletType_Application) {  // Running as a title
+            WebCommonConfig conf;
+            WebCommonReply out;
+            rc = webPageCreate(&conf, url.c_str());
+            if (R_FAILED(rc))
+                return rc;
+            webConfigSetJsExtension(&conf, true);
+            webConfigSetPageCache(&conf, true);
+            webConfigSetBootLoadingIcon(&conf, true);
+            webConfigSetWhitelist(&conf, ".*");
+            rc = webConfigShow(&conf, &out);
+            if (R_FAILED(rc))
+                return rc;
+        }
+        else {  // Running under applet
+            showDialogBoxInfo("menus/utils/applet_webbrowser"_i18n);
+        }
+        return rc;
     }
 
 }  // namespace util
