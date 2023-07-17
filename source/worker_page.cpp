@@ -33,6 +33,32 @@ WorkerPage::WorkerPage(brls::StagedAppletFrame* frame, const std::string& text, 
     this->registerAction("", brls::Key::PLUS, [this] { return true; });
 }
 
+std::string formatLabelText(double speed, double fileSizeCurrent, double fileSizeFinal)
+{
+    double fileSizeCurrentMB = fileSizeCurrent / 0x100000;
+    double fileSizeFinalMB = fileSizeFinal / 0x100000;
+    double speedMB = speed / 0x100000;
+
+    double timeRemaining = (fileSizeFinal - fileSizeCurrent) / speed;
+    int hours = static_cast<int>(timeRemaining / 3600);
+    int minutes = static_cast<int>((timeRemaining - hours * 3600) / 60);
+    int seconds = static_cast<int>(timeRemaining - hours * 3600 - minutes * 60);
+
+    std::string labelText = fmt::format("menus/worker/download_progress"_i18n, fileSizeCurrentMB, fileSizeFinalMB, speedMB);
+    if (speedMB > 0) {
+        std::string eta;
+        if (hours > 0)
+            eta += fmt::format("{}h ", hours);
+        if (minutes > 0)
+            eta += fmt::format("{}m ", minutes);
+
+        eta += fmt::format("{}s", seconds);
+        labelText += "\n" + fmt::format("menus/worker/time_left"_i18n, eta);
+    }
+
+    return labelText;
+}
+
 void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
 {
     if (this->draw_page) {
@@ -62,7 +88,7 @@ void WorkerPage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned hei
             this->progressDisp->setProgress(ProgressEvent::instance().getStep(), ProgressEvent::instance().getMax());
             this->progressDisp->frame(ctx);
             if (ProgressEvent::instance().getTotal()) {
-                this->label->setText(fmt::format("{0} ({1:.1f} MB of {2:.1f} MB - {3:.1f} MB/s)", text, ProgressEvent::instance().getNow() / 0x100000, ProgressEvent::instance().getTotal() / 0x100000, ProgressEvent::instance().getSpeed() / 0x100000));
+                this->label->setText(formatLabelText(ProgressEvent::instance().getSpeed(), ProgressEvent::instance().getNow(), ProgressEvent::instance().getTotal()));
             }
             this->label->frame(ctx);
         }
@@ -75,7 +101,7 @@ void WorkerPage::layout(NVGcontext* vg, brls::Style* style, brls::FontStash* sta
 
     this->label->setBoundaries(
         this->x + this->width / 2 - this->label->getWidth() / 2,
-        this->y + (this->height - style->AppletFrame.footerHeight) / 2,
+        this->y + (this->height - style->AppletFrame.footerHeight) / 2 - 30,
         this->label->getWidth(),
         this->label->getHeight());
 
