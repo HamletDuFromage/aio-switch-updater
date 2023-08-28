@@ -209,5 +209,10 @@
     "insufficient_storage": "이 작업을 수행하기 위해 SD 카드에 사용 가능한 공간이 충분하지 않습니다.",
     "error_message": "{}\n조금 후에 다시 시도해보세요. 문제가 지속되면 GitHub에 등록해 주세요.",
     "mariko_payload_missing": "패치된 스위치에서 Atmosphère를 업데이트하려면 페이로드의 이름을 \"payload.bin\"으로 지정하고 SD 카드의 루트에 있어야 합니다."
+  },
+  "worker": {
+    "of": "의",
+    "download_progress": "({:.1f} MB 의 {:.1f} MB - {:.1f} MB/s)",
+    "time_left": "({} 남았음)"
   }
 }
