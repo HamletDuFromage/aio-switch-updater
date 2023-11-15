@@ -3,4 +3,4 @@
 	url = https://github.com/HamletDuFromage/borealis
 [submodule "TegraExplorer"]
 	path = TegraExplorer
-	url = git@github.com:HamletDuFromage/TegraExplorer.git
+	url = https://github.com/HamletDuFromage/TegraExplorer
