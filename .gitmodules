@@ -1,6 +1,6 @@
 [submodule "lib/borealis"]
 	path = lib/borealis
 	url = https://github.com/HamletDuFromage/borealis
-[submodule "aiosu-rcm"]
-	path = aiosu-rcm
-	url = https://github.com/HamletDuFromage/aiosu-rcm
+[submodule "TegraExplorer"]
+	path = TegraExplorer
+	url = https://github.com/HamletDuFromage/TegraExplorer
