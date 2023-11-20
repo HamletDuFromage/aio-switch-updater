@@ -58,7 +58,7 @@
   "common": {
     "downloading": "Baixando...",
     "extracting": "Extraindo...",
-    "all_done": " Tudo pronto!",
+    "all_done": "Tudo pronto!",
     "back": "Voltar",
     "continue": "Continuar",
     "download": "Baixando:\n",
@@ -82,7 +82,7 @@
   },
   "payloads": {
     "dl_payloads": "Baixar payloads",
-    "select": " Selecione um payload para o qual deseja reiniciar.",
+    "select": "Selecione um payload para o qual deseja reiniciar.",
     "set_reboot_payload": "Definir como reboot_payload.bin",
     "set_update_bin": "Definir como /bootloader/update.bin",
     "copy_success": "Copiado com sucesso `{}` para `{}`."
@@ -123,7 +123,7 @@
     "bootloaders_text": "\u25c6 Baixar e atualizar bootloaders.",
     "cheats": "códigos de trapaça",
     "links_not_found": "Não foi possível encontrar um link de download, verifique se o Switch tem acesso à internet.\nSe esse problema persistir, abra uma issue no Github.",
-    "new_update": " - Nova atualização do aplicativo disponível",
+    "new_update": "- Nova atualização do aplicativo disponível",
     "about": "Sobre",
     "update_ams": "Atualizar Atmosphère",
     "custom_downloads": "Downloads personalizados",
@@ -167,7 +167,7 @@
   },
   "utils": {
     "fw_warning": "Devido ao tamanho dos arquivos de firmware, o download de firmwares no modo applet não é suportado. Por favor, inicie o aplicativo com acesso total à RAM.",
-    "overwrite": " Deseja substituir o(a) ",
+    "overwrite": "Deseja substituir o(a) ",
     "not_an_archive": "O arquivo baixado não é um arquivo zip. Isso provavelmente se deve a um link quebrado. Se o problema persistir após mais de 30 minutos, por favor, abra uma issue no Github.",
     "overwrite_inis": "Deseja substituir os arquivos de configuração .ini existentes?",
     "set_hekate_reboot_payload": "Deseja copiar o payload do Hekate `{}` para `{}`?",
@@ -194,7 +194,7 @@
     "custom_packs_label": "\u25c6 Aqui estão os pacotes listados no arquivo {}. Esteja ciente de que eles não são endossados pelo AIO-Switch-Updater, então certifique-se de confiar na fonte deles.",
     "custom_packs_ams": "\u25c6 Downloads contendo o custom firmware Atmosphère.",
     "custom_packs_misc": "\u25c6 Downloads contendo homebrew e ferramentas.",
-    "custom_download" : "Download personalizado",
+    "custom_download": "Download personalizado",
     "add_custom_link": "Adicionar um link personalizado",
     "delete_custom_link": "Excluir"
   },

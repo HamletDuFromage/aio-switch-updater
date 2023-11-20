@@ -57,7 +57,7 @@
   "common": {
     "downloading": "正在下載…",
     "extracting": "正在解壓縮…",
-    "all_done": " 全部完成!",
+    "all_done": "全部完成!",
     "back": "返回",
     "continue": "繼續",
     "download": "正在下載:\n",
@@ -81,7 +81,7 @@
   },
   "payloads": {
     "dl_payloads": "下載注入檔案",
-    "select": " 選擇重開機時的注入檔案",
+    "select": "選擇重開機時的注入檔案",
     "set_reboot_payload": "設定為 reboot_payload.bin",
     "set_update_bin": "設定為 /bootloader/update.bin",
     "copy_success": "成功將 `{}` 複製到 `{}`.'"
@@ -122,7 +122,7 @@
     "bootloaders_text": "\u25c6 下載並更新引導程序",
     "cheats": "金手指",
     "links_not_found": "無法使用下載連結，請檢查Switch是否可正常存取網路連線。\n如果網路正常仍無法使用，請使用GitHub提出問題來進行回報",
-    "new_update": " - 有可用的app更新",
+    "new_update": "- 有可用的app更新",
     "about": "關於",
     "update_ams": "更新Atmosphère",
     "custom_downloads": "自訂下載項目",
@@ -166,7 +166,7 @@
   },
   "utils": {
     "fw_warning": "由於FW壓縮檔太大，在applet模式下無法下載韌體。請在能存取完整記憶體的一般模式下執行下載程序",
-    "overwrite": " 是否要覆蓋現有的檔案 ",
+    "overwrite": "是否要覆蓋現有的檔案 ",
     "not_an_archive": "下載的檔案並非正確的zip壓縮檔。通常是因為提供下載的連結檔案不完整。如果問題持續發生，超過30分鐘仍無法正常使用，請使用GitHub提出問題來進行回報。",
     "overwrite_inis": "是否要覆蓋現有的 .ini 系統配置檔案?",
     "set_hekate_reboot_payload": "是否要將 Hekate payload 從 `{}` 複製到 `{}`?",
@@ -193,7 +193,7 @@
     "custom_packs_label": "\u25c6 來自 {} 的檔案。請注意，這些列出的檔案均未經過AIO-Switch-Updater驗證，因此安裝前請確保檔案來源為可信任的。",
     "custom_packs_ams": "\u25c6 下載項目包含Atmosphère與韌體整合套件",
     "custom_packs_misc": "\u25c6 下載項目包含第三方自製程式與工具",
-    "custom_download" : "自訂下載",
+    "custom_download": "自訂下載",
     "add_custom_link": "新增自訂連結",
     "delete_custom_link": "刪除"
   },

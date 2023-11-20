@@ -53,7 +53,7 @@
   "common": {
     "downloading": "ダウンロード中です…",
     "extracting": "展開中です…",
-    "all_done": " 完了!",
+    "all_done": "完了!",
     "back": "戻る",
     "continue": "続行",
     "download": "ダウンロード中:\n",
@@ -77,7 +77,7 @@
   },
   "payloads": {
     "dl_payloads": "ペイロードをダウンロード",
-    "select": " 再起動するペイロードを選択します。",
+    "select": "再起動するペイロードを選択します。",
     "set_reboot_payload": "reboot_payload.binに設定",
     "set_update_bin": "/bootloader/update.binに設定",
     "copy_success": "`{}`を`{}`にコピーしました"
@@ -117,7 +117,7 @@
     "bootloaders_text": "\u25c6 ブートローダーをダウンロードして更新します。",
     "cheats": "チート",
     "links_not_found": "ダウンロードリンクが見つかりませんでした。Switchがインターネットにアクセスできる事を確認してください。\nこの問題が解決しない場合は、GitHubで問題を開いてください。",
-    "new_update": " - 新しいアプリのアップデートが利用可能です",
+    "new_update": "- 新しいアプリのアップデートが利用可能です",
     "about": "アプリについて",
     "update_ams": "Atmosphèreを更新",
     "update_cfw": "CFWを更新",
@@ -160,7 +160,7 @@
   },
   "utils": {
     "fw_warning": "FWアーカイブの容量が大きいため、アプレットモードでのファームウェアのダウンロードはサポートされていません。フルRAMアクセスでアプリを起動してください。",
-    "overwrite": " 既存の物を上書きしますか? ",
+    "overwrite": "既存の物を上書きしますか? ",
     "not_an_archive": "ダウンロードをしたファイルはzipアーカイブではありません。リンク切れが原因である可能性があります。30分以上経過しても問題が解決しない場合は、GitHubで問題を開いてください。",
     "overwrite_inis": "既存の.ini構成ファイルを上書きしますか?",
     "set_hekate_reboot_payload": "Hekateペイロードを `{}` から `{}`にコピーしますか?"
