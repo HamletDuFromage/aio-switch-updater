@@ -52,7 +52,7 @@
   "common": {
     "downloading": "Wird heruntergeladen…",
     "extracting": "Wird entpackt…",
-    "all_done": " Fertig!",
+    "all_done": "Fertig!",
     "back": "Zurück",
     "continue": "Weiter",
     "download": "Wird heruntergeladen:\n",
@@ -75,7 +75,7 @@
   },
   "payloads": {
     "dl_payloads": "Payloads herunterladen",
-    "select": " Wähle ein Payload zum neustarten aus.",
+    "select": "Wähle ein Payload zum neustarten aus.",
     "set_reboot_payload": "Setze als reboot_payload.bin",
     "set_update_bin": "Setze als /bootloader/update.bin",
     "copy_success": "Erfolgreich kopiert '",
@@ -112,7 +112,7 @@
     "cfw_text": "\u25c6 Alternative CFWs, Bootloaders.",
     "cheats": "Cheats",
     "links_not_found": "Konnte keinen Downloadlink finden. Stelle sicher, dass deine Switch Internetzugriff hat.\nWenn das Problem bestehen bleibt, öffne bitte ein Issue auf GitHub.",
-    "new_update": " - Neues App-Update verfügbar",
+    "new_update": "- Neues App-Update verfügbar",
     "about": "Über",
     "update_ams": "Atmosphère aktualisieren",
     "update_cfw": "CFW aktualisieren",
@@ -158,7 +158,7 @@
   },
   "utils": {
     "fw_warning": "Wegen der Größe der Firmwarearchive werden Downloads im Applet Mode nicht unterstützt. Bitte öffne die App mit vollem RAM Zugriff (Title Override).",
-    "overwrite": " Möchtest du die folgende Datei überschreiben: ",
+    "overwrite": "Möchtest du die folgende Datei überschreiben: ",
     "overwrite_inis": "Möchtest du die vorhandene .ini Konfigurationsdateien überschreiben?",
     "not_an_archive": "Bei der heruntergeladenen Datei handelt es sich nicht um ein Zip-Archiv. Dies ist höchstwahrscheinlich auf einen defekten Link zurückzuführen. Wenn das Problem nach mehr als 30 Minuten immer noch besteht, erstelle bitte ein Issue auf GitHub.",
     "set_hekate_reboot_payload": "Soll die Hekate-Payload `{}` nach `{}` kopiert werden?"
@@ -184,7 +184,7 @@
     "custom_packs_label": "\u25c6 Hier sind die in der {}-Datei aufgelisteten Pakete. Bitte beachte, dass diese nicht von AIO-Switch-Updater überprüft werden, also stelle sicher, dass diese Quelle vertrauenswürdig ist!",
     "custom_packs_ams": "\u25c6 Alternative benutzerdefinierte Firmware laden",
     "custom_packs_misc": "\u25c6 Homebrew und Tools laden",
-    "custom_download" : "Custom downloads",
+    "custom_download": "Custom downloads",
     "add_custom_link": "Ein benutzerdefinierten Link hinzufügen",
     "delete_custom_link": "Link Löschen"
   },

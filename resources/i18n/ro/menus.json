@@ -195,7 +195,7 @@
     "custom_packs_label": "\u25c6 Aici sunt pachete listate în fișierul {}. Rețineți că acestea nu sunt aprobate de AIO-Switch-Updater, așa că asigurați-vă că aveți încredere în sursa lor.",
     "custom_packs_ams": "\u25c6 Descărcări care conțin firmware-ul personalizat Atmosphère.",
     "custom_packs_misc": "\u25c6 Descărcări care conțin homebrew și instrumente.",
-    "custom_download" : "Descărcare personalizată",
+    "custom_download": "Descărcare personalizată",
     "add_custom_link": "Adăugați un link personalizat",
     "delete_custom_link": "Ștergeți"
   },

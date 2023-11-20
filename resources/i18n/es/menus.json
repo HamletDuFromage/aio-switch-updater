@@ -60,7 +60,7 @@
   "common": {
     "downloading": "Descargando…",
     "extracting": "Extrayendo…",
-    "all_done": " ¡Finalizado!",
+    "all_done": "¡Finalizado!",
     "back": "Atrás",
     "continue": "Continuar",
     "download": "Descargando:\n",
@@ -84,7 +84,7 @@
   },
   "payloads": {
     "dl_payloads": "Descargar payloads",
-    "select": " Selecciona el payload al que reiniciar.",
+    "select": "Selecciona el payload al que reiniciar.",
     "set_reboot_payload": "Poner como reboot_payload.bin",
     "set_update_bin": "Poner como /bootloader/update.bin",
     "copy_success": "`{}` copiado correctamente a `{}`."
@@ -125,7 +125,7 @@
     "bootloaders_text": "\u25c6 Descarga y actualiza el bootloader.",
     "cheats": "trucos",
     "links_not_found": "No se pudo encontrar un enlace de descarga, asegúrate de que tu Switch tiene acceso a Internet.\nSi el problema persiste, por favor, abre una incidencia en GitHub.",
-    "new_update": " - Nueva actualización de la app disponible",
+    "new_update": "- Nueva actualización de la app disponible",
     "about": "Acerca de",
     "update_ams": "Actualizar Atmosphère",
     "custom_downloads": "Descargas personalizadas",
@@ -169,7 +169,7 @@
   },
   "utils": {
     "fw_warning": "Debido al tamaño de los FW, descargar firmwares en modo applet no está soportado. Por favor, ejecuta la aplicación con acceso a toda la RAM.",
-    "overwrite": " ¿Quieres sobrescribir el archivo existente ",
+    "overwrite": "¿Quieres sobrescribir el archivo existente ",
     "not_an_archive": "El archivo descargado no es un archivo .zip. Lo más probable es que se deba a un enlace roto. Si el problema persiste después de 30 minutos, por favor, abre una incidencia en Github.",
     "overwrite_inis": "¿Quieres sobrescribir los archivos de configuración .ini existentes?",
     "set_hekate_reboot_payload": "¿Quieres copiar el payload Hetake `{}` a `{}`?",

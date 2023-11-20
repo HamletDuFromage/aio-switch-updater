@@ -59,7 +59,7 @@
   "common": {
     "downloading": "Downloading…",
     "extracting": "Extracting…",
-    "all_done": " All done!",
+    "all_done": "All done!",
     "back": "Back",
     "continue": "Continue",
     "download": "Downloading:\n",
@@ -83,7 +83,7 @@
   },
   "payloads": {
     "dl_payloads": "Download payloads",
-    "select": " Select a payload to reboot to.",
+    "select": "Select a payload to reboot to.",
     "set_reboot_payload": "Set as reboot_payload.bin",
     "set_update_bin": "Set as /bootloader/update.bin",
     "copy_success": "Successfully copied `{}` to `{}`."
@@ -124,7 +124,7 @@
     "bootloaders_text": "\u25c6 Download and update bootloaders.",
     "cheats": "cheats",
     "links_not_found": "Could not find a download link, make sure the Switch has access to the internet.\nIf this problem persists, please open an issue on Github.",
-    "new_update": " - New app update available",
+    "new_update": "- New app update available",
     "about": "About",
     "update_ams": "Update Atmosphère",
     "custom_downloads": "Custom downloads",
@@ -164,15 +164,15 @@
     "language": "Change app language",
     "outdated_titles": "Missing updates",
     "latest_version_not_found": "Couldn't find updates info",
-    "outdated_titles_desc": "The following titles have available updates:"
+    "outdated_titles_desc": "Updates are available for the following titles:"
   },
   "utils": {
     "fw_warning": "Because of the size of FW archives, downloading firmwares in Applet Mode is not supported. Please launch the app with full RAM access.",
-    "overwrite": " Do you want to overwrite existing ",
+    "overwrite": "Do you want to overwrite existing ",
     "not_an_archive": "The downloaded file is not a zip archive. This is most likely due to a broken link. If the problem persists after more than 30 minutes, please open an issue on Github.",
     "overwrite_inis": "Do you want to overwrite existing .ini config files?",
     "set_hekate_reboot_payload": "Do you want to copy the Hekate payload `{}` to `{}`?",
-    "applet_webbrowser": "Running in applet mode/through a forwarder.\n\uE016 Please launch hbmenu by holding [R] on a game"
+    "applet_webbrowser": "AIO-Switch-Updater is running in applet mode or through a forwarder.\n\uE016 Please relaunch AIO-Switch-Updater through hbmenu: on the Switch's main menu, hold [R] while selecting a game."
   },
   "ams_update": {
     "reboot_rcm": "The Switch will now reboot to a special payload in order to finalise the install.",

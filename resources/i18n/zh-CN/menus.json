@@ -59,7 +59,7 @@
   "common": {
     "downloading": "下载中……",
     "extracting": "解压中……",
-    "all_done": " 全部完成!",
+    "all_done": "全部完成!",
     "back": "返回",
     "continue": "继续",
     "download": "下载中：\n",
@@ -83,7 +83,7 @@
   },
   "payloads": {
     "dl_payloads": "下载 payloads",
-    "select": " 选择一个 payload 文件并重启。",
+    "select": "选择一个 payload 文件并重启。",
     "set_reboot_payload": "设置为 reboot_payload.bin",
     "set_update_bin": "设置为 /bootloader/update.bin",
     "copy_success": "已成功复制 `{}` 到 `{}`。"
@@ -124,7 +124,7 @@
     "bootloaders_text": "\u25c6 下载并更新 bootloaders。",
     "cheats": "金手指",
     "links_not_found": "找不到下载链接，请确保 Switch 可以访问互联网。\n如果问题仍然存在，请到 GitHub 上提交 issue。",
-    "new_update": " - 新的程序更新可用",
+    "new_update": "- 新的程序更新可用",
     "about": "关于",
     "update_ams": "更新大气层",
     "custom_downloads": "第三方下载",
@@ -168,7 +168,7 @@
   },
   "utils": {
     "fw_warning": "由于固件的体积，不支持在 Applet 模式下下载固件。请以完全 RAM 访问权限运行此程序。",
-    "overwrite": " 是否要覆盖现有的 ",
+    "overwrite": "是否要覆盖现有的 ",
     "not_an_archive": "下载的文件不是 zip 压缩包。可能是链接失效。如果问题在 30 分钟后仍然存在，请到 GitHub 上提交 issue。",
     "overwrite_inis": "是否要覆盖现有的 .ini 配置文件？",
     "set_hekate_reboot_payload": "是否将 Hekate payload `{}` 复制到 `{}`?",

@@ -59,7 +59,7 @@
   "common": {
     "downloading": "다운로드 중…",
     "extracting": "추출 중…",
-    "all_done": " 모두 완료!",
+    "all_done": "모두 완료!",
     "back": "뒤로",
     "continue": "계속",
     "download": "다운로드 중:\n",
@@ -83,7 +83,7 @@
   },
   "payloads": {
     "dl_payloads": "페이로드 다운로드",
-    "select": " 재부팅할 페이로드를 선택하세요.",
+    "select": "재부팅할 페이로드를 선택하세요.",
     "set_reboot_payload": "reboot_payload.bin으로 설정",
     "set_update_bin": "/bootloader/update.bin으로 설정",
     "copy_success": "`{}`를 `{}`에 성공적으로 복사했습니다."
@@ -124,7 +124,7 @@
     "bootloaders_text": "\u25c6 부트로더를 다운로드하고 업데이트합니다.",
     "cheats": "치트",
     "links_not_found": "다운로드 링크를 찾을 수 없습니다. 스위치가 인터넷에 접속할 수 있는지 확인하세요.\n이 문제가 지속되면 Github에 등록해 주세요.",
-    "new_update": " - 새로운 앱 업데이트 사용 가능",
+    "new_update": "- 새로운 앱 업데이트 사용 가능",
     "about": "정보",
     "update_ams": "Atmosphère 업데이트",
     "custom_downloads": "커스텀 다운로드",
@@ -168,7 +168,7 @@
   },
   "utils": {
     "fw_warning": "펌웨어 아카이브의 크기 때문에 애플릿 모드에서 펌웨어 다운로드는 지원되지 않습니다. 전체 RAM 접속 권한으로 앱을 실행하세요.",
-    "overwrite": " 기존 항목을 덮어쓰겠습니까 ",
+    "overwrite": "기존 항목을 덮어쓰겠습니까 ",
     "not_an_archive": "다운로드한 파일은 zip 파일이 아닙니다. 링크가 끊어졌을 가능성이 큽니다. 30분이 지나도 문제가 지속된다면 Github에 등록해 주세요.",
     "overwrite_inis": "기존 .ini 구성 파일을 덮어쓰겠습니까?",
     "set_hekate_reboot_payload": "Hekate 페이로드 `{}`를 `{}`에 복사하겠습니까?"
@@ -195,7 +195,7 @@
     "custom_packs_label": "\u25c6 다음은 {} 파일에 나열된 팩입니다. 일체형-스위치-업데이터에서 승인하지 않았으므로 해당 출처를 신뢰해야 합니다.",
     "custom_packs_ams": "\u25c6 Atmosphère 맞춤형 펌웨어가 포함된 다운로드입니다.",
     "custom_packs_misc": "\u25c6 홈브류와 도구가 포함된 다운로드입니다.",
-    "custom_download" : "커스텀 다운로드",
+    "custom_download": "커스텀 다운로드",
     "add_custom_link": "커스텀 링크 추가",
     "delete_custom_link": "삭제"
   },

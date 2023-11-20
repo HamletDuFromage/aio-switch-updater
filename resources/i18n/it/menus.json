@@ -54,7 +54,7 @@
   "common": {
     "downloading": "Scaricamento…",
     "extracting": "Estrazione…",
-    "all_done": " Finito!",
+    "all_done": "Finito!",
     "back": "Indietro",
     "continue": "Continua",
     "download": "Verrà scaricato:\n",
@@ -78,7 +78,7 @@
   },
   "payloads": {
     "dl_payloads": "Scarica payload",
-    "select": " Seleziona un payload da avviare.",
+    "select": "Seleziona un payload da avviare.",
     "set_reboot_payload": "Imposta come reboot_payload.bin",
     "set_update_bin": "Imposta come /bootloader/update.bin",
     "copy_success": "Copiato con successo '",
@@ -119,7 +119,7 @@
     "bootloaders_text": "\u25c6 Scarica ed aggiorna i bootloader.",
     "cheats": "cheats",
     "links_not_found": "Impossibile trovare un link di download, assicurati che la Switch abbia accesso a Internet.\nSe il problema persiste, apri una segnalazione su GitHub.",
-    "new_update": " - Nuovo aggiornamento disponibile",
+    "new_update": "- Nuovo aggiornamento disponibile",
     "about": "Info",
     "update_ams": "Aggiorna Atmosphère",
     "update_cfw": "Aggiorna CFW",
@@ -161,7 +161,7 @@
   },
   "utils": {
     "fw_warning": "A causa della dimensione dei file del FW, il download dei firmware in Modalità Applet non è supportato. Avvia l'applicazione con pieno accesso alla RAM.",
-    "overwrite": " Sovrascrivere il file esistente ",
+    "overwrite": "Sovrascrivere il file esistente ",
     "not_an_archive": "Il file scaricato non è un archivio zip. Questo può essere causato probabilmente da un link non valido. Se il problema persiste per più di 30 minuti, per favore apri una segnalazione su GitHub.",
     "overwrite_inis": "Sovrascrivere i file di configurazione .ini esistenti?",
     "set_hekate_reboot_payload": "Copiare il payload di Hekate da `{}` a `{}`?"

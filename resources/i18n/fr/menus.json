@@ -1,14 +1,14 @@
 {
   "about": {
     "title": "All-in-One Nintendo Switch Updater",
-    "copyright": "AIO-Switch-Updater est publié sous la license GPL-3.0",
-    "disclaimers": "◆ HamletDuFromage n'héberge rien à l'exception d'une copie des codes de triche du topic principal de GBAtemp. Ils sont attribués à leurs propriétaires respectifs.\n Les liens sont actualisés toutes les 30 minutes. Si un lien reste inactif après 30 minutes, merci de bien vouloir ouvrir une issue sur GitHub.",
-    "donate": "◆ Vous aimez cette application ? Faites un don pour soutenir son développement : 'https://git.io/donate_homlet'",
-    "disclaimers_title": "Avertissements §§"
+    "copyright": "AIO-Switch-Updater est publié sous licence GPL-3.0",
+    "disclaimers_title": "Avis de non-responsabilité",
+    "disclaimers": "◆ HamletDuFromage n'héberge rien à l'exception d'une copie des codes de triche du topic principal de GBAtemp. Ils appartiennent à leurs auteurs respectifs.\n Les liens sont actualisés toutes les 30 minutes. Si un lien reste inactif après 30 minutes, merci de bien vouloir ouvrir une issue sur GitHub.",
+    "donate": "◆ Vous aimez cette application ? Faites un don pour soutenir son développement : 'https://git.io/donate_homlet'"
   },
   "cheats": {
     "installed": "Codes de triche installés",
-    "label": "Des codes de triche ont été ajoutés aux titres suivants depuis votre dernière utilisation de l'application. Sachez que même si ils ont été téléchargés, la compatibilité de ces codes avec la version actuelle de votre jeu n'est pas garantie.",
+    "label": "Des codes de triche ont été ajoutés aux titres suivants depuis votre dernière utilisation de l'application. Même si ils ont été téléchargés, il n'est pas garanti qu'ils soient compatibles avec la version actuelle du jeu.",
     "downloading": "Téléchargement de :\nDerniers codes de triche\n\nDepuis :\n",
     "dl_latest": "Télécharger l'archive de codes de triche la plus récente",
     "getting_cheats": "Téléchargement des codes de triche",
@@ -48,18 +48,18 @@
     "delete_cheats": "Supprimer les codes de triche pour ce jeu",
     "deletion_error": "Impossible de supprimer les fichiers de triche pour les jeux avec les ID suivants :\n{}",
     "show_cheat_files": "Montrer tous les fichiers de triche",
-    "cheats_not_found": "Impossible de trouver des codes de triche correspondant à cet ID de build.",
-    "exclude_all": "Tout exclure §§",
-    "exclude_none": "Ne rien exclure §§",
-    "old_cheats_found": "Des codes de triche correspondent au(x) BID(s) [ {}] existent déjà. §§",
-    "cheatslips_logout": "Se déconnecter §§",
-    "gfx_title": "Cheats d'amélioration des graphismes §§",
-    "get_gfx": "Téléchargements individuels de cheats d'amélioration des graphismes §§"
+    "cheats_not_found": "Impossible de trouver des codes de triche correspondant à ce build ID.",
+    "exclude_all": "Tout exclure",
+    "exclude_none": "Ne rien exclure",
+    "old_cheats_found": "Des codes de triche correspondent au(x) BID(s) [ {}] existent déjà.",
+    "cheatslips_logout": "Se déconnecter",
+    "gfx_title": "Cheats d'amélioration des graphismes",
+    "get_gfx": "Télécharger individuellement des cheats d'amélioration des graphismes"
   },
   "common": {
     "downloading": "Téléchargement en cours…",
     "extracting": "Extraction en cours…",
-    "all_done": " Terminé !",
+    "all_done": "Terminé !",
     "back": "Retour",
     "continue": "Continuer",
     "download": "Téléchargement en cours :\n",
@@ -76,7 +76,7 @@
     "off": "Non",
     "selected": "Sélectionné",
     "applet_mode_not_supported": "Cette fonctionnalité n'est pas disponible en mode applet. Veuillez lancer AIO-Switch-Updater via la redirection d'application pour l'utiliser.",
-    "nothing_to_see": "Circulez, il n'y a rien à voir !"
+    "nothing_to_see": "Circulez, il n'y a rien à voir !"
   },
   "changelog": {
     "changelog": "Journal des modifications"
@@ -91,9 +91,9 @@
   "joy_con": {
     "title": "Modification de la couleur des Joy-Con",
     "description": "Vous pouvez changer la couleur interne des Joy-Cons. Vérifiez qu'ils soient bien attachés à la Switch.\nLes profils de couleur se trouvent dans `{}`. Visitez '{}' pour générer des profils personalisés.",
-    "backup": "Sauvegarde du profil de couleur actuel",
+    "backup": "Enregistrement du profil de couleur actuel",
     "label": "Modification de la couleur des Joy-Con",
-    "backing_up": "Sauvegarde du profil de couleur actuel. Vérifiez que les Joy-Cons soient bien attachés à la Switch. Si le logiciel se bloque, essayez d'attacher/détacher les Joy-Cons.",
+    "backing_up": "Enregistrement du profil de couleur actuel. Vérifiez que les Joy-Cons soient bien attachés à la Switch. Si le logiciel se bloque, essayez d'attacher/détacher les Joy-Cons.",
     "changing": "Changement de couleur. Vérifiez que les Joy-Cons soient bien attachés à la Switch. Si le logiciel se bloque, essayez d'attacher/détacher les Joy-Cons.",
     "all_done": "Terminé ! Vous devrez peut-être attacher/détacher les Joy-Cons pour que les modifications prennent effet."
   },
@@ -102,13 +102,13 @@
     "desc": "Vous pouvez changer la couleur interne de la manette Pro. Vérifiez qu'elle soit réglée sur joueur 1.",
     "warning": "AIO-Switch-Updater ne permet pas encore de changer la couleur des poignées des manettes pro. Utilisez plutôt Joy-Con Toolkit sur PC.",
     "label": "Modification de la couleur de la manette Pro",
-    "backing_up": "Sauvegarde du profil de couleur. ",
+    "backing_up": "Enregistrement du profil de couleur.",
     "all_done": "Terminé ! Vous devrez peut-être éteindre et redémarrer la manette pour que les changements prennent effet.",
     "changing": "Changement de la couleur. Vérifiez que la manette Pro soit bien réglée sur joueur 1."
   },
   "main": {
     "getting": "Téléchargement de {}",
-    "firmware_text": "◆ Firmware archivé sur 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargé, ils sera extrait dans '/firmware'. Vous pouvez ensuite installer la mise à jour avec Daybreak.\n FW installé : ",
+    "firmware_text": "◆ Firmware archivé sur 'https://darthsternie.net/switch-firmwares/'. Une fois téléchargé, ils sera extrait dans '/firmware'. Vous pouvez ensuite installer la mise à jour avec Daybreak.\n\u25c6 FW installé : ",
     "cheats_text": "◆ Ceci téléchargera une archive de codes de triche mise à jour quotidiennement depuis 'gbatemp.net'. Les codes de triche pour les jeux non installés pas ne seront pas extraits sur la carte SD. Vous pouvez désactiver la mises à jour des codes de triche pour les jeux de votre choix dans le menu 'Outils→Menu de triche'.\n Version des codes de triche installés : ",
     "get_cheats": "Télécharger l'archive de codes de triche de GBAtemp.net (ver {})",
     "get_all_cheats:": "Télécharger l'archive de codes de triche de GBAtemp.net",
@@ -136,8 +136,8 @@
     "theme_warning": "Il semblerait que vous avez installé un thème personnalisé, cela pourrait empêcher le système de démarrer après la mise à jour de votre firmware.\nIl est conseillé de le supprimer avant d'effectuer la mise à jour.",
     "payloads_label": "◆ Enregistrer les payloads RCM sous {}",
     "hekate_ipl_label": "◆ Télécharger une version minimale et prête à l'emploi du fichier de configuration hekate_ipl.ini. Le fichier hekate_ipl.ini déjà présent sera écrasé.",
-    "get_cheats_gfx": "Télécharger des cheats d'amélioration des graphismes §§",
-    "custom_downloads": "Téléchargements personnalisés §§"
+    "get_cheats_gfx": "Télécharger des cheats d'amélioration des graphismes",
+    "custom_downloads": "Téléchargements personnalisés"
   },
   "hide": {
     "title": "Masquer des onglets",
@@ -162,17 +162,17 @@
     "batch_copy_not_found": "Les fichiers suivants n'ont pas été trouvés et n'ont pas été copiés :",
     "batch_copy_config_not_found": "Cet outil permet d'automatiser la copie de fichiers vers des destinations spécifiques. Cela peut être utile selon votre bootloader/trinket. Récupérez copy_files.txt depuis 'https://git.io/aiosu_copyfiles', éditez-le et ajoutez-le à votre dossier config. La copie sera aussi effectuée après chaque mise à jour.",
     "language": "Changer la langue de l'application",
-    "outdated_titles": "Mises à jour manquantes §§",
-    "latest_version_not_found": "Impossible de trouver les informations de mise à jour §§",
-    "outdated_titles_desc": "Les titres suivants ont des mises à jour disponibles : §§"
+    "outdated_titles": "Mises à jour manquantes",
+    "latest_version_not_found": "Impossible de trouver les informations de mise à jour",
+    "outdated_titles_desc": "Des mises à jour sont disponibles pour les titres suivants :"
   },
   "utils": {
     "fw_warning": "En raison de la taille des archives FW, le téléchargement de firmwares en mode applet n'est pas pris en charge. Veuillez lancer l'application avec un accès complet à la RAM.",
-    "overwrite": " Voulez-vous écraser le fichier existant ",
+    "overwrite": "Voulez-vous écraser le fichier ",
     "not_an_archive": "Le fichier téléchargé n'est pas une archive zip. Cela est probablement dû à un lien rompu. Si le problème persiste après plus de 30 minutes, veuillez ouvrir une issue sur GitHub.",
     "overwrite_inis": "Voulez-vous écraser les fichiers de configuration .ini déja présents ?",
     "set_hekate_reboot_payload": "Voulez-vous copier le payload Hekate `{}` vers `{}` ?",
-    "applet_webbrowser": "AIO-Switch-Updater est exécuté en mode applet ou via un forwarder\\n\\ue016 Lancez hbmenu en maintenant [R] en démarrant un jeu. §§ back"
+    "applet_webbrowser": "AIO-Switch-Updater est exécuté en mode applet ou via un forwarder\\n\\ue016 Redémarrez AIO-Switch-Updater via hbmenu : sur le menu principal de la Switch, maintenez [R] en sélectionnant un jeu."
   },
   "ams_update": {
     "reboot_rcm": "La Switch va maintenant finaliser l'installation en redémarrant avec un payload spécial.",
@@ -193,10 +193,10 @@
     "build_your_deepsea": "Personnalisez l'installation de DeepSea en sélectionnant les paquets à inclure",
     "getting_ams": "Installer Atmopshère",
     "custom_packs_label": "◆ Voici les paquets listés dans le fichier {}. Assurez-vous de la fiabilité de leur source car il ne bénéficient d'aucun support de la part d'AIO-Switch-Updater.",
-    "custom_packs_ams": "◆ Téléchargements contenant le custom firmware Atmosphère. §§",
-    "custom_packs_misc": "◆ Téléchargements contenant des homebrews et des outils. §§ back",
-    "custom_download": "Téléchargement personnalisé §§",
-    "add_custom_link": "Ajouter un lien personnalisé §§",
+    "custom_packs_ams": "◆ Téléchargements contenant le custom firmware Atmosphère.",
+    "custom_packs_misc": "◆ Téléchargements contenant des homebrews et des outils.",
+    "custom_download": "Téléchargement personnalisé",
+    "add_custom_link": "Ajouter un lien personnalisé",
     "delete_custom_link": "Supprimer"
   },
   "firmware": {
@@ -211,8 +211,8 @@
     "mariko_payload_missing": "Pour mettre à jour Atmopshère sur une Switch patchée, le payload doit être nommé \"payload.bin\" et être placé à la racine de votre carte SD."
   },
   "worker": {
-    "of": "de §§§ tukoi",
-    "download_progress": "({:.1f} MB de {:.1f} MB - {:.1f} MB/s) §§",
-    "time_left": "({} restant) §§"
+    "of": "de",
+    "download_progress": "({:.1f} MB de {:.1f} MB - {:.1f} MB/s)",
+    "time_left": "(Temps restant : {})"
   }
 }

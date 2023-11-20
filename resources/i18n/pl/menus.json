@@ -39,7 +39,7 @@
   "common": {
     "downloading": "Pobieranie…",
     "extracting": "Rozpakowywanie…",
-    "all_done": " Zrobione!",
+    "all_done": "Zrobione!",
     "back": "Wstecz",
     "continue": "Dalej",
     "download": "Pobieranie:\n",
@@ -59,7 +59,7 @@
   },
   "payloads": {
     "dl_payloads": "Pobierz payloady",
-    "select": " Wybierz payload do ponownego uruchomienia.",
+    "select": "Wybierz payload do ponownego uruchomienia.",
     "set_reboot_payload": "Ustaw jako reboot_payload.bin",
     "set_update_bin": "Ustaw jako /bootloader/update.bin",
     "copy_success": "Skopiowano pomyślnie '",
@@ -96,7 +96,7 @@
     "cfw_text": "\u25c6 Alternatywne CFW, bootloadery.",
     "cheats": "cheaty",
     "links_not_found": "Nie można było uzyskać linku pobierania. Upewnij się, że Switch ma połączenie z internetem.\nJeśli problem nie ustąpi, utwórz nowy problem na GitHubie.",
-    "new_update": " - Dostępna aktualizacja aplikacji",
+    "new_update": "- Dostępna aktualizacja aplikacji",
     "about": "O aplikacji",
     "update_ams": "Zaktualizuj Atmosph\u00e8re",
     "update_cfw": "Zaktualizuj CFW",
@@ -130,7 +130,7 @@
   },
   "utils": {
     "fw_warning": "Z powodu rozmiarów archiwów z firmwarem, ich pobieranie w trybie appletu nie jest wspierane. Uruchom aplikację z pełnym dostępem do pamięci RAM.",
-    "overwrite": " Czy chcesz nadpisać istniejący ",
+    "overwrite": "Czy chcesz nadpisać istniejący ",
     "overwrite_inis": "Czy chcesz nadpisać istniejące pliki konfiguracyjne .ini?"
   },
   "ams_update": {
