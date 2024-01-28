@@ -52,7 +52,9 @@
     "show_cheat_files": "列出所有的金手指",
     "cheats_not_found": "沒有找到符合此遊戲版本的金手指",
     "old_cheats_found": "此遊戲有其他版本 BID(s) [ {}] 的金手指",
-    "cheatslips_logout": "登出"
+    "cheatslips_logout": "登出",
+    "gfx_title": "強化遊戲畫面材質金手指",
+    "get_gfx": "下載指定遊戲穩定幀數與強化遊戲畫面材質金手指"
   },
   "common": {
     "downloading": "正在下載…",
@@ -207,5 +209,10 @@
     "insufficient_storage": "記憶卡沒有足夠的可用空間來執行此操作",
     "error_message": "{}\n請稍後再重新執行一次。如果問題持續發生，請使用GitHub提出問題來進行回報",
     "mariko_payload_missing": "在Mariko Switch上進行更新大氣層之前，需要將大氣層注入引導的檔案命名為\"payload.bin\"，並置於記憶卡的根目錄下。"
+  },
+  "worker": {
+    "of": "of",
+    "download_progress": "({:.1f} MB of {:.1f} MB - {:.1f} MB/s)",
+    "time_left": "(預計 {})"
   }
 }
