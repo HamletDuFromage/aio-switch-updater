@@ -133,7 +133,7 @@
     "tools": "Outils",
     "launch_warning": "Veuillez prendre connaissance des points suivants avant d'utiliser cette application :\n\n Renseignez-vous d'abord sur le processus de mise à jour manuel de la Switch. Cela vous aidera à mieux comprendre le fonctionnement de l'application et savoir quoi faire en cas de problème.\n Afin d'éviter tout risque de corruption de données, l'utilisation de cette application avec une carte SD formatée en exFAT est FORTEMENT déconseillé.\n\n Les dernières informations à propos des fonctionnalités ajoutées et/ou modifiées sont disponibles dans le menu Outils→Journal des modifications.\n\nCet écran ne sera pas réaffiché.",
     "footer_text": "v{} | {:.1f}Go disponibles",
-    "theme_warning": "Il semblerait que vous avez installé un thème personnalisé, cela pourrait empêcher le système de démarrer après la mise à jour de votre firmware.\nIl est conseillé de le supprimer avant d'effectuer la mise à jour.",
+    "theme_warning": "Il semblerait que vous avez installé un thème personnalisé, cela pourrait empêcher le système de démarrer après la mise à jour de votre firmware.\nIl est conseillé de le supprimer avant d'effectuer la mise à jour.\n\nSouhaitez-vous tout de même poursuivre l'installation?",
     "payloads_label": "◆ Enregistrer les payloads RCM sous {}",
     "hekate_ipl_label": "◆ Télécharger une version minimale et prête à l'emploi du fichier de configuration hekate_ipl.ini. Le fichier hekate_ipl.ini déjà présent sera écrasé.",
     "get_cheats_gfx": "Télécharger des cheats d'amélioration des graphismes",

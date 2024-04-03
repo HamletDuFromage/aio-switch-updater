@@ -135,7 +135,7 @@
     "tools": "工具",
     "launch_warning": "在開始使用此app前，請務必注意：\n\n\u25c6 請先閱讀有關如何手動更新Switch系統的文件，協助你瞭解app提供的各項功能，以及發生問題時如何排除。\n\u25c6 請注意，我們非常不建議在exFAT格式的記憶卡上使用此app，可能會因此產生錯誤或執行中斷。\n\n\u25c6 程式版本更新時會加入新的功能，也會改善現有的功能。請由選單內的 工具→更新履歷 前往檢視詳細內容。\n\n此提醒畫面將不再顯示。",
     "footer_text": "v{} | {:.1f}GB 可用",
-    "theme_warning": "偵測已安裝自訂主題，更新系統韌體版本後，可能無法導致正常開機。\n建議更新系統前移除自訂主題並改回預設。",
+    "theme_warning": "偵測已安裝自訂主題，更新系統韌體版本後，可能無法導致正常開機。\n建議更新系統前移除自訂主題並改回預設。\n\nDo you wish to proceed regardless?",
     "payloads_label": "\u25c6 下載RCM引導程序至 {}",
     "hekate_ipl_label": "\u25c6 下載精簡且 \"可正常使用\" 的hekate_ipl.ini 配置檔案。此操作將會覆蓋系統目前使用的hekate_ipl.ini檔案。"
   },

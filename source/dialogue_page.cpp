@@ -39,19 +39,6 @@ void DialoguePage::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned h
 {
     this->label->frame(ctx);
     this->button1->frame(ctx);
-
-    auto end = std::chrono::high_resolution_clock::now();
-    auto missing = std::max(1l - std::chrono::duration_cast<std::chrono::seconds>(end - start).count(), 0l);
-    auto text = std::string("menus/common/no"_i18n);
-    if (missing > 0) {
-        this->button2->setLabel(text + " (" + std::to_string(missing) + ")");
-        this->button2->setState(brls::ButtonState::DISABLED);
-    }
-    else {
-        this->button2->setLabel(text);
-        this->button2->setState(brls::ButtonState::ENABLED);
-    }
-    this->button2->invalidate();
     this->button2->frame(ctx);
 }
 
@@ -77,8 +64,6 @@ void DialoguePage::layout(NVGcontext* vg, brls::Style* style, brls::FontStash* s
         style->CrashFrame.buttonWidth,
         style->CrashFrame.buttonHeight);
     this->button2->invalidate();
-
-    start = std::chrono::high_resolution_clock::now() + std::chrono::milliseconds(150);
 }
 
 brls::View* DialoguePage::getDefaultFocus()
@@ -119,6 +104,27 @@ void DialoguePage_ams::instantiateButtons()
     });
 
     this->label = new brls::Label(brls::LabelStyle::DIALOG, "menus/ams_update/install_hekate"_i18n + "\n\n" + this->text, true);
+    start = std::chrono::high_resolution_clock::now() + std::chrono::milliseconds(150);
+}
+
+void DialoguePage_ams::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
+{
+    this->label->frame(ctx);
+    this->button1->frame(ctx);
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto missing = std::max(1l - std::chrono::duration_cast<std::chrono::seconds>(end - start).count(), 0l);
+    auto text = std::string("menus/common/no"_i18n);
+    if (missing > 0) {
+        this->button2->setLabel(text + " (" + std::to_string(missing) + ")");
+        this->button2->setState(brls::ButtonState::DISABLED);
+    }
+    else {
+        this->button2->setLabel(text);
+        this->button2->setState(brls::ButtonState::ENABLED);
+    }
+    this->button2->invalidate();
+    this->button2->frame(ctx);
 }
 
 void DialoguePage_fw::instantiateButtons()
@@ -140,9 +146,19 @@ void DialoguePage_fw::instantiateButtons()
     this->label = new brls::Label(brls::LabelStyle::DIALOG, fmt::format("{}\n\n{}", this->text, "menus/firmware/launch_daybreak"_i18n), true);
 }
 
-void DialoguePage_fw::draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx)
+void DialoguePage_confirm::instantiateButtons()
 {
-    this->label->frame(ctx);
-    this->button1->frame(ctx);
-    this->button2->frame(ctx);
+    this->button1->getClickEvent()->subscribe([this](View* view) {
+        if (!frame->isLastStage())
+            frame->nextStage();
+        else {
+            brls::Application::pushView(new MainFrame());
+        }
+    });
+
+    this->button2->getClickEvent()->subscribe([this](View* view) {
+        brls::Application::pushView(new MainFrame());
+    });
+
+    this->label = new brls::Label(brls::LabelStyle::DIALOG, this->text, true);
 }

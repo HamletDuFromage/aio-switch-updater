@@ -135,7 +135,7 @@
     "tools": "Unelte",
     "launch_warning": "Vă rugăm să acordați atenție următoarelor puncte înainte de a utiliza aplicația:\n\n\u25c6 Citiți mai întâi cum să actualizați manual Switch. Acest lucru vă va ajuta să înțelegeți mai bine aplicația și veți ști ce să faceți în cazul în care ceva nu merge bine.\n\u25c6 Pentru a evita orice risc de corupere a datelor, folosirea acestei aplicații pe un card SD exFAT este FORT descurajată.\n\n\u25c6 Cele mai recente informații despre funcțiile care au fost introduse și/sau modificat este disponibil în meniul Tools→Changelog.\n\nAcest ecran nu se va afișa din nou.",
     "footer_text": "v{} | {:.1f}GB disponibil",
-    "theme_warning": "Se pare că aveți o temă personalizată instalată, acest lucru poate duce la eșecul sistemului dvs. de pornire după actualizarea firmware-ului.\nVă rugăm să o ștergeți înainte de a actualiza.",
+    "theme_warning": "Se pare că aveți o temă personalizată instalată, acest lucru poate duce la eșecul sistemului dvs. de pornire după actualizarea firmware-ului.\nVă rugăm să o ștergeți înainte de a actualiza.\n\nDo you wish to proceed regardless?",
     "payloads_label": "\u25c6 Descărcați încărcăturile utile RCM pe {}",
     "hekate_ipl_label": "\u25c6 Descărcați un fișier de configurare hekate_ipl.ini redus \"just works\". Aceasta va suprascrie actualul dvs. hekate_ipl.ini."
   },

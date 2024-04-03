@@ -135,7 +135,7 @@
     "tools": "Tools",
     "launch_warning": "Please pay attention to the following points before using the app:\n\n\u25c6 Read up on how to manually update your Switch first. This will help you understand the app better and you'll know what to do in case something goes wrong.\n\u25c6 In order to avoid any risk of data corruption, using this app on an exFAT SD card is STRONGLY discouraged.\n\n\u25c6 The latest information about features that have been introduced and/or changed is available in the  Tools→Changelog menu.\n\nThis screen won't show again.",
     "footer_text": "v{} | {:.1f}GB available",
-    "theme_warning": "It seems like you have a custom theme installed, this may cause your system to fail to boot after upgrading your firmware.\nPlease consider deleting it before upgrading.",
+    "theme_warning": "It seems like you have a custom theme installed, this may cause your system to fail to boot after upgrading your firmware.\nPlease consider deleting it before upgrading.\n\nDo you wish to proceed regardless?",
     "payloads_label": "\u25c6 Download RCM payloads to {}",
     "hekate_ipl_label": "\u25c6 Download a stripped down \"just works\" hekate_ipl.ini config file. This will overwrite your current hekate_ipl.ini."
   },
