@@ -135,7 +135,7 @@
     "tools": "工具",
     "launch_warning": "使用此程序前请注意以下几点：\n\n\u25c6 首先阅读如何手动更新您的 Switch。这将有助于您更好地理解此程序，您将知道在出现问题时该怎么做。\n\u25c6 为了避免任何数据损坏的风险，强烈建议不要在 exFAT 格式的 SD 卡上使用此程序。\n\n\u25c6 有关已支持和已更改的功能的最新更新可在 工具 → 更新日志 菜单中查看。\n\n该说明下次将不再显示。",
     "footer_text": "v{} | {:.1f} GB 可用",
-    "theme_warning": "您似乎安装了一个自定义主题，这可能会导致您的系统在升级固件后无法启动。\n请考虑在升级之前将其删除。\n\nDo you wish to proceed regardless?",
+    "theme_warning": "您似乎安装了一个自定义主题，这可能会导致您的系统在升级固件后无法启动。\n请考虑在升级之前将其删除。\n\n您仍然想继续吗？",
     "payloads_label": "\u25c6 下载 RCM payloads 到 {}",
     "hekate_ipl_label": "\u25c6 下载一个精简的 \"够用\"的 hekate_ipl.ini 配置文件。这将覆盖您当前的 hekate_ipl.ini。"
   },
