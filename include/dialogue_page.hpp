@@ -6,7 +6,6 @@
 class DialoguePage : public brls::View
 {
 private:
-    std::chrono::system_clock::time_point start = std::chrono::high_resolution_clock::now();
     brls::NavigationMap navigationMap;
 
 protected:
@@ -34,12 +33,12 @@ private:
 
 public:
     DialoguePage_fw(brls::StagedAppletFrame* frame, const std::string& text) : DialoguePage(), text(text), frame(frame) { CreateView(); }
-    void draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx) override;
 };
 
 class DialoguePage_ams : public DialoguePage
 {
 private:
+    std::chrono::system_clock::time_point start = std::chrono::high_resolution_clock::now();
     void instantiateButtons() override;
     bool erista = true;
     std::string text;
@@ -47,4 +46,16 @@ private:
 
 public:
     DialoguePage_ams(brls::StagedAppletFrame* frame, const std::string& text, bool erista = true) : DialoguePage(), erista(erista), text(text), frame(frame) { CreateView(); }
+    void draw(NVGcontext* vg, int x, int y, unsigned width, unsigned height, brls::Style* style, brls::FrameContext* ctx) override;
+};
+
+class DialoguePage_confirm : public DialoguePage
+{
+private:
+    void instantiateButtons() override;
+    std::string text;
+    brls::StagedAppletFrame* frame;
+
+public:
+    DialoguePage_confirm(brls::StagedAppletFrame* frame, const std::string& text) : DialoguePage(), text(text), frame(frame) { CreateView(); }
 };

@@ -126,7 +126,7 @@
     "update_bootloaders": "Bootloader aktualisieren",
     "hekate_ipl_label": "Lade eine 'einfache Funktionierende' hekate_ipl.ini , Dies Überschreibt deine jetzige!",
     "footer_text": "v{} | {:.1f}GB verfügbar",
-    "theme_warning": "Es scheint, dass ein benutzerdefiniertes Theme installiert ist, das dazu führen kann, dass das System nach dem Upgrade der Firmware nicht mehr startet. Bitte lösche das Theme vor dem Upgrade.",
+    "theme_warning": "Es scheint, dass ein benutzerdefiniertes Theme installiert ist, das dazu führen kann, dass das System nach dem Upgrade der Firmware nicht mehr startet. Bitte lösche das Theme vor dem Upgrade.\n\nDo you wish to proceed regardless?",
     "payloads_label": "\u25c6 RCM-Payloads herunterladen in {}"
   },
   "hide": {

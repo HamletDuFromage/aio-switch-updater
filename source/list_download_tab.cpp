@@ -68,6 +68,14 @@ void ListDownloadTab::createList(contentType type)
                 brls::StagedAppletFrame* stagedFrame = new brls::StagedAppletFrame();
                 stagedFrame->setTitle(fmt::format("menus/main/getting"_i18n, contentTypeNames[(int)type].data()));
                 stagedFrame->addStage(new ConfirmPage(stagedFrame, text));
+                if (type == contentType::fw) {
+                    std::string contentsPath = util::getContentsPath();
+                    for (const auto& tid : {"0100000000001000", "0100000000001007", "0100000000001013"}) {
+                        if (std::filesystem::exists(contentsPath + tid) && !std::filesystem::is_empty(contentsPath + tid)) {
+                            stagedFrame->addStage(new DialoguePage_confirm(stagedFrame, "menus/main/theme_warning"_i18n));
+                        }
+                    }
+                }
                 if (type != contentType::payloads && type != contentType::hekate_ipl) {
                     if (type != contentType::cheats || (this->newCheatsVer != this->currentCheatsVer && this->newCheatsVer != "offline")) {
                         stagedFrame->addStage(new WorkerPage(stagedFrame, "menus/common/downloading"_i18n, [this, type, url]() { util::downloadArchive(url, type); }));
@@ -86,26 +94,11 @@ void ListDownloadTab::createList(contentType type)
                 }
 
                 std::string doneMsg = "menus/common/all_done"_i18n;
-                switch (type) {
-                    case contentType::fw: {
-                        std::string contentsPath = util::getContentsPath();
-                        for (const auto& tid : {"0100000000001000", "0100000000001007", "0100000000001013"}) {
-                            if (std::filesystem::exists(contentsPath + tid) && !std::filesystem::is_empty(contentsPath + tid)) {
-                                doneMsg += "\n" + "menus/main/theme_warning"_i18n;
-                                break;
-                            }
-                        }
-                        if (std::filesystem::exists(DAYBREAK_PATH)) {
-                            stagedFrame->addStage(new DialoguePage_fw(stagedFrame, doneMsg));
-                        }
-                        else {
-                            stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
-                        }
-                        break;
-                    }
-                    default:
-                        stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
-                        break;
+                if (type == contentType::fw && std::filesystem::exists(DAYBREAK_PATH)) {
+                        stagedFrame->addStage(new DialoguePage_fw(stagedFrame, doneMsg));
+                }
+                else {
+                    stagedFrame->addStage(new ConfirmPage_Done(stagedFrame, doneMsg));
                 }
                 brls::Application::pushView(stagedFrame);
             });

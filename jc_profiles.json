@@ -194,5 +194,12 @@
         "R_BTN": "32322D",
         "R_JC": "D2BE69",
         "name": "Legend of Zelda: Tears of the Kingdom Edition Gold Joy-Con"
+    },
+    {
+        "L_BTN": "372D2D",
+        "L_JC": "FFAFAF",
+        "R_BTN": "372D2D",
+        "R_JC": "FFAFAF",
+        "name": "Pastel Pink"
     }
 ]
