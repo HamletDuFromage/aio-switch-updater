@@ -80,7 +80,8 @@ $ sudo (dkp-)pacman -S  switch-glfw \
                         switch-glad \
                         switch-glm \
                         switch-mbedtls \
-                        switch-zlib
+                        switch-zlib \
+                        devkitarm-rules
 ```
 Use [`switch-ex-curl`](https://github.com/eXhumer/switch-ex-curl) instead of `switch-curl` to use this app with an invalid SSL certificate.
 
