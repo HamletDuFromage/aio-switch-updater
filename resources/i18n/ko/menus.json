@@ -63,7 +63,7 @@
     "back": "뒤로",
     "continue": "계속",
     "download": "다운로드 중:\n",
-    "from": "\n\n에서:\n",
+    "from": "\n\n다음에서:\n",
     "ok": "확인",
     "shut_down": "전원 종료",
     "reboot": "재부팅",
@@ -76,7 +76,7 @@
     "off": "끔",
     "selected": "선택됨",
     "applet_mode_not_supported": "이 기능은 애플릿 모드에서 사용할 수 없습니다. 접속하려면 타이틀 오버라이드를 통해 일체형-스위치-업데이터를 시작하세요.",
-    "nothing_to_see": "여기는 볼게 없습니다!"
+    "nothing_to_see": "여기는 볼 것이 없습니다!"
   },
   "changelog": {
     "changelog": "변경기록"
@@ -172,7 +172,7 @@
     "not_an_archive": "다운로드한 파일은 zip 파일이 아닙니다. 링크가 끊어졌을 가능성이 큽니다. 30분이 지나도 문제가 지속된다면 Github에 등록해 주세요.",
     "overwrite_inis": "기존 .ini 구성 파일을 덮어쓰겠습니까?",
     "set_hekate_reboot_payload": "Hekate 페이로드 `{}`를 `{}`에 복사하겠습니까?"
-																															
+    "applet_webbrowser": "AIO-Switch-Updater는 애플릿 모드나 포워더를 통해 실행 중입니다.\n\uE016 hbmenu를 통해 AIO-Switch-Updater를 다시 시작하세요. Switch의 메인 메뉴에서 게임을 선택하는 동안 [R]을 누르고 계세요."
   },
   "ams_update": {
     "reboot_rcm": "이제 설치를 완료하기 위해 스위치가 특수 페이로드로 재부팅됩니다.",
