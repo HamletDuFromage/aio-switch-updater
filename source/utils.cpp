@@ -325,7 +325,8 @@ namespace util {
     void removeSysmodulesFlags(const std::string& directory)
     {
         for (const auto& e : std::filesystem::recursive_directory_iterator(directory)) {
-            if (e.path().string().find("boot2.flag") != std::string::npos) {
+            if (e.path().string().find("boot2.flag") != std::string::npos &&
+                e.path().string().find("420000000007E51A") == std::string::npos) {
                 std::filesystem::remove(e.path());
             }
         }
